@@ -1,12 +1,13 @@
-import { 
-  Lightbulb, 
-  Globe, 
-  Megaphone, 
-  Palette, 
-  GraduationCap, 
-  Settings, 
-  Crown 
+import {
+  Lightbulb,
+  Globe,
+  Megaphone,
+  Palette,
+  GraduationCap,
+  Settings,
+  Crown,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -46,13 +47,44 @@ const services = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.46, 0.45, 0.94] as const,
+    },
+  },
+};
+
 const Services = () => {
   return (
-    <section id="services" className="py-20 md:py-28 bg-background">
-      <div className="container">
+    <section id="services" className="py-20 md:py-28 bg-background relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-accent/5 blur-[120px] -translate-y-1/2 translate-x-1/2" />
+      
+      <div className="container relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-accent font-medium text-sm uppercase tracking-wider">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
             Ce que nous faisons
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mt-3 mb-5">
@@ -61,34 +93,42 @@ const Services = () => {
           <p className="text-muted-foreground text-lg">
             Des solutions complètes pour structurer et développer votre présence digitale.
           </p>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <article
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        >
+          {services.map((service) => (
+            <motion.article
               key={service.title}
-              className="group relative p-6 md:p-8 rounded-2xl bg-card border border-border/50 hover:border-accent/30 transition-all duration-300 hover:shadow-hover"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="group relative p-6 md:p-8 rounded-2xl glass-card hover:glow-gold-subtle transition-all duration-300"
             >
               {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors duration-300">
+              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
                 <service.icon className="w-7 h-7 text-accent" />
               </div>
 
               {/* Content */}
-              <h3 className="text-lg font-heading font-semibold text-foreground mb-3">
+              <h3 className="text-lg font-heading font-semibold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                 {service.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 {service.description}
               </p>
 
-              {/* Hover accent */}
-              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
-            </article>
+              {/* Hover accent line */}
+              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

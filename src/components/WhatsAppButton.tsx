@@ -1,17 +1,23 @@
 import { MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 const WhatsAppButton = () => {
   return (
-    <a
+    <motion.a
       href="https://wa.me/221781926969?text=Bonjour Sen'Optima, je souhaite en savoir plus sur vos services."
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-[#25D366] text-white font-medium rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 animate-pulse-gold"
+      initial={{ opacity: 0, scale: 0, y: 50 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ delay: 1, duration: 0.5, type: "spring" }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-[#25D366] text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 pulse-whatsapp"
       aria-label="Nous contacter sur WhatsApp"
     >
       <MessageCircle className="w-5 h-5" />
       <span className="hidden sm:inline">WhatsApp</span>
-    </a>
+    </motion.a>
   );
 };
 
