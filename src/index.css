@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    /* Sen'Optima Brand Colors */
-    --background: 0 0% 100%;
+    /* Sen'Optima Brand Colors - Light Mode */
+    --background: 40 20% 98%;
     --foreground: 218 71% 13%;
 
     --card: 0 0% 100%;
@@ -18,22 +18,22 @@
     --primary: 218 71% 13%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Light Gray */
-    --secondary: 0 0% 96%;
+    /* Secondary */
+    --secondary: 220 20% 96%;
     --secondary-foreground: 218 71% 13%;
 
     /* Accent - Matte Gold */
     --accent: 43 65% 53%;
     --accent-foreground: 218 71% 13%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 10% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
     --ring: 43 65% 53%;
 
     --radius: 0.75rem;
@@ -44,19 +44,25 @@
     --gold-dark: 43 65% 43%;
     --deep-blue: 218 71% 13%;
     --light-gray: 0 0% 71%;
-    --off-white: 0 0% 98%;
+    --off-white: 40 20% 98%;
+
+    /* Glass effect tokens */
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.3;
 
     /* Gradients */
     --gradient-gold: linear-gradient(135deg, hsl(43 65% 53%), hsl(43 65% 43%));
     --gradient-blue: linear-gradient(135deg, hsl(218 71% 13%), hsl(218 71% 20%));
+    --gradient-hero: linear-gradient(135deg, hsl(218 71% 10%), hsl(218 71% 18%), hsl(218 71% 13%));
     
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(218 71% 13% / 0.1);
-    --shadow-gold: 0 4px 20px -4px hsl(43 65% 53% / 0.3);
+    --shadow-gold: 0 4px 30px -4px hsl(43 65% 53% / 0.4);
     --shadow-card: 0 2px 16px -2px hsl(218 71% 13% / 0.08);
-    --shadow-hover: 0 8px 30px -6px hsl(218 71% 13% / 0.15);
+    --shadow-hover: 0 8px 40px -8px hsl(218 71% 13% / 0.2);
+    --shadow-glow: 0 0 60px -10px hsl(43 65% 53% / 0.5);
 
-    /* Sidebar (keeping defaults) */
+    /* Sidebar */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 218 71% 13%;
     --sidebar-primary: 218 71% 13%;
@@ -68,25 +74,53 @@
   }
 
   .dark {
+    /* Dark Mode - Deep Blue Base (not pure black) */
     --background: 218 71% 8%;
-    --foreground: 0 0% 98%;
-    --card: 218 71% 10%;
-    --card-foreground: 0 0% 98%;
-    --popover: 218 71% 10%;
-    --popover-foreground: 0 0% 98%;
+    --foreground: 40 20% 95%;
+
+    --card: 218 60% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 218 60% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    /* Primary - Gold in dark mode for contrast */
     --primary: 43 65% 53%;
-    --primary-foreground: 218 71% 13%;
-    --secondary: 218 71% 15%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 218 71% 15%;
-    --muted-foreground: 0 0% 65%;
+    --primary-foreground: 218 71% 8%;
+
+    /* Secondary */
+    --secondary: 218 50% 16%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 218 50% 16%;
+    --muted-foreground: 220 20% 60%;
+
     --accent: 43 65% 53%;
-    --accent-foreground: 218 71% 13%;
-    --destructive: 0 62% 30%;
+    --accent-foreground: 218 71% 8%;
+
+    --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 98%;
-    --border: 218 71% 20%;
-    --input: 218 71% 20%;
+
+    --border: 218 50% 20%;
+    --input: 218 50% 20%;
     --ring: 43 65% 53%;
+
+    /* Glass effect tokens - Dark */
+    --glass-bg: 218 71% 13% / 0.6;
+    --glass-border: 218 50% 30% / 0.3;
+
+    /* Gradients - Dark */
+    --gradient-hero: linear-gradient(135deg, hsl(218 71% 6%), hsl(218 71% 12%), hsl(218 71% 8%));
+
+    /* Sidebar - Dark */
+    --sidebar-background: 218 71% 10%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 43 65% 53%;
+    --sidebar-primary-foreground: 218 71% 8%;
+    --sidebar-accent: 43 65% 53%;
+    --sidebar-accent-foreground: 218 71% 8%;
+    --sidebar-border: 218 50% 20%;
+    --sidebar-ring: 43 65% 53%;
   }
 }
 
@@ -100,7 +134,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply bg-background text-foreground font-body antialiased transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -109,11 +143,18 @@
 }
 
 @layer utilities {
+  /* Text Gradients */
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-gold);
+    background-image: linear-gradient(135deg, hsl(43 65% 53%), hsl(43 65% 70%), hsl(43 65% 53%));
   }
 
+  .text-gradient-hero {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(43 65% 60%), hsl(0 0% 100%), hsl(43 65% 60%));
+  }
+
+  /* Background Gradients */
   .bg-gradient-gold {
     background-image: var(--gradient-gold);
   }
@@ -122,6 +163,24 @@
     background-image: var(--gradient-blue);
   }
 
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/70 dark:bg-[hsl(218_71%_13%/0.6)] backdrop-blur-xl border border-white/30 dark:border-white/10;
+  }
+
+  .glass-card {
+    @apply bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10;
+  }
+
+  .glass-premium {
+    @apply bg-white/90 dark:bg-white/10 backdrop-blur-2xl border border-accent/20 dark:border-accent/30;
+  }
+
+  /* Shadows */
   .shadow-soft {
     box-shadow: var(--shadow-soft);
   }
@@ -136,5 +195,61 @@
 
   .shadow-hover {
     box-shadow: var(--shadow-hover);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Gold Glow Effect */
+  .glow-gold {
+    box-shadow: 0 0 30px -5px hsl(43 65% 53% / 0.5),
+                0 0 60px -10px hsl(43 65% 53% / 0.3);
+  }
+
+  .glow-gold-subtle {
+    box-shadow: 0 0 20px -5px hsl(43 65% 53% / 0.3);
+  }
+
+  /* Animated Background */
+  .animated-bg {
+    background: linear-gradient(-45deg, 
+      hsl(218 71% 8%), 
+      hsl(218 71% 12%), 
+      hsl(218 71% 10%), 
+      hsl(218 71% 14%)
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating orbs animation */
+  .floating-orb {
+    animation: float-orb 6s ease-in-out infinite;
+  }
+
+  @keyframes float-orb {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+  }
+
+  /* Pulse animation for WhatsApp */
+  .pulse-whatsapp {
+    animation: pulse-wa 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-wa {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(142 70% 45% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 15px hsl(142 70% 45% / 0);
+    }
   }
 }
