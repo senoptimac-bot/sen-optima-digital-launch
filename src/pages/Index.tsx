@@ -1,7 +1,9 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
+import BentoServices from "@/components/BentoServices";
+import ProjectWizard from "@/components/ProjectWizard";
 import Diagnostics from "@/components/Diagnostics";
+import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -11,8 +13,10 @@ const Index = () => {
     <main className="min-h-screen bg-background">
       <Header />
       <Hero />
-      <Services />
+      <BentoServices />
+      <ProjectWizard />
       <Diagnostics />
+      <Testimonials />
       <About />
       <Footer />
       <WhatsAppButton />
