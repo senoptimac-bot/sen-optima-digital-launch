@@ -35,17 +35,26 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
-      {/* Logo Text */}
+      {/* Logo with Pulse Animation */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="mb-8"
       >
-        <h1 className="text-4xl md:text-5xl font-bold tracking-wider">
-          <span className="text-foreground">SEN'</span>
-          <span className="text-accent">OPTIMA</span>
-        </h1>
+        <motion.img
+          src="/logo.svg"
+          alt="Sen'Optima Consulting"
+          className="w-48 md:w-64 h-auto"
+          animate={{
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
       </motion.div>
 
       {/* Progress Bar Container */}

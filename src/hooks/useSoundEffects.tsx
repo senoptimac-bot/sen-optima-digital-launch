@@ -1,53 +1,126 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useEffect } from 'react';
 
-// Lightweight HTML5 Audio solution for UI sounds
-const createSound = (frequency: number, duration: number, type: OscillatorType = 'sine', volume: number = 0.25) => {
-  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-  const oscillator = audioContext.createOscillator();
-  const gainNode = audioContext.createGain();
+/**
+ * INSTRUCTIONS POUR LE CLIENT:
+ * ============================
+ * Pour activer les sons UI, veuillez déposer vos fichiers audio dans le dossier /public :
+ * - /public/sounds/hover.mp3 (son léger de survol)
+ * - /public/sounds/click.mp3 (son de clic/confirmation)
+ * 
+ * Les sons s'activeront automatiquement après le premier clic de l'utilisateur
+ * (requis par Chrome/Safari pour des raisons de sécurité).
+ * 
+ * Si les fichiers sont absents, le site fonctionnera normalement sans son.
+ */
+
+// Audio instances cached for performance
+let hoverAudio: HTMLAudioElement | null = null;
+let clickAudio: HTMLAudioElement | null = null;
+let audioUnlocked = false;
+
+// Preload audio files
+const preloadAudio = () => {
+  if (typeof window === 'undefined') return;
   
-  oscillator.connect(gainNode);
-  gainNode.connect(audioContext.destination);
+  try {
+    hoverAudio = new Audio('/sounds/hover.mp3');
+    hoverAudio.volume = 0.2; // 20% volume
+    hoverAudio.preload = 'auto';
+    
+    clickAudio = new Audio('/sounds/click.mp3');
+    clickAudio.volume = 0.25; // 25% volume
+    clickAudio.preload = 'auto';
+  } catch (e) {
+    // Audio files not available - silent fail
+    console.log('Audio files not loaded - sounds disabled');
+  }
+};
+
+// Unlock audio on first user interaction (required by browsers)
+const unlockAudio = () => {
+  if (audioUnlocked) return;
   
-  oscillator.frequency.value = frequency;
-  oscillator.type = type;
+  // Try to play a silent audio to unlock
+  const silentPlay = () => {
+    if (hoverAudio) {
+      hoverAudio.volume = 0;
+      hoverAudio.play().then(() => {
+        hoverAudio!.pause();
+        hoverAudio!.currentTime = 0;
+        hoverAudio!.volume = 0.2;
+        audioUnlocked = true;
+      }).catch(() => {
+        // Still blocked, will try again on next click
+      });
+    }
+  };
   
-  gainNode.gain.setValueAtTime(volume, audioContext.currentTime);
-  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-  
-  oscillator.start(audioContext.currentTime);
-  oscillator.stop(audioContext.currentTime + duration);
+  silentPlay();
 };
 
 export const useSoundEffects = () => {
   const isEnabled = useRef(true);
 
-  // Soft glass tap sound for hover
+  // Initialize audio on mount
+  useEffect(() => {
+    preloadAudio();
+    
+    // Add click listener to unlock audio
+    const handleFirstInteraction = () => {
+      unlockAudio();
+    };
+    
+    document.addEventListener('click', handleFirstInteraction, { once: false });
+    document.addEventListener('touchstart', handleFirstInteraction, { once: false });
+    
+    return () => {
+      document.removeEventListener('click', handleFirstInteraction);
+      document.removeEventListener('touchstart', handleFirstInteraction);
+    };
+  }, []);
+
+  // Play hover sound
   const playHover = useCallback(() => {
-    if (!isEnabled.current) return;
+    if (!isEnabled.current || !audioUnlocked || !hoverAudio) return;
+    
     try {
-      createSound(800, 0.08, 'sine', 0.15);
+      hoverAudio.currentTime = 0;
+      hoverAudio.play().catch(() => {
+        // Silently fail if audio can't play
+      });
     } catch (e) {
-      // Audio context not available
+      // Silent error handling
     }
   }, []);
 
-  // Digital confirm sound for click
+  // Play click sound
   const playClick = useCallback(() => {
-    if (!isEnabled.current) return;
+    if (!isEnabled.current || !hoverAudio) return;
+    
+    // Also unlock audio on click
+    if (!audioUnlocked) {
+      unlockAudio();
+    }
+    
+    if (!clickAudio) return;
+    
     try {
-      createSound(600, 0.05, 'square', 0.1);
-      setTimeout(() => createSound(900, 0.08, 'sine', 0.15), 50);
+      clickAudio.currentTime = 0;
+      clickAudio.play().catch(() => {
+        // Silently fail if audio can't play
+      });
     } catch (e) {
-      // Audio context not available
+      // Silent error handling
     }
   }, []);
 
+  // Toggle sound on/off
   const toggleSound = useCallback(() => {
     isEnabled.current = !isEnabled.current;
+    return isEnabled.current;
   }, []);
 
-  return { playHover, playClick, toggleSound };
+  return { playHover, playClick, toggleSound, isEnabled: isEnabled.current };
 };
 
 export default useSoundEffects;
