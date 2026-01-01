@@ -1,21 +1,17 @@
 import Hero from "@/components/Hero";
-import BentoServices from "@/components/BentoServices";
-import ProjectWizard from "@/components/ProjectWizard";
-import Diagnostics from "@/components/Diagnostics";
-import MethodSection from "@/components/MethodSection";
-import GalleryVideo from "@/components/GalleryVideo";
-import About from "@/components/About";
+import MirrorSection from "@/components/MirrorSection";
+import RevelationSection from "@/components/RevelationSection";
+import PillarsSection from "@/components/PillarsSection";
+import VisionarySection from "@/components/VisionarySection";
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <BentoServices />
-      <MethodSection />
-      <ProjectWizard />
-      <Diagnostics />
-      <GalleryVideo />
-      <About />
+      <MirrorSection />
+      <RevelationSection />
+      <PillarsSection />
+      <VisionarySection />
     </>
   );
 };
