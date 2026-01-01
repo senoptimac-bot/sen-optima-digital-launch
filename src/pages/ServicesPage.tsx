@@ -1,378 +1,544 @@
 import { motion } from "framer-motion";
-import { 
-  Globe, 
-  Target, 
-  Palette, 
-  Compass, 
-  ArrowRight,
-  Lightbulb,
-  Users,
-  Bot,
-  Anchor
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Sparkles } from "lucide-react";
 
-const pillars = [
-  {
-    icon: Globe,
-    title: "La Vitrine Digitale",
-    subtitle: "Sites Web & Solutions",
-    problem: "Vos clients vous cherchent sur Google. S'ils ne vous trouvent pas, ils vont chez le concurrent.",
-    solution: "Des sites web ultra-rapides, pensés pour mobile, qui travaillent pour vous 24h/24. Plus qu'une carte de visite, une machine à convaincre.",
-    size: "large",
-  },
-  {
-    icon: Target,
-    title: "La Machine à Clients",
-    subtitle: "Marketing & Acquisition",
-    problem: "Poster au hasard sur Facebook ne suffit plus pour vendre.",
-    solution: "Des stratégies d'acquisition ciblées. Nous transformons les 'likes' en chiffre d'affaires grâce à des tunnels de vente précis.",
-    size: "medium",
-  },
-  {
-    icon: Palette,
-    title: "L'Identité de Marque",
-    subtitle: "Branding",
-    problem: "L'amateurisme fait fuir les gros contrats. L'image est la première chose qu'on achète.",
-    solution: "Une identité visuelle (Logo, Chartes) qui inspire instantanément confiance et autorité. Soyez inoubliable.",
-    size: "medium",
-  },
-  {
-    icon: Compass,
-    title: "La Boussole",
-    subtitle: "Conseil & Stratégie",
-    problem: "Naviguer à vue coûte cher en temps et en argent.",
-    solution: "Un plan d'action clair. Nous auditons, nous structurons, et nous vous donnons la feuille de route pour scaler.",
-    size: "large",
-  },
-];
+// Visual Components for each pillar
+const DeviceIllustration = () => (
+  <div className="relative w-full h-32 flex items-center justify-center">
+    {/* Browser Window */}
+    <motion.div 
+      className="absolute w-24 h-16 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg border border-primary/30 backdrop-blur-sm"
+      initial={{ x: -10, y: -5 }}
+      whileHover={{ scale: 1.05 }}
+    >
+      <div className="flex gap-1 p-1.5">
+        <div className="w-1.5 h-1.5 rounded-full bg-red-400/60" />
+        <div className="w-1.5 h-1.5 rounded-full bg-yellow-400/60" />
+        <div className="w-1.5 h-1.5 rounded-full bg-green-400/60" />
+      </div>
+      <div className="px-2 space-y-1">
+        <div className="h-1 w-full bg-primary/30 rounded" />
+        <div className="h-1 w-3/4 bg-primary/20 rounded" />
+        <div className="h-1 w-1/2 bg-primary/20 rounded" />
+      </div>
+    </motion.div>
+    {/* Smartphone */}
+    <motion.div 
+      className="absolute w-12 h-20 bg-gradient-to-br from-accent/30 to-accent/10 rounded-xl border-2 border-accent/40 backdrop-blur-sm"
+      initial={{ x: 20, y: 10 }}
+      whileHover={{ scale: 1.05 }}
+    >
+      <div className="w-4 h-0.5 bg-accent/50 rounded-full mx-auto mt-1" />
+      <div className="p-1.5 mt-1 space-y-1">
+        <div className="h-1 w-full bg-accent/40 rounded" />
+        <div className="h-1 w-2/3 bg-accent/30 rounded" />
+        <div className="grid grid-cols-2 gap-0.5 mt-2">
+          <div className="h-2 w-full bg-accent/20 rounded-sm" />
+          <div className="h-2 w-full bg-accent/20 rounded-sm" />
+        </div>
+      </div>
+    </motion.div>
+  </div>
+);
 
-const customServices = [
-  { icon: Lightbulb, label: "Formation" },
-  { icon: Users, label: "Accompagnement" },
-  { icon: Bot, label: "Intégration IA" },
-];
+const FlowchartIllustration = () => (
+  <div className="relative w-full h-32 flex items-center justify-center">
+    <svg viewBox="0 0 120 80" className="w-full h-full">
+      {/* Nodes */}
+      <motion.rect 
+        x="10" y="30" width="20" height="20" rx="4"
+        className="fill-primary/30 stroke-primary/60"
+        strokeWidth="1.5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+      />
+      <motion.rect 
+        x="50" y="10" width="20" height="20" rx="4"
+        className="fill-accent/30 stroke-accent/60"
+        strokeWidth="1.5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+      />
+      <motion.rect 
+        x="50" y="50" width="20" height="20" rx="4"
+        className="fill-accent/30 stroke-accent/60"
+        strokeWidth="1.5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      />
+      <motion.rect 
+        x="90" y="30" width="20" height="20" rx="4"
+        className="fill-green-500/30 stroke-green-500/60"
+        strokeWidth="1.5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+      />
+      {/* Connections */}
+      <motion.path 
+        d="M30 40 L50 20" 
+        className="stroke-primary/40"
+        strokeWidth="2"
+        fill="none"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.5, duration: 0.3 }}
+      />
+      <motion.path 
+        d="M30 40 L50 60" 
+        className="stroke-primary/40"
+        strokeWidth="2"
+        fill="none"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.6, duration: 0.3 }}
+      />
+      <motion.path 
+        d="M70 20 L90 40" 
+        className="stroke-accent/40"
+        strokeWidth="2"
+        fill="none"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.7, duration: 0.3 }}
+      />
+      <motion.path 
+        d="M70 60 L90 40" 
+        className="stroke-accent/40"
+        strokeWidth="2"
+        fill="none"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.8, duration: 0.3 }}
+      />
+      {/* Checkmark in final node */}
+      <motion.path 
+        d="M95 40 L98 43 L105 36"
+        className="stroke-green-400"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 1, duration: 0.3 }}
+      />
+    </svg>
+  </div>
+);
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
+const FunnelIllustration = () => (
+  <div className="relative w-full h-32 flex items-center justify-center">
+    <svg viewBox="0 0 100 80" className="w-full h-full">
+      {/* Funnel shape */}
+      <motion.path
+        d="M15 5 L85 5 L65 35 L65 70 L35 70 L35 35 Z"
+        className="fill-primary/10 stroke-primary/40"
+        strokeWidth="1.5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      />
+      {/* Funnel levels */}
+      <motion.line x1="20" y1="15" x2="80" y2="15" className="stroke-accent/40" strokeWidth="1" strokeDasharray="3 2" />
+      <motion.line x1="30" y1="25" x2="70" y2="25" className="stroke-accent/40" strokeWidth="1" strokeDasharray="3 2" />
+      {/* Dots entering */}
+      {[0, 1, 2, 3, 4].map((i) => (
+        <motion.circle
+          key={i}
+          cx={25 + i * 15}
+          cy="0"
+          r="3"
+          className="fill-accent/60"
+          initial={{ cy: -5, opacity: 0 }}
+          animate={{ cy: 10, opacity: [0, 1, 1, 0] }}
+          transition={{ delay: i * 0.2, duration: 2, repeat: Infinity, repeatDelay: 1 }}
+        />
+      ))}
+      {/* Euro sign coming out */}
+      <motion.text
+        x="50"
+        y="78"
+        textAnchor="middle"
+        className="fill-green-400 text-xs font-bold"
+        initial={{ opacity: 0, y: 70 }}
+        animate={{ opacity: 1, y: 78 }}
+        transition={{ delay: 0.5 }}
+      >
+        €€€
+      </motion.text>
+    </svg>
+  </div>
+);
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94] as const,
-    },
-  },
-};
+const GrowthChartIllustration = () => (
+  <div className="relative w-full h-32 flex items-center justify-center p-4">
+    <svg viewBox="0 0 100 60" className="w-full h-full">
+      {/* Grid lines */}
+      {[0, 1, 2, 3].map((i) => (
+        <line key={i} x1="10" y1={15 + i * 15} x2="90" y2={15 + i * 15} className="stroke-muted/20" strokeWidth="0.5" />
+      ))}
+      {/* Growth curve */}
+      <motion.path
+        d="M10 55 Q25 50 35 45 T55 30 T75 15 T90 5"
+        className="stroke-accent"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      />
+      {/* Gradient fill under curve */}
+      <motion.path
+        d="M10 55 Q25 50 35 45 T55 30 T75 15 T90 5 L90 55 L10 55 Z"
+        className="fill-accent/10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      />
+      {/* Data points */}
+      {[[10, 55], [35, 45], [55, 30], [75, 15], [90, 5]].map(([cx, cy], i) => (
+        <motion.circle
+          key={i}
+          cx={cx}
+          cy={cy}
+          r="4"
+          className="fill-accent stroke-background"
+          strokeWidth="2"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.3 * i + 0.5 }}
+        />
+      ))}
+    </svg>
+  </div>
+);
+
+// Before/After Illustrations
+const ChaosIllustration = () => (
+  <svg viewBox="0 0 120 80" className="w-full h-24">
+    {/* Tangled lines */}
+    <motion.path
+      d="M10 40 Q30 10 50 50 T90 20 Q100 60 110 30"
+      className="stroke-red-400/60"
+      strokeWidth="2"
+      fill="none"
+      initial={{ pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: 1 }}
+    />
+    <motion.path
+      d="M20 20 Q40 70 60 30 T100 50"
+      className="stroke-orange-400/60"
+      strokeWidth="2"
+      fill="none"
+      initial={{ pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: 1, delay: 0.2 }}
+    />
+    <motion.path
+      d="M5 60 Q35 20 55 60 T95 40"
+      className="stroke-yellow-400/60"
+      strokeWidth="2"
+      fill="none"
+      initial={{ pathLength: 0 }}
+      animate={{ pathLength: 1 }}
+      transition={{ duration: 1, delay: 0.4 }}
+    />
+    {/* Question marks */}
+    <motion.text x="30" y="35" className="fill-red-400/80 text-lg font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>?</motion.text>
+    <motion.text x="70" y="55" className="fill-orange-400/80 text-lg font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}>?</motion.text>
+    <motion.text x="90" y="25" className="fill-yellow-400/80 text-lg font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}>?</motion.text>
+  </svg>
+);
+
+const OrderIllustration = () => (
+  <svg viewBox="0 0 120 80" className="w-full h-24">
+    {/* Organized grid */}
+    {[0, 1, 2].map((row) =>
+      [0, 1, 2, 3].map((col) => (
+        <motion.rect
+          key={`${row}-${col}`}
+          x={15 + col * 28}
+          y={10 + row * 22}
+          width="22"
+          height="18"
+          rx="3"
+          className="fill-accent/20 stroke-accent/50"
+          strokeWidth="1"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: row * 0.1 + col * 0.05 }}
+        />
+      ))
+    )}
+    {/* Checkmarks in boxes */}
+    {[[26, 22], [54, 44], [82, 22], [26, 66]].map(([x, y], i) => (
+      <motion.path
+        key={i}
+        d={`M${x - 4} ${y} L${x - 1} ${y + 3} L${x + 4} ${y - 3}`}
+        className="stroke-green-400"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ delay: 0.8 + i * 0.15 }}
+      />
+    ))}
+  </svg>
+);
 
 const ServicesPage = () => {
+  const pillars = [
+    {
+      title: "Sites Web, Apps & Logiciels Métiers",
+      subtitle: "La Technique",
+      message: "Du site vitrine à l'application de gestion complexe. Nous créons les outils technologiques sur mesure pour votre métier.",
+      illustration: DeviceIllustration,
+    },
+    {
+      title: "Digitalisation & Organisation Interne",
+      subtitle: "Le Back-Office",
+      message: "Le chaos interne tue la croissance. Nous installons vos CRM, automatisons vos tâches répétitives et structurons vos process.",
+      illustration: FlowchartIllustration,
+      highlight: true,
+    },
+    {
+      title: "Stratégie d'Acquisition",
+      subtitle: "Le Carburant",
+      message: "Attirer les bons prospects, au bon moment. Un système prédictif pour ne plus dépendre du hasard.",
+      illustration: FunnelIllustration,
+    },
+    {
+      title: "Audit & Direction",
+      subtitle: "La Boussole",
+      message: "Avoir les outils ne suffit pas. Il faut savoir où aller. Nous définissons la feuille de route claire de votre succès.",
+      illustration: GrowthChartIllustration,
+    },
+  ];
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-20">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-accent/5" />
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden py-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5" />
         
-        {/* Lighthouse Visual Metaphor */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-10">
-          <svg
-            viewBox="0 0 400 400"
-            className="w-[600px] h-[600px]"
-            fill="none"
-          >
-            {/* Stormy waves */}
-            <motion.path
-              d="M0 300 Q50 280 100 300 T200 300 T300 300 T400 300"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="text-muted-foreground"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 2, ease: "easeInOut" }}
-            />
-            <motion.path
-              d="M0 320 Q50 300 100 320 T200 320 T300 320 T400 320"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="text-muted-foreground"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 2, delay: 0.3, ease: "easeInOut" }}
-            />
-            
-            {/* Lighthouse */}
-            <motion.rect
-              x="180"
-              y="150"
-              width="40"
-              height="150"
-              className="fill-accent/30"
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              style={{ transformOrigin: "bottom" }}
-            />
-            
-            {/* Lighthouse light rays */}
-            <motion.path
-              d="M200 120 L100 80 M200 120 L300 80 M200 120 L200 60"
-              stroke="hsl(var(--accent))"
-              strokeWidth="3"
-              strokeLinecap="round"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 1, 0.5, 1] }}
-              transition={{ duration: 2, delay: 1.5, repeat: Infinity }}
-            />
-          </svg>
-        </div>
-
-        {/* Floating orbs */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-accent/10 blur-[100px] floating-orb" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-primary/10 blur-[120px] floating-orb" style={{ animationDelay: '-2s' }} />
-
-        <div className="container relative z-10 text-center px-4">
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-accent mb-6"
-            >
-              <Anchor className="w-4 h-4" />
-              <span className="text-sm font-medium">Votre guide dans la tempête digitale</span>
-            </motion.div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
-              Le Digital n'est plus une option.{" "}
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium bg-accent/10 text-accent rounded-full border border-accent/20">
+              L'Écosystème de Croissance
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Le Digital n'est plus une option.
+              <br />
               <span className="text-gradient-gold">C'est votre survie.</span>
             </h1>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Dans un marché saturé, ceux qui bricolent disparaissent. 
-              Ceux qui se structurent <span className="text-accent font-semibold">dominent</span>. 
-              De quel côté voulez-vous être ?
+              Ceux qui se structurent dominent.
             </p>
           </motion.div>
         </div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border-2 border-accent/50 flex items-start justify-center p-2"
-          >
-            <motion.div className="w-1.5 h-1.5 rounded-full bg-accent" />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* Education Section - Agitating Pain */}
-      <section className="py-20 md:py-28 relative">
-        <div className="container">
+      {/* Equation Section */}
+      <section className="py-16 relative">
+        <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            className="glass-premium p-8 md:p-12 rounded-2xl max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
           >
-            <div className="glass-premium p-8 md:p-12 rounded-3xl">
-              <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
-                Aujourd'hui, <span className="text-accent font-semibold">avoir un bon produit ne suffit plus</span>. 
-                Si personne ne vous trouve, vous n'existez pas. 
-                Si votre image est amateur, on ne vous paie pas au juste prix.
-              </p>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto my-6" />
-              <p className="text-muted-foreground text-lg">
-                Chez Sen'Optima, nous avons identifié les{" "}
-                <span className="text-foreground font-semibold">4 piliers indispensables</span>{" "}
-                pour transformer une petite activité en entreprise solide.
-              </p>
+            {/* Visual Equation */}
+            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-8">
+              {[
+                { label: "Stratégie", color: "primary" },
+                { label: "+", isOperator: true },
+                { label: "Visibilité", color: "accent" },
+                { label: "+", isOperator: true },
+                { label: "Organisation", color: "primary" },
+                { label: "=", isOperator: true },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className={item.isOperator 
+                    ? "text-2xl md:text-3xl font-bold text-muted-foreground" 
+                    : `px-4 py-2 md:px-6 md:py-3 rounded-xl ${item.color === 'accent' ? 'bg-accent/10 border-accent/30' : 'bg-primary/10 border-primary/30'} border text-sm md:text-base font-semibold`
+                  }
+                >
+                  {item.label}
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+                className="px-4 py-2 md:px-6 md:py-3 rounded-xl bg-gradient-to-r from-accent to-primary text-white font-bold text-sm md:text-base flex items-center gap-2"
+              >
+                Croissance <span className="text-xl">🚀</span>
+              </motion.div>
             </div>
+
+            <p className="text-center text-muted-foreground max-w-3xl mx-auto text-lg">
+              Beaucoup d'agences vous vendent de la pub. <strong className="text-foreground">Nous, on structure votre entreprise.</strong>
+              <br className="hidden md:block" />
+              Si vous générez des clients mais que vous n'avez pas les outils pour les gérer, vous perdez de l'argent.
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* 4 Pillars Bento Grid */}
-      <section className="py-20 md:py-28 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[150px] -translate-x-1/2" />
-        
-        <div className="container relative z-10">
+      <section className="py-20">
+        <div className="container mx-auto px-4">
           <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Les <span className="text-gradient-gold">4 Piliers</span> de votre croissance
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {pillars.map((pillar, index) => {
+              const IllustrationComponent = pillar.illustration;
+              return (
+                <motion.div
+                  key={index}
+                  className={`glass-card p-6 rounded-2xl group hover:border-accent/50 transition-all duration-300 ${
+                    pillar.highlight ? 'ring-2 ring-accent/30 bg-accent/5' : ''
+                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  {pillar.highlight && (
+                    <div className="flex items-center gap-2 mb-3">
+                      <Sparkles className="w-4 h-4 text-accent" />
+                      <span className="text-xs font-semibold text-accent uppercase tracking-wider">Crucial</span>
+                    </div>
+                  )}
+                  
+                  <div className="mb-4">
+                    <IllustrationComponent />
+                  </div>
+                  
+                  <span className="text-xs font-medium text-accent uppercase tracking-wider">
+                    {pillar.subtitle}
+                  </span>
+                  <h3 className="text-xl font-bold mt-1 mb-3 group-hover:text-accent transition-colors">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {pillar.message}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Before / After Section */}
+      <section className="py-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold">
+              La transformation <span className="text-gradient-gold">visible</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Before */}
+            <motion.div
+              className="glass-card p-8 rounded-2xl border-red-500/20 bg-red-500/5"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-center mb-6">
+                <span className="inline-block px-3 py-1 text-xs font-semibold bg-red-500/10 text-red-400 rounded-full border border-red-500/20">
+                  Sans Sen'Optima
+                </span>
+              </div>
+              <ChaosIllustration />
+              <h3 className="text-xl font-bold text-center mt-6 mb-2 text-red-400">Navigation à vue</h3>
+              <p className="text-center text-muted-foreground text-sm">
+                Stress, perte de temps, opportunités manquées
+              </p>
+            </motion.div>
+
+            {/* After */}
+            <motion.div
+              className="glass-card p-8 rounded-2xl border-green-500/20 bg-green-500/5"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-center mb-6">
+                <span className="inline-block px-3 py-1 text-xs font-semibold bg-green-500/10 text-green-400 rounded-full border border-green-500/20">
+                  Avec Sen'Optima
+                </span>
+              </div>
+              <OrderIllustration />
+              <h3 className="text-xl font-bold text-center mt-6 mb-2 text-green-400">Contrôle & Croissance</h3>
+              <p className="text-center text-muted-foreground text-sm">
+                Structure, efficacité, résultats prévisibles
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="glass-premium p-12 rounded-3xl text-center max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
-              Les Fondamentaux
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
-              Les 4 Piliers de votre Réussite
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Votre entreprise est-elle prête à passer à la vitesse supérieure ?
             </h2>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          >
-            {pillars.map((pillar, index) => (
-              <motion.article
-                key={pillar.title}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className={`group relative p-8 md:p-10 rounded-3xl glass-card hover:glow-gold-subtle transition-all duration-500 ${
-                  pillar.size === "large" ? "md:col-span-2 lg:col-span-1" : ""
-                }`}
-              >
-                {/* Pillar Number */}
-                <div className="absolute top-6 right-6 text-6xl font-heading font-bold text-accent/10 group-hover:text-accent/20 transition-colors">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-
-                {/* Icon */}
-                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
-                  <pillar.icon className="w-8 h-8 text-accent" />
-                </div>
-
-                {/* Title */}
-                <div className="mb-6">
-                  <h3 className="text-2xl font-heading font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-accent/80 text-sm font-medium uppercase tracking-wider">
-                    {pillar.subtitle}
-                  </p>
-                </div>
-
-                {/* Problem */}
-                <div className="mb-6 p-4 rounded-xl bg-destructive/5 border border-destructive/20">
-                  <p className="text-sm text-muted-foreground">
-                    <span className="text-destructive font-semibold">Le Problème :</span>{" "}
-                    {pillar.problem}
-                  </p>
-                </div>
-
-                {/* Solution */}
-                <div className="p-4 rounded-xl bg-accent/5 border border-accent/20">
-                  <p className="text-sm text-foreground">
-                    <span className="text-accent font-semibold">Notre Solution :</span>{" "}
-                    {pillar.solution}
-                  </p>
-                </div>
-
-                {/* Hover accent line */}
-                <div className="absolute bottom-0 left-8 right-8 h-1 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
-              </motion.article>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Custom Approach Section */}
-      <section className="py-16 md:py-20 relative">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="glass-card p-8 md:p-12 rounded-3xl text-center max-w-4xl mx-auto"
-          >
-            <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
-              Vous avez un besoin <span className="text-gradient-gold">spécifique</span> ?
-            </h3>
-            <p className="text-muted-foreground text-lg mb-8">
-              Formation, Digitalisation de processus, Intégration IA...
-              <br />
-              <span className="text-foreground">Chaque entreprise est unique. Discutons de vos défis spécifiques.</span>
+            <p className="text-muted-foreground mb-8">
+              Découvrez où vous en êtes et les actions prioritaires pour votre croissance.
             </p>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              {customServices.map((service) => (
-                <div
-                  key={service.label}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full glass-card text-muted-foreground"
-                >
-                  <service.icon className="w-4 h-4 text-accent" />
-                  <span className="text-sm">{service.label}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="py-20 md:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-accent/10 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-accent/20 blur-[150px]" />
-        
-        <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-              Vous ne savez pas par quel pilier{" "}
-              <span className="text-gradient-gold">commencer</span> ?
-            </h2>
-            
-            <p className="text-xl text-muted-foreground mb-10">
-              On analyse votre situation avant de vous proposer une solution.
-            </p>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button
-                asChild
-                variant="cta"
-                size="lg"
-                className="text-lg px-10 py-6 h-auto glow-gold"
-              >
-                <Link to="/diagnostics" className="flex items-center gap-3">
-                  Faire mon Diagnostic maintenant
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
-            </motion.div>
-
-            <p className="text-sm text-muted-foreground mt-6 flex items-center justify-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              Réponse sous 24h
-            </p>
+            <Button asChild size="lg" variant="cta" className="group">
+              <Link to="/diagnostics">
+                Auditer mon organisation
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </section>
