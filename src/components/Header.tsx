@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,17 +8,18 @@ import BookingModal from "./BookingModal";
 import logo from "@/assets/logo.svg";
 
 const navLinks = [
-  { label: "Accueil", href: "#accueil" },
-  { label: "Services", href: "#services" },
-  { label: "Diagnostics", href: "#diagnostics" },
-  { label: "À Propos", href: "#apropos" },
-  { label: "Contact", href: "#contact" },
+  { label: "Accueil", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Diagnostics", href: "/diagnostics" },
+  { label: "À Propos", href: "/a-propos" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,18 +54,18 @@ const Header = () => {
         <div className="container">
           <nav className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <motion.a
-              href="#accueil"
-              className="flex items-center gap-2"
+            <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              <img
-                src={logo}
-                alt="Sen'Optima Consulting"
-                className="h-10 md:h-12 w-auto"
-              />
-            </motion.a>
+              <Link to="/" className="flex items-center gap-2">
+                <img
+                  src={logo}
+                  alt="Sen'Optima Consulting"
+                  className="h-10 md:h-12 w-auto"
+                />
+              </Link>
+            </motion.div>
 
             {/* Desktop Navigation */}
             <ul className="hidden lg:flex items-center gap-8">
@@ -74,13 +76,19 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <a
-                    href={link.href}
-                    className="relative text-sm font-medium text-foreground/70 hover:text-foreground transition-colors duration-200 group"
+                  <Link
+                    to={link.href}
+                    className={`relative text-sm font-medium transition-colors duration-200 group ${
+                      location.pathname === link.href 
+                        ? "text-accent" 
+                        : "text-foreground/70 hover:text-foreground"
+                    }`}
                   >
                     {link.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
-                  </a>
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ${
+                      location.pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+                    }`} />
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -149,13 +157,17 @@ const Header = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
                     >
-                      <a
-                        href={link.href}
+                      <Link
+                        to={link.href}
                         onClick={() => setIsOpen(false)}
-                        className="flex items-center gap-4 p-4 rounded-xl text-foreground hover:bg-accent/10 hover:text-accent transition-colors"
+                        className={`flex items-center gap-4 p-4 rounded-xl transition-colors ${
+                          location.pathname === link.href
+                            ? "bg-accent/10 text-accent"
+                            : "text-foreground hover:bg-accent/10 hover:text-accent"
+                        }`}
                       >
                         <span className="font-medium">{link.label}</span>
-                      </a>
+                      </Link>
                     </motion.li>
                   ))}
                 </ul>

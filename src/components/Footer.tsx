@@ -1,4 +1,5 @@
 import { MapPin, Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import logo from "@/assets/logo.svg";
 
@@ -63,18 +64,19 @@ const Footer = () => {
             <h4 className="font-heading font-bold text-lg mb-6 text-foreground">Navigation</h4>
             <ul className="space-y-3">
               {[
-                { label: "Accueil", href: "#accueil" },
-                { label: "Services", href: "#services" },
-                { label: "Nos Diagnostics", href: "#diagnostics" },
-                { label: "À Propos", href: "#apropos" },
+                { label: "Accueil", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: "Nos Diagnostics", href: "/diagnostics" },
+                { label: "À Propos", href: "/a-propos" },
+                { label: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-foreground/60 hover:text-accent transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
