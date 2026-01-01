@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   MessageCircle, 
@@ -18,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useAppSounds } from "@/hooks/useAppSounds";
 
 const subjectOptions = [
   { value: "devis", label: "Demande de devis" },
@@ -49,6 +50,7 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectOpen, setSelectOpen] = useState(false);
+  const { playSuccess, playClick } = useAppSounds();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,6 +58,9 @@ const ContactPage = () => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
     setIsSuccess(true);
+    
+    // Play success sound on form validation
+    playSuccess();
   };
 
   const selectedSubject = subjectOptions.find((opt) => opt.value === formData.subject);
@@ -138,6 +143,7 @@ const ContactPage = () => {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => playClick()}
                 className="inline-flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/25"
               >
                 <MessageCircle className="w-5 h-5" />
@@ -287,6 +293,9 @@ const ContactPage = () => {
                       variant="cta"
                       className="w-full h-12 text-base gap-2 mt-auto"
                       disabled={isSubmitting}
+                      onClick={() => {
+                        if (!isSubmitting) playClick();
+                      }}
                     >
                       {isSubmitting ? (
                         <>
@@ -357,6 +366,7 @@ const ContactPage = () => {
                 href={mapsLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => playClick()}
                 className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-accent/50 text-accent hover:bg-accent/10 font-medium transition-all duration-300 mt-auto"
               >
                 Nous trouver sur Maps
