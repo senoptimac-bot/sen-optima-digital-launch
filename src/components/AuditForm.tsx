@@ -31,9 +31,9 @@ import emailjs from "@emailjs/browser";
  * 
  * ============================================================================
  */
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID"; // Remplacer par votre Service ID
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // Remplacer par votre Template ID
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // Remplacer par votre Public Key
+const EMAILJS_SERVICE_ID = "service_inswc0l";
+const EMAILJS_TEMPLATE_ID = "template_fp5gjwk";
+const EMAILJS_PUBLIC_KEY = "TnO3ze86GSUS-Uldy";
 
 interface FormData {
   clientName: string;
