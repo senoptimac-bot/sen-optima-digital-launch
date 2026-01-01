@@ -179,7 +179,7 @@ const AuditForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-10">
+    <form onSubmit={handleSubmit} className="space-y-10 pb-32 overflow-y-auto">
       {/* Section 1: Informations de Contact */}
       <motion.section
         variants={sectionVariants}
