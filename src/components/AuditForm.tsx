@@ -189,39 +189,39 @@ const AuditForm = () => {
         className="space-y-6"
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-sm bg-accent/20 flex items-center justify-center">
             <User className="w-5 h-5 text-accent" />
           </div>
           <h3 className="text-xl font-heading font-bold text-accent">
-            1. Vos Informations
+            1. Faisons connaissance
           </h3>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="clientName" className="text-foreground">Votre nom complet *</Label>
+            <Label htmlFor="clientName" className="text-foreground">À qui avons-nous l'honneur ? *</Label>
             <Input
               id="clientName"
               value={formData.clientName}
               onChange={(e) => handleInputChange("clientName", e.target.value)}
-              placeholder="Jean Dupont"
+              placeholder="Votre nom complet"
               required
-              className="glass border-foreground/20 focus:border-accent bg-background/50"
+              className="rounded-sm border border-accent/30 focus:border-accent bg-background/50"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="companyName" className="text-foreground">Nom de l'entreprise *</Label>
+            <Label htmlFor="companyName" className="text-foreground">Quelle est la dénomination de votre structure ? *</Label>
             <Input
               id="companyName"
               value={formData.companyName}
               onChange={(e) => handleInputChange("companyName", e.target.value)}
-              placeholder="Mon Entreprise SARL"
+              placeholder="Nom de votre entreprise"
               required
-              className="glass border-foreground/20 focus:border-accent bg-background/50"
+              className="rounded-sm border border-accent/30 focus:border-accent bg-background/50"
             />
           </div>
           <div className="space-y-2 md:col-span-2">
-            <Label htmlFor="whatsapp" className="text-foreground">Numéro WhatsApp *</Label>
+            <Label htmlFor="whatsapp" className="text-foreground">Sur quel numéro WhatsApp pouvons-nous vous joindre ? *</Label>
             <Input
               id="whatsapp"
               type="tel"
@@ -229,7 +229,7 @@ const AuditForm = () => {
               onChange={(e) => handleInputChange("whatsapp", e.target.value)}
               placeholder="+221 77 123 45 67"
               required
-              className="glass border-foreground/20 focus:border-accent bg-background/50"
+              className="rounded-sm border border-accent/30 focus:border-accent bg-background/50"
             />
           </div>
         </div>
@@ -244,19 +244,19 @@ const AuditForm = () => {
         className="space-y-6"
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-sm bg-accent/20 flex items-center justify-center">
             <Building className="w-5 h-5 text-accent" />
           </div>
           <h3 className="text-xl font-heading font-bold text-accent">
-            2. Votre Entreprise
+            2. Parlons de votre activité
           </h3>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label className="text-foreground">Secteur d'activité *</Label>
+            <Label className="text-foreground">Dans quel secteur évoluez-vous ? *</Label>
             <Select value={formData.sector} onValueChange={(v) => handleInputChange("sector", v)}>
-              <SelectTrigger className="glass border-foreground/20 focus:border-accent bg-background/50">
+              <SelectTrigger className="rounded-sm border border-accent/30 focus:border-accent bg-background/50">
                 <SelectValue placeholder="Sélectionnez..." />
               </SelectTrigger>
               <SelectContent>
@@ -274,9 +274,9 @@ const AuditForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-foreground">Âge de l'entreprise *</Label>
+            <Label className="text-foreground">Depuis combien de temps exercez-vous ? *</Label>
             <Select value={formData.ageBusiness} onValueChange={(v) => handleInputChange("ageBusiness", v)}>
-              <SelectTrigger className="glass border-foreground/20 focus:border-accent bg-background/50">
+              <SelectTrigger className="rounded-sm border border-accent/30 focus:border-accent bg-background/50">
                 <SelectValue placeholder="Sélectionnez..." />
               </SelectTrigger>
               <SelectContent>
@@ -290,9 +290,9 @@ const AuditForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-foreground">Taille de l'équipe *</Label>
+            <Label className="text-foreground">Combien de personnes composent votre équipe ? *</Label>
             <Select value={formData.teamSize} onValueChange={(v) => handleInputChange("teamSize", v)}>
-              <SelectTrigger className="glass border-foreground/20 focus:border-accent bg-background/50">
+              <SelectTrigger className="rounded-sm border border-accent/30 focus:border-accent bg-background/50">
                 <SelectValue placeholder="Sélectionnez..." />
               </SelectTrigger>
               <SelectContent>
@@ -306,9 +306,9 @@ const AuditForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-foreground">Chiffre d'affaires mensuel *</Label>
+            <Label className="text-foreground">Quel est votre chiffre d'affaires mensuel actuel ? *</Label>
             <Select value={formData.currentRevenue} onValueChange={(v) => handleInputChange("currentRevenue", v)}>
-              <SelectTrigger className="glass border-foreground/20 focus:border-accent bg-background/50">
+              <SelectTrigger className="rounded-sm border border-accent/30 focus:border-accent bg-background/50">
                 <SelectValue placeholder="Sélectionnez..." />
               </SelectTrigger>
               <SelectContent>
@@ -323,13 +323,13 @@ const AuditForm = () => {
           </div>
 
           <div className="space-y-2 md:col-span-2">
-            <Label htmlFor="digitalPresence" className="text-foreground">Présence digitale actuelle</Label>
+            <Label htmlFor="digitalPresence" className="text-foreground">Où peut-on vous trouver en ligne actuellement ?</Label>
             <Input
               id="digitalPresence"
               value={formData.digitalPresence}
               onChange={(e) => handleInputChange("digitalPresence", e.target.value)}
-              placeholder="www.monsite.com, @instagram, Facebook..."
-              className="glass border-foreground/20 focus:border-accent bg-background/50"
+              placeholder="Site web, Instagram, Facebook..."
+              className="rounded-sm border border-accent/30 focus:border-accent bg-background/50"
             />
           </div>
         </div>
@@ -344,19 +344,19 @@ const AuditForm = () => {
         className="space-y-6"
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-sm bg-accent/20 flex items-center justify-center">
             <Target className="w-5 h-5 text-accent" />
           </div>
           <h3 className="text-xl font-heading font-bold text-accent">
-            3. Marketing & Acquisition
+            3. Votre stratégie actuelle
           </h3>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label className="text-foreground">Canal d'acquisition principal *</Label>
+            <Label className="text-foreground">Comment vos clients vous trouvent-ils aujourd'hui ? *</Label>
             <Select value={formData.acquisitionChannel} onValueChange={(v) => handleInputChange("acquisitionChannel", v)}>
-              <SelectTrigger className="glass border-foreground/20 focus:border-accent bg-background/50">
+              <SelectTrigger className="rounded-sm border border-accent/30 focus:border-accent bg-background/50">
                 <SelectValue placeholder="Sélectionnez..." />
               </SelectTrigger>
               <SelectContent>
@@ -372,7 +372,7 @@ const AuditForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-foreground">Avez-vous une base de données clients ?</Label>
+            <Label className="text-foreground">Disposez-vous d'une base de données clients ?</Label>
             <RadioGroup
               value={formData.database}
               onValueChange={(v) => handleInputChange("database", v)}
@@ -390,7 +390,7 @@ const AuditForm = () => {
           </div>
 
           <div className="space-y-3 md:col-span-2">
-            <Label className="text-foreground">Outils marketing utilisés actuellement</Label>
+            <Label className="text-foreground">Quels outils utilisez-vous actuellement ?</Label>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {toolOptions.map((tool) => (
                 <div key={tool.id} className="flex items-center gap-2">
@@ -418,33 +418,33 @@ const AuditForm = () => {
         className="space-y-6"
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-sm bg-accent/20 flex items-center justify-center">
             <Phone className="w-5 h-5 text-accent" />
           </div>
           <h3 className="text-xl font-heading font-bold text-accent">
-            4. Défis & Objectifs
+            4. Le cœur du sujet
           </h3>
         </div>
 
         <div className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="mainProblem" className="text-foreground">
-              Quel est votre principal défi actuel ? *
+              Quel est le défi majeur qui vous empêche de dormir ce soir ? *
             </Label>
             <Textarea
               id="mainProblem"
               value={formData.mainProblem}
               onChange={(e) => handleInputChange("mainProblem", e.target.value)}
-              placeholder="Décrivez en quelques lignes le problème majeur que vous souhaitez résoudre..."
+              placeholder="Décrivez en quelques lignes le problème que vous souhaitez résoudre en priorité..."
               required
               rows={4}
-              className="glass border-foreground/20 focus:border-accent bg-background/50 resize-none"
+              className="rounded-sm border border-accent/30 focus:border-accent bg-background/50 resize-none"
             />
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="pastAttempts" className="text-foreground">
-              Qu'avez-vous déjà essayé pour le résoudre ?
+              Quelles solutions avez-vous déjà tentées ?
             </Label>
             <Textarea
               id="pastAttempts"
@@ -452,36 +452,36 @@ const AuditForm = () => {
               onChange={(e) => handleInputChange("pastAttempts", e.target.value)}
               placeholder="Agences, formations, outils, stratégies..."
               rows={3}
-              className="glass border-foreground/20 focus:border-accent bg-background/50 resize-none"
+              className="rounded-sm border border-accent/30 focus:border-accent bg-background/50 resize-none"
             />
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <Label htmlFor="revenueGoal" className="text-foreground">Objectif de CA mensuel</Label>
+              <Label htmlFor="revenueGoal" className="text-foreground">Quel chiffre d'affaires visez-vous ?</Label>
               <Input
                 id="revenueGoal"
                 value={formData.revenueGoal}
                 onChange={(e) => handleInputChange("revenueGoal", e.target.value)}
-                placeholder="Ex: 10M FCFA"
-                className="glass border-foreground/20 focus:border-accent bg-background/50"
+                placeholder="Ex: 10M FCFA / mois"
+                className="rounded-sm border border-accent/30 focus:border-accent bg-background/50"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="marketingBudget" className="text-foreground">Budget marketing mensuel</Label>
+              <Label htmlFor="marketingBudget" className="text-foreground">Quel budget pouvez-vous consacrer au marketing ?</Label>
               <Input
                 id="marketingBudget"
                 value={formData.marketingBudget}
                 onChange={(e) => handleInputChange("marketingBudget", e.target.value)}
-                placeholder="Ex: 500K FCFA"
-                className="glass border-foreground/20 focus:border-accent bg-background/50"
+                placeholder="Ex: 500K FCFA / mois"
+                className="rounded-sm border border-accent/30 focus:border-accent bg-background/50"
               />
             </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <Label className="text-foreground">Avez-vous un branding défini ?</Label>
+              <Label className="text-foreground">Avez-vous une identité visuelle définie ?</Label>
               <RadioGroup
                 value={formData.branding}
                 onValueChange={(v) => handleInputChange("branding", v)}
@@ -498,13 +498,13 @@ const AuditForm = () => {
               </RadioGroup>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="competitors" className="text-foreground">Vos principaux concurrents</Label>
+              <Label htmlFor="competitors" className="text-foreground">Qui sont vos principaux concurrents ?</Label>
               <Input
                 id="competitors"
                 value={formData.competitors}
                 onChange={(e) => handleInputChange("competitors", e.target.value)}
                 placeholder="Noms ou sites web..."
-                className="glass border-foreground/20 focus:border-accent bg-background/50"
+                className="rounded-sm border border-accent/30 focus:border-accent bg-background/50"
               />
             </div>
           </div>
@@ -520,19 +520,19 @@ const AuditForm = () => {
         className="space-y-6"
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-sm bg-accent/20 flex items-center justify-center">
             <Calendar className="w-5 h-5 text-accent" />
           </div>
           <h3 className="text-xl font-heading font-bold text-accent">
-            5. Planification du Rendez-vous
+            5. Organisons notre échange
           </h3>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
           <div className="space-y-2">
-            <Label className="text-foreground">Jour préféré *</Label>
+            <Label className="text-foreground">Quel jour vous convient le mieux ? *</Label>
             <Select value={formData.availabilityDay} onValueChange={(v) => handleInputChange("availabilityDay", v)}>
-              <SelectTrigger className="glass border-foreground/20 focus:border-accent bg-background/50">
+              <SelectTrigger className="rounded-sm border border-accent/30 focus:border-accent bg-background/50">
                 <SelectValue placeholder="Sélectionnez..." />
               </SelectTrigger>
               <SelectContent>
@@ -546,9 +546,9 @@ const AuditForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-foreground">Créneau préféré *</Label>
+            <Label className="text-foreground">À quelle heure êtes-vous disponible ? *</Label>
             <Select value={formData.availabilityTime} onValueChange={(v) => handleInputChange("availabilityTime", v)}>
-              <SelectTrigger className="glass border-foreground/20 focus:border-accent bg-background/50">
+              <SelectTrigger className="rounded-sm border border-accent/30 focus:border-accent bg-background/50">
                 <SelectValue placeholder="Sélectionnez..." />
               </SelectTrigger>
               <SelectContent>
@@ -559,13 +559,13 @@ const AuditForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-foreground">Type de rendez-vous *</Label>
+            <Label className="text-foreground">Comment souhaitez-vous échanger ? *</Label>
             <Select value={formData.meetingType} onValueChange={(v) => handleInputChange("meetingType", v)}>
-              <SelectTrigger className="glass border-foreground/20 focus:border-accent bg-background/50">
+              <SelectTrigger className="rounded-sm border border-accent/30 focus:border-accent bg-background/50">
                 <SelectValue placeholder="Sélectionnez..." />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="visio">Visioconférence (Google Meet)</SelectItem>
+                <SelectItem value="visio">Visioconférence</SelectItem>
                 <SelectItem value="presentiel">Présentiel (Dakar)</SelectItem>
               </SelectContent>
             </Select>
@@ -584,22 +584,23 @@ const AuditForm = () => {
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className="w-full h-14 text-lg font-heading font-bold bg-gradient-gold hover:opacity-90 text-accent-foreground glow-gold transition-all duration-300 hover:scale-[1.02]"
+          className="w-full h-14 text-lg font-heading font-bold rounded-sm bg-gradient-gold hover:opacity-90 text-accent-foreground transition-all duration-300"
         >
           {isSubmitting ? (
             <>
               <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-              Analyse et Envoi en cours...
+              Envoi en cours...
             </>
           ) : (
             <>
               <Send className="w-5 h-5 mr-2" />
-              Envoyer mon Audit
+              Envoyer mon dossier
             </>
           )}
         </Button>
-        <p className="text-center text-sm text-muted-foreground mt-4">
-          En soumettant ce formulaire, vous acceptez d'être recontacté par Sen'Optima.
+        <p className="text-center text-xs text-muted-foreground mt-6 leading-relaxed">
+          Vos données sont traitées personnellement par nos directeurs de stratégie.<br />
+          Pas d'algorithme, juste de l'expertise humaine.
         </p>
       </motion.div>
     </form>
