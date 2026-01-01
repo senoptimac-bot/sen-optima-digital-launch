@@ -1,107 +1,394 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Quote, User, MapPin, Mail, Linkedin } from "lucide-react";
+import { Quote, User, MapPin, Cpu, Globe, Rocket, Target, Zap, Heart, ArrowRight, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import BookingModal from "@/components/BookingModal";
 
-const values = [
-  { value: "Clarté", description: "Des solutions simples et compréhensibles" },
-  { value: "Performance", description: "Des résultats mesurables et concrets" },
-  { value: "Stratégie", description: "Une vision long terme pour votre succès" },
+const philosophyCards = [
+  {
+    icon: Target,
+    title: "Réalisme Local",
+    description: "Nous n'imposons pas des modèles théoriques occidentaux. Nous créons des stratégies adaptées au marché sénégalais (Wave, WhatsApp, Oralité)."
+  },
+  {
+    icon: Zap,
+    title: "L'Outillage Moderne",
+    description: "Nous armons nos clients avec les meilleures technologies (IA, Automatisation) pour qu'ils puissent scaler rapidement."
+  },
+  {
+    icon: Rocket,
+    title: "Croissance Durable",
+    description: "Nous ne sommes pas là pour faire un coup. Nous vous accompagnons de l'idée jusqu'à l'expansion."
+  }
 ];
 
 const AboutPage = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden bg-secondary dark:bg-gradient-hero">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] dark:block hidden" />
+      {/* Hero Section - L'Ambition */}
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden bg-secondary dark:bg-gradient-hero">
+        {/* Background Pattern - Fusion Tradition/Modernité */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Circuit Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(212,167,59,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,167,59,0.03)_1px,transparent_1px)] bg-[size:40px_40px] dark:opacity-100 opacity-30" />
+          
+          {/* African Pattern Overlay */}
+          <svg className="absolute inset-0 w-full h-full opacity-[0.03] dark:opacity-[0.05]" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <pattern id="africanPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-accent" />
+              <circle cx="10" cy="10" r="3" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-accent" />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#africanPattern)" />
+          </svg>
+
+          {/* Gradient Orbs */}
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 right-1/4 w-96 h-96 rounded-full bg-accent/20 blur-3xl"
+          />
+          <motion.div
+            animate={{ scale: [1.2, 1, 1.2], opacity: [0.08, 0.12, 0.08] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-primary/20 blur-3xl"
+          />
+        </div>
         
         <div className="container relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-6">
-              Qui sommes-nous
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
-              À Propos de <span className="text-gradient-gold">Sen'Optima</span>
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-8"
+            >
+              <Globe className="w-4 h-4" />
+              Notre Mission
+            </motion.span>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-8 leading-tight">
+              Plus qu'un cabinet.{" "}
+              <span className="text-gradient-gold block mt-2">Une vision pour le Sénégal numérique.</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Un cabinet de conseil digital engagé pour la réussite de votre entreprise.
+
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              Nous ne sommes pas là pour vendre du rêve, mais pour{" "}
+              <span className="text-foreground font-medium">bâtir l'économie numérique de demain</span>, 
+              entrepreneur par entrepreneur.
             </p>
+
+            {/* Visual: Tradition meets Technology */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="mt-16 flex justify-center items-center gap-8"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center mb-3">
+                  <Heart className="w-8 h-8 text-accent" />
+                </div>
+                <span className="text-sm text-muted-foreground">Tradition</span>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-accent/50 to-accent" />
+                <div className="w-3 h-3 rounded-full bg-accent glow-gold" />
+                <div className="w-8 h-0.5 bg-gradient-to-l from-accent/50 to-accent" />
+              </div>
+              
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center mb-3">
+                  <Cpu className="w-8 h-8 text-accent" />
+                </div>
+                <span className="text-sm text-muted-foreground">Technologie</span>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Manifesto */}
-      <section className="py-20 md:py-28 relative">
+      {/* L'Histoire - Le Déclic */}
+      <section className="py-20 md:py-28 relative overflow-hidden">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Text Content */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative p-8 md:p-12 rounded-3xl glass-premium"
+              transition={{ duration: 0.6 }}
             >
-              {/* Quote Icon */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="absolute -top-6 left-8 w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold"
-              >
-                <Quote className="w-6 h-6 text-accent-foreground" />
-              </motion.div>
+              <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-6">
+                Notre Histoire
+              </span>
 
-              <blockquote className="text-xl md:text-2xl lg:text-3xl font-heading font-medium text-foreground leading-relaxed mb-8">
-                Chez Sen'Optima, nous pensons que chaque entrepreneur mérite un accompagnement clair.
-              </blockquote>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-8">
+                Le Constat <span className="text-gradient-gold">d'Urgence</span>
+              </h2>
 
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-6">
-                Nous ne promettons pas la magie. Nous offrons le{" "}
-                <span className="text-accent font-semibold">travail</span>, la{" "}
-                <span className="text-accent font-semibold">méthode</span> et la{" "}
-                <span className="text-accent font-semibold">rigueur</span>.
-              </p>
-
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Basé à Dakar, Sen'Optima Consulting accompagne les jeunes entrepreneurs, les indépendants 
-                et les PME dans leur transformation digitale. Notre mission : rendre le digital accessible, 
-                compréhensible et rentable pour tous.
-              </p>
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  Tout est parti d'une observation frustrante. Nous voyions quotidiennement des{" "}
+                  <span className="text-foreground font-medium">jeunes brillants</span> et des{" "}
+                  <span className="text-foreground font-medium">entrepreneurs passionnés</span> échouer.
+                </p>
+                <p>
+                  Non pas par manque de talent, mais par <span className="text-accent font-semibold">manque d'outils</span>.
+                </p>
+                <p>
+                  Ils essayaient d'appliquer des méthodes "importées" qui ne collaient pas à nos réalités.
+                </p>
+                <p>
+                  Dans un monde où l'IA et le numérique redéfinissent les règles, ne pas maîtriser ces outils est une{" "}
+                  <span className="text-destructive font-medium">pénalité majeure</span>.
+                </p>
+                <p className="text-foreground font-medium text-xl pt-4 border-t border-border/50">
+                  Nous avons créé Sen'Optima pour combler ce fossé : transformer ce potentiel brut en{" "}
+                  <span className="text-gradient-gold">machines de guerre économiques</span>.
+                </p>
+              </div>
             </motion.div>
 
-            {/* Values */}
+            {/* Illustration */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
             >
-              {values.map((item, index) => (
-                <motion.div
-                  key={item.value}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.03, y: -5 }}
-                  className="text-center p-6 rounded-2xl glass-card hover:glow-gold-subtle transition-all duration-300"
-                >
-                  <h3 className="text-lg font-heading font-bold text-gradient-gold mb-2">
-                    {item.value}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </motion.div>
-              ))}
+              <div className="aspect-square relative rounded-3xl glass-premium p-8 overflow-hidden">
+                {/* Abstract Illustration */}
+                <svg viewBox="0 0 400 400" className="w-full h-full">
+                  {/* Chaos - Lines emmêlées */}
+                  <g className="text-muted-foreground/30">
+                    <motion.path
+                      initial={{ pathLength: 0 }}
+                      whileInView={{ pathLength: 1 }}
+                      transition={{ duration: 2, ease: "easeInOut" }}
+                      d="M50,200 Q100,50 150,180 T250,120 T350,200"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeDasharray="5,5"
+                    />
+                    <motion.path
+                      initial={{ pathLength: 0 }}
+                      whileInView={{ pathLength: 1 }}
+                      transition={{ duration: 2.2, ease: "easeInOut" }}
+                      d="M60,220 Q120,300 180,150 T280,250 T360,180"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeDasharray="5,5"
+                    />
+                    <motion.path
+                      initial={{ pathLength: 0 }}
+                      whileInView={{ pathLength: 1 }}
+                      transition={{ duration: 2.4, ease: "easeInOut" }}
+                      d="M40,180 Q90,280 140,100 T240,220 T340,160"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeDasharray="5,5"
+                    />
+                  </g>
+
+                  {/* La ligne de clarté - Vers le succès */}
+                  <motion.path
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 1.5, delay: 1, ease: "easeOut" }}
+                    d="M50,350 Q150,300 200,200 T350,50"
+                    fill="none"
+                    stroke="url(#goldGradient)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Points clés */}
+                  <motion.circle
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: 2 }}
+                    cx="50" cy="350" r="8"
+                    className="fill-muted-foreground/50"
+                  />
+                  <motion.circle
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: 2.3 }}
+                    cx="350" cy="50" r="12"
+                    fill="url(#goldGradient)"
+                  />
+
+                  {/* Labels */}
+                  <motion.text
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 2.2 }}
+                    x="50" y="380"
+                    className="fill-muted-foreground text-sm"
+                    textAnchor="middle"
+                  >
+                    Confusion
+                  </motion.text>
+                  <motion.text
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 2.5 }}
+                    x="350" y="30"
+                    className="fill-accent text-sm font-bold"
+                    textAnchor="middle"
+                  >
+                    Succès
+                  </motion.text>
+
+                  <defs>
+                    <linearGradient id="goldGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="hsl(var(--accent) / 0.5)" />
+                      <stop offset="100%" stopColor="hsl(var(--accent))" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                {/* Glow Effect */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/20 rounded-full blur-3xl" />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Founder Section */}
+      {/* Notre Philosophie - L'Adaptation Locale */}
+      <section className="py-20 md:py-28 relative bg-secondary/30 dark:bg-secondary/10">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-6">
+              Notre Différence
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
+              L'Adaptation <span className="text-gradient-gold">Locale</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Ce qui nous distingue des consultants "copier-coller".
+            </p>
+          </motion.div>
+
+          {/* Bento Grid */}
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {philosophyCards.map((card, index) => (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative p-8 rounded-3xl glass-card hover:glow-gold-subtle transition-all duration-500"
+              >
+                {/* Icon */}
+                <motion.div
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  className="w-14 h-14 rounded-2xl bg-gradient-gold flex items-center justify-center mb-6 shadow-gold"
+                >
+                  <card.icon className="w-7 h-7 text-accent-foreground" />
+                </motion.div>
+
+                <h3 className="text-xl font-heading font-bold text-foreground mb-4">
+                  {card.title}
+                </h3>
+
+                <p className="text-muted-foreground leading-relaxed">
+                  {card.description}
+                </p>
+
+                {/* Hover Glow */}
+                <div className="absolute inset-0 rounded-3xl bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Vision Sénégal 2050 - Patriotisme Économique */}
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        {/* Background doré subtil */}
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/3" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,167,59,0.08),transparent_70%)]" />
+        
+        {/* Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(212,167,59,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(212,167,59,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+        <div className="container relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            {/* Flag Colors Accent */}
+            <div className="flex justify-center gap-2 mb-8">
+              <div className="w-4 h-12 rounded-full bg-[#00853F]" />
+              <div className="w-4 h-12 rounded-full bg-[#FDEF42]" />
+              <div className="w-4 h-12 rounded-full bg-[#E31B23]" />
+            </div>
+
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-8"
+            >
+              <Shield className="w-4 h-4" />
+              Patriotisme Économique
+            </motion.span>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-8">
+              Vision <span className="text-gradient-gold">Sénégal 2050</span>
+            </h2>
+
+            <div className="relative p-8 md:p-12 rounded-3xl glass-premium">
+              <Quote className="w-10 h-10 text-accent/30 absolute top-6 left-6" />
+              
+              <p className="text-xl md:text-2xl text-foreground leading-relaxed mb-8 italic">
+                "Nous sommes des <span className="text-gradient-gold font-bold">patriotes numériques</span>."
+              </p>
+
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-left md:text-center">
+                <p>
+                  Notre mission s'aligne directement sur la vision{" "}
+                  <span className="text-foreground font-semibold">Sénégal 2050</span> du gouvernement : 
+                  démocratiser l'accès au savoir et à la technologie.
+                </p>
+                <p>
+                  Chaque entrepreneur que nous digitalisons est une{" "}
+                  <span className="text-accent font-semibold">brique de plus</span> dans la souveraineté numérique de notre pays.
+                </p>
+                <p className="text-foreground font-medium text-xl pt-6 border-t border-accent/20">
+                  Nous voulons que le Sénégal ne soit pas juste <span className="line-through opacity-50">consommateur</span>,{" "}
+                  mais <span className="text-gradient-gold">acteur</span> de la révolution digitale.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Le Fondateur */}
       <section className="py-20 md:py-28 relative bg-secondary/30 dark:bg-secondary/10">
         <div className="container">
           <motion.div
@@ -114,7 +401,7 @@ const AboutPage = () => {
               Le Fondateur
             </span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Derrière Sen'Optima
+              L'Homme Derrière la <span className="text-gradient-gold">Vision</span>
             </h2>
           </motion.div>
 
@@ -124,46 +411,43 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <div className="p-8 md:p-10 rounded-3xl glass-card">
+            <div className="p-8 md:p-12 rounded-3xl glass-premium">
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 {/* Photo Placeholder */}
-                <div className="w-40 h-40 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center flex-shrink-0">
-                  <User className="w-20 h-20 text-accent/50" />
-                </div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="relative"
+                >
+                  <div className="w-44 h-44 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 flex items-center justify-center ring-4 ring-accent/20">
+                    <User className="w-20 h-20 text-accent/60" />
+                  </div>
+                  {/* Glow */}
+                  <div className="absolute -inset-2 rounded-full bg-accent/10 blur-xl -z-10" />
+                </motion.div>
 
                 {/* Bio */}
-                <div className="text-center md:text-left">
-                  <h3 className="text-2xl font-heading font-bold text-foreground mb-2">
-                    Fondateur & Consultant Principal
+                <div className="text-center md:text-left flex-1">
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-2">
+                    Mandiaye Sylla
                   </h3>
-                  <p className="text-accent font-medium mb-4">Sen'Optima Consulting</p>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    Passionné par l'entrepreneuriat et le digital, j'ai créé Sen'Optima avec une conviction : 
-                    chaque entrepreneur sénégalais mérite d'avoir accès à un accompagnement stratégique de qualité, 
-                    sans jargon ni promesses irréalistes.
+                  <p className="text-accent font-semibold text-lg mb-6">
+                    Fondateur & Stratège Principal
                   </p>
+
+                  {/* Citation */}
+                  <div className="relative p-6 rounded-2xl glass-card mb-6">
+                    <Quote className="w-6 h-6 text-accent/40 absolute -top-3 left-4" />
+                    <p className="text-foreground italic text-lg leading-relaxed">
+                      "Ma force n'est pas de tout savoir, mais de{" "}
+                      <span className="text-gradient-gold font-semibold">rendre simple ce qui paraît complexe</span>."
+                    </p>
+                  </div>
 
                   <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <MapPin className="w-4 h-4 text-accent" />
-                      <span>Dakar, Sénégal</span>
+                      <span>Grand Mbao, Dakar</span>
                     </div>
-                    <a 
-                      href="mailto:contact@senoptimaconsulting.com"
-                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
-                    >
-                      <Mail className="w-4 h-4 text-accent" />
-                      <span>Contact</span>
-                    </a>
-                    <a 
-                      href="https://www.linkedin.com/company/senoptima"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
-                    >
-                      <Linkedin className="w-4 h-4 text-accent" />
-                      <span>LinkedIn</span>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -171,6 +455,49 @@ const AboutPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* CTA Final */}
+      <section className="py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-accent/5 to-transparent" />
+        
+        <div className="container relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
+              Vous partagez cette <span className="text-gradient-gold">vision</span> ?
+            </h2>
+            <p className="text-xl text-muted-foreground mb-10">
+              Construisons votre avenir ensemble.
+            </p>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button
+                variant="cta"
+                size="lg"
+                onClick={() => setBookingOpen(true)}
+                className="text-lg px-10 py-6 h-auto"
+              >
+                Rejoindre le mouvement
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </motion.div>
+
+            <p className="text-sm text-muted-foreground mt-4">
+              Réservez un appel stratégique gratuit
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Booking Modal */}
+      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
   );
 };
