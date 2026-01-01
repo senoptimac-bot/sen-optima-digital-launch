@@ -8,20 +8,23 @@ interface PreloaderProps {
 const Preloader = ({ onComplete }: PreloaderProps) => {
   const [progress, setProgress] = useState(0);
   const soundPlayedRef = useRef(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Preload audio early
+  useEffect(() => {
+    audioRef.current = new Audio("/startup.mp3");
+    audioRef.current.volume = 0.5;
+    audioRef.current.preload = "auto";
+  }, []);
 
   const playStartupSound = () => {
-    if (soundPlayedRef.current) return;
+    if (soundPlayedRef.current || !audioRef.current) return;
     soundPlayedRef.current = true;
     
-    try {
-      const audio = new Audio("/startup.mp3");
-      audio.volume = 0.5;
-      audio.play().catch(() => {
-        // Fail silently if autoplay is blocked
-      });
-    } catch {
-      // Fail silently
-    }
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch(() => {
+      // Fail silently if autoplay is blocked
+    });
   };
 
   useEffect(() => {
@@ -34,9 +37,10 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         const next = prev + step;
         if (next >= 100) {
           clearInterval(timer);
-          // Play startup sound when preloader completes
+          // Play startup sound when preloader completes (at 100%)
           playStartupSound();
-          setTimeout(onComplete, 200);
+          // Wait for sound to start playing, then complete
+          setTimeout(onComplete, 300);
           return 100;
         }
         return next;

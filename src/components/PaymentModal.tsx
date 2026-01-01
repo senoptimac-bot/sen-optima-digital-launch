@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader2, Smartphone, CheckCircle } from "lucide-react";
@@ -17,6 +17,16 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
   const navigate = useNavigate();
   const [paymentState, setPaymentState] = useState<PaymentState>("select");
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Preload success sound when modal opens
+  useEffect(() => {
+    if (isOpen && !audioRef.current) {
+      audioRef.current = new Audio("/success.mp3");
+      audioRef.current.volume = 0.7;
+      audioRef.current.preload = "auto";
+    }
+  }, [isOpen]);
 
   // Reset state when modal closes
   useEffect(() => {
@@ -26,31 +36,46 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
     }
   }, [isOpen]);
 
-  const playSuccessSound = () => {
-    try {
-      const audio = new Audio("/success.mp3");
-      audio.volume = 0.7;
-      audio.play().catch(() => {
-        // Fail silently if autoplay is blocked
-      });
-    } catch {
-      // Fail silently
-    }
+  const playSuccessSound = (): Promise<void> => {
+    return new Promise((resolve) => {
+      if (!audioRef.current) {
+        resolve();
+        return;
+      }
+      
+      audioRef.current.currentTime = 0;
+      audioRef.current.play()
+        .then(() => {
+          // Wait for sound to be audible before resolving
+          setTimeout(resolve, 500);
+        })
+        .catch(() => {
+          // If blocked, resolve immediately
+          resolve();
+        });
+    });
   };
 
-  const handlePayment = (method: PaymentMethod) => {
+  const handlePayment = async (method: PaymentMethod) => {
     setSelectedMethod(method);
     setPaymentState("processing");
 
     // Simulate payment validation (3 seconds)
-    setTimeout(() => {
+    setTimeout(async () => {
+      // 1. Show success state first
       setPaymentState("success");
-      // Play success sound before redirect
-      playSuccessSound();
-      // Wait 1 second to let user hear sound and see success state
-      setTimeout(() => {
-        navigate("/merci");
-      }, 1000);
+      
+      // 2. Wait a brief moment for the UI to update
+      await new Promise(r => setTimeout(r, 100));
+      
+      // 3. Play success sound
+      await playSuccessSound();
+      
+      // 4. Wait 500ms for user to hear sound and see success state
+      await new Promise(r => setTimeout(r, 500));
+      
+      // 5. Redirect to thank you page
+      navigate("/merci");
     }, 3000);
   };
 
@@ -64,12 +89,12 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={onClose}
         >
-          {/* Backdrop with blur */}
+          {/* Backdrop - no blur on mobile */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-background/80 backdrop-blur-md"
+            className="absolute inset-0 bg-[rgba(7,20,40,0.9)] md:backdrop-blur-md"
           />
 
           {/* Modal Content */}
