@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import ThemeToggle from "./ThemeToggle";
 import BookingModal from "./BookingModal";
 import logo from "@/assets/logo.svg";
 
@@ -95,7 +94,6 @@ const Header = () => {
 
             {/* Right side */}
             <div className="flex items-center gap-3">
-              <ThemeToggle />
 
               {/* CTA Button - Desktop */}
               <motion.div
