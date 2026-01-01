@@ -28,11 +28,11 @@ const AboutPage = () => {
   return (
     <>
       {/* Hero Section - L'Ambition */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden bg-secondary dark:bg-gradient-hero">
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden bg-gradient-hero">
         {/* Background Pattern - Fusion Tradition/Modernité */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Circuit Pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(212,167,59,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,167,59,0.03)_1px,transparent_1px)] bg-[size:40px_40px] dark:opacity-100 opacity-30" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(212,167,59,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,167,59,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
           
           {/* African Pattern Overlay */}
           <svg className="absolute inset-0 w-full h-full opacity-[0.03] dark:opacity-[0.05]" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -269,7 +269,7 @@ const AboutPage = () => {
       </section>
 
       {/* Notre Philosophie - L'Adaptation Locale */}
-      <section className="py-20 md:py-28 relative bg-secondary/30 dark:bg-secondary/10">
+      <section className="py-20 md:py-28 relative bg-secondary/10">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

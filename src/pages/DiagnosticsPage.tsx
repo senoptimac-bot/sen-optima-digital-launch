@@ -138,10 +138,10 @@ const DiagnosticsPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden bg-secondary dark:bg-gradient-hero">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] dark:block hidden" />
-        <div className="absolute top-20 right-[10%] w-[400px] h-[400px] rounded-full bg-accent/10 blur-[100px] dark:block hidden" />
-        <div className="absolute bottom-0 left-[5%] w-[300px] h-[300px] rounded-full bg-accent/5 blur-[80px] dark:block hidden" />
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden bg-gradient-hero">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        <div className="absolute top-20 right-[10%] w-[400px] h-[400px] rounded-full bg-accent/10 blur-[100px]" />
+        <div className="absolute bottom-0 left-[5%] w-[300px] h-[300px] rounded-full bg-accent/5 blur-[80px]" />
         
         <div className="container relative z-10">
           <motion.div
@@ -373,7 +373,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Process Timeline */}
-      <section className="py-16 md:py-24 bg-secondary dark:bg-background/50">
+      <section className="py-16 md:py-24 bg-background/50">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
