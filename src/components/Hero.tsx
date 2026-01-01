@@ -1,6 +1,7 @@
 import { ArrowDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import heroBackground from "@/assets/hero-background.jpg";
 
 const Hero = () => {
   const scrollToNext = () => {
@@ -13,10 +14,18 @@ const Hero = () => {
   return (
     <section
       id="accueil"
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-hero"
+      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
     >
+      {/* Background image with blur and overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBackground})` }}
+      >
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      </div>
+
       {/* Animated background orbs */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute top-20 right-[10%] w-[500px] h-[500px] rounded-full bg-accent/10 blur-[100px] floating-orb"
           animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
