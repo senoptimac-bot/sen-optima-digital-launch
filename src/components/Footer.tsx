@@ -1,38 +1,65 @@
 import { forwardRef } from "react";
-import { Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoFooter from "@/assets/logo-footer.svg";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
 
+  const navigationLinks = [
+    { label: "Accueil", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: "Diagnostics", href: "/diagnostics" },
+    { label: "À Propos", href: "/a-propos" },
+  ];
+
   return (
-    <footer ref={ref} className="relative bg-[#061225]">
+    <footer ref={ref} className="relative bg-[#061225] font-sans">
       {/* Gold separator line */}
       <div className="h-[1px] bg-accent/20" />
       
       <div className="container py-12 md:py-16">
-        {/* All content left-aligned */}
-        <div className="flex flex-col items-start text-left space-y-8">
+        {/* All content left-aligned, stacked on mobile */}
+        <div className="flex flex-col items-start text-left gap-8">
           
-          {/* Logo */}
-          <img 
-            src={logoFooter} 
-            alt="Sen'Optima Consulting" 
-            className="h-8 w-auto"
-            loading="lazy"
-          />
+          {/* Logo & Tagline */}
+          <div className="flex flex-col items-start gap-3">
+            <img 
+              src={logoFooter} 
+              alt="Sen'Optima Consulting" 
+              className="h-8 w-auto"
+              loading="lazy"
+            />
+            <p className="text-sm text-white/60 tracking-[0.15em] font-light">
+              Sen'Optima Consulting — De l'Ambition à la Structure.
+            </p>
+          </div>
 
-          {/* Tagline */}
-          <p className="text-sm text-white/60 tracking-[0.2em] font-light">
-            Sen'Optima Consulting — De l'Ambition à la Structure.
-          </p>
+          {/* Navigation Links */}
+          <div className="flex flex-col items-start gap-2">
+            <h4 className="text-sm font-heading font-semibold text-white/80 mb-1">
+              Navigation
+            </h4>
+            <nav className="flex flex-col gap-2">
+              {navigationLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-white/70 hover:text-accent transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col gap-2 text-sm">
+          <div className="flex flex-col items-start gap-2">
+            <h4 className="text-sm font-heading font-semibold text-white/80 mb-1">
+              Contact
+            </h4>
             <a 
               href="mailto:contact@senoptimaconsulting.com" 
-              className="text-white/60 hover:text-accent transition-colors"
+              className="text-sm text-white/70 hover:text-accent transition-colors"
             >
               contact@senoptimaconsulting.com
             </a>
@@ -40,13 +67,13 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               href="https://wa.me/221781926969" 
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/60 hover:text-accent transition-colors"
+              className="text-sm text-white/70 hover:text-accent transition-colors"
             >
               +221 78 192 69 69
             </a>
           </div>
 
-          {/* Social Icons - static, left-aligned */}
+          {/* Social Icons */}
           <div className="flex gap-4">
             <a
               href="https://www.linkedin.com/company/senoptima"
@@ -72,15 +99,20 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
             </a>
           </div>
 
-          {/* Copyright */}
+          {/* Legal Links & Copyright */}
           <div className="pt-6 border-t border-white/5 w-full">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-white/40">
-              <p>© {currentYear} Sen'Optima Consulting. Tous droits réservés.</p>
-              <div className="flex items-center gap-4">
+            <div className="flex flex-col items-start gap-3">
+              <div className="flex items-center gap-4 text-xs text-white/40">
                 <Link to="/mentions-legales" className="hover:text-accent transition-colors">
                   Mentions Légales
                 </Link>
+                <Link to="/confidentialite" className="hover:text-accent transition-colors">
+                  Confidentialité
+                </Link>
               </div>
+              <p className="text-xs text-white/40">
+                © {currentYear} Sen'Optima Consulting. Tous droits réservés.
+              </p>
             </div>
           </div>
         </div>
