@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
+import AmbientBackground from "./AmbientBackground";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,12 +18,15 @@ const Layout = ({ children }: LayoutProps) => {
   }, [pathname]);
 
   return (
-    <main className="min-h-screen bg-background">
-      <Header />
-      {children}
-      <Footer />
-      <WhatsAppButton />
-    </main>
+    <>
+      <AmbientBackground />
+      <main className="min-h-screen bg-transparent relative z-0">
+        <Header />
+        {children}
+        <Footer />
+        <WhatsAppButton />
+      </main>
+    </>
   );
 };
 
