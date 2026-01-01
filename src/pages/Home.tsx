@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import VideoSection from "@/components/VideoSection";
 import IdentitySection from "@/components/IdentitySection";
 import MirrorSection from "@/components/MirrorSection";
 import MethodSection from "@/components/MethodSection";
@@ -9,6 +10,7 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <VideoSection />
       <IdentitySection />
       <MirrorSection />
       <MethodSection />
