@@ -1,21 +1,21 @@
 import { motion } from "framer-motion";
-import { EyeOff, Shuffle, TrendingDown, Quote } from "lucide-react";
+import { UserX, Ghost, HelpCircle } from "lucide-react";
 
 const painPoints = [
   {
-    icon: EyeOff,
-    title: "L'Invisible",
-    description: "Vous avez le meilleur produit, mais personne ne le sait.",
+    icon: UserX,
+    title: "Le Piège de l'Homme-Orchestre",
+    description: "Vous faites tout : la vente, la prod, le SAV, la compta. Résultat : vous ne grandissez plus.",
   },
   {
-    icon: Shuffle,
-    title: "Le Chaos",
-    description: "Vous gérez tout sur WhatsApp et cahier. Vous êtes esclave de votre business.",
+    icon: Ghost,
+    title: "La Visibilité Fantôme",
+    description: "Vous postez sur les réseaux, mais votre téléphone ne sonne pas. Vos 'J'aime' ne paient pas vos factures.",
   },
   {
-    icon: TrendingDown,
-    title: "Le Plafond de Verre",
-    description: "Vous travaillez dur, mais le chiffre d'affaires stagne.",
+    icon: HelpCircle,
+    title: "La Peur du Lendemain",
+    description: "Sans système prédictible, vous ne savez jamais combien vous allez gagner le mois prochain. Vous naviguez à vue.",
   },
 ];
 
@@ -52,30 +52,14 @@ const MirrorSection = () => {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
-            Le constat
+            Le miroir
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-8">
-            Naviguez-vous <span className="text-gradient-gold">à vue</span> ?
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+            Votre <span className="text-gradient-gold">situation actuelle</span>
           </h2>
-        </motion.div>
-
-        {/* Proverb Quote */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="relative max-w-4xl mx-auto mb-20"
-        >
-          <div className="relative p-8 md:p-12 rounded-3xl glass-premium text-center">
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold">
-              <Quote className="w-6 h-6 text-accent-foreground" />
-            </div>
-            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-heading font-medium text-foreground leading-relaxed italic">
-              "On ne va pas au marché sans panier. On ne bâtit pas une entreprise sans outils."
-            </blockquote>
-            <p className="text-muted-foreground mt-6">— Sagesse africaine</p>
-          </div>
+          <p className="text-lg text-muted-foreground">
+            Reconnaissez-vous ces symptômes ?
+          </p>
         </motion.div>
 
         {/* Pain Points Cards */}
@@ -84,7 +68,7 @@ const MirrorSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
         >
           {painPoints.map((pain, index) => (
             <motion.div

@@ -1,55 +1,33 @@
 import { motion } from "framer-motion";
-import { Search, Lightbulb, Rocket, TrendingUp } from "lucide-react";
+import { Settings, Globe, Rocket, ArrowRight } from "lucide-react";
 
 const steps = [
   {
-    icon: Search,
+    icon: Settings,
     number: "01",
-    title: "Audit",
-    description: "Analyse approfondie de votre situation actuelle et identification des opportunités.",
+    title: "Structurer",
+    description: "Audit & Outils internes",
   },
   {
-    icon: Lightbulb,
+    icon: Globe,
     number: "02",
-    title: "Stratégie",
-    description: "Élaboration d'un plan d'action sur mesure adapté à vos objectifs.",
+    title: "Digitaliser",
+    description: "Site Web & Présence pro",
   },
   {
     icon: Rocket,
     number: "03",
-    title: "Exécution",
-    description: "Mise en œuvre des solutions avec un accompagnement personnalisé.",
-  },
-  {
-    icon: TrendingUp,
-    number: "04",
-    title: "Suivi",
-    description: "Mesure des résultats et optimisation continue pour maximiser l'impact.",
+    title: "Accélérer",
+    description: "Marketing & Publicité ciblée",
   },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  },
-};
 
 const MethodSection = () => {
   return (
     <section className="py-20 md:py-28 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background dark:from-secondary/10 dark:to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-accent/5 blur-[150px]" />
 
       <div className="container relative z-10">
         {/* Header */}
@@ -57,64 +35,81 @@ const MethodSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
-            Notre approche
+            Notre méthode
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-5">
-            Une <span className="text-gradient-gold">méthode</span> éprouvée
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
+            L'<span className="text-gradient-gold">Écosystème</span> de Croissance
           </h2>
-          <p className="text-muted-foreground text-lg">
-            4 étapes clés pour transformer votre présence digitale.
-          </p>
         </motion.div>
 
-        {/* Steps */}
+        {/* Steps with Arrows */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="relative max-w-5xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-5xl mx-auto mb-16"
         >
-          {/* Connection Line - Desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent/30 to-transparent -translate-y-1/2" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-2">
             {steps.map((step, index) => (
-              <motion.div
-                key={step.number}
-                variants={itemVariants}
-                whileHover={{ scale: 1.03, y: -5 }}
-                className="relative"
-              >
-                {/* Mobile/Tablet connector line */}
-                {index < steps.length - 1 && (
-                  <div className="lg:hidden absolute left-1/2 -bottom-3 w-0.5 h-6 bg-accent/30 -translate-x-1/2" />
-                )}
-
-                <div className="p-6 rounded-2xl glass-card hover:glow-gold-subtle transition-all duration-300 text-center h-full flex flex-col">
+              <div key={step.title} className="flex flex-col md:flex-row items-center gap-4 md:gap-2">
+                {/* Step Card */}
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="relative p-6 md:p-8 rounded-2xl glass-premium border border-accent/20 text-center min-w-[200px] md:min-w-[220px]"
+                >
                   {/* Number badge */}
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-gradient-gold rounded-full">
-                    <span className="text-xs font-bold text-accent-foreground">{step.number}</span>
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-bold">
+                    {step.number}
                   </div>
 
                   {/* Icon */}
-                  <div className="w-16 h-16 mx-auto mt-4 mb-4 rounded-2xl bg-accent/10 flex items-center justify-center">
-                    <step.icon className="w-8 h-8 text-accent" />
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-accent/10 flex items-center justify-center">
+                    <step.icon className="w-7 h-7 text-accent" />
                   </div>
 
                   {/* Content */}
                   <h3 className="text-xl font-heading font-bold text-foreground mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground flex-1">
+                  <p className="text-sm text-muted-foreground">
                     {step.description}
                   </p>
-                </div>
-              </motion.div>
+                </motion.div>
+
+                {/* Arrow (except for last item) */}
+                {index < steps.length - 1 && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + index * 0.2 }}
+                    className="p-2"
+                  >
+                    <ArrowRight className="w-6 h-6 text-accent rotate-90 md:rotate-0" />
+                  </motion.div>
+                )}
+              </div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Key Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <div className="p-6 md:p-8 rounded-2xl glass-card border border-accent/30">
+            <p className="text-lg md:text-xl text-foreground font-medium">
+              💡 <span className="text-accent font-semibold">Message clé :</span>{" "}
+              "On ne met pas le toit (Marketing) avant les fondations (Structure)."
+            </p>
           </div>
         </motion.div>
       </div>
