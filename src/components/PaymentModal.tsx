@@ -26,6 +26,18 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
     }
   }, [isOpen]);
 
+  const playSuccessSound = () => {
+    try {
+      const audio = new Audio("/success.mp3");
+      audio.volume = 0.7;
+      audio.play().catch(() => {
+        // Fail silently if autoplay is blocked
+      });
+    } catch {
+      // Fail silently
+    }
+  };
+
   const handlePayment = (method: PaymentMethod) => {
     setSelectedMethod(method);
     setPaymentState("processing");
@@ -33,7 +45,9 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
     // Simulate payment validation (3 seconds)
     setTimeout(() => {
       setPaymentState("success");
-      // Redirect after short delay to show success state
+      // Play success sound before redirect
+      playSuccessSound();
+      // Wait 1 second to let user hear sound and see success state
       setTimeout(() => {
         navigate("/merci");
       }, 1000);

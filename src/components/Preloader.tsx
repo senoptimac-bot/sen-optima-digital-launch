@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useAppSounds } from '@/hooks/useAppSounds';
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -8,7 +7,22 @@ interface PreloaderProps {
 
 const Preloader = ({ onComplete }: PreloaderProps) => {
   const [progress, setProgress] = useState(0);
-  const { playStartup } = useAppSounds();
+  const soundPlayedRef = useRef(false);
+
+  const playStartupSound = () => {
+    if (soundPlayedRef.current) return;
+    soundPlayedRef.current = true;
+    
+    try {
+      const audio = new Audio("/startup.mp3");
+      audio.volume = 0.5;
+      audio.play().catch(() => {
+        // Fail silently if autoplay is blocked
+      });
+    } catch {
+      // Fail silently
+    }
+  };
 
   useEffect(() => {
     const duration = 1800; // 1.8 seconds
@@ -21,7 +35,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         if (next >= 100) {
           clearInterval(timer);
           // Play startup sound when preloader completes
-          playStartup();
+          playStartupSound();
           setTimeout(onComplete, 200);
           return 100;
         }
@@ -30,7 +44,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
     }, interval);
 
     return () => clearInterval(timer);
-  }, [onComplete, playStartup]);
+  }, [onComplete]);
 
   return (
     <motion.div
