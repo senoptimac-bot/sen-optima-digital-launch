@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
   Check, 
@@ -10,7 +12,8 @@ import {
   ClipboardList, 
   Video, 
   FileText,
-  ChevronRight
+  ChevronRight,
+  Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,6 +22,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useAppSounds } from "@/hooks/useAppSounds";
+import { initiatePayment } from "@/utils/paytechService";
+import { toast } from "sonner";
 
 const diagnostics = [
   {
@@ -135,6 +141,46 @@ const cardVariants = {
 };
 
 const DiagnosticsPage = () => {
+  const navigate = useNavigate();
+  const { playClick } = useAppSounds();
+  const [loadingDiagnostic, setLoadingDiagnostic] = useState<string | null>(null);
+
+  const handlePayment = async (diagnostic: typeof diagnostics[0]) => {
+    // Jouer le son de clic
+    playClick();
+    
+    // Marquer ce diagnostic comme en chargement
+    setLoadingDiagnostic(diagnostic.name);
+    
+    try {
+      // Convertir le prix string en nombre (ex: "20.000" -> 20000)
+      const priceNumber = parseInt(diagnostic.price.replace(/\./g, ""), 10);
+      
+      const response = await initiatePayment({
+        name: diagnostic.name,
+        price: priceNumber,
+        description: diagnostic.subtitle,
+      });
+      
+      if (response.success && response.redirect_url) {
+        // Rediriger vers la page de succès
+        navigate("/merci");
+      } else {
+        // Afficher une erreur
+        toast.error("Erreur de paiement", {
+          description: response.error || "Une erreur est survenue. Veuillez réessayer.",
+        });
+      }
+    } catch (error) {
+      console.error("Erreur de paiement:", error);
+      toast.error("Erreur de connexion", {
+        description: "Impossible de contacter le service de paiement. Vérifiez votre connexion.",
+      });
+    } finally {
+      setLoadingDiagnostic(null);
+    }
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -354,16 +400,20 @@ const DiagnosticsPage = () => {
                         ? "glow-gold-subtle hover:glow-gold" 
                         : "glass border-foreground/20 hover:border-accent/50"
                     }`}
-                    asChild
+                    onClick={() => handlePayment(diagnostic)}
+                    disabled={loadingDiagnostic !== null}
                   >
-                    <a
-                      href={`https://wa.me/221781926969?text=Bonjour, je souhaite commander : ${diagnostic.name} (${diagnostic.price} FCFA)`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {diagnostic.cta}
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    {loadingDiagnostic === diagnostic.name ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Chargement...
+                      </>
+                    ) : (
+                      <>
+                        {diagnostic.cta}
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
                   </Button>
                 </div>
               </motion.article>

@@ -13,6 +13,7 @@ import { SoundProvider } from "./components/SoundContext";
 import Home from "./pages/Home";
 import ServicesPage from "./pages/ServicesPage";
 import DiagnosticsPage from "./pages/DiagnosticsPage";
+import SuccessPage from "./pages/SuccessPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
@@ -56,6 +57,7 @@ const App = () => {
                   <Route path="/" element={<Home />} />
                   <Route path="/services" element={<ServicesPage />} />
                   <Route path="/diagnostics" element={<DiagnosticsPage />} />
+                  <Route path="/merci" element={<SuccessPage />} />
                   <Route path="/a-propos" element={<AboutPage />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="*" element={<NotFound />} />
