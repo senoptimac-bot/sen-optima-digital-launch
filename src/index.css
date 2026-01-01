@@ -120,17 +120,30 @@
     background-image: var(--gradient-hero);
   }
 
-  /* Glassmorphism - Dark Mode Only */
+  /* Glassmorphism - Optimized (no blur on mobile) */
   .glass {
-    @apply bg-[hsl(218_71%_13%/0.6)] backdrop-blur-xl border border-white/10 shadow-none;
+    @apply bg-[hsl(218_71%_13%/0.8)] border border-white/10 shadow-none;
   }
 
   .glass-card {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-none;
+    @apply bg-white/10 border border-white/10 shadow-none;
   }
 
   .glass-premium {
-    @apply bg-white/10 backdrop-blur-2xl border border-accent/30 shadow-none;
+    @apply bg-white/15 border border-accent/30 shadow-none;
+  }
+
+  /* Enable blur only on desktop for performance */
+  @media (min-width: 768px) {
+    .glass {
+      @apply backdrop-blur-xl bg-[hsl(218_71%_13%/0.6)];
+    }
+    .glass-card {
+      @apply backdrop-blur-xl bg-white/5;
+    }
+    .glass-premium {
+      @apply backdrop-blur-2xl bg-white/10;
+    }
   }
 
   /* Shadows */

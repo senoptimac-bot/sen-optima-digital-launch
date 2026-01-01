@@ -4,9 +4,9 @@ import { Lightbulb, AlertTriangle } from "lucide-react";
 const AdviceSection = () => {
   return (
     <section className="py-20 md:py-28 relative overflow-hidden">
-      {/* Background */}
+      {/* Background - simplified */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 to-background" />
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-accent/5 blur-[150px]" />
+      <div className="hidden md:block absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-accent/5" style={{ filter: 'blur(120px)' }} />
 
       <div className="container relative z-10">
         <motion.div

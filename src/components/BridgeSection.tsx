@@ -27,9 +27,9 @@ const timelineSteps = [
 const BridgeSection = () => {
   return (
     <section className="py-20 md:py-28 relative overflow-hidden">
-      {/* Background */}
+      {/* Background - simplified */}
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-accent/10 blur-[150px]" />
+      <div className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-accent/10" style={{ filter: 'blur(120px)' }} />
 
       <div className="container relative z-10">
         {/* Header */}
