@@ -5,30 +5,41 @@ interface PreloaderProps {
   onComplete: () => void;
 }
 
+// Single audio instance - persists across component lifecycle
+let startupAudio: HTMLAudioElement | null = null;
+
 const Preloader = ({ onComplete }: PreloaderProps) => {
   const [progress, setProgress] = useState(0);
+  const [logoVisible, setLogoVisible] = useState(false);
   const soundPlayedRef = useRef(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Preload audio early
+  // Preload audio immediately on mount
   useEffect(() => {
-    audioRef.current = new Audio("/startup.mp3");
-    audioRef.current.volume = 0.5;
-    audioRef.current.preload = "auto";
+    if (!startupAudio) {
+      startupAudio = new Audio("/startup.mp3");
+      startupAudio.volume = 0.6;
+      startupAudio.preload = "auto";
+    }
   }, []);
 
-  const playStartupSound = () => {
-    if (soundPlayedRef.current || !audioRef.current) return;
-    soundPlayedRef.current = true;
-    
-    audioRef.current.currentTime = 0;
-    audioRef.current.play().catch(() => {
-      // Fail silently if autoplay is blocked
-    });
-  };
-
+  // Play sound when logo becomes visible and starts pulsing
   useEffect(() => {
-    const duration = 1800; // 1.8 seconds
+    if (logoVisible && !soundPlayedRef.current) {
+      soundPlayedRef.current = true;
+      
+      // Play startup sound when logo animation starts
+      if (startupAudio) {
+        startupAudio.currentTime = 0;
+        startupAudio.play().catch(() => {
+          // If autoplay blocked, we'll unlock on first interaction
+        });
+      }
+    }
+  }, [logoVisible]);
+
+  // Progress bar animation
+  useEffect(() => {
+    const duration = 1800;
     const interval = 30;
     const step = 100 / (duration / interval);
 
@@ -37,10 +48,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         const next = prev + step;
         if (next >= 100) {
           clearInterval(timer);
-          // Play startup sound when preloader completes (at 100%)
-          playStartupSound();
-          // Wait for sound to start playing, then complete
-          setTimeout(onComplete, 300);
+          setTimeout(onComplete, 400);
           return 100;
         }
         return next;
@@ -57,11 +65,12 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
-      {/* Logo with Pulse Animation */}
+      {/* Logo with Pulse Animation - triggers sound on animate */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+        onAnimationComplete={() => setLogoVisible(true)}
         className="mb-8"
       >
         <motion.img
@@ -101,10 +110,11 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         </motion.p>
       </div>
 
-      {/* Subtle floating orbs in background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Subtle orbs - static on mobile for performance */}
+      <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute w-64 h-64 rounded-full bg-accent/5 blur-3xl"
+          className="absolute w-64 h-64 rounded-full bg-accent/5"
+          style={{ filter: 'blur(40px)', top: '20%', left: '10%' }}
           animate={{
             x: [0, 50, 0],
             y: [0, -30, 0],
@@ -114,10 +124,10 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          style={{ top: '20%', left: '10%' }}
         />
         <motion.div
-          className="absolute w-48 h-48 rounded-full bg-primary/5 blur-3xl"
+          className="absolute w-48 h-48 rounded-full bg-primary/5"
+          style={{ filter: 'blur(40px)', bottom: '20%', right: '15%' }}
           animate={{
             x: [0, -40, 0],
             y: [0, 40, 0],
@@ -127,7 +137,6 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          style={{ bottom: '20%', right: '15%' }}
         />
       </div>
     </motion.div>

@@ -13,69 +13,61 @@ interface PaymentModalProps {
 type PaymentState = "select" | "processing" | "success";
 type PaymentMethod = "wave" | "orange-money" | null;
 
+// Single audio instance for the entire app session
+let successAudio: HTMLAudioElement | null = null;
+
 const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalProps) => {
   const navigate = useNavigate();
   const [paymentState, setPaymentState] = useState<PaymentState>("select");
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const soundPlayedRef = useRef(false);
 
-  // Preload success sound when modal opens
+  // Preload success sound once on first modal open
   useEffect(() => {
-    if (isOpen && !audioRef.current) {
-      audioRef.current = new Audio("/success.mp3");
-      audioRef.current.volume = 0.7;
-      audioRef.current.preload = "auto";
+    if (isOpen && !successAudio) {
+      successAudio = new Audio("/success.mp3");
+      successAudio.volume = 0.8;
+      successAudio.preload = "auto";
     }
   }, [isOpen]);
+
+  // Play sound when success state is rendered
+  useEffect(() => {
+    if (paymentState === "success" && !soundPlayedRef.current) {
+      soundPlayedRef.current = true;
+      
+      // Play immediately when success state renders
+      if (successAudio) {
+        successAudio.currentTime = 0;
+        successAudio.play().catch(() => {
+          // Silently fail if blocked
+        });
+      }
+
+      // Redirect after user has time to see success + hear sound
+      setTimeout(() => {
+        navigate("/merci");
+      }, 1200);
+    }
+  }, [paymentState, navigate]);
 
   // Reset state when modal closes
   useEffect(() => {
     if (!isOpen) {
       setPaymentState("select");
       setSelectedMethod(null);
+      soundPlayedRef.current = false;
     }
   }, [isOpen]);
 
-  const playSuccessSound = (): Promise<void> => {
-    return new Promise((resolve) => {
-      if (!audioRef.current) {
-        resolve();
-        return;
-      }
-      
-      audioRef.current.currentTime = 0;
-      audioRef.current.play()
-        .then(() => {
-          // Wait for sound to be audible before resolving
-          setTimeout(resolve, 500);
-        })
-        .catch(() => {
-          // If blocked, resolve immediately
-          resolve();
-        });
-    });
-  };
-
-  const handlePayment = async (method: PaymentMethod) => {
+  const handlePayment = (method: PaymentMethod) => {
     setSelectedMethod(method);
     setPaymentState("processing");
 
-    // Simulate payment validation (3 seconds)
-    setTimeout(async () => {
-      // 1. Show success state first
+    // Simulate payment validation (3 seconds), then switch to success
+    setTimeout(() => {
       setPaymentState("success");
-      
-      // 2. Wait a brief moment for the UI to update
-      await new Promise(r => setTimeout(r, 100));
-      
-      // 3. Play success sound
-      await playSuccessSound();
-      
-      // 4. Wait 500ms for user to hear sound and see success state
-      await new Promise(r => setTimeout(r, 500));
-      
-      // 5. Redirect to thank you page
-      navigate("/merci");
+      // Sound plays via useEffect when state changes to "success"
     }, 3000);
   };
 
@@ -89,7 +81,7 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={onClose}
         >
-          {/* Backdrop - no blur on mobile */}
+          {/* Backdrop */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -150,12 +142,13 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
                       whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handlePayment("wave")}
-                      className="p-6 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all hover:shadow-lg cursor-pointer"
+                      className="p-6 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all hover:shadow-lg cursor-pointer min-h-[120px]"
                     >
                       <img 
                         src="/wave-logo.png" 
                         alt="Wave" 
                         className="h-14 w-auto object-contain"
+                        loading="lazy"
                       />
                       <span className="text-sm font-medium text-muted-foreground">Payer avec Wave</span>
                     </motion.button>
@@ -165,12 +158,13 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
                       whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handlePayment("orange-money")}
-                      className="p-6 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all hover:shadow-lg cursor-pointer"
+                      className="p-6 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all hover:shadow-lg cursor-pointer min-h-[120px]"
                     >
                       <img 
                         src="/om-logo.png" 
                         alt="Orange Money" 
                         className="h-14 w-auto object-contain"
+                        loading="lazy"
                       />
                       <span className="text-sm font-medium text-muted-foreground">Orange Money</span>
                     </motion.button>
@@ -242,7 +236,7 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
                 </motion.div>
               )}
 
-              {/* Success State */}
+              {/* Success State - Sound plays when this renders */}
               {paymentState === "success" && (
                 <motion.div
                   key="success"
@@ -260,7 +254,7 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
                   </motion.div>
 
                   <h3 className="text-xl font-heading font-bold text-foreground mb-2">
-                    Paiement réussi !
+                    Paiement reçu !
                   </h3>
                   <p className="text-muted-foreground">
                     Redirection en cours...
