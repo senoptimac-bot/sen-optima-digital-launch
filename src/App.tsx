@@ -10,6 +10,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Layout from "./components/Layout";
 import Preloader from "./components/Preloader";
 import { SoundProvider } from "./components/SoundContext";
+import useAudioUnlock from "./hooks/useAudioUnlock";
 import Home from "./pages/Home";
 import ServicesPage from "./pages/ServicesPage";
 import DiagnosticsPage from "./pages/DiagnosticsPage";
@@ -23,6 +24,9 @@ const queryClient = new QueryClient();
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasVisited, setHasVisited] = useState(false);
+  
+  // Unlock audio on first user interaction (mobile browsers)
+  useAudioUnlock();
 
   useEffect(() => {
     // Check if user has already visited (session storage)
