@@ -1,8 +1,9 @@
+import { forwardRef } from "react";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoFooter from "@/assets/logo-footer.svg";
 
-const Footer = () => {
+const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
 
   const navigationLinks = [
@@ -14,7 +15,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-[#061225] border-t border-white/10">
+    <footer ref={ref} className="relative bg-[#061225] border-t border-white/10">
       <div className="container py-12 md:py-16">
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 text-center md:text-left">
@@ -123,6 +124,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;

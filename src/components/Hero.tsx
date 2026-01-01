@@ -19,10 +19,12 @@ const Hero = () => {
       {/* Background image with blur and overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      >
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-      </div>
+        style={{ 
+          backgroundImage: `url(${heroBackground})`,
+          filter: 'brightness(0.4) blur(4px)',
+        }}
+      />
+      <div className="absolute inset-0 bg-background/60" />
 
       {/* Animated background orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
