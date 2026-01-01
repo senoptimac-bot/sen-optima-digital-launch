@@ -1,5 +1,6 @@
 import { MapPin, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import logoFooter from "@/assets/logo-footer.svg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,10 +21,12 @@ const Footer = () => {
           
           {/* Column 1: Brand Essence */}
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="font-heading font-bold text-xl tracking-wide text-white">
-              SEN'OPTIMA
-            </h3>
-            <p className="mt-2 text-sm text-foreground/50 tracking-wider">
+            <img 
+              src={logoFooter} 
+              alt="Sen'Optima Consulting" 
+              className="h-10 w-auto"
+            />
+            <p className="mt-3 text-sm text-foreground/50 tracking-wider">
               Clarté · Performance · Stratégie
             </p>
           </div>
