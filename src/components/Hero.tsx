@@ -1,7 +1,6 @@
 import { ArrowDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import heroBackground from "@/assets/hero-background.jpg";
 
 const Hero = () => {
   const scrollToNext = () => {
@@ -16,18 +15,26 @@ const Hero = () => {
       id="accueil"
       className="relative min-h-screen flex items-center pt-20 overflow-hidden"
     >
-      {/* Background image - lazy loaded with simple overlay */}
-      <div className="absolute inset-0">
-        <img 
-          src={heroBackground}
-          alt=""
-          loading="lazy"
-          className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.35)' }}
-        />
-      </div>
-      {/* Dark overlay - simple rgba, no blur on mobile */}
-      <div className="absolute inset-0 bg-[rgba(7,20,40,0.7)]" />
+      {/* Premium gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0A1A3A] via-[#071428] to-[#050E22]" />
+      
+      {/* Subtle gold aura - top right corner */}
+      <div 
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-[0.07]"
+        style={{ 
+          background: 'radial-gradient(circle, #D4A73B 0%, transparent 70%)',
+          transform: 'translate(30%, -30%)'
+        }} 
+      />
+      
+      {/* Subtle blue depth - bottom left */}
+      <div 
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full opacity-[0.15]"
+        style={{ 
+          background: 'radial-gradient(circle, #0A1A3A 0%, transparent 70%)',
+          transform: 'translate(-30%, 30%)'
+        }} 
+      />
 
       {/* Grid pattern overlay - desktop only */}
       <div className="hidden md:block absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
@@ -66,7 +73,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl text-foreground/80 max-w-3xl mx-auto mb-12 leading-relaxed"
           >
             Sen'Optima Consulting n'est pas une simple agence web. Nous sommes les architectes qui transforment votre activité informelle en une entreprise digitale solide.
           </motion.p>
