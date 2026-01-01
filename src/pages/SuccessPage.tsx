@@ -1,13 +1,49 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Check, PartyPopper, ArrowLeft, Calendar, ClipboardList } from "lucide-react";
+import { Check, PartyPopper, ArrowLeft, ClipboardList, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useAppSounds } from "@/hooks/useAppSounds";
 
-// URLs des embeds - À remplacer par les liens du client
+/**
+ * ============================================================================
+ * CONFIGURATION TALLY.SO - À REMPLACER PAR LE CLIENT
+ * ============================================================================
+ * 
+ * Le client doit créer un formulaire Tally contenant ces sections :
+ * 
+ * 1. INFOS CONTACT
+ *    - Nom complet
+ *    - Numéro WhatsApp
+ * 
+ * 2. AUDIT PROJET (15 Questions suggérées)
+ *    - Avez-vous un site web actuel ? (URL)
+ *    - Quel est votre CA mensuel actuel ?
+ *    - Quel est votre objectif n°1 pour les 6 prochains mois ?
+ *    - Quel est votre budget publicitaire mensuel ?
+ *    - Quels outils marketing utilisez-vous actuellement ?
+ *    - Qui est votre client idéal ?
+ *    - Quels sont vos principaux concurrents ?
+ *    - Qu'est-ce qui vous différencie d'eux ?
+ *    - Quel est votre plus grand défi actuel ?
+ *    - Avez-vous une équipe ou êtes-vous seul ?
+ *    - Comment acquérez-vous vos clients actuellement ?
+ *    - Quel est votre taux de conversion actuel ?
+ *    - Avez-vous des témoignages clients ?
+ *    - Quel est votre délai de décision ?
+ *    - Qu'attendez-vous de cette collaboration ?
+ * 
+ * 3. PLANIFICATION
+ *    - Question : "Quel jour vous arrange le plus ?" (Lundi au Vendredi)
+ *    - Question : "Plutôt Matin ou Après-midi ?"
+ * 
+ * 4. MESSAGE DE FIN TALLY
+ *    "Merci. Un consultant Sen'Optima va analyser vos réponses 
+ *     et valider le créneau avec vous sous 24h via WhatsApp."
+ * 
+ * ============================================================================
+ */
 const TALLY_EMBED_URL = "https://tally.so/embed/w7Xk1L?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
-const CALENDLY_EMBED_URL = "https://calendly.com/senoptima/diagnostic";
 
 const SuccessPage = () => {
   const [showConfetti, setShowConfetti] = useState(true);
@@ -24,7 +60,7 @@ const SuccessPage = () => {
 
   return (
     <>
-      {/* Meta tag noindex pour SEO */}
+      {/* Meta tag noindex pour SEO - Page cachée de Google */}
       <meta name="robots" content="noindex, nofollow" />
       
       <div className="min-h-screen bg-background relative overflow-hidden">
@@ -73,7 +109,7 @@ const SuccessPage = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-12"
           >
             {/* Success Icon */}
             <motion.div
@@ -97,20 +133,41 @@ const SuccessPage = () => {
               </div>
               
               <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
-                Félicitations !{" "}
-                <span className="text-gradient-gold">Votre commande est validée.</span>
+                Paiement validé !{" "}
+                <span className="text-gradient-gold">La transformation commence maintenant.</span>
               </h1>
               
-              <p className="text-xl text-muted-foreground">
-                Passons maintenant à l'action. Veuillez compléter ces{" "}
-                <span className="text-foreground font-semibold">deux étapes obligatoires</span> :
+              <p className="text-xl text-muted-foreground mb-4">
+                Pour préparer notre session, veuillez remplir ce{" "}
+                <span className="text-foreground font-semibold">formulaire d'audit préliminaire</span>.
+              </p>
+              <p className="text-lg text-muted-foreground">
+                Cela nous permettra d'être efficaces dès la première minute.
               </p>
             </motion.div>
           </motion.div>
 
-          {/* Steps Container */}
-          <div className="max-w-4xl mx-auto space-y-12">
-            {/* Step 1: Tally Form */}
+          {/* Instruction Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="max-w-4xl mx-auto mb-8"
+          >
+            <div className="glass-card rounded-2xl p-6 border border-accent/30 bg-accent/5">
+              <div className="flex items-start gap-4">
+                <MessageCircle className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+                <p className="text-muted-foreground">
+                  <span className="text-foreground font-medium">À la fin du formulaire</span>, indiquez vos disponibilités. 
+                  Nous confirmerons l'heure exacte par{" "}
+                  <span className="text-accent font-semibold">WhatsApp sous 24h</span>.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Single Tally Form */}
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -119,73 +176,32 @@ const SuccessPage = () => {
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold">
-                  1
+                  <ClipboardList className="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-heading font-bold text-foreground flex items-center gap-2">
-                    <ClipboardList className="w-5 h-5 text-accent" />
-                    Questionnaire Préparatoire
+                  <h2 className="text-xl font-heading font-bold text-foreground">
+                    Formulaire d'Audit Préliminaire
                   </h2>
                   <p className="text-sm text-muted-foreground">
-                    Pour que je puisse préparer votre session efficacement
+                    15 questions pour maximiser l'impact de votre session
                   </p>
                 </div>
               </div>
               
-              {/* Tally Embed */}
+              {/* Tally Embed - Formulaire unique centralisé */}
               <div className="rounded-2xl overflow-hidden bg-transparent">
                 <iframe
                   src={TALLY_EMBED_URL}
                   width="100%"
-                  height="600"
+                  height="800"
                   frameBorder="0"
                   marginHeight={0}
                   marginWidth={0}
-                  title="Questionnaire préparatoire"
+                  title="Formulaire d'audit préliminaire Sen'Optima"
                   className="bg-transparent"
                   style={{
                     border: "none",
                     background: "transparent",
-                  }}
-                />
-              </div>
-            </motion.div>
-
-            {/* Step 2: Calendly */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="glass-card rounded-3xl p-8 overflow-hidden"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold">
-                  2
-                </div>
-                <div>
-                  <h2 className="text-xl font-heading font-bold text-foreground flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-accent" />
-                    Réservez votre créneau
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    Choisissez la date et l'heure qui vous conviennent
-                  </p>
-                </div>
-              </div>
-              
-              {/* Calendly Embed */}
-              <div className="rounded-2xl overflow-hidden">
-                <iframe
-                  src={CALENDLY_EMBED_URL}
-                  width="100%"
-                  height="650"
-                  frameBorder="0"
-                  title="Calendrier de réservation"
-                  className="bg-transparent"
-                  style={{
-                    border: "none",
-                    background: "transparent",
-                    minWidth: "320px",
                   }}
                 />
               </div>
@@ -195,8 +211,8 @@ const SuccessPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
-              className="text-center pt-8"
+              transition={{ delay: 0.8 }}
+              className="text-center pt-12"
             >
               <Button
                 variant="outline"
