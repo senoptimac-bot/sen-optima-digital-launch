@@ -3,6 +3,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
+import BookingModal from "./BookingModal";
 import logo from "@/assets/logo.svg";
 
 const navLinks = [
@@ -16,6 +17,7 @@ const navLinks = [
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,11 +96,9 @@ const Header = () => {
                 transition={{ delay: 0.5 }}
                 className="hidden lg:block"
               >
-                <Button variant="cta" size="sm" className="gap-2" asChild>
-                  <a href="tel:+221781926969">
-                    <Phone className="w-4 h-4" />
-                    Réserver un appel
-                  </a>
+                <Button variant="cta" size="sm" className="gap-2" onClick={() => setBookingOpen(true)}>
+                  <Phone className="w-4 h-4" />
+                  Réserver un appel
                 </Button>
               </motion.div>
 
@@ -161,17 +161,25 @@ const Header = () => {
                 </ul>
 
                 {/* CTA */}
-                <Button variant="cta" className="w-full gap-2 h-14 text-base" asChild>
-                  <a href="tel:+221781926969">
-                    <Phone className="w-5 h-5" />
-                    Réserver un appel gratuit
-                  </a>
+                <Button 
+                  variant="cta" 
+                  className="w-full gap-2 h-14 text-base" 
+                  onClick={() => {
+                    setIsOpen(false);
+                    setBookingOpen(true);
+                  }}
+                >
+                  <Phone className="w-5 h-5" />
+                  Réserver un appel gratuit
                 </Button>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
+
+      {/* Booking Modal */}
+      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
   );
 };

@@ -1,15 +1,20 @@
+import { useState } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import BookingModal from "./BookingModal";
 
 const Hero = () => {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
+    <>
     <section
       id="accueil"
-      className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-hero"
+      className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-secondary dark:bg-gradient-hero"
     >
       {/* Animated background orbs */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden dark:block hidden">
         <motion.div
           className="absolute top-20 right-[10%] w-[500px] h-[500px] rounded-full bg-accent/10 blur-[100px] floating-orb"
           animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
@@ -27,8 +32,11 @@ const Hero = () => {
         />
       </div>
 
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
+      {/* Grid pattern overlay - only in dark mode */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] dark:block hidden" />
+      
+      {/* Light mode subtle pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--border)/0.3)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/0.3)_1px,transparent_1px)] bg-[size:80px_80px] [mask-image:radial-gradient(ellipse_at_center,black_10%,transparent_60%)] dark:hidden block" />
 
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -131,6 +139,9 @@ const Hero = () => {
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
+
+    <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
+    </>
   );
 };
 
