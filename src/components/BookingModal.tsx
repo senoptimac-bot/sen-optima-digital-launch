@@ -154,7 +154,8 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="absolute top-full left-0 right-0 mt-2 py-2 rounded-xl bg-card border border-border shadow-lg z-50"
+                        className="absolute top-full left-0 right-0 mt-2 py-2 rounded-xl bg-card border border-border shadow-2xl z-50 max-h-60 overflow-y-auto overscroll-contain touch-pan-y"
+                        style={{ WebkitOverflowScrolling: 'touch' }}
                       >
                         {needOptions.map((option) => (
                           <button
@@ -164,7 +165,7 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
                               setFormData({ ...formData, need: option.value });
                               setSelectOpen(false);
                             }}
-                            className="w-full px-4 py-2.5 text-left hover:bg-accent/10 transition-colors text-foreground"
+                            className="w-full px-4 py-2.5 text-left hover:bg-accent/10 active:bg-accent/20 transition-colors text-foreground"
                           >
                             {option.label}
                           </button>
