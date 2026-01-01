@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Phone, User, Mail, ChevronDown, CheckCircle2, Loader2 } from "lucide-react";
+import { Phone, User, Mail, ChevronDown, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useAppSounds } from "@/hooks/useAppSounds";
 
 interface BookingModalProps {
   open: boolean;
@@ -30,6 +31,7 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectOpen, setSelectOpen] = useState(false);
+  const { playSuccess, playClick } = useAppSounds();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,6 +42,9 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
 
     setIsSubmitting(false);
     setIsSuccess(true);
+    
+    // Play success sound on form validation
+    playSuccess();
 
     // Reset and close after success
     setTimeout(() => {
@@ -175,6 +180,11 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
                   variant="cta"
                   className="w-full h-12 text-base gap-2 mt-6"
                   disabled={isSubmitting || !formData.name || !formData.whatsapp || !formData.need}
+                  onClick={() => {
+                    if (!isSubmitting && formData.name && formData.whatsapp && formData.need) {
+                      playClick();
+                    }
+                  }}
                 >
                   {isSubmitting ? (
                     <>
