@@ -1,49 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Check, PartyPopper, ArrowLeft, ClipboardList, MessageCircle } from "lucide-react";
+import { Check, PartyPopper, ArrowLeft, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useAppSounds } from "@/hooks/useAppSounds";
-
-/**
- * ============================================================================
- * CONFIGURATION TALLY.SO - À REMPLACER PAR LE CLIENT
- * ============================================================================
- * 
- * Le client doit créer un formulaire Tally contenant ces sections :
- * 
- * 1. INFOS CONTACT
- *    - Nom complet
- *    - Numéro WhatsApp
- * 
- * 2. AUDIT PROJET (15 Questions suggérées)
- *    - Avez-vous un site web actuel ? (URL)
- *    - Quel est votre CA mensuel actuel ?
- *    - Quel est votre objectif n°1 pour les 6 prochains mois ?
- *    - Quel est votre budget publicitaire mensuel ?
- *    - Quels outils marketing utilisez-vous actuellement ?
- *    - Qui est votre client idéal ?
- *    - Quels sont vos principaux concurrents ?
- *    - Qu'est-ce qui vous différencie d'eux ?
- *    - Quel est votre plus grand défi actuel ?
- *    - Avez-vous une équipe ou êtes-vous seul ?
- *    - Comment acquérez-vous vos clients actuellement ?
- *    - Quel est votre taux de conversion actuel ?
- *    - Avez-vous des témoignages clients ?
- *    - Quel est votre délai de décision ?
- *    - Qu'attendez-vous de cette collaboration ?
- * 
- * 3. PLANIFICATION
- *    - Question : "Quel jour vous arrange le plus ?" (Lundi au Vendredi)
- *    - Question : "Plutôt Matin ou Après-midi ?"
- * 
- * 4. MESSAGE DE FIN TALLY
- *    "Merci. Un consultant Sen'Optima va analyser vos réponses 
- *     et valider le créneau avec vous sous 24h via WhatsApp."
- * 
- * ============================================================================
- */
-const TALLY_EMBED_URL = "https://tally.so/embed/w7Xk1L?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
+import AuditForm from "@/components/AuditForm";
 
 const SuccessPage = () => {
   const [showConfetti, setShowConfetti] = useState(true);
@@ -166,45 +127,15 @@ const SuccessPage = () => {
             </div>
           </motion.div>
 
-          {/* Single Tally Form */}
+          {/* Native Audit Form */}
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="glass-card rounded-3xl p-8 overflow-hidden"
+              className="glass-card rounded-3xl p-8 md:p-12"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold">
-                  <ClipboardList className="w-5 h-5" />
-                </div>
-                <div>
-                  <h2 className="text-xl font-heading font-bold text-foreground">
-                    Formulaire d'Audit Préliminaire
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    15 questions pour maximiser l'impact de votre session
-                  </p>
-                </div>
-              </div>
-              
-              {/* Tally Embed - Formulaire unique centralisé */}
-              <div className="rounded-2xl overflow-hidden bg-transparent">
-                <iframe
-                  src={TALLY_EMBED_URL}
-                  width="100%"
-                  height="800"
-                  frameBorder="0"
-                  marginHeight={0}
-                  marginWidth={0}
-                  title="Formulaire d'audit préliminaire Sen'Optima"
-                  className="bg-transparent"
-                  style={{
-                    border: "none",
-                    background: "transparent",
-                  }}
-                />
-              </div>
+              <AuditForm />
             </motion.div>
 
             {/* Return Button */}
