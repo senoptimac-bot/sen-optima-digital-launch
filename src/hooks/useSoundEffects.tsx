@@ -18,22 +18,25 @@ let hoverAudio: HTMLAudioElement | null = null;
 let clickAudio: HTMLAudioElement | null = null;
 let audioUnlocked = false;
 
-// Preload audio files
+// Lazy preload audio files - only when needed
 const preloadAudio = () => {
   if (typeof window === 'undefined') return;
   
-  try {
-    hoverAudio = new Audio('/sounds/hover.mp3');
-    hoverAudio.volume = 0.2; // 20% volume
-    hoverAudio.preload = 'auto';
-    
-    clickAudio = new Audio('/sounds/click.mp3');
-    clickAudio.volume = 0.25; // 25% volume
-    clickAudio.preload = 'auto';
-  } catch (e) {
-    // Audio files not available - silent fail
-    console.log('Audio files not loaded - sounds disabled');
-  }
+  // Use setTimeout to defer audio loading after page load
+  setTimeout(() => {
+    try {
+      hoverAudio = new Audio('/sounds/hover.mp3');
+      hoverAudio.volume = 0.2;
+      hoverAudio.preload = 'none'; // Don't preload until needed
+      
+      clickAudio = new Audio('/sounds/click.mp3');
+      clickAudio.volume = 0.25;
+      clickAudio.preload = 'none'; // Don't preload until needed
+    } catch (e) {
+      // Audio files not available - silent fail
+      console.log('Audio files not loaded - sounds disabled');
+    }
+  }, 2000); // Defer by 2 seconds after page load
 };
 
 // Unlock audio on first user interaction (required by browsers)

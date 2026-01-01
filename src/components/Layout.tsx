@@ -20,7 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <AmbientBackground />
-      <main className="min-h-screen bg-transparent relative z-0">
+      <main className="min-h-screen bg-transparent relative z-0 overflow-x-hidden">
         <Header />
         {children}
         <Footer />
