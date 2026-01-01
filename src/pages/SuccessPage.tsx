@@ -24,7 +24,7 @@ const SuccessPage = () => {
       {/* Meta tag noindex pour SEO - Page cachée de Google */}
       <meta name="robots" content="noindex, nofollow" />
       
-      <div className="min-h-screen bg-background relative overflow-hidden">
+      <div className="min-h-screen bg-background relative overflow-x-hidden overflow-y-auto">
         {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute top-20 right-[10%] w-[400px] h-[400px] rounded-full bg-accent/10 blur-[100px]" />
@@ -64,7 +64,7 @@ const SuccessPage = () => {
           </div>
         )}
 
-        <div className="container relative z-10 pt-32 pb-16 md:pt-40 md:pb-24">
+        <div className="container relative z-10 pt-32 pb-32 md:pt-40 md:pb-24">
           {/* Hero Section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}

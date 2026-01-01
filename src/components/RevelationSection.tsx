@@ -32,11 +32,11 @@ const RevelationSection = () => {
           transition={{ duration: 0.7 }}
           className="max-w-5xl mx-auto mb-16"
         >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-4">
+          <div className="flex flex-col items-center justify-center gap-6 md:flex-row md:gap-4 w-full px-4">
             {/* Chaos */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex-1 max-w-xs p-8 rounded-2xl glass-card text-center"
+              className="w-full md:flex-1 md:max-w-xs p-6 md:p-8 rounded-2xl glass-card text-center"
             >
               <div className="w-24 h-24 mx-auto mb-4 relative">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -96,7 +96,7 @@ const RevelationSection = () => {
             {/* Method */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex-1 max-w-xs p-8 rounded-2xl glass-premium border-accent/30 text-center"
+              className="w-full md:flex-1 md:max-w-xs p-6 md:p-8 rounded-2xl glass-premium border-accent/30 text-center"
             >
               <div className="w-24 h-24 mx-auto mb-4 relative">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -156,7 +156,7 @@ const RevelationSection = () => {
             {/* Success */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex-1 max-w-xs p-8 rounded-2xl bg-gradient-gold text-accent-foreground text-center"
+              className="w-full md:flex-1 md:max-w-xs p-6 md:p-8 rounded-2xl bg-gradient-gold text-accent-foreground text-center"
             >
               <div className="w-24 h-24 mx-auto mb-4 relative">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
