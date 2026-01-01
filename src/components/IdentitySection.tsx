@@ -4,9 +4,9 @@ import { XCircle, CheckCircle } from "lucide-react";
 const IdentitySection = () => {
   return (
     <section id="identite" className="py-20 md:py-28 relative overflow-hidden">
-      {/* Background */}
+      {/* Background - simplified */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[150px]" />
+      <div className="hidden md:block absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-accent/5" style={{ filter: 'blur(100px)' }} />
 
       <div className="container relative z-10">
         {/* Header */}

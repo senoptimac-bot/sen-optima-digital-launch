@@ -26,6 +26,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               src={logoFooter} 
               alt="Sen'Optima Consulting" 
               className="h-10 w-auto"
+              loading="lazy"
             />
             <p className="mt-3 text-sm text-foreground/50 tracking-wider">
               Clarté · Performance · Stratégie
@@ -66,14 +67,14 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               </div>
               <a 
                 href="tel:+221781926969" 
-                className="flex items-center gap-2 justify-center md:justify-start hover:text-accent transition-colors"
+                className="flex items-center gap-2 justify-center md:justify-start hover:text-accent transition-colors min-h-[44px]"
               >
                 <Phone className="w-4 h-4 text-foreground/40 flex-shrink-0" />
                 <span>+221 78 192 69 69</span>
               </a>
               <a 
                 href="mailto:contact@senoptimaconsulting.com" 
-                className="flex items-center gap-2 justify-center md:justify-start hover:text-accent transition-colors"
+                className="flex items-center gap-2 justify-center md:justify-start hover:text-accent transition-colors min-h-[44px]"
               >
                 <Mail className="w-4 h-4 text-foreground/40 flex-shrink-0" />
                 <span>contact@senoptimaconsulting.com</span>

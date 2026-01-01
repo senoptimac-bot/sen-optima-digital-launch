@@ -16,37 +16,21 @@ const Hero = () => {
       id="accueil"
       className="relative min-h-screen flex items-center pt-20 overflow-hidden"
     >
-      {/* Background image with blur and overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: `url(${heroBackground})`,
-          filter: 'brightness(0.4) blur(4px)',
-        }}
-      />
-      <div className="absolute inset-0 bg-background/60" />
-
-      {/* Animated background orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-20 right-[10%] w-[500px] h-[500px] rounded-full bg-accent/10 blur-[100px] floating-orb"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-[5%] w-[400px] h-[400px] rounded-full bg-accent/5 blur-[80px]"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-        <motion.div
-          className="absolute top-[40%] left-[30%] w-[300px] h-[300px] rounded-full bg-white/5 blur-[60px]"
-          animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.2, 0.1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+      {/* Background image - lazy loaded with simple overlay */}
+      <div className="absolute inset-0">
+        <img 
+          src={heroBackground}
+          alt=""
+          loading="lazy"
+          className="w-full h-full object-cover"
+          style={{ filter: 'brightness(0.35)' }}
         />
       </div>
+      {/* Dark overlay - simple rgba, no blur on mobile */}
+      <div className="absolute inset-0 bg-[rgba(7,20,40,0.7)]" />
 
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
+      {/* Grid pattern overlay - desktop only */}
+      <div className="hidden md:block absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
 
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -55,7 +39,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-8"
           >
             <Sparkles className="w-4 h-4 text-accent" />
             <span className="text-sm font-medium text-foreground/80">
@@ -97,7 +81,7 @@ const Hero = () => {
               variant="outline"
               size="lg"
               onClick={scrollToNext}
-              className="gap-3 text-base glass border-accent/30 hover:border-accent hover:bg-accent/10 transition-all duration-300 group"
+              className="gap-3 text-base border-accent/30 bg-white/5 hover:border-accent hover:bg-accent/10 transition-all duration-300 group min-h-[48px]"
             >
               Voir comment nous travaillons
               <motion.div
@@ -111,7 +95,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Bottom gradient fade - reduced height */}
+      {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent" />
     </section>
   );

@@ -125,13 +125,13 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
+            {/* Backdrop - no blur on mobile for performance */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-[rgba(7,20,40,0.9)] z-40 lg:hidden"
             />
 
             {/* Bottom Sheet */}
@@ -142,7 +142,7 @@ const Header = () => {
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
             >
-              <div className="glass-premium rounded-t-3xl p-6 pb-10">
+              <div className="bg-[#0d1f3a] border-t border-accent/30 rounded-t-3xl p-6 pb-10">
                 {/* Handle */}
                 <div className="w-12 h-1.5 bg-foreground/20 rounded-full mx-auto mb-6" />
 

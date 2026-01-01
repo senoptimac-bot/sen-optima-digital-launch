@@ -39,9 +39,9 @@ const itemVariants = {
 const MirrorSection = () => {
   return (
     <section className="py-20 md:py-28 relative overflow-hidden">
-      {/* Background */}
+      {/* Background - simplified */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-destructive/5 blur-[200px]" />
+      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-destructive/5" style={{ filter: 'blur(150px)' }} />
 
       <div className="container relative z-10">
         {/* Header */}
