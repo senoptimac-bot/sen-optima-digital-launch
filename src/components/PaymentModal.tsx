@@ -105,33 +105,35 @@ const PaymentModal = ({ isOpen, onClose, diagnosticName, price }: PaymentModalPr
                   </div>
 
                   {/* Payment Buttons */}
-                  <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
                     {/* Wave Button */}
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handlePayment("wave")}
-                      className="w-full py-4 px-6 rounded-2xl font-bold text-white text-lg flex items-center justify-center gap-3 transition-all shadow-lg hover:shadow-xl"
-                      style={{ backgroundColor: "#1DC4FF" }}
+                      className="p-6 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all hover:shadow-lg cursor-pointer"
                     >
-                      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                        <span className="text-xl font-bold">W</span>
-                      </div>
-                      Payer avec Wave
+                      <img 
+                        src="/wave-logo.png" 
+                        alt="Wave" 
+                        className="h-14 w-auto object-contain"
+                      />
+                      <span className="text-sm font-medium text-muted-foreground">Payer avec Wave</span>
                     </motion.button>
 
                     {/* Orange Money Button */}
                     <motion.button
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => handlePayment("orange-money")}
-                      className="w-full py-4 px-6 rounded-2xl font-bold text-white text-lg flex items-center justify-center gap-3 transition-all shadow-lg hover:shadow-xl"
-                      style={{ backgroundColor: "#FF7F00" }}
+                      className="p-6 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 transition-all hover:shadow-lg cursor-pointer"
                     >
-                      <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                        <span className="text-xl font-bold">OM</span>
-                      </div>
-                      Payer avec Orange Money
+                      <img 
+                        src="/om-logo.png" 
+                        alt="Orange Money" 
+                        className="h-14 w-auto object-contain"
+                      />
+                      <span className="text-sm font-medium text-muted-foreground">Orange Money</span>
                     </motion.button>
                   </div>
 
