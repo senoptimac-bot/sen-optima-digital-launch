@@ -1,13 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe, ChevronDown } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 const languages = [
-  { code: "fr", label: "Français", flag: "🇫🇷" },
-  { code: "en", label: "English", flag: "🇬🇧" },
-  { code: "zh", label: "中文", flag: "🇨🇳" },
-  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "fr", label: "Français", flag: "🇫🇷", googleCode: "fr" },
+  { code: "en", label: "English", flag: "🇬🇧", googleCode: "en" },
+  { code: "zh", label: "中文", flag: "🇨🇳", googleCode: "zh-CN" },
+  { code: "ru", label: "Русский", flag: "🇷🇺", googleCode: "ru" },
 ];
 
 interface LanguageSelectorProps {
@@ -15,12 +14,60 @@ interface LanguageSelectorProps {
   onSelect?: () => void;
 }
 
+// Google Translate helper functions
+const triggerGoogleTranslate = (langCode: string) => {
+  const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
+  if (select) {
+    select.value = langCode;
+    select.dispatchEvent(new Event("change"));
+  }
+};
+
 const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps) => {
-  const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const [currentLangCode, setCurrentLangCode] = useState(() => {
+    return localStorage.getItem("senoptima_lang") || "fr";
+  });
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const currentLang = languages.find((l) => l.code === i18n.language) || languages[0];
+  const currentLang = languages.find((l) => l.code === currentLangCode) || languages[0];
+
+  // Initialize Google Translate on mount
+  useEffect(() => {
+    // Check if script already exists
+    if (document.getElementById("google-translate-script")) return;
+
+    // Add Google Translate initialization function
+    (window as any).googleTranslateElementInit = () => {
+      new (window as any).google.translate.TranslateElement(
+        {
+          pageLanguage: "fr",
+          includedLanguages: "fr,en,zh-CN,ru",
+          autoDisplay: false,
+          layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
+        },
+        "google_translate_element"
+      );
+
+      // Apply saved language after initialization
+      setTimeout(() => {
+        const savedLang = localStorage.getItem("senoptima_lang");
+        if (savedLang && savedLang !== "fr") {
+          const lang = languages.find((l) => l.code === savedLang);
+          if (lang) {
+            triggerGoogleTranslate(lang.googleCode);
+          }
+        }
+      }, 1000);
+    };
+
+    // Add the script
+    const script = document.createElement("script");
+    script.id = "google-translate-script";
+    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -33,8 +80,30 @@ const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps)
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleSelect = (code: string) => {
-    i18n.changeLanguage(code);
+  const handleSelect = (lang: typeof languages[0]) => {
+    setCurrentLangCode(lang.code);
+    localStorage.setItem("senoptima_lang", lang.code);
+    
+    // Trigger Google Translate
+    if (lang.code === "fr") {
+      // Reset to French (original)
+      const frame = document.querySelector(".goog-te-banner-frame") as HTMLIFrameElement;
+      if (frame) {
+        const closeBtn = frame.contentDocument?.querySelector(".goog-close-link") as HTMLElement;
+        closeBtn?.click();
+      }
+      // Alternative: reload page without translation
+      const hostUrl = window.location.href;
+      const cleanUrl = hostUrl.replace(/#googtrans\([^)]+\)/g, "");
+      if (hostUrl !== cleanUrl) {
+        window.location.href = cleanUrl;
+      }
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      window.location.reload();
+    } else {
+      triggerGoogleTranslate(lang.googleCode);
+    }
+    
     setIsOpen(false);
     onSelect?.();
   };
@@ -45,9 +114,9 @@ const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps)
         {languages.map((lang) => (
           <button
             key={lang.code}
-            onClick={() => handleSelect(lang.code)}
+            onClick={() => handleSelect(lang)}
             className={`flex flex-col items-center gap-1.5 p-3 rounded-xl transition-colors ${
-              i18n.language === lang.code
+              currentLangCode === lang.code
                 ? "bg-accent/20 text-accent"
                 : "bg-white/5 text-foreground/70 hover:bg-accent/10 hover:text-accent"
             }`}
@@ -89,9 +158,9 @@ const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps)
             {languages.map((lang) => (
               <button
                 key={lang.code}
-                onClick={() => handleSelect(lang.code)}
+                onClick={() => handleSelect(lang)}
                 className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-colors ${
-                  i18n.language === lang.code
+                  currentLangCode === lang.code
                     ? "bg-accent/15 text-accent"
                     : "text-foreground/70 hover:bg-accent/10 hover:text-accent"
                 }`}
@@ -103,6 +172,9 @@ const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps)
           </motion.div>
         )}
       </AnimatePresence>
+      
+      {/* Hidden Google Translate element */}
+      <div id="google_translate_element" className="hidden" />
     </div>
   );
 };
