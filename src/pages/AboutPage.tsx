@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Quote, MapPin, Cpu, Globe, Rocket, Target, Zap, Heart, ArrowRight, Shield, Award } from "lucide-react";
 import fondateurPhoto from "@/assets/fondateur.png";
@@ -691,22 +692,23 @@ const AboutPage = () => {
             </p>
 
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Button
-                variant="cta"
-                size="lg"
-                onClick={() => setBookingOpen(true)}
-                className="text-lg px-10 py-6 h-auto"
-              >
-                Rejoindre le mouvement
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link to="/diagnostics">
+                <Button
+                  variant="cta"
+                  size="default"
+                  className="px-6"
+                >
+                  Rejoindre le mouvement
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
             </motion.div>
 
             <p className="text-sm text-muted-foreground mt-4">
-              Réservez un appel stratégique gratuit
+              Faites votre diagnostic digital gratuit
             </p>
           </motion.div>
         </div>
