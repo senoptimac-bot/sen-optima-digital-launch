@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import MarqueeSection from "@/components/MarqueeSection";
 import VisionarySection from "@/components/VisionarySection";
+import DiagnosticExpress from "@/components/DiagnosticExpress";
 import IdentitySection from "@/components/IdentitySection";
 import MirrorSection from "@/components/MirrorSection";
 import MethodSection from "@/components/MethodSection";
@@ -13,6 +14,7 @@ const Home = () => {
       <Hero />
       <MarqueeSection />
       <VisionarySection />
+      <DiagnosticExpress />
       <IdentitySection />
       <MirrorSection />
       <MethodSection />
