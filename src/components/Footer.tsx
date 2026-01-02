@@ -75,7 +75,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                   type="submit"
                   disabled={isLoading}
                   size="sm"
-                  className="h-10 px-5 bg-accent hover:bg-accent/90 text-accent-foreground font-medium rounded-lg"
+                  className="h-10 px-5 border border-white/30 bg-transparent hover:bg-accent hover:border-accent text-white hover:text-accent-foreground font-medium rounded-lg transition-all"
                 >
                   {isLoading ? (
                     <motion.span
@@ -101,7 +101,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
             <span key={link.href} className="flex items-center">
               <Link
                 to={link.href}
-                className="text-xs text-white/60 hover:text-accent transition-colors font-light"
+                className="text-xs text-white/70 hover:text-accent transition-colors font-light"
               >
                 {link.label}
               </Link>

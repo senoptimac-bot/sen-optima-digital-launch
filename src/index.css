@@ -134,17 +134,17 @@
     background-image: var(--gradient-hero);
   }
 
-  /* Glassmorphism - Smoked Black Glass */
+  /* Glassmorphism - Cristal Noir */
   .glass {
-    @apply bg-black/50 border border-white/5;
+    @apply bg-black/50 border border-white/10;
   }
 
   .glass-card {
-    @apply bg-black/40 border border-white/5;
+    @apply bg-black/40 border border-white/10;
   }
 
   .glass-premium {
-    @apply bg-black/50 border border-accent/20;
+    @apply bg-black/50 border border-white/10;
   }
 
   /* Enable blur only on desktop for performance */

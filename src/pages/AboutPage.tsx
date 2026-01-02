@@ -31,32 +31,20 @@ const AboutPage = () => {
   return (
     <>
       {/* Hero Section - L'Ambition */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden bg-gradient-hero">
-        {/* Background Pattern - Fusion Tradition/Modernité */}
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden">
+        {/* Background Image - President/Vision */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Circuit Pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(212,167,59,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,167,59,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
+          <img 
+            src={presidentPhoto} 
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-center grayscale opacity-20 blur-sm"
+          />
+          {/* Dark overlay with vignette */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A3A]/95 via-[#0A1A3A]/85 to-[#0A1A3A]/95" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#0A1A3A_80%)]" />
           
-          {/* African Pattern Overlay */}
-          <svg className="absolute inset-0 w-full h-full opacity-[0.03] dark:opacity-[0.05]" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <pattern id="africanPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-accent" />
-              <circle cx="10" cy="10" r="3" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-accent" />
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#africanPattern)" />
-          </svg>
-
-          {/* Gradient Orbs */}
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 right-1/4 w-96 h-96 rounded-full bg-accent/20 blur-3xl"
-          />
-          <motion.div
-            animate={{ scale: [1.2, 1, 1.2], opacity: [0.08, 0.12, 0.08] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-primary/20 blur-3xl"
-          />
+          {/* Circuit Pattern - subtle */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
         </div>
         
         <div className="container relative z-10">
@@ -76,14 +64,14 @@ const AboutPage = () => {
               Notre Mission
             </motion.span>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-8 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-8 leading-tight">
               Plus qu'un cabinet.{" "}
               <span className="text-gradient-gold block mt-2">Une vision pour le Sénégal numérique.</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-3xl mx-auto">
               Nous ne sommes pas là pour vendre du rêve, mais pour{" "}
-              <span className="text-foreground font-medium">bâtir l'économie numérique de demain</span>, 
+              <span className="text-white font-medium">bâtir l'économie numérique de demain</span>, 
               entrepreneur par entrepreneur.
             </p>
 
@@ -133,15 +121,15 @@ const AboutPage = () => {
                 Notre Histoire
               </span>
 
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-8">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-8">
                 Le Constat <span className="text-gradient-gold">d'Urgence</span>
               </h2>
 
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
                 <p>
                   Tout est parti d'une observation frustrante. Nous voyions quotidiennement des{" "}
-                  <span className="text-foreground font-medium">jeunes brillants</span> et des{" "}
-                  <span className="text-foreground font-medium">entrepreneurs passionnés</span> échouer.
+                  <span className="text-white font-medium">jeunes brillants</span> et des{" "}
+                  <span className="text-white font-medium">entrepreneurs passionnés</span> échouer.
                 </p>
                 <p>
                   Non pas par manque de talent, mais par <span className="text-accent font-semibold">manque d'outils</span>.
@@ -283,10 +271,10 @@ const AboutPage = () => {
             <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-6">
               Notre Différence
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-6">
               L'Adaptation <span className="text-gradient-gold">Locale</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Ce qui nous distingue des consultants "copier-coller".
             </p>
           </motion.div>
@@ -311,11 +299,11 @@ const AboutPage = () => {
                   <card.icon className="w-7 h-7 text-accent-foreground" />
                 </motion.div>
 
-                <h3 className="text-xl font-heading font-bold text-foreground mb-4">
+                <h3 className="text-xl font-heading font-bold text-white mb-4">
                   {card.title}
                 </h3>
 
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-gray-400 leading-relaxed">
                   {card.description}
                 </p>
 
@@ -382,15 +370,15 @@ const AboutPage = () => {
               Patriotisme Économique
             </motion.span>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-8">
               Vision <span className="text-gradient-gold">Sénégal 2050</span>
             </h2>
 
             <div className="relative p-8 md:p-12 rounded-3xl glass-premium">
-              <Quote className="w-10 h-10 text-accent/30 absolute top-6 left-6" />
+              <Quote className="w-10 h-10 text-white/20 absolute top-6 left-6" />
               
               <p 
-                className="text-xl md:text-2xl text-foreground leading-relaxed mb-8 italic"
+                className="text-xl md:text-2xl text-white leading-relaxed mb-8 italic"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
                 "Nous sommes les artisans du{" "}
@@ -398,7 +386,7 @@ const AboutPage = () => {
               </p>
 
               <div 
-                className="space-y-6 text-lg text-muted-foreground leading-relaxed text-left md:text-center"
+                className="space-y-6 text-lg text-gray-300 leading-relaxed text-left md:text-center"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
                 <p>
@@ -408,7 +396,7 @@ const AboutPage = () => {
                   nous faisons du Sénégal un{" "}
                   <span className="text-accent font-bold">Pôle d'Excellence</span> technologique.
                 </p>
-                <p className="text-foreground font-medium text-xl pt-6 border-t border-accent/20">
+                <p className="text-white font-medium text-xl pt-6 border-t border-white/10">
                   Chaque entreprise que nous accompagnons est un moteur de progrès social 
                   et de compétitivité pour notre économie nationale.
                 </p>
@@ -440,7 +428,7 @@ const AboutPage = () => {
               <Award className="w-4 h-4" />
               Vision & Souveraineté
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white">
               Le <span className="text-gradient-gold">New Deal Technologique</span>
             </h2>
           </motion.div>
@@ -573,7 +561,7 @@ const AboutPage = () => {
             <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
               Le Fondateur
             </span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">
               L'Homme Derrière la <span className="text-gradient-gold">Vision</span>
             </h2>
           </motion.div>
@@ -603,19 +591,19 @@ const AboutPage = () => {
 
                 {/* Bio & Storytelling */}
                 <div className="text-center md:text-left flex-1">
-                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-1">
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-white mb-1">
                     Mandiaye Sylla
                   </h3>
                   <p className="text-accent font-semibold text-lg mb-2">
                     Fondateur & Stratège Principal
                   </p>
-                  <p className="text-sm text-muted-foreground italic mb-8">
+                  <p className="text-sm text-gray-400 italic mb-8">
                     Architecte de Systèmes & Visionnaire Digital
                   </p>
 
                   {/* Le Pourquoi */}
                   <div className="space-y-6 leading-loose">
-                    <p className="text-foreground text-lg">
+                    <p className="text-white text-lg">
                       Mon parcours m'a montré une réalité frappante au Sénégal : nous avons une{" "}
                       <span className="text-accent font-semibold">ambition débordante</span> et un{" "}
                       <span className="text-accent font-semibold">talent brut immense</span>, mais nos structures 
@@ -624,17 +612,17 @@ const AboutPage = () => {
                     </p>
 
                     {/* La Mission */}
-                    <p className="text-muted-foreground text-lg">
+                    <p className="text-gray-300 text-lg">
                       Ce qui m'anime chaque matin, c'est de voir une activité informelle se transformer 
                       en une entreprise digitale solide, prévisible et hautement rentable. Mon engagement 
                       est de mettre la{" "}
-                      <span className="text-foreground font-medium">rigueur du conseil de haut niveau</span> au 
+                      <span className="text-white font-medium">rigueur du conseil de haut niveau</span> au 
                       service de chaque entrepreneur qui ose rêver grand pour notre nation.
                     </p>
                   </div>
 
                   {/* Signature manuscrite */}
-                  <div className="mt-10 pt-6 border-t border-border/30">
+                  <div className="mt-10 pt-6 border-t border-white/10">
                     <svg 
                       viewBox="0 0 200 60" 
                       className="w-40 h-auto mx-auto md:mx-0"
@@ -661,7 +649,7 @@ const AboutPage = () => {
 
                   {/* Localisation */}
                   <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-6">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm text-gray-400">
                       <MapPin className="w-4 h-4 text-accent" />
                       <span>Grand Mbao, Dakar</span>
                     </div>
@@ -684,10 +672,10 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white mb-6">
               Vous partagez cette <span className="text-gradient-gold">vision</span> ?
             </h2>
-            <p className="text-xl text-muted-foreground mb-10">
+            <p className="text-xl text-gray-300 mb-10">
               Construisons votre avenir ensemble.
             </p>
 
@@ -707,7 +695,7 @@ const AboutPage = () => {
               </Link>
             </motion.div>
 
-            <p className="text-sm text-muted-foreground mt-4">
+            <p className="text-sm text-gray-400 mt-4">
               Faites votre diagnostic digital gratuit
             </p>
           </motion.div>
