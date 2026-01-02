@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Box, Boxes } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const VisionarySection = () => {
   return (
@@ -43,6 +44,14 @@ const VisionarySection = () => {
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Nous transformons le potentiel brut du marché sénégalais en réussite organisée et pérenne.
               </p>
+
+              {/* CTA Button */}
+              <Link
+                to="/a-propos"
+                className="inline-flex items-center mt-6 px-6 py-3 text-sm font-medium text-accent border border-accent/50 bg-transparent hover:bg-accent/10 hover:border-accent transition-all duration-300 rounded-sm"
+              >
+                Découvrir notre histoire
+              </Link>
 
               {/* Decorative Line */}
               <div className="mt-8 h-px bg-gradient-to-r from-accent via-accent/50 to-transparent" />
