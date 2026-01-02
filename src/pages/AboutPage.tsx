@@ -390,17 +390,18 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Engagement National - Vision 2050 */}
+      {/* Vision & Souveraineté - New Deal Technologique */}
       <section className="py-20 md:py-28 relative overflow-hidden">
-        {/* Dark Glass Background */}
-        <div className="absolute inset-0 bg-[#050E22]/95" />
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/3" />
+        {/* Dark Background with golden border */}
+        <div className="absolute inset-0 bg-[#030912]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/3 via-transparent to-accent/5" />
         
-        {/* Subtle border lines */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+        {/* Golden border lines */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
         <div className="container relative z-10">
+          {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -409,25 +410,25 @@ const AboutPage = () => {
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-6">
               <Award className="w-4 h-4" />
-              Aligné sur les Objectifs Nationaux
+              Vision & Souveraineté
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
-              Notre Engagement pour le <span className="text-gradient-gold">Sénégal</span>
+              Le <span className="text-gradient-gold">New Deal Technologique</span>
             </h2>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-            {/* Photo du Président */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
+            {/* Colonne Gauche - Portrait du Président */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="flex justify-center lg:justify-end"
+              className="flex flex-col items-center lg:items-center order-first"
             >
               <div className="relative">
                 {/* Cadre élégant avec bordure dorée */}
-                <div className="relative p-1.5 rounded-2xl bg-gradient-to-br from-accent via-accent/60 to-accent shadow-gold">
+                <div className="relative p-1 rounded-2xl bg-gradient-to-br from-accent via-accent/50 to-accent shadow-gold">
                   <div className="rounded-xl overflow-hidden bg-[#0A1628]">
                     <img 
                       src={presidentPhoto} 
@@ -439,20 +440,16 @@ const AboutPage = () => {
                 
                 {/* Glow effect */}
                 <div className="absolute -inset-4 bg-accent/10 blur-2xl -z-10 rounded-3xl" />
-                
-                {/* Caption */}
-                <div className="text-center mt-4">
-                  <p className="font-heading font-semibold text-foreground text-sm">
-                    S.E. M. Bassirou Diomaye Diakhar FAYE
-                  </p>
-                  <p className="text-muted-foreground text-xs">
-                    Président de la République du Sénégal
-                  </p>
-                </div>
               </div>
+              
+              {/* Caption italique */}
+              <p className="mt-6 text-center italic text-muted-foreground text-sm max-w-xs" style={{ fontFamily: "'Playfair Display', serif" }}>
+                S.E.M. Bassirou Diomaye Faye,<br />
+                Président de la République du Sénégal
+              </p>
             </motion.div>
 
-            {/* Texte Stratégique */}
+            {/* Colonne Droite - Citation & Alignement */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -460,51 +457,73 @@ const AboutPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-left"
             >
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-gradient-gold mb-8 leading-tight">
-                Contribuer à l'Éveil National : Horizon 2050
-              </h3>
+              {/* Citation Présidentielle */}
+              <div className="relative mb-10">
+                {/* Guillemets dorés imposants */}
+                <span 
+                  className="absolute -top-4 -left-2 text-6xl md:text-7xl text-accent/40 font-serif leading-none select-none"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  "
+                </span>
+                
+                <blockquote 
+                  className="pl-8 pr-4 py-4 text-lg md:text-xl text-foreground leading-relaxed italic"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  Le Sénégal s'engage résolument sur la voie d'une nouvelle ère où le numérique se révèle être le moteur d'un développement inclusif et durable... J'ai lancé le{" "}
+                  <span className="text-accent font-semibold not-italic">« New Deal Technologique »</span>, une initiative audacieuse qui renforce la souveraineté numérique du Sénégal.
+                </blockquote>
 
-              <div className="space-y-6 text-lg leading-relaxed">
-                <p className="text-muted-foreground">
-                  Chez Sen'Optima, notre vision est intrinsèquement liée aux ambitions du Chef de l'État pour un{" "}
-                  <span className="text-foreground font-medium">Sénégal souverain, juste et prospère</span>.
-                </p>
-
-                <p className="text-muted-foreground">
-                  En ligne avec les orientations de la{" "}
-                  <span className="text-accent font-semibold">Vision Sénégal 2050</span>, nous nous engageons à 
-                  transformer l'économie nationale par la structuration des entreprises et l'accélération technologique.
-                </p>
-
-                <p className="text-foreground font-medium border-l-4 border-accent pl-6 py-2 bg-accent/5 rounded-r-lg" style={{ fontFamily: "'Playfair Display', serif" }}>
-                  Notre mission est de bâtir des structures solides capables de soutenir les pôles de croissance nationaux, 
-                  garantissant ainsi que l'ambition de notre nation repose sur une base organisationnelle d'excellence.
-                </p>
+                {/* Guillemet fermant */}
+                <span 
+                  className="absolute -bottom-8 right-4 text-6xl md:text-7xl text-accent/40 font-serif leading-none select-none"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  "
+                </span>
               </div>
 
-              {/* Badge & CTA */}
-              <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button
-                    variant="cta"
-                    size="lg"
-                    onClick={() => setBookingOpen(true)}
-                    className="text-base"
-                  >
-                    Découvrir nos solutions
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </motion.div>
+              {/* Séparateur doré */}
+              <div className="my-10 h-px bg-gradient-to-r from-accent/60 via-accent to-accent/60 max-w-xs" />
 
-                {/* Badge discret */}
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 bg-accent/5">
-                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                  <span className="text-xs text-accent font-medium uppercase tracking-wider">
-                    Champions Nationaux
-                  </span>
+              {/* Notre Rôle dans le New Deal */}
+              <div>
+                <h3 className="text-xl md:text-2xl font-heading font-bold text-gradient-gold mb-6">
+                  Notre Rôle dans le New Deal
+                </h3>
+
+                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  <span className="text-foreground font-semibold">Sen'Optima Consulting</span> se fait l'écho de cette ambition nationale. 
+                  Nous transformons cette vision en réalité opérationnelle pour les entrepreneurs sénégalais. 
+                  En structurant les PME et en digitalisant leurs processus, nous bâtissons l'écosystème dynamique 
+                  et compétitif voulu par le Chef de l'État pour l'horizon 2050.
+                </p>
+
+                {/* Badge & CTA */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button
+                      variant="cta"
+                      size="lg"
+                      onClick={() => setBookingOpen(true)}
+                      className="text-base"
+                    >
+                      Découvrir nos solutions
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </motion.div>
+
+                  {/* Badge discret */}
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 bg-accent/5">
+                    <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    <span className="text-xs text-accent font-medium uppercase tracking-wider">
+                      Champions Nationaux
+                    </span>
+                  </div>
                 </div>
               </div>
             </motion.div>
