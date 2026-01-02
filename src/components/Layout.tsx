@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import NewsletterSection from "./NewsletterSection";
 import WhatsAppButton from "./WhatsAppButton";
 import AmbientBackground from "./AmbientBackground";
 
@@ -23,6 +24,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main className="min-h-screen bg-transparent relative z-0 overflow-x-hidden">
         <Header />
         {children}
+        <NewsletterSection />
         <Footer />
         <WhatsAppButton />
       </main>
