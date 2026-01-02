@@ -16,6 +16,11 @@ export default {
       fontFamily: {
         heading: ["Inter", "system-ui", "sans-serif"],
         body: ["Nunito Sans", "system-ui", "sans-serif"],
+        editorial: ["Inter", "system-ui", "sans-serif"],
+      },
+      letterSpacing: {
+        tighter: "-0.05em",
+        editorial: "-0.03em",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -87,6 +92,14 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "drift-in": {
+          from: { opacity: "0", transform: "translateY(40px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "drift-in-slow": {
+          from: { opacity: "0", transform: "translateY(60px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
         "fade-in": {
           from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
@@ -119,10 +132,16 @@ export default {
           "0%, 100%": { opacity: "0.5" },
           "50%": { opacity: "1" },
         },
+        "parallax-slow": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-20px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "drift-in": "drift-in 1s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "drift-in-slow": "drift-in-slow 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         "fade-in": "fade-in 0.6s ease-out forwards",
         "fade-in-up": "fade-in-up 0.7s ease-out forwards",
         "slide-in-right": "slide-in-right 0.5s ease-out forwards",
