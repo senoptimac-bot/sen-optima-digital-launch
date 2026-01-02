@@ -13,10 +13,8 @@ const VisionarySection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative max-w-4xl mx-auto"
         >
-          {/* Glass Card - optimized */}
-          <div className="relative glass-premium rounded-3xl p-8 md:p-12 border border-accent/30 overflow-hidden">
-            {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/10 pointer-events-none" />
+          {/* Glass Card - Cristal Noir */}
+          <div className="relative glass-premium rounded-3xl p-8 md:p-12 overflow-hidden">
             
             {/* Static Icon - desktop only */}
             <div className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 opacity-20">

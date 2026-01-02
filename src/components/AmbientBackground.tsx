@@ -1,19 +1,26 @@
 const AmbientBackground = () => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Simple gradient background - optimized for mobile */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0A1A3A] via-[#071428] to-[#000000]" />
+      {/* Unified Deep Midnight Blue background */}
+      <div className="absolute inset-0 bg-[#050E1D]" />
       
-      {/* Static orbs for desktop only - no animation for performance */}
-      <div className="hidden md:block absolute w-[600px] h-[600px] rounded-full bg-[#0A1A3A] opacity-40 -top-[10%] -left-[10%]" 
-        style={{ filter: 'blur(100px)' }} 
+      {/* Subtle radial gradient for depth */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'radial-gradient(ellipse 120% 80% at 50% 0%, rgba(10, 26, 58, 0.8) 0%, transparent 60%)'
+        }}
       />
-      <div className="hidden md:block absolute w-[400px] h-[400px] rounded-full bg-[#D4A73B] opacity-15 top-[30%] -right-[5%]"
-        style={{ filter: 'blur(80px)' }} 
-      />
-      <div className="hidden md:block absolute w-[500px] h-[500px] rounded-full bg-[#1a3a5c] opacity-30 -bottom-[15%] left-[20%]"
-        style={{ filter: 'blur(90px)' }} 
-      />
+      
+      {/* Very subtle organic texture - desktop only */}
+      <div className="hidden md:block absolute inset-0 opacity-[0.015]">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <filter id="noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/>
+          </filter>
+          <rect width="100%" height="100%" filter="url(#noise)"/>
+        </svg>
+      </div>
     </div>
   );
 };

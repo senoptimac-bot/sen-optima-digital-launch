@@ -5,36 +5,36 @@
 @layer base {
   :root,
   .dark {
-    /* Sen'Optima Brand Colors - Dark Mode Only (#0A1A3A base) */
-    --background: 218 71% 8%;
-    --foreground: 40 20% 95%;
+    /* Sen'Optima Brand Colors - Unified Deep Midnight Blue */
+    --background: 220 80% 5%;
+    --foreground: 0 0% 100%;
 
-    --card: 218 60% 12%;
-    --card-foreground: 40 20% 95%;
+    --card: 220 60% 8%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 218 60% 12%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 220 60% 8%;
+    --popover-foreground: 0 0% 100%;
 
     /* Primary - Gold for contrast */
     --primary: 43 65% 53%;
-    --primary-foreground: 218 71% 8%;
+    --primary-foreground: 220 80% 5%;
 
     /* Secondary */
-    --secondary: 218 50% 16%;
-    --secondary-foreground: 40 20% 95%;
+    --secondary: 220 50% 12%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 218 50% 16%;
-    --muted-foreground: 220 20% 60%;
+    --muted: 220 50% 12%;
+    --muted-foreground: 0 0% 70%;
 
     /* Accent - Matte Gold (#D4A73B) */
     --accent: 43 65% 53%;
-    --accent-foreground: 218 71% 8%;
+    --accent-foreground: 220 80% 5%;
 
     --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 218 50% 20%;
-    --input: 218 50% 20%;
+    --border: 220 50% 15%;
+    --input: 220 50% 15%;
     --ring: 43 65% 53%;
 
     --radius: 0.75rem;
@@ -43,34 +43,34 @@
     --gold: 43 65% 53%;
     --gold-light: 43 65% 63%;
     --gold-dark: 43 65% 43%;
-    --deep-blue: 218 71% 13%;
-    --light-gray: 220 14% 96%;
+    --deep-blue: 220 80% 8%;
+    --light-gray: 0 0% 90%;
     --off-white: 0 0% 100%;
 
-    /* Glass effect tokens */
-    --glass-bg: 218 71% 13% / 0.6;
-    --glass-border: 218 50% 30% / 0.3;
+    /* Glass effect tokens - Cristal Noir */
+    --glass-bg: 0 0% 0% / 0.4;
+    --glass-border: 0 0% 100% / 0.05;
 
     /* Gradients */
     --gradient-gold: linear-gradient(135deg, hsl(43 65% 53%), hsl(43 65% 43%));
-    --gradient-blue: linear-gradient(135deg, hsl(218 71% 13%), hsl(218 71% 20%));
-    --gradient-hero: linear-gradient(135deg, hsl(218 71% 6%), hsl(218 71% 12%), hsl(218 71% 8%));
+    --gradient-blue: linear-gradient(135deg, hsl(220 80% 5%), hsl(220 80% 10%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 80% 4%), hsl(220 80% 6%), hsl(220 80% 5%));
     
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.5);
     --shadow-gold: 0 4px 30px -4px hsl(43 65% 53% / 0.3);
-    --shadow-card: 0 2px 20px -4px hsl(0 0% 0% / 0.2);
-    --shadow-hover: 0 8px 40px -8px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 2px 20px -4px hsl(0 0% 0% / 0.4);
+    --shadow-hover: 0 8px 40px -8px hsl(0 0% 0% / 0.5);
     --shadow-glow: 0 4px 30px -4px hsl(43 65% 53% / 0.2);
 
     /* Sidebar */
-    --sidebar-background: 218 71% 10%;
-    --sidebar-foreground: 40 20% 95%;
+    --sidebar-background: 220 80% 6%;
+    --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 43 65% 53%;
-    --sidebar-primary-foreground: 218 71% 8%;
+    --sidebar-primary-foreground: 220 80% 5%;
     --sidebar-accent: 43 65% 53%;
-    --sidebar-accent-foreground: 218 71% 8%;
-    --sidebar-border: 218 50% 20%;
+    --sidebar-accent-foreground: 220 80% 5%;
+    --sidebar-border: 220 50% 15%;
     --sidebar-ring: 43 65% 53%;
   }
 }
@@ -134,29 +134,29 @@
     background-image: var(--gradient-hero);
   }
 
-  /* Glassmorphism - Cristal Noir */
+  /* Glassmorphism - Cristal Noir avec bordures blanches ultra-fines */
   .glass {
-    @apply bg-black/50 border border-white/10;
+    @apply bg-black/40 border border-white/5;
   }
 
   .glass-card {
-    @apply bg-black/40 border border-white/10;
+    @apply bg-black/40 border border-white/5;
   }
 
   .glass-premium {
-    @apply bg-black/50 border border-white/10;
+    @apply bg-black/50 border border-white/5;
   }
 
   /* Enable blur only on desktop for performance */
   @media (min-width: 768px) {
     .glass {
-      @apply backdrop-blur-xl bg-black/40;
+      @apply backdrop-blur-xl bg-black/35;
     }
     .glass-card {
       @apply backdrop-blur-xl bg-black/35;
     }
     .glass-premium {
-      @apply backdrop-blur-2xl bg-black/45;
+      @apply backdrop-blur-2xl bg-black/40;
     }
   }
 

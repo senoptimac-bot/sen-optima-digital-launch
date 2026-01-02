@@ -326,8 +326,8 @@ const ServicesPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden py-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5" />
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden py-20 pt-32">
+        <div className="absolute inset-0 bg-transparent" />
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
@@ -462,7 +462,7 @@ const ServicesPage = () => {
 
       {/* Before / After Section */}
       <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        <div className="absolute inset-0 bg-transparent" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             className="text-center mb-12"
