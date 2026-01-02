@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Quote, User, MapPin, Cpu, Globe, Rocket, Target, Zap, Heart, ArrowRight, Shield } from "lucide-react";
+import { Quote, MapPin, Cpu, Globe, Rocket, Target, Zap, Heart, ArrowRight, Shield } from "lucide-react";
+import fondateurPhoto from "@/assets/fondateur.png";
 import { Button } from "@/components/ui/button";
 import BookingModal from "@/components/BookingModal";
 
@@ -413,16 +414,18 @@ const AboutPage = () => {
           >
             <div className="p-8 md:p-12 rounded-3xl glass-premium">
               <div className="flex flex-col md:flex-row gap-8 items-center">
-                {/* Photo Placeholder */}
+                {/* Photo du Fondateur */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   className="relative"
                 >
-                  <div className="w-44 h-44 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 flex items-center justify-center ring-4 ring-accent/20">
-                    <User className="w-20 h-20 text-accent/60" />
-                  </div>
+                  <img 
+                    src={fondateurPhoto} 
+                    alt="Mandiaye Sylla - Fondateur de Sen'Optima" 
+                    className="w-44 h-44 rounded-full object-cover object-top ring-4 ring-accent/30"
+                  />
                   {/* Glow */}
-                  <div className="absolute -inset-2 rounded-full bg-accent/10 blur-xl -z-10" />
+                  <div className="absolute -inset-2 rounded-full bg-accent/20 blur-xl -z-10" />
                 </motion.div>
 
                 {/* Bio */}
