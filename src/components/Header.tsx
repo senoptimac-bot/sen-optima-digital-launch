@@ -3,22 +3,25 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.svg";
-
-const navLinks = [
-  { label: "Accueil", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Diagnostics", href: "/diagnostics" },
-  { label: "À Propos", href: "/a-propos" },
-  { label: "Contact", href: "/contact" },
-];
+import LanguageSelector from "./LanguageSelector";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
   
   const phoneNumber = "+221781926969";
+
+  const navLinks = [
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.services"), href: "/services" },
+    { label: t("nav.diagnostics"), href: "/diagnostics" },
+    { label: t("nav.about"), href: "/a-propos" },
+    { label: t("nav.contact"), href: "/contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,6 +97,10 @@ const Header = () => {
 
             {/* Right side */}
             <div className="flex items-center gap-3">
+              {/* Language Selector - Desktop */}
+              <div className="hidden lg:block">
+                <LanguageSelector />
+              </div>
 
               {/* CTA Button - Desktop */}
               <motion.div
@@ -105,7 +112,7 @@ const Header = () => {
                 <Button variant="cta" size="sm" className="gap-2" asChild>
                   <a href={`tel:${phoneNumber}`}>
                     <Phone className="w-4 h-4" />
-                    Appeler un expert
+                    {t("header.callExpert")}
                   </a>
                 </Button>
               </motion.div>
@@ -148,6 +155,11 @@ const Header = () => {
                 {/* Handle */}
                 <div className="w-12 h-1.5 bg-foreground/20 rounded-full mx-auto mb-6" />
 
+                {/* Language Selector - Mobile */}
+                <div className="mb-6">
+                  <LanguageSelector isMobile onSelect={() => setIsOpen(false)} />
+                </div>
+
                 {/* Nav Links */}
                 <ul className="space-y-2 mb-6">
                   {navLinks.map((link, index) => (
@@ -180,7 +192,7 @@ const Header = () => {
                 >
                   <a href={`tel:${phoneNumber}`} onClick={() => setIsOpen(false)}>
                     <Phone className="w-5 h-5" />
-                    Appeler un expert
+                    {t("header.callExpert")}
                   </a>
                 </Button>
               </div>

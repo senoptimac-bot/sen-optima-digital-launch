@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Главная",
+    "services": "Услуги",
+    "diagnostics": "Диагностика",
+    "about": "О нас",
+    "contact": "Контакты"
+  },
+  "header": {
+    "callExpert": "Позвонить эксперту"
+  },
+  "footer": {
+    "joinCircle": "Присоединиться к кругу Sen'Optima",
+    "emailPlaceholder": "Ваш email",
+    "join": "Присоединиться",
+    "thanks": "Спасибо за доверие!",
+    "copyright": "© 2026 Sen'Optima Consulting. Превосходство через структуру."
+  },
+  "common": {
+    "learnMore": "Узнать больше",
+    "discoverSolutions": "Открыть наши решения"
+  }
+}
