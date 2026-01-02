@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "首页",
+    "services": "服务",
+    "diagnostics": "诊断",
+    "about": "关于我们",
+    "contact": "联系"
+  },
+  "header": {
+    "callExpert": "联系专家"
+  },
+  "footer": {
+    "joinCircle": "加入Sen'Optima圈子",
+    "emailPlaceholder": "您的电子邮箱",
+    "join": "加入",
+    "thanks": "感谢您的信任！",
+    "copyright": "© 2026 Sen'Optima Consulting。结构成就卓越。"
+  },
+  "common": {
+    "learnMore": "了解更多",
+    "discoverSolutions": "发现我们的解决方案"
+  }
+}
