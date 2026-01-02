@@ -342,12 +342,34 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center"
           >
-            {/* Flag Colors Accent */}
-            <div className="flex justify-center gap-2 mb-8">
-              <div className="w-4 h-12 rounded-full bg-[#00853F]" />
-              <div className="w-4 h-12 rounded-full bg-[#FDEF42]" />
-              <div className="w-4 h-12 rounded-full bg-[#E31B23]" />
-            </div>
+            {/* Drapeau du Sénégal - Cercle moderne */}
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex justify-center mb-10"
+            >
+              <div className="relative">
+                {/* Glow effect */}
+                <div className="absolute -inset-4 bg-accent/20 blur-2xl rounded-full" />
+                
+                {/* Drapeau circulaire */}
+                <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-xl ring-2 ring-accent/30">
+                  {/* Bandes du drapeau */}
+                  <div className="absolute inset-0 flex">
+                    <div className="w-1/3 h-full bg-[#00853F]" />
+                    <div className="w-1/3 h-full bg-[#FDEF42] flex items-center justify-center">
+                      {/* Étoile verte */}
+                      <svg viewBox="0 0 24 24" className="w-8 h-8 md:w-10 md:h-10 text-[#00853F] fill-current">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    </div>
+                    <div className="w-1/3 h-full bg-[#E31B23]" />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
             <motion.span
               initial={{ opacity: 0 }}
@@ -366,23 +388,28 @@ const AboutPage = () => {
             <div className="relative p-8 md:p-12 rounded-3xl glass-premium">
               <Quote className="w-10 h-10 text-accent/30 absolute top-6 left-6" />
               
-              <p className="text-xl md:text-2xl text-foreground leading-relaxed mb-8 italic">
-                "Nous sommes des <span className="text-gradient-gold font-bold">patriotes numériques</span>."
+              <p 
+                className="text-xl md:text-2xl text-foreground leading-relaxed mb-8 italic"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                "Nous sommes les artisans du{" "}
+                <span className="text-gradient-gold font-bold not-italic">New Deal Technologique</span>."
               </p>
 
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-left md:text-center">
+              <div 
+                className="space-y-6 text-lg text-muted-foreground leading-relaxed text-left md:text-center"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
                 <p>
-                  Notre mission s'aligne directement sur la vision{" "}
-                  <span className="text-foreground font-semibold">Sénégal 2050</span> du gouvernement : 
-                  démocratiser l'accès au savoir et à la technologie.
-                </p>
-                <p>
-                  Chaque entrepreneur que nous digitalisons est une{" "}
-                  <span className="text-accent font-semibold">brique de plus</span> dans la souveraineté numérique de notre pays.
+                  Notre mission s'inscrit au cœur de l'Agenda National de Transformation. 
+                  En structurant les PME et en bâtissant une{" "}
+                  <span className="text-accent font-bold">Souveraineté Numérique</span> solide, 
+                  nous faisons du Sénégal un{" "}
+                  <span className="text-accent font-bold">Pôle d'Excellence</span> technologique.
                 </p>
                 <p className="text-foreground font-medium text-xl pt-6 border-t border-accent/20">
-                  Nous voulons que le Sénégal ne soit pas juste <span className="line-through opacity-50">consommateur</span>,{" "}
-                  mais <span className="text-gradient-gold">acteur</span> de la révolution digitale.
+                  Chaque entreprise que nous accompagnons est un moteur de progrès social 
+                  et de compétitivité pour notre économie nationale.
                 </p>
               </div>
             </div>
