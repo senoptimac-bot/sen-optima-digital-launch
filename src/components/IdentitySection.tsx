@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { XCircle, CheckCircle } from "lucide-react";
+import { XCircle, CheckCircle, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const IdentitySection = () => {
   return (
@@ -72,6 +73,23 @@ const IdentitySection = () => {
             </p>
           </motion.div>
         </div>
+
+        {/* CTA Button - centered */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex justify-center mt-12"
+        >
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 px-8 py-4 text-sm font-medium text-accent border border-accent/50 bg-transparent hover:bg-accent/10 hover:border-accent transition-all duration-300 rounded-sm group"
+          >
+            Explorer nos solutions stratégiques
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
