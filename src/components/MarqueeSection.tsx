@@ -18,20 +18,20 @@ const MarqueeSection = () => {
           {marqueeContent.map((word, index) => (
             <span
               key={index}
-              className="marquee-item flex-shrink-0 text-xs md:text-sm uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium text-accent/80 whitespace-nowrap"
+              className="marquee-item flex-shrink-0 text-xs md:text-sm uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium text-white whitespace-nowrap"
             >
               {word}
-              <span className="mx-4 md:mx-8 text-accent/40">•</span>
+              <span className="mx-4 md:mx-8 text-white/40">•</span>
             </span>
           ))}
           {/* Duplicate for seamless loop */}
           {marqueeContent.map((word, index) => (
             <span
               key={`dup-${index}`}
-              className="marquee-item flex-shrink-0 text-xs md:text-sm uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium text-accent/80 whitespace-nowrap"
+              className="marquee-item flex-shrink-0 text-xs md:text-sm uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium text-white whitespace-nowrap"
             >
               {word}
-              <span className="mx-4 md:mx-8 text-accent/40">•</span>
+              <span className="mx-4 md:mx-8 text-white/40">•</span>
             </span>
           ))}
         </div>
