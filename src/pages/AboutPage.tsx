@@ -260,7 +260,7 @@ const AboutPage = () => {
       </section>
 
       {/* Notre Philosophie - L'Adaptation Locale */}
-      <section className="py-20 md:py-28 relative bg-secondary/10">
+      <section className="py-20 md:py-28 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -317,12 +317,8 @@ const AboutPage = () => {
 
       {/* Vision Sénégal 2050 - Patriotisme Économique */}
       <section className="py-20 md:py-28 relative overflow-hidden">
-        {/* Background doré subtil */}
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/3" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,167,59,0.08),transparent_70%)]" />
-        
-        {/* Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(212,167,59,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(212,167,59,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        {/* Subtle grid pattern only */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
         <div className="container relative z-10">
           <motion.div
@@ -408,13 +404,12 @@ const AboutPage = () => {
 
       {/* Vision & Souveraineté - New Deal Technologique */}
       <section className="py-20 md:py-28 relative overflow-hidden">
-        {/* Dark Background with golden border */}
-        <div className="absolute inset-0 bg-[#030912]" />
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/3 via-transparent to-accent/5" />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:50px_50px]" />
         
         {/* Golden border lines */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
         <div className="container relative z-10">
           {/* Section Header */}
@@ -550,7 +545,7 @@ const AboutPage = () => {
       </section>
 
       {/* Le Fondateur */}
-      <section className="py-24 md:py-32 relative bg-secondary/30 dark:bg-secondary/10">
+      <section className="py-24 md:py-32 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -663,7 +658,6 @@ const AboutPage = () => {
 
       {/* CTA Final */}
       <section className="py-20 md:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-accent/5 to-transparent" />
         
         <div className="container relative z-10">
           <motion.div

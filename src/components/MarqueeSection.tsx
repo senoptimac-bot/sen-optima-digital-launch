@@ -11,7 +11,7 @@ const MarqueeSection = () => {
   const marqueeContent = [...keywords, ...keywords, ...keywords];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#050E22] border-y border-white/5 -mt-16 z-10">
+    <section className="relative w-full overflow-hidden bg-transparent border-y border-white/5 -mt-16 z-10">
       <div className="py-3 md:py-4 overflow-hidden">
         {/* CSS-only infinite marquee - works on all devices */}
         <div className="marquee-track flex">

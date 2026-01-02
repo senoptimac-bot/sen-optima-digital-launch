@@ -151,10 +151,8 @@ const DiagnosticsPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden bg-gradient-hero">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        <div className="absolute top-20 right-[10%] w-[400px] h-[400px] rounded-full bg-accent/10 blur-[100px]" />
-        <div className="absolute bottom-0 left-[5%] w-[300px] h-[300px] rounded-full bg-accent/5 blur-[80px]" />
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:60px_60px]" />
         
         <div className="container relative z-10">
           <motion.div
@@ -219,7 +217,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Education Section - Why Pay */}
-      <section className="py-16 md:py-20 bg-background relative">
+      <section className="py-16 md:py-20 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -255,8 +253,6 @@ const DiagnosticsPage = () => {
 
       {/* Pricing Cards */}
       <section className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute top-1/4 left-0 w-[300px] h-[300px] rounded-full bg-accent/5 blur-[80px]" />
-        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px]" />
 
         <div className="container relative z-10">
           <motion.div
@@ -380,7 +376,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Process Timeline */}
-      <section className="py-16 md:py-24 bg-background/50">
+      <section className="py-16 md:py-24 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -410,7 +406,7 @@ const DiagnosticsPage = () => {
                   transition={{ delay: index * 0.1 }}
                   className="relative text-center"
                 >
-                  <div className="relative z-10 w-20 h-20 mx-auto mb-4 rounded-2xl glass-card flex items-center justify-center border-2 border-accent/30 bg-background">
+                  <div className="relative z-10 w-20 h-20 mx-auto mb-4 rounded-2xl glass-card flex items-center justify-center border-2 border-accent/30">
                     <step.icon className="w-8 h-8 text-accent" />
                     <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center">
                       {step.step}
@@ -426,7 +422,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Guarantee Section */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-16 md:py-20 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -471,7 +467,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-secondary dark:bg-background/50">
+      <section className="py-16 md:py-24 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

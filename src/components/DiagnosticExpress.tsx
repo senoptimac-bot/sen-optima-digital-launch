@@ -88,7 +88,7 @@ const DiagnosticExpress = () => {
   const progress = ((currentStep + (isComplete ? 1 : 0)) / steps.length) * 100;
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="py-16 md:py-24 bg-transparent relative">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
