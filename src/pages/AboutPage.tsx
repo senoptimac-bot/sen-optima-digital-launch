@@ -701,7 +701,7 @@ const AboutPage = () => {
                   size="default"
                   className="px-6"
                 >
-                  Rejoindre le mouvement
+                  Réservez mon diagnostic
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
