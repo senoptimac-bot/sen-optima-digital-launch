@@ -261,7 +261,29 @@
     }
   }
 
-  /* Marquee animations */
+  /* Marquee - GPU accelerated infinite scroll */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: marquee-scroll 35s linear infinite;
+  }
+
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause on hover for accessibility */
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* Legacy marquee animations */
   @keyframes marquee-left {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -274,10 +296,12 @@
 
   .animate-marquee-left {
     animation: marquee-left 40s linear infinite;
+    will-change: transform;
   }
 
   .animate-marquee-right {
     animation: marquee-right 40s linear infinite;
+    will-change: transform;
   }
 
   .animate-marquee-left:hover,

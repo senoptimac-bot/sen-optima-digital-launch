@@ -1,34 +1,38 @@
-const keywords = [
-  "CLARTÉ",
-  "STRATÉGIE",
-  "PROCESS",
-  "RENTABILITÉ",
-  "DIGITAL",
-  "ORGANISATION",
-];
-
 const MarqueeSection = () => {
-  return (
-    <section className="relative py-4 bg-white/5 overflow-hidden border-y border-white/5 -mt-16">
-      {/* Mobile: Static text for performance */}
-      <div className="md:hidden flex justify-center gap-4 px-4 overflow-hidden">
-        {keywords.slice(0, 3).map((keyword, index) => (
-          <span key={index} className="text-sm font-sans font-medium tracking-widest text-white/30 uppercase whitespace-nowrap">
-            {keyword}
-          </span>
-        ))}
-      </div>
+  const keywords = [
+    "CLARTÉ",
+    "STRATÉGIE",
+    "PERFORMANCE",
+    "STRUCTURE",
+    "RENTABILITÉ"
+  ];
 
-      {/* Desktop: CSS-only marquee animation */}
-      <div className="hidden md:flex overflow-hidden">
-        <div className="flex gap-12 whitespace-nowrap animate-marquee-left">
-          {[...keywords, ...keywords, ...keywords].map((keyword, index) => (
-            <div key={index} className="flex items-center gap-12">
-              <span className="text-lg md:text-xl font-sans font-medium tracking-widest text-white/20 uppercase">
-                {keyword}
-              </span>
-              <span className="text-white/20 text-sm">•</span>
-            </div>
+  // Triple duplication for seamless infinite loop
+  const marqueeContent = [...keywords, ...keywords, ...keywords];
+
+  return (
+    <section className="relative w-full overflow-hidden bg-[#050E22] border-y border-white/5 -mt-16 z-10">
+      <div className="py-3 md:py-4 overflow-hidden">
+        {/* CSS-only infinite marquee - works on all devices */}
+        <div className="marquee-track flex">
+          {marqueeContent.map((word, index) => (
+            <span
+              key={index}
+              className="marquee-item flex-shrink-0 text-xs md:text-sm uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium text-accent/80 whitespace-nowrap"
+            >
+              {word}
+              <span className="mx-4 md:mx-8 text-accent/40">•</span>
+            </span>
+          ))}
+          {/* Duplicate for seamless loop */}
+          {marqueeContent.map((word, index) => (
+            <span
+              key={`dup-${index}`}
+              className="marquee-item flex-shrink-0 text-xs md:text-sm uppercase tracking-[0.25em] md:tracking-[0.3em] font-medium text-accent/80 whitespace-nowrap"
+            >
+              {word}
+              <span className="mx-4 md:mx-8 text-accent/40">•</span>
+            </span>
           ))}
         </div>
       </div>
