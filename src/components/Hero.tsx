@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import heroTechBg from "@/assets/hero-tech-bg.png";
 
 const Hero = () => {
   const scrollToNext = () => {
@@ -15,8 +16,17 @@ const Hero = () => {
       id="accueil"
       className="relative min-h-screen flex items-center pt-20 overflow-hidden noise-texture"
     >
-      {/* Premium gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#050E1D] via-[#071428] to-[#040B18]" />
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroTechBg})` }}
+      />
+      
+      {/* Dark overlay for opacity effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#050E1D]/90 via-[#071428]/85 to-[#040B18]/90" />
+      
+      {/* Additional subtle gradient for depth */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
       
       {/* Subtle gold aura - top right corner */}
       <div 
