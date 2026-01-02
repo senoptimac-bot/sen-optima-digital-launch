@@ -536,11 +536,13 @@ const AboutPage = () => {
                     <Button
                       variant="cta"
                       size="lg"
-                      onClick={() => setBookingOpen(true)}
+                      asChild
                       className="text-base"
                     >
-                      Découvrir nos solutions
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      <a href="/services">
+                        Découvrir nos solutions
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </a>
                     </Button>
                   </motion.div>
 
