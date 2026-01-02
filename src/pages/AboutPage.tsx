@@ -422,7 +422,8 @@ const AboutPage = () => {
                   <img 
                     src={fondateurPhoto} 
                     alt="Mandiaye Sylla - Fondateur de Sen'Optima" 
-                    className="w-44 h-44 rounded-full object-cover object-top ring-4 ring-accent/30"
+                    className="w-44 h-44 rounded-full object-cover ring-4 ring-accent/30"
+                    style={{ objectPosition: '50% 15%' }}
                   />
                   {/* Glow */}
                   <div className="absolute -inset-2 rounded-full bg-accent/20 blur-xl -z-10" />
