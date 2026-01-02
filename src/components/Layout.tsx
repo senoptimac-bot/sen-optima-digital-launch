@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import NewsletterSection from "./NewsletterSection";
 import WhatsAppButton from "./WhatsAppButton";
 import AmbientBackground from "./AmbientBackground";
+import ReadingProgress from "./ReadingProgress";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,9 +19,13 @@ const Layout = ({ children }: LayoutProps) => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  // Show reading progress on main content pages
+  const showProgress = ["/", "/a-propos", "/services"].includes(pathname);
+
   return (
     <>
       <AmbientBackground />
+      {showProgress && <ReadingProgress />}
       <main className="min-h-screen bg-transparent relative z-0 overflow-x-hidden">
         <Header />
         {children}
