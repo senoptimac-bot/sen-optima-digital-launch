@@ -559,13 +559,13 @@ const AboutPage = () => {
       </section>
 
       {/* Le Fondateur */}
-      <section className="py-20 md:py-28 relative bg-secondary/30 dark:bg-secondary/10">
+      <section className="py-24 md:py-32 relative bg-secondary/30 dark:bg-secondary/10">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-14"
           >
             <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
               Le Fondateur
@@ -579,44 +579,85 @@ const AboutPage = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <div className="p-8 md:p-12 rounded-3xl glass-premium">
-              <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="p-10 md:p-14 rounded-3xl glass-premium">
+              <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
                 {/* Photo du Fondateur */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="relative"
+                  className="relative flex-shrink-0"
                 >
                   <img 
                     src={fondateurPhoto} 
                     alt="Mandiaye Sylla - Fondateur de Sen'Optima" 
-                    className="w-44 h-44 rounded-full object-cover ring-4 ring-accent/30"
+                    className="w-48 h-48 md:w-52 md:h-52 rounded-full object-cover ring-4 ring-accent/30"
                     style={{ objectPosition: '50% 15%' }}
                   />
                   {/* Glow */}
-                  <div className="absolute -inset-2 rounded-full bg-accent/20 blur-xl -z-10" />
+                  <div className="absolute -inset-3 rounded-full bg-accent/20 blur-xl -z-10" />
                 </motion.div>
 
-                {/* Bio */}
+                {/* Bio & Storytelling */}
                 <div className="text-center md:text-left flex-1">
-                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-2">
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-1">
                     Mandiaye Sylla
                   </h3>
-                  <p className="text-accent font-semibold text-lg mb-6">
+                  <p className="text-accent font-semibold text-lg mb-2">
                     Fondateur & Stratège Principal
                   </p>
+                  <p className="text-sm text-muted-foreground italic mb-8">
+                    Architecte de Systèmes & Visionnaire Digital
+                  </p>
 
-                  {/* Citation */}
-                  <div className="relative p-6 rounded-2xl glass-card mb-6">
-                    <Quote className="w-6 h-6 text-accent/40 absolute -top-3 left-4" />
-                    <p className="text-foreground italic text-lg leading-relaxed">
-                      "Ma force n'est pas de tout savoir, mais de{" "}
-                      <span className="text-gradient-gold font-semibold">rendre simple ce qui paraît complexe</span>."
+                  {/* Le Pourquoi */}
+                  <div className="space-y-6 leading-loose">
+                    <p className="text-foreground text-lg">
+                      Mon parcours m'a montré une réalité frappante au Sénégal : nous avons une{" "}
+                      <span className="text-accent font-semibold">ambition débordante</span> et un{" "}
+                      <span className="text-accent font-semibold">talent brut immense</span>, mais nos structures 
+                      manquent souvent de la colonne vertébrale nécessaire pour passer à l'échelle. 
+                      J'ai créé Sen'Optima pour combler ce vide.
+                    </p>
+
+                    {/* La Mission */}
+                    <p className="text-muted-foreground text-lg">
+                      Ce qui m'anime chaque matin, c'est de voir une activité informelle se transformer 
+                      en une entreprise digitale solide, prévisible et hautement rentable. Mon engagement 
+                      est de mettre la{" "}
+                      <span className="text-foreground font-medium">rigueur du conseil de haut niveau</span> au 
+                      service de chaque entrepreneur qui ose rêver grand pour notre nation.
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                  {/* Signature manuscrite */}
+                  <div className="mt-10 pt-6 border-t border-border/30">
+                    <svg 
+                      viewBox="0 0 200 60" 
+                      className="w-40 h-auto mx-auto md:mx-0"
+                      aria-label="Signature de Mandiaye Sylla"
+                    >
+                      <path 
+                        d="M10 45 Q20 20 40 35 T70 30 Q85 25 95 40 Q105 50 120 35 Q130 25 145 38 Q155 45 170 30 Q180 20 190 35"
+                        fill="none" 
+                        stroke="hsl(var(--accent))" 
+                        strokeWidth="2" 
+                        strokeLinecap="round"
+                        className="opacity-80"
+                      />
+                      <text 
+                        x="60" 
+                        y="55" 
+                        className="fill-accent/60 text-[8px]"
+                        style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+                      >
+                        M. Sylla
+                      </text>
+                    </svg>
+                  </div>
+
+                  {/* Localisation */}
+                  <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-6">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <MapPin className="w-4 h-4 text-accent" />
                       <span>Grand Mbao, Dakar</span>
