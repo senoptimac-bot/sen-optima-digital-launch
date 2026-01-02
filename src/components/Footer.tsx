@@ -30,7 +30,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   };
 
   return (
-    <footer ref={ref} className="bg-[#050E22]">
+    <footer ref={ref} className="bg-black/40 backdrop-blur-md border-t border-white/5">
       <div className="container py-8 md:py-10">
         {/* Newsletter Section - App-like input */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8 mb-8">
