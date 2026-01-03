@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Quote, MapPin, Cpu, Globe, Rocket, Target, Zap, Heart, ArrowRight, Shield, Award } from "lucide-react";
 import fondateurPhoto from "@/assets/fondateur.png";
 import presidentPhoto from "@/assets/president-senegal.webp";
+import hommePhoto from "@/assets/Homme.png";
 import { Button } from "@/components/ui/button";
 import BookingModal from "@/components/BookingModal";
 
@@ -32,77 +33,92 @@ const AboutPage = () => {
     <>
       {/* Hero Section - L'Ambition */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden">
-        {/* Background Image - President/Vision */}
-        <div className="absolute inset-0 overflow-hidden">
-          <img 
-            src={presidentPhoto} 
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover object-center grayscale opacity-20 blur-sm"
-          />
-          {/* Dark overlay with vignette */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A3A]/95 via-[#0A1A3A]/85 to-[#0A1A3A]/95" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#0A1A3A_80%)]" />
-          
-          {/* Circuit Pattern - subtle */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        </div>
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:50px_50px]" />
         
         <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <motion.span
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-8"
-            >
-              <Globe className="w-4 h-4" />
-              Notre Mission
-            </motion.span>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-8 leading-tight">
-              Plus qu'un cabinet.{" "}
-              <span className="text-gradient-gold block mt-2">Une vision pour le Sénégal numérique.</span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-3xl mx-auto">
-              Nous ne sommes pas là pour vendre du rêve, mais pour{" "}
-              <span className="text-white font-medium">bâtir l'économie numérique de demain</span>, 
-              entrepreneur par entrepreneur.
-            </p>
-
-            {/* Visual: Tradition meets Technology */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+            {/* Colonne Gauche - Texte */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="mt-16 flex justify-center items-center gap-8"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-left"
             >
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center mb-3">
-                  <Heart className="w-8 h-8 text-accent" />
+              <motion.span
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-8"
+              >
+                <Globe className="w-4 h-4" />
+                Notre Mission
+              </motion.span>
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-8 leading-tight">
+                Plus qu'un cabinet.{" "}
+                <span className="text-gradient-gold block mt-2">Une vision pour le Sénégal numérique.</span>
+              </h1>
+
+              <p className="text-xl md:text-2xl text-white/80 leading-relaxed mb-8">
+                Nous ne sommes pas là pour vendre du rêve, mais pour{" "}
+                <span className="text-white font-medium">bâtir l'économie numérique de demain</span>, 
+                entrepreneur par entrepreneur.
+              </p>
+
+              {/* Visual: Tradition meets Technology */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="flex items-center gap-8"
+              >
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center mb-3">
+                    <Heart className="w-8 h-8 text-accent" />
+                  </div>
+                  <span className="text-sm text-muted-foreground">Tradition</span>
                 </div>
-                <span className="text-sm text-muted-foreground">Tradition</span>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-0.5 bg-gradient-to-r from-accent/50 to-accent" />
-                <div className="w-3 h-3 rounded-full bg-accent glow-gold" />
-                <div className="w-8 h-0.5 bg-gradient-to-l from-accent/50 to-accent" />
-              </div>
-              
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center mb-3">
-                  <Cpu className="w-8 h-8 text-accent" />
+                
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-accent/50 to-accent" />
+                  <div className="w-3 h-3 rounded-full bg-accent glow-gold" />
+                  <div className="w-8 h-0.5 bg-gradient-to-l from-accent/50 to-accent" />
                 </div>
-                <span className="text-sm text-muted-foreground">Technologie</span>
+                
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 rounded-2xl glass-card flex items-center justify-center mb-3">
+                    <Cpu className="w-8 h-8 text-accent" />
+                  </div>
+                  <span className="text-sm text-muted-foreground">Technologie</span>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Colonne Droite - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col items-center lg:items-end order-first lg:order-last"
+            >
+              <div className="relative">
+                {/* Cadre élégant avec bordure dorée */}
+                <div className="relative p-1 rounded-2xl bg-gradient-to-br from-accent via-accent/50 to-accent shadow-gold">
+                  <div className="rounded-xl overflow-hidden bg-[#0A1628]">
+                    <img 
+                      src={hommePhoto} 
+                      alt="Technologie et innovation au Sénégal" 
+                      className="w-full max-w-lg md:max-w-xl h-auto object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Glow effect */}
+                <div className="absolute -inset-4 bg-accent/10 blur-2xl -z-10 rounded-3xl" />
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

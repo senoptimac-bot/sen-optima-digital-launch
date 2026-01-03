@@ -12,28 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useAppSounds } from "@/hooks/useAppSounds";
 import emailjs from "@emailjs/browser";
 
-/**
- * ============================================================================
- * CONFIGURATION EMAILJS - À REMPLACER PAR LE CLIENT
- * ============================================================================
- * 
- * 1. Créez un compte sur https://www.emailjs.com/
- * 2. Créez un "Email Service" (Gmail, Outlook, etc.)
- * 3. Créez un "Email Template" avec les variables ci-dessous
- * 4. Remplacez les valeurs ci-dessous par vos identifiants
- * 
- * Variables disponibles dans le template EmailJS :
- * {{clientName}}, {{companyName}}, {{whatsapp}}, {{sector}}, {{ageBusiness}},
- * {{teamSize}}, {{digitalPresence}}, {{currentRevenue}}, {{acquisitionChannel}},
- * {{toolsUsed}}, {{database}}, {{mainProblem}}, {{pastAttempts}}, {{revenueGoal}},
- * {{marketingBudget}}, {{branding}}, {{competitors}}, {{availabilityDay}},
- * {{availabilityTime}}, {{meetingType}}
- * 
- * ============================================================================
- */
-const EMAILJS_SERVICE_ID = "service_inswc0l";
-const EMAILJS_TEMPLATE_ID = "template_fp5gjwk";
-const EMAILJS_PUBLIC_KEY = "TnO3ze86GSUS-Uldy";
+import { EMAILJS_CONFIG } from "@/config/emailjs.config";
 
 interface FormData {
   clientName: string;
@@ -123,10 +102,10 @@ const AuditForm = () => {
       };
 
       await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATES.BOOKING_AND_AUDIT,
         templateParams,
-        EMAILJS_PUBLIC_KEY
+        EMAILJS_CONFIG.PUBLIC_KEY
       );
 
       playSuccess();
@@ -137,9 +116,18 @@ const AuditForm = () => {
       });
     } catch (error) {
       console.error("EmailJS Error:", error);
+      const emailError = error as { status?: number; text?: string };
+      let errorMessage = "Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.";
+      
+      if (emailError?.status === 412) {
+        errorMessage = "Erreur 412 : Vérifiez que localhost est autorisé dans EmailJS ou testez en production.";
+      } else if (emailError?.status === 400) {
+        errorMessage = "Erreur : Vérifiez que le template EmailJS correspond aux variables envoyées.";
+      }
+      
       toast({
         title: "Erreur d'envoi",
-        description: "Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {

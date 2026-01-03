@@ -16,57 +16,84 @@ interface LanguageSelectorProps {
 
 // Google Translate helper functions
 const triggerGoogleTranslate = (langCode: string) => {
+  // Set cookie first
+  const cookieName = "googtrans";
+  const cookieValue = `/auto/${langCode}`;
+  document.cookie = `${cookieName}=${cookieValue};path=/;max-age=31536000;SameSite=Lax`;
+
+  // Update URL hash (preserve React Router hash if exists)
+  const currentHash = window.location.hash;
+  const googtransHash = `googtrans(${langCode})`;
+  
+  if (currentHash.includes("googtrans")) {
+    // Replace existing googtrans
+    const newHash = currentHash.replace(/googtrans\([^)]+\)/, googtransHash);
+    window.location.hash = newHash;
+  } else if (currentHash) {
+    // Append to existing hash
+    window.location.hash = `${currentHash}&${googtransHash}`;
+  } else {
+    // New hash
+    window.location.hash = googtransHash;
+  }
+
+  // Method 1: Try to use the select element if available
   const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
   if (select) {
-    select.value = langCode;
-    select.dispatchEvent(new Event("change"));
+    if (select.value !== langCode) {
+      select.value = langCode;
+      const event = new Event("change", { bubbles: true });
+      select.dispatchEvent(event);
+    }
+    // Still reload to ensure translation is applied across all routes
+    setTimeout(() => {
+      window.location.reload();
+    }, 300);
+    return;
   }
+
+  // Method 2: Reload if select not available (will be initialized on reload)
+  setTimeout(() => {
+    window.location.reload();
+  }, 300);
 };
 
 const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLangCode, setCurrentLangCode] = useState(() => {
+  
+  // Check URL hash first, then localStorage, then default to French
+  const getInitialLang = () => {
+    const hashMatch = window.location.hash.match(/googtrans\(([^)]+)\)/);
+    if (hashMatch && hashMatch[1]) {
+      const langFromHash = languages.find((l) => l.googleCode === hashMatch[1]);
+      if (langFromHash) {
+        return langFromHash.code;
+      }
+    }
     return localStorage.getItem("senoptima_lang") || "fr";
-  });
+  };
+
+  const [currentLangCode, setCurrentLangCode] = useState(getInitialLang);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const currentLang = languages.find((l) => l.code === currentLangCode) || languages[0];
 
-  // Initialize Google Translate on mount
+  // Sync state with Google Translate on mount
   useEffect(() => {
-    // Check if script already exists
-    if (document.getElementById("google-translate-script")) return;
-
-    // Add Google Translate initialization function
-    (window as any).googleTranslateElementInit = () => {
-      new (window as any).google.translate.TranslateElement(
-        {
-          pageLanguage: "fr",
-          includedLanguages: "fr,en,zh-CN,ru",
-          autoDisplay: false,
-          layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
-        },
-        "google_translate_element"
-      );
-
-      // Apply saved language after initialization
-      setTimeout(() => {
-        const savedLang = localStorage.getItem("senoptima_lang");
-        if (savedLang && savedLang !== "fr") {
-          const lang = languages.find((l) => l.code === savedLang);
-          if (lang) {
-            triggerGoogleTranslate(lang.googleCode);
-          }
-        }
-      }, 1000);
-    };
-
-    // Add the script
-    const script = document.createElement("script");
-    script.id = "google-translate-script";
-    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-    script.async = true;
-    document.body.appendChild(script);
+    // Sync state with URL hash or localStorage
+    const hashMatch = window.location.hash.match(/googtrans\(([^)]+)\)/);
+    const savedLang = localStorage.getItem("senoptima_lang");
+    
+    if (hashMatch && hashMatch[1]) {
+      const langFromHash = languages.find((l) => l.googleCode === hashMatch[1]);
+      if (langFromHash && langFromHash.code !== currentLangCode) {
+        setCurrentLangCode(langFromHash.code);
+        localStorage.setItem("senoptima_lang", langFromHash.code);
+      }
+    } else if (savedLang && savedLang !== currentLangCode && !hashMatch) {
+      setCurrentLangCode(savedLang);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -81,25 +108,28 @@ const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps)
   }, []);
 
   const handleSelect = (lang: typeof languages[0]) => {
+    if (currentLangCode === lang.code) {
+      setIsOpen(false);
+      return;
+    }
+
     setCurrentLangCode(lang.code);
     localStorage.setItem("senoptima_lang", lang.code);
     
     // Trigger Google Translate
     if (lang.code === "fr") {
-      // Reset to French (original)
-      const frame = document.querySelector(".goog-te-banner-frame") as HTMLIFrameElement;
-      if (frame) {
-        const closeBtn = frame.contentDocument?.querySelector(".goog-close-link") as HTMLElement;
-        closeBtn?.click();
-      }
-      // Alternative: reload page without translation
-      const hostUrl = window.location.href;
-      const cleanUrl = hostUrl.replace(/#googtrans\([^)]+\)/g, "");
-      if (hostUrl !== cleanUrl) {
+      // Reset to French (original) - remove translation
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
+      
+      // Remove hash from URL
+      const currentUrl = window.location.href;
+      const cleanUrl = currentUrl.replace(/#googtrans\([^)]+\)/g, "").split('#')[0];
+      
+      if (currentUrl !== cleanUrl) {
         window.location.href = cleanUrl;
+      } else {
+        window.location.reload();
       }
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      window.location.reload();
     } else {
       triggerGoogleTranslate(lang.googleCode);
     }

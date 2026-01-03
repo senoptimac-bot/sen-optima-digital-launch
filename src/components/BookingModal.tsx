@@ -9,6 +9,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useAppSounds } from "@/hooks/useAppSounds";
+import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
+import { EMAILJS_CONFIG } from "@/config/emailjs.config";
 
 interface BookingModalProps {
   open: boolean;
@@ -32,26 +35,62 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [selectOpen, setSelectOpen] = useState(false);
   const { playSuccess, playClick } = useAppSounds();
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    playClick();
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      // Trouver le label du besoin sélectionné
+      const selectedNeedLabel = needOptions.find(
+        (opt) => opt.value === formData.need
+      )?.label || formData.need;
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    
-    // Play success sound on form validation
-    playSuccess();
+      // Préparer les données pour EmailJS
+      const templateParams = {
+        name: formData.name,
+        whatsapp: formData.whatsapp,
+        need: selectedNeedLabel,
+      };
 
-    // Reset and close after success
-    setTimeout(() => {
-      setIsSuccess(false);
-      setFormData({ name: "", whatsapp: "", need: "" });
-      onOpenChange(false);
-    }, 3000);
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATES.BOOKING_AND_AUDIT,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      playSuccess();
+      setIsSuccess(true);
+      toast({
+        title: "Demande reçue !",
+        description: "Un consultant Sen'Optima vous recontactera sous 24h.",
+      });
+
+      // Reset and close after success
+      setTimeout(() => {
+        setIsSuccess(false);
+        setFormData({ name: "", whatsapp: "", need: "" });
+        onOpenChange(false);
+      }, 3000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      const emailError = error as { status?: number; text?: string };
+      let errorMessage = "Une erreur s'est produite. Veuillez réessayer.";
+      
+      if (emailError?.status === 412) {
+        errorMessage = "Erreur 412 : Vérifiez que localhost est autorisé dans EmailJS ou testez en production.";
+      }
+      
+      toast({
+        title: "Erreur d'envoi",
+        description: errorMessage,
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+    }
   };
 
   const selectedNeed = needOptions.find((opt) => opt.value === formData.need);
