@@ -131,21 +131,18 @@ const ContactPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden">
-        {/* Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        
-        <div className="container relative z-10">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative">
+        <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
-              Parlons de votre <span className="text-gradient-gold">avenir</span>.
+            <h1 className="text-display text-white mb-6">
+              Parlons de votre <span className="text-accent">avenir</span>.
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-body-lg text-white/50 max-w-2xl mx-auto">
               Vous avez un projet ? Une question ? Ou simplement besoin de clarté ? 
               Nous sommes là pour vous répondre.
             </p>
@@ -153,8 +150,8 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Guide d'Orientation - Bento Grid */}
-      <section className="py-20 md:py-28 relative">
+      {/* Guide d'Orientation */}
+      <section className="py-section-lg relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -162,10 +159,10 @@ const ContactPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-              Comment souhaitez-vous nous <span className="text-gradient-gold">contacter</span> ?
+            <h2 className="text-headline text-white mb-4">
+              Comment souhaitez-vous nous <span className="text-accent">contacter</span> ?
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
+            <p className="text-body text-white/50 max-w-xl mx-auto">
               Choisissez le canal qui vous convient le mieux.
             </p>
           </motion.div>
@@ -177,22 +174,19 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-8 rounded-3xl glass-premium flex flex-col"
+              className="p-8 rounded-xl glass-card flex flex-col"
             >
-              <div className="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center mb-6">
-                <MessageCircle className="w-8 h-8 text-green-500" />
+              <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-6">
+                <MessageCircle className="w-6 h-6 text-green-500" />
               </div>
               
-              <div className="flex items-center gap-2 mb-3">
-                <Clock className="w-4 h-4 text-accent" />
-                <span className="text-sm text-accent font-medium">Réponse instantanée</span>
-              </div>
+              <span className="text-caption text-white/40 uppercase tracking-widest mb-2">Réponse instantanée</span>
               
-              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
+              <h3 className="text-title text-white mb-3">
                 L'Option Rapide
               </h3>
               
-              <p className="text-muted-foreground mb-6 flex-grow">
+              <p className="text-body text-white/50 mb-6 flex-grow">
                 Besoin d'une réponse rapide ou d'une info simple ? Écrivez-nous directement sur WhatsApp.
               </p>
               
@@ -201,7 +195,7 @@ const ContactPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClick()}
-                className="inline-flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-green-500 hover:bg-green-600 text-white font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/25"
+                className="inline-flex items-center justify-center gap-3 w-full py-3 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 transition-all duration-300"
               >
                 <MessageCircle className="w-5 h-5" />
                 Ouvrir WhatsApp
@@ -214,22 +208,19 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="p-8 rounded-3xl glass-premium lg:col-span-1 lg:row-span-2 flex flex-col"
+              className="p-8 rounded-xl glass-card lg:col-span-1 lg:row-span-2 flex flex-col"
             >
-              <div className="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6">
-                <Send className="w-8 h-8 text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6">
+                <Send className="w-6 h-6 text-white/50" />
               </div>
               
-              <div className="flex items-center gap-2 mb-3">
-                <Clock className="w-4 h-4 text-accent" />
-                <span className="text-sm text-accent font-medium">Réponse sous 24h</span>
-              </div>
+              <span className="text-caption text-white/40 uppercase tracking-widest mb-2">Réponse sous 24h</span>
               
-              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
+              <h3 className="text-title text-white mb-3">
                 L'Option Projet
               </h3>
               
-              <p className="text-muted-foreground mb-6">
+              <p className="text-body text-white/50 mb-6">
                 Vous voulez détailler votre besoin ou demander un devis ? Remplissez ce formulaire.
               </p>
 
@@ -377,45 +368,22 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="p-8 rounded-3xl glass-premium flex flex-col"
+              className="p-8 rounded-xl glass-card flex flex-col"
             >
-              <div className="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mb-6">
-                <MapPin className="w-8 h-8 text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6">
+                <MapPin className="w-6 h-6 text-white/50" />
               </div>
               
-              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
+              <h3 className="text-title text-white mb-3">
                 L'Option Rencontre
               </h3>
               
-              <p className="text-muted-foreground mb-4">
+              <p className="text-body text-white/50 mb-6">
                 Vous préférez discuter les yeux dans les yeux ? Venez nous rencontrer à notre QG.
               </p>
 
-              {/* Stylized Map */}
-              <div className="relative aspect-video rounded-xl overflow-hidden mb-6 bg-[#0A1A3A]">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(212,167,59,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(212,167,59,0.05)_1px,transparent_1px)] bg-[size:20px_20px]" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center animate-pulse">
-                      <MapPin className="w-6 h-6 text-accent" />
-                    </div>
-                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                      <span className="text-xs text-accent font-medium px-2 py-1 rounded-full bg-accent/10">
-                        Grand Mbao
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                {/* Abstract roads */}
-                <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 200 100">
-                  <path d="M0 50 L80 50 L100 30 L200 30" stroke="currentColor" strokeWidth="0.5" fill="none" className="text-accent" />
-                  <path d="M0 70 L60 70 L100 50 L200 50" stroke="currentColor" strokeWidth="0.5" fill="none" className="text-accent" />
-                  <path d="M100 0 L100 100" stroke="currentColor" strokeWidth="0.5" fill="none" className="text-accent" />
-                </svg>
-              </div>
-
-              <p className="text-sm text-muted-foreground mb-4">
-                <span className="font-semibold text-foreground">Adresse :</span><br />
+              <p className="text-body text-white/40 mb-6">
+                <span className="text-white/60">Adresse :</span><br />
                 Grand Mbao Cité Baobab, Dakar
               </p>
               
@@ -424,7 +392,7 @@ const ContactPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClick()}
-                className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-accent/50 text-accent hover:bg-accent/10 font-medium transition-all duration-300 mt-auto"
+                className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-lg border border-white/10 text-white/60 hover:border-white/20 hover:text-white/80 transition-all duration-300 mt-auto"
               >
                 Nous trouver sur Maps
                 <ExternalLink className="w-4 h-4" />
@@ -435,7 +403,7 @@ const ContactPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-20 relative">
+      <section className="py-section relative">
         <div className="container">
           <div className="max-w-2xl mx-auto">
             <motion.div
@@ -444,10 +412,9 @@ const ContactPage = () => {
               viewport={{ once: true }}
               className="text-center mb-10"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-accent mb-4">
-                <HelpCircle className="w-4 h-4" />
-                <span className="text-sm font-medium">Avant de nous contacter...</span>
-              </div>
+              <span className="text-caption text-white/40 uppercase tracking-widest">
+                Questions fréquentes
+              </span>
             </motion.div>
 
             <motion.div
@@ -455,7 +422,7 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="rounded-2xl glass-premium p-6 md:p-8"
+              className="rounded-xl glass-card p-6 md:p-8"
             >
               <Accordion type="single" collapsible className="w-full">
                 {faqItems.map((item, index) => (

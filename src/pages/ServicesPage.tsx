@@ -326,24 +326,22 @@ const ServicesPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden py-20 pt-32">
-        <div className="absolute inset-0 bg-transparent" />
-        
-        <div className="container mx-auto px-4 relative z-10 text-center">
+      <section className="relative min-h-[50vh] flex items-center justify-center py-20 pt-32">
+        <div className="container text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium bg-accent/10 text-accent rounded-full border border-accent/20">
+            <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
               L'Écosystème de Croissance
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-display text-white mb-6">
               Le Digital n'est plus une option.
               <br />
-              <span className="text-gradient-gold">C'est votre survie.</span>
+              <span className="text-accent">C'est votre survie.</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-body-lg text-white/50 max-w-2xl mx-auto">
               Dans un marché saturé, ceux qui bricolent disparaissent. 
               Ceux qui se structurent dominent.
             </p>
@@ -352,23 +350,22 @@ const ServicesPage = () => {
       </section>
 
       {/* Equation Section */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4">
+      <section className="py-section relative">
+        <div className="container">
           <motion.div
-            className="glass-premium p-8 md:p-12 rounded-2xl max-w-5xl mx-auto"
+            className="glass-card p-8 md:p-12 rounded-xl max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            {/* Visual Equation */}
             <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-8">
               {[
-                { label: "Stratégie", color: "primary" },
-                { label: "+", isOperator: true },
-                { label: "Visibilité", color: "accent" },
-                { label: "+", isOperator: true },
-                { label: "Organisation", color: "primary" },
-                { label: "=", isOperator: true },
+                { label: "Stratégie" },
+                { label: "+" },
+                { label: "Visibilité" },
+                { label: "+" },
+                { label: "Organisation" },
+                { label: "=" },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -376,9 +373,9 @@ const ServicesPage = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className={item.isOperator 
-                    ? "text-2xl md:text-3xl font-bold text-muted-foreground" 
-                    : `px-4 py-2 md:px-6 md:py-3 rounded-xl ${item.color === 'accent' ? 'bg-accent/10 border-accent/30' : 'bg-primary/10 border-primary/30'} border text-sm md:text-base font-semibold`
+                  className={item.label.length === 1 
+                    ? "text-xl text-white/30" 
+                    : "px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70"
                   }
                 >
                   {item.label}
@@ -389,68 +386,56 @@ const ServicesPage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.7 }}
-                className="px-4 py-2 md:px-6 md:py-3 rounded-xl bg-gradient-to-r from-accent to-primary text-white font-bold text-sm md:text-base flex items-center gap-2"
+                className="px-4 py-2 rounded-lg border border-accent/30 text-accent text-sm"
               >
-                Croissance <span className="text-xl">🚀</span>
+                Croissance
               </motion.div>
             </div>
 
-            <p className="text-center text-muted-foreground max-w-3xl mx-auto text-lg">
-              Beaucoup d'agences vous vendent de la pub. <strong className="text-foreground">Nous, on structure votre entreprise.</strong>
-              <br className="hidden md:block" />
-              Si vous générez des clients mais que vous n'avez pas les outils pour les gérer, vous perdez de l'argent.
+            <p className="text-center text-white/50 max-w-3xl mx-auto">
+              Beaucoup d'agences vous vendent de la pub. <span className="text-white/70">Nous, on structure votre entreprise.</span>
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* 4 Pillars Bento Grid */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
+      {/* 4 Pillars */}
+      <section className="py-section-lg">
+        <div className="container">
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Les <span className="text-gradient-gold">4 Piliers</span> de votre croissance
+            <h2 className="text-headline text-white">
+              Les <span className="text-accent">4 Piliers</span> de votre croissance
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {pillars.map((pillar, index) => {
               const IllustrationComponent = pillar.illustration;
               return (
                 <motion.div
                   key={index}
-                  className={`glass-card p-6 rounded-2xl group hover:border-accent/50 transition-all duration-300 ${
-                    pillar.highlight ? 'ring-2 ring-accent/30 bg-accent/5' : ''
-                  }`}
+                  className="glass-card p-6 rounded-xl"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
                 >
-                  {pillar.highlight && (
-                    <div className="flex items-center gap-2 mb-3">
-                      <Sparkles className="w-4 h-4 text-accent" />
-                      <span className="text-xs font-semibold text-accent uppercase tracking-wider">Crucial</span>
-                    </div>
-                  )}
-                  
                   <div className="mb-4">
                     <IllustrationComponent />
                   </div>
                   
-                  <span className="text-xs font-medium text-accent uppercase tracking-wider">
+                  <span className="text-caption text-white/40 uppercase tracking-widest">
                     {pillar.subtitle}
                   </span>
-                  <h3 className="text-xl font-bold mt-1 mb-3 group-hover:text-accent transition-colors">
+                  <h3 className="text-title text-white mt-1 mb-3">
                     {pillar.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-body text-white/50">
                     {pillar.message}
                   </p>
                 </motion.div>
@@ -461,55 +446,55 @@ const ServicesPage = () => {
       </section>
 
       {/* Before / After Section */}
-      <section className="py-20 relative">
-        <div className="absolute inset-0 bg-transparent" />
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="py-section relative">
+        <div className="container">
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              La transformation <span className="text-gradient-gold">visible</span>
+            <h2 className="text-headline text-white">
+              La transformation <span className="text-accent">visible</span>
             </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Before */}
             <motion.div
-              className="glass-card p-8 rounded-2xl border-red-500/20 bg-red-500/5"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="glass-card p-8 rounded-xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               <div className="text-center mb-6">
-                <span className="inline-block px-3 py-1 text-xs font-semibold bg-red-500/10 text-red-400 rounded-full border border-red-500/20">
+                <span className="text-caption text-white/40 uppercase tracking-widest">
                   Sans Sen'Optima
                 </span>
               </div>
               <ChaosIllustration />
-              <h3 className="text-xl font-bold text-center mt-6 mb-2 text-red-400">Navigation à vue</h3>
-              <p className="text-center text-muted-foreground text-sm">
+              <h3 className="text-title text-center mt-6 mb-2 text-white/60">Navigation à vue</h3>
+              <p className="text-center text-white/40 text-sm">
                 Stress, perte de temps, opportunités manquées
               </p>
             </motion.div>
 
             {/* After */}
             <motion.div
-              className="glass-card p-8 rounded-2xl border-green-500/20 bg-green-500/5"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="glass-card p-8 rounded-xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
             >
               <div className="text-center mb-6">
-                <span className="inline-block px-3 py-1 text-xs font-semibold bg-green-500/10 text-green-400 rounded-full border border-green-500/20">
+                <span className="text-caption text-accent uppercase tracking-widest">
                   Avec Sen'Optima
                 </span>
               </div>
               <OrderIllustration />
-              <h3 className="text-xl font-bold text-center mt-6 mb-2 text-green-400">Contrôle & Croissance</h3>
-              <p className="text-center text-muted-foreground text-sm">
+              <h3 className="text-title text-center mt-6 mb-2 text-white">Contrôle & Croissance</h3>
+              <p className="text-center text-white/50 text-sm">
                 Structure, efficacité, résultats prévisibles
               </p>
             </motion.div>
@@ -518,24 +503,24 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
+      <section className="py-section-lg">
+        <div className="container">
           <motion.div
-            className="glass-premium p-12 rounded-3xl text-center max-w-3xl mx-auto"
+            className="glass-card p-12 rounded-xl text-center max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Votre entreprise est-elle prête à passer à la vitesse supérieure ?
+            <h2 className="text-headline text-white mb-4">
+              Prêt à passer à la vitesse supérieure ?
             </h2>
-            <p className="text-muted-foreground mb-8">
-              Découvrez où vous en êtes et les actions prioritaires pour votre croissance.
+            <p className="text-body text-white/50 mb-8">
+              Découvrez où vous en êtes et les actions prioritaires.
             </p>
-            <Button asChild size="lg" variant="cta" className="group">
+            <Button asChild variant="outline" size="lg" className="border-white/20 text-white/70 hover:border-accent hover:text-accent">
               <Link to="/diagnostics">
                 Auditer mon organisation
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
           </motion.div>

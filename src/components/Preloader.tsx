@@ -110,35 +110,6 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         </motion.p>
       </div>
 
-      {/* Subtle orbs - static on mobile for performance */}
-      <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute w-64 h-64 rounded-full bg-accent/5"
-          style={{ filter: 'blur(40px)', top: '20%', left: '10%' }}
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute w-48 h-48 rounded-full bg-primary/5"
-          style={{ filter: 'blur(40px)', bottom: '20%', right: '15%' }}
-          animate={{
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-      </div>
     </motion.div>
   );
 };
