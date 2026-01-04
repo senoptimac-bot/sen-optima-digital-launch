@@ -5,23 +5,23 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-normal transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/20 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 rounded-lg",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-lg",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-lg",
-        ghost: "hover:bg-accent hover:text-accent-foreground rounded-lg",
-        link: "text-primary underline-offset-4 hover:underline",
-        cta: "bg-accent text-accent-foreground font-semibold hover:bg-accent/90 shadow-gold hover:shadow-lg rounded-full",
-        "ghost-white": "border border-white/30 bg-transparent text-white hover:bg-accent hover:border-accent hover:text-accent-foreground rounded-full transition-all",
+        default: "bg-foreground/10 text-foreground hover:bg-foreground/15 rounded-lg",
+        destructive: "bg-destructive/10 text-destructive hover:bg-destructive/20 rounded-lg",
+        outline: "border border-foreground/10 bg-transparent text-foreground/60 hover:border-foreground/20 hover:text-foreground rounded-lg",
+        secondary: "bg-foreground/5 text-foreground/70 hover:bg-foreground/10 rounded-lg",
+        ghost: "text-foreground/60 hover:bg-foreground/5 hover:text-foreground rounded-lg",
+        link: "text-foreground/50 underline-offset-4 hover:underline hover:text-foreground",
+        cta: "border border-foreground/20 bg-transparent text-foreground/70 hover:border-accent hover:text-accent rounded-lg",
+        "ghost-white": "border border-foreground/10 bg-transparent text-foreground/50 hover:border-accent hover:text-accent rounded-lg",
       },
       size: {
         default: "h-10 px-5 py-2",
-        sm: "h-9 px-4 text-sm",
-        lg: "h-12 px-8 text-base",
+        sm: "h-9 px-4 text-xs",
+        lg: "h-12 px-8",
         icon: "h-10 w-10",
       },
     },

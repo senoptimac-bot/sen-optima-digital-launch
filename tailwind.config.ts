@@ -7,19 +7,27 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      padding: "2rem",
       screens: {
-        "2xl": "1280px",
+        "2xl": "1200px",
       },
     },
     extend: {
       fontFamily: {
-        heading: ["Inter", "system-ui", "sans-serif"],
-        body: ["Nunito Sans", "system-ui", "sans-serif"],
-        editorial: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "system-ui", "sans-serif"],
+        heading: ["Inter", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        "display": ["clamp(3rem, 8vw, 6rem)", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "200" }],
+        "headline": ["clamp(2rem, 5vw, 3.5rem)", { lineHeight: "1.1", letterSpacing: "-0.03em", fontWeight: "300" }],
+        "title": ["clamp(1.5rem, 3vw, 2rem)", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "400" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
+        "body": ["1rem", { lineHeight: "1.7", fontWeight: "400" }],
+        "caption": ["0.75rem", { lineHeight: "1.5", letterSpacing: "0.02em", fontWeight: "400" }],
       },
       letterSpacing: {
-        tighter: "-0.05em",
+        tighter: "-0.04em",
+        tight: "-0.02em",
         editorial: "-0.03em",
       },
       colors: {
@@ -83,6 +91,10 @@ export default {
         "2xl": "calc(var(--radius) + 8px)",
         "3xl": "1.5rem",
       },
+      spacing: {
+        "section": "clamp(6rem, 12vh, 10rem)",
+        "section-lg": "clamp(8rem, 16vh, 14rem)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -92,14 +104,6 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "drift-in": {
-          from: { opacity: "0", transform: "translateY(40px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        "drift-in-slow": {
-          from: { opacity: "0", transform: "translateY(60px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
         "fade-in": {
           from: { opacity: "0", transform: "translateY(20px)" },
           to: { opacity: "1", transform: "translateY(0)" },
@@ -108,51 +112,22 @@ export default {
           from: { opacity: "0", transform: "translateY(30px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        "slide-in-right": {
-          from: { opacity: "0", transform: "translateX(20px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
-        },
         "scale-in": {
-          from: { opacity: "0", transform: "scale(0.95)" },
+          from: { opacity: "0", transform: "scale(0.98)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        "pulse-gold": {
-          "0%, 100%": { boxShadow: "0 0 0 0 hsl(43 65% 53% / 0.4)" },
-          "50%": { boxShadow: "0 0 0 15px hsl(43 65% 53% / 0)" },
-        },
-        "shimmer": {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
-        },
-        "glow-pulse": {
-          "0%, 100%": { opacity: "0.5" },
-          "50%": { opacity: "1" },
-        },
-        "parallax-slow": {
-          "0%": { transform: "translateY(0)" },
-          "100%": { transform: "translateY(-20px)" },
+          "50%": { transform: "translateY(-8px)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "drift-in": "drift-in 1s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-        "drift-in-slow": "drift-in-slow 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards",
         "fade-in": "fade-in 0.6s ease-out forwards",
         "fade-in-up": "fade-in-up 0.7s ease-out forwards",
-        "slide-in-right": "slide-in-right 0.5s ease-out forwards",
         "scale-in": "scale-in 0.4s ease-out forwards",
-        "float": "float 3s ease-in-out infinite",
-        "pulse-gold": "pulse-gold 2s ease-in-out infinite",
-        "shimmer": "shimmer 3s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-      },
-      backdropBlur: {
-        xs: "2px",
+        "float": "float 4s ease-in-out infinite",
       },
     },
   },

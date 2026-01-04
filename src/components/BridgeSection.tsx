@@ -1,46 +1,42 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MousePointer, Search, Map, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const timelineSteps = [
   {
-    icon: MousePointer,
-    number: "1",
+    number: "01",
     title: "Clic",
     description: "Vous choisissez votre niveau de diagnostic.",
   },
   {
-    icon: Search,
-    number: "2",
+    number: "02",
     title: "Analyse",
     description: "Nous auditons votre situation (sans jugement).",
   },
   {
-    icon: Map,
-    number: "3",
+    number: "03",
     title: "Clarté",
-    description: "Vous repartez avec une feuille de route précise, que vous travailliez avec nous ou non.",
+    description: "Vous repartez avec une feuille de route précise.",
   },
 ];
 
 const BridgeSection = () => {
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
-
-      <div className="container relative z-10">
+    <section className="py-section-lg relative">
+      <div className="container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-20"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
+            <span className="w-1 h-1 rounded-full bg-accent" />
             Prochaine étape
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground">
-            À quoi vous attendre en <span className="text-gradient-gold">cliquant ci-dessous</span> ?
+          <h2 className="text-headline text-foreground">
+            À quoi vous attendre
           </h2>
         </motion.div>
 
@@ -50,43 +46,32 @@ const BridgeSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="max-w-4xl mx-auto mb-16"
+          className="max-w-3xl mx-auto mb-20"
         >
-          <div className="relative">
-            {/* Connecting line - Desktop */}
-            <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-accent/20 via-accent to-accent/20" />
+          <div className="grid md:grid-cols-3 gap-8">
+            {timelineSteps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                {/* Number */}
+                <div className="text-display text-foreground/10 mb-4">
+                  {step.number}
+                </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {timelineSteps.map((step, index) => (
-                <motion.div
-                  key={step.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15 }}
-                  className="relative text-center"
-                >
-                  {/* Icon circle */}
-                  <div className="relative inline-flex mb-6">
-                    <div className="w-20 h-20 rounded-full glass-premium border-2 border-accent flex items-center justify-center mx-auto">
-                      <step.icon className="w-8 h-8 text-accent" />
-                    </div>
-                    {/* Number badge */}
-                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold">
-                      <span className="text-sm font-bold text-accent-foreground">{step.number}</span>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-xl font-heading font-bold text-foreground mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+                {/* Content */}
+                <h3 className="text-title text-foreground mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-body text-foreground/40">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
@@ -99,17 +84,16 @@ const BridgeSection = () => {
           className="text-center"
         >
           <Button
-            variant="cta"
+            variant="outline"
             size="lg"
-            className="gap-3 text-lg px-10 py-7 glow-gold hover:glow-gold transition-all duration-300"
+            className="gap-3 text-sm border-foreground/20 bg-transparent hover:border-accent hover:text-accent text-foreground/70 transition-all duration-300 h-14 px-10"
             asChild
           >
             <Link to="/diagnostics">
               Arrêter de naviguer à vue
-              <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className="text-caption text-foreground/30 mt-4">
             Voir les Diagnostics disponibles
           </p>
         </motion.div>
