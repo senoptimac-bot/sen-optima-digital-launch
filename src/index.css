@@ -5,73 +5,65 @@
 @layer base {
   :root,
   .dark {
-    /* Sen'Optima Brand Colors - Unified Deep Midnight Blue */
-    --background: 220 80% 5%;
-    --foreground: 0 0% 100%;
+    /* Luxury Minimalism - Deep Anthracite/Almost Black */
+    --background: 220 15% 6%;
+    --foreground: 0 0% 96%;
 
-    --card: 220 60% 8%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 220 60% 8%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 220 15% 8%;
+    --popover-foreground: 0 0% 96%;
 
-    /* Primary - Gold for contrast */
-    --primary: 43 65% 53%;
-    --primary-foreground: 220 80% 5%;
+    /* Primary - Muted Gold for micro-details only */
+    --primary: 43 45% 50%;
+    --primary-foreground: 220 15% 6%;
 
     /* Secondary */
-    --secondary: 220 50% 12%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 220 10% 10%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 220 50% 12%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 220 10% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    /* Accent - Matte Gold (#D4A73B) */
+    /* Accent - Reserved Gold (#D4A73B) - use sparingly */
     --accent: 43 65% 53%;
-    --accent-foreground: 220 80% 5%;
+    --accent-foreground: 220 15% 6%;
 
-    --destructive: 0 62% 40%;
+    --destructive: 0 50% 45%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 50% 15%;
-    --input: 220 50% 15%;
-    --ring: 43 65% 53%;
+    --border: 0 0% 100% / 0.05;
+    --input: 220 10% 12%;
+    --ring: 0 0% 100% / 0.1;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Custom tokens */
     --gold: 43 65% 53%;
     --gold-light: 43 65% 63%;
     --gold-dark: 43 65% 43%;
-    --deep-blue: 220 80% 8%;
+    --deep-blue: 220 15% 6%;
     --light-gray: 0 0% 90%;
-    --off-white: 0 0% 100%;
+    --off-white: 0 0% 96%;
 
-    /* Glass effect tokens - Cristal Noir */
-    --glass-bg: 0 0% 0% / 0.4;
+    /* Glass effect tokens - Ultra minimal */
+    --glass-bg: 0 0% 0% / 0.1;
     --glass-border: 0 0% 100% / 0.05;
 
-    /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(43 65% 53%), hsl(43 65% 43%));
-    --gradient-blue: linear-gradient(135deg, hsl(220 80% 5%), hsl(220 80% 10%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 80% 4%), hsl(220 80% 6%), hsl(220 80% 5%));
-    
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.5);
-    --shadow-gold: 0 4px 30px -4px hsl(43 65% 53% / 0.3);
-    --shadow-card: 0 2px 20px -4px hsl(0 0% 0% / 0.4);
-    --shadow-hover: 0 8px 40px -8px hsl(0 0% 0% / 0.5);
-    --shadow-glow: 0 4px 30px -4px hsl(43 65% 53% / 0.2);
+    /* Shadows - Subtle */
+    --shadow-soft: 0 4px 30px -10px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 2px 20px -8px hsl(0 0% 0% / 0.2);
 
     /* Sidebar */
-    --sidebar-background: 220 80% 6%;
-    --sidebar-foreground: 0 0% 100%;
+    --sidebar-background: 220 15% 6%;
+    --sidebar-foreground: 0 0% 96%;
     --sidebar-primary: 43 65% 53%;
-    --sidebar-primary-foreground: 220 80% 5%;
+    --sidebar-primary-foreground: 220 15% 6%;
     --sidebar-accent: 43 65% 53%;
-    --sidebar-accent-foreground: 220 80% 5%;
-    --sidebar-border: 220 50% 15%;
-    --sidebar-ring: 43 65% 53%;
+    --sidebar-accent-foreground: 220 15% 6%;
+    --sidebar-border: 0 0% 100% / 0.05;
+    --sidebar-ring: 0 0% 100% / 0.1;
   }
 }
 
@@ -86,106 +78,62 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased transition-colors duration-300;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
     overflow-x: hidden;
   }
 
-  /* Film grain applied to body */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  /* Typography - Luxury Minimalism */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.03em;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold tracking-tight;
+  h1 {
+    font-weight: 200;
+    letter-spacing: -0.04em;
+  }
+
+  p, span, a, li {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-weight: 400;
   }
 }
 
 @layer utilities {
-  /* Text Gradients - Enhanced Editorial */
+  /* Text accent - gold for keywords only */
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent font-bold;
-    background-image: linear-gradient(135deg, hsl(43 65% 58%), hsl(43 80% 70%), hsl(43 65% 55%));
+    @apply text-accent font-medium;
   }
 
-  .text-gradient-hero {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(43 65% 60%), hsl(0 0% 100%), hsl(43 65% 60%));
-  }
-
-  /* Background Gradients */
-  .bg-gradient-gold {
-    background-image: var(--gradient-gold);
-  }
-
-  .bg-gradient-blue {
-    background-image: var(--gradient-blue);
-  }
-
-  .bg-gradient-hero {
-    background-image: var(--gradient-hero);
-  }
-
-  /* Glassmorphism - Cristal Noir avec bordures blanches ultra-fines */
+  /* Glass - Ultra transparent, almost invisible */
   .glass {
-    @apply bg-black/40 border border-white/5;
+    background: hsl(0 0% 0% / 0.1);
+    border: 1px solid hsl(0 0% 100% / 0.05);
   }
 
   .glass-card {
-    @apply bg-black/40 border border-white/5;
+    background: hsl(0 0% 0% / 0.1);
+    border: 1px solid hsl(0 0% 100% / 0.05);
   }
 
   .glass-premium {
-    @apply bg-black/50 border border-white/5;
+    background: hsl(0 0% 0% / 0.15);
+    border: 1px solid hsl(0 0% 100% / 0.05);
   }
 
-  /* Enable blur only on desktop for performance */
+  /* Enable subtle blur only on desktop */
   @media (min-width: 768px) {
     .glass {
-      @apply backdrop-blur-xl bg-black/35;
+      backdrop-filter: blur(12px);
     }
     .glass-card {
-      @apply backdrop-blur-xl bg-black/35;
+      backdrop-filter: blur(8px);
     }
     .glass-premium {
-      @apply backdrop-blur-2xl bg-black/40;
+      backdrop-filter: blur(16px);
     }
-  }
-
-  /* Film grain overlay */
-  .film-grain::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  }
-
-  /* Noise texture for sections */
-  .noise-texture {
-    position: relative;
-  }
-  
-  .noise-texture::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
   /* Shadows */
@@ -193,58 +141,8 @@
     box-shadow: var(--shadow-soft);
   }
 
-  .shadow-gold {
-    box-shadow: var(--shadow-gold);
-  }
-
   .shadow-card {
     box-shadow: var(--shadow-card);
-  }
-
-  .shadow-hover {
-    box-shadow: var(--shadow-hover);
-  }
-
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
-  }
-
-  /* Gold Glow Effect */
-  .glow-gold {
-    box-shadow: 0 0 30px -5px hsl(43 65% 53% / 0.5),
-                0 0 60px -10px hsl(43 65% 53% / 0.3);
-  }
-
-  .glow-gold-subtle {
-    box-shadow: 0 0 20px -5px hsl(43 65% 53% / 0.3);
-  }
-
-  /* Animated Background */
-  .animated-bg {
-    background: linear-gradient(-45deg, 
-      hsl(218 71% 8%), 
-      hsl(218 71% 12%), 
-      hsl(218 71% 10%), 
-      hsl(218 71% 14%)
-    );
-    background-size: 400% 400%;
-    animation: gradient-shift 15s ease infinite;
-  }
-
-  @keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Floating orbs animation */
-  .floating-orb {
-    animation: float-orb 6s ease-in-out infinite;
-  }
-
-  @keyframes float-orb {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-20px) scale(1.05); }
   }
 
   /* Pulse animation for WhatsApp */
@@ -261,7 +159,7 @@
     }
   }
 
-  /* Marquee - GPU accelerated infinite scroll */
+  /* Marquee */
   .marquee-track {
     display: flex;
     width: max-content;
@@ -270,20 +168,14 @@
   }
 
   @keyframes marquee-scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
-  /* Pause on hover for accessibility */
   .marquee-track:hover {
     animation-play-state: paused;
   }
 
-  /* Legacy marquee animations */
   @keyframes marquee-left {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -310,8 +202,7 @@
   }
 }
 
-/* ===== Google Translate Hide Styles ===== */
-/* Hide Google Translate toolbar and elements */
+/* Google Translate Hide Styles */
 .goog-te-banner-frame,
 .goog-te-gadget,
 .goog-te-balloon-frame,
@@ -333,14 +224,12 @@ body {
   visibility: hidden !important;
 }
 
-/* Prevent layout shifts from translation */
 .VIpgJd-ZVi9od-ORHb-OEVmcd,
 .VIpgJd-ZVi9od-l4eHX-hSRGPd,
 .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
   display: none !important;
 }
 
-/* Ensure translated text inherits proper styling */
 font[style],
 font {
   background-color: transparent !important;

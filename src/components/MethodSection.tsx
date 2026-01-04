@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Settings, Globe, Rocket, ArrowRight } from "lucide-react";
+import { Settings, Globe, Rocket } from "lucide-react";
 
 const steps = [
   {
@@ -24,75 +24,65 @@ const steps = [
 
 const MethodSection = () => {
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
-      {/* Background - simplified */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20" />
-      <div className="hidden md:block absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-accent/5" style={{ filter: 'blur(120px)' }} />
-
-      <div className="container relative z-10">
+    <section className="py-section-lg relative">
+      <div className="container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-20"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
+            <span className="w-1 h-1 rounded-full bg-accent" />
             Notre méthode
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-            L'<span className="text-gradient-gold">Écosystème</span> de Croissance
+          <h2 className="text-headline text-foreground">
+            L'<span className="text-accent">Écosystème</span> de Croissance
           </h2>
         </motion.div>
 
-        {/* Steps with Arrows */}
+        {/* Steps */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="max-w-5xl mx-auto mb-16"
+          className="max-w-4xl mx-auto mb-20"
         >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {steps.map((step, index) => (
-              <div key={step.title} className="flex flex-col md:flex-row items-center gap-4 md:gap-2">
-                {/* Step Card */}
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="relative p-6 md:p-8 rounded-2xl glass-premium border border-accent/20 text-center min-w-[200px] md:min-w-[220px]"
-                >
-                  {/* Number badge */}
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-bold">
-                    {step.number}
-                  </div>
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative p-8 glass-card rounded-xl text-center"
+              >
+                {/* Number */}
+                <div className="text-caption text-accent mb-6">
+                  {step.number}
+                </div>
 
-                  {/* Icon */}
-                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-accent/10 flex items-center justify-center">
-                    <step.icon className="w-7 h-7 text-accent" />
-                  </div>
+                {/* Icon */}
+                <div className="w-12 h-12 mx-auto mb-6 rounded-xl bg-foreground/5 flex items-center justify-center">
+                  <step.icon className="w-6 h-6 text-foreground/50" />
+                </div>
 
-                  {/* Content */}
-                  <h3 className="text-xl font-heading font-bold text-foreground mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {step.description}
-                  </p>
-                </motion.div>
+                {/* Content */}
+                <h3 className="text-title text-foreground mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-body text-foreground/40">
+                  {step.description}
+                </p>
 
-                {/* Arrow (except for last item) */}
+                {/* Connector line for desktop */}
                 {index < steps.length - 1 && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + index * 0.2 }}
-                    className="p-2"
-                  >
-                    <ArrowRight className="w-6 h-6 text-accent rotate-90 md:rotate-0" />
-                  </motion.div>
+                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-foreground/10" />
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -103,12 +93,12 @@ const MethodSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-2xl mx-auto text-center"
         >
-          <div className="p-6 md:p-8 rounded-2xl glass-card border border-accent/30">
-            <p className="text-lg md:text-xl text-foreground font-medium">
-              💡 <span className="text-accent font-semibold">Message clé :</span>{" "}
-              "On ne met pas le toit (Marketing) avant les fondations (Structure)."
+          <div className="p-6 glass-card rounded-xl">
+            <p className="text-body text-foreground/60">
+              <span className="text-accent">✦</span>{" "}
+              "On ne met pas le toit avant les fondations."
             </p>
           </div>
         </motion.div>

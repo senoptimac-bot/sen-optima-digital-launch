@@ -23,12 +23,12 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -38,26 +38,23 @@ const itemVariants = {
 
 const MirrorSection = () => {
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden">
-      {/* Background - simplified */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
-      <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-destructive/5" style={{ filter: 'blur(150px)' }} />
-
-      <div className="container relative z-10">
+    <section className="py-section-lg relative">
+      <div className="container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-20"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
+            <span className="w-1 h-1 rounded-full bg-accent" />
             Le miroir
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
-            Votre <span className="text-gradient-gold">situation actuelle</span>
+          <h2 className="text-headline text-foreground mb-4">
+            Votre <span className="text-accent">situation actuelle</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-body text-foreground/50">
             Reconnaissez-vous ces symptômes ?
           </p>
         </motion.div>
@@ -68,32 +65,31 @@ const MirrorSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
         >
           {painPoints.map((pain, index) => (
             <motion.div
               key={pain.title}
               variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -5 }}
-              className="relative p-8 rounded-2xl glass-card border border-destructive/20 hover:border-destructive/40 transition-all duration-300 group"
+              className="relative p-8 glass-card rounded-xl group"
             >
+              {/* Number indicator */}
+              <div className="absolute top-6 right-6">
+                <span className="text-caption text-foreground/20">{String(index + 1).padStart(2, '0')}</span>
+              </div>
+
               {/* Icon */}
-              <div className="w-16 h-16 rounded-2xl bg-destructive/10 flex items-center justify-center mb-6 group-hover:bg-destructive/20 transition-colors">
-                <pain.icon className="w-8 h-8 text-destructive" />
+              <div className="w-10 h-10 rounded-lg bg-foreground/5 flex items-center justify-center mb-6">
+                <pain.icon className="w-5 h-5 text-foreground/40" />
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-heading font-bold text-foreground mb-3">
+              <h3 className="text-title text-foreground mb-3">
                 {pain.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-body text-foreground/50 leading-relaxed">
                 {pain.description}
               </p>
-
-              {/* Number indicator */}
-              <div className="absolute top-6 right-6 w-8 h-8 rounded-full bg-destructive/10 flex items-center justify-center">
-                <span className="text-sm font-bold text-destructive/60">{index + 1}</span>
-              </div>
             </motion.div>
           ))}
         </motion.div>

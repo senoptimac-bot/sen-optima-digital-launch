@@ -1,60 +1,44 @@
 import { motion } from "framer-motion";
-import { Box, Boxes } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const VisionarySection = () => {
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="py-section-lg relative">
+      <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative max-w-4xl mx-auto"
+          className="max-w-3xl mx-auto text-center"
         >
-          {/* Glass Card - Cristal Noir */}
-          <div className="relative glass-premium rounded-3xl p-8 md:p-12 overflow-hidden">
-            
-            {/* Static Icon - desktop only */}
-            <div className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 opacity-20">
-              <Boxes className="w-48 h-48 text-accent" strokeWidth={0.5} />
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 max-w-2xl">
-              {/* Small Label */}
-              <div className="flex items-center gap-2 mb-6">
-                <Box className="w-5 h-5 text-accent" />
-                <span className="text-sm font-medium text-accent uppercase tracking-wider">
-                  Notre Vision
-                </span>
-              </div>
-
-              {/* Main Quote */}
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-6">
-                <span className="text-gradient-gold">"L'informel est une étape.</span>
-                <br />
-                <span className="text-foreground">La structure est une destination."</span>
-              </h2>
-
-              {/* Subtext */}
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Nous transformons le potentiel brut du marché sénégalais en réussite organisée et pérenne.
-              </p>
-
-              {/* CTA Button */}
-              <Link
-                to="/a-propos"
-                className="inline-flex items-center mt-6 px-6 py-3 text-sm font-medium text-accent border border-accent/50 bg-transparent hover:bg-accent/10 hover:border-accent transition-all duration-300 rounded-sm"
-              >
-                Découvrir notre histoire
-              </Link>
-
-              {/* Decorative Line */}
-              <div className="mt-8 h-px bg-gradient-to-r from-accent via-accent/50 to-transparent" />
-            </div>
+          {/* Small Label */}
+          <div className="inline-flex items-center gap-2 mb-10">
+            <span className="w-1 h-1 rounded-full bg-accent" />
+            <span className="text-caption text-foreground/40 uppercase tracking-widest">
+              Notre Vision
+            </span>
           </div>
+
+          {/* Main Quote */}
+          <h2 className="text-headline text-foreground leading-tight mb-8">
+            "<span className="text-accent">L'informel</span> est une étape.
+            <br />
+            La <span className="text-accent">structure</span> est une destination."
+          </h2>
+
+          {/* Subtext */}
+          <p className="text-body-lg text-foreground/50 leading-relaxed max-w-2xl mx-auto mb-10">
+            Nous transformons le potentiel brut du marché sénégalais en réussite organisée et pérenne.
+          </p>
+
+          {/* CTA Button - Ghost style */}
+          <Link
+            to="/a-propos"
+            className="inline-flex items-center text-[13px] text-foreground/50 hover:text-accent transition-colors duration-300 uppercase tracking-widest"
+          >
+            Découvrir notre histoire →
+          </Link>
         </motion.div>
       </div>
     </section>
