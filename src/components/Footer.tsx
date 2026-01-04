@@ -15,26 +15,26 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer 
       ref={ref} 
-      className="border-t border-foreground/5 py-6"
+      className="py-5 border-t border-white/5"
     >
       <div className="container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Navigation - App style, horizontal, tiny text */}
-          <nav className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          {/* Navigation - Horizontal dock style */}
+          <nav className="flex items-center gap-6">
             {links.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-[11px] text-foreground/40 hover:text-accent transition-colors duration-300 uppercase tracking-wider"
+                className="text-[11px] text-white/40 hover:text-accent transition-colors duration-200 uppercase tracking-widest"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* Copyright - Minimal */}
-          <p className="text-[11px] text-foreground/30 uppercase tracking-wider">
-            © {currentYear} Sen'Optima Consulting
+          {/* Copyright */}
+          <p className="text-[11px] text-white/25 uppercase tracking-widest">
+            © {currentYear} Sen'Optima
           </p>
         </div>
       </div>

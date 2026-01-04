@@ -5,36 +5,36 @@
 @layer base {
   :root,
   .dark {
-    /* Luxury Minimalism - Deep Anthracite/Almost Black */
-    --background: 220 15% 6%;
+    /* Unified Midnight Navy - Corporate App Style */
+    --background: 220 20% 7%;
     --foreground: 0 0% 96%;
 
     --card: 0 0% 0%;
     --card-foreground: 0 0% 96%;
 
-    --popover: 220 15% 8%;
+    --popover: 220 20% 9%;
     --popover-foreground: 0 0% 96%;
 
-    /* Primary - Muted Gold for micro-details only */
-    --primary: 43 45% 50%;
-    --primary-foreground: 220 15% 6%;
+    /* Primary - Subtle */
+    --primary: 220 20% 20%;
+    --primary-foreground: 0 0% 96%;
 
     /* Secondary */
-    --secondary: 220 10% 10%;
-    --secondary-foreground: 0 0% 96%;
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 220 10% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 0 0% 60%;
 
     /* Accent - Reserved Gold (#D4A73B) - use sparingly */
     --accent: 43 65% 53%;
-    --accent-foreground: 220 15% 6%;
+    --accent-foreground: 220 20% 7%;
 
-    --destructive: 0 50% 45%;
+    --destructive: 0 45% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 100% / 0.05;
-    --input: 220 10% 12%;
+    --border: 0 0% 100% / 0.08;
+    --input: 220 15% 12%;
     --ring: 0 0% 100% / 0.1;
 
     --radius: 0.5rem;
@@ -43,25 +43,14 @@
     --gold: 43 65% 53%;
     --gold-light: 43 65% 63%;
     --gold-dark: 43 65% 43%;
-    --deep-blue: 220 15% 6%;
-    --light-gray: 0 0% 90%;
-    --off-white: 0 0% 96%;
-
-    /* Glass effect tokens - Ultra minimal */
-    --glass-bg: 0 0% 0% / 0.1;
-    --glass-border: 0 0% 100% / 0.05;
-
-    /* Shadows - Subtle */
-    --shadow-soft: 0 4px 30px -10px hsl(0 0% 0% / 0.3);
-    --shadow-card: 0 2px 20px -8px hsl(0 0% 0% / 0.2);
 
     /* Sidebar */
-    --sidebar-background: 220 15% 6%;
+    --sidebar-background: 220 20% 7%;
     --sidebar-foreground: 0 0% 96%;
     --sidebar-primary: 43 65% 53%;
-    --sidebar-primary-foreground: 220 15% 6%;
+    --sidebar-primary-foreground: 220 20% 7%;
     --sidebar-accent: 43 65% 53%;
-    --sidebar-accent-foreground: 220 15% 6%;
+    --sidebar-accent-foreground: 220 20% 7%;
     --sidebar-border: 0 0% 100% / 0.05;
     --sidebar-ring: 0 0% 100% / 0.1;
   }
@@ -80,14 +69,16 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    font-weight: 400;
     overflow-x: hidden;
   }
 
-  /* Typography - Luxury Minimalism */
+  /* Typography - Ultra Clean Corporate */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
     font-weight: 300;
     letter-spacing: -0.03em;
+    color: hsl(0 0% 96%);
   }
 
   h1 {
@@ -95,68 +86,67 @@
     letter-spacing: -0.04em;
   }
 
-  p, span, a, li {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    font-weight: 400;
+  /* Body text - Off White for softer contrast */
+  p, span, li {
+    color: hsl(0 0% 90% / 0.7);
   }
 }
 
 @layer utilities {
-  /* Text accent - gold for keywords only */
+  /* Gold accent - ONLY for H2 titles and primary CTAs */
   .text-gradient-gold {
-    @apply text-accent font-medium;
+    @apply text-accent font-normal;
   }
 
-  /* Glass - Ultra transparent, almost invisible */
+  /* Glass - Ultra transparent cristal effect */
   .glass {
-    background: hsl(0 0% 0% / 0.1);
-    border: 1px solid hsl(0 0% 100% / 0.05);
+    background: hsl(0 0% 0% / 0.08);
+    border: 1px solid hsl(0 0% 100% / 0.08);
   }
 
   .glass-card {
     background: hsl(0 0% 0% / 0.1);
-    border: 1px solid hsl(0 0% 100% / 0.05);
+    border: 1px solid hsl(0 0% 100% / 0.08);
   }
 
   .glass-premium {
-    background: hsl(0 0% 0% / 0.15);
-    border: 1px solid hsl(0 0% 100% / 0.05);
+    background: hsl(0 0% 0% / 0.12);
+    border: 1px solid hsl(0 0% 100% / 0.1);
   }
 
-  /* Enable subtle blur only on desktop */
+  /* Subtle blur on desktop only */
   @media (min-width: 768px) {
     .glass {
-      backdrop-filter: blur(12px);
-    }
-    .glass-card {
       backdrop-filter: blur(8px);
     }
+    .glass-card {
+      backdrop-filter: blur(6px);
+    }
     .glass-premium {
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(12px);
     }
   }
 
-  /* Shadows */
+  /* Minimal shadows */
   .shadow-soft {
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 4px 24px -8px hsl(0 0% 0% / 0.2);
   }
 
-  .shadow-card {
-    box-shadow: var(--shadow-card);
+  /* Remove gold glows - cleaner look */
+  .glow-gold,
+  .glow-gold-subtle,
+  .shadow-gold {
+    box-shadow: none;
   }
 
-  /* Pulse animation for WhatsApp */
+  /* WhatsApp pulse */
   .pulse-whatsapp {
     animation: pulse-wa 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   @keyframes pulse-wa {
-    0%, 100% {
-      box-shadow: 0 0 0 0 hsl(142 70% 45% / 0.4);
-    }
-    50% {
-      box-shadow: 0 0 0 15px hsl(142 70% 45% / 0);
-    }
+    0%, 100% { box-shadow: 0 0 0 0 hsl(142 70% 45% / 0.4); }
+    50% { box-shadow: 0 0 0 12px hsl(142 70% 45% / 0); }
   }
 
   /* Marquee */
@@ -164,7 +154,7 @@
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: marquee-scroll 35s linear infinite;
+    animation: marquee-scroll 40s linear infinite;
   }
 
   @keyframes marquee-scroll {
@@ -176,41 +166,28 @@
     animation-play-state: paused;
   }
 
-  @keyframes marquee-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  @keyframes marquee-right {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-  }
-
   .animate-marquee-left {
-    animation: marquee-left 40s linear infinite;
-    will-change: transform;
+    animation: marquee-scroll 45s linear infinite;
   }
 
   .animate-marquee-right {
-    animation: marquee-right 40s linear infinite;
-    will-change: transform;
-  }
-
-  .animate-marquee-left:hover,
-  .animate-marquee-right:hover {
-    animation-play-state: paused;
+    animation: marquee-scroll 45s linear infinite reverse;
   }
 }
 
-/* Google Translate Hide Styles */
+/* Google Translate Hide */
 .goog-te-banner-frame,
 .goog-te-gadget,
 .goog-te-balloon-frame,
 #goog-gt-tt,
 .goog-tooltip,
-.goog-tooltip:hover,
-.goog-text-highlight {
+.goog-text-highlight,
+.skiptranslate,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-l4eHX-hSRGPd,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
   display: none !important;
+  visibility: hidden !important;
 }
 
 body {
@@ -218,21 +195,7 @@ body {
   position: static !important;
 }
 
-.skiptranslate {
-  display: none !important;
-  height: 0 !important;
-  visibility: hidden !important;
-}
-
-.VIpgJd-ZVi9od-ORHb-OEVmcd,
-.VIpgJd-ZVi9od-l4eHX-hSRGPd,
-.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
-  display: none !important;
-}
-
-font[style],
-font {
+font[style], font {
   background-color: transparent !important;
   box-shadow: none !important;
-  position: static !important;
 }
