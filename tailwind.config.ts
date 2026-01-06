@@ -7,7 +7,12 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1.25rem",
+        sm: "1.5rem",
+        md: "2rem",
+        lg: "2rem",
+      },
       screens: {
         "2xl": "1200px",
       },
@@ -15,12 +20,13 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "system-ui", "sans-serif"],
-        heading: ["Inter", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "system-ui", "sans-serif"],
+        heading: ["Playfair Display", "Georgia", "Times New Roman", "serif"],
+        display: ["Playfair Display", "Georgia", "Times New Roman", "serif"],
       },
       fontSize: {
-        "display": ["clamp(2.5rem, 7vw, 5rem)", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "200" }],
-        "headline": ["clamp(1.75rem, 4vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.03em", fontWeight: "300" }],
-        "title": ["clamp(1.25rem, 2.5vw, 1.75rem)", { lineHeight: "1.25", letterSpacing: "-0.02em", fontWeight: "400" }],
+        "display": ["clamp(2.75rem, 8vw, 5.5rem)", { lineHeight: "1.05", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "headline": ["clamp(2rem, 5vw, 3.5rem)", { lineHeight: "1.15", letterSpacing: "-0.02em", fontWeight: "700" }],
+        "title": ["clamp(1.25rem, 2.5vw, 1.75rem)", { lineHeight: "1.25", letterSpacing: "-0.01em", fontWeight: "600" }],
         "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
         "body": ["1rem", { lineHeight: "1.7", fontWeight: "400" }],
         "caption": ["0.6875rem", { lineHeight: "1.4", letterSpacing: "0.08em", fontWeight: "500" }],
@@ -84,8 +90,8 @@ export default {
         "3xl": "1.25rem",
       },
       spacing: {
-        "section": "clamp(5rem, 10vh, 8rem)",
-        "section-lg": "clamp(7rem, 14vh, 12rem)",
+        "section": "clamp(4rem, 10vh, 8rem)",
+        "section-lg": "clamp(5rem, 14vh, 12rem)",
       },
       keyframes: {
         "accordion-down": {
