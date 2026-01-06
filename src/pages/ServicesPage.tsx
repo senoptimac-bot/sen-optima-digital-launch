@@ -326,7 +326,7 @@ const ServicesPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center justify-center py-20 pt-32 px-5 md:px-0">
+      <section className="relative min-h-[50vh] flex items-center justify-center py-20 pt-32">
         <div className="container text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -336,12 +336,12 @@ const ServicesPage = () => {
             <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
               L'Écosystème de Croissance
             </span>
-            <h1 className="font-display text-display text-white mb-6">
+            <h1 className="text-display text-white mb-6">
               Le Digital n'est plus une option.
               <br />
               <span className="text-accent">C'est votre survie.</span>
             </h1>
-            <p className="text-body md:text-body-lg text-white/50 max-w-2xl mx-auto">
+            <p className="text-body-lg text-white/50 max-w-2xl mx-auto">
               Dans un marché saturé, ceux qui bricolent disparaissent. 
               Ceux qui se structurent dominent.
             </p>
@@ -350,7 +350,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Equation Section */}
-      <section className="py-section relative px-5 md:px-0">
+      <section className="py-section relative">
         <div className="container">
           <motion.div
             className="glass-card p-8 md:p-12 rounded-xl max-w-4xl mx-auto"
@@ -400,7 +400,7 @@ const ServicesPage = () => {
       </section>
 
       {/* 4 Pillars */}
-      <section className="py-section-lg px-5 md:px-0">
+      <section className="py-section-lg">
         <div className="container">
           <motion.div
             className="text-center mb-16"
@@ -408,7 +408,7 @@ const ServicesPage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-headline text-white">
+            <h2 className="text-headline text-white">
               Les <span className="text-accent">4 Piliers</span> de votre croissance
             </h2>
           </motion.div>

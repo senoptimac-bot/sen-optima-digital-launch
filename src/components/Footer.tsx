@@ -15,18 +15,17 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer 
       ref={ref} 
-      className="py-6 border-t border-white/5"
+      className="py-5 border-t border-white/5"
     >
       <div className="container">
-        {/* Mobile: Stack vertically, centered */}
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Navigation - Horizontal dock style */}
-          <nav className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <nav className="flex items-center gap-6">
             {links.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-[11px] text-white/40 hover:text-accent active:text-accent transition-colors duration-200 uppercase tracking-widest py-2 min-h-[44px] flex items-center"
+                className="text-[11px] text-white/40 hover:text-accent transition-colors duration-200 uppercase tracking-widest"
               >
                 {link.label}
               </Link>
@@ -34,7 +33,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           </nav>
 
           {/* Copyright */}
-          <p className="text-[11px] text-white/25 uppercase tracking-widest text-center">
+          <p className="text-[11px] text-white/25 uppercase tracking-widest">
             © {currentYear} Sen'Optima
           </p>
         </div>

@@ -32,7 +32,7 @@ const AboutPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative px-5 md:px-0">
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             {/* Text */}
@@ -47,7 +47,7 @@ const AboutPage = () => {
                 Notre Mission
               </span>
 
-              <h1 className="font-display text-display text-white mb-8">
+              <h1 className="text-display text-white mb-8">
                 Plus qu'un cabinet.{" "}
                 <span className="text-accent">Une vision.</span>
               </h1>
@@ -97,7 +97,7 @@ const AboutPage = () => {
       </section>
 
       {/* L'Histoire */}
-      <section className="py-section-lg relative px-5 md:px-0">
+      <section className="py-section-lg relative">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -109,7 +109,7 @@ const AboutPage = () => {
                 Notre Histoire
               </span>
 
-              <h2 className="font-display text-headline text-white mb-8">
+              <h2 className="text-headline text-white mb-8">
                 Le Constat <span className="text-accent">d'Urgence</span>
               </h2>
 
@@ -217,7 +217,7 @@ const AboutPage = () => {
       </section>
 
       {/* Notre Philosophie */}
-      <section className="py-section-lg relative px-5 md:px-0">
+      <section className="py-section-lg relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -228,7 +228,7 @@ const AboutPage = () => {
             <span className="text-caption text-white/40 uppercase tracking-widest mb-4 block">
               Notre Différence
             </span>
-            <h2 className="font-display text-headline text-white">
+            <h2 className="text-headline text-white">
               L'Adaptation <span className="text-accent">Locale</span>
             </h2>
           </motion.div>
@@ -261,7 +261,7 @@ const AboutPage = () => {
       </section>
 
       {/* Vision Sénégal 2050 */}
-      <section className="py-section-lg relative px-5 md:px-0">
+      <section className="py-section-lg relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -288,7 +288,7 @@ const AboutPage = () => {
               Patriotisme Économique
             </span>
 
-            <h2 className="font-display text-headline text-white mb-10">
+            <h2 className="text-headline text-white mb-10">
               Vision <span className="text-accent">Sénégal 2050</span>
             </h2>
 
@@ -316,7 +316,7 @@ const AboutPage = () => {
       </section>
 
       {/* Fondateur */}
-      <section className="py-section-lg relative px-5 md:px-0">
+      <section className="py-section-lg relative">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <motion.div
@@ -350,7 +350,7 @@ const AboutPage = () => {
                 Le Fondateur
               </span>
 
-              <h2 className="font-display text-headline text-white mb-8">
+              <h2 className="text-headline text-white mb-8">
                 Mandiaye Sylla
               </h2>
 
@@ -374,7 +374,7 @@ const AboutPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-section-lg relative px-5 md:px-0">
+      <section className="py-section-lg relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -382,7 +382,7 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="font-display text-headline text-white mb-6">
+            <h2 className="text-headline text-white mb-6">
               Vous partagez cette <span className="text-accent">vision</span> ?
             </h2>
             <p className="text-body-lg text-white/50 mb-10 max-w-xl mx-auto">
@@ -393,7 +393,7 @@ const AboutPage = () => {
               variant="outline"
               size="lg"
               onClick={() => setBookingOpen(true)}
-              className="border-white/20 text-white/70 hover:border-accent hover:text-accent active:scale-[0.98] h-14 px-10 w-full md:w-auto"
+              className="border-white/20 text-white/70 hover:border-accent hover:text-accent h-14 px-10"
             >
               Réservez mon diagnostic
             </Button>

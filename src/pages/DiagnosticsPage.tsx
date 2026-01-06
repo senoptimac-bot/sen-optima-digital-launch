@@ -151,7 +151,7 @@ const DiagnosticsPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative px-5 md:px-0">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -162,12 +162,12 @@ const DiagnosticsPage = () => {
             <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
               Passez à l'action
             </span>
-            <h1 className="font-display text-display text-white mb-6">
+            <h1 className="text-display text-white mb-6">
               Arrêtez de naviguer à vue.
               <br />
               <span className="text-accent">Passez à la stratégie.</span>
             </h1>
-            <p className="text-body md:text-body-lg text-white/50 max-w-3xl mx-auto">
+            <p className="text-body-lg text-white/50 max-w-3xl mx-auto">
               Beaucoup d'entrepreneurs échouent par manque de clarté. Chez Sen'Optima, nous ne vendons pas de magie, mais une méthode.
             </p>
           </motion.div>
@@ -175,7 +175,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Education Section */}
-      <section className="py-section relative px-5 md:px-0">
+      <section className="py-section relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -203,15 +203,15 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-section-lg relative px-5 md:px-0">
+      <section className="py-section-lg relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12 md:mb-16"
+            className="text-center mb-16"
           >
-            <h2 className="font-display text-headline text-white mb-4">
+            <h2 className="text-headline text-white mb-4">
               Choisissez votre <span className="text-accent">diagnostic</span>
             </h2>
             <p className="text-body text-white/50">
@@ -290,11 +290,11 @@ const DiagnosticsPage = () => {
                   </p>
                 </div>
 
-                {/* CTA - Touch-friendly */}
+                {/* CTA */}
                 <div className="mt-auto">
                   <Button
                     variant="outline"
-                    className={`w-full h-14 border-white/10 text-white/60 hover:border-accent hover:text-accent active:scale-[0.98] ${
+                    className={`w-full border-white/10 text-white/60 hover:border-accent hover:text-accent ${
                       diagnostic.popular ? "border-accent/30 text-accent" : ""
                     }`}
                     onClick={() => handleOpenPayment(diagnostic)}
@@ -310,7 +310,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Process Timeline */}
-      <section className="py-16 md:py-24 relative px-5 md:px-0">
+      <section className="py-16 md:py-24 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -318,10 +318,10 @@ const DiagnosticsPage = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="font-display text-headline text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
               Comment ça se passe ?
             </h2>
-            <p className="text-body text-white/50">
+            <p className="text-muted-foreground text-lg">
               Un processus simple et transparent
             </p>
           </motion.div>
