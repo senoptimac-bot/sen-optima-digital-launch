@@ -88,7 +88,7 @@ const DiagnosticExpress = () => {
   const progress = ((currentStep + (isComplete ? 1 : 0)) / steps.length) * 100;
 
   return (
-    <section className="py-section relative">
+    <section className="py-section relative px-5 md:px-0">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -98,12 +98,12 @@ const DiagnosticExpress = () => {
           className="max-w-xl mx-auto"
         >
           {/* Header */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 md:mb-10">
             <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-4">
               <span className="w-1 h-1 rounded-full bg-accent" />
               Diagnostic Rapide
             </span>
-            <h2 className="text-title text-foreground mb-2">
+            <h2 className="font-display text-headline text-foreground mb-2">
               Trouvez votre stratégie en <span className="text-accent">30 secondes</span>
             </h2>
             <p className="text-body text-foreground/40">
@@ -112,9 +112,9 @@ const DiagnosticExpress = () => {
           </div>
 
           {/* Card */}
-          <div className="glass-card rounded-xl p-8">
+          <div className="glass-card rounded-xl p-6 md:p-8">
             {/* Progress Bar */}
-            <div className="mb-8">
+            <div className="mb-6 md:mb-8">
               <div className="flex justify-between text-caption text-foreground/30 mb-2">
                 <span>Étape {Math.min(currentStep + 1, steps.length)}/{steps.length}</span>
                 <span>{Math.round(progress)}%</span>
@@ -143,15 +143,14 @@ const DiagnosticExpress = () => {
                     {steps[currentStep].question}
                   </h3>
 
-                  {/* Options */}
+                  {/* Options - Touch-friendly 44px+ height */}
                   <div className="grid grid-cols-2 gap-3">
                     {steps[currentStep].options.map((option) => (
                       <motion.button
                         key={option.value}
                         onClick={() => handleSelect(option.value)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="p-4 rounded-lg bg-foreground/5 border border-foreground/5 text-foreground/70 text-sm transition-all duration-200 hover:bg-foreground/10 hover:border-foreground/10 hover:text-foreground text-left"
+                        whileTap={{ scale: 0.97 }}
+                        className="p-4 min-h-[52px] rounded-lg bg-foreground/5 border border-foreground/5 text-foreground/70 text-sm transition-all duration-200 hover:bg-foreground/10 hover:border-foreground/10 hover:text-foreground active:bg-accent/10 active:border-accent/20 active:text-accent text-left"
                       >
                         {option.label}
                       </motion.button>
@@ -171,9 +170,9 @@ const DiagnosticExpress = () => {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                    className="w-12 h-12 mx-auto mb-6 rounded-full bg-foreground/5 flex items-center justify-center"
+                    className="w-14 h-14 mx-auto mb-6 rounded-full bg-foreground/5 flex items-center justify-center"
                   >
-                    <CheckCircle className="w-6 h-6 text-accent" />
+                    <CheckCircle className="w-7 h-7 text-accent" />
                   </motion.div>
 
                   <h3 className="text-title text-foreground mb-3">
@@ -183,26 +182,26 @@ const DiagnosticExpress = () => {
                     Discutons ensemble de votre projet.
                   </p>
 
-                  {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  {/* CTA Buttons - Touch-friendly */}
+                  <div className="flex flex-col gap-3">
                     <Button 
                       variant="outline" 
-                      className="gap-2 border-foreground/20 text-foreground/70 hover:border-accent hover:text-accent" 
+                      className="gap-2 h-14 border-foreground/20 text-foreground/70 hover:border-accent hover:text-accent active:scale-[0.98]" 
                       asChild
                     >
                       <a href="tel:+221781926969">
-                        <Phone className="w-4 h-4" />
+                        <Phone className="w-5 h-5" />
                         Appeler un expert
                       </a>
                     </Button>
                     <Button
                       variant="outline"
-                      className="gap-2 border-foreground/10 text-foreground/50 hover:border-foreground/20 hover:text-foreground/70"
+                      className="gap-2 h-14 border-foreground/10 text-foreground/50 hover:border-foreground/20 hover:text-foreground/70 active:scale-[0.98]"
                       asChild
                     >
                       <a href={recommendation?.link}>
                         Voir nos services
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-5 h-5" />
                       </a>
                     </Button>
                   </div>
@@ -210,7 +209,7 @@ const DiagnosticExpress = () => {
                   {/* Reset */}
                   <button
                     onClick={resetQuiz}
-                    className="mt-6 text-caption text-foreground/30 hover:text-foreground/50 transition-colors"
+                    className="mt-6 text-caption text-foreground/30 hover:text-foreground/50 active:text-accent transition-colors py-2 min-h-[44px]"
                   >
                     Recommencer le diagnostic
                   </button>

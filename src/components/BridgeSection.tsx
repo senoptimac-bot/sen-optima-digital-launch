@@ -22,20 +22,20 @@ const timelineSteps = [
 
 const BridgeSection = () => {
   return (
-    <section className="py-section-lg relative">
+    <section className="py-section-lg relative px-5 md:px-0">
       <div className="container">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-20"
+          className="text-center max-w-2xl mx-auto mb-12 md:mb-20"
         >
           <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
             <span className="w-1 h-1 rounded-full bg-accent" />
             Prochaine étape
           </span>
-          <h2 className="text-headline text-foreground">
+          <h2 className="font-display text-headline text-foreground">
             À quoi vous attendre
           </h2>
         </motion.div>
@@ -46,9 +46,9 @@ const BridgeSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto mb-20"
+          className="max-w-3xl mx-auto mb-12 md:mb-20"
         >
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8">
             {timelineSteps.map((step, index) => (
               <motion.div
                 key={step.title}
@@ -59,7 +59,7 @@ const BridgeSection = () => {
                 className="text-center"
               >
                 {/* Number */}
-                <div className="text-display text-foreground/10 mb-4">
+                <div className="font-display text-display text-foreground/10 mb-4">
                   {step.number}
                 </div>
 
@@ -86,7 +86,7 @@ const BridgeSection = () => {
           <Button
             variant="outline"
             size="lg"
-            className="gap-3 text-sm border-foreground/20 bg-transparent hover:border-accent hover:text-accent text-foreground/70 transition-all duration-300 h-14 px-10"
+            className="gap-3 text-sm border-foreground/20 bg-transparent hover:border-accent hover:text-accent active:scale-[0.98] text-foreground/70 transition-all duration-300 h-14 px-8 md:px-10 w-full md:w-auto max-w-sm"
             asChild
           >
             <Link to="/diagnostics">

@@ -64,6 +64,7 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   body {
@@ -71,24 +72,42 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
     font-weight: 400;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Typography - Ultra Clean Corporate */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  /* Typography - Playfair Display for H1/H2, Inter for others */
+  h1, h2 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     color: hsl(0 0% 96%);
+    background: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 75%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  h1 {
-    font-weight: 700;
-    letter-spacing: -0.04em;
+  h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: hsl(0 0% 96%);
   }
 
   /* Body text - Off White for softer contrast */
   p, span, li {
     color: hsl(0 0% 90% / 0.7);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* Mobile-first responsive text */
+  @media (max-width: 768px) {
+    p, span, li {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
   }
 }
 
@@ -98,7 +117,15 @@
     @apply text-accent font-normal;
   }
 
-  /* Glass - Ultra transparent cristal effect */
+  /* Premium title gradient */
+  .text-gradient-premium {
+    background: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 70%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass - Ultra transparent cristal effect - lighter on mobile */
   .glass {
     background: hsl(0 0% 0% / 0.08);
     border: 1px solid hsl(0 0% 100% / 0.08);
@@ -112,6 +139,19 @@
   .glass-premium {
     background: hsl(0 0% 0% / 0.12);
     border: 1px solid hsl(0 0% 100% / 0.1);
+  }
+
+  /* Mobile - lighter glass opacity */
+  @media (max-width: 768px) {
+    .glass {
+      background: hsl(0 0% 0% / 0.05);
+    }
+    .glass-card {
+      background: hsl(0 0% 0% / 0.06);
+    }
+    .glass-premium {
+      background: hsl(0 0% 0% / 0.08);
+    }
   }
 
   /* Subtle blur on desktop only */
@@ -173,6 +213,31 @@
   .animate-marquee-right {
     animation: marquee-scroll 45s linear infinite reverse;
   }
+
+  /* Touch-friendly buttons */
+  .btn-touch {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile padding utility */
+  .px-mobile {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .px-mobile {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+}
+
+/* Prevent horizontal scroll */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Google Translate Hide */

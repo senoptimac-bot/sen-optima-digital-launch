@@ -131,7 +131,7 @@ const ContactPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative px-5 md:px-0">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -139,7 +139,7 @@ const ContactPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-display text-white mb-6">
+            <h1 className="font-display text-display text-white mb-6">
               Parlons de votre <span className="text-accent">avenir</span>.
             </h1>
             <p className="text-body-lg text-white/50 max-w-2xl mx-auto">
@@ -151,7 +151,7 @@ const ContactPage = () => {
       </section>
 
       {/* Guide d'Orientation */}
-      <section className="py-section-lg relative">
+      <section className="py-section-lg relative px-5 md:px-0">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -159,7 +159,7 @@ const ContactPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-headline text-white mb-4">
+            <h2 className="font-display text-headline text-white mb-4">
               Comment souhaitez-vous nous <span className="text-accent">contacter</span> ?
             </h2>
             <p className="text-body text-white/50 max-w-xl mx-auto">
@@ -195,7 +195,7 @@ const ContactPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClick()}
-                className="inline-flex items-center justify-center gap-3 w-full py-3 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-3 w-full py-4 min-h-[52px] rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 active:scale-[0.98] transition-all duration-300"
               >
                 <MessageCircle className="w-5 h-5" />
                 Ouvrir WhatsApp
@@ -266,13 +266,14 @@ const ContactPage = () => {
                     onSubmit={handleSubmit}
                     className="space-y-4 flex-grow flex flex-col"
                   >
+                    {/* Form inputs - Touch-friendly */}
                     <input
                       type="text"
                       placeholder="Nom Complet"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground backdrop-blur-sm"
+                      className="w-full px-4 py-4 min-h-[52px] rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground backdrop-blur-sm"
                     />
                     
                     <input
@@ -281,7 +282,7 @@ const ContactPage = () => {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground backdrop-blur-sm"
+                      className="w-full px-4 py-4 min-h-[52px] rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground backdrop-blur-sm"
                     />
 
                     {/* Custom Select */}
@@ -289,7 +290,7 @@ const ContactPage = () => {
                       <button
                         type="button"
                         onClick={() => setSelectOpen(!selectOpen)}
-                        className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-left text-foreground backdrop-blur-sm"
+                        className="w-full px-4 py-4 min-h-[52px] rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-left text-foreground backdrop-blur-sm"
                       >
                         {selectedSubject ? (
                           selectedSubject.label
@@ -339,7 +340,7 @@ const ContactPage = () => {
                     <Button
                       type="submit"
                       variant="cta"
-                      className="w-full h-12 text-base gap-2 mt-auto"
+                      className="w-full h-14 text-base gap-2 mt-auto active:scale-[0.98]"
                       disabled={isSubmitting}
                       onClick={() => {
                         if (!isSubmitting) playClick();
@@ -392,7 +393,7 @@ const ContactPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClick()}
-                className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-lg border border-white/10 text-white/60 hover:border-white/20 hover:text-white/80 transition-all duration-300 mt-auto"
+                className="inline-flex items-center justify-center gap-2 w-full py-4 min-h-[52px] rounded-lg border border-white/10 text-white/60 hover:border-white/20 hover:text-white/80 active:scale-[0.98] transition-all duration-300 mt-auto"
               >
                 Nous trouver sur Maps
                 <ExternalLink className="w-4 h-4" />
@@ -403,7 +404,7 @@ const ContactPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-section relative">
+      <section className="py-section relative px-5 md:px-0">
         <div className="container">
           <div className="max-w-2xl mx-auto">
             <motion.div
