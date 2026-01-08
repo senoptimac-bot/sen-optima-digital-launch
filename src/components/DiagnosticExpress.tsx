@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -63,6 +64,7 @@ const getRecommendation = (answers: string[]) => {
 };
 
 const DiagnosticExpress = () => {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [isComplete, setIsComplete] = useState(false);
@@ -184,10 +186,10 @@ const DiagnosticExpress = () => {
                   </p>
 
                   {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center w-full sm:w-auto">
                     <Button 
                       variant="outline" 
-                      className="gap-2 border-foreground/20 text-foreground/70 hover:border-accent hover:text-accent" 
+                      className="gap-2 border-foreground/20 text-foreground/70 hover:border-accent hover:text-accent w-full sm:w-auto" 
                       asChild
                     >
                       <a href="tel:+221781926969">
@@ -197,13 +199,11 @@ const DiagnosticExpress = () => {
                     </Button>
                     <Button
                       variant="outline"
-                      className="gap-2 border-foreground/10 text-foreground/50 hover:border-foreground/20 hover:text-foreground/70"
-                      asChild
+                      className="gap-2 border-foreground/10 text-foreground/50 hover:border-foreground/20 hover:text-foreground/70 w-full sm:w-auto"
+                      onClick={() => navigate("/services")}
                     >
-                      <a href={recommendation?.link}>
-                        Voir nos services
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
+                      Voir nos services
+                      <ArrowRight className="w-4 h-4" />
                     </Button>
                   </div>
 

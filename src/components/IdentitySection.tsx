@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const IdentitySection = () => {
   return (
@@ -67,12 +69,16 @@ const IdentitySection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex justify-center mt-16"
         >
-          <Link
-            to="/services"
-            className="text-[13px] text-foreground/50 hover:text-accent transition-colors duration-300 uppercase tracking-widest"
+          <Button
+            variant="outline"
+            className="gap-2 border-foreground/20 text-foreground/70 hover:border-accent hover:text-accent"
+            asChild
           >
-            Explorer nos solutions stratégiques →
-          </Link>
+            <Link to="/services">
+              Explorer nos solutions stratégiques
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </section>
