@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
   Check, 
@@ -7,7 +7,6 @@ import {
   Target, 
   Rocket, 
   Shield, 
-  CreditCard, 
   ClipboardList, 
   Video, 
   FileText,
@@ -21,7 +20,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useAppSounds } from "@/hooks/useAppSounds";
-import PaymentModal from "@/components/PaymentModal";
 
 const diagnostics = [
   {
@@ -37,7 +35,7 @@ const diagnostics = [
       "Intégrations Wave/Orange Money",
     ],
     deliverable: "Rapport PDF \"Check-up Technique\"",
-    cta: "Commander l'Audit Flash",
+    cta: "Démarrer gratuitement",
     popular: false,
   },
   {
@@ -53,7 +51,7 @@ const diagnostics = [
       "Votre positionnement marché",
     ],
     deliverable: "Roadmap sur 3 mois + Calendrier Éditorial",
-    cta: "Commander la Stratégie",
+    cta: "Démarrer gratuitement",
     popular: true,
   },
   {
@@ -69,33 +67,27 @@ const diagnostics = [
       "Opportunités d'automatisation IA",
     ],
     deliverable: "Rapport de Transformation Digitale Complète",
-    cta: "Commander le Business Scan",
+    cta: "Démarrer gratuitement",
     popular: false,
   },
 ];
 
 const processSteps = [
   {
-    icon: CreditCard,
-    step: "1",
-    title: "Réservation & Paiement",
-    description: "Via Wave ou Orange Money",
-  },
-  {
     icon: ClipboardList,
-    step: "2",
-    title: "Questionnaire Préparatoire",
-    description: "Pour arriver préparé à la session",
+    step: "1",
+    title: "Remplir le formulaire",
+    description: "Partagez vos informations et objectifs",
   },
   {
     icon: Video,
-    step: "3",
+    step: "2",
     title: "La Session",
     description: "1h30 en Visio ou à Grand Mbao",
   },
   {
     icon: FileText,
-    step: "4",
+    step: "3",
     title: "Le Plan d'Action",
     description: "Reçu sous 48h par email",
   },
@@ -139,13 +131,11 @@ const cardVariants = {
 
 const DiagnosticsPage = () => {
   const { playClick } = useAppSounds();
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-  const [selectedDiagnostic, setSelectedDiagnostic] = useState<typeof diagnostics[0] | null>(null);
+  const navigate = useNavigate();
 
-  const handleOpenPayment = (diagnostic: typeof diagnostics[0]) => {
+  const handleStartDiagnostic = (diagnostic: typeof diagnostics[0]) => {
     playClick();
-    setSelectedDiagnostic(diagnostic);
-    setIsPaymentModalOpen(true);
+    navigate("/merci");
   };
 
   return (
@@ -297,7 +287,7 @@ const DiagnosticsPage = () => {
                     className={`w-full border-white/10 text-white/60 hover:border-accent hover:text-accent ${
                       diagnostic.popular ? "border-accent/30 text-accent" : ""
                     }`}
-                    onClick={() => handleOpenPayment(diagnostic)}
+                    onClick={() => handleStartDiagnostic(diagnostic)}
                   >
                     {diagnostic.cta}
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -471,14 +461,6 @@ const DiagnosticsPage = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Payment Modal */}
-      <PaymentModal
-        isOpen={isPaymentModalOpen}
-        onClose={() => setIsPaymentModalOpen(false)}
-        diagnosticName={selectedDiagnostic?.name || ""}
-        price={selectedDiagnostic?.price || ""}
-      />
     </>
   );
 };

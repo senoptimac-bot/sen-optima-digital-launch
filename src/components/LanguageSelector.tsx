@@ -16,26 +16,12 @@ interface LanguageSelectorProps {
 
 // Google Translate helper functions
 const triggerGoogleTranslate = (langCode: string) => {
-  // Set cookie first
-  const cookieName = "googtrans";
+  // Set cookie
   const cookieValue = `/auto/${langCode}`;
-  document.cookie = `${cookieName}=${cookieValue};path=/;max-age=31536000;SameSite=Lax`;
+  document.cookie = `googtrans=${cookieValue};path=/;max-age=31536000;SameSite=Lax`;
 
-  // Update URL hash (preserve React Router hash if exists)
-  const currentHash = window.location.hash;
-  const googtransHash = `googtrans(${langCode})`;
-  
-  if (currentHash.includes("googtrans")) {
-    // Replace existing googtrans
-    const newHash = currentHash.replace(/googtrans\([^)]+\)/, googtransHash);
-    window.location.hash = newHash;
-  } else if (currentHash) {
-    // Append to existing hash
-    window.location.hash = `${currentHash}&${googtransHash}`;
-  } else {
-    // New hash
-    window.location.hash = googtransHash;
-  }
+  // Update URL hash
+  window.location.hash = `googtrans(${langCode})`;
 
   // Method 1: Try to use the select element if available
   const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
@@ -45,14 +31,9 @@ const triggerGoogleTranslate = (langCode: string) => {
       const event = new Event("change", { bubbles: true });
       select.dispatchEvent(event);
     }
-    // Still reload to ensure translation is applied across all routes
-    setTimeout(() => {
-      window.location.reload();
-    }, 300);
-    return;
   }
-
-  // Method 2: Reload if select not available (will be initialized on reload)
+  
+  // Reload to apply translation
   setTimeout(() => {
     window.location.reload();
   }, 300);
@@ -135,53 +116,30 @@ const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps)
     setCurrentLangCode(lang.code);
     localStorage.setItem("senoptima_lang", lang.code);
     
-    // Trigger Google Translate
     if (lang.code === "fr") {
-      // Reset to French (original) - remove translation completely
+      // Reset to French (original) - clear all translation
+      // 1. Clear cookies
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       
-      // 1. Clear Google Translate cookie (all possible domains)
-      const domains = [
-        window.location.hostname,
-        `.${window.location.hostname}`,
-        window.location.hostname.split('.').slice(-2).join('.'),
-        `.${window.location.hostname.split('.').slice(-2).join('.')}`
-      ];
+      // 2. Clear hash (remove googtrans)
+      if (window.location.hash.includes("googtrans")) {
+        window.location.hash = "";
+      }
       
-      domains.forEach(domain => {
-        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain};`;
-        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-      });
-      
-      // 2. Try to reset Google Translate select to French if available
+      // 3. Try to reset select
       const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
-      if (select && select.value !== "fr") {
+      if (select) {
         select.value = "fr";
         const event = new Event("change", { bubbles: true });
         select.dispatchEvent(event);
       }
       
-      // 3. Clean URL hash - remove googtrans completely
-      const currentHash = window.location.hash;
-      let cleanHash = currentHash
-        .replace(/&?googtrans\([^)]+\)/g, '') // Remove googtrans from hash
-        .replace(/^#&/, '#') // Clean up leading & after #
-        .replace(/^#$/, ''); // Remove empty hash
-      
-      // 4. Build clean URL
-      const baseUrl = window.location.origin + window.location.pathname + window.location.search;
-      const finalUrl = cleanHash ? `${baseUrl}${cleanHash}` : baseUrl;
-      
-      // 5. Clear localStorage and reload
-      localStorage.setItem("senoptima_lang", "fr");
-      
-      // 6. Navigate to clean URL
-      if (window.location.href !== finalUrl) {
-        window.location.href = finalUrl;
-      } else {
-        // If URL is already clean, just reload
+      // 4. Simple reload
+      setTimeout(() => {
         window.location.reload();
-      }
+      }, 300);
     } else {
+      // Translate to another language
       triggerGoogleTranslate(lang.googleCode);
     }
     

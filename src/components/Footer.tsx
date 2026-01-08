@@ -101,11 +101,6 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               <p className="text-xs text-white/30">
                 © {currentYear} Sen'Optima Consulting. Tous droits réservés.
               </p>
-
-              {/* Additional Info */}
-              <p className="text-xs text-white/20">
-                Made with <span className="text-accent">♥</span> in Dakar, Sénégal
-              </p>
             </div>
           </div>
         </div>

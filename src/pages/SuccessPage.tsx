@@ -89,18 +89,18 @@ const SuccessPage = () => {
             >
               <div className="flex items-center justify-center gap-2 mb-4">
                 <PartyPopper className="w-6 h-6 text-accent" />
-                <span className="text-accent font-medium">Paiement confirmé</span>
+                <span className="text-accent font-medium">Bienvenue chez Sen'Optima</span>
                 <PartyPopper className="w-6 h-6 text-accent" />
               </div>
               
               <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
-                Paiement validé !{" "}
-                <span className="text-gradient-gold">La transformation commence maintenant.</span>
+                Votre projet{" "}
+                <span className="text-gradient-gold">est entre de bonnes mains.</span>
               </h1>
               
               <p className="text-xl text-muted-foreground mb-4">
-                Pour préparer notre session, veuillez remplir ce{" "}
-                <span className="text-foreground font-semibold">formulaire d'audit préliminaire</span>.
+                Soumettez vos informations ci-dessous pour valider votre{" "}
+                <span className="text-foreground font-semibold">rendez-vous stratégique</span>.
               </p>
               <p className="text-lg text-muted-foreground">
                 Cela nous permettra d'être efficaces dès la première minute.

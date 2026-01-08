@@ -1,12 +1,9 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Quote, MapPin, Globe, Rocket, Target, Zap, Heart, Shield, Cpu, ArrowLeft } from "lucide-react";
+import { Quote, MapPin, Rocket, Target, Zap, Heart, Shield, Cpu, ArrowLeft } from "lucide-react";
 import fondateurPhoto from "@/assets/fondateur.png";
 import presidentPhoto from "@/assets/president-senegal.webp";
-import hommePhoto from "@/assets/Homme.png";
 import { Button } from "@/components/ui/button";
-import BookingModal from "@/components/BookingModal";
 
 const philosophyCards = [
   {
@@ -27,87 +24,89 @@ const philosophyCards = [
 ];
 
 const AboutPage = () => {
-  const [bookingOpen, setBookingOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative">
-        <div className="container">
-          {/* Bouton Précédent */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate("/diagnostics")}
-              className="gap-2 text-white/50 hover:text-accent transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Précédent
-            </Button>
-          </motion.div>
-          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-            {/* Text */}
+      <section className="relative min-h-screen flex items-center justify-center pt-20">
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Bouton Précédent */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="text-left"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8 flex justify-start"
             >
-              <span className="inline-flex items-center gap-2 text-caption text-white/40 uppercase tracking-widest mb-8">
-                <Globe className="w-4 h-4 text-accent" />
-                Notre Mission
-              </span>
-
-              <h1 className="text-display font-bold text-white mb-8">
-                Plus qu'un cabinet.{" "}
-                <span className="text-accent">Une vision.</span>
-              </h1>
-
-              <p className="text-body-lg text-white/60 leading-relaxed mb-10">
-                Nous ne sommes pas là pour vendre du rêve, mais pour{" "}
-                <span className="text-white/80">bâtir l'économie numérique de demain</span>, 
-                entrepreneur par entrepreneur.
-              </p>
-
-              <div className="flex items-center gap-8">
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 glass-card rounded-xl flex items-center justify-center mb-2">
-                    <Heart className="w-6 h-6 text-white/50" />
-                  </div>
-                  <span className="text-caption text-white/40">Tradition</span>
-                </div>
-                
-                <div className="w-12 h-px bg-white/10" />
-                
-                <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 glass-card rounded-xl flex items-center justify-center mb-2">
-                    <Cpu className="w-6 h-6 text-white/50" />
-                  </div>
-                  <span className="text-caption text-white/40">Technologie</span>
-                </div>
-              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/diagnostics")}
+                className="gap-2 text-foreground/50 hover:text-accent transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Précédent
+              </Button>
             </motion.div>
 
-            {/* Image */}
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="order-first lg:order-last"
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2 mb-12"
             >
-              <div className="glass-card rounded-2xl overflow-hidden">
-                <img 
-                  src={hommePhoto} 
-                  alt="Technologie et innovation au Sénégal" 
-                  className="w-full max-w-lg h-auto object-cover"
-                />
+              <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span className="text-caption text-foreground/50 uppercase tracking-widest">
+                Notre Mission
+              </span>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="text-display font-bold text-foreground mb-8"
+            >
+              Plus qu'un cabinet.{" "}
+              <span className="text-accent">Une vision.</span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="text-body-lg text-foreground/60 max-w-2xl mx-auto mb-12 leading-relaxed"
+            >
+              Nous ne sommes pas là pour vendre du rêve, mais pour{" "}
+              <span className="text-foreground/80">bâtir l'économie numérique de demain</span>, 
+              entrepreneur par entrepreneur.
+            </motion.p>
+
+            {/* Icons Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex items-center justify-center gap-8"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-14 h-14 glass-card rounded-xl flex items-center justify-center mb-2">
+                  <Heart className="w-6 h-6 text-foreground/50" />
+                </div>
+                <span className="text-caption text-foreground/40">Tradition</span>
+              </div>
+              
+              <div className="w-12 h-px bg-foreground/10" />
+              
+              <div className="flex flex-col items-center">
+                <div className="w-14 h-14 glass-card rounded-xl flex items-center justify-center mb-2">
+                  <Cpu className="w-6 h-6 text-foreground/50" />
+                </div>
+                <span className="text-caption text-foreground/40">Technologie</span>
               </div>
             </motion.div>
           </div>
@@ -412,7 +411,7 @@ const AboutPage = () => {
             <Button
               variant="outline"
               size="lg"
-              onClick={() => setBookingOpen(true)}
+              onClick={() => navigate("/diagnostics")}
               className="border-white/20 text-white/70 hover:border-accent hover:text-accent h-14 px-10"
             >
               Réservez mon diagnostic
@@ -420,8 +419,6 @@ const AboutPage = () => {
           </motion.div>
         </div>
       </section>
-
-      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
   );
 };

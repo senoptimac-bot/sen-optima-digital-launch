@@ -18,9 +18,9 @@ export default {
         heading: ["Inter", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "display": ["clamp(2.5rem, 7vw, 5rem)", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "200" }],
-        "headline": ["clamp(1.75rem, 4vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.03em", fontWeight: "300" }],
-        "title": ["clamp(1.25rem, 2.5vw, 1.75rem)", { lineHeight: "1.25", letterSpacing: "-0.02em", fontWeight: "400" }],
+        "display": ["clamp(2.5rem, 7vw, 5rem)", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "700" }],
+        "headline": ["clamp(1.75rem, 4vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.03em", fontWeight: "700" }],
+        "title": ["clamp(1.25rem, 2.5vw, 1.75rem)", { lineHeight: "1.25", letterSpacing: "-0.02em", fontWeight: "700" }],
         "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
         "body": ["1rem", { lineHeight: "1.7", fontWeight: "400" }],
         "caption": ["0.6875rem", { lineHeight: "1.4", letterSpacing: "0.08em", fontWeight: "500" }],
