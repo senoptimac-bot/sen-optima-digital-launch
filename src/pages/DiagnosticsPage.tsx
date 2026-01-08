@@ -162,7 +162,7 @@ const DiagnosticsPage = () => {
             <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
               Passez à l'action
             </span>
-            <h1 className="text-display text-white mb-6">
+            <h1 className="text-display font-bold text-white mb-6">
               Arrêtez de naviguer à vue.
               <br />
               <span className="text-accent">Passez à la stratégie.</span>

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Quote, MapPin, Globe, Rocket, Target, Zap, Heart, Shield, Cpu } from "lucide-react";
+import { Quote, MapPin, Globe, Rocket, Target, Zap, Heart, Shield, Cpu, ArrowLeft } from "lucide-react";
 import fondateurPhoto from "@/assets/fondateur.png";
 import presidentPhoto from "@/assets/president-senegal.webp";
 import hommePhoto from "@/assets/Homme.png";
@@ -28,12 +28,30 @@ const philosophyCards = [
 
 const AboutPage = () => {
   const [bookingOpen, setBookingOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
       {/* Hero Section */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 relative">
         <div className="container">
+          {/* Bouton Précédent */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate("/diagnostics")}
+              className="gap-2 text-white/50 hover:text-accent transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Précédent
+            </Button>
+          </motion.div>
           <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             {/* Text */}
             <motion.div
@@ -47,7 +65,7 @@ const AboutPage = () => {
                 Notre Mission
               </span>
 
-              <h1 className="text-display text-white mb-8">
+              <h1 className="text-display font-bold text-white mb-8">
                 Plus qu'un cabinet.{" "}
                 <span className="text-accent">Une vision.</span>
               </h1>
@@ -318,41 +336,43 @@ const AboutPage = () => {
       {/* Fondateur */}
       <section className="py-section-lg relative">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="order-2 lg:order-1"
-            >
-              <div className="glass-card rounded-xl overflow-hidden">
-                <img 
-                  src={fondateurPhoto} 
-                  alt="Mandiaye Sylla - Fondateur Sen'Optima"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              <div className="mt-4 text-center">
-                <span className="text-caption text-accent uppercase tracking-widest">
-                  Fondateur & Stratège Principal
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="order-1 lg:order-2"
             >
               <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
                 Le Fondateur
               </span>
 
-              <h2 className="text-headline text-white mb-8">
-                Mandiaye Sylla
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+                {/* Avatar rond - petite taille */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="flex-shrink-0"
+                >
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-accent/30">
+                    <img 
+                      src={fondateurPhoto} 
+                      alt="Mandiaye Sylla - Fondateur Sen'Optima"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </motion.div>
+
+                <div className="flex-1">
+                  <h2 className="text-headline text-white mb-1">
+                    Mandiaye Sylla
+                  </h2>
+                  <p className="text-caption text-accent uppercase tracking-widest">
+                    Fondateur & Stratège Principal
+                  </p>
+                </div>
+              </div>
 
               <div className="space-y-6 text-body text-white/60 leading-relaxed">
                 <p>

@@ -66,6 +66,20 @@ const App = () => {
             const hashMatch = window.location.hash.match(/googtrans\(([^)]+)\)/);
             const savedLang = localStorage.getItem("senoptima_lang");
             
+            // Check if we're returning to French (no hash and saved lang is fr or empty)
+            const isReturningToFrench = !hashMatch && (!savedLang || savedLang === "fr");
+            
+            if (isReturningToFrench) {
+              // Ensure Google Translate is set to French (original)
+              const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
+              if (select && select.value !== "fr") {
+                select.value = "fr";
+                const event = new Event("change", { bubbles: true });
+                select.dispatchEvent(event);
+              }
+              return;
+            }
+            
             if (hashMatch && hashMatch[1]) {
               // Language from URL hash
               const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
@@ -74,7 +88,7 @@ const App = () => {
                 select.dispatchEvent(new Event("change", { bubbles: true }));
               }
             } else if (savedLang && savedLang !== "fr") {
-              // Language from localStorage
+              // Language from localStorage (only if not French)
               const langCodes: Record<string, string> = {
                 "fr": "fr",
                 "en": "en",
@@ -82,7 +96,7 @@ const App = () => {
                 "ru": "ru"
               };
               const googleCode = langCodes[savedLang];
-              if (googleCode) {
+              if (googleCode && googleCode !== "fr") {
                 const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
                 if (select && select.value !== googleCode) {
                   select.value = googleCode;

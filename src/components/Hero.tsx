@@ -35,7 +35,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-display text-foreground mb-8"
+            className="text-display font-bold text-foreground mb-8"
           >
             De l'<span className="text-accent">Ambition</span>
             <br />

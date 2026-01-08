@@ -336,7 +336,7 @@ const ServicesPage = () => {
             <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
               L'Écosystème de Croissance
             </span>
-            <h1 className="text-display text-white mb-6">
+            <h1 className="text-display font-bold text-white mb-6">
               Le Digital n'est plus une option.
               <br />
               <span className="text-accent">C'est votre survie.</span>

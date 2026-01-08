@@ -65,12 +65,19 @@ const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps)
   const getInitialLang = () => {
     const hashMatch = window.location.hash.match(/googtrans\(([^)]+)\)/);
     if (hashMatch && hashMatch[1]) {
+      // If hash exists, use it
       const langFromHash = languages.find((l) => l.googleCode === hashMatch[1]);
       if (langFromHash) {
         return langFromHash.code;
       }
     }
-    return localStorage.getItem("senoptima_lang") || "fr";
+    // If no hash, check localStorage
+    const savedLang = localStorage.getItem("senoptima_lang");
+    // If saved lang is fr or empty/null, return fr (default)
+    if (!savedLang || savedLang === "fr") {
+      return "fr";
+    }
+    return savedLang;
   };
 
   const [currentLangCode, setCurrentLangCode] = useState(getInitialLang);
@@ -85,13 +92,25 @@ const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps)
     const savedLang = localStorage.getItem("senoptima_lang");
     
     if (hashMatch && hashMatch[1]) {
+      // URL hash has priority
       const langFromHash = languages.find((l) => l.googleCode === hashMatch[1]);
       if (langFromHash && langFromHash.code !== currentLangCode) {
         setCurrentLangCode(langFromHash.code);
         localStorage.setItem("senoptima_lang", langFromHash.code);
       }
-    } else if (savedLang && savedLang !== currentLangCode && !hashMatch) {
-      setCurrentLangCode(savedLang);
+    } else if (!hashMatch) {
+      // No hash means we should be in French (original language)
+      if (savedLang === "fr" || !savedLang) {
+        // Ensure we're set to French
+        if (currentLangCode !== "fr") {
+          setCurrentLangCode("fr");
+          localStorage.setItem("senoptima_lang", "fr");
+        }
+      } else if (savedLang && savedLang !== currentLangCode) {
+        // Saved lang is not French, but no hash - this shouldn't happen normally
+        // but we'll respect the saved lang
+        setCurrentLangCode(savedLang);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -118,16 +137,48 @@ const LanguageSelector = ({ isMobile = false, onSelect }: LanguageSelectorProps)
     
     // Trigger Google Translate
     if (lang.code === "fr") {
-      // Reset to French (original) - remove translation
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
+      // Reset to French (original) - remove translation completely
       
-      // Remove hash from URL
-      const currentUrl = window.location.href;
-      const cleanUrl = currentUrl.replace(/#googtrans\([^)]+\)/g, "").split('#')[0];
+      // 1. Clear Google Translate cookie (all possible domains)
+      const domains = [
+        window.location.hostname,
+        `.${window.location.hostname}`,
+        window.location.hostname.split('.').slice(-2).join('.'),
+        `.${window.location.hostname.split('.').slice(-2).join('.')}`
+      ];
       
-      if (currentUrl !== cleanUrl) {
-        window.location.href = cleanUrl;
+      domains.forEach(domain => {
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain};`;
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      });
+      
+      // 2. Try to reset Google Translate select to French if available
+      const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
+      if (select && select.value !== "fr") {
+        select.value = "fr";
+        const event = new Event("change", { bubbles: true });
+        select.dispatchEvent(event);
+      }
+      
+      // 3. Clean URL hash - remove googtrans completely
+      const currentHash = window.location.hash;
+      let cleanHash = currentHash
+        .replace(/&?googtrans\([^)]+\)/g, '') // Remove googtrans from hash
+        .replace(/^#&/, '#') // Clean up leading & after #
+        .replace(/^#$/, ''); // Remove empty hash
+      
+      // 4. Build clean URL
+      const baseUrl = window.location.origin + window.location.pathname + window.location.search;
+      const finalUrl = cleanHash ? `${baseUrl}${cleanHash}` : baseUrl;
+      
+      // 5. Clear localStorage and reload
+      localStorage.setItem("senoptima_lang", "fr");
+      
+      // 6. Navigate to clean URL
+      if (window.location.href !== finalUrl) {
+        window.location.href = finalUrl;
       } else {
+        // If URL is already clean, just reload
         window.location.reload();
       }
     } else {

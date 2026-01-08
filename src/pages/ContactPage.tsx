@@ -139,7 +139,7 @@ const ContactPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-display text-white mb-6">
+            <h1 className="text-display font-bold text-white mb-6">
               Parlons de votre <span className="text-accent">avenir</span>.
             </h1>
             <p className="text-body-lg text-white/50 max-w-2xl mx-auto">
