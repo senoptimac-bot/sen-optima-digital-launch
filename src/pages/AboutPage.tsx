@@ -46,7 +46,7 @@ const AboutPage = () => {
                 className="gap-2 text-foreground/50 hover:text-accent transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Précédent
+                retour
               </Button>
             </motion.div>
 
