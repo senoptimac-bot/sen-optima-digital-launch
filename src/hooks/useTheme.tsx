@@ -1,22 +1,72 @@
-import { useEffect, createContext, useContext, ReactNode } from "react";
+import { useEffect, createContext, useContext, ReactNode, useState, useCallback } from "react";
+
+type Theme = "light" | "dark";
 
 interface ThemeContextType {
-  theme: "dark";
+  theme: Theme;
+  toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+const getStoredTheme = (): Theme | null => {
+  if (typeof window === "undefined") return null;
+  const stored = localStorage.getItem("theme");
+  if (stored === "light" || stored === "dark") return stored;
+  return null;
+};
+
+const getSystemTheme = (): Theme => {
+  if (typeof window === "undefined") return "dark";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+};
+
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  useEffect(() => {
+  const [theme, setThemeState] = useState<Theme>(() => {
+    // Check localStorage first, then system preference
+    return getStoredTheme() || getSystemTheme();
+  });
+
+  const applyTheme = useCallback((newTheme: Theme) => {
     const root = window.document.documentElement;
-    // Force dark mode only
-    root.classList.remove("light");
-    root.classList.add("dark");
-    localStorage.setItem("theme", "dark");
+    root.classList.remove("light", "dark");
+    root.classList.add(newTheme);
+    localStorage.setItem("theme", newTheme);
   }, []);
 
+  const setTheme = useCallback((newTheme: Theme) => {
+    setThemeState(newTheme);
+    applyTheme(newTheme);
+  }, [applyTheme]);
+
+  const toggleTheme = useCallback(() => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+  }, [theme, setTheme]);
+
+  useEffect(() => {
+    // Apply initial theme
+    applyTheme(theme);
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Only apply system preference if user hasn't set a preference
+      const stored = getStoredTheme();
+      if (!stored) {
+        const systemTheme = e.matches ? "dark" : "light";
+        setThemeState(systemTheme);
+        applyTheme(systemTheme);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [applyTheme, theme]);
+
   return (
-    <ThemeContext.Provider value={{ theme: "dark" }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
