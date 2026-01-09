@@ -572,7 +572,7 @@ const AuditForm = () => {
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className="w-full h-14 text-lg font-heading font-bold rounded-sm bg-gradient-gold hover:opacity-90 text-accent-foreground transition-all duration-300"
+          className="w-full h-14 text-lg font-heading font-bold rounded-sm bg-accent hover:bg-accent/90 text-white transition-all duration-300"
         >
           {isSubmitting ? (
             <>
