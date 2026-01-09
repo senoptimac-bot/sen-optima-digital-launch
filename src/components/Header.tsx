@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.svg";
 import LanguageSelector from "./LanguageSelector";
-import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,11 +83,6 @@ const Header = () => {
 
             {/* Right side */}
             <div className="flex items-center gap-4">
-              {/* Theme Toggle - Desktop */}
-              <div className="hidden lg:block">
-                <ThemeToggle />
-              </div>
-
               {/* Language Selector - Desktop */}
               <div className="hidden lg:block">
                 <LanguageSelector />
@@ -142,10 +136,9 @@ const Header = () => {
               className="fixed inset-x-0 top-20 bottom-0 z-50 lg:hidden overflow-auto"
             >
               <div className="container py-8">
-                {/* Theme Toggle & Language Selector - Mobile */}
-                <div className="flex items-center justify-between mb-8">
+                {/* Language Selector - Mobile */}
+                <div className="mb-8">
                   <LanguageSelector isMobile onSelect={() => setIsOpen(false)} />
-                  <ThemeToggle />
                 </div>
 
                 {/* Nav Links */}

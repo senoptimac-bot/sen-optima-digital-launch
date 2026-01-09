@@ -3,85 +3,39 @@
 @tailwind utilities;
 
 @layer base {
-  /* LIGHT MODE - Pro & Lumineux */
-  :root {
-    --background: 0 0% 98%;
-    --foreground: 220 50% 8%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 220 50% 8%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 50% 8%;
-
-    --primary: 220 50% 8%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 220 15% 94%;
-    --secondary-foreground: 220 50% 8%;
-
-    --muted: 220 15% 92%;
-    --muted-foreground: 220 10% 40%;
-
-    /* Accent - Or Optima (#D4A73B) */
-    --accent: 43 65% 53%;
-    --accent-foreground: 220 50% 8%;
-
-    --destructive: 0 45% 50%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 15% 90%;
-    --input: 220 15% 94%;
-    --ring: 43 65% 53%;
-
-    --radius: 0.5rem;
-
-    /* Custom tokens */
-    --gold: 43 65% 53%;
-    --gold-light: 43 65% 63%;
-    --gold-dark: 43 65% 43%;
-
-    /* Sidebar */
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 50% 8%;
-    --sidebar-primary: 43 65% 53%;
-    --sidebar-primary-foreground: 220 50% 8%;
-    --sidebar-accent: 43 65% 53%;
-    --sidebar-accent-foreground: 220 50% 8%;
-    --sidebar-border: 220 15% 90%;
-    --sidebar-ring: 43 65% 53%;
-  }
-
-  /* DARK MODE - Tech & Reposant */
+  :root,
   .dark {
-    --background: 220 50% 8%;
+    /* Unified Midnight Navy - Corporate App Style */
+    --background: 220 20% 7%;
     --foreground: 0 0% 96%;
 
-    --card: 220 45% 12%;
+    --card: 0 0% 0%;
     --card-foreground: 0 0% 96%;
 
-    --popover: 220 45% 10%;
+    --popover: 220 20% 9%;
     --popover-foreground: 0 0% 96%;
 
+    /* Primary - Subtle */
     --primary: 220 20% 20%;
     --primary-foreground: 0 0% 96%;
 
-    --secondary: 220 40% 15%;
+    /* Secondary */
+    --secondary: 220 15% 12%;
     --secondary-foreground: 0 0% 90%;
 
-    --muted: 220 35% 18%;
+    --muted: 220 15% 18%;
     --muted-foreground: 0 0% 60%;
 
-    /* Accent - Or Optima (#D4A73B) */
+    /* Accent - Reserved Gold (#D4A73B) - use sparingly */
     --accent: 43 65% 53%;
-    --accent-foreground: 220 50% 8%;
+    --accent-foreground: 220 20% 7%;
 
     --destructive: 0 45% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 30% 18%;
-    --input: 220 40% 15%;
-    --ring: 43 65% 53%;
+    --border: 0 0% 100% / 0.08;
+    --input: 220 15% 12%;
+    --ring: 0 0% 100% / 0.1;
 
     --radius: 0.5rem;
 
@@ -91,14 +45,14 @@
     --gold-dark: 43 65% 43%;
 
     /* Sidebar */
-    --sidebar-background: 220 50% 8%;
+    --sidebar-background: 220 20% 7%;
     --sidebar-foreground: 0 0% 96%;
     --sidebar-primary: 43 65% 53%;
-    --sidebar-primary-foreground: 220 50% 8%;
+    --sidebar-primary-foreground: 220 20% 7%;
     --sidebar-accent: 43 65% 53%;
-    --sidebar-accent-foreground: 220 50% 8%;
-    --sidebar-border: 220 30% 15%;
-    --sidebar-ring: 43 65% 53%;
+    --sidebar-accent-foreground: 220 20% 7%;
+    --sidebar-border: 0 0% 100% / 0.05;
+    --sidebar-ring: 0 0% 100% / 0.1;
   }
 }
 
@@ -117,12 +71,6 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
     font-weight: 400;
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  /* Smooth transitions for theme change */
-  *, *::before, *::after {
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   /* Typography - Ultra Clean Corporate */
@@ -130,7 +78,7 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
     font-weight: 700;
     letter-spacing: -0.03em;
-    color: hsl(var(--foreground));
+    color: hsl(0 0% 96%);
   }
 
   h1 {
@@ -138,9 +86,9 @@
     letter-spacing: -0.04em;
   }
 
-  /* Body text - Uses foreground with opacity for softer contrast */
+  /* Body text - Off White for softer contrast */
   p, span, li {
-    color: hsl(var(--foreground) / 0.75);
+    color: hsl(0 0% 90% / 0.7);
   }
 }
 
@@ -150,33 +98,18 @@
     @apply text-accent font-normal;
   }
 
-  /* Glass - Adapts to theme */
+  /* Glass - Ultra transparent cristal effect */
   .glass {
-    background: hsl(var(--foreground) / 0.03);
-    border: 1px solid hsl(var(--foreground) / 0.08);
-  }
-
-  .dark .glass {
     background: hsl(0 0% 0% / 0.08);
     border: 1px solid hsl(0 0% 100% / 0.08);
   }
 
   .glass-card {
-    background: hsl(var(--foreground) / 0.04);
-    border: 1px solid hsl(var(--foreground) / 0.08);
-  }
-
-  .dark .glass-card {
     background: hsl(0 0% 0% / 0.1);
     border: 1px solid hsl(0 0% 100% / 0.08);
   }
 
   .glass-premium {
-    background: hsl(var(--foreground) / 0.05);
-    border: 1px solid hsl(var(--foreground) / 0.1);
-  }
-
-  .dark .glass-premium {
     background: hsl(0 0% 0% / 0.12);
     border: 1px solid hsl(0 0% 100% / 0.1);
   }
