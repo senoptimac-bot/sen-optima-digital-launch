@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import avatarSupport from "@/assets/avatar-support.jpg";
 
 const timelineSteps = [
   {
@@ -75,7 +76,7 @@ const BridgeSection = () => {
           </div>
         </motion.div>
 
-        {/* CTA */}
+        {/* CTA with Avatar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,16 +84,35 @@ const BridgeSection = () => {
           transition={{ delay: 0.4 }}
           className="text-center"
         >
-          <Button
-            variant="outline"
-            size="lg"
-            className="gap-3 text-sm border-foreground/20 bg-transparent hover:border-accent hover:text-accent text-foreground/70 transition-all duration-300 h-14 px-10"
-            asChild
-          >
-            <Link to="/diagnostics">
-              Arrêter de naviguer à vue
-            </Link>
-          </Button>
+          <div className="inline-flex flex-col sm:flex-row items-center gap-6 p-6 glass-card rounded-2xl border border-white/10">
+            {/* Avatar with human touch */}
+            <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-accent/30 flex-shrink-0">
+              <img
+                src={avatarSupport}
+                alt="Conseillère Sen'Optima"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-10 mix-blend-multiply" />
+            </div>
+
+            <div className="text-left">
+              <p className="text-body text-foreground/60 mb-2">
+                Une vraie personne vous accompagne
+              </p>
+              <Button
+                variant="outline"
+                size="lg"
+                className="gap-3 text-sm border-foreground/20 bg-transparent hover:border-accent hover:text-accent text-foreground/70 transition-all duration-300 h-12 px-8"
+                asChild
+              >
+                <Link to="/diagnostics">
+                  Arrêter de naviguer à vue
+                </Link>
+              </Button>
+            </div>
+          </div>
+          
           <p className="text-caption text-foreground/30 mt-4">
             Voir les Diagnostics disponibles
           </p>
