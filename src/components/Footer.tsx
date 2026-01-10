@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Mail, Phone } from "lucide-react";
+import avatarSupport from "@/assets/avatar-support.jpg";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
@@ -27,7 +28,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
       <div className="container">
         <div className="space-y-8">
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
             {/* Navigation Links */}
             <div>
               <h3 className="text-xs text-white/50 uppercase tracking-widest mb-4">
@@ -91,6 +92,37 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                   </Link>
                 ))}
               </nav>
+            </div>
+
+            {/* Human Avatar CTA - Rassurance Section */}
+            <div>
+              <h3 className="text-xs text-white/50 uppercase tracking-widest mb-4">
+                Besoin d'aide ?
+              </h3>
+              <a 
+                href="/contact"
+                className="group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-accent/30 hover:bg-white/10 transition-all duration-300"
+              >
+                {/* Avatar with blue overlay */}
+                <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-accent/30 group-hover:ring-accent transition-all duration-300">
+                  <img
+                    src={avatarSupport}
+                    alt="Conseillère Sen'Optima"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  {/* Subtle blue overlay for harmony */}
+                  <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-10 mix-blend-multiply" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">
+                    Contactez-nous
+                  </p>
+                  <p className="text-xs text-white/40">
+                    Une vraie personne vous répond
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
 

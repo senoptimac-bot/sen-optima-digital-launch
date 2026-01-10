@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import heroTeamImage from "@/assets/hero-team.jpg";
 
 const Hero = () => {
   const scrollToNext = () => {
@@ -13,8 +14,22 @@ const Hero = () => {
   return (
     <section
       id="accueil"
-      className="relative min-h-screen flex items-center justify-center pt-20"
+      className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroTeamImage}
+          alt="Équipe professionnelle en réunion collaborative"
+          className="w-full h-full object-cover"
+          loading="eager"
+        />
+        {/* Dark Blue Overlay - 80% opacity */}
+        <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-80" />
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+      </div>
+
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge - minimal */}
@@ -47,7 +62,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-body-lg text-foreground/60 max-w-2xl mx-auto mb-16 leading-relaxed"
+            className="text-body-lg text-foreground/70 max-w-2xl mx-auto mb-16 leading-relaxed"
           >
             Sen'Optima Consulting n'est pas une simple agence web. Nous sommes les architectes qui transforment votre activité informelle en une entreprise digitale solide.
           </motion.p>
