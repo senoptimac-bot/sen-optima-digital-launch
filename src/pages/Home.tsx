@@ -7,6 +7,8 @@ import MirrorSection from "@/components/MirrorSection";
 import MethodSection from "@/components/MethodSection";
 import AdviceSection from "@/components/AdviceSection";
 import BridgeSection from "@/components/BridgeSection";
+import About from "@/components/About";
+import Services from "@/components/Services";
 
 const Home = () => {
   return (
@@ -14,6 +16,8 @@ const Home = () => {
       <Hero />
       <MarqueeSection />
       <VisionarySection />
+      <About />
+      <Services />
       <DiagnosticExpress />
       <IdentitySection />
       <MirrorSection />
