@@ -1,6 +1,6 @@
 import { Quote } from "lucide-react";
 import { motion } from "framer-motion";
-import aboutTeamImage from "@/assets/about-team.jpg";
+import aboutTeamImage from "@/assets/À Propos de Sen'Optima.jpg";
 
 const About = () => {
   return (
