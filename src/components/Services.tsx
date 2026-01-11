@@ -8,13 +8,24 @@ import {
   Crown,
 } from "lucide-react";
 import { motion } from "framer-motion";
+
 import serviceStrategie from "@/assets/service-strategie.jpg";
 import serviceFormation from "@/assets/service-formation.jpg";
+import serviceWeb from "@/assets/Website Creation & Solutions.jpg";
+import serviceMarketing from "@/assets/Marketing Digital & Acquisition.jpg";
+import serviceBranding from "@/assets/Branding & Visual Identity.jpg";
+import serviceConsulting from "@/assets/Consulting en Processus.jpg";
+import servicePremium from "@/assets/Accompagnement Premium.jpg";
 
 // Service images mapping - use imported images or fallback to icons
 const serviceImages: Record<string, string | null> = {
   "Conseil & Stratégie Digitale": serviceStrategie,
   "Formation & Accompagnement": serviceFormation,
+  "Création de Sites Web & Solutions": serviceWeb,
+  "Marketing Digital & Acquisition": serviceMarketing,
+  "Branding & Identité Visuelle": serviceBranding,
+  "Consulting en Processus": serviceConsulting,
+  "Accompagnement Premium": servicePremium,
 };
 
 const services = [

@@ -40,8 +40,7 @@ const VisionarySection = () => {
                   <span className="text-background font-bold text-lg">✓</span>
                 </div>
                 <div>
-                  <p className="font-bold text-foreground text-lg">5+ ans</p>
-                  <p className="text-xs text-foreground/50">d'expertise digitale</p>
+
                 </div>
               </div>
             </motion.div>

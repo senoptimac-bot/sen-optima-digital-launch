@@ -116,11 +116,12 @@ const AboutPage = () => {
       {/* L'Histoire */}
       <section className="py-section-lg relative">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="w-full sm:w-1/2"
             >
               <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
                 Notre Histoire
@@ -154,7 +155,7 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="glass-card rounded-2xl p-8 aspect-square flex items-center justify-center"
+              className="glass-card rounded-2xl p-8 aspect-square flex items-center justify-center w-full sm:w-1/2"
             >
               <svg viewBox="0 0 400 400" className="w-full h-full max-w-sm">
                 <g className="text-white/10">
