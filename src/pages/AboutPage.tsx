@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Quote, MapPin, Rocket, Target, Zap, Heart, Shield, Cpu, ArrowLeft } from "lucide-react";
 import fondateurPhoto from "@/assets/fondateur.png";
 import presidentPhoto from "@/assets/president-senegal.webp";
+import aboutImage from "@/assets/À Propos de Sen'Optima.jpg";
 import { Button } from "@/components/ui/button";
 
 const philosophyCards = [
@@ -31,83 +32,98 @@ const AboutPage = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20">
         <div className="container relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Bouton Précédent */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-8 flex justify-start"
-            >
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate("/diagnostics")}
-                className="gap-2 text-foreground/50 hover:text-accent transition-colors"
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-16">
+            {/* Colonne gauche : texte */}
+            <div className="flex-1 text-center md:text-left">
+              {/* Bouton Précédent */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-8 flex justify-start md:justify-start"
               >
-                <ArrowLeft className="w-4 h-4" />
-                Précédent
-              </Button>
-            </motion.div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => navigate("/diagnostics")}
+                  className="gap-2 text-foreground/50 hover:text-accent transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Précédent
+                </Button>
+              </motion.div>
 
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-2 mb-12"
-            >
-              <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-              <span className="text-caption text-foreground/50 uppercase tracking-widest">
-                Notre Mission
-              </span>
-            </motion.div>
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="inline-flex items-center gap-2 mb-12"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span className="text-caption text-foreground/50 uppercase tracking-widest">
+                  Notre Mission
+                </span>
+              </motion.div>
 
-            {/* Main Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-display font-bold text-foreground mb-8"
-            >
-              Plus qu'un cabinet.{" "}
-              <span className="text-accent">Une vision.</span>
-            </motion.h1>
+              {/* Main Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-display font-bold text-foreground mb-8"
+              >
+                Plus qu'un cabinet.{" "}
+                <span className="text-accent">Une vision.</span>
+              </motion.h1>
 
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-body-lg text-foreground/60 max-w-2xl mx-auto mb-12 leading-relaxed"
-            >
-              Nous ne sommes pas là pour vendre du rêve, mais pour{" "}
-              <span className="text-foreground/80">bâtir l'économie numérique de demain</span>, 
-              entrepreneur par entrepreneur.
-            </motion.p>
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="text-body-lg text-foreground/60 max-w-2xl mx-auto mb-12 leading-relaxed"
+              >
+                Nous ne sommes pas là pour vendre du rêve, mais pour {" "}
+                <span className="text-foreground/80">bâtir l'économie numérique de demain</span>,
+                entrepreneur par entrepreneur.
+              </motion.p>
 
-            {/* Icons Row */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex items-center justify-center gap-8"
-            >
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 glass-card rounded-xl flex items-center justify-center mb-2">
-                  <Heart className="w-6 h-6 text-foreground/50" />
+              {/* Icons Row */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex items-center justify-center md:justify-start gap-8"
+              >
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 glass-card rounded-xl flex items-center justify-center mb-2">
+                    <Heart className="w-6 h-6 text-foreground/50" />
+                  </div>
+                  <span className="text-caption text-foreground/40">Tradition</span>
                 </div>
-                <span className="text-caption text-foreground/40">Tradition</span>
-              </div>
-              
-              <div className="w-12 h-px bg-foreground/10" />
-              
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 glass-card rounded-xl flex items-center justify-center mb-2">
-                  <Cpu className="w-6 h-6 text-foreground/50" />
+                <div className="w-12 h-px bg-foreground/10" />
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 glass-card rounded-xl flex items-center justify-center mb-2">
+                    <Cpu className="w-6 h-6 text-foreground/50" />
+                  </div>
+                  <span className="text-caption text-foreground/40">Technologie</span>
                 </div>
-                <span className="text-caption text-foreground/40">Technologie</span>
-              </div>
+              </motion.div>
+            </div>
+            {/* Colonne droite : image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.05 }}
+              className="flex-1 flex justify-center mb-8 md:mb-0"
+            >
+              <img
+                src={aboutImage}
+                alt="À Propos de Sen'Optima"
+                className="rounded-3xl shadow-lg max-h-72 object-cover"
+                loading="lazy"
+              />
             </motion.div>
           </div>
         </div>
