@@ -171,7 +171,7 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="glass-card rounded-2xl p-8 aspect-square flex items-center justify-center w-full sm:w-1/2"
+              className="glass-card rounded-2xl p-8 flex items-center justify-center w-full sm:w-1/2 min-h-[220px] sm:aspect-square"
             >
               <svg viewBox="0 0 400 400" className="w-full h-full max-w-sm">
                 <g className="text-white/10">
