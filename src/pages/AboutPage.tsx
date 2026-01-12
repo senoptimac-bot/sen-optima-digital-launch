@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Quote, MapPin, Rocket, Target, Zap, Heart, Shield, Cpu, ArrowLeft } from "lucide-react";
+import { Quote, Rocket, Target, Zap, Heart, Cpu, ArrowLeft, Trophy, TrendingUp, Star } from "lucide-react";
 import fondateurPhoto from "@/assets/fondateur.png";
 import presidentPhoto from "@/assets/president-senegal.webp";
 import aboutImage from "@/assets/À Propos de Sen'Optima.jpg";
@@ -10,17 +10,20 @@ const philosophyCards = [
   {
     icon: Target,
     title: "Réalisme Local",
-    description: "Nous n'imposons pas des modèles théoriques occidentaux. Nous créons des stratégies adaptées au marché sénégalais (Wave, WhatsApp, Oralité)."
+    description: "Nous n'imposons pas des modèles théoriques occidentaux. Nous créons des stratégies adaptées au marché sénégalais (Wave, WhatsApp, Oralité).",
+    resultIcon: Trophy,
   },
   {
     icon: Zap,
     title: "L'Outillage Moderne",
-    description: "Nous armons nos clients avec les meilleures technologies (IA, Automatisation) pour qu'ils puissent scaler rapidement."
+    description: "Nous armons nos clients avec les meilleures technologies (IA, Automatisation) pour qu'ils puissent scaler rapidement.",
+    resultIcon: TrendingUp,
   },
   {
     icon: Rocket,
     title: "Croissance Durable",
-    description: "Nous ne sommes pas là pour faire un coup. Nous vous accompagnons de l'idée jusqu'à l'expansion."
+    description: "Nous ne sommes pas là pour faire un coup. Nous vous accompagnons de l'idée jusqu'à l'expansion.",
+    resultIcon: Star,
   }
 ];
 
@@ -275,10 +278,15 @@ const AboutPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass-card rounded-xl p-8"
+                className="glass-card rounded-xl p-8 group hover:border-accent/30 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6">
-                  <card.icon className="w-6 h-6 text-white/50" />
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-accent/10 transition-colors">
+                    <card.icon className="w-6 h-6 text-white/50 group-hover:text-accent transition-colors" />
+                  </div>
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <card.resultIcon className="w-4 h-4 icon-success-animated" />
+                  </div>
                 </div>
 
                 <h3 className="text-title text-white mb-4">
