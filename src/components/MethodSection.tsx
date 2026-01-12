@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Settings, Globe, Rocket } from "lucide-react";
+import { Settings, Globe, Rocket, Wrench } from "lucide-react";
 
 const steps = [
   {
@@ -34,11 +34,11 @@ const MethodSection = () => {
           className="text-center max-w-2xl mx-auto mb-20"
         >
           <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
-            <span className="w-1 h-1 rounded-full bg-accent" />
+            <Wrench className="w-3 h-3 icon-solution" />
             Notre méthode
           </span>
           <h2 className="text-headline text-foreground">
-            L'<span className="text-accent">Écosystème</span> de Croissance
+            L'<span className="text-solution">Écosystème</span> de Croissance
           </h2>
         </motion.div>
 
@@ -57,21 +57,22 @@ const MethodSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative p-8 glass-card rounded-xl text-center"
+                transition={{ delay: index * 0.15 }}
+                whileHover={{ scale: 1.03, y: -5 }}
+                className="relative p-8 glass-card rounded-xl text-center group transition-all duration-300"
               >
                 {/* Number */}
-                <div className="text-caption text-accent mb-6">
+                <div className="text-caption text-solution mb-6">
                   {step.number}
                 </div>
 
-                {/* Icon */}
-                <div className="w-12 h-12 mx-auto mb-6 rounded-xl bg-foreground/5 flex items-center justify-center">
-                  <step.icon className="w-6 h-6 text-foreground/50" />
+                {/* Icon with solution styling */}
+                <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-solution/10 flex items-center justify-center group-hover:bg-solution/20 transition-colors duration-300">
+                  <step.icon className="w-7 h-7 icon-solution-animated" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-title text-foreground mb-2">
+                <h3 className="text-title text-foreground mb-2 group-hover:text-solution transition-colors duration-300">
                   {step.title}
                 </h3>
                 <p className="text-body text-foreground/40">
@@ -80,8 +81,11 @@ const MethodSection = () => {
 
                 {/* Connector line for desktop */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-foreground/10" />
+                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-solution/30" />
                 )}
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-solution/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
               </motion.div>
             ))}
           </div>
@@ -97,7 +101,7 @@ const MethodSection = () => {
         >
           <div className="p-6 glass-card rounded-xl">
             <p className="text-body text-foreground/60">
-              <span className="text-accent">✦</span>{" "}
+              <span className="text-solution">✦</span>{" "}
               "On ne met pas le toit avant les fondations."
             </p>
           </div>

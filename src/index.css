@@ -5,37 +5,45 @@
 @layer base {
   :root,
   .dark {
-    /* Unified Midnight Navy - Corporate App Style */
-    --background: 220 20% 7%;
-    --foreground: 0 0% 96%;
+    /* Deep Navy Blue Universe - #0a1a3a */
+    --background: 218 70% 13%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 0%;
-    --card-foreground: 0 0% 96%;
+    --card: 218 70% 13% / 0.4;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 220 20% 9%;
-    --popover-foreground: 0 0% 96%;
+    --popover: 218 70% 15%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Primary - Subtle */
-    --primary: 220 20% 20%;
-    --primary-foreground: 0 0% 96%;
+    /* Primary - Deep Blue */
+    --primary: 218 70% 20%;
+    --primary-foreground: 0 0% 100%;
 
     /* Secondary */
-    --secondary: 220 15% 12%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 218 60% 16%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 218 50% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    /* Accent - Reserved Gold (#D4A73B) - use sparingly */
+    /* Accent - Reserved Gold (#D4A73B) - unchanged */
     --accent: 43 65% 53%;
-    --accent-foreground: 220 20% 7%;
+    --accent-foreground: 218 70% 13%;
 
-    --destructive: 0 45% 50%;
-    --destructive-foreground: 0 0% 98%;
+    /* Problem icons - Red/Orange */
+    --problem: 0 84% 60%;
+    --problem-foreground: 0 0% 100%;
 
-    --border: 0 0% 100% / 0.08;
-    --input: 220 15% 12%;
-    --ring: 0 0% 100% / 0.1;
+    /* Solution icons - White/Cyan */
+    --solution: 187 100% 70%;
+    --solution-foreground: 218 70% 13%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.10;
+    --input: 218 60% 16%;
+    --ring: 0 0% 100% / 0.15;
 
     --radius: 0.5rem;
 
@@ -45,14 +53,14 @@
     --gold-dark: 43 65% 43%;
 
     /* Sidebar */
-    --sidebar-background: 220 20% 7%;
-    --sidebar-foreground: 0 0% 96%;
+    --sidebar-background: 218 70% 13%;
+    --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 43 65% 53%;
-    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-primary-foreground: 218 70% 13%;
     --sidebar-accent: 43 65% 53%;
-    --sidebar-accent-foreground: 220 20% 7%;
-    --sidebar-border: 0 0% 100% / 0.05;
-    --sidebar-ring: 0 0% 100% / 0.1;
+    --sidebar-accent-foreground: 218 70% 13%;
+    --sidebar-border: 0 0% 100% / 0.08;
+    --sidebar-ring: 0 0% 100% / 0.15;
   }
 }
 
@@ -98,38 +106,47 @@
     @apply text-accent font-normal;
   }
 
-  /* Glass - Ultra transparent cristal effect */
+  /* Glass - Premium Glassmorphism on Deep Blue */
   .glass {
-    background: hsl(0 0% 0% / 0.08);
-    border: 1px solid hsl(0 0% 100% / 0.08);
+    background: hsl(218 70% 13% / 0.40);
+    border: 1px solid hsl(0 0% 100% / 0.10);
   }
 
   .glass-card {
-    background: hsl(0 0% 0% / 0.1);
-    border: 1px solid hsl(0 0% 100% / 0.08);
+    background: hsl(218 70% 13% / 0.40);
+    border: 1px solid hsl(0 0% 100% / 0.10);
   }
 
   .glass-premium {
-    background: hsl(0 0% 0% / 0.12);
-    border: 1px solid hsl(0 0% 100% / 0.1);
+    background: hsl(218 70% 13% / 0.50);
+    border: 1px solid hsl(0 0% 100% / 0.12);
+  }
+
+  /* Alternative subtle glass */
+  .glass-subtle {
+    background: hsl(0 0% 100% / 0.05);
+    border: 1px solid hsl(0 0% 100% / 0.08);
   }
 
   /* Subtle blur on desktop only */
   @media (min-width: 768px) {
     .glass {
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
     }
     .glass-card {
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(10px);
     }
     .glass-premium {
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+    }
+    .glass-subtle {
+      backdrop-filter: blur(8px);
     }
   }
 
   /* Minimal shadows */
   .shadow-soft {
-    box-shadow: 0 4px 24px -8px hsl(0 0% 0% / 0.2);
+    box-shadow: 0 4px 24px -8px hsl(218 70% 5% / 0.4);
   }
 
   /* Remove gold glows - cleaner look */
@@ -147,6 +164,63 @@
   @keyframes pulse-wa {
     0%, 100% { box-shadow: 0 0 0 0 hsl(142 70% 45% / 0.4); }
     50% { box-shadow: 0 0 0 12px hsl(142 70% 45% / 0); }
+  }
+
+  /* === VISUAL STORYTELLING ANIMATIONS === */
+  
+  /* Problem icons - Stress pulse animation (Red/Orange) */
+  .icon-problem {
+    color: hsl(var(--problem));
+  }
+  
+  .icon-problem-animated {
+    color: hsl(var(--problem));
+    animation: stress-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes stress-pulse {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Solution icons - Constructive spin animation (White/Cyan) */
+  .icon-solution {
+    color: hsl(var(--solution));
+  }
+  
+  .icon-solution-animated {
+    color: hsl(var(--solution));
+    animation: constructive-spin 8s linear infinite;
+  }
+  
+  @keyframes constructive-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Success icons - Ascending bounce animation (Gold) */
+  .icon-success {
+    color: hsl(var(--accent));
+  }
+  
+  .icon-success-animated {
+    color: hsl(var(--accent));
+    animation: ascending-bounce 2s ease-in-out infinite;
+  }
+  
+  @keyframes ascending-bounce {
+    0%, 100% { 
+      transform: translateY(0);
+    }
+    50% { 
+      transform: translateY(-4px);
+    }
   }
 
   /* Marquee */
