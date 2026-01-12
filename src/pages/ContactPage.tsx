@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   MessageCircle, 
@@ -8,8 +8,8 @@ import {
   ChevronDown,
   MapPin,
   ExternalLink,
-  Clock,
-  HelpCircle
+  Sparkles,
+  Trophy
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -174,9 +174,9 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-8 rounded-xl glass-card flex flex-col"
+              className="p-8 rounded-xl glass-card flex flex-col group hover:border-green-500/30 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-colors">
                 <MessageCircle className="w-6 h-6 text-green-500" />
               </div>
               
@@ -202,19 +202,27 @@ const ContactPage = () => {
               </a>
             </motion.div>
 
-            {/* Carte B : Formulaire */}
+            {/* Carte B : Formulaire - with Success Gold icon */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="p-8 rounded-xl glass-card lg:col-span-1 lg:row-span-2 flex flex-col"
+              className="p-8 rounded-xl glass-card lg:col-span-1 lg:row-span-2 flex flex-col relative overflow-hidden"
             >
-              <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6">
-                <Send className="w-6 h-6 text-white/50" />
+              {/* Gold success indicator near form */}
+              <div className="absolute top-4 right-4">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
+                  <Trophy className="w-4 h-4 icon-success-animated" />
+                  <span className="text-xs text-accent font-medium">Devis gratuit</span>
+                </div>
+              </div>
+
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                <Sparkles className="w-6 h-6 icon-success-animated" />
               </div>
               
-              <span className="text-caption text-white/40 uppercase tracking-widest mb-2">Réponse sous 24h</span>
+              <span className="text-caption text-accent/70 uppercase tracking-widest mb-2">Réponse sous 24h</span>
               
               <h3 className="text-title text-white mb-3">
                 L'Option Projet
