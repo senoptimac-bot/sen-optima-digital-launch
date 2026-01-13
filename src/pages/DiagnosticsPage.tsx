@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { 
   Check, 
   ArrowRight, 
@@ -14,7 +15,8 @@ import {
   FileCheck,
   Presentation,
   Clock,
-  AlertTriangle
+  AlertTriangle,
+  Radio
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,6 +27,63 @@ import {
 } from "@/components/ui/accordion";
 import { useAppSounds } from "@/hooks/useAppSounds";
 
+// Floating particles component
+const FloatingParticles = () => {
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    delay: `${Math.random() * 15}s`,
+    duration: `${15 + Math.random() * 10}s`,
+    size: `${2 + Math.random() * 3}px`,
+  }));
+
+  return (
+    <div className="particles-container">
+      {particles.map((p) => (
+        <div
+          key={p.id}
+          className="particle"
+          style={{
+            left: p.left,
+            animationDelay: p.delay,
+            animationDuration: p.duration,
+            width: p.size,
+            height: p.size,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Animated micro-copy component
+const MicroCopy = () => {
+  const words = ["Expertise.", "Précision.", "Croissance."];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="h-8 overflow-hidden">
+      <motion.span
+        key={currentIndex}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        className="block text-lg text-accent/80 font-medium tracking-[0.3em] uppercase"
+      >
+        {words[currentIndex]}
+      </motion.span>
+    </div>
+  );
+};
+
 const diagnostics = [
   {
     icon: Eye,
@@ -32,8 +91,8 @@ const diagnostics = [
     focus: "Audit Technique & SEO",
     price: "50.000",
     deliverables: [
-      { icon: FileCheck, text: "Rapport Stratégique PDF (10 pages)" },
-      { icon: Presentation, text: "Session de restitution (45 min)" },
+      { icon: FileCheck, text: "Rapport Stratégique PDF (10 pages)", isLive: false },
+      { icon: Presentation, text: "Session de restitution (45 min)", isLive: true },
     ],
     features: [
       "Analyse vitesse de chargement",
@@ -50,9 +109,9 @@ const diagnostics = [
     focus: "Web + Social Media + Concurrence",
     price: "70.000",
     deliverables: [
-      { icon: FileCheck, text: "Rapport Expertise PDF (15 pages)" },
-      { icon: Presentation, text: "Masterclass Stratégique (45 min)" },
-      { icon: Clock, text: "Plan d'action sur 90 jours" },
+      { icon: FileCheck, text: "Rapport Expertise PDF (15 pages)", isLive: false },
+      { icon: Presentation, text: "Masterclass Stratégique (45 min)", isLive: true },
+      { icon: Clock, text: "Plan d'action sur 90 jours", isLive: false },
     ],
     features: [
       "Tout du pack Visibilité inclus",
@@ -69,9 +128,9 @@ const diagnostics = [
     focus: "Digitalisation Totale & Processus",
     price: "100.000",
     deliverables: [
-      { icon: FileCheck, text: "Rapport Complet + Vidéo explicative" },
-      { icon: Presentation, text: "Présentation stratégique (45 min)" },
-      { icon: Sparkles, text: "Coaching VIP avec le Fondateur (15 min)" },
+      { icon: FileCheck, text: "Rapport Complet + Vidéo explicative", isLive: false },
+      { icon: Presentation, text: "Présentation stratégique (45 min)", isLive: true },
+      { icon: Sparkles, text: "Coaching VIP avec le Fondateur (15 min)", isLive: true },
     ],
     features: [
       "Tout des packs précédents",
@@ -128,30 +187,42 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2 },
+    transition: { staggerChildren: 0.25 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 60 },
+  hidden: { opacity: 0, y: 80, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    scale: 1,
+    transition: { 
+      duration: 0.8, 
+      ease: [0.25, 0.46, 0.45, 0.94] as const,
+    },
   },
 };
 
 const DiagnosticsPage = () => {
   const { playClick } = useAppSounds();
   const navigate = useNavigate();
+  const cardsRef = useRef(null);
+  const isInView = useInView(cardsRef, { once: true, margin: "-100px" });
 
   const handleStartDiagnostic = () => {
     playClick();
-    window.location.href = '/formulaire-diagnostic';
+    navigate('/formulaire-diagnostic');
   };
 
   return (
-    <div className="min-h-screen bg-[#0a1a3a]">
+    <div className="min-h-screen bg-[#0a1a3a] relative overflow-hidden">
+      {/* Floating Grid Background */}
+      <div className="fixed inset-0 floating-grid opacity-50 pointer-events-none" />
+      
+      {/* Floating Particles */}
+      <FloatingParticles />
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
         {/* Subtle gradient overlay */}
@@ -170,7 +241,7 @@ const DiagnosticsPage = () => {
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
             >
-              <Crown className="w-4 h-4 text-accent" />
+              <Crown className="w-4 h-4 text-accent icon-bounce" />
               <span className="text-xs text-white/60 uppercase tracking-[0.2em] font-medium">
                 Consulting Premium
               </span>
@@ -183,16 +254,27 @@ const DiagnosticsPage = () => {
                 Passez à la stratégie.
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-white/50 max-w-3xl mx-auto leading-relaxed">
+            
+            <p className="text-lg md:text-xl text-white/50 max-w-3xl mx-auto leading-relaxed mb-6">
               Beaucoup d'entrepreneurs échouent par manque de clarté. Chez Sen'Optima, 
               nous ne vendons pas de magie, mais une <span className="text-white/70">méthode éprouvée</span>.
             </p>
+
+            {/* Animated Micro-copy */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="flex justify-center"
+            >
+              <MicroCopy />
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Education Section */}
-      <section className="py-16 md:py-20 relative">
+      <section className="py-16 md:py-20 relative z-10">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -211,7 +293,7 @@ const DiagnosticsPage = () => {
 
               <div className="inline-block px-8 py-5 rounded-xl bg-accent/10 border border-accent/20">
                 <p className="text-white/80 text-lg">
-                  Le coût du diagnostic est <span className="text-accent font-bold">100% DÉDUIT</span> si vous signez l'accompagnement.
+                  Le coût du diagnostic est <span className="shimmer-gold font-bold text-xl">100% DÉDUIT</span> si vous signez l'accompagnement.
                 </p>
               </div>
             </div>
@@ -220,7 +302,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Premium Pricing Cards */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
+      <section className="py-16 md:py-24 relative overflow-hidden z-10">
         {/* Background glow effect */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
         
@@ -240,20 +322,24 @@ const DiagnosticsPage = () => {
           </motion.div>
 
           <motion.div
+            ref={cardsRef}
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate={isInView ? "visible" : "hidden"}
             className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch"
           >
             {diagnostics.map((diagnostic, index) => (
               <motion.article
                 key={diagnostic.name}
                 variants={cardVariants}
+                whileHover={{ 
+                  y: -24,
+                  transition: { duration: 0.4, ease: "easeOut" }
+                }}
                 className={`group relative flex flex-col rounded-2xl transition-all duration-500 ${
                   diagnostic.popular
-                    ? "bg-white/[0.06] border-2 border-accent/40 shadow-[0_0_60px_-10px_rgba(212,167,59,0.3)] lg:scale-105 z-10"
-                    : "bg-white/[0.03] border border-white/10 hover:border-accent/30 hover:-translate-y-4 hover:shadow-[0_0_40px_-10px_rgba(212,167,59,0.2)]"
+                    ? "bg-white/[0.06] border-2 border-accent/40 shadow-[0_0_60px_-10px_rgba(212,167,59,0.3)] lg:scale-105 z-10 border-pulse-gold"
+                    : "bg-white/[0.03] border border-white/10 hover:border-accent/50 hover:shadow-[0_0_50px_-10px_rgba(212,167,59,0.25)]"
                 } backdrop-blur-xl`}
               >
                 {/* Popular Badge */}
@@ -263,31 +349,35 @@ const DiagnosticsPage = () => {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 }}
-                      className="px-6 py-2 bg-gradient-to-r from-accent to-amber-500 rounded-full shadow-lg"
+                      className="px-6 py-2 bg-gradient-to-r from-accent to-amber-500 rounded-full shadow-lg relative overflow-hidden"
                     >
-                      <span className="text-xs font-bold text-[#0a1a3a] uppercase tracking-[0.15em]">
+                      <span className="text-xs font-bold text-[#0a1a3a] uppercase tracking-[0.15em] relative z-10">
                         Recommandé
                       </span>
+                      {/* Shimmer effect on badge */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shimmer-sweep_2s_infinite]" style={{ backgroundSize: '200% 100%' }} />
                     </motion.div>
                   </div>
                 )}
 
                 <div className={`flex flex-col flex-1 p-8 ${diagnostic.popular ? 'pt-12' : ''}`}>
-                  {/* Icon */}
+                  {/* Icon with animation */}
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + 0.3 }}
-                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${
+                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 relative ${
                       diagnostic.popular 
                         ? "bg-accent/20 border border-accent/30" 
-                        : "bg-white/5 border border-white/10"
-                    }`}
+                        : "bg-white/5 border border-white/10 group-hover:border-accent/30 group-hover:bg-accent/10"
+                    } transition-all duration-300`}
                   >
                     <diagnostic.icon 
-                      className={`w-8 h-8 ${
-                        diagnostic.popular ? "text-accent" : "text-white/60"
+                      className={`w-8 h-8 transition-all duration-300 ${
+                        diagnostic.popular 
+                          ? "text-accent icon-bounce" 
+                          : "text-white/60 group-hover:text-accent"
                       }`} 
                     />
                   </motion.div>
@@ -302,27 +392,41 @@ const DiagnosticsPage = () => {
                     </p>
                   </div>
 
-                  {/* Price */}
+                  {/* Price with Shimmer Effect */}
                   <div className="text-center mb-8">
                     <div className="flex items-baseline justify-center gap-2">
-                      <span className="text-5xl font-bold text-accent tracking-tight">
+                      <span className="text-5xl font-bold shimmer-gold tracking-tight">
                         {diagnostic.price}
                       </span>
                       <span className="text-lg text-white/40 font-medium">FCFA</span>
                     </div>
                   </div>
 
-                  {/* Key Deliverables - Gold Highlighted */}
+                  {/* Key Deliverables - Gold Highlighted with animations */}
                   <div className="mb-6">
-                    <p className="text-xs text-accent uppercase tracking-[0.2em] mb-4 font-semibold">
+                    <p className="text-xs text-accent uppercase tracking-[0.2em] mb-4 font-semibold flex items-center justify-center gap-2">
+                      <Sparkles className="w-3 h-3" />
                       Livrables Clés
                     </p>
                     <ul className="space-y-3">
                       {diagnostic.deliverables.map((item, i) => (
-                        <li key={i} className="flex items-center gap-3 p-3 rounded-lg bg-accent/5 border border-accent/10">
-                          <item.icon className="w-5 h-5 text-accent flex-shrink-0" />
-                          <span className="text-sm text-white/80">{item.text}</span>
-                        </li>
+                        <motion.li 
+                          key={i} 
+                          className="flex items-center gap-3 p-3 rounded-lg bg-accent/5 border border-accent/10 group/item hover:bg-accent/10 transition-all duration-300"
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 + i * 0.1 }}
+                        >
+                          <item.icon className="w-5 h-5 text-accent flex-shrink-0 icon-bounce" />
+                          <span className="text-sm text-white/80 flex-1">{item.text}</span>
+                          {item.isLive && (
+                            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-500/20 border border-green-500/30">
+                              <Radio className="w-3 h-3 text-green-400 pulse-live" />
+                              <span className="text-[10px] text-green-400 uppercase font-semibold tracking-wider">Live</span>
+                            </div>
+                          )}
+                        </motion.li>
                       ))}
                     </ul>
                   </div>
@@ -333,28 +437,35 @@ const DiagnosticsPage = () => {
                       Inclus dans l'analyse
                     </p>
                     <ul className="space-y-3">
-                      {diagnostic.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
+                      {diagnostic.features.map((feature, featureIndex) => (
+                        <motion.li 
+                          key={feature} 
+                          className="flex items-start gap-3"
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.05 + featureIndex * 0.05 }}
+                        >
                           <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                             <Check className="w-3 h-3 text-accent" />
                           </div>
                           <span className="text-sm text-white/60">{feature}</span>
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* CTA Button */}
+                  {/* CTA Button with Shiny Effect */}
                   <Button
                     onClick={handleStartDiagnostic}
-                    className={`w-full h-14 text-base gap-3 font-semibold transition-all duration-300 ${
+                    className={`w-full h-14 text-base gap-3 font-semibold transition-all duration-300 btn-shiny ${
                       diagnostic.popular 
-                        ? "bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] hover:shadow-[0_0_30px_rgba(212,167,59,0.5)] hover:scale-[1.02]" 
-                        : "bg-white/5 border border-white/20 text-white hover:border-accent/50 hover:text-accent hover:bg-accent/5"
+                        ? "bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] hover:shadow-[0_0_40px_rgba(212,167,59,0.6)] hover:scale-[1.02]" 
+                        : "bg-white/5 border border-white/20 text-white hover:border-accent/50 hover:text-accent hover:bg-accent/10"
                     }`}
                   >
                     {diagnostic.cta}
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                   </Button>
                 </div>
               </motion.article>
@@ -369,8 +480,8 @@ const DiagnosticsPage = () => {
             transition={{ delay: 0.6 }}
             className="max-w-3xl mx-auto mt-12"
           >
-            <div className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
-              <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+            <div className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-amber-500/10 border border-amber-500/20 backdrop-blur-sm">
+              <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 pulse-live" />
               <p className="text-sm text-amber-200/80 text-center">
                 <span className="font-semibold text-amber-300">Attention :</span> En raison de la profondeur de nos analyses (Rapports de 15 pages + Sessions de 45min), nous n'acceptons que <span className="font-bold text-amber-300">3 diagnostics par semaine</span>.
               </p>
@@ -380,7 +491,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Process Timeline */}
-      <section className="py-16 md:py-24 relative">
+      <section className="py-16 md:py-24 relative z-10">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -404,18 +515,21 @@ const DiagnosticsPage = () => {
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.15 }}
+                  transition={{ delay: index * 0.2 }}
                   className="relative text-center"
                 >
-                  <div className="relative z-10 w-24 h-24 mx-auto mb-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm flex items-center justify-center">
-                    <step.icon className="w-10 h-10 text-accent" />
+                  <motion.div 
+                    className="relative z-10 w-24 h-24 mx-auto mb-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm flex items-center justify-center group hover:border-accent/30 hover:bg-accent/5 transition-all duration-300"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                  >
+                    <step.icon className="w-10 h-10 text-accent icon-bounce" />
                     <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] text-sm font-bold flex items-center justify-center shadow-lg">
                       {step.step}
                     </span>
-                  </div>
+                  </motion.div>
                   <h3 className="font-bold text-white text-lg mb-2">{step.title}</h3>
                   <p className="text-sm text-white/50">{step.description}</p>
                 </motion.div>
@@ -426,7 +540,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Guarantee Section */}
-      <section className="py-16 md:py-20 relative">
+      <section className="py-16 md:py-20 relative z-10">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -441,9 +555,19 @@ const DiagnosticsPage = () => {
               </div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center">
+                <motion.div 
+                  className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center"
+                  animate={{ 
+                    boxShadow: [
+                      "0 0 20px rgba(212,167,59,0.2)",
+                      "0 0 40px rgba(212,167,59,0.4)",
+                      "0 0 20px rgba(212,167,59,0.2)"
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
                   <Shield className="w-10 h-10 text-accent" />
-                </div>
+                </motion.div>
 
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   Garantie Satisfait ou Remboursé
@@ -456,7 +580,7 @@ const DiagnosticsPage = () => {
 
                 <Button 
                   onClick={handleStartDiagnostic}
-                  className="h-14 px-8 text-base bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] font-semibold hover:shadow-[0_0_40px_rgba(212,167,59,0.4)] transition-all duration-300"
+                  className="h-14 px-8 text-base bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] font-semibold hover:shadow-[0_0_40px_rgba(212,167,59,0.4)] transition-all duration-300 btn-shiny"
                 >
                   Réserver mon diagnostic maintenant
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -468,7 +592,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-24 relative">
+      <section className="py-16 md:py-24 relative z-10">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -495,7 +619,7 @@ const DiagnosticsPage = () => {
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm px-6 overflow-hidden"
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm px-6 overflow-hidden hover:border-accent/30 transition-colors duration-300"
                 >
                   <AccordionTrigger className="text-left font-bold text-white hover:no-underline py-5 hover:text-accent transition-colors">
                     {item.question}
@@ -511,7 +635,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-20 relative">
+      <section className="py-16 md:py-20 relative z-10">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -527,7 +651,7 @@ const DiagnosticsPage = () => {
             </p>
             <Button 
               onClick={handleStartDiagnostic}
-              className="h-14 px-10 text-base bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] font-semibold hover:shadow-[0_0_40px_rgba(212,167,59,0.4)] transition-all duration-300"
+              className="h-14 px-10 text-base bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] font-semibold hover:shadow-[0_0_40px_rgba(212,167,59,0.4)] transition-all duration-300 btn-shiny"
             >
               Commander mon Diagnostic
               <ArrowRight className="w-5 h-5 ml-2" />
