@@ -3,14 +3,18 @@ import { motion } from "framer-motion";
 import { 
   Check, 
   ArrowRight, 
-  Monitor, 
+  Eye, 
   Target, 
-  Rocket, 
+  Crown, 
   Shield, 
   ClipboardList, 
   Video, 
   FileText,
-  ChevronRight
+  Sparkles,
+  FileCheck,
+  Presentation,
+  Clock,
+  AlertTriangle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,51 +27,59 @@ import { useAppSounds } from "@/hooks/useAppSounds";
 
 const diagnostics = [
   {
-    icon: Monitor,
-    name: "L'Audit Flash",
-    subtitle: "Focus Technique",
-    price: "20.000",
-    targetAudience: "Vous avez déjà un site mais \"ça ne marche pas\" ou c'est lent.",
-    analyses: [
-      "UX/Design de votre site",
-      "Performance Mobile",
-      "Tunnel de vente",
-      "Intégrations Wave/Orange Money",
+    icon: Eye,
+    name: "DIAGNOSTIC VISIBILITÉ",
+    focus: "Audit Technique & SEO",
+    price: "50.000",
+    deliverables: [
+      { icon: FileCheck, text: "Rapport Stratégique PDF (10 pages)" },
+      { icon: Presentation, text: "Session de restitution (45 min)" },
     ],
-    deliverable: "Rapport PDF \"Check-up Technique\"",
-    cta: "Démarrer gratuitement",
+    features: [
+      "Analyse vitesse de chargement",
+      "Audit sécurité SSL",
+      "Indexation Google",
+      "Score Mobile & Responsive",
+    ],
+    cta: "Sécuriser mon Audit",
     popular: false,
   },
   {
     icon: Target,
-    name: "Le Diagnostic Stratégie",
-    subtitle: "Best-Seller",
-    price: "25.000",
-    targetAudience: "Vous voulez plus de clients mais ne savez pas par où commencer.",
-    analyses: [
-      "Votre Client Idéal (Persona)",
-      "Vos réseaux sociaux",
-      "Votre Offre irrésistible",
-      "Votre positionnement marché",
+    name: "STRATÉGIE 360°",
+    focus: "Web + Social Media + Concurrence",
+    price: "70.000",
+    deliverables: [
+      { icon: FileCheck, text: "Rapport Expertise PDF (15 pages)" },
+      { icon: Presentation, text: "Masterclass Stratégique (45 min)" },
+      { icon: Clock, text: "Plan d'action sur 90 jours" },
     ],
-    deliverable: "Roadmap sur 3 mois + Calendrier Éditorial",
-    cta: "Démarrer gratuitement",
+    features: [
+      "Tout du pack Visibilité inclus",
+      "Audit Facebook & Instagram",
+      "Analyse concurrentielle approfondie",
+      "Audit d'image de marque",
+    ],
+    cta: "Lancer ma Transformation",
     popular: true,
   },
   {
-    icon: Rocket,
-    name: "Business Scan 360",
-    subtitle: "Transformation",
-    price: "30.000",
-    targetAudience: "PME ou Entrepreneur ambitieux qui veut structurer et automatiser (CRM, IA).",
-    analyses: [
-      "Tout le pack Stratégie inclus",
-      "Processus internes",
-      "Outils de gestion actuels",
-      "Opportunités d'automatisation IA",
+    icon: Crown,
+    name: "AUDIT GLOBAL OPTIMA",
+    focus: "Digitalisation Totale & Processus",
+    price: "100.000",
+    deliverables: [
+      { icon: FileCheck, text: "Rapport Complet + Vidéo explicative" },
+      { icon: Presentation, text: "Présentation stratégique (45 min)" },
+      { icon: Sparkles, text: "Coaching VIP avec le Fondateur (15 min)" },
     ],
-    deliverable: "Rapport de Transformation Digitale Complète",
-    cta: "Démarrer gratuitement",
+    features: [
+      "Tout des packs précédents",
+      "Audit des processus internes",
+      "Analyse outils CRM & Automation",
+      "Opportunités d'IA pour votre business",
+    ],
+    cta: "Dominer mon Marché",
     popular: false,
   },
 ];
@@ -96,7 +108,7 @@ const processSteps = [
 const faqItems = [
   {
     question: "Pourquoi ce n'est pas gratuit ?",
-    answer: "Parce que c'est une séance de travail réelle, pas un appel commercial. Vous repartez avec des recommandations concrètes et actionnables, pas avec une simple proposition commerciale.",
+    answer: "Parce que c'est une séance de travail réelle, pas un appel commercial. Vous repartez avec des recommandations concrètes et actionnables dans un rapport de 10 à 15 pages, pas avec une simple proposition commerciale.",
   },
   {
     question: "Suis-je obligé de travailler avec vous après ?",
@@ -116,16 +128,16 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 60 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
@@ -133,39 +145,54 @@ const DiagnosticsPage = () => {
   const { playClick } = useAppSounds();
   const navigate = useNavigate();
 
-  const handleStartDiagnostic = (diagnostic: typeof diagnostics[0]) => {
+  const handleStartDiagnostic = () => {
     playClick();
-    navigate("/merci");
+    window.location.href = '/formulaire-diagnostic';
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-[#0a1a3a]">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative">
-        <div className="container">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
+        
+        <div className="container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
-              Passez à l'action
-            </span>
-            <h1 className="text-display font-bold text-white mb-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
+            >
+              <Crown className="w-4 h-4 text-accent" />
+              <span className="text-xs text-white/60 uppercase tracking-[0.2em] font-medium">
+                Consulting Premium
+              </span>
+            </motion.div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
               Arrêtez de naviguer à vue.
               <br />
-              <span className="text-accent">Passez à la stratégie.</span>
+              <span className="bg-gradient-to-r from-accent via-amber-400 to-accent bg-clip-text text-transparent">
+                Passez à la stratégie.
+              </span>
             </h1>
-            <p className="text-body-lg text-white/50 max-w-3xl mx-auto">
-              Beaucoup d'entrepreneurs échouent par manque de clarté. Chez Sen'Optima, nous ne vendons pas de magie, mais une méthode.
+            <p className="text-lg md:text-xl text-white/50 max-w-3xl mx-auto leading-relaxed">
+              Beaucoup d'entrepreneurs échouent par manque de clarté. Chez Sen'Optima, 
+              nous ne vendons pas de magie, mais une <span className="text-white/70">méthode éprouvée</span>.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Education Section */}
-      <section className="py-section relative">
+      <section className="py-16 md:py-20 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -173,18 +200,18 @@ const DiagnosticsPage = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <div className="glass-card rounded-xl p-8 md:p-10 text-center">
-              <h2 className="text-title text-white mb-6">
+            <div className="rounded-2xl p-8 md:p-10 text-center bg-white/[0.03] border border-white/10 backdrop-blur-xl">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
                 Pourquoi payer pour un diagnostic ?
               </h2>
-              <p className="text-body text-white/50 mb-8 max-w-2xl mx-auto">
+              <p className="text-white/50 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
                 Un médecin n'opère jamais sans radio. Un architecte ne construit pas sans étude de sol. 
                 <span className="text-white/70"> Votre entreprise mérite la même rigueur.</span>
               </p>
 
-              <div className="inline-block px-6 py-4 rounded-lg bg-white/5 border border-white/10">
-                <p className="text-body text-white/70">
-                  Le coût du diagnostic est <span className="text-accent">100% DÉDUIT</span> si vous signez l'accompagnement.
+              <div className="inline-block px-8 py-5 rounded-xl bg-accent/10 border border-accent/20">
+                <p className="text-white/80 text-lg">
+                  Le coût du diagnostic est <span className="text-accent font-bold">100% DÉDUIT</span> si vous signez l'accompagnement.
                 </p>
               </div>
             </div>
@@ -192,20 +219,23 @@ const DiagnosticsPage = () => {
         </div>
       </section>
 
-      {/* Pricing Cards */}
-      <section className="py-section-lg relative">
-        <div className="container">
+      {/* Premium Pricing Cards */}
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        {/* Background glow effect */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
+        
+        <div className="container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-headline text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
               Choisissez votre <span className="text-accent">diagnostic</span>
             </h2>
-            <p className="text-body text-white/50">
-              Trois formules adaptées à votre stade de développement
+            <p className="text-white/50 text-lg">
+              Trois formules adaptées à votre ambition
             </p>
           </motion.div>
 
@@ -214,87 +244,137 @@ const DiagnosticsPage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch"
           >
-            {diagnostics.map((diagnostic) => (
+            {diagnostics.map((diagnostic, index) => (
               <motion.article
                 key={diagnostic.name}
                 variants={cardVariants}
-                className="relative flex flex-col p-8 rounded-xl glass-card"
+                className={`group relative flex flex-col rounded-2xl transition-all duration-500 ${
+                  diagnostic.popular
+                    ? "bg-white/[0.06] border-2 border-accent/40 shadow-[0_0_60px_-10px_rgba(212,167,59,0.3)] lg:scale-105 z-10"
+                    : "bg-white/[0.03] border border-white/10 hover:border-accent/30 hover:-translate-y-4 hover:shadow-[0_0_40px_-10px_rgba(212,167,59,0.2)]"
+                } backdrop-blur-xl`}
               >
                 {/* Popular Badge */}
                 {diagnostic.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="px-4 py-1 bg-accent/20 text-accent text-caption uppercase tracking-widest rounded-full border border-accent/30">
-                      Recommandé
-                    </span>
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="px-6 py-2 bg-gradient-to-r from-accent to-amber-500 rounded-full shadow-lg"
+                    >
+                      <span className="text-xs font-bold text-[#0a1a3a] uppercase tracking-[0.15em]">
+                        Recommandé
+                      </span>
+                    </motion.div>
                   </div>
                 )}
 
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6">
-                  <diagnostic.icon className="w-6 h-6 text-white/50" />
-                </div>
-
-                <div className="mb-4">
-                  <h3 className="text-title text-white">
-                    {diagnostic.name}
-                  </h3>
-                  <span className="text-caption text-white/40 uppercase tracking-widest">{diagnostic.subtitle}</span>
-                </div>
-
-                {/* Price */}
-                <div className="mb-6">
-                  <span className="text-3xl text-white font-light">
-                    {diagnostic.price}
-                  </span>
-                  <span className="text-white/40 ml-2 text-sm">FCFA</span>
-                </div>
-
-                {/* Target */}
-                <div className="mb-6 p-4 rounded-lg bg-white/5 border border-white/5">
-                  <p className="text-sm text-white/60">
-                    <span className="text-white/40 text-caption uppercase tracking-widest block mb-1">Pour qui ?</span>
-                    {diagnostic.targetAudience}
-                  </p>
-                </div>
-
-                {/* What we analyze */}
-                <div className="mb-6">
-                  <p className="text-caption text-white/40 uppercase tracking-widest mb-3">Ce qu'on analyse :</p>
-                  <ul className="space-y-2">
-                    {diagnostic.analyses.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-white/30 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-white/60">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Deliverable */}
-                <div className="mb-8 p-4 rounded-lg bg-white/5 border border-white/5">
-                  <p className="text-sm text-white/60">
-                    <span className="text-white/40 text-caption uppercase tracking-widest block mb-1">Livrable</span>
-                    {diagnostic.deliverable}
-                  </p>
-                </div>
-
-                {/* CTA */}
-                <div className="mt-auto">
-                  <Button
-                    variant="outline"
-                    className={`w-full border-white/10 text-white/60 hover:border-accent hover:text-accent ${
-                      diagnostic.popular ? "border-accent/30 text-accent" : ""
+                <div className={`flex flex-col flex-1 p-8 ${diagnostic.popular ? 'pt-12' : ''}`}>
+                  {/* Icon */}
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + 0.3 }}
+                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${
+                      diagnostic.popular 
+                        ? "bg-accent/20 border border-accent/30" 
+                        : "bg-white/5 border border-white/10"
                     }`}
-                    onClick={() => handleStartDiagnostic(diagnostic)}
+                  >
+                    <diagnostic.icon 
+                      className={`w-8 h-8 ${
+                        diagnostic.popular ? "text-accent" : "text-white/60"
+                      }`} 
+                    />
+                  </motion.div>
+
+                  {/* Header */}
+                  <div className="text-center mb-6">
+                    <h3 className="text-lg font-bold text-white tracking-[0.1em] mb-2">
+                      {diagnostic.name}
+                    </h3>
+                    <p className="text-sm text-white/40 uppercase tracking-wider">
+                      {diagnostic.focus}
+                    </p>
+                  </div>
+
+                  {/* Price */}
+                  <div className="text-center mb-8">
+                    <div className="flex items-baseline justify-center gap-2">
+                      <span className="text-5xl font-bold text-accent tracking-tight">
+                        {diagnostic.price}
+                      </span>
+                      <span className="text-lg text-white/40 font-medium">FCFA</span>
+                    </div>
+                  </div>
+
+                  {/* Key Deliverables - Gold Highlighted */}
+                  <div className="mb-6">
+                    <p className="text-xs text-accent uppercase tracking-[0.2em] mb-4 font-semibold">
+                      Livrables Clés
+                    </p>
+                    <ul className="space-y-3">
+                      {diagnostic.deliverables.map((item, i) => (
+                        <li key={i} className="flex items-center gap-3 p-3 rounded-lg bg-accent/5 border border-accent/10">
+                          <item.icon className="w-5 h-5 text-accent flex-shrink-0" />
+                          <span className="text-sm text-white/80">{item.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Features List */}
+                  <div className="flex-1 mb-8">
+                    <p className="text-xs text-white/40 uppercase tracking-[0.2em] mb-4">
+                      Inclus dans l'analyse
+                    </p>
+                    <ul className="space-y-3">
+                      {diagnostic.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-3">
+                          <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Check className="w-3 h-3 text-accent" />
+                          </div>
+                          <span className="text-sm text-white/60">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* CTA Button */}
+                  <Button
+                    onClick={handleStartDiagnostic}
+                    className={`w-full h-14 text-base gap-3 font-semibold transition-all duration-300 ${
+                      diagnostic.popular 
+                        ? "bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] hover:shadow-[0_0_30px_rgba(212,167,59,0.5)] hover:scale-[1.02]" 
+                        : "bg-white/5 border border-white/20 text-white hover:border-accent/50 hover:text-accent hover:bg-accent/5"
+                    }`}
                   >
                     {diagnostic.cta}
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               </motion.article>
             ))}
+          </motion.div>
+
+          {/* Urgency Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="max-w-3xl mx-auto mt-12"
+          >
+            <div className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
+              <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+              <p className="text-sm text-amber-200/80 text-center">
+                <span className="font-semibold text-amber-300">Attention :</span> En raison de la profondeur de nos analyses (Rapports de 15 pages + Sessions de 45min), nous n'acceptons que <span className="font-bold text-amber-300">3 diagnostics par semaine</span>.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -308,18 +388,18 @@ const DiagnosticsPage = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Comment ça se passe ?
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-white/50 text-lg">
               Un processus simple et transparent
             </p>
           </motion.div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4 relative">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
               {/* Connecting line - desktop only */}
-              <div className="hidden md:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-accent/20 via-accent to-accent/20" />
+              <div className="hidden md:block absolute top-12 left-[20%] right-[20%] h-0.5 bg-gradient-to-r from-accent/20 via-accent to-accent/20" />
 
               {processSteps.map((step, index) => (
                 <motion.div
@@ -327,17 +407,17 @@ const DiagnosticsPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.15 }}
                   className="relative text-center"
                 >
-                  <div className="relative z-10 w-20 h-20 mx-auto mb-4 rounded-2xl glass-card flex items-center justify-center border-2 border-accent/30">
-                    <step.icon className="w-8 h-8 text-accent" />
-                    <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center">
+                  <div className="relative z-10 w-24 h-24 mx-auto mb-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm flex items-center justify-center">
+                    <step.icon className="w-10 h-10 text-accent" />
+                    <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] text-sm font-bold flex items-center justify-center shadow-lg">
                       {step.step}
                     </span>
                   </div>
-                  <h3 className="font-heading font-bold text-foreground mb-1">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                  <h3 className="font-bold text-white text-lg mb-2">{step.title}</h3>
+                  <p className="text-sm text-white/50">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -354,35 +434,32 @@ const DiagnosticsPage = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <div className="glass-premium glow-gold rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+            <div className="rounded-3xl p-8 md:p-12 text-center relative overflow-hidden bg-gradient-to-br from-accent/10 via-white/[0.03] to-transparent border border-accent/20">
               {/* Decorative shield */}
               <div className="absolute top-4 right-4 opacity-10">
-                <Shield className="w-24 h-24 text-accent" />
+                <Shield className="w-32 h-32 text-accent" />
               </div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/20 flex items-center justify-center">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center">
                   <Shield className="w-10 h-10 text-accent" />
                 </div>
 
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   Garantie Satisfait ou Remboursé
                 </h2>
 
-                <p className="text-lg text-muted-foreground mb-6 max-w-xl mx-auto">
+                <p className="text-lg text-white/60 mb-8 max-w-xl mx-auto leading-relaxed">
                   Si à la fin de la session, vous n'avez reçu aucune valeur ou stratégie claire, nous vous remboursons intégralement. 
-                  <span className="text-foreground font-medium"> Zéro risque pour vous.</span>
+                  <span className="text-white font-medium"> Zéro risque pour vous.</span>
                 </p>
 
-                <Button variant="cta" size="lg" className="glow-gold" asChild>
-                  <a
-                    href="https://wa.me/221781926969?text=Bonjour, je souhaite réserver un diagnostic"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Réserver mon diagnostic maintenant
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </a>
+                <Button 
+                  onClick={handleStartDiagnostic}
+                  className="h-14 px-8 text-base bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] font-semibold hover:shadow-[0_0_40px_rgba(212,167,59,0.4)] transition-all duration-300"
+                >
+                  Réserver mon diagnostic maintenant
+                  <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </div>
             </div>
@@ -399,10 +476,10 @@ const DiagnosticsPage = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Questions Fréquentes
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-white/50 text-lg">
               Tout ce que vous devez savoir avant de commander
             </p>
           </motion.div>
@@ -418,12 +495,12 @@ const DiagnosticsPage = () => {
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`}
-                  className="glass-card rounded-2xl border-none px-6 overflow-hidden"
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm px-6 overflow-hidden"
                 >
-                  <AccordionTrigger className="text-left font-heading font-bold text-foreground hover:no-underline py-5">
+                  <AccordionTrigger className="text-left font-bold text-white hover:no-underline py-5 hover:text-accent transition-colors">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-5">
+                  <AccordionContent className="text-white/60 pb-5 leading-relaxed">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -434,7 +511,7 @@ const DiagnosticsPage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-16 md:py-20 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -442,26 +519,23 @@ const DiagnosticsPage = () => {
             viewport={{ once: true }}
             className="text-center max-w-2xl mx-auto"
           >
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Prêt à passer de la confusion à la clarté ?
             </h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-white/50 mb-8 text-lg">
               Réservez votre diagnostic dès aujourd'hui et recevez votre plan d'action sous 48h.
             </p>
-            <Button variant="cta" size="lg" className="glow-gold" asChild>
-              <a
-                href="https://wa.me/221781926969?text=Bonjour, je souhaite réserver un diagnostic Sen'Optima"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Réserver sur WhatsApp
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </a>
+            <Button 
+              onClick={handleStartDiagnostic}
+              className="h-14 px-10 text-base bg-gradient-to-r from-accent to-amber-500 text-[#0a1a3a] font-semibold hover:shadow-[0_0_40px_rgba(212,167,59,0.4)] transition-all duration-300"
+            >
+              Commander mon Diagnostic
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </motion.div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
