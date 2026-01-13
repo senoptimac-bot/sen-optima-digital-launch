@@ -290,6 +290,194 @@
   .bg-gradient-gold {
     background: linear-gradient(135deg, hsl(43 65% 53%), hsl(43 65% 63%));
   }
+
+  /* === PREMIUM DIAGNOSTIC ANIMATIONS === */
+  
+  /* Shimmer effect on gold prices */
+  .shimmer-gold {
+    position: relative;
+    background: linear-gradient(
+      90deg,
+      hsl(43 65% 53%) 0%,
+      hsl(43 65% 70%) 25%,
+      hsl(43 65% 53%) 50%,
+      hsl(43 65% 70%) 75%,
+      hsl(43 65% 53%) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer-sweep 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer-sweep {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+
+  /* Gold border pulse effect */
+  .border-pulse-gold {
+    animation: border-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes border-pulse {
+    0%, 100% { 
+      border-color: hsl(43 65% 53% / 0.4);
+      box-shadow: 0 0 20px -5px hsl(43 65% 53% / 0.2);
+    }
+    50% { 
+      border-color: hsl(43 65% 53% / 0.7);
+      box-shadow: 0 0 40px -5px hsl(43 65% 53% / 0.4);
+    }
+  }
+
+  /* Shiny button hover effect */
+  .btn-shiny {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shiny::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(0 0% 100% / 0.3),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .btn-shiny:hover::before {
+    left: 100%;
+  }
+
+  /* Live pulse indicator */
+  .pulse-live {
+    animation: pulse-live 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-live {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.5;
+      transform: scale(1.2);
+    }
+  }
+
+  /* Floating particles background */
+  .floating-grid {
+    background-image: 
+      linear-gradient(hsl(0 0% 100% / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: grid-float 20s linear infinite;
+  }
+
+  @keyframes grid-float {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 60px 60px, 60px 60px; }
+  }
+
+  /* Floating particle dots */
+  .particles-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: hsl(43 65% 53% / 0.3);
+    border-radius: 50%;
+    animation: float-up 15s linear infinite;
+  }
+
+  @keyframes float-up {
+    0% {
+      transform: translateY(100vh) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) scale(1);
+      opacity: 0;
+    }
+  }
+
+  /* Icon bounce animation */
+  .icon-bounce {
+    animation: icon-bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes icon-bounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-3px) rotate(-2deg); }
+    75% { transform: translateY(-3px) rotate(2deg); }
+  }
+
+  /* Rotating glow effect */
+  .rotating-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      hsl(43 65% 53% / 0.3),
+      transparent,
+      hsl(43 65% 53% / 0.3),
+      transparent
+    );
+    border-radius: inherit;
+    animation: rotate-glow 4s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes rotate-glow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Micro-copy scroll animation */
+  .micro-copy-scroll {
+    animation: micro-scroll 12s linear infinite;
+  }
+
+  @keyframes micro-scroll {
+    0%, 20% { opacity: 1; transform: translateY(0); }
+    25%, 45% { opacity: 0; transform: translateY(-10px); }
+    50%, 70% { opacity: 1; transform: translateY(0); }
+    75%, 95% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Text fade in sequence */
+  .text-fade-sequence span {
+    opacity: 0;
+    animation: fade-in-word 0.6s ease forwards;
+  }
+
+  @keyframes fade-in-word {
+    to { opacity: 1; }
+  }
 }
 
 /* Google Translate Hide */
