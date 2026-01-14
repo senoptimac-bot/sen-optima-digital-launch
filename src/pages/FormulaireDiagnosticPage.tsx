@@ -196,81 +196,46 @@ const FormulaireDiagnosticPage = () => {
     }
   };
 
-  // Section tracking for progress
-  const sections = [
-    { id: 1, title: "Profil", icon: User },
-    { id: 2, title: "Business", icon: Briefcase },
-    { id: 3, title: "Digital", icon: Globe },
-    { id: 4, title: "Objectifs", icon: Target },
-    { id: 5, title: "Planning", icon: Calendar }
-  ];
-
   return (
     <div className="min-h-screen bg-[#0a1a3a] relative overflow-hidden">
-      {/* Grain Texture */}
-      <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
-      
       {/* Background Effects */}
-      <div className="absolute inset-0 floating-grid opacity-20" />
-      
-      {/* Spotlight effects */}
-      <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-[#D4A73B]/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#D4A73B]/3 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute inset-0 floating-grid opacity-30" />
+      <div className="absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
-        {/* Header - Conversational */}
+        {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8"
+          className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D4A73B]/10 border border-[#D4A73B]/30 mb-6">
             <Sparkles className="w-4 h-4 text-[#D4A73B]" />
-            <span className="text-[#D4A73B] text-sm font-medium">Dossier de Candidature</span>
+            <span className="text-[#D4A73B] text-sm font-medium">Dossier de Candidature Premium</span>
           </div>
           
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-            Parlons de <span className="text-[#D4A73B] italic font-serif">votre projet</span>
+            Candidature pour un{" "}
+            <span className="text-[#D4A73B]">Audit Stratégique</span>
           </h1>
           
-          <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
-            Pas d'interrogatoire, juste une conversation pour mieux comprendre vos besoins. 
-            <span className="text-white/80"> 5 minutes</span>, c'est tout.
+          <p className="text-white/70 text-lg max-w-2xl mx-auto">
+            Pour garantir la qualité de nos conseils, nous analysons votre situation en détail avant tout échange.
+            <span className="text-[#D4A73B] font-medium"> Prenez 5 minutes</span> pour remplir ce dossier.
           </p>
-        </motion.div>
-
-        {/* Progress Steps - Visual Progress Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl mx-auto mb-12"
-        >
-          <div className="flex items-center justify-between relative">
-            {/* Progress Line */}
-            <div className="absolute top-5 left-0 right-0 h-[2px] bg-white/10" />
-            
-            {sections.map((section, index) => {
-              const Icon = section.icon;
-              return (
-                <div key={section.id} className="relative flex flex-col items-center z-10">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    index === 0 
-                      ? "bg-[#D4A73B] text-[#0a1a3a]" 
-                      : "bg-white/10 text-white/40 border border-white/10"
-                  }`}>
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <span className={`text-xs mt-2 transition-colors ${
-                    index === 0 ? "text-[#D4A73B]" : "text-white/40"
-                  }`}>
-                    {section.title}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
         </motion.div>
 
         {/* Form Container */}
@@ -291,8 +256,8 @@ const FormulaireDiagnosticPage = () => {
                 <User className="w-5 h-5 text-[#D4A73B]" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white">Qui êtes-vous ?</h2>
-                <p className="text-white/50 text-sm">Faisons connaissance</p>
+                <h2 className="text-xl font-bold text-white">Le Profil Décideur</h2>
+                <p className="text-white/50 text-sm">Qui êtes-vous ?</p>
               </div>
             </div>
 
@@ -392,8 +357,8 @@ const FormulaireDiagnosticPage = () => {
                 <Briefcase className="w-5 h-5 text-[#22D3EE]" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white">Votre activité</h2>
-                <p className="text-white/50 text-sm">Dites-nous en plus sur votre business</p>
+                <h2 className="text-xl font-bold text-white">Le Contexte Business</h2>
+                <p className="text-white/50 text-sm">Votre marché</p>
               </div>
             </div>
 
@@ -480,8 +445,8 @@ const FormulaireDiagnosticPage = () => {
                 <Globe className="w-5 h-5 text-[#8B5CF6]" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white">Votre présence en ligne</h2>
-                <p className="text-white/50 text-sm">Qu'avez-vous déjà mis en place ?</p>
+                <h2 className="text-xl font-bold text-white">L'Écosystème Digital</h2>
+                <p className="text-white/50 text-sm">Vos actifs numériques</p>
               </div>
             </div>
 
@@ -583,8 +548,8 @@ const FormulaireDiagnosticPage = () => {
                 <Target className="w-5 h-5 text-[#EF4444]" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white">Vos défis actuels</h2>
-                <p className="text-white/50 text-sm">Soyez honnête, c'est confidentiel</p>
+                <h2 className="text-xl font-bold text-white">Le Diagnostic & Objectifs</h2>
+                <p className="text-white/50 text-sm">Vos défis et ambitions</p>
               </div>
             </div>
 
@@ -644,8 +609,8 @@ const FormulaireDiagnosticPage = () => {
                 <Calendar className="w-5 h-5 text-[#10B981]" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white">Quand peut-on se parler ?</h2>
-                <p className="text-white/50 text-sm">On s'adapte à votre emploi du temps</p>
+                <h2 className="text-xl font-bold text-white">Logistique & Rendez-vous</h2>
+                <p className="text-white/50 text-sm">Planifions votre session</p>
               </div>
             </div>
 

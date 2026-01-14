@@ -9,15 +9,12 @@ import AdviceSection from "@/components/AdviceSection";
 import BridgeSection from "@/components/BridgeSection";
 import About from "@/components/About";
 import Services from "@/components/Services";
-import ManifestoSection from "@/components/ManifestoSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 
 const Home = () => {
   return (
     <>
       <Hero />
       <MarqueeSection />
-      <ManifestoSection />
       <VisionarySection />
       <About />
       <Services />
@@ -25,7 +22,6 @@ const Home = () => {
       <IdentitySection />
       <MirrorSection />
       <MethodSection />
-      <TestimonialsSection />
       <AdviceSection />
       <BridgeSection />
     </>
