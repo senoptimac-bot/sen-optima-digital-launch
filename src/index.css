@@ -81,6 +81,18 @@
     overflow-x: hidden;
   }
 
+  /* Handwritten Signature Font */
+  .font-signature {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Serif for Editorial Headlines */
+  .font-serif {
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+
   /* Typography - Ultra Clean Corporate */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
@@ -101,6 +113,69 @@
 }
 
 @layer utilities {
+  /* ============================================
+     HUMAN SOUL TEXTURES & ORGANIC EFFECTS
+     ============================================ */
+
+  /* Grain/Noise Texture - Removes plastic feel */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Magnetic Button Effect */
+  .magnetic-btn {
+    transition: transform 0.2s ease-out;
+  }
+
+  .magnetic-btn:hover {
+    animation: magnetic-wiggle 0.5s ease-in-out;
+  }
+
+  @keyframes magnetic-wiggle {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(2px) translateY(-1px); }
+    50% { transform: translateX(-1px) translateY(2px); }
+    75% { transform: translateX(1px) translateY(-2px); }
+  }
+
+  /* Spotlight/Stage Lighting Effect */
+  .spotlight {
+    position: relative;
+  }
+
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(ellipse at center, hsl(43 65% 53% / 0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Fade In Up Animation */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Stagger Animation Delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
   /* Gold accent - ONLY for H2 titles and primary CTAs */
   .text-gradient-gold {
     @apply text-accent font-normal;
