@@ -478,6 +478,40 @@
   @keyframes fade-in-word {
     to { opacity: 1; }
   }
+
+  /* === FORM PAGE STYLES === */
+  
+  .glass-form-section {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .glass-form-section:hover {
+    border-color: rgba(212, 167, 59, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .glass-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    color: white !important;
+    transition: all 0.3s ease;
+  }
+
+  .glass-input:focus {
+    border-color: rgba(212, 167, 59, 0.5) !important;
+    box-shadow: 0 0 0 2px rgba(212, 167, 59, 0.1) !important;
+    outline: none !important;
+  }
+
+  .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
 }
 
 /* Google Translate Hide */
