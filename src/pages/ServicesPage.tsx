@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Settings, Code, TrendingUp, Compass } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 // Visual Components for each pillar
 const DeviceIllustration = () => (
@@ -301,14 +301,12 @@ const ServicesPage = () => {
       subtitle: "La Technique",
       message: "Du site vitrine à l'application de gestion complexe. Nous créons les outils technologiques sur mesure pour votre métier.",
       illustration: DeviceIllustration,
-      icon: Code,
     },
     {
       title: "Digitalisation & Organisation Interne",
       subtitle: "Le Back-Office",
       message: "Le chaos interne tue la croissance. Nous installons vos CRM, automatisons vos tâches répétitives et structurons vos process.",
       illustration: FlowchartIllustration,
-      icon: Settings,
       highlight: true,
     },
     {
@@ -316,14 +314,12 @@ const ServicesPage = () => {
       subtitle: "Le Carburant",
       message: "Attirer les bons prospects, au bon moment. Un système prédictif pour ne plus dépendre du hasard.",
       illustration: FunnelIllustration,
-      icon: TrendingUp,
     },
     {
       title: "Audit & Direction",
       subtitle: "La Boussole",
       message: "Avoir les outils ne suffit pas. Il faut savoir où aller. Nous définissons la feuille de route claire de votre succès.",
       illustration: GrowthChartIllustration,
-      icon: Compass,
     },
   ];
 
@@ -420,11 +416,10 @@ const ServicesPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {pillars.map((pillar, index) => {
               const IllustrationComponent = pillar.illustration;
-              const IconComponent = pillar.icon;
               return (
                 <motion.div
                   key={index}
-                  className="glass-card p-6 rounded-xl group hover:border-solution/30 transition-all duration-300"
+                  className="glass-card p-6 rounded-xl"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -434,14 +429,9 @@ const ServicesPage = () => {
                     <IllustrationComponent />
                   </div>
                   
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-8 h-8 rounded-lg bg-solution/10 flex items-center justify-center">
-                      <IconComponent className="w-4 h-4 icon-solution group-hover:icon-solution-animated" />
-                    </div>
-                    <span className="text-caption text-white/40 uppercase tracking-widest">
-                      {pillar.subtitle}
-                    </span>
-                  </div>
+                  <span className="text-caption text-white/40 uppercase tracking-widest">
+                    {pillar.subtitle}
+                  </span>
                   <h3 className="text-title text-white mt-1 mb-3">
                     {pillar.title}
                   </h3>

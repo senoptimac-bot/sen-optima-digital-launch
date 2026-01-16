@@ -23,7 +23,6 @@ import NotFound from "./pages/NotFound";
 import MentionsLegalesPage from "./pages/MentionsLegalesPage";
 import PolitiqueConfidentialitePage from "./pages/PolitiqueConfidentialitePage";
 import CGVPage from "./pages/CGVPage";
-import FormulaireDiagnosticPage from "./pages/FormulaireDiagnosticPage";
 
 const queryClient = new QueryClient();
 
@@ -162,7 +161,6 @@ const App = () => {
                   <Route path="/" element={<Home />} />
                   <Route path="/services" element={<ServicesPage />} />
                   <Route path="/diagnostics" element={<DiagnosticsPage />} />
-                  <Route path="/formulaire-diagnostic" element={<FormulaireDiagnosticPage />} />
                   <Route path="/merci" element={<SuccessPage />} />
                   <Route path="/a-propos" element={<AboutPage />} />
                   <Route path="/contact" element={<ContactPage />} />

@@ -64,14 +64,6 @@ export default {
           light: "hsl(var(--gold-light))",
           dark: "hsl(var(--gold-dark))",
         },
-        problem: {
-          DEFAULT: "hsl(var(--problem))",
-          foreground: "hsl(var(--problem-foreground))",
-        },
-        solution: {
-          DEFAULT: "hsl(var(--solution))",
-          foreground: "hsl(var(--solution-foreground))",
-        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

@@ -1,13 +1,13 @@
-import { Check, ArrowRight, Search, Rocket, BarChart3, Sparkles } from "lucide-react";
+import { Check, ArrowRight, Monitor, Target, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 const diagnostics = [
   {
-    icon: Search,
+    icon: Monitor,
     name: "Diagnostic Site Web",
     price: "20.000",
-    description: "Audit complet de votre présence web actuelle",
+    description: "Audit complet de votre site web actuel",
     features: [
       "Audit UX/UI approfondi",
       "Analyse des performances",
@@ -18,7 +18,7 @@ const diagnostics = [
     popular: false,
   },
   {
-    icon: BarChart3,
+    icon: Target,
     name: "Diagnostic Stratégie Digitale",
     price: "25.000",
     description: "Analyse globale de votre présence en ligne",
@@ -58,12 +58,12 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
+      duration: 0.6,
       ease: [0.25, 0.46, 0.45, 0.94] as const,
     },
   },
@@ -71,176 +71,133 @@ const cardVariants = {
 
 const Diagnostics = () => {
   return (
-    <section id="diagnostics" className="py-24 md:py-32 relative overflow-hidden">
-      {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+    <section id="diagnostics" className="py-20 md:py-28 relative overflow-hidden">
+      {/* Background with gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
+      
+      {/* Decorative orbs */}
+      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px]" />
+      <div className="absolute bottom-1/4 right-0 w-[300px] h-[300px] rounded-full bg-accent/5 blur-[80px]" />
 
       <div className="container relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-16"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6"
-          >
-            <Sparkles className="w-4 h-4 icon-success-animated" />
-            <span className="text-caption text-white/60 uppercase tracking-widest">
-              Commencez maintenant
-            </span>
-          </motion.div>
-          
-          <h2 className="text-headline text-white mb-6">
-            Nos <span className="text-accent">Diagnostics</span> Premium
+          <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
+            Commencez maintenant
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mt-3 mb-5">
+            Nos Diagnostics
           </h2>
-          
-          <p className="text-body-lg text-white/50 max-w-2xl mx-auto">
-            Un point de départ accessible pour structurer votre stratégie digitale avec l'expertise d'un cabinet de conseil.
+          <p className="text-muted-foreground text-lg">
+            Un point de départ accessible pour structurer votre stratégie digitale.
           </p>
         </motion.div>
 
-        {/* Premium Pricing Cards */}
+        {/* Pricing Cards */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-6 max-w-6xl mx-auto items-stretch"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
         >
-          {diagnostics.map((diagnostic, index) => (
+          {diagnostics.map((diagnostic) => (
             <motion.article
               key={diagnostic.name}
               variants={cardVariants}
-              className={`relative flex flex-col rounded-2xl overflow-hidden ${
+              whileHover={{ scale: 1.02, y: -8 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className={`relative flex flex-col p-8 rounded-3xl transition-all duration-500 ${
                 diagnostic.popular
-                  ? "glass-pricing-featured lg:py-4"
-                  : "glass-pricing"
+                  ? "glass-premium glow-gold lg:scale-105"
+                  : "glass-card hover:glow-gold-subtle"
               }`}
             >
               {/* Popular Badge */}
               {diagnostic.popular && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="absolute top-0 left-0 right-0"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="absolute -top-4 left-1/2 -translate-x-1/2"
                 >
-                  <div className="bg-gradient-gold text-center py-2">
-                    <span className="text-xs font-bold text-background uppercase tracking-wider">
-                      Le plus populaire
-                    </span>
-                  </div>
+                  <span className="px-5 py-1.5 bg-gradient-gold text-accent-foreground text-xs font-bold rounded-full shadow-gold">
+                    Le plus populaire
+                  </span>
                 </motion.div>
               )}
 
-              <div className={`flex flex-col flex-1 p-8 ${diagnostic.popular ? 'pt-14' : ''}`}>
-                {/* Large Animated Icon */}
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.3 }}
-                  className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 ${
-                    diagnostic.popular 
-                      ? "bg-accent/20 border border-accent/30" 
-                      : "bg-white/5 border border-white/10"
-                  }`}
-                >
-                  <diagnostic.icon 
-                    className={`w-10 h-10 ${
-                      diagnostic.popular 
-                        ? "icon-success-animated" 
-                        : "text-white/60"
-                    }`} 
-                  />
-                </motion.div>
-
-                {/* Header */}
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-white mb-3">
-                    {diagnostic.name}
-                  </h3>
-                  <p className="text-sm text-white/50">
-                    {diagnostic.description}
-                  </p>
-                </div>
-
-                {/* Price */}
-                <div className="text-center mb-8">
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className={`text-5xl font-bold tracking-tight ${
-                      diagnostic.popular ? "text-accent" : "text-white"
-                    }`}>
-                      {diagnostic.price}
-                    </span>
-                    <span className="text-lg text-white/40 font-medium">FCFA</span>
-                  </div>
-                </div>
-
-                {/* Features with Gold Checks */}
-                <ul className="flex-1 space-y-4 mb-8">
-                  {diagnostic.features.map((feature, featureIndex) => (
-                    <motion.li 
-                      key={feature} 
-                      className="flex items-start gap-3"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 + featureIndex * 0.05 + 0.4 }}
-                    >
-                      <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                        diagnostic.popular 
-                          ? "bg-accent/30" 
-                          : "bg-accent/15"
-                      }`}>
-                        <Check className="w-3 h-3 text-accent" />
-                      </div>
-                      <span className="text-sm text-white/70">{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* Full-width Gold CTA */}
-                <Button
-                  variant={diagnostic.popular ? "cta" : "outline"}
-                  className={`w-full h-14 text-base gap-3 group font-semibold ${
-                    diagnostic.popular 
-                      ? "bg-accent hover:bg-accent/90 text-background shadow-gold" 
-                      : "border-white/20 text-white hover:border-accent/50 hover:text-accent"
-                  }`}
-                  asChild
-                >
-                  <a
-                    href={`https://wa.me/221781926969?text=Bonjour, je souhaite commander le diagnostic : ${diagnostic.name}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Commander ce diagnostic
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </Button>
+              {/* Icon */}
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${
+                diagnostic.popular 
+                  ? "bg-accent/20" 
+                  : "bg-accent/10"
+              }`}>
+                <diagnostic.icon className={`w-8 h-8 ${diagnostic.popular ? "text-accent" : "text-accent"}`} />
               </div>
+
+              {/* Header */}
+              <h3 className="text-xl font-heading font-bold text-foreground mb-2">
+                {diagnostic.name}
+              </h3>
+              <p className="text-muted-foreground text-sm mb-6">
+                {diagnostic.description}
+              </p>
+
+              {/* Price */}
+              <div className="mb-8">
+                <span className={`text-4xl font-heading font-bold ${
+                  diagnostic.popular ? "text-gradient-gold" : "text-foreground"
+                }`}>
+                  {diagnostic.price}
+                </span>
+                <span className="text-muted-foreground ml-2 text-lg">FCFA</span>
+              </div>
+
+              {/* Features */}
+              <ul className="flex-1 space-y-4 mb-8">
+                {diagnostic.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                      diagnostic.popular 
+                        ? "bg-accent/30" 
+                        : "bg-accent/10"
+                    }`}>
+                      <Check className="w-3 h-3 text-accent" />
+                    </div>
+                    <span className="text-sm text-foreground/80">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA */}
+              <Button
+                variant={diagnostic.popular ? "cta" : "outline"}
+                className={`w-full gap-2 group ${
+                  diagnostic.popular 
+                    ? "glow-gold-subtle hover:glow-gold" 
+                    : "glass border-foreground/20 hover:border-accent/50"
+                }`}
+                asChild
+              >
+                <a
+                  href={`https://wa.me/221781926969?text=Bonjour, je souhaite commander le diagnostic : ${diagnostic.name}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Commander ce diagnostic
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
             </motion.article>
           ))}
         </motion.div>
-
-        {/* Trust indicator */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="text-center text-white/30 text-sm mt-12"
-        >
-          ✓ Paiement sécurisé • ✓ Rapport livré sous 72h • ✓ Satisfaction garantie
-        </motion.p>
       </div>
     </section>
   );

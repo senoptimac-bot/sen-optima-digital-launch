@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { UserX, Ghost, HelpCircle, AlertTriangle } from "lucide-react";
+import { UserX, Ghost, HelpCircle } from "lucide-react";
 
 const painPoints = [
   {
@@ -23,12 +23,12 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -48,11 +48,11 @@ const MirrorSection = () => {
           className="text-center max-w-2xl mx-auto mb-20"
         >
           <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
-            <AlertTriangle className="w-3 h-3 icon-problem" />
+            <span className="w-1 h-1 rounded-full bg-accent" />
             Le miroir
           </span>
           <h2 className="text-headline text-foreground mb-4">
-            Votre <span className="text-problem">situation actuelle</span>
+            Votre <span className="text-accent">situation actuelle</span>
           </h2>
           <p className="text-body text-foreground/50">
             Reconnaissez-vous ces symptômes ?
@@ -71,29 +71,25 @@ const MirrorSection = () => {
             <motion.div
               key={pain.title}
               variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-8 glass-card rounded-xl group transition-all duration-300"
+              className="relative p-8 glass-card rounded-xl group"
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
-                <span className="text-caption text-problem/40">{String(index + 1).padStart(2, '0')}</span>
+                <span className="text-caption text-foreground/20">{String(index + 1).padStart(2, '0')}</span>
               </div>
 
-              {/* Icon with problem styling and animation */}
-              <div className="w-12 h-12 rounded-xl bg-problem/10 flex items-center justify-center mb-6 group-hover:bg-problem/20 transition-colors duration-300">
-                <pain.icon className="w-6 h-6 icon-problem-animated" />
+              {/* Icon */}
+              <div className="w-10 h-10 rounded-lg bg-foreground/5 flex items-center justify-center mb-6">
+                <pain.icon className="w-5 h-5 text-foreground/40" />
               </div>
 
               {/* Content */}
-              <h3 className="text-title text-foreground mb-3 group-hover:text-problem transition-colors duration-300">
+              <h3 className="text-title text-foreground mb-3">
                 {pain.title}
               </h3>
               <p className="text-body text-foreground/50 leading-relaxed">
                 {pain.description}
               </p>
-
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-problem/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
             </motion.div>
           ))}
         </motion.div>
