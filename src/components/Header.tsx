@@ -83,10 +83,7 @@ const Header = () => {
 
             {/* Right side */}
             <div className="flex items-center gap-4">
-              {/* Language Selector - Desktop */}
-              <div className="hidden lg:block">
-                <LanguageSelector />
-              </div>
+              {/* Language Selector - Desktop supprimé */}
 
               {/* CTA Button - Ghost style, gold on hover */}
               <div className="hidden lg:block">
@@ -136,10 +133,7 @@ const Header = () => {
               className="fixed inset-x-0 top-20 bottom-0 z-50 lg:hidden overflow-auto"
             >
               <div className="container py-8">
-                {/* Language Selector - Mobile */}
-                <div className="mb-8">
-                  <LanguageSelector isMobile onSelect={() => setIsOpen(false)} />
-                </div>
+                {/* Language Selector - Mobile supprimé */}
 
                 {/* Nav Links */}
                 <ul className="space-y-1">

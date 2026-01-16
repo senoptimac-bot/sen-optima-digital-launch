@@ -1,4 +1,4 @@
-import { Quote } from "lucide-react";
+import { Quote, Eye, TrendingUp, Target } from "lucide-react";
 import { motion } from "framer-motion";
 import aboutTeamImage from "@/assets/À Propos de Sen'Optima.jpg";
 
@@ -110,10 +110,7 @@ const About = () => {
                 <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
                   <span className="text-accent font-bold text-lg">+</span>
                 </div>
-                <div>
-                  <p className="font-bold text-foreground text-lg">100+</p>
-                  <p className="text-xs text-foreground/50">Projets réalisés</p>
-                </div>
+                {/* 100+ Projets réalisés supprimé */}
               </div>
             </motion.div>
           </motion.div>
@@ -128,9 +125,21 @@ const About = () => {
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-20"
         >
           {[
-            { value: "Clarté", description: "Des solutions simples et compréhensibles" },
-            { value: "Performance", description: "Des résultats mesurables et concrets" },
-            { value: "Stratégie", description: "Une vision long terme pour votre succès" },
+            {
+              value: "Clarté",
+              description: "Des solutions simples et compréhensibles",
+              icon: Eye,
+            },
+            {
+              value: "Performance",
+              description: "Des résultats mesurables et concrets",
+              icon: TrendingUp,
+            },
+            {
+              value: "Stratégie",
+              description: "Une vision long terme pour votre succès",
+              icon: Target,
+            },
           ].map((item, index) => (
             <motion.div
               key={item.value}
@@ -141,6 +150,7 @@ const About = () => {
               whileHover={{ scale: 1.03, y: -5 }}
               className="text-center p-6 rounded-2xl glass-card transition-all duration-300 border border-white/10"
             >
+              <item.icon className="mx-auto mb-3 w-8 h-8 text-accent" />
               <h3 className="text-lg font-heading font-bold text-accent mb-2">
                 {item.value}
               </h3>
