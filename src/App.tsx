@@ -47,33 +47,19 @@ const App = () => {
     // Initialize Google Translate globally
     const initGoogleTranslate = () => {
       // Check if script already exists
-      if (document.getElementById("google-translate-script") || (window as unknown as { google?: { translate?: unknown } }).google?.translate) {
+      if (document.getElementById("google-translate-script") || (window as any).google?.translate) {
         return;
       }
 
       // Initialize function
-      (window as unknown as { googleTranslateElementInit?: () => void }).googleTranslateElementInit = () => {
+      (window as any).googleTranslateElementInit = () => {
         try {
-          new ((window as unknown as {
-            google: {
-              translate: {
-                TranslateElement: new (
-                  config: {
-                    pageLanguage: string;
-                    includedLanguages: string;
-                    autoDisplay: boolean;
-                    layout: unknown;
-                  },
-                  elementId: string
-                ) => void;
-              };
-            };
-          }).google.translate.TranslateElement)(
+          new (window as any).google.translate.TranslateElement(
             {
               pageLanguage: "fr",
               includedLanguages: "fr,en,zh-CN,ru",
               autoDisplay: false,
-              layout: ((window as unknown as { google: { translate: { TranslateElement: { InlineLayout: { SIMPLE: unknown } } } } }).google.translate.TranslateElement.InlineLayout.SIMPLE),
+              layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
             },
             "google_translate_element"
           );

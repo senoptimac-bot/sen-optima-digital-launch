@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.svg";
-import LanguageSelector from "./LanguageSelector";
+// ...existing code...
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +83,10 @@ const Header = () => {
 
             {/* Right side */}
             <div className="flex items-center gap-4">
-              {/* Language Selector - Desktop supprimé */}
+              {/* Language Selector - Desktop */}
+              <div className="hidden lg:block">
+                {/* LanguageSelector removed */}
+              </div>
 
               {/* CTA Button - Ghost style, gold on hover */}
               <div className="hidden lg:block">
@@ -133,7 +136,10 @@ const Header = () => {
               className="fixed inset-x-0 top-20 bottom-0 z-50 lg:hidden overflow-auto"
             >
               <div className="container py-8">
-                {/* Language Selector - Mobile supprimé */}
+                {/* Language Selector - Mobile */}
+                <div className="mb-8">
+                  {/* LanguageSelector removed */}
+                </div>
 
                 {/* Nav Links */}
                 <ul className="space-y-1">

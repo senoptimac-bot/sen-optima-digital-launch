@@ -1,8 +1,13 @@
-import { Quote, Eye, TrendingUp, Target } from "lucide-react";
+import { Quote, Monitor, Target, Compass } from "lucide-react";
 import { motion } from "framer-motion";
 import aboutTeamImage from "@/assets/À Propos de Sen'Optima.jpg";
 
 const About = () => {
+  const values = [
+    { value: "Clarté", description: "Des solutions simples et compréhensibles", icon: <Monitor size={32} className="mx-auto mb-2 text-accent" /> },
+    { value: "Performance", description: "Des résultats mesurables et concrets", icon: <Target size={32} className="mx-auto mb-2 text-accent" /> },
+    { value: "Stratégie", description: "Une vision long terme pour votre succès", icon: <Compass size={32} className="mx-auto mb-2 text-accent" /> },
+  ];
   return (
     <section id="apropos" className="py-20 md:py-28 relative overflow-hidden">
       <div className="container relative z-10">
@@ -98,21 +103,7 @@ const About = () => {
               <div className="absolute inset-0 rounded-3xl border border-white/10" />
             </div>
 
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute -bottom-4 -left-4 lg:-left-8 bg-background/90 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-xl"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                  <span className="text-accent font-bold text-lg">+</span>
-                </div>
-                {/* 100+ Projets réalisés supprimé */}
-              </div>
-            </motion.div>
+            {/* Badge '+100 projets réalisés' supprimé */}
           </motion.div>
         </div>
 
@@ -124,23 +115,7 @@ const About = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-20"
         >
-          {[
-            {
-              value: "Clarté",
-              description: "Des solutions simples et compréhensibles",
-              icon: Eye,
-            },
-            {
-              value: "Performance",
-              description: "Des résultats mesurables et concrets",
-              icon: TrendingUp,
-            },
-            {
-              value: "Stratégie",
-              description: "Une vision long terme pour votre succès",
-              icon: Target,
-            },
-          ].map((item, index) => (
+          {values.map((item, index) => (
             <motion.div
               key={item.value}
               initial={{ opacity: 0, y: 20 }}
@@ -148,13 +123,15 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
               whileHover={{ scale: 1.03, y: -5 }}
-              className="text-center p-6 rounded-2xl glass-card transition-all duration-300 border border-white/10"
+              className="p-6 rounded-2xl glass-card transition-all duration-300 border border-white/10 flex flex-col items-center"
             >
-              <item.icon className="mx-auto mb-3 w-8 h-8 text-accent" />
-              <h3 className="text-lg font-heading font-bold text-accent mb-2">
-                {item.value}
-              </h3>
-              <p className="text-sm text-foreground/60">{item.description}</p>
+              <div className="flex items-center w-full justify-center mb-2">
+                <span className="mr-3">{item.icon}</span>
+                <h3 className="text-lg font-heading font-bold text-accent text-left">
+                  {item.value}
+                </h3>
+              </div>
+              <p className="text-sm text-foreground/60 text-center">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>
