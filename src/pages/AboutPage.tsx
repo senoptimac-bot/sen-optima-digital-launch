@@ -445,7 +445,7 @@ const AboutPage = () => {
                 delay: 0.1
               }} className="flex-shrink-0">
                   <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-accent/30">
-                    <img src={fondateurPhoto} alt="Mandiaye Sylla - Fondateur Sen'Optima" className="w-full h-full object-cover" />
+                    <img alt="Mandiaye Sylla - Fondateur Sen'Optima" className="w-full h-full object-cover" src="/lovable-uploads/2077d491-8e17-4c74-b956-95d81833f708.jpg" />
                   </div>
                 </motion.div>
 
