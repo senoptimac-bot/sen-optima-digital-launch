@@ -417,7 +417,7 @@ const AboutPage = () => {
       {/* Fondateur */}
       <section className="py-section-lg relative">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <motion.div initial={{
             opacity: 0,
             y: 30
@@ -427,50 +427,72 @@ const AboutPage = () => {
           }} viewport={{
             once: true
           }}>
-              <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
+              <span className="text-caption text-white/40 uppercase tracking-widest mb-8 block text-center">
                 Fondateur & Stratège Principal
               </span>
 
-              <div className="flex items-center gap-3 mb-6">
-                {/* Avatar rond - petite taille */}
-                <motion.div initial={{
-                opacity: 0,
-                scale: 0.8
-              }} whileInView={{
-                opacity: 1,
-                scale: 1
-              }} viewport={{
-                once: true
-              }} transition={{
-                delay: 0.1
-              }} className="flex-shrink-0">
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-accent/30">
-                    <img alt="Mandiaye Sylla - Fondateur Sen'Optima" className="w-full h-full object-cover" src="/lovable-uploads/2077d491-8e17-4c74-b956-95d81833f708.jpg" />
+              <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-start">
+                {/* Photo élargie */}
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="md:col-span-2"
+                >
+                  <div className="relative">
+                    <div className="absolute -inset-3 bg-gradient-to-br from-accent/20 via-transparent to-accent/10 rounded-2xl blur-xl"></div>
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                      <img 
+                        alt="Mandiaye Sylla - Fondateur Sen'Optima" 
+                        className="w-full h-full object-cover" 
+                        src="/lovable-uploads/2077d491-8e17-4c74-b956-95d81833f708.jpg" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    </div>
                   </div>
                 </motion.div>
 
-                <div className="flex-1">
-                  <h2 className="text-headline text-white mb-1">
-                    Mandiaye Sylla
-                  </h2>
-                </div>
-              </div>
+                {/* Cadre moderne pour le texte */}
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="md:col-span-3"
+                >
+                  <div className="relative">
+                    {/* Cadre décoratif */}
+                    <div className="absolute -inset-px bg-gradient-to-br from-accent/30 via-white/5 to-accent/20 rounded-2xl"></div>
+                    <div className="relative bg-black/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/5">
+                      {/* Accent corner */}
+                      <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-accent/50 rounded-tl-2xl"></div>
+                      <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-accent/50 rounded-br-2xl"></div>
+                      
+                      <h2 className="text-headline text-white mb-6 flex items-center gap-3">
+                        <span className="w-8 h-0.5 bg-accent"></span>
+                        Mandiaye Sylla
+                      </h2>
 
-              <div className="space-y-6 text-body text-white/60 leading-relaxed">
-                <p>
-                  Je m'appelle Mandiaye Sylla, et notre histoire a commencé dans les tranchées du commerce sénégalais.
-                </p>
-                <p>
-                  En 2020, pendant que tout le monde était confiné, j'ai lancé mon premier business de livraison. Puis un accident m'a immobilisé pendant des mois. Ce qui aurait pu être une fin est devenu un déclic :{" "}
-                  <span className="text-white/80">coincé avec juste un téléphone, j'ai découvert le digital et je n'ai plus jamais lâché.</span>
-                </p>
-                <p>
-                  De la gestion d'une boutique avec plus de 2 000 messages WhatsApp par semaine, à la direction de communication d'une agence où nous avons{" "}
-                  <span className="text-accent">doublé le portefeuille clients</span>, j'ai appris une vérité fondamentale : le talent seul ne suffit jamais. C'est la méthode et les bons outils qui transforment une idée en empire.
-                </p>
-                <p className="text-white/70">
-                  Aujourd'hui, avec l'équipe Sen'Optima, nous mettons cette expérience terrain au service des entrepreneurs qui veulent réussir sans perdre 10 ans à tâtonner.
-                </p>
+                      <div className="space-y-5 text-body text-white/60 leading-relaxed">
+                        <p>
+                          Je m'appelle Mandiaye Sylla, et notre histoire a commencé dans les tranchées du commerce sénégalais.
+                        </p>
+                        <p>
+                          En 2020, pendant que tout le monde était confiné, j'ai lancé mon premier business de livraison. Puis un accident m'a immobilisé pendant des mois. Ce qui aurait pu être une fin est devenu un déclic :{" "}
+                          <span className="text-white/80">coincé avec juste un téléphone, j'ai découvert le digital et je n'ai plus jamais lâché.</span>
+                        </p>
+                        <p>
+                          De la gestion d'une boutique avec plus de 2 000 messages WhatsApp par semaine, à la direction de communication d'une agence où nous avons{" "}
+                          <span className="text-accent">doublé le portefeuille clients</span>, j'ai appris une vérité fondamentale : le talent seul ne suffit jamais. C'est la méthode et les bons outils qui transforment une idée en empire.
+                        </p>
+                        <p className="text-white/70 pt-2 border-t border-white/10">
+                          Aujourd'hui, avec l'équipe Sen'Optima, nous mettons cette expérience terrain au service des entrepreneurs qui veulent réussir sans perdre 10 ans à tâtonner.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>
