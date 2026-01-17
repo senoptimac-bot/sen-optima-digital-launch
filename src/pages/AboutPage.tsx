@@ -177,7 +177,7 @@ const AboutPage = () => {
             duration: 1,
             delay: 0.05
           }} className="flex-1 flex justify-center mb-8 md:mb-0">
-              <img alt="À Propos de Sen'Optima" className="rounded-3xl shadow-lg max-h-72 object-cover" loading="lazy" src="/lovable-uploads/88a3cec3-5e2a-4612-9c92-d88ce96ba1a8.jpg" />
+              <img alt="À Propos de Sen'Optima" className="w-full rounded-3xl shadow-lg object-cover" loading="lazy" src="/lovable-uploads/88a3cec3-5e2a-4612-9c92-d88ce96ba1a8.jpg" />
             </motion.div>
           </div>
         </div>
