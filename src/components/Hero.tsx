@@ -1,7 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import heroTeamImage from "@/assets/hero-team.jpg";
+import heroTeamImage from "@/assets/hero-team-cover.jpg";
 
 const Hero = () => {
   const scrollToNext = () => {
