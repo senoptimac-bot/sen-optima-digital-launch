@@ -5,90 +5,57 @@ import fondateurPhoto from "@/assets/fondateur.png";
 import presidentPhoto from "@/assets/president-senegal.webp";
 import aboutImage from "@/assets/about-team.jpg";
 import { Button } from "@/components/ui/button";
-
-const philosophyCards = [
-  {
-    icon: Target,
-    title: "Réalisme Local",
-    description: "Nous ne vous vendons pas des stratégies Silicon Valley copiées-collées. Notre équipe a vendu sur le terrain sénégalais, géré des milliers de conversations clients, testé ce qui marche vraiment. Nous connaissons notre écosystème de l'intérieur : les comportements d'achat, les plateformes efficaces, les défis logistiques, les réalités budgétaires.",
-    resultIcon: Trophy,
-  },
-  {
-    icon: Zap,
-    title: "L'Outillage Moderne",
-    description: "Nous vous apportons les meilleures technologies (IA, Automatisation, Analytics) adaptées à notre contexte. Vous n'avez pas besoin d'un budget de multinationale pour avoir des outils de multinationale. Nous équipons nos clients avec exactement ce dont ils ont besoin pour rivaliser avec n'importe qui.",
-    resultIcon: TrendingUp,
-  },
-  {
-    icon: Rocket,
-    title: "Croissance Durable",
-    description: "Nous savons ce que c'est de construire avec peu. Nous vous accompagnons étape par étape, avec des stratégies réalistes qui respectent vos ressources actuelles tout en visant la croissance exponentielle. Nous ne sommes pas là pour des coups d'éclat temporaires, mais pour bâtir une croissance solide et pérenne.",
-    resultIcon: Star,
-  }
-];
-
-const teamDNA = [
-  {
-    icon: Target,
-    title: "Expertise terrain",
-    description: "Chaque membre de notre équipe a une expérience opérationnelle concrète : gestion commerciale, communication digitale, relation client, stratégie marketing. Nous ne théorisons pas, nous appliquons ce que nous avons testé."
-  },
-  {
-    icon: Rocket,
-    title: "Innovation constante",
-    description: "Nous sommes en veille permanente sur les nouvelles technologies. Nous testons les outils, nous expérimentons pour identifier ce qui marche vraiment dans notre contexte."
-  },
-  {
-    icon: Handshake,
-    title: "Engagement total",
-    description: "Votre succès est notre succès. Nous nous investissons dans chaque projet comme si c'était le nôtre. Nous ne lâchons rien tant que vous n'avez pas les résultats que vous méritez."
-  },
-  {
-    icon: Globe,
-    title: "Vision locale, standards internationaux",
-    description: "Nous combinons notre connaissance du marché sénégalais avec les meilleures pratiques mondiales. Le résultat ? Des stratégies qui fonctionnent ici, maintenant."
-  }
-];
-
-const trustPoints = [
-  {
-    icon: Phone,
-    text: "Expérience terrain vérifiable – Notre équipe a géré des milliers de conversations clients, construit des stratégies qui ont doublé des portefeuilles, vendu dans la vraie vie"
-  },
-  {
-    icon: Wrench,
-    text: "Maîtrise complète de la chaîne – Marketing digital, communication visuelle, automatisation, relation client : nous couvrons tout"
-  },
-  {
-    icon: Globe,
-    text: "Connaissance de l'écosystème – Nous parlons votre langue, nous connaissons votre marché, nous vivons vos défis"
-  },
-  {
-    icon: Zap,
-    text: "Approche pragmatique – Nous testons tout avant de vous le proposer. Si ça ne marche pas ici, nous ne le recommandons pas"
-  }
-];
-
-const approachPoints = [
-  "Diagnostic gratuit – 30 minutes pour analyser votre situation et identifier vos opportunités",
-  "Stratégies concrètes – Vous repartez avec un plan d'action, pas de la théorie",
-  "Tarifs adaptés – Pensés pour les budgets d'entrepreneurs sénégalais",
-  "Accompagnement continu – Nous restons disponibles pour vos questions",
-  "Résultats mesurables – Chaque action a un objectif chiffré"
-];
-
-const missionPoints = [
-  "Une stratégie claire et actionnable dès le lendemain – Un plan précis avec des étapes concrètes que nous construisons ensemble",
-  "Les outils technologiques adaptés à votre budget – Vous n'avez pas besoin de millions pour être professionnel",
-  "Les compétences pour piloter votre croissance – Nous vous formons, nous ne faisons pas juste du conseil",
-  "La confiance pour conquérir votre marché – Vous saurez exactement quoi faire et comment le faire"
-];
-
+const philosophyCards = [{
+  icon: Target,
+  title: "Réalisme Local",
+  description: "Nous ne vous vendons pas des stratégies Silicon Valley copiées-collées. Notre équipe a vendu sur le terrain sénégalais, géré des milliers de conversations clients, testé ce qui marche vraiment. Nous connaissons notre écosystème de l'intérieur : les comportements d'achat, les plateformes efficaces, les défis logistiques, les réalités budgétaires.",
+  resultIcon: Trophy
+}, {
+  icon: Zap,
+  title: "L'Outillage Moderne",
+  description: "Nous vous apportons les meilleures technologies (IA, Automatisation, Analytics) adaptées à notre contexte. Vous n'avez pas besoin d'un budget de multinationale pour avoir des outils de multinationale. Nous équipons nos clients avec exactement ce dont ils ont besoin pour rivaliser avec n'importe qui.",
+  resultIcon: TrendingUp
+}, {
+  icon: Rocket,
+  title: "Croissance Durable",
+  description: "Nous savons ce que c'est de construire avec peu. Nous vous accompagnons étape par étape, avec des stratégies réalistes qui respectent vos ressources actuelles tout en visant la croissance exponentielle. Nous ne sommes pas là pour des coups d'éclat temporaires, mais pour bâtir une croissance solide et pérenne.",
+  resultIcon: Star
+}];
+const teamDNA = [{
+  icon: Target,
+  title: "Expertise terrain",
+  description: "Chaque membre de notre équipe a une expérience opérationnelle concrète : gestion commerciale, communication digitale, relation client, stratégie marketing. Nous ne théorisons pas, nous appliquons ce que nous avons testé."
+}, {
+  icon: Rocket,
+  title: "Innovation constante",
+  description: "Nous sommes en veille permanente sur les nouvelles technologies. Nous testons les outils, nous expérimentons pour identifier ce qui marche vraiment dans notre contexte."
+}, {
+  icon: Handshake,
+  title: "Engagement total",
+  description: "Votre succès est notre succès. Nous nous investissons dans chaque projet comme si c'était le nôtre. Nous ne lâchons rien tant que vous n'avez pas les résultats que vous méritez."
+}, {
+  icon: Globe,
+  title: "Vision locale, standards internationaux",
+  description: "Nous combinons notre connaissance du marché sénégalais avec les meilleures pratiques mondiales. Le résultat ? Des stratégies qui fonctionnent ici, maintenant."
+}];
+const trustPoints = [{
+  icon: Phone,
+  text: "Expérience terrain vérifiable – Notre équipe a géré des milliers de conversations clients, construit des stratégies qui ont doublé des portefeuilles, vendu dans la vraie vie"
+}, {
+  icon: Wrench,
+  text: "Maîtrise complète de la chaîne – Marketing digital, communication visuelle, automatisation, relation client : nous couvrons tout"
+}, {
+  icon: Globe,
+  text: "Connaissance de l'écosystème – Nous parlons votre langue, nous connaissons votre marché, nous vivons vos défis"
+}, {
+  icon: Zap,
+  text: "Approche pragmatique – Nous testons tout avant de vous le proposer. Si ça ne marche pas ici, nous ne le recommandons pas"
+}];
+const approachPoints = ["Diagnostic gratuit – 30 minutes pour analyser votre situation et identifier vos opportunités", "Stratégies concrètes – Vous repartez avec un plan d'action, pas de la théorie", "Tarifs adaptés – Pensés pour les budgets d'entrepreneurs sénégalais", "Accompagnement continu – Nous restons disponibles pour vos questions", "Résultats mesurables – Chaque action a un objectif chiffré"];
+const missionPoints = ["Une stratégie claire et actionnable dès le lendemain – Un plan précis avec des étapes concrètes que nous construisons ensemble", "Les outils technologiques adaptés à votre budget – Vous n'avez pas besoin de millions pour être professionnel", "Les compétences pour piloter votre croissance – Nous vous formons, nous ne faisons pas juste du conseil", "La confiance pour conquérir votre marché – Vous saurez exactement quoi faire et comment le faire"];
 const AboutPage = () => {
   const navigate = useNavigate();
-
-  return (
-    <>
+  return <>
       {/* Hero Section - Mission */}
       <section className="relative min-h-screen flex items-center justify-center pt-20">
         <div className="container relative z-10">
@@ -96,30 +63,32 @@ const AboutPage = () => {
             {/* Colonne gauche : texte */}
             <div className="flex-1 text-center md:text-left">
               {/* Bouton Précédent */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="mb-8 flex justify-start md:justify-start"
-              >
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => navigate("/diagnostics")}
-                  className="gap-2 text-foreground/50 hover:text-accent transition-colors"
-                >
+              <motion.div initial={{
+              opacity: 0,
+              x: -20
+            }} animate={{
+              opacity: 1,
+              x: 0
+            }} transition={{
+              duration: 0.5
+            }} className="mb-8 flex justify-start md:justify-start">
+                <Button variant="ghost" size="sm" onClick={() => navigate("/diagnostics")} className="gap-2 text-foreground/50 hover:text-accent transition-colors">
                   <ArrowLeft className="w-4 h-4" />
                   Précédent
                 </Button>
               </motion.div>
 
               {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-flex items-center gap-2 mb-12"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              y: 30
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1]
+            }} className="inline-flex items-center gap-2 mb-12">
                 <div className="w-1.5 h-1.5 rounded-full bg-accent" />
                 <span className="text-caption text-foreground/50 uppercase tracking-widest">
                   Notre Mission
@@ -127,42 +96,61 @@ const AboutPage = () => {
               </motion.div>
 
               {/* Main Headline */}
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="text-display font-bold text-foreground mb-8"
-              >
+              <motion.h1 initial={{
+              opacity: 0,
+              y: 40
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 1,
+              delay: 0.1,
+              ease: [0.22, 1, 0.36, 1]
+            }} className="text-display font-bold text-foreground mb-8">
                 Plus qu'un cabinet.{" "}
                 <span className="text-accent">Une vision collective.</span>
               </motion.h1>
 
               {/* Subtitle */}
-              <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="text-body-lg text-foreground/60 max-w-2xl mx-auto mb-8 leading-relaxed"
-              >
+              <motion.p initial={{
+              opacity: 0,
+              y: 40
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 1,
+              delay: 0.2,
+              ease: [0.22, 1, 0.36, 1]
+            }} className="text-body-lg text-foreground/60 max-w-2xl mx-auto mb-8 leading-relaxed">
                 Sen'Optima, c'est le cabinet que nous aurions voulu avoir en démarrant. Celui qui dit la vérité, qui donne des stratégies applicables immédiatement, qui fait gagner des années.
               </motion.p>
 
-              <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="text-body text-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed"
-              >
+              <motion.p initial={{
+              opacity: 0,
+              y: 40
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 1,
+              delay: 0.25,
+              ease: [0.22, 1, 0.36, 1]
+            }} className="text-body text-foreground/80 max-w-2xl mx-auto mb-12 leading-relaxed">
                 <span className="text-accent font-semibold">Notre mission :</span> Bâtir l'économie numérique de demain, entrepreneur par entrepreneur.
               </motion.p>
 
               {/* Icons Row */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="flex items-center justify-center md:justify-start gap-8"
-              >
+              <motion.div initial={{
+              opacity: 0,
+              y: 30
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.8,
+              delay: 0.3
+            }} className="flex items-center justify-center md:justify-start gap-8">
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 glass-card rounded-xl flex items-center justify-center mb-2">
                     <Heart className="w-6 h-6 text-foreground/50" />
@@ -179,18 +167,17 @@ const AboutPage = () => {
               </motion.div>
             </div>
             {/* Colonne droite : image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.05 }}
-              className="flex-1 flex justify-center mb-8 md:mb-0"
-            >
-              <img
-                src={aboutImage}
-                alt="À Propos de Sen'Optima"
-                className="rounded-3xl shadow-lg max-h-72 object-cover"
-                loading="lazy"
-              />
+            <motion.div initial={{
+            opacity: 0,
+            scale: 0.9
+          }} animate={{
+            opacity: 1,
+            scale: 1
+          }} transition={{
+            duration: 1,
+            delay: 0.05
+          }} className="flex-1 flex justify-center mb-8 md:mb-0">
+              <img alt="À Propos de Sen'Optima" className="rounded-3xl shadow-lg max-h-72 object-cover" loading="lazy" src="/lovable-uploads/88a3cec3-5e2a-4612-9c92-d88ce96ba1a8.jpg" />
             </motion.div>
           </div>
         </div>
@@ -199,30 +186,34 @@ const AboutPage = () => {
       {/* Mission Details */}
       <section className="py-section-lg relative">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} className="max-w-4xl mx-auto">
             <div className="glass-card rounded-2xl p-8 md:p-12">
               <h3 className="text-title text-white mb-8">
                 Nous voulons que chaque entrepreneur qui nous fait confiance reparte avec :
               </h3>
               <div className="space-y-4">
-                {missionPoints.map((point, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-4"
-                  >
+                {missionPoints.map((point, index) => <motion.div key={index} initial={{
+                opacity: 0,
+                x: -20
+              }} whileInView={{
+                opacity: 1,
+                x: 0
+              }} viewport={{
+                once: true
+              }} transition={{
+                delay: index * 0.1
+              }} className="flex items-start gap-4">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
                     <p className="text-body text-white/70">{point}</p>
-                  </motion.div>
-                ))}
+                  </motion.div>)}
               </div>
               <div className="mt-8 pt-8 border-t border-white/10">
                 <p className="text-body text-white/50 leading-relaxed">
@@ -241,12 +232,15 @@ const AboutPage = () => {
       <section className="py-section-lg relative">
         <div className="container">
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="w-full sm:w-1/2"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} className="w-full sm:w-1/2">
               <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
                 Notre Histoire
               </span>
@@ -288,82 +282,77 @@ const AboutPage = () => {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="glass-card rounded-2xl p-8 flex items-center justify-center w-full sm:w-1/2 min-h-[220px] sm:aspect-square"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            delay: 0.1
+          }} className="glass-card rounded-2xl p-8 flex items-center justify-center w-full sm:w-1/2 min-h-[220px] sm:aspect-square">
               <svg viewBox="0 0 400 400" className="w-full h-full max-w-sm">
                 <g className="text-white/10">
-                  <motion.path
-                    initial={{ pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    transition={{ duration: 2 }}
-                    d="M50,200 Q100,50 150,180 T250,120 T350,200"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1"
-                    strokeDasharray="4,4"
-                  />
-                  <motion.path
-                    initial={{ pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    transition={{ duration: 2.2 }}
-                    d="M60,220 Q120,300 180,150 T280,250 T360,180"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1"
-                    strokeDasharray="4,4"
-                  />
+                  <motion.path initial={{
+                  pathLength: 0
+                }} whileInView={{
+                  pathLength: 1
+                }} transition={{
+                  duration: 2
+                }} d="M50,200 Q100,50 150,180 T250,120 T350,200" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4,4" />
+                  <motion.path initial={{
+                  pathLength: 0
+                }} whileInView={{
+                  pathLength: 1
+                }} transition={{
+                  duration: 2.2
+                }} d="M60,220 Q120,300 180,150 T280,250 T360,180" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4,4" />
                 </g>
 
-                <motion.path
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 1.5, delay: 1 }}
-                  d="M50,350 Q150,300 200,200 T350,50"
-                  fill="none"
-                  stroke="hsl(43 65% 53%)"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
+                <motion.path initial={{
+                pathLength: 0,
+                opacity: 0
+              }} whileInView={{
+                pathLength: 1,
+                opacity: 1
+              }} transition={{
+                duration: 1.5,
+                delay: 1
+              }} d="M50,350 Q150,300 200,200 T350,50" fill="none" stroke="hsl(43 65% 53%)" strokeWidth="2" strokeLinecap="round" />
 
-                <motion.circle
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: 2 }}
-                  cx="50" cy="350" r="6"
-                  className="fill-white/20"
-                />
-                <motion.circle
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: 2.3 }}
-                  cx="350" cy="50" r="8"
-                  fill="hsl(43 65% 53%)"
-                />
+                <motion.circle initial={{
+                scale: 0
+              }} whileInView={{
+                scale: 1
+              }} transition={{
+                delay: 2
+              }} cx="50" cy="350" r="6" className="fill-white/20" />
+                <motion.circle initial={{
+                scale: 0
+              }} whileInView={{
+                scale: 1
+              }} transition={{
+                delay: 2.3
+              }} cx="350" cy="50" r="8" fill="hsl(43 65% 53%)" />
 
-                <motion.text
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 2.2 }}
-                  x="50" y="380"
-                  className="fill-white/30 text-xs"
-                  textAnchor="middle"
-                >
+                <motion.text initial={{
+                opacity: 0
+              }} whileInView={{
+                opacity: 1
+              }} transition={{
+                delay: 2.2
+              }} x="50" y="380" className="fill-white/30 text-xs" textAnchor="middle">
                   Confusion
                 </motion.text>
-                <motion.text
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 2.5 }}
-                  x="350" y="30"
-                  fill="hsl(43 65% 53%)"
-                  className="text-xs"
-                  textAnchor="middle"
-                >
+                <motion.text initial={{
+                opacity: 0
+              }} whileInView={{
+                opacity: 1
+              }} transition={{
+                delay: 2.5
+              }} x="350" y="30" fill="hsl(43 65% 53%)" className="text-xs" textAnchor="middle">
                   Succès
                 </motion.text>
               </svg>
@@ -375,12 +364,15 @@ const AboutPage = () => {
       {/* Notre Philosophie - Adaptation Locale */}
       <section className="py-section-lg relative">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} className="text-center mb-16">
             <span className="text-caption text-white/40 uppercase tracking-widest mb-4 block">
               Notre Différence
             </span>
@@ -390,15 +382,17 @@ const AboutPage = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {philosophyCards.map((card, index) => (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass-card rounded-xl p-8 group hover:border-accent/30 transition-all duration-300"
-              >
+            {philosophyCards.map((card, index) => <motion.div key={card.title} initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            delay: index * 0.1
+          }} className="glass-card rounded-xl p-8 group hover:border-accent/30 transition-all duration-300">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-accent/10 transition-colors">
                     <card.icon className="w-6 h-6 text-white/50 group-hover:text-accent transition-colors" />
@@ -415,8 +409,7 @@ const AboutPage = () => {
                 <p className="text-body text-white/50 leading-relaxed">
                   {card.description}
                 </p>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </div>
         </div>
       </section>
@@ -425,30 +418,34 @@ const AboutPage = () => {
       <section className="py-section-lg relative">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }}>
               <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
                 Fondateur & Stratège Principal
               </span>
 
               <div className="flex items-center gap-3 mb-6">
                 {/* Avatar rond - petite taille */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="flex-shrink-0"
-                >
+                <motion.div initial={{
+                opacity: 0,
+                scale: 0.8
+              }} whileInView={{
+                opacity: 1,
+                scale: 1
+              }} viewport={{
+                once: true
+              }} transition={{
+                delay: 0.1
+              }} className="flex-shrink-0">
                   <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-accent/30">
-                    <img 
-                      src={fondateurPhoto} 
-                      alt="Mandiaye Sylla - Fondateur Sen'Optima"
-                      className="w-full h-full object-cover"
-                    />
+                    <img src={fondateurPhoto} alt="Mandiaye Sylla - Fondateur Sen'Optima" className="w-full h-full object-cover" />
                   </div>
                 </motion.div>
 
@@ -483,12 +480,15 @@ const AboutPage = () => {
       {/* L'Équipe Sen'Optima */}
       <section className="py-section-lg relative">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} className="text-center mb-16">
             <span className="text-caption text-white/40 uppercase tracking-widest mb-4 block">
               L'Équipe Sen'Optima
             </span>
@@ -505,15 +505,17 @@ const AboutPage = () => {
 
           {/* Notre ADN */}
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-16">
-            {teamDNA.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass-card rounded-xl p-6 group hover:border-accent/30 transition-all duration-300"
-              >
+            {teamDNA.map((item, index) => <motion.div key={item.title} initial={{
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            delay: index * 0.1
+          }} className="glass-card rounded-xl p-6 group hover:border-accent/30 transition-all duration-300">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                     <item.icon className="w-5 h-5 text-accent" />
@@ -523,17 +525,19 @@ const AboutPage = () => {
                     <p className="text-body text-white/50 leading-relaxed">{item.description}</p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </div>
 
           {/* Notre manière de travailler */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} className="max-w-4xl mx-auto">
             <div className="glass-card rounded-2xl p-8 md:p-12 text-center">
               <h3 className="text-title text-white mb-6">Notre manière de travailler</h3>
               <p className="text-body text-white/60 leading-relaxed mb-4">
@@ -556,12 +560,15 @@ const AboutPage = () => {
       {/* Pourquoi nous faire confiance */}
       <section className="py-section-lg relative">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} className="text-center mb-16">
             <span className="text-caption text-white/40 uppercase tracking-widest mb-4 block">
               Pourquoi Nous Faire Confiance
             </span>
@@ -573,48 +580,53 @@ const AboutPage = () => {
           <div className="max-w-5xl mx-auto">
             {/* Trust Points */}
             <div className="grid md:grid-cols-2 gap-6 mb-12">
-              {trustPoints.map((point, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="glass-card rounded-xl p-6 flex items-start gap-4"
-                >
+              {trustPoints.map((point, index) => <motion.div key={index} initial={{
+              opacity: 0,
+              x: -20
+            }} whileInView={{
+              opacity: 1,
+              x: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: index * 0.1
+            }} className="glass-card rounded-xl p-6 flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                     <point.icon className="w-5 h-5 text-accent" />
                   </div>
                   <p className="text-body text-white/60">{point.text}</p>
-                </motion.div>
-              ))}
+                </motion.div>)}
             </div>
 
             {/* Notre approche */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass-card rounded-2xl p-8 md:p-12 mb-12"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} className="glass-card rounded-2xl p-8 md:p-12 mb-12">
               <h3 className="text-title text-white mb-8 text-center">Notre approche</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                {approachPoints.map((point, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                {approachPoints.map((point, index) => <div key={index} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                     <p className="text-body text-white/60">{point}</p>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </motion.div>
 
             {/* Notre promesse */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} className="text-center">
               <div className="glass-card rounded-2xl p-8 md:p-12 border-accent/20">
                 <h3 className="text-title text-accent mb-6">Notre promesse</h3>
                 <p className="text-body-lg text-white/70 leading-relaxed mb-4">
@@ -635,12 +647,15 @@ const AboutPage = () => {
       {/* Vision Sénégal 2050 */}
       <section className="py-section-lg relative">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} className="max-w-4xl mx-auto text-center">
             {/* Flag */}
             <div className="flex justify-center mb-10">
               <div className="w-20 h-20 rounded-full overflow-hidden border border-white/10">
@@ -672,11 +687,7 @@ const AboutPage = () => {
               </p>
 
               <div className="flex items-center justify-center gap-4">
-                <img 
-                  src={presidentPhoto} 
-                  alt="S.E.M. Bassirou Diomaye Faye"
-                  className="w-12 h-12 rounded-full object-cover border border-white/10"
-                />
+                <img src={presidentPhoto} alt="S.E.M. Bassirou Diomaye Faye" className="w-12 h-12 rounded-full object-cover border border-white/10" />
                 <div className="text-left">
                   <p className="text-sm text-white/80">S.E.M. Bassirou Diomaye Faye</p>
                   <p className="text-caption text-white/40">Président de la République du Sénégal</p>
@@ -690,12 +701,15 @@ const AboutPage = () => {
       {/* CTA Final */}
       <section className="py-section-lg relative">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} className="max-w-3xl mx-auto text-center">
             <span className="text-caption text-white/40 uppercase tracking-widest mb-6 block">
               Appel à l'action
             </span>
@@ -719,18 +733,12 @@ const AboutPage = () => {
               </p>
             </div>
 
-            <Button
-              size="lg"
-              onClick={() => navigate("/diagnostics")}
-              className="bg-accent hover:bg-accent/90 text-background h-14 px-10"
-            >
+            <Button size="lg" onClick={() => navigate("/diagnostics")} className="bg-accent hover:bg-accent/90 text-background h-14 px-10">
               Réservez votre diagnostic gratuit
             </Button>
           </motion.div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default AboutPage;
