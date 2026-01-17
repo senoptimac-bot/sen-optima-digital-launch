@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Quote, Rocket, Target, Zap, Heart, Cpu, ArrowLeft, Trophy, TrendingUp, Star, Check, Users, Lightbulb, Handshake, Globe, Wrench, Phone, FileText, Clock, BarChart3 } from "lucide-react";
 import fondateurPhoto from "@/assets/fondateur.png";
 import presidentPhoto from "@/assets/president-senegal.webp";
-import aboutImage from "@/assets/À Propos de Sen'Optima.jpg";
+import aboutImage from "@/assets/about-team.jpg";
 import { Button } from "@/components/ui/button";
 
 const philosophyCards = [
