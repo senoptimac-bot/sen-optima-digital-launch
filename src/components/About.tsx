@@ -111,12 +111,12 @@ const About = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3]">
+            <div className="relative rounded-3xl overflow-hidden aspect-[3/4] sm:aspect-[4/3]">
               {/* Image with blue overlay filter */}
               <img
                 src={aboutTeamImage}
                 alt="L'équipe Sen'Optima en action"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-[center_20%] sm:object-center"
                 loading="lazy"
               />
               {/* Blue Overlay - 15% opacity for harmony */}
