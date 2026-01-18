@@ -107,8 +107,8 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                 <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-accent/30 group-hover:ring-accent transition-all duration-300">
                   <img
                     src={avatarSupport}
-                    alt="Conseillère Sen'Optima"
-                    className="w-full h-full object-cover"
+                    alt="Conseiller Sen'Optima"
+                    className="w-full h-full object-cover object-[center_15%]"
                     loading="lazy"
                   />
                   {/* Subtle blue overlay for harmony */}
