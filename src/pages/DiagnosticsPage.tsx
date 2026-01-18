@@ -232,8 +232,8 @@ const DiagnosticsPage = () => {
                 )}
 
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6">
-                  <diagnostic.icon className="w-6 h-6 text-white/50" />
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                  <diagnostic.icon className="w-6 h-6 text-accent" />
                 </div>
 
                 <div className="mb-4">
@@ -245,7 +245,7 @@ const DiagnosticsPage = () => {
 
                 {/* Price */}
                 <div className="mb-6">
-                  <span className="text-3xl text-white font-light">
+                  <span className="text-3xl text-accent font-bold">
                     {diagnostic.price}
                   </span>
                   <span className="text-white/40 ml-2 text-sm">FCFA</span>
