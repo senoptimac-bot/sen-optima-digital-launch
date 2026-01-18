@@ -1,13 +1,36 @@
-import { Quote, Monitor, Target, Compass } from "lucide-react";
+import { Quote, Sparkles, Rocket, TrendingUp, LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
-import aboutTeamImage from "@/assets/À Propos de Sen'Optima.jpg";
+import aboutTeamImage from "@/assets/À Propos de Sen'Optima.jpg";
+
+interface ValueItem {
+  value: string;
+  description: string;
+  icon: LucideIcon;
+  gradient: string;
+}
 
 const About = () => {
-  const values = [
-    { value: "Clarté", description: "Des solutions simples et compréhensibles", icon: <Monitor size={32} className="mx-auto mb-2 text-accent" /> },
-    { value: "Performance", description: "Des résultats mesurables et concrets", icon: <Target size={32} className="mx-auto mb-2 text-accent" /> },
-    { value: "Stratégie", description: "Une vision long terme pour votre succès", icon: <Compass size={32} className="mx-auto mb-2 text-accent" /> },
+  const values: ValueItem[] = [
+    { 
+      value: "Clarté", 
+      description: "Des solutions simples et compréhensibles", 
+      icon: Sparkles,
+      gradient: "from-blue-400 to-cyan-400"
+    },
+    { 
+      value: "Performance", 
+      description: "Des résultats mesurables et concrets", 
+      icon: Rocket,
+      gradient: "from-accent to-orange-400"
+    },
+    { 
+      value: "Stratégie", 
+      description: "Une vision long terme pour votre succès", 
+      icon: TrendingUp,
+      gradient: "from-emerald-400 to-teal-400"
+    },
   ];
+
   return (
     <section id="apropos" className="py-20 md:py-28 relative overflow-hidden">
       <div className="container relative z-10">
@@ -102,8 +125,6 @@ const About = () => {
               {/* Decorative border glow */}
               <div className="absolute inset-0 rounded-3xl border border-white/10" />
             </div>
-
-            {/* Badge '+100 projets réalisés' supprimé */}
           </motion.div>
         </div>
 
@@ -115,25 +136,83 @@ const About = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-20"
         >
-          {values.map((item, index) => (
-            <motion.div
-              key={item.value}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              whileHover={{ scale: 1.03, y: -5 }}
-              className="p-6 rounded-2xl glass-card transition-all duration-300 border border-white/10 flex flex-col items-center"
-            >
-              <div className="flex items-center w-full justify-center mb-2">
-                <span className="mr-3">{item.icon}</span>
-                <h3 className="text-lg font-heading font-bold text-accent text-left">
+          {values.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <motion.div
+                key={item.value}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 + index * 0.15 }}
+                whileHover={{ scale: 1.05, y: -8 }}
+                className="group relative p-8 rounded-3xl glass-premium transition-all duration-500 border border-white/10 flex flex-col items-center overflow-hidden"
+              >
+                {/* Animated gradient background on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                
+                {/* Floating particles effect */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <motion.div
+                    className={`absolute w-2 h-2 rounded-full bg-gradient-to-r ${item.gradient} opacity-40`}
+                    animate={{
+                      y: [0, -20, 0],
+                      x: [0, 10, 0],
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                    }}
+                    style={{ top: '60%', left: '20%' }}
+                  />
+                  <motion.div
+                    className={`absolute w-1.5 h-1.5 rounded-full bg-gradient-to-r ${item.gradient} opacity-30`}
+                    animate={{
+                      y: [0, -15, 0],
+                      x: [0, -8, 0],
+                      scale: [1, 1.3, 1],
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      delay: index * 0.2 + 0.5,
+                    }}
+                    style={{ top: '70%', right: '25%' }}
+                  />
+                </div>
+
+                {/* Icon container with glow effect */}
+                <motion.div
+                  className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-5 shadow-lg`}
+                  whileHover={{ rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {/* Glow effect */}
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.gradient} blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-500`} />
+                  <IconComponent size={28} className="relative z-10 text-white" strokeWidth={2} />
+                </motion.div>
+
+                {/* Text content */}
+                <h3 className="text-xl font-heading font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
                   {item.value}
                 </h3>
-              </div>
-              <p className="text-sm text-foreground/60 text-center">{item.description}</p>
-            </motion.div>
-          ))}
+                <p className="text-sm text-foreground/60 text-center leading-relaxed">
+                  {item.description}
+                </p>
+
+                {/* Bottom accent line */}
+                <motion.div
+                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-1 bg-gradient-to-r ${item.gradient} rounded-full`}
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "40%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
+                />
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
