@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, User, Mail, ChevronDown, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,8 +10,6 @@ import {
 } from "@/components/ui/dialog";
 import { useAppSounds } from "@/hooks/useAppSounds";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from "@emailjs/browser";
-import { EMAILJS_CONFIG } from "@/config/emailjs.config";
 
 interface BookingModalProps {
   open: boolean;
@@ -42,26 +40,21 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
     setIsSubmitting(true);
     playClick();
 
-    try {
-      // Trouver le label du besoin sélectionné
-      const selectedNeedLabel = needOptions.find(
-        (opt) => opt.value === formData.need
-      )?.label || formData.need;
+    // Trouver le label du besoin sélectionné
+    const selectedNeedLabel = needOptions.find(
+      (opt) => opt.value === formData.need
+    )?.label || formData.need;
 
-      // Préparer les données pour EmailJS
-      const templateParams = {
-        name: formData.name,
-        whatsapp: formData.whatsapp,
-        need: selectedNeedLabel,
-      };
+    // Import dynamique du service email
+    const { sendBookingEmail } = await import("@/lib/emailService");
+    
+    const result = await sendBookingEmail({
+      name: formData.name,
+      whatsapp: formData.whatsapp,
+      need: selectedNeedLabel,
+    });
 
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATES.BOOKING_AND_AUDIT,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
-
+    if (result.success) {
       playSuccess();
       setIsSuccess(true);
       toast({
@@ -75,22 +68,15 @@ const BookingModal = ({ open, onOpenChange }: BookingModalProps) => {
         setFormData({ name: "", whatsapp: "", need: "" });
         onOpenChange(false);
       }, 3000);
-    } catch (error) {
-      console.error("EmailJS Error:", error);
-      const emailError = error as { status?: number; text?: string };
-      let errorMessage = "Une erreur s'est produite. Veuillez réessayer.";
-      
-      if (emailError?.status === 412) {
-        errorMessage = "Erreur 412 : Vérifiez que localhost est autorisé dans EmailJS ou testez en production.";
-      }
-      
+    } else {
       toast({
         title: "Erreur d'envoi",
-        description: errorMessage,
+        description: result.error,
         variant: "destructive",
       });
-      setIsSubmitting(false);
     }
+    
+    setIsSubmitting(false);
   };
 
   const selectedNeed = needOptions.find((opt) => opt.value === formData.need);
