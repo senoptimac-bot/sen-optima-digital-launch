@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Send, Loader2, CheckCircle, User, Building, Phone, Target, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,9 +10,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { useAppSounds } from "@/hooks/useAppSounds";
-import emailjs from "@emailjs/browser";
-
-import { EMAILJS_CONFIG } from "@/config/emailjs.config";
 
 interface FormData {
   clientName: string;
@@ -75,6 +72,12 @@ const AuditForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
   const { playSuccess, playClick } = useAppSounds();
+  
+  // Optimisation: variants memoïsés pour éviter re-création à chaque render
+  const sectionVariants = useMemo(() => ({
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  }), []);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -94,45 +97,27 @@ const AuditForm = () => {
     playClick();
     setIsSubmitting(true);
 
-    try {
-      // Préparer les données pour EmailJS
-      const templateParams = {
-        ...formData,
-        toolsUsed: formData.toolsUsed.join(", "),
-      };
+    // Import dynamique du service email
+    const { sendAuditEmail } = await import("@/lib/emailService");
+    
+    const result = await sendAuditEmail(formData);
 
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATES.BOOKING_AND_AUDIT,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
-
+    if (result.success) {
       playSuccess();
       setIsSubmitted(true);
       toast({
         title: "Dossier envoyé avec succès !",
         description: "Nous analysons vos réponses et revenons vers vous sous 24h.",
       });
-    } catch (error) {
-      console.error("EmailJS Error:", error);
-      const emailError = error as { status?: number; text?: string };
-      let errorMessage = "Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.";
-      
-      if (emailError?.status === 412) {
-        errorMessage = "Erreur 412 : Vérifiez que localhost est autorisé dans EmailJS ou testez en production.";
-      } else if (emailError?.status === 400) {
-        errorMessage = "Erreur : Vérifiez que le template EmailJS correspond aux variables envoyées.";
-      }
-      
+    } else {
       toast({
         title: "Erreur d'envoi",
-        description: errorMessage,
+        description: result.error,
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
+    
+    setIsSubmitting(false);
   };
 
   if (isSubmitted) {
@@ -160,11 +145,6 @@ const AuditForm = () => {
       </motion.div>
     );
   }
-
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-10 pb-32 overflow-y-auto overflow-x-hidden -webkit-overflow-scrolling-touch">

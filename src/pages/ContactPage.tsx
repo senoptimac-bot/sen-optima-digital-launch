@@ -20,8 +20,6 @@ import {
 } from "@/components/ui/accordion";
 import { useAppSounds } from "@/hooks/useAppSounds";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from "@emailjs/browser";
-import { EMAILJS_CONFIG } from "@/config/emailjs.config";
 
 const subjectOptions = [
   { value: "devis", label: "Demande de devis" },
@@ -61,66 +59,37 @@ const ContactPage = () => {
     setIsSubmitting(true);
     playClick();
 
-    try {
-      // Trouver le label du sujet sélectionné
-      const selectedSubjectLabel = subjectOptions.find(
-        (opt) => opt.value === formData.subject
-      )?.label || formData.subject;
+    // Trouver le label du sujet sélectionné
+    const selectedSubjectLabel = subjectOptions.find(
+      (opt) => opt.value === formData.subject
+    )?.label || formData.subject;
 
-      // Préparer les données pour EmailJS
-      const templateParams = {
-        name: formData.name,
-        email: formData.email,
-        subject: selectedSubjectLabel,
-        message: formData.message,
-      };
+    // Import dynamique du service email
+    const { sendContactEmail } = await import("@/lib/emailService");
+    
+    const result = await sendContactEmail({
+      name: formData.name,
+      email: formData.email,
+      subject: selectedSubjectLabel,
+      message: formData.message,
+    });
 
-      // Debug : vérifier ce qui est envoyé
-      console.log("📧 EmailJS - Envoi formulaire contact", {
-        serviceId: EMAILJS_CONFIG.SERVICE_ID,
-        templateId: EMAILJS_CONFIG.TEMPLATES.CONTACT,
-        params: templateParams,
-      });
-
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATES.CONTACT,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
-
+    if (result.success) {
       playSuccess();
       setIsSuccess(true);
       toast({
         title: "Message envoyé avec succès !",
         description: "Nous vous répondons sous 24h par email.",
       });
-    } catch (error) {
-      console.error("EmailJS Error:", error);
-      const emailError = error as { status?: number; text?: string };
-      console.error("Error details:", {
-        status: emailError?.status,
-        text: emailError?.text,
-        serviceId: EMAILJS_CONFIG.SERVICE_ID,
-        templateId: EMAILJS_CONFIG.TEMPLATES.CONTACT,
-      });
-      
-      let errorMessage = "Une erreur s'est produite. Veuillez réessayer.";
-      
-      if (emailError?.status === 412) {
-        errorMessage = "Erreur 412 : Vérifiez que localhost est autorisé dans EmailJS (Settings > Authorized Domains) ou testez en production.";
-      } else if (emailError?.status === 400) {
-        errorMessage = "Erreur : Vérifiez que le template EmailJS correspond aux variables envoyées.";
-      }
-      
+    } else {
       toast({
         title: "Erreur d'envoi",
-        description: errorMessage,
+        description: result.error,
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
+    
+    setIsSubmitting(false);
   };
 
   const selectedSubject = subjectOptions.find((opt) => opt.value === formData.subject);
