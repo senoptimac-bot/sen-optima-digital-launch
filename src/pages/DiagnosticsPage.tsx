@@ -26,7 +26,7 @@ const diagnostics = [
     icon: Monitor,
     name: "L'Audit Flash",
     subtitle: "Focus Technique",
-    price: "50.000",
+    price: "20.000",
     targetAudience: "Vous avez déjà un site mais \"ça ne marche pas\" ou c'est lent.",
     analyses: [
       "UX/Design de votre site",
@@ -42,7 +42,7 @@ const diagnostics = [
     icon: Target,
     name: "Le Diagnostic Stratégie",
     subtitle: "Best-Seller",
-    price: "70.000",
+    price: "25.000",
     targetAudience: "Vous voulez plus de clients mais ne savez pas par où commencer.",
     analyses: [
       "Votre Client Idéal (Persona)",
@@ -58,7 +58,7 @@ const diagnostics = [
     icon: Rocket,
     name: "Business Scan 360",
     subtitle: "Transformation",
-    price: "100.000",
+    price: "30.000",
     targetAudience: "PME ou Entrepreneur ambitieux qui veut structurer et automatiser (CRM, IA).",
     analyses: [
       "Tout le pack Stratégie inclus",
