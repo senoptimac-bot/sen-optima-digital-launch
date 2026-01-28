@@ -66,7 +66,7 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-body-lg text-foreground/70 max-w-2xl mx-auto mb-16 leading-relaxed"
           >
-            Sen'Optima Consulting n'est pas une simple agence web. Nous sommes les architectes qui transforment votre activité informelle en une entreprise digitale solide.
+            Basés à Grand Mbao. Nous aidons les entreprises ambitieuses à transformer leurs visiteurs en clients grâce à la Technologie et la Stratégie. Sans jargon. Sans délais fantaisistes.
           </motion.p>
 
           {/* CTA Button - Ghost style */}
