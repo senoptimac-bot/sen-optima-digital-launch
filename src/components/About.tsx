@@ -15,19 +15,19 @@ const About = () => {
       value: "Clarté", 
       description: "Des solutions simples et compréhensibles", 
       icon: Sparkles,
-      gradient: "from-accent to-amber-500"
+      gradient: "from-blue-400 to-cyan-400"
     },
     { 
       value: "Performance", 
       description: "Des résultats mesurables et concrets", 
       icon: Rocket,
-      gradient: "from-accent via-yellow-500 to-accent"
+      gradient: "from-accent to-orange-400"
     },
     { 
       value: "Stratégie", 
       description: "Une vision long terme pour votre succès", 
       icon: TrendingUp,
-      gradient: "from-amber-400 to-accent"
+      gradient: "from-emerald-400 to-teal-400"
     },
   ];
 
