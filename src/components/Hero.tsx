@@ -1,10 +1,7 @@
-import { ArrowDown, MessageCircle } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import heroTeamImage from "@/assets/hero-team-cover.jpg";
-
-const WHATSAPP_NUMBER = "221781313656";
-const WHATSAPP_MESSAGE = "Bonjour, je souhaite discuter de mon projet avec Sen'Optima Consulting.";
 
 const Hero = () => {
   const scrollToNext = () => {
@@ -72,12 +69,11 @@ const Hero = () => {
             Basés à Grand Mbao. Nous aidons les entreprises ambitieuses à transformer leurs visiteurs en clients grâce à la Technologie et la Stratégie. Sans jargon. Sans délais fantaisistes.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Button - Ghost style */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button
               variant="outline"
@@ -92,21 +88,6 @@ const Hero = () => {
               >
                 <ArrowDown className="w-4 h-4" />
               </motion.div>
-            </Button>
-            
-            <Button
-              asChild
-              size="lg"
-              className="gap-3 text-sm bg-[#25D366] hover:bg-[#20BA5A] text-white transition-all duration-500 h-12 px-8"
-            >
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Discuter de mon projet sur WhatsApp
-              </a>
             </Button>
           </motion.div>
         </div>
