@@ -52,9 +52,11 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="text-display font-bold text-foreground mb-8"
           >
-            De l'<span className="text-accent">Ambition</span>
+            Nous construisons des <span className="text-accent">Systèmes</span>
             <br />
-            à la <span className="text-accent">Structure</span>.
+            qui font <span className="text-accent">vendre</span>.
+            <br />
+            <span className="text-foreground/60 text-[0.6em]">Pas juste des sites web.</span>
           </motion.h1>
 
           {/* Subtitle - Clean, off-white */}
