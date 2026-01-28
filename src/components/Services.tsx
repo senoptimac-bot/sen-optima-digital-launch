@@ -1,68 +1,35 @@
 import {
-  Lightbulb,
-  Globe,
-  Megaphone,
+  Code,
   Palette,
-  GraduationCap,
-  Settings,
-  Crown,
+  TrendingUp,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-import serviceStrategie from "@/assets/service-strategie.jpg";
-import serviceFormation from "@/assets/service-formation.jpg";
 import serviceWeb from "@/assets/Website Creation & Solutions.jpg";
-import serviceMarketing from "@/assets/Marketing Digital & Acquisition.jpg";
 import serviceBranding from "@/assets/Branding & Visual Identity.jpg";
-import serviceConsulting from "@/assets/Consulting en Processus.jpg";
-import servicePremium from "@/assets/Accompagnement Premium.jpg";
-
-// Service images mapping - use imported images or fallback to icons
-const serviceImages: Record<string, string | null> = {
-  "Conseil & Stratégie Digitale": serviceStrategie,
-  "Formation & Accompagnement": serviceFormation,
-  "Création de Sites Web & Solutions": serviceWeb,
-  "Marketing Digital & Acquisition": serviceMarketing,
-  "Branding & Identité Visuelle": serviceBranding,
-  "Consulting en Processus": serviceConsulting,
-  "Accompagnement Premium": servicePremium,
-};
+import serviceMarketing from "@/assets/Marketing Digital & Acquisition.jpg";
 
 const services = [
   {
-    icon: Lightbulb,
-    title: "Conseil & Stratégie Digitale",
-    description: "Définissez une vision claire et un plan d'action concret pour votre présence en ligne.",
-  },
-  {
-    icon: Globe,
-    title: "Création de Sites Web & Solutions",
-    description: "Des sites modernes, rapides et optimisés pour convertir vos visiteurs en clients.",
-  },
-  {
-    icon: Megaphone,
-    title: "Marketing Digital & Acquisition",
-    description: "Développez votre audience et attirez des clients qualifiés avec des stratégies ciblées.",
+    icon: Code,
+    title: "Stratégie & Développement",
+    subtitle: "Des plateformes faites pour convertir.",
+    description: "Nous ne codons pas pour faire joli. Nous créons des sites rapides, optimisés pour le mobile (car 90% de vos clients sont sur téléphone) et conçus pour vendre.",
+    image: serviceWeb,
   },
   {
     icon: Palette,
-    title: "Branding & Identité Visuelle",
-    description: "Créez une image de marque forte et cohérente qui vous distingue de la concurrence.",
+    title: "Création de Contenu & Branding",
+    subtitle: "Une image qui impose le respect.",
+    description: "Dans un marché saturé, l'image est votre première carte de visite. Vidéos, Identité Visuelle, Messages : nous rendons votre marque inoubliable.",
+    image: serviceBranding,
   },
   {
-    icon: GraduationCap,
-    title: "Formation & Accompagnement",
-    description: "Montez en compétences avec nos formations pratiques adaptées à votre niveau.",
-  },
-  {
-    icon: Settings,
-    title: "Consulting en Processus",
-    description: "Digitalisez et optimisez vos processus internes pour gagner en efficacité.",
-  },
-  {
-    icon: Crown,
-    title: "Accompagnement Premium",
-    description: "Un suivi personnalisé et exclusif pour les entrepreneurs les plus ambitieux.",
+    icon: TrendingUp,
+    title: "Acquisition & Croissance",
+    subtitle: "Des prospects, pas juste des likes.",
+    description: "Nous mettons en place les systèmes pour attirer les bons clients vers votre entreprise, jour après jour.",
+    image: serviceMarketing,
   },
 ];
 
@@ -114,69 +81,57 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* Services Grid - 3 columns */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
         >
-          {services.map((service) => {
-            const hasImage = serviceImages[service.title];
-            
-            return (
-              <motion.article
-                key={service.title}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="group relative rounded-2xl glass-card overflow-hidden transition-all duration-300 border border-white/10"
-              >
-                {/* Micro-photo for services with images */}
-                {hasImage && (
-                  <div className="relative h-32 overflow-hidden">
-                    <img
-                      src={hasImage}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                    {/* Blue overlay for color harmony */}
-                    <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-20 mix-blend-multiply" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-                  </div>
-                )}
+          {services.map((service) => (
+            <motion.article
+              key={service.title}
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="group relative rounded-2xl glass-card overflow-hidden transition-all duration-300 border border-white/10"
+            >
+              {/* Service Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                {/* Blue overlay for color harmony */}
+                <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-30 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+              </div>
 
-                {/* Content */}
-                <div className="p-6 md:p-8">
-                  {/* Icon - only show if no image */}
-                  {!hasImage && (
-                    <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
-                      <service.icon className="w-7 h-7 text-accent" />
-                    </div>
-                  )}
-
-                  {/* Icon overlay for image cards */}
-                  {hasImage && (
-                    <div className="w-10 h-10 rounded-lg bg-accent/20 backdrop-blur-sm flex items-center justify-center mb-4 -mt-8 relative z-10 border border-white/10">
-                      <service.icon className="w-5 h-5 text-accent" />
-                    </div>
-                  )}
-
-                  <h3 className="text-lg font-heading font-semibold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-foreground/60 text-sm leading-relaxed">
-                    {service.description}
-                  </p>
+              {/* Content */}
+              <div className="p-6 md:p-8">
+                {/* Icon overlay */}
+                <div className="w-12 h-12 rounded-xl bg-accent/20 backdrop-blur-sm flex items-center justify-center mb-4 -mt-12 relative z-10 border border-accent/30">
+                  <service.icon className="w-6 h-6 text-accent" />
                 </div>
 
-                {/* Hover accent line */}
-                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
-              </motion.article>
-            );
-          })}
+                <h3 className="text-xl font-heading font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-accent font-medium text-sm mb-3">
+                  {service.subtitle}
+                </p>
+                <p className="text-foreground/60 text-sm leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+
+              {/* Hover accent line */}
+              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
+            </motion.article>
+          ))}
         </motion.div>
       </div>
     </section>
