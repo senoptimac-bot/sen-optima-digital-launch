@@ -1,34 +1,29 @@
 const MarqueeSection = () => {
-  const keywords = [
-    "CLARTÉ",
-    "STRATÉGIE",
-    "PERFORMANCE",
-    "STRUCTURE",
-    "RENTABILITÉ"
-  ];
-
-  const marqueeContent = [...keywords, ...keywords, ...keywords];
+  const phrase = "L'INFORMEL EST UNE ÉTAPE. LA STRUCTURE EST UNE DESTINATION.";
+  
+  // Repeat phrase multiple times for seamless loop
+  const marqueeContent = Array(6).fill(phrase);
 
   return (
-    <section className="relative w-full overflow-hidden border-y border-foreground/5">
-      <div className="py-4 overflow-hidden">
+    <section className="relative w-full overflow-hidden border-y border-foreground/5 bg-background/50">
+      <div className="py-5 overflow-hidden">
         <div className="marquee-track flex">
-          {marqueeContent.map((word, index) => (
+          {marqueeContent.map((text, index) => (
             <span
               key={index}
-              className="flex-shrink-0 text-caption uppercase tracking-[0.3em] text-foreground/30 whitespace-nowrap"
+              className="flex-shrink-0 text-caption uppercase tracking-[0.25em] text-accent/50 whitespace-nowrap font-medium"
             >
-              {word}
-              <span className="mx-8 text-foreground/10">·</span>
+              {text}
+              <span className="mx-10 text-accent/30">✦</span>
             </span>
           ))}
-          {marqueeContent.map((word, index) => (
+          {marqueeContent.map((text, index) => (
             <span
               key={`dup-${index}`}
-              className="flex-shrink-0 text-caption uppercase tracking-[0.3em] text-foreground/30 whitespace-nowrap"
+              className="flex-shrink-0 text-caption uppercase tracking-[0.25em] text-accent/50 whitespace-nowrap font-medium"
             >
-              {word}
-              <span className="mx-8 text-foreground/10">·</span>
+              {text}
+              <span className="mx-10 text-accent/30">✦</span>
             </span>
           ))}
         </div>
