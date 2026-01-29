@@ -5,20 +5,20 @@ const steps = [
   {
     icon: Settings,
     number: "01",
-    title: "Structurer",
-    description: "Audit & Outils internes",
+    title: "DIAGNOSTIC",
+    description: "On analyse vos blocages actuels sans filtre.",
   },
   {
     icon: Globe,
     number: "02",
-    title: "Digitaliser",
-    description: "Site Web & Présence pro",
+    title: "STRATÉGIE",
+    description: "On dessine votre système sur mesure. Vous validez tout.",
   },
   {
     icon: Rocket,
     number: "03",
-    title: "Accélérer",
-    description: "Marketing & Publicité ciblée",
+    title: "LIVRAISON",
+    description: "On déploie, on vous forme, et on reste à vos côtés.",
   },
 ];
 

@@ -1,68 +1,44 @@
 import {
-  Lightbulb,
   Globe,
   Megaphone,
-  Palette,
-  GraduationCap,
   Settings,
   Crown,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-import serviceStrategie from "@/assets/service-strategie.jpg";
-import serviceFormation from "@/assets/service-formation.jpg";
 import serviceWeb from "@/assets/Website Creation & Solutions.jpg";
 import serviceMarketing from "@/assets/Marketing Digital & Acquisition.jpg";
-import serviceBranding from "@/assets/Branding & Visual Identity.jpg";
 import serviceConsulting from "@/assets/Consulting en Processus.jpg";
 import servicePremium from "@/assets/Accompagnement Premium.jpg";
 
 // Service images mapping - use imported images or fallback to icons
 const serviceImages: Record<string, string | null> = {
-  "Conseil & Stratégie Digitale": serviceStrategie,
-  "Formation & Accompagnement": serviceFormation,
-  "Création de Sites Web & Solutions": serviceWeb,
-  "Marketing Digital & Acquisition": serviceMarketing,
-  "Branding & Identité Visuelle": serviceBranding,
-  "Consulting en Processus": serviceConsulting,
-  "Accompagnement Premium": servicePremium,
+  "Architecture Business": serviceConsulting,
+  "Plateformes de Vente": serviceWeb,
+  "Acquisition Clients": serviceMarketing,
+  "Identité d'Autorité": servicePremium,
 };
 
 const services = [
   {
-    icon: Lightbulb,
-    title: "Conseil & Stratégie Digitale",
-    description: "Définissez une vision claire et un plan d'action concret pour votre présence en ligne.",
+    icon: Settings,
+    title: "Architecture Business",
+    description: "Organisation de vos flux, CRM et gestion d'équipe. On structure l'interne.",
   },
   {
     icon: Globe,
-    title: "Création de Sites Web & Solutions",
-    description: "Des sites modernes, rapides et optimisés pour convertir vos visiteurs en clients.",
+    title: "Plateformes de Vente",
+    description: "Sites web ultra-rapides conçus pour le réseau mobile du Sénégal et optimisés pour vendre.",
   },
   {
     icon: Megaphone,
-    title: "Marketing Digital & Acquisition",
-    description: "Développez votre audience et attirez des clients qualifiés avec des stratégies ciblées.",
-  },
-  {
-    icon: Palette,
-    title: "Branding & Identité Visuelle",
-    description: "Créez une image de marque forte et cohérente qui vous distingue de la concurrence.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Formation & Accompagnement",
-    description: "Montez en compétences avec nos formations pratiques adaptées à votre niveau.",
-  },
-  {
-    icon: Settings,
-    title: "Consulting en Processus",
-    description: "Digitalisez et optimisez vos processus internes pour gagner en efficacité.",
+    title: "Acquisition Clients",
+    description: "Campagnes ciblées pour transformer des inconnus en clients fidèles, pas juste en 'likes'.",
   },
   {
     icon: Crown,
-    title: "Accompagnement Premium",
-    description: "Un suivi personnalisé et exclusif pour les entrepreneurs les plus ambitieux.",
+    title: "Identité d'Autorité",
+    description: "Branding et création de contenu qui inspirent une confiance immédiate aux gros clients.",
   },
 ];
 

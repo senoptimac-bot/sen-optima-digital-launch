@@ -25,7 +25,7 @@ const IdentitySection = () => {
 
         {/* Two columns */}
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Left - Ce qu'on voit ailleurs (Problem) */}
+          {/* Left - Ailleurs (Problem) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -39,16 +39,26 @@ const IdentitySection = () => {
                 <XCircle className="w-5 h-5 icon-problem-animated" />
               </div>
               <h3 className="text-title text-foreground/60">
-                Ce qu'on voit ailleurs
+                Ailleurs
               </h3>
             </div>
-            <p className="text-body text-foreground/40 leading-relaxed">
-              La plupart des agences vous vendent des logos et des posts Facebook.{" "}
-              <span className="text-problem/80">C'est de la décoration.</span>
-            </p>
+            <ul className="space-y-4 text-body text-foreground/50">
+              <li className="flex items-start gap-3">
+                <span className="text-problem">❌</span>
+                <span>Les agences qui vendent du rêve.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-problem">❌</span>
+                <span>Les délais jamais respectés.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-problem">❌</span>
+                <span>Le jargon pour justifier le prix.</span>
+              </li>
+            </ul>
           </motion.div>
 
-          {/* Right - Ce que Sen'Optima fait (Success) */}
+          {/* Right - Sen'Optima (Success) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -62,14 +72,23 @@ const IdentitySection = () => {
                 <CheckCircle className="w-5 h-5 icon-success-animated" />
               </div>
               <h3 className="text-title text-foreground">
-                Ce que <span className="text-accent">Sen'Optima</span> fait
+                <span className="text-accent">Sen'Optima</span>
               </h3>
             </div>
-            <p className="text-body text-foreground/50 leading-relaxed">
-              Nous travaillons sur le moteur.{" "}
-              <span className="text-foreground/70">Processus internes, Acquisition Client Automatisée, Stratégie Financière.</span>{" "}
-              Nous cherchons à faire <span className="text-accent">rentable</span>.
-            </p>
+            <ul className="space-y-4 text-body text-foreground/70">
+              <li className="flex items-start gap-3">
+                <span className="text-accent">✅</span>
+                <span>Des systèmes, pas du bricolage.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent">✅</span>
+                <span>Un calendrier tenu à la lettre.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent">✅</span>
+                <span>Des résultats, pas des excuses.</span>
+              </li>
+            </ul>
           </motion.div>
         </div>
 

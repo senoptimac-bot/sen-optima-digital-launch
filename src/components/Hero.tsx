@@ -1,15 +1,8 @@
-import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import heroTeamImage from "@/assets/hero-team-cover.jpg";
 
 const Hero = () => {
-  const scrollToNext = () => {
-    const nextSection = document.getElementById("identite");
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section
@@ -64,10 +57,10 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-body-lg text-foreground/70 max-w-2xl mx-auto mb-16 leading-relaxed"
           >
-            Sen'Optima Consulting n'est pas une simple agence web. Nous sommes les architectes qui transforment votre activité informelle en une entreprise digitale solide.
+            Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée. Pas de jargon technique, juste des résultats mesurables.
           </motion.p>
 
-          {/* CTA Button - Ghost style */}
+          {/* CTA Button - WhatsApp */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,16 +69,12 @@ const Hero = () => {
             <Button
               variant="outline"
               size="lg"
-              onClick={scrollToNext}
-              className="gap-3 text-sm border-foreground/20 bg-transparent hover:border-foreground/40 hover:bg-foreground/5 text-foreground/70 hover:text-foreground transition-all duration-500 h-12 px-8"
+              asChild
+              className="gap-3 text-sm border-foreground/20 bg-transparent hover:border-[#25D366] hover:bg-[#25D366]/10 text-foreground/70 hover:text-[#25D366] transition-all duration-500 h-12 px-8"
             >
-              Voir comment nous travaillons
-              <motion.div
-                animate={{ y: [0, 4, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <ArrowDown className="w-4 h-4" />
-              </motion.div>
+              <a href="https://wa.me/221781926969" target="_blank" rel="noopener noreferrer">
+                Discuter de mon projet sur WhatsApp
+              </a>
             </Button>
           </motion.div>
         </div>
