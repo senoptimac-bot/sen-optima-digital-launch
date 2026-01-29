@@ -1,29 +1,42 @@
 import Hero from "@/components/Hero";
 import MarqueeSection from "@/components/MarqueeSection";
-import VisionarySection from "@/components/VisionarySection";
+import MirrorSection from "@/components/MirrorSection";
+import AdviceSection from "@/components/AdviceSection";
+import Services from "@/components/Services";
 import DiagnosticExpress from "@/components/DiagnosticExpress";
 import IdentitySection from "@/components/IdentitySection";
-import MirrorSection from "@/components/MirrorSection";
+import PhilosophySection from "@/components/PhilosophySection";
 import MethodSection from "@/components/MethodSection";
-import AdviceSection from "@/components/AdviceSection";
-import BridgeSection from "@/components/BridgeSection";
-import About from "@/components/About";
-import Services from "@/components/Services";
 
 const Home = () => {
   return (
     <>
+      {/* 1. Hero Section */}
       <Hero />
+      
+      {/* 2. Ticker (scrolling text) */}
       <MarqueeSection />
-      <VisionarySection />
-      <About />
-      <Services />
-      <DiagnosticExpress />
-      <IdentitySection />
+      
+      {/* 3. Pain Points (3 Cards "Situation Actuelle") */}
       <MirrorSection />
-      <MethodSection />
+      
+      {/* 4. Error #1 (Text Block "TikTok") */}
       <AdviceSection />
-      <BridgeSection />
+      
+      {/* 5. Services (4 Bento Cards) */}
+      <Services />
+      
+      {/* 6. Diagnostic Quiz */}
+      <DiagnosticExpress />
+      
+      {/* 7. Differentiation (Comparison Red vs Gold) */}
+      <IdentitySection />
+      
+      {/* 8. Philosophy (3 Icons) */}
+      <PhilosophySection />
+      
+      {/* 9. Process (3 Steps) */}
+      <MethodSection />
     </>
   );
 };

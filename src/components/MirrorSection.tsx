@@ -3,19 +3,19 @@ import { UserX, Ghost, HelpCircle, AlertTriangle } from "lucide-react";
 
 const painPoints = [
   {
-    icon: UserX,
-    title: "Le Piège de l'Homme-Orchestre",
-    description: "Vous faites tout : la vente, la prod, le SAV, la compta. Résultat : vous ne grandissez plus.",
+    icon: Ghost,
+    title: "Le Prestataire Fantôme",
+    description: "Fatigué des développeurs qui disparaissent après l'avance ? Nous fournissons un calendrier précis et un suivi hebdomadaire.",
   },
   {
-    icon: Ghost,
-    title: "La Visibilité Fantôme",
-    description: "Vous postez sur les réseaux, mais votre téléphone ne sonne pas. Vos 'J'aime' ne paient pas vos factures.",
+    icon: UserX,
+    title: "L'Argent Perdu",
+    description: "Votre page TikTok a des vues mais zéro commande ? Vous n'avez pas un problème de visibilité, vous avez un problème de système de vente.",
   },
   {
     icon: HelpCircle,
-    title: "La Peur du Lendemain",
-    description: "Sans système prédictible, vous ne savez jamais combien vous allez gagner le mois prochain. Vous naviguez à vue.",
+    title: "Le Chaos Interne",
+    description: "Vous gérez tout au stylo ou sur WhatsApp ? Si vous tombez malade demain, votre business s'arrête. Nous automatisons pour vous libérer.",
   },
 ];
 

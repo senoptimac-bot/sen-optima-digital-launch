@@ -106,10 +106,10 @@ const DiagnosticExpress = () => {
               Diagnostic Rapide
             </span>
             <h2 className="text-title text-foreground mb-2">
-              Trouvez votre stratégie en <span className="text-accent">30 secondes</span>
+              Découvrez ce qui <span className="text-accent">bloque</span> votre croissance.
             </h2>
             <p className="text-body text-foreground/40">
-              3 questions simples pour découvrir nos solutions adaptées.
+              Ne choisissez pas une solution au hasard. Répondez à 3 questions pour savoir exactement quel système Sen'Optima il vous faut.
             </p>
           </div>
 
