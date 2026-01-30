@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "system-ui", "sans-serif"],
-        heading: ["Inter", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "system-ui", "sans-serif"],
+        sans: ["Open Sans", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
+        heading: ["League Spartan", "Open Sans", "system-ui", "sans-serif"],
+        subheading: ["Glacial Indifference", "Open Sans", "system-ui", "sans-serif"],
       },
       fontSize: {
         "display": ["clamp(2.5rem, 7vw, 5rem)", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "700" }],
