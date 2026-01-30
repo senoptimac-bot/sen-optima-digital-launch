@@ -16,6 +16,7 @@ import { EMAILJS_CONFIG } from "@/config/emailjs.config";
 import Home from "./pages/Home";
 import ServicesPage from "./pages/ServicesPage";
 import DiagnosticsPage from "./pages/DiagnosticsPage";
+import SolutionsPage from "./pages/SolutionsPage";
 import SuccessPage from "./pages/SuccessPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
@@ -161,6 +162,7 @@ const App = () => {
                   <Route path="/" element={<Home />} />
                   <Route path="/services" element={<ServicesPage />} />
                   <Route path="/diagnostics" element={<DiagnosticsPage />} />
+                  <Route path="/solutions" element={<SolutionsPage />} />
                   <Route path="/merci" element={<SuccessPage />} />
                   <Route path="/a-propos" element={<AboutPage />} />
                   <Route path="/contact" element={<ContactPage />} />
