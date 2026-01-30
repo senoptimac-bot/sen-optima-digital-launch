@@ -6,8 +6,8 @@ import Services from "@/components/Services";
 import DiagnosticExpress from "@/components/DiagnosticExpress";
 import IdentitySection from "@/components/IdentitySection";
 import PhilosophySection from "@/components/PhilosophySection";
+import TeamSection from "@/components/TeamSection";
 import MethodSection from "@/components/MethodSection";
-
 const Home = () => {
   return (
     <>
@@ -35,7 +35,10 @@ const Home = () => {
       {/* 8. Philosophy (3 Icons) */}
       <PhilosophySection />
       
-      {/* 9. Process (3 Steps) */}
+      {/* 9. Team Section (4 Cards) */}
+      <TeamSection />
+      
+      {/* 10. Process (3 Steps) */}
       <MethodSection />
     </>
   );
