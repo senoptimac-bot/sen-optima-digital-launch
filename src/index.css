@@ -76,27 +76,40 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     font-weight: 400;
     overflow-x: hidden;
   }
 
-  /* Typography - Ultra Clean Corporate */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  /* Typography - Premium Branding */
+  h1, h2, h3 {
+    font-family: 'League Spartan', 'Open Sans', system-ui, sans-serif;
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     color: hsl(0 0% 96%);
   }
 
   h1 {
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  h4, h5, h6 {
+    font-family: 'Glacial Indifference', 'Open Sans', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: hsl(0 0% 96%);
   }
 
   /* Body text - Off White for softer contrast */
   p, span, li {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     color: hsl(0 0% 90% / 0.7);
+  }
+
+  /* Subheading utility class */
+  .font-subheading {
+    font-family: 'Glacial Indifference', 'Open Sans', system-ui, sans-serif;
   }
 }
 
