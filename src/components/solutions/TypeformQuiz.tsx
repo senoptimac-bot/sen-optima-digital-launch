@@ -166,10 +166,11 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = memo(({ current, total }: ProgressBarProps) => {
-  const progress = ((current + 1) / total) * 100;
+  // Progress based on completed questions (0% at start, 10% after Q1, etc.)
+  const progress = (current / total) * 100;
   
   return (
-    <div className="container max-w-2xl mx-auto mb-6">
+    <div className="container max-w-2xl mx-auto mb-4">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm text-muted-foreground font-subheading">
           Question {current + 1} sur {total}
