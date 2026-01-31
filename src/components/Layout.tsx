@@ -20,6 +20,9 @@ const Layout = ({ children }: LayoutProps) => {
 
   // Show reading progress on main content pages
   const showProgress = ["/", "/a-propos", "/services"].includes(pathname);
+  
+  // Hide footer on Solutions page (immersive funnel experience)
+  const hideFooter = pathname === "/solutions";
 
   return (
     <>
@@ -31,8 +34,8 @@ const Layout = ({ children }: LayoutProps) => {
       <main className="min-h-screen bg-transparent relative z-0 overflow-x-hidden pt-20">
         <Header />
         {children}
-        <Footer />
-        <WhatsAppButton />
+        {!hideFooter && <Footer />}
+        {!hideFooter && <WhatsAppButton />}
       </main>
     </>
   );

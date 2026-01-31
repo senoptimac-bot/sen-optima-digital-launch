@@ -202,14 +202,16 @@ Email : ${leadData.email}`
             FRAIS D'AUDIT 100% DÉDUCTIBLES DE VOTRE ACCOMPAGNEMENT FINAL.
           </p>
 
-          {/* WhatsApp CTA - Full width on mobile */}
+          {/* WhatsApp CTA - Full width, text wrap on mobile */}
           <button
             onClick={handleWhatsAppClick}
-            className="w-full h-14 px-6 rounded-xl font-heading font-bold text-white text-base md:text-lg flex items-center justify-center gap-3 transition-colors duration-100"
+            className="w-full min-h-[56px] px-4 md:px-6 py-4 rounded-xl font-heading font-bold text-white text-sm md:text-lg flex items-center justify-center gap-2 md:gap-3 transition-colors duration-100 touch-target gpu-accelerated active:scale-[0.98]"
             style={{ backgroundColor: '#25D366' }}
           >
-            <FaWhatsapp className="w-6 h-6" />
-            Réclamer mon Audit & Plan d'Action 15 pages
+            <FaWhatsapp className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0" />
+            <span className="text-center leading-tight">
+              Réclamer mon Audit & Plan d'Action
+            </span>
           </button>
         </div>
       </div>
