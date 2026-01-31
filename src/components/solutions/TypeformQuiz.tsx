@@ -227,24 +227,24 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
   const currentAnswer = useMemo(() => answers[question.id], [answers, question.id]);
 
   return (
-    <section className="min-h-screen flex flex-col py-6 px-4">
-      {/* Progress Bar - Memoized */}
+    <section className="min-h-screen flex flex-col pt-4 pb-6 px-4">
+      {/* Progress Bar - Visible immediately on mobile */}
       <ProgressBar current={currentQuestion} total={QUESTIONS.length} />
 
-      {/* Question Card - Fixed height to prevent layout shift */}
-      <div className="flex-1 flex items-center justify-center">
+      {/* Question Card - Aligned to top on mobile, centered on desktop */}
+      <div className="flex-1 flex items-start md:items-center justify-center">
         <div className="container max-w-2xl mx-auto w-full">
-          <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8 min-h-[400px]">
+          <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-5 md:p-8">
             {/* Question */}
-            <h2 className="text-xl md:text-2xl font-heading font-bold text-foreground mb-2 text-left">
+            <h2 className="text-lg md:text-2xl font-heading font-bold text-foreground mb-2 text-left">
               {question.question}
             </h2>
-            <p className="text-muted-foreground mb-6 font-subheading text-left">
+            <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 font-subheading text-left">
               {question.subtitle}
             </p>
 
-            {/* Options - Memoized components */}
-            <div className="space-y-3">
+            {/* Options - Memoized components, compact on mobile */}
+            <div className="space-y-2 md:space-y-3">
               {question.options.map((option) => (
                 <OptionButton
                   key={option.value}
@@ -256,7 +256,7 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
             </div>
 
             {/* Back button */}
-            <div className="mt-6 pt-4 border-t border-border">
+            <div className="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border">
               <Button
                 variant="ghost"
                 onClick={handlePrevious}
