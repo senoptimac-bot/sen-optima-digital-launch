@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Settings, Globe, Rocket, Wrench } from "lucide-react";
+import { Settings, Globe, Rocket, Wrench, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const steps = [
   {
@@ -99,12 +101,25 @@ const MethodSection = () => {
           transition={{ delay: 0.3 }}
           className="max-w-2xl mx-auto text-center"
         >
-          <div className="p-6 glass-card rounded-xl">
+          <div className="p-6 glass-card rounded-xl mb-12">
             <p className="text-body text-foreground/60">
               <span className="text-solution">✦</span>{" "}
               "On ne met pas le toit avant les fondations."
             </p>
           </div>
+
+          {/* CTA Button */}
+          <Button
+            variant="outline"
+            size="lg"
+            asChild
+            className="group gap-3 text-sm border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20 text-accent transition-all duration-500 h-14 px-10"
+          >
+            <Link to="/solutions">
+              Lancer mon Audit Business
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </section>
