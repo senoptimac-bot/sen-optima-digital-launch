@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Brain, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface SolutionsHeroProps {
@@ -8,97 +8,66 @@ interface SolutionsHeroProps {
 
 const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden py-20">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/95" />
-      <div className="absolute top-20 right-[10%] w-[500px] h-[500px] rounded-full bg-accent/5 blur-[120px]" />
-      <div className="absolute bottom-20 left-[5%] w-[400px] h-[400px] rounded-full bg-accent/3 blur-[100px]" />
+    <section className="min-h-screen flex items-center justify-center relative py-20">
+      {/* Subtle background - very clean */}
+      <div className="absolute inset-0 bg-background" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-accent/3 blur-[150px]" />
 
-      <div className="container max-w-4xl mx-auto px-4 relative z-10">
+      <div className="container max-w-2xl mx-auto px-5 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className="text-center"
         >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 bg-accent/5 mb-8"
-          >
-            <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-sm text-accent font-subheading">Diagnostic Gratuit • 3 minutes</span>
-          </motion.div>
-
-          {/* Main Heading */}
+          {/* Main Heading - Impactful */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-display text-foreground mb-6"
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-6"
           >
-            Analyse de{" "}
-            <span className="text-accent">Maturité Digitale</span>
+            Votre Business a des fuites.
+            <span className="block text-accent mt-2">Notre IA les trouve en 2 minutes.</span>
           </motion.h1>
 
-          {/* Subheadline */}
+          {/* Subheadline - Reassurance */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8 font-subheading"
+            transition={{ delay: 0.2 }}
+            className="text-base md:text-lg text-foreground/60 max-w-xl mx-auto mb-10 leading-relaxed"
           >
-            Découvrez en 10 questions où se situe votre entreprise sur l'échelle de la digitalisation 
-            — et ce que ça vous coûte de ne pas agir.
+            Arrêtez de deviner. Obtenez votre Score de Maturité Digitale et un aperçu 
+            immédiat des actions qui vont débloquer votre croissance. 
+            <span className="text-foreground/80 font-medium"> Gratuit et sans engagement.</span>
           </motion.p>
 
-          {/* Visual Icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, type: "spring" }}
-            className="w-32 h-32 mx-auto mb-10 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/30 flex items-center justify-center"
-          >
-            <Brain className="w-16 h-16 text-accent" strokeWidth={1.5} />
-          </motion.div>
-
-          {/* CTA Button */}
+          {/* CTA Button - Big & Clear */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.3 }}
           >
             <Button
               onClick={onStart}
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-lg px-8 py-6 rounded-xl gap-3 group"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-base md:text-lg px-10 py-7 rounded-xl gap-3 group shadow-lg shadow-accent/20"
             >
-              Commencer l'Analyse
+              Lancer l'Analyse Maintenant
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
 
-          {/* Trust indicators */}
+          {/* Security Badge - Small & Discreet */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-muted-foreground"
+            transition={{ delay: 0.5 }}
+            className="mt-8 flex items-center justify-center gap-2 text-sm text-foreground/40"
           >
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-solution" />
-              100% Gratuit
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent" />
-              Résultats Instantanés
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary" />
-              Aucune Inscription
-            </span>
+            <Shield className="w-4 h-4" />
+            <span>Analyse confidentielle & sécurisée par Sen'Optima</span>
           </motion.div>
         </motion.div>
       </div>
