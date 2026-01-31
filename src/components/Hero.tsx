@@ -5,80 +5,84 @@ import { Link } from "react-router-dom";
 import heroTeamImage from "@/assets/hero-team-cover.jpg";
 
 const Hero = () => {
-
   return (
     <section
       id="accueil"
-      className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-background"
     >
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroTeamImage}
-          alt="Équipe professionnelle en réunion collaborative"
-          className="w-full h-full object-cover"
-          loading="eager"
-        />
-        {/* Dark Blue Overlay - 80% opacity */}
-        <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-80" />
-        {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
-      </div>
+      {/* Subtle gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/20 z-0" />
 
       <div className="container relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge - minimal */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column - Text Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 mb-12"
+            className="text-center lg:text-left order-1"
           >
-            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-            <span className="text-caption text-foreground/50 uppercase tracking-widest">
-              Cabinet de conseil digital au Sénégal
-            </span>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 mb-8">
+              <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span className="text-xs text-foreground/50 uppercase tracking-widest font-medium">
+                Cabinet de conseil digital au Sénégal
+              </span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 leading-[1.1]">
+              De l'<span className="text-accent">Ambition</span>
+              <br />
+              à la <span className="text-accent">Structure</span>.
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-base sm:text-lg text-foreground/60 max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0">
+              Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée.
+            </p>
+
+            {/* CTA Button - Left aligned on desktop */}
+            <div className="flex justify-center lg:justify-start">
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="group gap-3 text-sm border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20 text-accent transition-all duration-500 h-12 px-8"
+              >
+                <Link to="/solutions">
+                  Lancer mon Audit Business
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </div>
           </motion.div>
 
-          {/* Main Headline - Ultra light, editorial */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-display font-bold text-foreground mb-8"
-          >
-            De l'<span className="text-accent">Ambition</span>
-            <br />
-            à la <span className="text-accent">Structure</span>.
-          </motion.h1>
-
-          {/* Subtitle - Clean, off-white */}
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-body-lg text-foreground/70 max-w-2xl mx-auto mb-16 leading-relaxed"
-          >
-            Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée. Pas de jargon technique, juste des résultats mesurables.
-          </motion.p>
-
-          {/* CTA Button - Audit */}
+          {/* Right Column - Image */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative order-2 hidden sm:block"
           >
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="group gap-3 text-sm border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20 text-accent transition-all duration-500 h-12 px-8"
-            >
-              <Link to="/solutions">
-                Lancer mon Audit Business
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </Button>
+            <div className="relative aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl">
+              {/* Image */}
+              <img
+                src={heroTeamImage}
+                alt="Équipe professionnelle en réunion collaborative"
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+              {/* Subtle overlay for contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+            </div>
+
+            {/* Decorative accent border */}
+            <div className="absolute -inset-1 rounded-2xl border border-accent/20 -z-10" />
+            
+            {/* Floating accent element */}
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/10 rounded-full blur-2xl" />
           </motion.div>
         </div>
       </div>
