@@ -1,25 +1,25 @@
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Quote, ArrowRight, Layers, Target, Users, ArrowLeft } from "lucide-react";
+import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp, ArrowLeft } from "lucide-react";
 import presidentPhoto from "@/assets/president-senegal.webp";
 import { Button } from "@/components/ui/button";
 
 // Les 3 valeurs/piliers
 const valuesData = [
   {
-    icon: Layers,
-    title: "Structure",
-    description: "L'improvisation coûte cher. Nous organisons votre business pour qu'il soit carré.",
+    icon: Sparkles,
+    title: "Clarté",
+    description: "Nous vous expliquons chaque étape, chaque investissement, sans jargon. Vous comprenez où va votre argent et pourquoi.",
   },
   {
-    icon: Target,
-    title: "Impact",
-    description: "On ne travaille pas pour faire joli. On travaille pour que ça vende.",
+    icon: Rocket,
+    title: "Performance",
+    description: "Nos solutions sont testées et éprouvées. Nous ne recommandons que ce qui fonctionne réellement dans notre contexte.",
   },
   {
-    icon: Users,
-    title: "Transmission",
-    description: "Nous vous donnons les clés pour comprendre et piloter votre propre machine.",
+    icon: TrendingUp,
+    title: "Stratégie",
+    description: "Nous construisons pour durer. Chaque action vise la pérennité de votre business sur 10 ans, pas un coup d'éclat temporaire.",
   },
 ];
 
