@@ -38,6 +38,10 @@
     --solution: 187 100% 70%;
     --solution-foreground: 218 70% 13%;
 
+    /* Warning - Amber/Orange */
+    --warning: 38 92% 50%;
+    --warning-foreground: 218 70% 13%;
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 

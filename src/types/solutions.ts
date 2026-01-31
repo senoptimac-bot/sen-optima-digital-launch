@@ -1,3 +1,10 @@
+export interface LeadData {
+  firstName: string;
+  email: string;
+  whatsapp: string;
+  countryCode: string;
+}
+
 export interface QuizAnswers {
   // Infrastructure (Q1-Q5)
   q1_revenue: "less_1m" | "1m_10m" | "more_10m";
@@ -29,4 +36,17 @@ export interface QuizResult {
   shockSentence: string;
   revenueGap: number;
   price: number;
+}
+
+export interface WebhookResponse {
+  score: number;
+  analysis: string;
+  financialLosses: string;
+  recommendations: string[];
+}
+
+export interface FullDiagnosticData {
+  lead: LeadData;
+  answers: QuizAnswers;
+  result: QuizResult;
 }

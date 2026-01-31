@@ -137,8 +137,11 @@ function calculateRevenueGap(answers: QuizAnswers): number {
   return Math.round(revenue * 0.2);
 }
 
-function determinePrice(category: Category): number {
-  return category === "LAUNCHER" ? 50000 : 75000;
+// Dynamic pricing based on revenue segment
+function determinePrice(answers: QuizAnswers): number {
+  if (answers.q1_revenue === "less_1m") return 50000;
+  if (answers.q1_revenue === "1m_10m") return 75000;
+  return 100000; // more_10m
 }
 
 export function calculateResults(answers: QuizAnswers): QuizResult {
@@ -147,7 +150,7 @@ export function calculateResults(answers: QuizAnswers): QuizResult {
   const painPoints = identifyPainPoints(answers);
   const shockSentence = SHOCK_SENTENCES[category];
   const revenueGap = calculateRevenueGap(answers);
-  const price = determinePrice(category);
+  const price = determinePrice(answers);
 
   return {
     score,
