@@ -53,7 +53,7 @@ const MirrorSection = () => {
             <img 
               src={situationImage} 
               alt="Entrepreneur stressé" 
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-[center_25%]"
             />
             <div className="absolute inset-0 bg-problem/10" />
           </div>
