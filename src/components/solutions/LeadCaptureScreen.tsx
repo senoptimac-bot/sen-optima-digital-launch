@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, User, Mail, Phone } from "lucide-react";
+import { ArrowRight, User, Mail, Phone, Shield, Clock, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { LeadData } from "@/types/solutions";
@@ -134,16 +134,16 @@ const LeadCaptureScreen = ({ onSubmit }: LeadCaptureScreenProps) => {
               <label className="block text-sm font-subheading text-foreground mb-2">
                 Numéro WhatsApp
               </label>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 {/* Country Code Selector */}
                 <select
                   value={formData.countryCode}
                   onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                  className="h-12 px-3 bg-background/50 border border-border rounded-md text-foreground focus:border-accent focus:outline-none text-sm"
+                  className="h-12 px-3 bg-background/50 border border-border rounded-md text-foreground focus:border-accent focus:outline-none text-sm w-full sm:w-auto sm:min-w-[140px]"
                 >
                   {COUNTRY_CODES.map((country) => (
                     <option key={country.code} value={country.code}>
-                      {country.code} {country.country}
+                      {country.code} ({country.country})
                     </option>
                   ))}
                 </select>
@@ -179,12 +179,19 @@ const LeadCaptureScreen = ({ onSubmit }: LeadCaptureScreenProps) => {
           </form>
 
           {/* Trust indicators */}
-          <div className="mt-6 flex items-center justify-center gap-4 text-xs text-muted-foreground">
-            <span>Données confidentielles</span>
-            <span>•</span>
-            <span>2 min</span>
-            <span>•</span>
-            <span>Résultat instantané</span>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-6 text-xs text-muted-foreground">
+            <div className="flex items-center gap-1.5">
+              <Shield className="w-4 h-4 text-accent" />
+              <span>Données confidentielles</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Clock className="w-4 h-4 text-accent" />
+              <span>2 min</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Zap className="w-4 h-4 text-accent" />
+              <span>Résultat instantané</span>
+            </div>
           </div>
         </div>
       </div>
