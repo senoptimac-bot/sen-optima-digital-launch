@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo, memo } from "react";
 import { ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QuizAnswers } from "@/types/solutions";
@@ -122,54 +122,119 @@ const QUESTIONS: Question[] = [
   },
 ];
 
+// Memoized Option Component for zero re-renders
+interface OptionButtonProps {
+  option: { value: string; label: string; description?: string };
+  isSelected: boolean;
+  onSelect: (value: string) => void;
+}
+
+const OptionButton = memo(({ option, isSelected, onSelect }: OptionButtonProps) => (
+  <button
+    onClick={() => onSelect(option.value)}
+    className={`w-full min-h-[52px] p-4 rounded-xl border text-left touch-target
+      gpu-accelerated transition-gpu
+      ${isSelected
+        ? "border-accent bg-accent/10"
+        : "border-border hover:border-accent/50 active:bg-accent/10 bg-background/50"
+      }`}
+  >
+    <div className="flex items-center justify-between gap-4">
+      <div className="flex-1">
+        <span className="font-heading font-semibold text-foreground text-base block">
+          {option.label}
+        </span>
+        {option.description && (
+          <p className="text-sm text-muted-foreground mt-0.5">{option.description}</p>
+        )}
+      </div>
+      
+      {isSelected && (
+        <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+          <Check className="w-4 h-4 text-accent-foreground" />
+        </div>
+      )}
+    </div>
+  </button>
+));
+OptionButton.displayName = "OptionButton";
+
+// Memoized Progress Bar with GPU acceleration
+interface ProgressBarProps {
+  current: number;
+  total: number;
+}
+
+const ProgressBar = memo(({ current, total }: ProgressBarProps) => {
+  const progress = ((current + 1) / total) * 100;
+  
+  return (
+    <div className="container max-w-2xl mx-auto mb-6">
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-sm text-muted-foreground font-subheading">
+          Question {current + 1} sur {total}
+        </span>
+        <span className="text-sm text-accent font-subheading">{Math.round(progress)}%</span>
+      </div>
+      <div className="h-1 bg-muted rounded-full overflow-hidden">
+        <div
+          className="h-full bg-accent rounded-full gpu-accelerated transition-gpu"
+          style={{ 
+            transform: `scaleX(${progress / 100})`,
+            transformOrigin: 'left',
+            width: '100%'
+          }}
+        />
+      </div>
+    </div>
+  );
+});
+ProgressBar.displayName = "ProgressBar";
+
 const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Partial<QuizAnswers>>({});
 
   const question = QUESTIONS[currentQuestion];
-  const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;
   const isLastQuestion = currentQuestion === QUESTIONS.length - 1;
 
-  const handleOptionSelect = (value: string) => {
-    const newAnswers = { ...answers, [question.id]: value };
-    setAnswers(newAnswers);
+  // Stable callback - prevents child re-renders
+  const handleOptionSelect = useCallback((value: string) => {
+    setAnswers(prev => {
+      const newAnswers = { ...prev, [QUESTIONS[currentQuestion].id]: value };
+      
+      // Use setTimeout 0 for instant visual feedback before state update
+      setTimeout(() => {
+        if (currentQuestion === QUESTIONS.length - 1) {
+          onComplete(newAnswers as QuizAnswers);
+        } else {
+          setCurrentQuestion(c => c + 1);
+        }
+      }, 0);
+      
+      return newAnswers;
+    });
+  }, [currentQuestion, onComplete]);
 
-    // Instant transition - no delay
-    if (isLastQuestion) {
-      onComplete(newAnswers as QuizAnswers);
-    } else {
-      setCurrentQuestion((prev) => prev + 1);
-    }
-  };
-
-  const handlePrevious = () => {
+  // Stable callback for back button
+  const handlePrevious = useCallback(() => {
     if (currentQuestion > 0) {
-      setCurrentQuestion((prev) => prev - 1);
+      setCurrentQuestion(prev => prev - 1);
     }
-  };
+  }, [currentQuestion]);
+
+  // Memoize current answer to prevent option re-renders
+  const currentAnswer = useMemo(() => answers[question.id], [answers, question.id]);
 
   return (
     <section className="min-h-screen flex flex-col py-6 px-4">
-      {/* Progress Bar */}
-      <div className="container max-w-2xl mx-auto mb-6">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-sm text-muted-foreground font-subheading">
-            Question {currentQuestion + 1} sur {QUESTIONS.length}
-          </span>
-          <span className="text-sm text-accent font-subheading">{Math.round(progress)}%</span>
-        </div>
-        <div className="h-1 bg-muted rounded-full overflow-hidden">
-          <div
-            className="h-full bg-accent rounded-full transition-all duration-150 ease-out"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      </div>
+      {/* Progress Bar - Memoized */}
+      <ProgressBar current={currentQuestion} total={QUESTIONS.length} />
 
-      {/* Question Card */}
+      {/* Question Card - Fixed height to prevent layout shift */}
       <div className="flex-1 flex items-center justify-center">
         <div className="container max-w-2xl mx-auto w-full">
-          <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8">
+          <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8 min-h-[400px]">
             {/* Question */}
             <h2 className="text-xl md:text-2xl font-heading font-bold text-foreground mb-2 text-left">
               {question.question}
@@ -178,39 +243,16 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
               {question.subtitle}
             </p>
 
-            {/* Options - Instant select */}
+            {/* Options - Memoized components */}
             <div className="space-y-3">
-              {question.options.map((option) => {
-                const isSelected = answers[question.id] === option.value;
-                return (
-                  <button
-                    key={option.value}
-                    onClick={() => handleOptionSelect(option.value)}
-                    className={`w-full min-h-[52px] p-4 rounded-xl border text-left transition-colors duration-100 ${
-                      isSelected
-                        ? "border-accent bg-accent/10"
-                        : "border-border hover:border-accent/50 hover:bg-accent/5 bg-background/50"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-4">
-                      <div className="flex-1">
-                        <span className="font-heading font-semibold text-foreground text-base block">
-                          {option.label}
-                        </span>
-                        {option.description && (
-                          <p className="text-sm text-muted-foreground mt-0.5">{option.description}</p>
-                        )}
-                      </div>
-                      
-                      {isSelected && (
-                        <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-accent-foreground" />
-                        </div>
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
+              {question.options.map((option) => (
+                <OptionButton
+                  key={option.value}
+                  option={option}
+                  isSelected={currentAnswer === option.value}
+                  onSelect={handleOptionSelect}
+                />
+              ))}
             </div>
 
             {/* Back button */}
@@ -219,7 +261,7 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
                 variant="ghost"
                 onClick={handlePrevious}
                 disabled={currentQuestion === 0}
-                className="gap-2 text-muted-foreground hover:text-foreground"
+                className="gap-2 text-muted-foreground hover:text-foreground touch-target"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Précédent

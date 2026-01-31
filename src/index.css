@@ -122,6 +122,136 @@
 }
 
 @layer utilities {
+  /* ========================================
+     PERFORMANCE UTILITIES (60 FPS Target)
+     ======================================== */
+  
+  /* GPU Acceleration - Forces hardware compositing */
+  .gpu-accelerated {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Instant transition for GPU-accelerated properties */
+  .transition-gpu {
+    transition: transform 100ms cubic-bezier(0.25, 0.1, 0.25, 1),
+                opacity 100ms cubic-bezier(0.25, 0.1, 0.25, 1),
+                background-color 50ms ease-out,
+                border-color 50ms ease-out;
+  }
+  
+  /* Touch target - Minimum 48px for mobile accessibility */
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  /* Instant touch feedback - immediate visual response */
+  .touch-feedback {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .touch-feedback:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+  
+  /* Fixed container to prevent layout shifts */
+  .no-layout-shift {
+    contain: layout style;
+  }
+  
+  /* Lazy loading placeholder */
+  .lazy-placeholder {
+    background: linear-gradient(90deg, 
+      hsl(218 70% 15%) 0%, 
+      hsl(218 70% 18%) 50%, 
+      hsl(218 70% 15%) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* ========================================
+     CSS-ONLY SPINNER ANIMATIONS (GPU)
+     ======================================== */
+  
+  .spinner-outer {
+    animation: spin-clockwise 3s linear infinite;
+    will-change: transform;
+  }
+  
+  .spinner-inner {
+    animation: spin-counter 2s linear infinite;
+    will-change: transform;
+  }
+  
+  .spinner-pulse {
+    animation: pulse-scale 1.5s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+  
+  .spinner-icon {
+    animation: fade-pulse 1.5s ease-in-out infinite;
+    will-change: opacity;
+  }
+  
+  @keyframes spin-clockwise {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes spin-counter {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+  
+  @keyframes pulse-scale {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.8; }
+  }
+  
+  @keyframes fade-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  
+  /* Message fade-in animation */
+  .message-fade-in {
+    animation: message-enter 300ms ease-out forwards;
+    will-change: transform, opacity;
+  }
+  
+  @keyframes message-enter {
+    from { 
+      opacity: 0; 
+      transform: translateY(12px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+  
+  .fade-in-delayed {
+    animation: fade-in 500ms ease-out 1s forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fade-in {
+    to { opacity: 1; }
+  }
+
+  /* ========================================
+     DESIGN TOKENS
+     ======================================== */
+
   /* Gold accent - ONLY for H2 titles and primary CTAs */
   .text-gradient-gold {
     @apply text-accent font-normal;
@@ -153,7 +283,10 @@
   .glass-pricing {
     background: hsl(0 0% 100% / 0.03);
     border: 1px solid hsl(0 0% 100% / 0.08);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+    will-change: transform;
   }
 
   .glass-pricing:hover {
@@ -215,9 +348,10 @@
     box-shadow: 0 4px 20px -4px hsl(43 65% 53% / 0.4);
   }
 
-  /* WhatsApp pulse */
+  /* WhatsApp pulse - GPU optimized */
   .pulse-whatsapp {
     animation: pulse-wa 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    will-change: box-shadow;
   }
 
   @keyframes pulse-wa {
@@ -235,6 +369,7 @@
   .icon-problem-animated {
     color: hsl(var(--problem));
     animation: stress-pulse 2s ease-in-out infinite;
+    will-change: transform, opacity;
   }
   
   @keyframes stress-pulse {
@@ -256,6 +391,7 @@
   .icon-solution-animated {
     color: hsl(var(--solution));
     animation: constructive-spin 8s linear infinite;
+    will-change: transform;
   }
   
   @keyframes constructive-spin {
@@ -271,6 +407,7 @@
   .icon-success-animated {
     color: hsl(var(--accent));
     animation: ascending-bounce 2s ease-in-out infinite;
+    will-change: transform;
   }
   
   @keyframes ascending-bounce {
@@ -282,7 +419,7 @@
     }
   }
 
-  /* Marquee */
+  /* Marquee - GPU optimized */
   .marquee-track {
     display: flex;
     width: max-content;
