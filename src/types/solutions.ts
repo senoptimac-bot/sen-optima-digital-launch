@@ -6,6 +6,10 @@ export interface LeadData {
 }
 
 export interface QuizAnswers {
+  // Qualification (Q0 - before numbering)
+  q0_company: string; // Free text - company name
+  q0_role: "founder" | "manager" | "employee" | "freelance";
+  
   // Infrastructure (Q1-Q5)
   q1_revenue: "less_1m" | "1m_10m" | "more_10m";
   q2_team: "solo" | "2_5" | "more_5";
