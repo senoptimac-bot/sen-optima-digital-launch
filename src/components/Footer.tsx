@@ -93,26 +93,6 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               </nav>
             </div>
 
-            {/* Human Avatar CTA - Rassurance Section */}
-            <div>
-              <h3 className="text-xs text-white/50 uppercase tracking-widest mb-4">
-                Venez nous voir
-              </h3>
-              <p className="text-sm text-white/50 mb-4 leading-relaxed">
-                On ne se cache pas derrière un écran. Venez boire un café à Grand Mbao pour discuter de votre structure.
-              </p>
-              <a 
-                href="https://wa.me/221781926969"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/20 hover:border-[#25D366]/50 transition-all duration-300"
-              >
-                <Phone className="w-4 h-4 text-[#25D366]" />
-                <span className="text-sm font-medium text-[#25D366]">
-                  Lancer la discussion sur WhatsApp
-                </span>
-              </a>
-            </div>
           </div>
 
           {/* Bottom Bar - Minimalist App Style */}
