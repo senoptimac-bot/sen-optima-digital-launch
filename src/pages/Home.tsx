@@ -3,11 +3,11 @@ import MarqueeSection from "@/components/MarqueeSection";
 import MirrorSection from "@/components/MirrorSection";
 import AdviceSection from "@/components/AdviceSection";
 import Services from "@/components/Services";
-import DiagnosticExpress from "@/components/DiagnosticExpress";
 import IdentitySection from "@/components/IdentitySection";
 import PhilosophySection from "@/components/PhilosophySection";
 import TeamSection from "@/components/TeamSection";
 import MethodSection from "@/components/MethodSection";
+
 const Home = () => {
   return (
     <>
@@ -26,19 +26,16 @@ const Home = () => {
       {/* 5. Services (4 Bento Cards) */}
       <Services />
       
-      {/* 6. Diagnostic Quiz */}
-      <DiagnosticExpress />
-      
-      {/* 7. Differentiation (Comparison Red vs Gold) */}
+      {/* 6. Differentiation (Comparison Red vs Gold) */}
       <IdentitySection />
       
-      {/* 8. Philosophy (3 Icons) */}
+      {/* 7. Philosophy (3 Icons) */}
       <PhilosophySection />
       
-      {/* 9. Team Section (4 Cards) */}
+      {/* 8. Team Section (4 Cards) */}
       <TeamSection />
       
-      {/* 10. Process (3 Steps) */}
+      {/* 9. Process (3 Steps) */}
       <MethodSection />
     </>
   );
