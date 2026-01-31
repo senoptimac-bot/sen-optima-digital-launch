@@ -25,7 +25,11 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       <AmbientBackground />
       {showProgress && <ReadingProgress />}
-      <main className="min-h-screen bg-transparent relative z-0 overflow-x-hidden">
+      {/*
+        Global safe area under the fixed header.
+        Mobile gets a slightly larger offset to avoid burger/logo overlap.
+      */}
+      <main className="min-h-screen bg-transparent relative z-0 overflow-x-hidden pt-32 md:pt-28">
         <Header />
         {children}
         <Footer />
