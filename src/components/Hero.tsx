@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroTeamImage from "@/assets/hero-team-cover.jpg";
 
 const Hero = () => {
@@ -60,7 +62,7 @@ const Hero = () => {
             Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée. Pas de jargon technique, juste des résultats mesurables.
           </motion.p>
 
-          {/* CTA Button - WhatsApp */}
+          {/* CTA Button - Audit */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,11 +72,12 @@ const Hero = () => {
               variant="outline"
               size="lg"
               asChild
-              className="gap-3 text-sm border-foreground/20 bg-transparent hover:border-[#25D366] hover:bg-[#25D366]/10 text-foreground/70 hover:text-[#25D366] transition-all duration-500 h-12 px-8"
+              className="group gap-3 text-sm border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20 text-accent transition-all duration-500 h-12 px-8"
             >
-              <a href="https://wa.me/221781926969" target="_blank" rel="noopener noreferrer">
-                Discuter de mon projet sur WhatsApp
-              </a>
+              <Link to="/solutions">
+                Lancer mon Audit Business
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
             </Button>
           </motion.div>
         </div>
