@@ -26,7 +26,7 @@ const Hero = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl text-left">
           {/* Badge - minimal */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -57,7 +57,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-body-lg text-foreground/70 max-w-2xl mx-auto mb-16 leading-relaxed"
+            className="text-body-lg text-foreground/70 max-w-2xl mb-16 leading-relaxed"
           >
             Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée. Pas de jargon technique, juste des résultats mesurables.
           </motion.p>
