@@ -42,6 +42,10 @@
     --warning: 38 92% 50%;
     --warning-foreground: 218 70% 13%;
 
+    /* CTA Success - WhatsApp Green */
+    --cta-success: 142 70% 45%;
+    --cta-success-foreground: 0 0% 100%;
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 

@@ -45,7 +45,7 @@ const PhilosophySection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-20"
+          className="text-left max-w-2xl mb-20"
         >
           <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
             <span className="w-1 h-1 rounded-full bg-accent" />
@@ -69,7 +69,7 @@ const PhilosophySection = () => {
               key={item.title}
               variants={itemVariants}
               whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-8 glass-card rounded-xl group transition-all duration-300 text-center"
+              className="relative p-8 glass-card rounded-xl group transition-all duration-300 text-left"
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
@@ -77,7 +77,7 @@ const PhilosophySection = () => {
               </div>
 
               {/* Icon with accent styling */}
-              <div className="w-14 h-14 mx-auto rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
+              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
                 <item.icon className="w-7 h-7 text-accent" />
               </div>
 

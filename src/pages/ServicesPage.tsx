@@ -172,7 +172,7 @@ const ServicesPage = () => {
             <Button
               asChild
               size="lg"
-              className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-base font-semibold rounded-xl shadow-lg shadow-green-600/20"
+              className="w-full sm:w-auto bg-cta-success hover:bg-cta-success/90 text-cta-success-foreground px-8 py-6 text-base font-semibold rounded-xl shadow-lg shadow-cta-success/20"
             >
               <Link to="/solutions">
                 Faire le point sur mon projet
