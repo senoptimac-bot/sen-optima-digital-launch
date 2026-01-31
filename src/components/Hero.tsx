@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section
       id="accueil"
-      className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
+      className="relative min-h-[100svh] flex items-center justify-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden"
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
@@ -32,7 +32,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 mb-12"
+            className="inline-flex items-center gap-2 mb-6 md:mb-12"
           >
             <div className="w-1.5 h-1.5 rounded-full bg-accent" />
             <span className="text-caption text-foreground/50 uppercase tracking-widest">
@@ -45,7 +45,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-display font-bold text-foreground mb-8"
+            className="text-display font-bold text-foreground mb-4 md:mb-8"
           >
             De l'<span className="text-accent">Ambition</span>
             <br />
@@ -57,7 +57,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-body-lg text-foreground/70 max-w-2xl mb-16 leading-relaxed"
+            className="text-body-lg text-foreground/70 max-w-2xl mb-8 md:mb-16 leading-relaxed"
           >
             Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée. Pas de jargon technique, juste des résultats mesurables.
           </motion.p>
