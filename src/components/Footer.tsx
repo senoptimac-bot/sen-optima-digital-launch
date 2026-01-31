@@ -12,7 +12,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           {/* COLUMN 1: Identity & Mission */}
           <div className="space-y-4">
             <Link to="/" className="inline-block">
-              <img alt="Sen'Optima" className="h-8 w-auto brightness-0 invert opacity-90" src="/lovable-uploads/cefb5d8d-ec7a-40f8-8748-071280537f6d.png" />
+              
             </Link>
             <p className="text-sm text-white/50 leading-relaxed max-w-xs">
               Architectes de croissance pour entrepreneurs ambitieux. 
