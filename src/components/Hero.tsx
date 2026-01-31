@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroTeamImage from "@/assets/hero-team-cover.jpg";
+import heroCoverImage from "@/assets/hero-cover.jpg";
 
 const Hero = () => {
 
@@ -14,9 +14,9 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroTeamImage}
-          alt="Équipe professionnelle en réunion collaborative"
-          className="w-full h-full object-cover"
+          src={heroCoverImage}
+          alt="Consultant digital professionnel"
+          className="w-full h-full object-cover object-center"
           loading="eager"
         />
         {/* Dark Blue Overlay - 80% opacity */}
