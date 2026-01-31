@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ArrowRight, User, Mail, Phone, Shield, Clock, Zap } from "lucide-react";
+import { useState, useCallback, memo } from "react";
+import { ArrowRight, Phone, User, Shield, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { LeadData } from "@/types/solutions";
@@ -24,7 +24,7 @@ const COUNTRY_CODES = [
   { code: "+216", country: "Tunisie" },
 ];
 
-const LeadCaptureScreen = ({ onSubmit }: LeadCaptureScreenProps) => {
+const LeadCaptureScreen = memo(({ onSubmit }: LeadCaptureScreenProps) => {
   const [formData, setFormData] = useState<LeadData>({
     firstName: "",
     email: "",
@@ -33,58 +33,85 @@ const LeadCaptureScreen = ({ onSubmit }: LeadCaptureScreenProps) => {
   });
   const [errors, setErrors] = useState<Partial<LeadData>>({});
 
-  const validateForm = (): boolean => {
+  const validateForm = useCallback((): boolean => {
     const newErrors: Partial<LeadData> = {};
     
-    if (!formData.firstName.trim()) {
+    // Prénom - requis, max 50 caractères
+    const trimmedName = formData.firstName.trim();
+    if (!trimmedName) {
       newErrors.firstName = "Prénom requis";
+    } else if (trimmedName.length > 50) {
+      newErrors.firstName = "50 caractères maximum";
     }
     
-    if (!formData.email.trim()) {
-      newErrors.email = "Email requis";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Email invalide";
-    }
-    
-    if (!formData.whatsapp.trim()) {
-      newErrors.whatsapp = "Numéro requis";
-    } else if (!/^\d{8,15}$/.test(formData.whatsapp.replace(/\s/g, ""))) {
-      newErrors.whatsapp = "Numéro invalide";
+    // WhatsApp - requis, format valide
+    const cleanedPhone = formData.whatsapp.replace(/\s/g, "");
+    if (!cleanedPhone) {
+      newErrors.whatsapp = "Numéro WhatsApp requis";
+    } else if (!/^\d{8,15}$/.test(cleanedPhone)) {
+      newErrors.whatsapp = "Numéro invalide (8-15 chiffres)";
     }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
+  }, [formData]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      onSubmit(formData);
+      // Sanitize data before submission
+      const sanitizedData: LeadData = {
+        firstName: formData.firstName.trim().slice(0, 50),
+        email: "", // Not collected in this simplified flow
+        whatsapp: formData.whatsapp.replace(/\s/g, "").slice(0, 15),
+        countryCode: formData.countryCode,
+      };
+      onSubmit(sanitizedData);
     }
-  };
+  }, [formData, validateForm, onSubmit]);
+
+  const handleFirstNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({ ...prev, firstName: e.target.value }));
+  }, []);
+
+  const handleWhatsAppChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    // Only allow numbers and spaces
+    const value = e.target.value.replace(/[^0-9\s]/g, "");
+    setFormData(prev => ({ ...prev, whatsapp: value }));
+  }, []);
+
+  const handleCountryCodeChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFormData(prev => ({ ...prev, countryCode: e.target.value }));
+  }, []);
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-lg">
-        {/* Progress Bar at 0% */}
+        {/* Progress Bar at 100% - Quiz completed */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-muted-foreground font-subheading">Progression</span>
-            <span className="text-sm text-accent font-subheading">0%</span>
+            <span className="text-sm text-muted-foreground font-subheading">Analyse complétée</span>
+            <span className="text-sm text-accent font-subheading">100%</span>
           </div>
           <div className="h-1 bg-muted rounded-full overflow-hidden">
-            <div className="h-full w-0 bg-accent rounded-full" />
+            <div 
+              className="h-full bg-accent rounded-full gpu-accelerated"
+              style={{ width: '100%' }}
+            />
           </div>
         </div>
 
         <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8">
-          {/* Header */}
+          {/* Header - Post-quiz messaging */}
           <div className="text-left mb-6">
+            <div className="w-14 h-14 rounded-xl bg-cta-success/10 flex items-center justify-center mb-4">
+              <MessageCircle className="w-7 h-7 text-cta-success" />
+            </div>
             <h1 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-2">
-              Découvrez votre Score de Maturité
+              Analyse terminée.
             </h1>
-            <p className="text-muted-foreground font-subheading">
-              L'IA Sen'Optima analyse votre business en 2 minutes
+            <p className="text-lg text-accent font-heading">
+              Qui doit recevoir le rapport ?
             </p>
           </div>
 
@@ -92,7 +119,7 @@ const LeadCaptureScreen = ({ onSubmit }: LeadCaptureScreenProps) => {
             {/* First Name */}
             <div>
               <label className="block text-sm font-subheading text-foreground mb-2">
-                Prénom
+                Prénom <span className="text-foreground/40">(pour personnaliser)</span>
               </label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -100,8 +127,10 @@ const LeadCaptureScreen = ({ onSubmit }: LeadCaptureScreenProps) => {
                   type="text"
                   placeholder="Votre prénom"
                   value={formData.firstName}
-                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className={`pl-11 h-12 bg-background/50 border-border focus:border-accent ${errors.firstName ? 'border-destructive' : ''}`}
+                  onChange={handleFirstNameChange}
+                  maxLength={50}
+                  autoComplete="given-name"
+                  className={`pl-11 h-12 bg-background/50 border-border focus:border-accent touch-target ${errors.firstName ? 'border-destructive' : ''}`}
                 />
               </div>
               {errors.firstName && (
@@ -109,37 +138,17 @@ const LeadCaptureScreen = ({ onSubmit }: LeadCaptureScreenProps) => {
               )}
             </div>
 
-            {/* Email */}
-            <div>
-              <label className="block text-sm font-subheading text-foreground mb-2">
-                Email professionnel
-              </label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <Input
-                  type="email"
-                  placeholder="email@entreprise.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className={`pl-11 h-12 bg-background/50 border-border focus:border-accent ${errors.email ? 'border-destructive' : ''}`}
-                />
-              </div>
-              {errors.email && (
-                <p className="text-destructive text-sm mt-1">{errors.email}</p>
-              )}
-            </div>
-
             {/* WhatsApp with Country Code */}
             <div>
               <label className="block text-sm font-subheading text-foreground mb-2">
-                Numéro WhatsApp
+                Numéro WhatsApp <span className="text-destructive">*</span>
               </label>
               <div className="flex flex-col sm:flex-row gap-2">
                 {/* Country Code Selector */}
                 <select
                   value={formData.countryCode}
-                  onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                  className="h-12 px-3 bg-background/50 border border-border rounded-md text-foreground focus:border-accent focus:outline-none text-sm w-full sm:w-auto sm:min-w-[140px]"
+                  onChange={handleCountryCodeChange}
+                  className="h-12 px-3 bg-background/50 border border-border rounded-md text-foreground focus:border-accent focus:outline-none text-sm w-full sm:w-auto sm:min-w-[140px] touch-target"
                 >
                   {COUNTRY_CODES.map((country) => (
                     <option key={country.code} value={country.code}>
@@ -155,14 +164,22 @@ const LeadCaptureScreen = ({ onSubmit }: LeadCaptureScreenProps) => {
                     type="tel"
                     placeholder="77 123 45 67"
                     value={formData.whatsapp}
-                    onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value.replace(/[^0-9\s]/g, "") })}
-                    className={`pl-11 h-12 bg-background/50 border-border focus:border-accent ${errors.whatsapp ? 'border-destructive' : ''}`}
+                    onChange={handleWhatsAppChange}
+                    maxLength={20}
+                    autoComplete="tel"
+                    className={`pl-11 h-12 bg-background/50 border-border focus:border-accent touch-target ${errors.whatsapp ? 'border-destructive' : ''}`}
                   />
                 </div>
               </div>
               {errors.whatsapp && (
                 <p className="text-destructive text-sm mt-1">{errors.whatsapp}</p>
               )}
+              
+              {/* Reassurance text */}
+              <p className="text-xs text-foreground/40 mt-2 flex items-center gap-1.5">
+                <Shield className="w-3 h-3" />
+                Nous vous enverrons votre lien de résultat unique ici. Zéro spam.
+              </p>
             </div>
 
             {/* Submit Button */}
@@ -170,33 +187,19 @@ const LeadCaptureScreen = ({ onSubmit }: LeadCaptureScreenProps) => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full h-14 bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-lg gap-3"
+                className="w-full h-14 bg-cta-success hover:bg-cta-success/90 text-cta-success-foreground font-heading text-lg gap-3 touch-target gpu-accelerated transition-gpu"
               >
-                Lancer l'audit stratégique
+                Découvrir mon Score & Mon Plan
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </div>
           </form>
-
-          {/* Trust indicators */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-6 text-xs text-muted-foreground">
-            <div className="flex items-center gap-1.5">
-              <Shield className="w-4 h-4 text-accent" />
-              <span>Données confidentielles</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-accent" />
-              <span>2 min</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-accent" />
-              <span>Résultat instantané</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
   );
-};
+});
+
+LeadCaptureScreen.displayName = "LeadCaptureScreen";
 
 export default LeadCaptureScreen;
