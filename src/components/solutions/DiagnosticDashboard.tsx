@@ -71,7 +71,7 @@ Email : ${leadData.email}`
   };
 
   return (
-    <section className="min-h-screen py-8 px-4 bg-background">
+    <section className="min-h-screen pt-28 md:pt-32 pb-8 px-4 bg-background">
       <div className="container max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-left mb-8">
