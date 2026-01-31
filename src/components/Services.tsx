@@ -77,15 +77,16 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-left max-w-2xl mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full glass-card text-accent font-medium text-sm uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-4">
+            <span className="w-8 h-px bg-accent" />
             Ce que nous faisons
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-accent mt-3 mb-5">
-            Nos Services
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+            Nos <span className="text-accent">Services</span>
           </h2>
-          <p className="text-foreground/70 text-lg">
+          <p className="text-foreground/60">
             Des solutions complètes pour structurer et développer votre présence digitale.
           </p>
         </motion.div>

@@ -77,6 +77,10 @@ export default {
           DEFAULT: "hsl(var(--warning))",
           foreground: "hsl(var(--warning-foreground))",
         },
+        "cta-success": {
+          DEFAULT: "hsl(var(--cta-success))",
+          foreground: "hsl(var(--cta-success-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

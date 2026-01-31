@@ -33,7 +33,7 @@ const MethodSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-20"
+          className="text-left max-w-2xl mb-20"
         >
           <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
             <Wrench className="w-3 h-3 icon-solution" />
@@ -99,11 +99,10 @@ const MethodSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="max-w-2xl mx-auto text-center"
+          className="max-w-2xl"
         >
-          <div className="p-6 glass-card rounded-xl mb-12">
+          <div className="p-6 glass-card rounded-xl mb-12 text-left">
             <p className="text-body text-foreground/60">
-              <span className="text-solution">✦</span>{" "}
               "On ne met pas le toit avant les fondations."
             </p>
           </div>
