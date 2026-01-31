@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import SolutionsHero from "@/components/solutions/SolutionsHero";
 import LeadCaptureScreen from "@/components/solutions/LeadCaptureScreen";
 import TypeformQuiz from "@/components/solutions/TypeformQuiz";
@@ -70,66 +69,17 @@ const SolutionsPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <AnimatePresence mode="wait">
-        {currentStep === "hero" && (
-          <motion.div
-            key="hero"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <SolutionsHero onStart={handleStartQuiz} />
-          </motion.div>
-        )}
-
-        {currentStep === "lead-capture" && (
-          <motion.div
-            key="lead-capture"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-          >
-            <LeadCaptureScreen onSubmit={handleLeadSubmit} />
-          </motion.div>
-        )}
-
-        {currentStep === "quiz" && (
-          <motion.div
-            key="quiz"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-          >
-            <TypeformQuiz onComplete={handleQuizComplete} />
-          </motion.div>
-        )}
-
-        {currentStep === "processing" && (
-          <motion.div
-            key="processing"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <ProcessingAnimation />
-          </motion.div>
-        )}
-
-        {currentStep === "results" && quizResult && leadData && quizAnswers && (
-          <motion.div
-            key="results"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-          >
-            <DiagnosticDashboard 
-              result={quizResult} 
-              leadData={leadData}
-              answers={quizAnswers}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {currentStep === "hero" && <SolutionsHero onStart={handleStartQuiz} />}
+      {currentStep === "lead-capture" && <LeadCaptureScreen onSubmit={handleLeadSubmit} />}
+      {currentStep === "quiz" && <TypeformQuiz onComplete={handleQuizComplete} />}
+      {currentStep === "processing" && <ProcessingAnimation />}
+      {currentStep === "results" && quizResult && leadData && quizAnswers && (
+        <DiagnosticDashboard 
+          result={quizResult} 
+          leadData={leadData}
+          answers={quizAnswers}
+        />
+      )}
     </div>
   );
 };
