@@ -11,7 +11,7 @@ export interface QuizAnswers {
   q0_role: "founder" | "manager" | "employee" | "freelance";
   
   // Infrastructure (Q1-Q5)
-  q1_revenue: "less_1m" | "1m_10m" | "more_10m";
+  q1_revenue: "less_300k" | "300k_1m" | "1m_10m" | "more_10m";
   q2_team: "solo" | "2_5" | "more_5";
   q3_channel: "whatsapp_only" | "social_media" | "website" | "multi_channel";
   q4_data: "memory_paper" | "excel_notes" | "crm_tool";
