@@ -24,8 +24,8 @@ const ReadingProgress = () => {
 
   return (
     <motion.div
-      // Keep it visually detached from the fixed header (no overlap).
-      className="fixed top-[76px] md:top-[92px] left-0 right-0 z-[60] h-[3px] origin-left"
+      // Position immediately under the header (~64px height)
+      className="fixed top-16 left-0 right-0 z-[60] h-[3px] origin-left"
       style={{
         scaleX,
         background: "linear-gradient(90deg, hsl(var(--accent)) 0%, hsl(var(--accent)) 100%)",
