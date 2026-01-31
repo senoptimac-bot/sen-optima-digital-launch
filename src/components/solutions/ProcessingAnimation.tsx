@@ -1,32 +1,78 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, memo } from "react";
 
 interface ProcessingAnimationProps {
   onComplete?: () => void;
 }
 
 const PROCESSING_MESSAGES = [
-  { text: "Analyse des vecteurs de croissance Sen'Optima en cours...", icon: "📊" },
-  { text: "Détection des failles de processus...", icon: "🔍" },
-  { text: "Calcul de votre Revenue Gap (Perte d'opportunité)...", icon: "💰" },
-  { text: "Finalisation du verdict de l'Expert IA...", icon: "🤖" },
+  { text: "Analyse des vecteurs de croissance Sen'Optima en cours..." },
+  { text: "Détection des failles de processus..." },
+  { text: "Calcul de votre Revenue Gap (Perte d'opportunité)..." },
+  { text: "Finalisation du verdict de l'Expert IA..." },
 ];
+
+// CSS-only spinner with GPU acceleration
+const Spinner = memo(() => (
+  <div className="relative w-32 h-32 mx-auto mb-10">
+    {/* Outer ring - Pure CSS rotation */}
+    <div className="absolute inset-0 rounded-full border-4 border-accent/20 border-t-accent spinner-outer" />
+    
+    {/* Middle ring - Pure CSS rotation */}
+    <div className="absolute inset-3 rounded-full border-4 border-solution/20 border-t-solution spinner-inner" />
+    
+    {/* Inner pulse - Pure CSS */}
+    <div className="absolute inset-8 rounded-full bg-gradient-to-br from-accent/30 to-solution/30 spinner-pulse" />
+    
+    {/* Center icon - Pure CSS fade */}
+    <div className="absolute inset-0 flex items-center justify-center text-3xl spinner-icon">
+      <svg className="w-8 h-8 text-accent" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+    </div>
+  </div>
+));
+Spinner.displayName = "Spinner";
+
+// Memoized message component
+interface MessageProps {
+  text: string;
+  index: number;
+}
+
+const Message = memo(({ text, index }: MessageProps) => (
+  <div 
+    key={index}
+    className="message-fade-in space-y-2"
+  >
+    <p className="text-lg text-foreground font-heading">
+      {text}
+    </p>
+  </div>
+));
+Message.displayName = "Message";
 
 const ProcessingAnimation = ({ onComplete }: ProcessingAnimationProps) => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Progress animation
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(progressInterval);
-          return 100;
-        }
-        return prev + 1;
-      });
-    }, 60); // ~6 seconds total
+    // Use requestAnimationFrame for smoother progress
+    let start: number | null = null;
+    const duration = 6000; // 6 seconds total
+    
+    const animate = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const newProgress = Math.min((elapsed / duration) * 100, 100);
+      
+      setProgress(Math.round(newProgress));
+      
+      if (elapsed < duration) {
+        requestAnimationFrame(animate);
+      }
+    };
+    
+    const animationId = requestAnimationFrame(animate);
 
     // Message cycling
     const messageInterval = setInterval(() => {
@@ -40,7 +86,7 @@ const ProcessingAnimation = ({ onComplete }: ProcessingAnimationProps) => {
     }, 1500);
 
     return () => {
-      clearInterval(progressInterval);
+      cancelAnimationFrame(animationId);
       clearInterval(messageInterval);
     };
   }, []);
@@ -48,85 +94,36 @@ const ProcessingAnimation = ({ onComplete }: ProcessingAnimationProps) => {
   return (
     <section className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-md w-full text-center">
-        {/* Animated Logo/Spinner */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="relative w-32 h-32 mx-auto mb-10"
-        >
-          {/* Outer ring */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 rounded-full border-4 border-accent/20 border-t-accent"
-          />
-          
-          {/* Middle ring */}
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-3 rounded-full border-4 border-solution/20 border-t-solution"
-          />
-          
-          {/* Inner pulse */}
-          <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="absolute inset-8 rounded-full bg-gradient-to-br from-accent/30 to-solution/30 backdrop-blur-sm"
-          />
-          
-          {/* Center icon */}
-          <motion.div
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="absolute inset-0 flex items-center justify-center text-3xl"
-          >
-            🧠
-          </motion.div>
-        </motion.div>
+        {/* CSS-only Animated Spinner */}
+        <Spinner />
 
-        {/* Progress Bar */}
+        {/* Progress Bar - GPU accelerated */}
         <div className="mb-8">
           <div className="h-2 bg-muted rounded-full overflow-hidden mb-2">
-            <motion.div
-              className="h-full bg-gradient-to-r from-accent via-solution to-accent rounded-full"
-              style={{ width: `${progress}%` }}
-              transition={{ duration: 0.1 }}
+            <div
+              className="h-full bg-gradient-to-r from-accent via-solution to-accent rounded-full gpu-accelerated"
+              style={{ 
+                transform: `scaleX(${progress / 100})`,
+                transformOrigin: 'left',
+                width: '100%'
+              }}
             />
           </div>
           <span className="text-sm text-muted-foreground font-subheading">{progress}%</span>
         </div>
 
-        {/* Dynamic Messages */}
-        <div className="h-20">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentMessageIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="space-y-2"
-            >
-              <span className="text-4xl block mb-3">
-                {PROCESSING_MESSAGES[currentMessageIndex].icon}
-              </span>
-              <p className="text-lg text-foreground font-heading">
-                {PROCESSING_MESSAGES[currentMessageIndex].text}
-              </p>
-            </motion.div>
-          </AnimatePresence>
+        {/* Dynamic Messages - Fixed height container */}
+        <div className="h-20 flex items-center justify-center">
+          <Message 
+            text={PROCESSING_MESSAGES[currentMessageIndex].text} 
+            index={currentMessageIndex} 
+          />
         </div>
 
         {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="text-sm text-muted-foreground mt-6 font-subheading"
-        >
+        <p className="text-sm text-muted-foreground mt-6 font-subheading fade-in-delayed">
           Ne fermez pas cette page...
-        </motion.p>
+        </p>
       </div>
     </section>
   );
