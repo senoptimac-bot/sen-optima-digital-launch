@@ -41,31 +41,48 @@ const MirrorSection = () => {
   return (
     <section className="py-section-lg relative">
       <div className="container">
-        {/* Header with Illustration */}
+        {/* Header with Featured Image */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="max-w-4xl mx-auto mb-20"
         >
-          {/* Illustration Image */}
-          <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full overflow-hidden border-2 border-problem/30 shadow-lg">
-            <img 
-              src={situationImage} 
-              alt="Entrepreneur stressé" 
-              className="w-full h-full object-cover object-[center_25%]"
-            />
-            <div className="absolute inset-0 bg-problem/10" />
+          {/* Featured Image - Large Rectangle */}
+          <div className="relative mb-10 group">
+            {/* Glow effect behind */}
+            <div className="absolute -inset-4 bg-gradient-to-br from-problem/20 via-problem/5 to-transparent rounded-3xl blur-2xl opacity-60" />
+            
+            {/* Main Image Container */}
+            <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-problem/20 shadow-2xl">
+              <img 
+                src={situationImage} 
+                alt="Entrepreneur face aux défis business" 
+                className="w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-700"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+              <div className="absolute inset-0 bg-problem/10" />
+              
+              {/* Text overlay on image */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                <span className="inline-flex items-center gap-2 text-xs text-foreground/60 uppercase tracking-widest mb-3">
+                  <AlertTriangle className="w-3 h-3 icon-problem" />
+                  Le miroir
+                </span>
+                <h2 className="text-2xl md:text-4xl font-heading font-bold text-foreground">
+                  Votre <span className="text-problem">situation actuelle</span>
+                </h2>
+              </div>
+
+              {/* Corner accents */}
+              <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-problem/40 rounded-tl-lg" />
+              <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-problem/40 rounded-tr-lg" />
+            </div>
           </div>
 
-          <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
-            <AlertTriangle className="w-3 h-3 icon-problem" />
-            Le miroir
-          </span>
-          <h2 className="text-headline text-foreground mb-4">
-            Votre <span className="text-problem">situation actuelle</span>
-          </h2>
-          <p className="text-body text-foreground/50">
+          {/* Subtitle below image */}
+          <p className="text-center text-foreground/50 text-lg">
             Reconnaissez-vous ces symptômes ?
           </p>
         </motion.div>
