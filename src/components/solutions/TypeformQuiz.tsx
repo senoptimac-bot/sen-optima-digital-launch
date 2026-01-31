@@ -45,7 +45,8 @@ const QUESTIONS: Question[] = [
     subtitle: "Soyez honnête — ces données restent confidentielles.",
     type: "choice",
     options: [
-      { value: "less_1m", label: "Moins de 1M FCFA", description: "Démarrage ou activité secondaire" },
+      { value: "less_300k", label: "Moins de 300K FCFA", description: "Activité en démarrage" },
+      { value: "300k_1m", label: "300K - 1M FCFA", description: "Petite activité régulière" },
       { value: "1m_10m", label: "1M - 10M FCFA", description: "Croissance active" },
       { value: "more_10m", label: "Plus de 10M FCFA", description: "Entreprise établie" },
     ],

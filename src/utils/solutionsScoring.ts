@@ -2,7 +2,7 @@ import { QuizAnswers, QuizResult, Category, PainPoint } from "@/types/solutions"
 
 // Scoring weights for each answer
 const INFRASTRUCTURE_SCORES: Record<string, Record<string, number>> = {
-  q1_revenue: { less_1m: 5, "1m_10m": 15, more_10m: 25 },
+  q1_revenue: { less_300k: 3, "300k_1m": 8, "1m_10m": 15, more_10m: 25 },
   q2_team: { solo: 5, "2_5": 12, more_5: 18 },
   q3_channel: { whatsapp_only: 2, social_media: 8, website: 15, multi_channel: 20 },
   q4_data: { memory_paper: 2, excel_notes: 8, crm_tool: 18 },
@@ -19,7 +19,8 @@ const STRATEGY_SCORES: Record<string, Record<string, number>> = {
 
 // Revenue mapping for calculations
 const REVENUE_MAP: Record<string, number> = {
-  less_1m: 500000,
+  less_300k: 150000,
+  "300k_1m": 650000,
   "1m_10m": 5000000,
   more_10m: 15000000,
 };
@@ -87,7 +88,7 @@ function determineCategory(answers: QuizAnswers): Category {
   const { q1_revenue, q2_team, q6_process } = answers;
 
   // LAUNCHER: Revenue < 1M AND Team = 1
-  if (q1_revenue === "less_1m" && q2_team === "solo") {
+  if ((q1_revenue === "less_300k" || q1_revenue === "300k_1m") && q2_team === "solo") {
     return "LAUNCHER";
   }
 
@@ -139,7 +140,8 @@ function calculateRevenueGap(answers: QuizAnswers): number {
 
 // Dynamic pricing based on revenue segment
 function determinePrice(answers: QuizAnswers): number {
-  if (answers.q1_revenue === "less_1m") return 50000;
+  if (answers.q1_revenue === "less_300k") return 35000;
+  if (answers.q1_revenue === "300k_1m") return 50000;
   if (answers.q1_revenue === "1m_10m") return 75000;
   return 100000; // more_10m
 }

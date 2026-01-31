@@ -17,7 +17,8 @@ const DiagnosticDashboard = ({ result, leadData, answers }: DiagnosticDashboardP
 
   // Dynamic price based on revenue
   const getDynamicPrice = () => {
-    if (answers.q1_revenue === "less_1m") return 50000;
+    if (answers.q1_revenue === "less_300k") return 35000;
+    if (answers.q1_revenue === "300k_1m") return 50000;
     if (answers.q1_revenue === "1m_10m") return 75000;
     return 100000;
   };
@@ -25,7 +26,8 @@ const DiagnosticDashboard = ({ result, leadData, answers }: DiagnosticDashboardP
   const dynamicPrice = getDynamicPrice();
 
   const getRevenueLabel = () => {
-    if (answers.q1_revenue === "less_1m") return "Moins de 1M FCFA";
+    if (answers.q1_revenue === "less_300k") return "Moins de 300K FCFA";
+    if (answers.q1_revenue === "300k_1m") return "300K - 1M FCFA";
     if (answers.q1_revenue === "1m_10m") return "1M - 10M FCFA";
     return "Plus de 10M FCFA";
   };
