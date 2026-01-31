@@ -22,7 +22,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer 
       ref={ref} 
-      className="py-8 md:py-10 border-t border-gold-dark/50 bg-gold-dark"
+      className="py-8 md:py-10 border-t border-gold-dark/30 bg-gold-dark/10"
     >
       <div className="container">
         <div className="space-y-8">
