@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp, ArrowLeft } from "lucide-react";
 import presidentPhoto from "@/assets/president-senegal.webp";
 import { Button } from "@/components/ui/button";
+import TeamSection from "@/components/TeamSection";
 
 // Les 3 valeurs/piliers
 const valuesData = [
@@ -261,6 +262,9 @@ const AboutPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* SECTION TEAM - Ceux qui portent votre ambition */}
+      <TeamSection />
 
       {/* CTA FINAL */}
       <section className="py-20 md:py-32 lg:py-40 bg-secondary/20">
