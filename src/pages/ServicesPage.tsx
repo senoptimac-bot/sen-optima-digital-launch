@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Rocket, Globe, Zap, Handshake, TrendingUp, MessageCircle } from "lucide-react";
+import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCircle } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -108,6 +108,15 @@ const services: ServicePillarProps[] = [
     whatWeDo: "Audit des fuites de rentabilité, intégration IA pour automatiser le répétitif, et campagnes marketing ciblées.",
     ourRequirement: "Une transparence totale sur vos chiffres actuels pour pouvoir les améliorer.",
   },
+  {
+    icon: Eye,
+    number: "04",
+    title: "Identité Visuelle Stratégique",
+    subtitle: "L'Autorité",
+    forWho: "Ceux qui veulent inspirer confiance et justifier des tarifs premium.",
+    whatWeDo: "Le design n'est pas de l'art, c'est de la psychologie. Nous forgeons une image de marque qui inspire immédiatement confiance et justifie vos tarifs premium aux yeux de vos clients.",
+    ourRequirement: "Une vision claire de votre positionnement et de votre clientèle cible.",
+  },
 ];
 
 // Philosophy items
@@ -175,7 +184,7 @@ const ServicesPage = () => {
               Nos Piliers
             </span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-              Trois axes pour structurer votre croissance
+              Quatre axes pour structurer votre croissance
             </h2>
             <p className="text-foreground/60 text-lg">
               Du lancement à l'accélération, nous vous accompagnons à chaque étape clé de votre développement.
@@ -187,7 +196,7 @@ const ServicesPage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl"
           >
             {services.map((service) => (
               <ServicePillar key={service.title} {...service} />
