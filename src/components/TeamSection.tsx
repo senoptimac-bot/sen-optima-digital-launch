@@ -58,18 +58,18 @@ const TeamSection = () => {
             >
               {/* Card Container */}
               <div className="rounded-2xl border border-[#D4A73B]/20 overflow-hidden bg-background/20">
-                {/* Image Container - 3:4 Aspect Ratio */}
+                {/* Image Container - Reduced aspect ratio */}
                 <div 
                   className="relative w-full bg-gradient-to-b from-[#11224A] to-[#050A15]"
-                  style={{ aspectRatio: "3/4" }}
+                  style={{ aspectRatio: "4/3" }}
                 >
                   {/* Placeholder - Gold User Icon */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <User 
-                      className="w-24 h-24 text-accent/20" 
+                      className="w-16 h-16 text-accent/20" 
                       strokeWidth={1}
                     />
-                    <span className="mt-4 text-sm text-accent/30 italic">
+                    <span className="mt-2 text-xs text-accent/30 italic">
                       Portrait à venir
                     </span>
                   </div>
