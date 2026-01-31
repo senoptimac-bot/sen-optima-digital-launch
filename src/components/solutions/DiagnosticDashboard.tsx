@@ -47,9 +47,13 @@ const DiagnosticDashboard = ({ result, leadData, answers }: DiagnosticDashboardP
   };
 
   const handleWhatsAppClick = () => {
+    // Get company name from answers (with fallback)
+    const companyName = answers.q0_company || "Non spécifié";
+    
     const message = encodeURIComponent(
       `Bonjour Mandiaye, je viens de terminer mon diagnostic IA sur Sen'Optima.
 
+Mon entreprise : ${companyName}
 Mon score est de : ${score}%.
 Mon CA mensuel : ${getRevenueLabel()}.
 Ma plus grande difficulté : ${getBlockerLabel()}.
@@ -58,7 +62,7 @@ Je souhaite réserver mon audit physique et recevoir mon plan de guerre de 15 pa
 
 Voici mes coordonnées pour la suite :
 Nom : ${leadData.firstName}
-Email : ${leadData.email}`
+WhatsApp : ${leadData.countryCode}${leadData.whatsapp}`
     );
     window.open(`https://wa.me/221781926969?text=${message}`, "_blank");
   };
