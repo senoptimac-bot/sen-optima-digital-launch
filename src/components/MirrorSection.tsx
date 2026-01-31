@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { UserX, Ghost, HelpCircle, AlertTriangle } from "lucide-react";
+import situationImage from "@/assets/situation-actuelle.jpg";
 
 const painPoints = [
   {
@@ -40,13 +41,23 @@ const MirrorSection = () => {
   return (
     <section className="py-section-lg relative">
       <div className="container">
-        {/* Header */}
+        {/* Header with Illustration */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-20"
+          className="text-center max-w-3xl mx-auto mb-20"
         >
+          {/* Illustration Image */}
+          <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full overflow-hidden border-2 border-problem/30 shadow-lg">
+            <img 
+              src={situationImage} 
+              alt="Entrepreneur stressé" 
+              className="w-full h-full object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-problem/10" />
+          </div>
+
           <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
             <AlertTriangle className="w-3 h-3 icon-problem" />
             Le miroir
