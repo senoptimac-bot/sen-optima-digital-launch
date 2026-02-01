@@ -24,13 +24,13 @@ const ReadingProgress = () => {
 
   return (
     <motion.div
-      // Position at very top of page - Gold prestige line
-      className="fixed top-0 left-0 right-0 z-[70] h-[2px] origin-left"
+      // Position immediately under the header (~64px height)
+      className="fixed top-16 left-0 right-0 z-[60] h-[3px] origin-left"
       style={{
         scaleX,
-        background: "linear-gradient(90deg, hsl(43 75% 52%) 0%, hsl(43 75% 62%) 100%)",
+        background: "linear-gradient(90deg, hsl(var(--accent)) 0%, hsl(var(--accent)) 100%)",
         opacity: isVisible ? 1 : 0,
-        transition: "opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        transition: "opacity 0.3s ease",
       }}
     />
   );

@@ -6,16 +6,14 @@
   :root,
   .dark {
     /* ========================================
-       APPLE-ESQUE LUXURY DESIGN SYSTEM
-       Classe Mondiale • B2B High-End
+       PURE WHITE PREMIUM DESIGN SYSTEM
        ======================================== */
     
-    /* Off-white section background (#FAFAFA) */
-    --background: 0 0% 98%;
-    /* Navy Blue Text (#1A2B42) - Maximum Authority */
+    /* Pure White Background (#FFFFFF) */
+    --background: 0 0% 100%;
+    /* Navy Blue Text (#1A2B42) */
     --foreground: 215 43% 18%;
 
-    /* Pure White for Cards (#FFFFFF) */
     --card: 0 0% 100%;
     --card-foreground: 215 43% 18%;
 
@@ -26,8 +24,8 @@
     --primary: 215 43% 18%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Subtle Off-white */
-    --secondary: 0 0% 98%;
+    /* Secondary - Very Light Gray */
+    --secondary: 0 0% 97%;
     --secondary-foreground: 215 43% 18%;
 
     --muted: 0 0% 96%;
@@ -56,13 +54,12 @@
     --destructive: 0 72% 56%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Refined Border (#EFEFEF) */
-    --border: 0 0% 93.5%;
+    /* Subtle Gray Border (#F0F0F0) */
+    --border: 0 0% 94%;
     --input: 0 0% 97%;
     --ring: 43 75% 52% / 0.3;
 
-    /* Luxury Radius - 20px */
-    --radius: 1.25rem;
+    --radius: 0.875rem;
 
     /* Custom tokens - Premium Gold */
     --gold: 43 75% 52%;
@@ -81,7 +78,7 @@
     --sidebar-primary-foreground: 215 43% 18%;
     --sidebar-accent: 43 75% 52%;
     --sidebar-accent-foreground: 215 43% 18%;
-    --sidebar-border: 0 0% 93.5%;
+    --sidebar-border: 0 0% 94%;
     --sidebar-ring: 43 75% 52% / 0.3;
   }
 }
@@ -130,7 +127,7 @@
     border-radius: 4px;
   }
 
-  /* Typography - Magazine Style with Dense Letter-Spacing */
+  /* Typography - Premium Navy Blue (#1A2B42) */
   h1, h2, h3 {
     font-family: 'League Spartan', 'Open Sans', system-ui, sans-serif;
     font-weight: 700;
@@ -143,18 +140,14 @@
     letter-spacing: -0.03em;
   }
 
-  h2 {
-    letter-spacing: -0.025em;
-  }
-
   h4, h5, h6 {
     font-family: 'Glacial Indifference', 'Open Sans', system-ui, sans-serif;
     font-weight: 400;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
     color: hsl(215 43% 18%);
   }
 
-  /* Body text - Navy Blue for perfect readability */
+  /* Body text - Navy Blue for perfect readability on white */
   p, span, li {
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     color: hsl(215 43% 18%);
@@ -318,49 +311,47 @@
     background: hsl(43 75% 52%);
   }
 
-  /* Glass - Apple-esque subtle glassmorphism */
+  /* Glass - Subtle white glassmorphism */
   .glass {
-    background: hsl(0 0% 100% / 0.97);
-    border: 1px solid hsl(0 0% 93.5%);
-    border-radius: 1.25rem;
-    backdrop-filter: blur(16px);
-    box-shadow: 0 4px 24px -8px hsl(215 43% 18% / 0.04);
+    background: hsl(0 0% 100% / 0.95);
+    border: 1px solid hsl(0 0% 94%);
+    border-radius: 1rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 24px -8px hsl(215 43% 18% / 0.06);
   }
 
-  /* ========================================
-     PREMIUM CARDS - L'effet de Masse
-     Border: 1px #EFEFEF
-     Shadow: 0 10px 30px rgba(0,0,0,0.03)
-     Radius: 20px
-     ======================================== */
+  /* Premium White Cards with subtle distinction */
   .glass-card {
     background: hsl(0 0% 100%);
-    border: 1px solid hsl(0 0% 93.5%);
-    border-radius: 1.25rem;
-    box-shadow: 0 10px 30px -10px hsl(0 0% 0% / 0.03);
-    padding: 2rem;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform, box-shadow, border-color;
+    border: 1px solid hsl(0 0% 94%);
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px -4px hsl(215 43% 18% / 0.08),
+                0 4px 32px -8px hsl(215 43% 18% / 0.04);
+    padding: 1.75rem;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
   }
 
   .glass-card:hover {
-    transform: translateY(-6px);
+    transform: scale(1.02) translateY(-4px);
     border-color: hsl(43 75% 52%);
-    box-shadow: 0 20px 40px -15px hsl(0 0% 0% / 0.08),
-                0 0 0 1px hsl(43 75% 52% / 0.15);
+    box-shadow: 0 8px 32px -4px hsl(215 43% 18% / 0.12),
+                0 16px 48px -8px hsl(215 43% 18% / 0.06),
+                0 0 0 1px hsl(43 75% 52% / 0.2);
   }
 
   /* Semantic card variants with left border */
   .glass-card-danger {
-    border-left: 3px solid hsl(0 72% 56%) !important;
+    border-left: 4px solid hsl(0 72% 56%) !important;
   }
 
   .glass-card-warning {
-    border-left: 3px solid hsl(25 80% 49%) !important;
+    border-left: 4px solid hsl(25 80% 49%) !important;
   }
 
   .glass-card-success {
-    border-left: 3px solid hsl(152 57% 43%) !important;
+    border-left: 4px solid hsl(152 57% 43%) !important;
   }
 
   /* Card text colors - Navy Blue (#1A2B42) */
@@ -397,51 +388,51 @@
 
   .glass-premium {
     background: hsl(0 0% 100%);
-    border: 1px solid hsl(0 0% 93.5%);
+    border: 1px solid hsl(0 0% 94%);
     border-radius: 1.25rem;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 10px 40px -15px hsl(0 0% 0% / 0.05);
-    padding: 2.5rem;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px -10px hsl(215 43% 18% / 0.08);
+    padding: 2rem;
   }
 
   /* Alternative subtle glass */
   .glass-subtle {
-    background: hsl(0 0% 99.5%);
-    border: 1px solid hsl(0 0% 93.5%);
-    border-radius: 1.25rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 16px -6px hsl(0 0% 0% / 0.02);
+    background: hsl(0 0% 99%);
+    border: 1px solid hsl(0 0% 94%);
+    border-radius: 0.875rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 12px -4px hsl(215 43% 18% / 0.04);
   }
 
   /* Premium Pricing Cards */
   .glass-pricing {
     background: hsl(0 0% 100%);
-    border: 1px solid hsl(0 0% 93.5%);
-    border-radius: 1.25rem;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform, box-shadow, border-color;
+    border: 1px solid hsl(0 0% 94%);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+    will-change: transform;
   }
 
   .glass-pricing:hover {
     transform: translateY(-8px);
     border-color: hsl(43 75% 52%);
-    box-shadow: 0 20px 50px -20px hsl(0 0% 0% / 0.1), 
-                0 0 0 1px hsl(43 75% 52% / 0.2);
+    box-shadow: 0 16px 40px -16px hsl(215 43% 18% / 0.12), 
+                0 0 0 1px hsl(43 75% 52% / 0.3);
   }
 
   .glass-pricing-featured {
     background: hsl(0 0% 100%);
-    border: 2px solid hsl(43 75% 52% / 0.4);
-    border-radius: 1.25rem;
-    box-shadow: 0 15px 45px -15px hsl(43 75% 52% / 0.12);
+    border: 2px solid hsl(43 75% 52% / 0.5);
+    box-shadow: 0 0 32px -8px hsl(43 75% 52% / 0.15);
     transform: scale(1.02);
   }
 
   .glass-pricing-featured:hover {
     transform: scale(1.02) translateY(-8px);
     border-color: hsl(43 75% 52%);
-    box-shadow: 0 25px 60px -20px hsl(43 75% 52% / 0.18), 
-                0 0 0 1px hsl(43 75% 52% / 0.3);
+    box-shadow: 0 20px 48px -16px hsl(43 75% 52% / 0.2), 
+                0 0 0 1px hsl(43 75% 52% / 0.4);
   }
 
   /* Enhanced blur on desktop */
