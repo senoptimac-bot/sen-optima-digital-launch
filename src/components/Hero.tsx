@@ -10,18 +10,8 @@ const Hero = () => {
       id="accueil"
       className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden"
     >
-      {/* Background with organic shapes */}
-      <div className="absolute inset-0 z-0">
-        {/* Base gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary to-background" />
-        
-        {/* Decorative organic shapes */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] shape-blob opacity-50" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] shape-blob opacity-30" style={{ animationDelay: '-10s' }} />
-        
-        {/* Subtle accent glow */}
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/10 blur-[100px]" />
-      </div>
+      {/* Simple static background */}
+      <div className="absolute inset-0 z-0 bg-background" />
 
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
