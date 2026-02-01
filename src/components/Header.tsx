@@ -4,7 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import logo from "@/assets/logo-header.png";
+import logo from "@/assets/logo.svg";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
