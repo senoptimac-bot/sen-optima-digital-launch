@@ -91,7 +91,34 @@
     @apply bg-background text-foreground antialiased;
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     font-weight: 400;
+    font-size: 16px;
     overflow-x: hidden;
+  }
+
+  /* Desktop base font size - 18px for comfortable reading */
+  @media (min-width: 1024px) {
+    body {
+      font-size: 18px;
+    }
+  }
+
+  /* Custom cursor for desktop - elegant micro-cursor */
+  @media (min-width: 1024px) and (hover: hover) {
+    body {
+      cursor: default;
+    }
+
+    /* Interactive elements get pointer cursor with subtle scale effect */
+    a, button, [role="button"], .glass-card, input, select, textarea {
+      cursor: pointer;
+    }
+  }
+
+  /* Focus visible states for keyboard accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(43 65% 53%);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   /* Typography - Premium Branding */

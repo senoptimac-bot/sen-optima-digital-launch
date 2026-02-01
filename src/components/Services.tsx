@@ -5,6 +5,7 @@ import {
   Crown,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { staggerVariants } from "@/hooks/useStaggerReveal";
 
 import serviceWeb from "@/assets/Website Creation & Solutions.jpg";
 import serviceMarketing from "@/assets/Marketing Digital & Acquisition.jpg";
@@ -42,28 +43,6 @@ const services = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.46, 0.45, 0.94] as const,
-    },
-  },
-};
-
 const Services = () => {
   return (
     <section id="services" className="py-20 md:py-28 bg-background relative overflow-hidden">
@@ -71,7 +50,7 @@ const Services = () => {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-accent/5 blur-[120px] -translate-y-1/2 translate-x-1/2" />
       
       <div className="container relative z-10">
-        {/* Section Header */}
+        {/* Section Header - F-Pattern Left Aligned */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -91,9 +70,9 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* Services Grid with Stagger Animation */}
         <motion.div
-          variants={containerVariants}
+          variants={staggerVariants.cards.container}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -105,10 +84,8 @@ const Services = () => {
             return (
               <motion.article
                 key={service.title}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="group relative rounded-2xl glass-card overflow-hidden transition-all duration-300"
+                variants={staggerVariants.cards.item}
+                className="group relative rounded-2xl glass-card overflow-hidden"
               >
                 {/* Micro-photo for services with images */}
                 {hasImage && (
