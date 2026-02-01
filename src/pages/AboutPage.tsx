@@ -7,6 +7,8 @@ import TeamSection from "@/components/TeamSection";
 import HeroIllustration from "@/components/about/HeroIllustration";
 import ParcoursIllustration from "@/components/about/ParcoursIllustration";
 import VisionIllustration from "@/components/about/VisionIllustration";
+import AnimatedGradientBackground from "@/components/AnimatedGradientBackground";
+import FloatingParticles from "@/components/FloatingParticles";
 
 // Les 3 valeurs/piliers
 const valuesData = [
@@ -34,6 +36,11 @@ const AboutPage = () => {
     <div className="min-h-screen">
       {/* HERO SECTION */}
       <section className="relative py-20 pt-32 md:py-32 md:pt-44 lg:py-40 lg:pt-52">
+        {/* Animated Background Effects */}
+        <div className="absolute inset-0 z-0">
+          <AnimatedGradientBackground />
+          <FloatingParticles count={25} />
+        </div>
         <div className="container px-5 md:px-8 lg:px-12">
           {/* Back Button */}
           <motion.div

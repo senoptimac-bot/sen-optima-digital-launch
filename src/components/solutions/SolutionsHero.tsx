@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import AnimatedGradientBackground from "@/components/AnimatedGradientBackground";
+import FloatingParticles from "@/components/FloatingParticles";
 
 interface SolutionsHeroProps {
   onStart: () => void;
@@ -12,6 +14,10 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
       {/* Subtle background - very clean */}
       <div className="absolute inset-0 bg-background" />
       <div className="absolute top-1/3 right-0 w-[500px] h-[400px] rounded-full bg-accent/3 blur-[150px]" />
+      
+      {/* Animated Background Effects */}
+      <AnimatedGradientBackground />
+      <FloatingParticles count={20} />
 
       <div className="container max-w-3xl px-5 md:px-8 relative z-10">
         <motion.div
