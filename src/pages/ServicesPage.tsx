@@ -5,6 +5,8 @@ import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCirc
 import ServiceCard from "@/components/services/ServiceCard";
 import PhilosophyCard from "@/components/services/PhilosophyCard";
 import servicesHeroImage from "@/assets/services-hero.jpg";
+import AnimatedGradientBackground from "@/components/AnimatedGradientBackground";
+import FloatingParticles from "@/components/FloatingParticles";
 
 // Service data
 const services = [
@@ -82,6 +84,10 @@ const ServicesPage = () => {
           <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-60" />
           {/* Gradient for depth */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+          
+          {/* Animated Background Effects */}
+          <AnimatedGradientBackground />
+          <FloatingParticles count={20} />
         </div>
 
         <div className="container px-5 md:px-8 relative z-10">

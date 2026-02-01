@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroCoverImage from "@/assets/hero-cover.jpg";
+import AnimatedGradientBackground from "./AnimatedGradientBackground";
+import FloatingParticles from "./FloatingParticles";
 
 const Hero = () => {
 
@@ -23,6 +25,10 @@ const Hero = () => {
         <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-80" />
         {/* Gradient overlay for depth */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+        
+        {/* Animated Background Effects */}
+        <AnimatedGradientBackground />
+        <FloatingParticles count={30} />
       </div>
 
       <div className="container relative z-10">
