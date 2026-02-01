@@ -7,29 +7,42 @@ interface PhilosophyCardProps {
   index: number;
 }
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
+  },
+};
+
 const PhilosophyCard = ({ icon: Icon, title, description, index }: PhilosophyCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group"
+      whileHover={{ scale: 1.02, y: -5 }}
+      className="relative p-8 card-cream group transition-all duration-300 text-left"
     >
-      <div className="p-6 lg:p-8 rounded-2xl bg-card border border-border/30 hover:shadow-md transition-all duration-300">
-        {/* Icon */}
-        <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/15 transition-colors">
-          <Icon className="w-6 h-6 text-accent" />
-        </div>
-        
-        {/* Content */}
-        <h3 className="text-base md:text-lg font-heading font-bold text-foreground mb-2">
-          {title}
-        </h3>
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          {description}
-        </p>
+      {/* Number indicator */}
+      <div className="absolute top-6 right-6">
+        <span className="text-xs font-mono text-accent/40">{String(index + 1).padStart(2, '0')}</span>
       </div>
+
+      {/* Icon with accent styling */}
+      <div className="icon-circle mb-6 group-hover:scale-110 transition-transform duration-300">
+        <Icon className="w-7 h-7 text-accent" />
+      </div>
+
+      {/* Content */}
+      <h3 className="text-lg font-heading font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+        {title}
+      </h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">
+        {description}
+      </p>
     </motion.div>
   );
 };
