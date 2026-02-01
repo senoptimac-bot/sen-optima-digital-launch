@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCircle } from "lucide-react";
 import ServiceCard from "@/components/services/ServiceCard";
 import PhilosophyCard from "@/components/services/PhilosophyCard";
-import servicesHeroImage from "@/assets/services-hero-visionary.jpg";
 
 // Service data
 const services = [
@@ -68,59 +67,34 @@ const philosophyItems = [
 const ServicesPage = () => {
   return (
     <div className="min-h-screen">
-      {/* HERO - Split Screen Corporate */}
-      <section className="relative min-h-[70vh] md:min-h-[80vh] flex flex-col md:flex-row">
-        {/* Left Column - Text on Blue Night Background */}
-        <div className="relative w-full md:w-1/2 bg-[hsl(220,25%,8%)] flex items-center py-20 pt-32 md:py-0">
-          {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent" />
-          
-          <div className="container relative z-10 px-6 md:px-10 lg:px-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-lg"
-            >
-              {/* Label */}
-              <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-6">
-                <span className="w-8 h-px bg-accent" />
-                Nos Services
-              </span>
+      {/* HERO - Simple & Impactant */}
+      <section className="relative py-20 pt-32 md:py-28 md:pt-40">
+        <div className="container px-5 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
+          >
+            {/* Label */}
+            <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-6">
+              <span className="w-8 h-px bg-accent" />
+              Nos Services
+            </span>
 
-              {/* Title */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-6 text-left">
-                Transformez votre Vision
-                <span className="block text-accent mt-1">en Système Rentable.</span>
-              </h1>
+            {/* Title */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-6">
+              Transformez votre Vision
+              <span className="block text-accent mt-1">en Système Rentable.</span>
+            </h1>
 
-              {/* Subtitle */}
-              <p className="text-base md:text-lg text-foreground/60 leading-relaxed text-left">
-                Que vous démarriez ou cherchiez à scaler, nous structurons 
-                votre activité pour qu'elle dure.
-              </p>
-            </motion.div>
-          </div>
+            {/* Subtitle */}
+            <p className="text-base md:text-lg text-foreground/60 leading-relaxed">
+              Que vous démarriez ou cherchiez à scaler, nous structurons 
+              votre activité pour qu'elle dure.
+            </p>
+          </motion.div>
         </div>
-
-        {/* Right Column - Visionary Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative w-full md:w-1/2 h-64 md:h-auto"
-        >
-          <img
-            src={servicesHeroImage}
-            alt="Entrepreneur visionnaire africain"
-            className="w-full h-full object-cover object-center"
-            loading="eager"
-          />
-          {/* Subtle blue overlay for brand harmony */}
-          <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-10 mix-blend-multiply" />
-          {/* Left gradient fade for seamless transition on desktop */}
-          <div className="hidden md:block absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[hsl(220,25%,8%)] to-transparent" />
-        </motion.div>
       </section>
 
       {/* SERVICES - Cards avec expansion */}
