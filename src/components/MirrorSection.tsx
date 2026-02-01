@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { UserX, Ghost, HelpCircle, AlertTriangle } from "lucide-react";
-import { staggerVariants } from "@/hooks/useStaggerReveal";
 import situationImage from "@/assets/situation-actuelle.jpg";
 
 const painPoints = [
@@ -20,6 +19,23 @@ const painPoints = [
     description: "Vous gérez tout au stylo ou sur WhatsApp ? Si vous tombez malade demain, votre business s'arrête. Nous automatisons pour vous libérer.",
   },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
+  },
+};
 
 const MirrorSection = () => {
   return (
@@ -71,9 +87,9 @@ const MirrorSection = () => {
           </p>
         </motion.div>
 
-        {/* Pain Points Cards with Stagger Animation */}
+        {/* Pain Points Cards */}
         <motion.div
-          variants={staggerVariants.cards.container}
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -82,8 +98,8 @@ const MirrorSection = () => {
           {painPoints.map((pain, index) => (
             <motion.div
               key={pain.title}
-              variants={staggerVariants.cards.item}
-              className="relative p-8 glass-card glass-card-danger rounded-xl group"
+              variants={itemVariants}
+              className="relative p-8 glass-card glass-card-danger rounded-xl group transition-all duration-300"
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">

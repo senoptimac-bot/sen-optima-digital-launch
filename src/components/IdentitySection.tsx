@@ -2,18 +2,17 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, XCircle, CheckCircle, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { staggerVariants } from "@/hooks/useStaggerReveal";
 
 const IdentitySection = () => {
   return (
     <section id="identite" className="py-section-lg relative">
       <div className="container">
-        {/* Header - F-Pattern Left Aligned */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-left max-w-2xl mb-20"
+          className="text-center max-w-2xl mx-auto mb-20"
         >
           <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
             <Sparkles className="w-3 h-3 icon-success" />
@@ -24,18 +23,15 @@ const IdentitySection = () => {
           </h2>
         </motion.div>
 
-        {/* Two columns with Stagger Animation */}
-        <motion.div 
-          variants={staggerVariants.cards.container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
-        >
+        {/* Two columns */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Left - Ailleurs (Problem) */}
           <motion.div
-            variants={staggerVariants.cards.item}
-            className="glass-card glass-card-danger rounded-xl p-10 group"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-card glass-card-danger rounded-xl p-10 group transition-all duration-300"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center">
@@ -63,8 +59,11 @@ const IdentitySection = () => {
 
           {/* Right - Sen'Optima (Success) */}
           <motion.div
-            variants={staggerVariants.cards.item}
-            className="glass-card glass-card-success rounded-xl p-10 group"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="glass-card glass-card-success rounded-xl p-10 group transition-all duration-300"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center">
@@ -89,7 +88,7 @@ const IdentitySection = () => {
               </li>
             </ul>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* CTA */}
         <motion.div
@@ -97,11 +96,11 @@ const IdentitySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex justify-start mt-16"
+          className="flex justify-center mt-16"
         >
           <Button
             variant="outline"
-            className="gap-2 border-foreground/20 text-foreground/70 hover:border-accent hover:text-accent focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="gap-2 border-foreground/20 text-foreground/70 hover:border-accent hover:text-accent"
             asChild
           >
             <Link to="/services">
