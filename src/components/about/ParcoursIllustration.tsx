@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const ParcoursIllustration = () => {
   return (
-    <div className="relative w-full h-full min-h-[280px] flex items-center justify-center">
-      <svg viewBox="0 0 400 280" className="w-full h-full max-w-md">
+    <div className="relative w-full h-full min-h-[300px] flex items-center justify-center">
+      <svg viewBox="0 0 400 300" className="w-full h-full max-w-md">
         <defs>
           <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.3" />
@@ -61,12 +61,32 @@ const ParcoursIllustration = () => {
           <motion.path d="M45 195 V192 Q45 190 47 190 H53 Q55 190 55 192 V195" fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" opacity={0.7} />
         </motion.g>
 
-        {/* Middle Nodes - Journey points */}
+        {/* Label: Expérience Corporate */}
+        <motion.g
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <rect x="5" y="235" width="90" height="24" rx="12" fill="hsl(var(--foreground))" opacity="0.1" />
+          <text
+            x="50"
+            y="251"
+            textAnchor="middle"
+            fill="hsl(var(--foreground))"
+            fontSize="9"
+            fontWeight="600"
+            opacity="0.6"
+          >
+            Expérience
+          </text>
+        </motion.g>
+
+        {/* Middle Nodes with labels */}
         {[
-          { cx: 120, cy: 160, delay: 0.6 },
-          { cx: 180, cy: 120, delay: 0.9 },
-          { cx: 250, cy: 140, delay: 1.2 },
-          { cx: 320, cy: 140, delay: 1.5 },
+          { cx: 120, cy: 160, delay: 0.6, label: "Projets" },
+          { cx: 180, cy: 120, delay: 0.9, label: "Méthodes" },
+          { cx: 250, cy: 140, delay: 1.2, label: "Systèmes" },
+          { cx: 320, cy: 140, delay: 1.5, label: "Résultats" },
         ].map((node, i) => (
           <motion.g
             key={`node-${i}`}
@@ -84,6 +104,21 @@ const ParcoursIllustration = () => {
               transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
             />
             <circle cx={node.cx} cy={node.cy} r="5" fill="hsl(var(--accent))" />
+            {/* Node label */}
+            <motion.text
+              x={node.cx}
+              y={node.cy + 22}
+              textAnchor="middle"
+              fill="hsl(var(--accent))"
+              fontSize="8"
+              fontWeight="500"
+              opacity="0.7"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.7 }}
+              transition={{ delay: node.delay + 0.3 }}
+            >
+              {node.label}
+            </motion.text>
           </motion.g>
         ))}
 
@@ -113,6 +148,25 @@ const ParcoursIllustration = () => {
           />
         </motion.g>
 
+        {/* Label: Votre Réussite */}
+        <motion.g
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 2 }}
+        >
+          <rect x="335" y="30" width="90" height="24" rx="12" fill="hsl(var(--accent))" opacity="0.2" />
+          <text
+            x="380"
+            y="46"
+            textAnchor="middle"
+            fill="hsl(var(--accent))"
+            fontSize="10"
+            fontWeight="700"
+          >
+            Votre Réussite
+          </text>
+        </motion.g>
+
         {/* Moving dot along path */}
         <motion.circle
           r="6"
@@ -132,33 +186,20 @@ const ParcoursIllustration = () => {
           <animate attributeName="opacity" values="1;0.5;1" dur="4s" repeatCount="indefinite" />
         </motion.circle>
 
-        {/* Labels */}
+        {/* Bottom tagline */}
         <motion.text
-          x="50"
-          y="240"
+          x="200"
+          y="280"
           textAnchor="middle"
           fill="hsl(var(--foreground))"
-          opacity={0.5}
           fontSize="11"
           fontWeight="500"
+          opacity="0.5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
-          transition={{ delay: 2 }}
+          transition={{ delay: 2.5 }}
         >
-          Corporate
-        </motion.text>
-        <motion.text
-          x="380"
-          y="125"
-          textAnchor="middle"
-          fill="hsl(var(--accent))"
-          fontSize="11"
-          fontWeight="600"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.2 }}
-        >
-          Votre Réussite
+          Notre savoir-faire transféré à votre projet
         </motion.text>
       </svg>
     </div>
