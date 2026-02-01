@@ -53,14 +53,14 @@ const DiagnosticDashboard = ({ result, leadData, answers }: DiagnosticDashboardP
     const companyName = answers.q0_company || "Non spécifié";
     
     const message = encodeURIComponent(
-      `Bonjour Mandiaye, je viens de terminer mon diagnostic IA sur Sen'Optima.
+      `Bonjour Sen'Optima, je viens de terminer mon diagnostic IA sur votre site.
 
 Mon entreprise : ${companyName}
-Mon score est de : ${score}%.
-Mon CA mensuel : ${getRevenueLabel()}.
-Ma plus grande difficulté : ${getBlockerLabel()}.
+Mon score est de : ${score}%
+Mon CA mensuel : ${getRevenueLabel()}
+Ma plus grande difficulté : ${getBlockerLabel()}
 
-Je souhaite réserver mon audit physique et recevoir mon plan de guerre de 15 pages pour ${getPriceLabel()} FCFA.
+Je souhaite réserver mon audit physique et recevoir mon plan de guerre de 15 pages.
 
 Voici mes coordonnées pour la suite :
 Nom : ${leadData.firstName}
