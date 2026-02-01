@@ -5,30 +5,30 @@
 @layer base {
   :root,
   .dark {
-    /* Official Brand Color: #0A1A3A - Deep Navy Blue */
-    --background: 218 70% 13%;
+    /* Deep Navy Blue Universe - Enhanced for futuristic depth */
+    --background: 220 55% 10%;
     --foreground: 0 0% 100%;
 
-    --card: 218 70% 13% / 0.5;
+    --card: 220 55% 10% / 0.5;
     --card-foreground: 0 0% 100%;
 
-    --popover: 218 70% 15%;
+    --popover: 220 55% 12%;
     --popover-foreground: 0 0% 100%;
 
     /* Primary - Deep Blue */
-    --primary: 218 70% 18%;
+    --primary: 220 60% 18%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary */
-    --secondary: 218 60% 16%;
+    --secondary: 220 50% 14%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 218 50% 20%;
+    --muted: 220 45% 18%;
     --muted-foreground: 0 0% 70%;
 
     /* Accent - Reserved Gold (#D4A73B) - unchanged */
     --accent: 43 65% 53%;
-    --accent-foreground: 218 70% 13%;
+    --accent-foreground: 220 55% 10%;
 
     /* Problem icons - Red/Orange */
     --problem: 0 84% 60%;
@@ -36,7 +36,7 @@
 
     /* Solution icons - Cyan (enhanced for tech feel) */
     --solution: 195 90% 65%;
-    --solution-foreground: 218 70% 13%;
+    --solution-foreground: 220 55% 10%;
 
     /* Cyan accent for futuristic glow effects */
     --cyan-glow: 195 80% 55%;
@@ -44,7 +44,7 @@
 
     /* Warning - Amber/Orange */
     --warning: 38 92% 50%;
-    --warning-foreground: 218 70% 13%;
+    --warning-foreground: 220 55% 10%;
 
     /* CTA Success - WhatsApp Green */
     --cta-success: 142 70% 45%;
@@ -54,7 +54,7 @@
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 100% / 0.10;
-    --input: 218 60% 16%;
+    --input: 220 50% 14%;
     --ring: 0 0% 100% / 0.15;
 
     --radius: 0.875rem;
@@ -65,12 +65,12 @@
     --gold-dark: 43 65% 43%;
 
     /* Sidebar */
-    --sidebar-background: 218 70% 13%;
+    --sidebar-background: 220 55% 10%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 43 65% 53%;
-    --sidebar-primary-foreground: 218 70% 13%;
+    --sidebar-primary-foreground: 220 55% 10%;
     --sidebar-accent: 43 65% 53%;
-    --sidebar-accent-foreground: 218 70% 13%;
+    --sidebar-accent-foreground: 220 55% 10%;
     --sidebar-border: 0 0% 100% / 0.08;
     --sidebar-ring: 0 0% 100% / 0.15;
   }
