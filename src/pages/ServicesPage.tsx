@@ -69,19 +69,19 @@ const ServicesPage = () => {
   return (
     <div className="min-h-screen">
       {/* HERO - Visual Banner with Background Image */}
-      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center py-20 pt-32 md:py-28 md:pt-40 overflow-hidden">
-        {/* Background Image */}
+      <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-end pb-16 md:pb-24 overflow-hidden">
+        {/* Background Image - Full bleed under transparent header */}
         <div className="absolute inset-0 z-0">
           <img
             src={servicesHeroImage}
             alt="Professionnel consultant"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-[center_20%]"
             loading="eager"
           />
-          {/* Dark Overlay - 60% opacity for readability */}
-          <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-60" />
-          {/* Gradient for depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+          {/* Dark Overlay - 50% opacity for readability */}
+          <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-50" />
+          {/* Gradient for depth - stronger at bottom for text */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
         </div>
 
         <div className="container px-5 md:px-8 relative z-10">
