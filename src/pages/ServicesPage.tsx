@@ -67,7 +67,7 @@ const philosophyItems = [
 const ServicesPage = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* HERO - Clean cream background like reference */}
+      {/* HERO - Clean cream background */}
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center py-20 pt-32 md:py-28 md:pt-40 overflow-hidden">
         {/* Background with decorative shape */}
         <div className="absolute inset-0 bg-background" />
@@ -118,30 +118,38 @@ const ServicesPage = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="hidden lg:grid grid-cols-2 gap-6"
+              className="hidden lg:block relative"
             >
-              {services.slice(0, 4).map((service, index) => (
-                <motion.div
-                  key={service.number}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  className="p-6 rounded-2xl bg-card border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                    <service.icon className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="font-heading font-bold text-foreground text-sm">{service.subtitle}</h3>
-                </motion.div>
-              ))}
+              {/* Decorative background shape */}
+              <div className="absolute -top-8 -right-8 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6" />
+              
+              <div className="relative grid grid-cols-2 gap-6">
+                {services.slice(0, 4).map((service, index) => (
+                  <motion.div
+                    key={service.number}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                    className="p-6 rounded-2xl bg-card border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                      <service.icon className="w-6 h-6 text-accent" />
+                    </div>
+                    <h3 className="font-heading font-bold text-foreground text-sm">{service.subtitle}</h3>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* SERVICES - Cards avec expansion */}
-      <section className="py-16 md:py-24 bg-secondary/20">
-        <div className="container px-5 md:px-8">
+      <section className="py-16 md:py-24 bg-secondary/30 relative overflow-hidden">
+        {/* Decorative shape */}
+        <div className="absolute bottom-0 left-0 w-[30%] h-[50%] bg-accent/5 rounded-tr-[100px] hidden lg:block" />
+        
+        <div className="container px-5 md:px-8 relative z-10">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -153,7 +161,7 @@ const ServicesPage = () => {
               4 Piliers
             </span>
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
-              Nos axes d'intervention
+              Nos axes <span className="italic text-accent">d'intervention</span>
             </h2>
           </motion.div>
 
@@ -167,8 +175,11 @@ const ServicesPage = () => {
       </section>
 
       {/* PHILOSOPHY - Compact */}
-      <section className="py-16 md:py-24">
-        <div className="container px-5 md:px-8">
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        {/* Decorative shape */}
+        <div className="absolute top-0 right-0 w-[40%] h-[60%] bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
+        
+        <div className="container px-5 md:px-8 relative z-10">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -180,12 +191,12 @@ const ServicesPage = () => {
               Notre Approche
             </span>
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
-              Comment nous travaillons
+              Comment nous <span className="italic text-accent">travaillons</span>
             </h2>
           </motion.div>
 
           {/* Philosophy Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
             {philosophyItems.map((item, index) => (
               <PhilosophyCard key={item.title} {...item} index={index} />
             ))}
@@ -194,14 +205,20 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA - Simple */}
-      <section className="py-20 md:py-28 bg-secondary/20">
-        <div className="container px-5 md:px-8">
+      <section className="py-20 md:py-28 bg-secondary/30 relative overflow-hidden">
+        {/* Decorative shape */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[25%] h-[60%] bg-accent/5 rounded-l-[100px] hidden lg:block" />
+        
+        <div className="container px-5 md:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-xl"
           >
+            <span className="badge-accent mb-4">
+              Prêt à démarrer ?
+            </span>
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
               Votre <span className="italic text-accent">ambition</span> compte.
               <span className="block mt-1">Pas votre niveau.</span>
