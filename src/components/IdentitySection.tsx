@@ -31,12 +31,11 @@ const IdentitySection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.02 }}
-            className="glass-card rounded-xl p-10 group transition-all duration-300"
+            className="glass-card glass-card-danger rounded-xl p-10 group transition-all duration-300"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-brand-navy/10 flex items-center justify-center">
-                <XCircle className="w-5 h-5 text-brand-navy" />
+              <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center">
+                <XCircle className="w-5 h-5 icon-semantic-danger" />
               </div>
               <h3 className="text-title text-brand-navy/70">
                 Ailleurs
@@ -44,15 +43,15 @@ const IdentitySection = () => {
             </div>
             <ul className="space-y-4 text-body">
               <li className="flex items-start gap-3">
-                <span className="text-brand-navy/50">❌</span>
+                <span className="text-semantic-danger font-medium">✗</span>
                 <span className="text-brand-navy-light">Les agences qui vendent du rêve.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-brand-navy/50">❌</span>
+                <span className="text-semantic-danger font-medium">✗</span>
                 <span className="text-brand-navy-light">Les délais jamais respectés.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-brand-navy/50">❌</span>
+                <span className="text-semantic-danger font-medium">✗</span>
                 <span className="text-brand-navy-light">Le jargon pour justifier le prix.</span>
               </li>
             </ul>
@@ -64,12 +63,11 @@ const IdentitySection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            whileHover={{ scale: 1.02 }}
-            className="glass-card rounded-xl p-10 group transition-all duration-300"
+            className="glass-card glass-card-success rounded-xl p-10 group transition-all duration-300"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-brand-navy/10 flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-brand-navy" />
+              <div className="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center">
+                <CheckCircle className="w-5 h-5 icon-semantic-success" />
               </div>
               <h3 className="text-title text-brand-navy">
                 Sen'Optima
@@ -77,15 +75,15 @@ const IdentitySection = () => {
             </div>
             <ul className="space-y-4 text-body">
               <li className="flex items-start gap-3">
-                <span className="text-brand-navy">✅</span>
+                <span className="text-semantic-success font-medium">✓</span>
                 <span className="text-brand-navy-light">Des systèmes, pas du bricolage.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-brand-navy">✅</span>
+                <span className="text-semantic-success font-medium">✓</span>
                 <span className="text-brand-navy-light">Un calendrier tenu à la lettre.</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-brand-navy">✅</span>
+                <span className="text-semantic-success font-medium">✓</span>
                 <span className="text-brand-navy-light">Des résultats, pas des excuses.</span>
               </li>
             </ul>
