@@ -57,19 +57,19 @@ const TeamSection = () => {
               className="group"
             >
               {/* Card Container */}
-              <div className="rounded-2xl border border-accent/20 overflow-hidden bg-white shadow-lg">
+              <div className="rounded-2xl overflow-hidden bg-white shadow-[0_4px_24px_-4px_hsl(218_70%_10%/0.12),0_8px_48px_-8px_hsl(218_70%_10%/0.08)] hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300">
                 {/* Image Container - Reduced aspect ratio */}
                 <div 
                   className="relative w-full bg-gradient-to-b from-[#11224A] to-[#050A15]"
                   style={{ aspectRatio: "4/3" }}
                 >
-                  {/* Placeholder - Gold User Icon */}
+                  {/* Placeholder - Navy User Icon */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <User 
-                      className="w-16 h-16 text-accent/20" 
+                      className="w-16 h-16 text-white/20" 
                       strokeWidth={1}
                     />
-                    <span className="mt-2 text-xs text-accent/30 italic">
+                    <span className="mt-2 text-xs text-white/30 italic">
                       Portrait à venir
                     </span>
                   </div>
@@ -77,13 +77,13 @@ const TeamSection = () => {
 
                 {/* Text Content - BELOW the image */}
                 <div className="p-5 bg-white">
-                  <h3 className="text-xl font-heading font-bold text-accent mb-1">
+                  <h3 className="text-xl font-heading font-bold text-brand-navy mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-sm text-brand-navy font-subheading mb-2">
+                  <p className="text-sm text-brand-navy-light font-subheading mb-2">
                     {member.role}
                   </p>
-                  <p className="text-sm text-brand-navy/70 italic">
+                  <p className="text-sm text-brand-navy-light italic">
                     "{member.tagline}"
                   </p>
                 </div>

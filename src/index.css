@@ -273,32 +273,38 @@
 
   .glass-card {
     background: hsl(0 0% 100%);
-    border: 1px solid hsl(218 70% 20% / 0.1);
+    border: none;
     border-radius: 1rem;
-    box-shadow: 0 8px 32px -8px hsl(218 70% 5% / 0.15);
+    box-shadow: 0 4px 24px -4px hsl(218 70% 10% / 0.12),
+                0 8px 48px -8px hsl(218 70% 10% / 0.08);
     padding: 1.75rem;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                box-shadow 0.3s ease,
-                border-color 0.3s ease;
+                box-shadow 0.3s ease;
   }
 
   .glass-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 48px -12px hsl(218 70% 5% / 0.25);
-    border-color: hsl(43 65% 53% / 0.3);
+    transform: scale(1.02) translateY(-4px);
+    box-shadow: 0 8px 32px -4px hsl(218 70% 10% / 0.18),
+                0 16px 64px -8px hsl(218 70% 10% / 0.12);
   }
 
-  /* Card text colors - Gold titles, Navy body text */
+  /* Card text colors - Navy titles, Navy body text */
   .glass-card h3, .glass-card h4 {
-    color: hsl(var(--accent)) !important;
+    color: hsl(218 70% 20%) !important;
   }
 
   .glass-card p, .glass-card span:not(.text-accent):not(.text-problem):not(.text-solution):not(.text-caption) {
-    color: hsl(var(--brand-navy)) !important;
+    color: hsl(218 60% 35%) !important;
   }
 
   .glass-card li {
-    color: hsl(var(--brand-navy)) !important;
+    color: hsl(218 60% 35%) !important;
+  }
+
+  /* Card icons - Navy blue */
+  .glass-card .card-icon,
+  .glass-card [class*="lucide"] {
+    color: hsl(218 70% 25%) !important;
   }
 
   .glass-premium {

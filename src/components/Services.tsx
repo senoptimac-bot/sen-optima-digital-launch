@@ -129,19 +129,19 @@ const Services = () => {
                 <div className={hasImage ? "p-6 md:p-8 pt-4" : "p-0"}>
                   {/* Icon - only show if no image */}
                   {!hasImage && (
-                    <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
-                      <service.icon className="w-7 h-7 text-accent" />
+                    <div className="w-14 h-14 rounded-xl bg-brand-navy/10 flex items-center justify-center mb-5 group-hover:bg-brand-navy/15 group-hover:scale-110 transition-all duration-300">
+                      <service.icon className="w-7 h-7 text-brand-navy" />
                     </div>
                   )}
 
                   {/* Icon overlay for image cards */}
                   {hasImage && (
-                    <div className="w-10 h-10 rounded-lg bg-accent/20 backdrop-blur-sm flex items-center justify-center mb-4 -mt-8 relative z-10 border border-accent/20">
-                      <service.icon className="w-5 h-5 text-accent" />
+                    <div className="w-10 h-10 rounded-lg bg-brand-navy/10 backdrop-blur-sm flex items-center justify-center mb-4 -mt-8 relative z-10 border border-brand-navy/20">
+                      <service.icon className="w-5 h-5 text-brand-navy" />
                     </div>
                   )}
 
-                  <h3 className="text-lg font-heading font-semibold mb-3 group-hover:text-accent transition-colors duration-300">
+                  <h3 className="text-lg font-heading font-semibold text-brand-navy mb-3 group-hover:text-brand-navy-light transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-sm leading-relaxed">
@@ -150,7 +150,7 @@ const Services = () => {
                 </div>
 
                 {/* Hover accent line */}
-                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
+                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-brand-navy/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
               </motion.article>
             );
           })}

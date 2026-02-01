@@ -13,39 +13,39 @@ const AdviceSection = () => {
           className="max-w-3xl mx-auto"
         >
           <div className="glass-card rounded-xl p-10 md:p-14">
-            {/* Header with success icon */}
+            {/* Header with navy icon */}
             <div className="flex items-center gap-3 mb-10">
-              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                <Trophy className="w-5 h-5 icon-success-animated" />
+              <div className="w-10 h-10 rounded-lg bg-brand-navy/10 flex items-center justify-center">
+                <Trophy className="w-5 h-5 text-brand-navy" />
               </div>
-              <span className="text-caption text-brand-navy/50 uppercase tracking-widest">
+              <span className="text-caption text-brand-navy-light uppercase tracking-widest">
                 Le Saviez-vous ?
               </span>
             </div>
 
             {/* Title */}
-            <h2 className="text-headline mb-10">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-navy mb-10">
               L'erreur n°1 au Sénégal
             </h2>
 
             {/* Content */}
             <div className="space-y-8">
-              <p className="text-body-lg leading-relaxed">
-                Avoir un compte TikTok ou Instagram ne signifie pas être digitalisé. <span className="text-problem font-semibold">Ça signifie être dépendant d'un algorithme.</span>
+              <p className="text-lg text-brand-navy-light leading-relaxed">
+                Avoir un compte TikTok ou Instagram ne signifie pas être digitalisé. <span className="text-brand-navy font-semibold">Ça signifie être dépendant d'un algorithme.</span>
               </p>
 
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-accent/5 border border-accent/20">
-                <TrendingUp className="w-6 h-6 icon-success-animated flex-shrink-0 mt-0.5" />
-                <p className="text-body-lg leading-relaxed">
-                  Une vraie digitalisation, c'est <span className="text-accent font-semibold">posséder vos propres données</span>, votre propre site et votre propre fichier client.
+              <div className="flex items-start gap-4 p-4 rounded-lg bg-brand-navy/5 border border-brand-navy/10">
+                <TrendingUp className="w-6 h-6 text-brand-navy flex-shrink-0 mt-0.5" />
+                <p className="text-lg text-brand-navy-light leading-relaxed">
+                  Une vraie digitalisation, c'est <span className="text-brand-navy font-semibold">posséder vos propres données</span>, votre propre site et votre propre fichier client.
                 </p>
               </div>
 
               <div className="pt-8 border-t border-brand-navy/10">
                 <div className="flex items-start gap-3">
-                  <Star className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
-                  <p className="text-body">
-                    C'est la différence entre être <span className="text-problem font-medium">locataire</span> et être <span className="text-accent font-medium">propriétaire</span>.
+                  <Star className="w-4 h-4 text-brand-navy mt-1 flex-shrink-0" />
+                  <p className="text-body text-brand-navy-light">
+                    C'est la différence entre être <span className="text-brand-navy font-medium">locataire</span> et être <span className="text-brand-navy font-medium">propriétaire</span>.
                   </p>
                 </div>
               </div>
