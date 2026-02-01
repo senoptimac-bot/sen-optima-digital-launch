@@ -57,7 +57,7 @@ const TeamSection = () => {
               className="group"
             >
               {/* Card Container */}
-              <div className="rounded-2xl border border-[#D4A73B]/20 overflow-hidden bg-background/20">
+              <div className="rounded-2xl border border-accent/20 overflow-hidden bg-white shadow-lg">
                 {/* Image Container - Reduced aspect ratio */}
                 <div 
                   className="relative w-full bg-gradient-to-b from-[#11224A] to-[#050A15]"
@@ -76,14 +76,14 @@ const TeamSection = () => {
                 </div>
 
                 {/* Text Content - BELOW the image */}
-                <div className="p-5 bg-background/40">
-                  <h3 className="text-xl font-heading font-bold text-foreground mb-1">
+                <div className="p-5 bg-white">
+                  <h3 className="text-xl font-heading font-bold text-accent mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-sm text-accent font-subheading mb-2">
+                  <p className="text-sm text-brand-navy font-subheading mb-2">
                     {member.role}
                   </p>
-                  <p className="text-sm text-muted-foreground italic">
+                  <p className="text-sm text-brand-navy/70 italic">
                     "{member.tagline}"
                   </p>
                 </div>

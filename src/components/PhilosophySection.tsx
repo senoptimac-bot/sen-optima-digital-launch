@@ -73,7 +73,7 @@ const PhilosophySection = () => {
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
-                <span className="text-caption text-accent/40">{String(index + 1).padStart(2, '0')}</span>
+                <span className="text-caption text-accent/60">{String(index + 1).padStart(2, '0')}</span>
               </div>
 
               {/* Icon with accent styling */}
@@ -82,10 +82,10 @@ const PhilosophySection = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-title text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
+              <h3 className="text-title mb-4 group-hover:text-accent transition-colors duration-300">
                 {item.title}
               </h3>
-              <p className="text-body text-foreground/50 leading-relaxed">
+              <p className="text-body leading-relaxed">
                 {item.description}
               </p>
 

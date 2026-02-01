@@ -38,11 +38,11 @@ const IdentitySection = () => {
               <div className="w-10 h-10 rounded-lg bg-problem/10 flex items-center justify-center">
                 <XCircle className="w-5 h-5 icon-problem-animated" />
               </div>
-              <h3 className="text-title text-foreground/60">
+              <h3 className="text-title !text-brand-navy/60">
                 Ailleurs
               </h3>
             </div>
-            <ul className="space-y-4 text-body text-foreground/50">
+            <ul className="space-y-4 text-body">
               <li className="flex items-start gap-3">
                 <span className="text-problem">❌</span>
                 <span>Les agences qui vendent du rêve.</span>
@@ -65,17 +65,17 @@ const IdentitySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
             whileHover={{ scale: 1.02 }}
-            className="glass-card rounded-xl p-10 group transition-all duration-300 border-accent/20"
+            className="glass-card rounded-xl p-10 group transition-all duration-300 border-accent/30"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
                 <CheckCircle className="w-5 h-5 icon-success-animated" />
               </div>
-              <h3 className="text-title text-foreground">
+              <h3 className="text-title">
                 <span className="text-accent">Sen'Optima</span>
               </h3>
             </div>
-            <ul className="space-y-4 text-body text-foreground/70">
+            <ul className="space-y-4 text-body">
               <li className="flex items-start gap-3">
                 <span className="text-accent">✅</span>
                 <span>Des systèmes, pas du bricolage.</span>
