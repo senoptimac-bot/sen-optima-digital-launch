@@ -2,11 +2,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp, ArrowLeft } from "lucide-react";
 import presidentPhoto from "@/assets/president-senegal.webp";
-import aboutHeroVisual from "@/assets/about-hero-visual.jpg";
-import aboutParcoursVisual from "@/assets/about-parcours-visual.jpg";
-import aboutVisionVisual from "@/assets/about-vision-visual.jpg";
 import { Button } from "@/components/ui/button";
 import TeamSection from "@/components/TeamSection";
+import HeroIllustration from "@/components/about/HeroIllustration";
+import ParcoursIllustration from "@/components/about/ParcoursIllustration";
+import VisionIllustration from "@/components/about/VisionIllustration";
 
 // Les 3 valeurs/piliers
 const valuesData = [
@@ -33,23 +33,8 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen">
       {/* HERO SECTION */}
-      <section className="relative py-20 pt-32 md:py-32 md:pt-44 lg:py-40 lg:pt-52 overflow-hidden">
-        {/* Background Visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="absolute inset-0 z-0"
-        >
-          <img
-            src={aboutHeroVisual}
-            alt=""
-            className="w-full h-full object-cover object-center opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/70" />
-        </motion.div>
-
-        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
+      <section className="relative py-20 pt-32 md:py-32 md:pt-44 lg:py-40 lg:pt-52">
+        <div className="container px-5 md:px-8 lg:px-12">
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -94,56 +79,22 @@ const AboutPage = () => {
               </p>
             </motion.div>
 
-            {/* Hero Visual Card */}
+            {/* Hero Illustration */}
             <motion.div
-              initial={{ opacity: 0, x: 50, rotateY: 15 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="hidden lg:block relative"
+              className="relative"
             >
-              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl shadow-accent/10">
-                <img
-                  src={aboutHeroVisual}
-                  alt="Consultant professionnel"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-              </div>
-              {/* Floating accent */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -left-4 w-24 h-24 rounded-2xl bg-accent/20 backdrop-blur-sm border border-accent/30"
-              />
+              <HeroIllustration />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* SECTION HISTOIRE - Notre Parcours */}
-      <section className="py-16 md:py-28 lg:py-36 bg-secondary/20 relative overflow-hidden">
-        {/* Flowing Background Visual */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full z-0 hidden md:block"
-        >
-          <motion.img
-            animate={{ 
-              scale: [1, 1.05, 1],
-              rotate: [0, 2, 0]
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            src={aboutParcoursVisual}
-            alt=""
-            className="w-full h-full object-cover opacity-30 rounded-l-[4rem]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-secondary/80 via-secondary/40 to-transparent" />
-        </motion.div>
-
-        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
+      <section className="py-16 md:py-28 lg:py-36 bg-secondary/20">
+        <div className="container px-5 md:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -180,85 +131,40 @@ const AboutPage = () => {
               </div>
             </motion.div>
 
-            {/* Decorative Visual Card - Mobile */}
+            {/* Parcours Illustration */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="md:hidden relative"
+              className="relative"
             >
-              <div className="relative rounded-2xl overflow-hidden aspect-square">
-                <motion.img
-                  animate={{ scale: [1, 1.03, 1] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  src={aboutParcoursVisual}
-                  alt="Parcours fluide"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent" />
-              </div>
+              <ParcoursIllustration />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* SECTION VISION - Pourquoi nous ? */}
-      <section className="py-16 md:py-28 lg:py-36 relative overflow-hidden">
-        {/* Flowing Background Visual - Left side */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-2/5 h-[120%] z-0 hidden lg:block"
-        >
-          <motion.img
-            animate={{ 
-              scale: [1, 1.08, 1],
-              y: [0, -20, 0]
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            src={aboutVisionVisual}
-            alt=""
-            className="w-full h-full object-cover opacity-40 rounded-r-[4rem]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-l from-background via-background/60 to-transparent" />
-        </motion.div>
-
-        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
+      <section className="py-16 md:py-28 lg:py-36">
+        <div className="container px-5 md:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Visual Card - Desktop Left */}
+            {/* Vision Illustration - Left on desktop */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="hidden lg:block relative order-1"
+              transition={{ duration: 0.6 }}
+              className="relative order-2 lg:order-1"
             >
-              <div className="relative rounded-3xl overflow-hidden aspect-square shadow-2xl shadow-accent/5">
-                <motion.img
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                  src={aboutVisionVisual}
-                  alt="Transformation visuelle"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-background/30" />
-              </div>
-              {/* Floating accent */}
-              <motion.div
-                animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -right-6 w-20 h-20 rounded-2xl bg-accent/15 backdrop-blur-sm border border-accent/20"
-              />
+              <VisionIllustration />
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="max-w-xl order-2 lg:ml-auto"
+              className="max-w-xl order-1 lg:order-2"
             >
               {/* Label */}
               <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-4 lg:mb-6">
@@ -283,26 +189,6 @@ const AboutPage = () => {
                   les fondations (Marketing, Gestion, Process) qui permettront 
                   à votre projet de durer.
                 </p>
-              </div>
-            </motion.div>
-
-            {/* Visual Card - Mobile */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:hidden relative order-1"
-            >
-              <div className="relative rounded-2xl overflow-hidden aspect-video">
-                <motion.img
-                  animate={{ scale: [1, 1.03, 1] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  src={aboutVisionVisual}
-                  alt="Transformation visuelle"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
             </motion.div>
           </div>
