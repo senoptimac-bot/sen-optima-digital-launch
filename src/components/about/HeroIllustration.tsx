@@ -1,214 +1,150 @@
 import { motion } from "framer-motion";
 
-// Concept: Structure & Méthode - Formes géométriques qui s'assemblent
+// UX Concept: Main qui soutient + Croissance
+// Métaphore claire: Nous vous accompagnons vers le haut
 const HeroIllustration = () => {
   return (
     <div className="relative w-full h-full min-h-[300px] flex items-center justify-center">
-      <svg viewBox="0 0 300 280" className="w-full h-full max-w-sm">
+      <svg viewBox="0 0 280 260" className="w-full h-full max-w-xs">
         <defs>
-          <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(var(--accent))" />
-            <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.5" />
+          <linearGradient id="liftGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="hsl(var(--accent))" />
           </linearGradient>
-          <linearGradient id="subtleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="hsl(var(--foreground))" stopOpacity="0.05" />
+          <linearGradient id="supportGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="hsl(var(--foreground))" stopOpacity="0.1" />
           </linearGradient>
         </defs>
 
-        {/* Cercle de fond subtil */}
+        {/* Fond subtil */}
         <motion.circle
-          cx="150"
-          cy="130"
-          r="90"
-          fill="url(#subtleGrad)"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1 }}
+          cx="140"
+          cy="120"
+          r="80"
+          fill="hsl(var(--accent))"
+          opacity="0.05"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.8 }}
         />
 
-        {/* Blocs qui s'assemblent - représentent la structure */}
-        {/* Bloc 1 - en haut à gauche */}
-        <motion.rect
-          x="85"
-          y="70"
-          width="50"
-          height="50"
-          rx="8"
-          fill="hsl(var(--accent))"
-          opacity="0.2"
-          initial={{ x: -50, opacity: 0 }}
-          animate={{ x: 0, opacity: 0.2 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        />
-        
-        {/* Bloc 2 - en haut à droite */}
-        <motion.rect
-          x="145"
-          y="70"
-          width="50"
-          height="50"
-          rx="8"
-          fill="hsl(var(--accent))"
-          opacity="0.35"
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 0.35 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        />
-        
-        {/* Bloc 3 - en bas gauche */}
-        <motion.rect
-          x="85"
-          y="130"
-          width="50"
-          height="50"
-          rx="8"
-          fill="hsl(var(--accent))"
+        {/* Main stylisée qui soutient (représente l'accompagnement) */}
+        <motion.g
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {/* Paume de la main simplifiée */}
+          <motion.path
+            d="M90 160 Q90 145 105 140 L175 140 Q190 145 190 160 L190 175 Q190 185 180 190 L100 190 Q90 185 90 175 Z"
+            fill="url(#supportGrad)"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          />
+          
+          {/* Doigts stylisés - lignes courbes */}
+          {[
+            { x1: 105, x2: 100, delay: 0.4 },
+            { x1: 125, x2: 122, delay: 0.5 },
+            { x1: 155, x2: 158, delay: 0.6 },
+            { x1: 175, x2: 180, delay: 0.7 },
+          ].map((finger, i) => (
+            <motion.path
+              key={i}
+              d={`M${finger.x1} 140 Q${finger.x2} 125 ${finger.x1} 115`}
+              fill="none"
+              stroke="hsl(var(--foreground))"
+              strokeWidth="8"
+              strokeLinecap="round"
+              opacity="0.25"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.4, delay: finger.delay }}
+            />
+          ))}
+        </motion.g>
+
+        {/* Graphique de croissance qui monte depuis la main */}
+        <motion.g
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          {/* Barres de croissance */}
+          {[
+            { x: 110, h: 25, delay: 0.9 },
+            { x: 130, h: 40, delay: 1.0 },
+            { x: 150, h: 60, delay: 1.1 },
+          ].map((bar, i) => (
+            <motion.rect
+              key={i}
+              x={bar.x}
+              y={115 - bar.h}
+              width="16"
+              height={bar.h}
+              rx="4"
+              fill="url(#liftGrad)"
+              initial={{ scaleY: 0, opacity: 0 }}
+              animate={{ scaleY: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: bar.delay }}
+              style={{ transformOrigin: `${bar.x + 8}px 115px` }}
+            />
+          ))}
+
+          {/* Flèche vers le haut */}
+          <motion.g
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.3 }}
+          >
+            <motion.path
+              d="M158 50 L158 35 M150 43 L158 35 L166 43"
+              stroke="hsl(var(--accent))"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.g>
+        </motion.g>
+
+        {/* Labels clairs */}
+        <motion.text
+          x="140"
+          y="210"
+          textAnchor="middle"
+          fill="hsl(var(--foreground))"
+          fontSize="10"
+          fontWeight="500"
           opacity="0.5"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 0.5 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        />
-        
-        {/* Bloc 4 - Principal - en bas droite */}
-        <motion.rect
-          x="145"
-          y="130"
-          width="50"
-          height="50"
-          rx="8"
-          fill="url(#accentGrad)"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        />
-
-        {/* Icône check dans le bloc principal */}
-        <motion.path
-          d="M160 155 L168 163 L180 148"
-          stroke="hsl(var(--background))"
-          strokeWidth="3"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-        />
-
-        {/* Lignes de connexion entre les blocs */}
-        <motion.line
-          x1="135"
-          y1="95"
-          x2="145"
-          y2="95"
-          stroke="hsl(var(--accent))"
-          strokeWidth="2"
-          strokeDasharray="4 2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ delay: 1 }}
-        />
-        <motion.line
-          x1="110"
-          y1="120"
-          x2="110"
-          y2="130"
-          stroke="hsl(var(--accent))"
-          strokeWidth="2"
-          strokeDasharray="4 2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ delay: 1.1 }}
-        />
-        <motion.line
-          x1="135"
-          y1="155"
-          x2="145"
-          y2="155"
-          stroke="hsl(var(--accent))"
-          strokeWidth="2"
-          strokeDasharray="4 2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ delay: 1.2 }}
-        />
-
-        {/* Labels des blocs */}
-        <motion.text
-          x="110"
-          y="100"
-          textAnchor="middle"
-          fill="hsl(var(--accent))"
-          fontSize="8"
-          fontWeight="500"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.7 }}
-          transition={{ delay: 1.3 }}
         >
-          Rigueur
-        </motion.text>
-        <motion.text
-          x="170"
-          y="100"
-          textAnchor="middle"
-          fill="hsl(var(--accent))"
-          fontSize="8"
-          fontWeight="500"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.7 }}
-          transition={{ delay: 1.4 }}
-        >
-          Méthode
-        </motion.text>
-        <motion.text
-          x="110"
-          y="160"
-          textAnchor="middle"
-          fill="hsl(var(--accent))"
-          fontSize="8"
-          fontWeight="500"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.7 }}
-          transition={{ delay: 1.5 }}
-        >
-          Structure
+          Notre accompagnement
         </motion.text>
 
-        {/* Label principal */}
         <motion.g
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.6 }}
+          transition={{ delay: 1.4 }}
         >
-          <rect x="100" y="205" width="100" height="28" rx="14" fill="hsl(var(--accent))" opacity="0.15" />
+          <rect x="95" y="222" width="90" height="26" rx="13" fill="hsl(var(--accent))" opacity="0.15" />
           <text
-            x="150"
-            y="224"
+            x="140"
+            y="240"
             textAnchor="middle"
             fill="hsl(var(--accent))"
             fontSize="11"
             fontWeight="600"
           >
-            Votre Succès
+            Votre Croissance
           </text>
         </motion.g>
-
-        {/* Tagline */}
-        <motion.text
-          x="150"
-          y="258"
-          textAnchor="middle"
-          fill="hsl(var(--foreground))"
-          fontSize="10"
-          fontWeight="500"
-          opacity="0.4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ delay: 1.8 }}
-        >
-          Les fondations qui manquaient
-        </motion.text>
       </svg>
     </div>
   );
