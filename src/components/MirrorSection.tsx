@@ -104,24 +104,24 @@ const MirrorSection = () => {
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
-                <span className="text-caption text-problem/60">{String(index + 1).padStart(2, '0')}</span>
+                <span className="text-caption text-brand-navy-light">{String(index + 1).padStart(2, '0')}</span>
               </div>
 
-              {/* Icon with problem styling and animation */}
-              <div className="w-12 h-12 rounded-xl bg-problem/10 flex items-center justify-center mb-6 group-hover:bg-problem/20 transition-colors duration-300">
-                <pain.icon className="w-6 h-6 icon-problem-animated" />
+              {/* Icon with navy styling */}
+              <div className="w-12 h-12 rounded-xl bg-brand-navy/10 flex items-center justify-center mb-6 group-hover:bg-brand-navy/15 transition-colors duration-300">
+                <pain.icon className="w-6 h-6 text-brand-navy" />
               </div>
 
               {/* Content */}
-              <h3 className="text-title mb-3 group-hover:text-problem transition-colors duration-300">
+              <h3 className="text-title text-brand-navy mb-3 group-hover:text-brand-navy-light transition-colors duration-300">
                 {pain.title}
               </h3>
-              <p className="text-body leading-relaxed">
+              <p className="text-body text-brand-navy-light leading-relaxed">
                 {pain.description}
               </p>
 
               {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-problem/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
+              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-brand-navy/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
             </motion.div>
           ))}
         </motion.div>

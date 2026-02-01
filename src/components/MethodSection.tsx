@@ -64,30 +64,30 @@ const MethodSection = () => {
                 className="relative p-8 glass-card rounded-xl text-center group transition-all duration-300"
               >
                 {/* Number */}
-                <div className="text-caption text-solution mb-6">
+                <div className="text-caption text-brand-navy-light mb-6">
                   {step.number}
                 </div>
 
-                {/* Icon with solution styling */}
-                <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-solution/10 flex items-center justify-center group-hover:bg-solution/20 transition-colors duration-300">
-                  <step.icon className="w-7 h-7 icon-solution-animated" />
+                {/* Icon with navy styling */}
+                <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-brand-navy/10 flex items-center justify-center group-hover:bg-brand-navy/15 transition-colors duration-300">
+                  <step.icon className="w-7 h-7 text-brand-navy" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-title mb-2 group-hover:text-solution transition-colors duration-300">
+                <h3 className="text-title text-brand-navy mb-2 group-hover:text-brand-navy-light transition-colors duration-300">
                   {step.title}
                 </h3>
-                <p className="text-body">
+                <p className="text-body text-brand-navy-light">
                   {step.description}
                 </p>
 
                 {/* Connector line for desktop */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-solution/30" />
+                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-brand-navy/30" />
                 )}
 
                 {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-solution/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
+                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-brand-navy/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
               </motion.div>
             ))}
           </div>
