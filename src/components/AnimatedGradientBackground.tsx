@@ -1,116 +1,52 @@
-import { memo, useEffect, useState, useCallback } from "react";
+import { memo } from "react";
 
 /**
- * Subtle animated gradient background with parallax scroll effect.
- * Uses pure CSS for GPU-accelerated performance.
+ * Subtle animated gradient background for premium white design.
+ * Uses very light, barely perceptible gradients to add depth
+ * without compromising the clean white aesthetic.
  */
 const AnimatedGradientBackground = memo(() => {
-  const [scrollY, setScrollY] = useState(0);
-
-  const handleScroll = useCallback(() => {
-    // Throttle to ~60fps
-    requestAnimationFrame(() => {
-      setScrollY(window.scrollY * 0.15);
-    });
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Primary soft gradient - subtle blue tint with parallax */}
+      {/* Very subtle gold gradient blob - barely visible on white */}
       <div 
-        className="absolute inset-0 opacity-30 will-change-transform"
+        className="absolute w-[1000px] h-[1000px] rounded-full opacity-[0.03] will-change-transform"
         style={{
-          background: `
-            radial-gradient(
-              ellipse 80% 60% at 20% 30%,
-              hsl(218, 50%, 95%) 0%,
-              transparent 70%
-            )
-          `,
-          animation: "breatheGradient1 35s ease-in-out infinite",
-          transform: `translateY(${scrollY}px)`,
+          background: "radial-gradient(circle, hsl(43, 75%, 52%) 0%, transparent 60%)",
+          top: "-30%",
+          right: "-20%",
+          animation: "floatGold 60s ease-in-out infinite",
         }}
       />
       
-      {/* Secondary gradient - warm gold hint with inverse parallax */}
+      {/* Secondary subtle navy blob */}
       <div 
-        className="absolute inset-0 opacity-20 will-change-transform"
+        className="absolute w-[800px] h-[800px] rounded-full opacity-[0.02] will-change-transform"
         style={{
-          background: `
-            radial-gradient(
-              ellipse 70% 50% at 80% 70%,
-              hsl(43, 50%, 92%) 0%,
-              transparent 60%
-            )
-          `,
-          animation: "breatheGradient2 40s ease-in-out infinite",
-          transform: `translateY(${-scrollY * 0.5}px)`,
-        }}
-      />
-      
-      {/* Tertiary subtle glow - soft lavender with medium parallax */}
-      <div 
-        className="absolute inset-0 opacity-15 will-change-transform"
-        style={{
-          background: `
-            radial-gradient(
-              circle at 50% 50%,
-              hsl(220, 30%, 94%) 0%,
-              transparent 50%
-            )
-          `,
-          animation: "breatheGradient3 45s ease-in-out infinite",
-          transform: `translateY(${scrollY * 0.3}px)`,
+          background: "radial-gradient(circle, hsl(215, 43%, 18%) 0%, transparent 60%)",
+          bottom: "-20%",
+          left: "-15%",
+          animation: "floatNavy 75s ease-in-out infinite",
         }}
       />
 
-      {/* CSS Keyframes */}
+      {/* CSS Keyframes - very slow, barely perceptible movement */}
       <style>{`
-        @keyframes breatheGradient1 {
+        @keyframes floatGold {
           0%, 100% {
-            transform: translate(0%, 0%) scale(1);
-            opacity: 0.4;
-          }
-          25% {
-            transform: translate(10%, 5%) scale(1.1);
-            opacity: 0.35;
+            transform: translate(0, 0) scale(1);
           }
           50% {
-            transform: translate(5%, 10%) scale(1.05);
-            opacity: 0.45;
-          }
-          75% {
-            transform: translate(-5%, 5%) scale(1.15);
-            opacity: 0.3;
+            transform: translate(-40px, 30px) scale(1.1);
           }
         }
         
-        @keyframes breatheGradient2 {
+        @keyframes floatNavy {
           0%, 100% {
-            transform: translate(0%, 0%) scale(1);
-            opacity: 0.3;
-          }
-          33% {
-            transform: translate(-8%, -5%) scale(1.1);
-            opacity: 0.25;
-          }
-          66% {
-            transform: translate(5%, -8%) scale(1.05);
-            opacity: 0.35;
-          }
-        }
-        
-        @keyframes breatheGradient3 {
-          0%, 100% {
-            transform: translate(0%, 0%) scale(1);
+            transform: translate(0, 0) scale(1);
           }
           50% {
-            transform: translate(-3%, 3%) scale(1.2);
+            transform: translate(30px, -40px) scale(1.05);
           }
         }
       `}</style>
