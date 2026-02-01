@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ServiceCardProps {
@@ -28,58 +28,57 @@ const ServiceCard = ({
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group"
     >
-      {/* Main Card - Always Visible */}
       <div 
         onClick={() => setIsExpanded(!isExpanded)}
         className={cn(
-          "relative p-6 md:p-8 rounded-2xl cursor-pointer transition-all duration-300",
-          "bg-card border border-border/30",
-          "hover:shadow-md",
-          isExpanded && "shadow-lg"
+          "relative p-5 md:p-6 rounded-xl cursor-pointer transition-all duration-300",
+          "bg-card/60 backdrop-blur-sm",
+          "hover:bg-card",
+          isExpanded && "bg-card"
         )}
       >
-        {/* Number Badge */}
-        <span className="absolute top-4 right-4 text-xs font-mono text-accent/60 bg-accent/10 px-2 py-1 rounded-full">
-          {number}
-        </span>
-
-        {/* Icon & Title */}
-        <div className="flex items-start gap-4 mb-4">
-          <div className={cn(
-            "w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center flex-shrink-0",
-            "bg-accent/10 group-hover:bg-accent/15 transition-colors duration-300"
-          )}>
-            <Icon className="w-6 h-6 md:w-7 md:h-7 text-accent" />
+        {/* Header Row */}
+        <div className="flex items-center gap-4">
+          {/* Icon */}
+          <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-hover:bg-accent/15">
+            <Icon className="w-5 h-5 text-accent" />
           </div>
+
+          {/* Title & Number */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg md:text-xl font-heading font-bold text-foreground leading-tight">
+            <div className="flex items-center gap-2 mb-0.5">
+              <span className="text-[10px] font-mono text-accent/70 uppercase tracking-wider">{number}</span>
+              <span className="text-accent/30">—</span>
+              <span className="text-xs text-muted-foreground">{subtitle}</span>
+            </div>
+            <h3 className="text-base md:text-lg font-heading font-bold text-foreground leading-snug">
               {title}
             </h3>
-            <p className="text-sm text-accent mt-1">{subtitle}</p>
+          </div>
+
+          {/* Expand Arrow */}
+          <div className={cn(
+            "w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300",
+            "bg-secondary/50 group-hover:bg-secondary",
+            isExpanded && "bg-accent/10"
+          )}>
+            <ChevronRight className={cn(
+              "w-4 h-4 text-muted-foreground transition-transform duration-300",
+              isExpanded && "rotate-90 text-accent"
+            )} />
           </div>
         </div>
 
-        {/* Preview Text - Always Visible */}
-        <p className="text-muted-foreground text-sm md:text-base leading-relaxed line-clamp-2">
+        {/* Preview - Always Visible */}
+        <p className="text-muted-foreground text-sm leading-relaxed mt-4 line-clamp-2">
           {whatWeDo}
         </p>
-
-        {/* Expand Indicator */}
-        <div className="flex items-center justify-center mt-4 pt-4 border-t border-border/50">
-          <span className="text-xs text-muted-foreground mr-2">
-            {isExpanded ? "Moins de détails" : "Plus de détails"}
-          </span>
-          <ChevronDown className={cn(
-            "w-4 h-4 text-muted-foreground transition-transform duration-300",
-            isExpanded && "rotate-180"
-          )} />
-        </div>
 
         {/* Expanded Content */}
         <motion.div
@@ -88,24 +87,27 @@ const ServiceCard = ({
             height: isExpanded ? "auto" : 0,
             opacity: isExpanded ? 1 : 0 
           }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
           className="overflow-hidden"
         >
-          <div className="pt-6 space-y-5">
+          <div className="pt-5 space-y-4">
+            {/* Divider */}
+            <div className="h-px bg-border/50" />
+            
             {/* For Who */}
-            <div className="p-4 rounded-xl bg-secondary/50 border border-border/30">
-              <span className="text-xs uppercase tracking-wider font-semibold text-accent block mb-2">
+            <div>
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-accent/80 block mb-1.5">
                 Pour qui
               </span>
-              <p className="text-foreground/70 text-sm leading-relaxed">{forWho}</p>
+              <p className="text-foreground/80 text-sm leading-relaxed">{forWho}</p>
             </div>
 
             {/* Our Requirement */}
-            <div className="p-4 rounded-xl bg-accent/5 border border-accent/20">
-              <span className="text-xs uppercase tracking-wider font-semibold text-accent block mb-2">
+            <div className="pl-3 border-l-2 border-accent/30">
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-accent/80 block mb-1.5">
                 Notre exigence
               </span>
-              <p className="text-muted-foreground text-sm leading-relaxed italic">{ourRequirement}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{ourRequirement}</p>
             </div>
           </div>
         </motion.div>
