@@ -1,53 +1,57 @@
 import { motion } from "framer-motion";
 import { UserX, Ghost, HelpCircle, AlertTriangle } from "lucide-react";
 import situationImage from "@/assets/situation-actuelle.jpg";
-
-const painPoints = [
-  {
-    icon: Ghost,
-    title: "Le Prestataire Fantôme",
-    description: "Fatigué des développeurs qui disparaissent après l'avance ? Nous fournissons un calendrier précis et un suivi hebdomadaire.",
-  },
-  {
-    icon: UserX,
-    title: "L'Argent Perdu",
-    description: "Votre page TikTok a des vues mais zéro commande ? Vous n'avez pas un problème de visibilité, vous avez un problème de système de vente.",
-  },
-  {
-    icon: HelpCircle,
-    title: "Le Chaos Interne",
-    description: "Vous gérez tout au stylo ou sur WhatsApp ? Si vous tombez malade demain, votre business s'arrête. Nous automatisons pour vous libérer.",
-  },
-];
-
+const painPoints = [{
+  icon: Ghost,
+  title: "Le Prestataire Fantôme",
+  description: "Fatigué des développeurs qui disparaissent après l'avance ? Nous fournissons un calendrier précis et un suivi hebdomadaire."
+}, {
+  icon: UserX,
+  title: "L'Argent Perdu",
+  description: "Votre page TikTok a des vues mais zéro commande ? Vous n'avez pas un problème de visibilité, vous avez un problème de système de vente."
+}, {
+  icon: HelpCircle,
+  title: "Le Chaos Interne",
+  description: "Vous gérez tout au stylo ou sur WhatsApp ? Si vous tombez malade demain, votre business s'arrête. Nous automatisons pour vous libérer."
+}];
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: {
+    opacity: 0
+  },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
 };
-
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: {
+    opacity: 0,
+    y: 30
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  },
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.46, 0.45, 0.94] as const
+    }
+  }
 };
-
 const MirrorSection = () => {
-  return (
-    <section className="py-section-lg relative bg-background">
+  return <section className="py-section-lg relative bg-background">
       <div className="container">
         {/* Header with Featured Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto mb-20"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} className="max-w-4xl mx-auto mb-20">
           {/* Badge */}
           <div className="flex justify-center mb-6">
             <span className="badge-accent">
@@ -59,18 +63,14 @@ const MirrorSection = () => {
           <div className="relative mb-10 group">
             {/* Main Image Container */}
             <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden shadow-xl border border-border">
-              <img 
-                src={situationImage} 
-                alt="Entrepreneur face aux défis business" 
-                className="w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-700"
-              />
+              <img src={situationImage} alt="Entrepreneur face aux défis business" className="w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-700" />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
               
               {/* Text overlay on image */}
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                <h2 className="text-2xl md:text-4xl font-heading font-bold text-white">
-                  Votre <span className="italic">situation actuelle</span>
+                <h2 className="text-2xl md:text-4xl font-heading font-bold text-destructive">
+                  Votre <span className="italic text-destructive">situation actuelle</span>
                 </h2>
               </div>
 
@@ -87,20 +87,14 @@ const MirrorSection = () => {
         </motion.div>
 
         {/* Pain Points Cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
-        >
-          {painPoints.map((pain, index) => (
-            <motion.div
-              key={pain.title}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-8 card-cream group transition-all duration-300"
-            >
+        <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{
+        once: true,
+        margin: "-100px"
+      }} className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {painPoints.map((pain, index) => <motion.div key={pain.title} variants={itemVariants} whileHover={{
+          scale: 1.02,
+          y: -5
+        }} className="relative p-8 card-cream group transition-all duration-300">
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
                 <span className="text-caption text-problem/40">{String(index + 1).padStart(2, '0')}</span>
@@ -118,12 +112,9 @@ const MirrorSection = () => {
               <p className="text-body text-muted-foreground leading-relaxed">
                 {pain.description}
               </p>
-            </motion.div>
-          ))}
+            </motion.div>)}
         </motion.div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default MirrorSection;
