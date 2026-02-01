@@ -114,8 +114,11 @@ const AboutPage = () => {
       </section>
 
       {/* SECTION HISTOIRE - Notre Parcours */}
-      <section className="py-16 md:py-28 lg:py-36 bg-secondary/20">
-        <div className="container px-5 md:px-8 lg:px-12">
+      <section className="py-16 md:py-28 lg:py-36 bg-secondary/30 relative overflow-hidden">
+        {/* Decorative shape */}
+        <div className="absolute bottom-0 left-0 w-[40%] h-[60%] bg-accent/5 rounded-tr-[100px] hidden lg:block" />
+        
+        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -123,20 +126,19 @@ const AboutPage = () => {
               viewport={{ once: true }}
               className="max-w-xl"
             >
-              {/* Label */}
-              <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-4 lg:mb-6">
-                <span className="w-8 h-px bg-accent" />
+              {/* Badge */}
+              <span className="badge-accent mb-4 lg:mb-6">
                 Notre Parcours
               </span>
 
               {/* Title */}
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6 lg:mb-8">
-                De l'intérieur du système
-                <span className="text-accent"> vers votre réussite.</span>
+                De l'intérieur du <span className="italic text-accent">système</span>
+                <span className="block mt-1">vers votre réussite.</span>
               </h2>
 
               {/* Text */}
-              <div className="space-y-4 lg:space-y-6 text-foreground/60 leading-relaxed lg:leading-loose text-base lg:text-lg">
+              <div className="space-y-4 lg:space-y-6 text-muted-foreground leading-relaxed lg:leading-loose text-base lg:text-lg">
                 <p>
                   Avant de lancer cette agence, nous avons travaillé au cœur des entreprises. 
                   Nous avons piloté des projets, optimisé des structures et généré de la 
@@ -160,15 +162,21 @@ const AboutPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <ParcoursIllustration />
+              <div className="absolute -top-6 -right-6 w-full h-full bg-accent/10 rounded-[2rem] transform rotate-3 hidden lg:block" />
+              <div className="relative">
+                <ParcoursIllustration />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* SECTION VISION - Pourquoi nous ? */}
-      <section className="py-16 md:py-28 lg:py-36">
-        <div className="container px-5 md:px-8 lg:px-12">
+      <section className="py-16 md:py-28 lg:py-36 relative overflow-hidden">
+        {/* Decorative shape */}
+        <div className="absolute top-0 right-0 w-[50%] h-[70%] bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
+        
+        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Vision Illustration - Left on desktop */}
             <motion.div
@@ -178,7 +186,10 @@ const AboutPage = () => {
               transition={{ duration: 0.6 }}
               className="relative order-2 lg:order-1"
             >
-              <VisionIllustration />
+              <div className="absolute -top-6 -left-6 w-full h-full bg-accent/10 rounded-[2rem] transform -rotate-3 hidden lg:block" />
+              <div className="relative">
+                <VisionIllustration />
+              </div>
             </motion.div>
 
             <motion.div
@@ -187,20 +198,19 @@ const AboutPage = () => {
               viewport={{ once: true }}
               className="max-w-xl order-1 lg:order-2"
             >
-              {/* Label */}
-              <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-4 lg:mb-6">
-                <span className="w-8 h-px bg-accent" />
+              {/* Badge */}
+              <span className="badge-accent mb-4 lg:mb-6">
                 Pourquoi Nous ?
               </span>
 
               {/* Title */}
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6 lg:mb-8">
-                Nous transformons des idées floues
-                <span className="text-accent"> en business solides.</span>
+                Nous transformons des <span className="italic text-accent">idées floues</span>
+                <span className="block mt-1">en business solides.</span>
               </h2>
 
               {/* Text */}
-              <div className="space-y-4 lg:space-y-6 text-foreground/60 leading-relaxed lg:leading-loose text-base lg:text-lg">
+              <div className="space-y-4 lg:space-y-6 text-muted-foreground leading-relaxed lg:leading-loose text-base lg:text-lg">
                 <p>
                   Beaucoup de jeunes entrepreneurs ont l'énergie, mais pas la méthode. 
                   Nous sommes là pour combler ce vide.
@@ -217,8 +227,11 @@ const AboutPage = () => {
       </section>
 
       {/* SECTION VALEURS - Les 3 Piliers */}
-      <section className="py-16 md:py-28 lg:py-36 bg-secondary/20">
-        <div className="container px-5 md:px-8 lg:px-12">
+      <section className="py-16 md:py-28 lg:py-36 bg-secondary/30 relative overflow-hidden">
+        {/* Decorative shape */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[30%] h-[50%] bg-accent/5 rounded-l-[100px] hidden lg:block" />
+        
+        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -226,12 +239,11 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="mb-10 md:mb-12 lg:mb-16 max-w-3xl lg:max-w-4xl"
           >
-            <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-4 lg:mb-6">
-              <span className="w-8 h-px bg-accent" />
+            <span className="badge-accent mb-4 lg:mb-6">
               Nos Valeurs
             </span>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
-              Les 3 Piliers
+              Les 3 <span className="italic text-accent">Piliers</span>
             </h2>
           </motion.div>
 
@@ -244,7 +256,7 @@ const AboutPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 lg:p-8 rounded-2xl glass-card border border-foreground/10 hover:border-accent/20 transition-all duration-300"
+                className="p-6 lg:p-8 rounded-2xl bg-card border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
               >
                 {/* Icon */}
                 <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-4 lg:mb-6">
@@ -257,7 +269,7 @@ const AboutPage = () => {
                 </h3>
 
                 {/* Description */}
-                <p className="text-foreground/60 text-sm lg:text-base leading-relaxed lg:leading-loose">
+                <p className="text-muted-foreground text-sm lg:text-base leading-relaxed lg:leading-loose">
                   {value.description}
                 </p>
               </motion.div>
