@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import logoFooter from "@/assets/logo-footer.svg";
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
-  return <footer ref={ref} className="py-10 md:py-12 bg-[hsl(218,70%,8%)] border-t border-white/5">
+  return <footer ref={ref} className="py-10 md:py-12 bg-background border-t border-white/5">
       <div className="container">
         {/* Main 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left">
