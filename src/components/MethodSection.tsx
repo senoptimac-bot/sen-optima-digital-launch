@@ -74,10 +74,10 @@ const MethodSection = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-title text-foreground mb-2 group-hover:text-solution transition-colors duration-300">
+                <h3 className="text-title mb-2 group-hover:text-solution transition-colors duration-300">
                   {step.title}
                 </h3>
-                <p className="text-body text-foreground/40">
+                <p className="text-body">
                   {step.description}
                 </p>
 
@@ -102,7 +102,7 @@ const MethodSection = () => {
           className="max-w-2xl"
         >
           <div className="p-6 glass-card rounded-xl mb-12 text-left">
-            <p className="text-body text-foreground/60">
+            <p className="text-body !text-brand-navy/80 italic">
               "On ne met pas le toit avant les fondations."
             </p>
           </div>

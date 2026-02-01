@@ -104,7 +104,7 @@ const MirrorSection = () => {
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
-                <span className="text-caption text-problem/40">{String(index + 1).padStart(2, '0')}</span>
+                <span className="text-caption text-problem/60">{String(index + 1).padStart(2, '0')}</span>
               </div>
 
               {/* Icon with problem styling and animation */}
@@ -113,10 +113,10 @@ const MirrorSection = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-title text-foreground mb-3 group-hover:text-problem transition-colors duration-300">
+              <h3 className="text-title mb-3 group-hover:text-problem transition-colors duration-300">
                 {pain.title}
               </h3>
-              <p className="text-body text-foreground/50 leading-relaxed">
+              <p className="text-body leading-relaxed">
                 {pain.description}
               </p>
 
