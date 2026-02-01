@@ -1,343 +1,288 @@
 import { motion } from "framer-motion";
 
+// Concept: Transformation - Du flou à la clarté avec des cercles concentriques
 const VisionIllustration = () => {
   return (
-    <div className="relative w-full h-full min-h-[300px] flex items-center justify-center">
-      <svg viewBox="0 0 400 300" className="w-full h-full max-w-md">
+    <div className="relative w-full h-full min-h-[280px] flex items-center justify-center">
+      <svg viewBox="0 0 320 260" className="w-full h-full max-w-sm">
         <defs>
-          <linearGradient id="transformGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.2" />
+          <linearGradient id="transformLine" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.3" />
             <stop offset="100%" stopColor="hsl(var(--accent))" />
           </linearGradient>
-          <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
-          </filter>
         </defs>
 
-        {/* Left Side - Chaos/Blur (Idées floues) */}
+        {/* GAUCHE: Cercles flous/désordonnés */}
         <motion.g
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          {/* Blurry scattered shapes */}
-          {[
-            { x: 50, y: 100, size: 25, delay: 0 },
-            { x: 80, y: 140, size: 20, delay: 0.2 },
-            { x: 40, y: 170, size: 22, delay: 0.4 },
-            { x: 90, y: 190, size: 18, delay: 0.1 },
-            { x: 60, y: 130, size: 15, delay: 0.3 },
-            { x: 100, y: 160, size: 20, delay: 0.5 },
-          ].map((shape, i) => (
-            <motion.g key={`chaos-${i}`}>
-              {/* Blurred background */}
-              <motion.rect
-                x={shape.x - shape.size / 2}
-                y={shape.y - shape.size / 2}
-                width={shape.size}
-                height={shape.size}
-                rx="4"
-                fill="hsl(var(--foreground))"
-                opacity={0.15}
-                filter="url(#blur)"
-                animate={{
-                  x: [0, Math.random() * 10 - 5, 0],
-                  y: [0, Math.random() * 10 - 5, 0],
-                  rotate: [0, Math.random() * 20 - 10, 0],
-                }}
-                transition={{
-                  duration: 3 + Math.random(),
-                  repeat: Infinity,
-                  delay: shape.delay,
-                }}
-                style={{ transformOrigin: `${shape.x}px ${shape.y}px` }}
-              />
-              {/* Faded outline */}
-              <motion.rect
-                x={shape.x - shape.size / 2}
-                y={shape.y - shape.size / 2}
-                width={shape.size}
-                height={shape.size}
-                rx="4"
-                fill="none"
-                stroke="hsl(var(--foreground))"
-                strokeWidth="1"
-                opacity={0.2}
-                strokeDasharray="4 4"
-                animate={{
-                  x: [0, Math.random() * 8 - 4, 0],
-                  y: [0, Math.random() * 8 - 4, 0],
-                }}
-                transition={{
-                  duration: 2.5 + Math.random(),
-                  repeat: Infinity,
-                  delay: shape.delay,
-                }}
-              />
-            </motion.g>
-          ))}
+          {/* Cercles qui bougent de manière chaotique */}
+          <motion.circle
+            cx="65"
+            cy="100"
+            r="20"
+            fill="none"
+            stroke="hsl(var(--foreground))"
+            strokeWidth="1.5"
+            strokeDasharray="4 3"
+            opacity="0.2"
+            animate={{ 
+              cx: [65, 70, 62, 65],
+              cy: [100, 95, 105, 100]
+            }}
+            transition={{ duration: 4, repeat: Infinity }}
+          />
+          <motion.circle
+            cx="50"
+            cy="130"
+            r="15"
+            fill="none"
+            stroke="hsl(var(--foreground))"
+            strokeWidth="1.5"
+            strokeDasharray="4 3"
+            opacity="0.25"
+            animate={{ 
+              cx: [50, 55, 48, 50],
+              cy: [130, 135, 128, 130]
+            }}
+            transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
+          />
+          <motion.circle
+            cx="80"
+            cy="145"
+            r="18"
+            fill="none"
+            stroke="hsl(var(--foreground))"
+            strokeWidth="1.5"
+            strokeDasharray="4 3"
+            opacity="0.15"
+            animate={{ 
+              cx: [80, 75, 85, 80],
+              cy: [145, 150, 142, 145]
+            }}
+            transition={{ duration: 4.5, repeat: Infinity, delay: 0.3 }}
+          />
           
-          {/* Question marks floating */}
-          {["?", "?", "?"].map((_, i) => (
-            <motion.text
-              key={`q-${i}`}
-              x={55 + i * 25}
-              y={115 + i * 30}
+          {/* Points éparpillés */}
+          {[
+            { x: 55, y: 115, delay: 0 },
+            { x: 75, y: 125, delay: 0.3 },
+            { x: 60, y: 155, delay: 0.6 },
+            { x: 45, y: 105, delay: 0.9 },
+          ].map((dot, i) => (
+            <motion.circle
+              key={i}
+              cx={dot.x}
+              cy={dot.y}
+              r="3"
               fill="hsl(var(--foreground))"
-              opacity={0.3}
-              fontSize="16"
-              fontWeight="bold"
-              animate={{
-                y: [0, -8, 0],
+              opacity="0.3"
+              animate={{ 
                 opacity: [0.2, 0.4, 0.2],
+                scale: [1, 1.2, 1]
               }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.4,
-              }}
-            >
-              ?
-            </motion.text>
+              transition={{ duration: 2, repeat: Infinity, delay: dot.delay }}
+            />
           ))}
         </motion.g>
 
-        {/* Label: Idées floues */}
-        <motion.g
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <rect x="25" y="220" width="90" height="24" rx="12" fill="hsl(var(--foreground))" opacity="0.1" />
-          <text
-            x="70"
-            y="236"
-            textAnchor="middle"
-            fill="hsl(var(--foreground))"
-            fontSize="10"
-            fontWeight="600"
-            opacity="0.5"
-          >
-            Idées floues
-          </text>
-        </motion.g>
-
-        {/* Center - Transformation Arrow */}
-        <motion.g
+        {/* Label gauche */}
+        <motion.text
+          x="65"
+          y="190"
+          textAnchor="middle"
+          fill="hsl(var(--foreground))"
+          fontSize="10"
+          fontWeight="500"
+          opacity="0.4"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ delay: 0.5 }}
         >
-          {/* Arrow line with gradient */}
+          Idée floue
+        </motion.text>
+
+        {/* CENTRE: Flèche de transformation */}
+        <motion.g>
           <motion.path
-            d="M130 145 C170 145 180 145 220 145"
-            stroke="url(#transformGrad)"
-            strokeWidth="4"
+            d="M110 130 L190 130"
+            stroke="url(#transformLine)"
+            strokeWidth="3"
             fill="none"
             strokeLinecap="round"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
+            transition={{ duration: 1, delay: 0.8 }}
+          />
+          <motion.polygon
+            points="185,124 198,130 185,136"
+            fill="hsl(var(--accent))"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 1.5 }}
           />
           
-          {/* Arrow head */}
-          <motion.polygon
-            points="215,137 230,145 215,153"
-            fill="hsl(var(--accent))"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 1.5 }}
-          />
-
-          {/* Sparkle effects on arrow */}
+          {/* Étincelles sur la flèche */}
           {[0, 1, 2].map((i) => (
             <motion.circle
-              key={`spark-${i}`}
-              cx={145 + i * 30}
-              cy={145}
-              r="3"
+              key={i}
+              cx={130 + i * 20}
+              cy={130}
+              r="2"
               fill="hsl(var(--accent))"
               animate={{
                 scale: [0, 1.5, 0],
-                opacity: [0, 1, 0],
+                opacity: [0, 1, 0]
               }}
               transition={{
-                duration: 1.5,
+                duration: 1.2,
                 repeat: Infinity,
-                delay: 1 + i * 0.3,
+                delay: 1.8 + i * 0.25
               }}
             />
           ))}
-
-          {/* Sen'Optima label */}
-          <motion.g
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.2 }}
-          >
-            <rect x="145" y="105" width="70" height="24" rx="12" fill="hsl(var(--accent))" opacity="0.2" />
-            <text
-              x="180"
-              y="121"
-              textAnchor="middle"
-              fill="hsl(var(--accent))"
-              fontSize="10"
-              fontWeight="700"
-            >
-              Sen'Optima
-            </text>
-          </motion.g>
         </motion.g>
 
-        {/* Right Side - Structure/Clarity (Business solides) */}
+        {/* Label transformation */}
+        <motion.text
+          x="155"
+          y="110"
+          textAnchor="middle"
+          fill="hsl(var(--accent))"
+          fontSize="9"
+          fontWeight="600"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.8 }}
+          transition={{ delay: 1.6 }}
+        >
+          Sen'Optima
+        </motion.text>
+
+        {/* DROITE: Cercles concentriques ordonnés */}
         <motion.g
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.6, delay: 1 }}
         >
-          {/* Organized grid structure */}
-          <motion.g>
-            {/* Main container */}
-            <motion.rect
-              x="255"
-              y="95"
-              width="110"
-              height="110"
-              rx="8"
-              fill="hsl(var(--accent))"
-              opacity={0.1}
-              stroke="hsl(var(--accent))"
-              strokeWidth="2"
-              animate={{ scale: [1, 1.02, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              style={{ transformOrigin: "310px 150px" }}
-            />
-            
-            {/* Grid items - organized blocks with labels */}
-            {[
-              { x: 265, y: 105, w: 42, h: 40, label: "Marketing" },
-              { x: 313, y: 105, w: 42, h: 40, label: "Gestion" },
-              { x: 265, y: 155, w: 90, h: 40, label: "Processus" },
-            ].map((block, i) => (
-              <motion.g key={`block-${i}`}>
-                <motion.rect
-                  x={block.x}
-                  y={block.y}
-                  width={block.w}
-                  height={block.h}
-                  rx="4"
-                  fill="hsl(var(--accent))"
-                  opacity={0.25}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 0.25, y: 0 }}
-                  transition={{ delay: 1.3 + i * 0.2 }}
-                />
-                <motion.text
-                  x={block.x + block.w / 2}
-                  y={block.y + block.h / 2 + 4}
-                  textAnchor="middle"
-                  fill="hsl(var(--accent))"
-                  fontSize="8"
-                  fontWeight="600"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.8 }}
-                  transition={{ delay: 1.5 + i * 0.2 }}
-                >
-                  {block.label}
-                </motion.text>
-              </motion.g>
-            ))}
+          {/* Cercles concentriques */}
+          <motion.circle
+            cx="255"
+            cy="130"
+            r="45"
+            fill="none"
+            stroke="hsl(var(--accent))"
+            strokeWidth="1.5"
+            opacity="0.15"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 1.2 }}
+          />
+          <motion.circle
+            cx="255"
+            cy="130"
+            r="32"
+            fill="none"
+            stroke="hsl(var(--accent))"
+            strokeWidth="1.5"
+            opacity="0.25"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 1.4 }}
+          />
+          <motion.circle
+            cx="255"
+            cy="130"
+            r="20"
+            fill="hsl(var(--accent))"
+            opacity="0.2"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 1.6 }}
+          />
+          <motion.circle
+            cx="255"
+            cy="130"
+            r="10"
+            fill="hsl(var(--accent))"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.4, delay: 1.8, type: "spring" }}
+          />
 
-            {/* Check marks */}
-            {[
-              { x: 280, y: 118 },
-              { x: 328, y: 118 },
-              { x: 305, y: 168 },
-            ].map((pos, i) => (
-              <motion.path
-                key={`check-${i}`}
-                d={`M${pos.x - 6} ${pos.y} L${pos.x - 2} ${pos.y + 4} L${pos.x + 6} ${pos.y - 4}`}
-                stroke="hsl(var(--accent))"
-                strokeWidth="2.5"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.4, delay: 1.8 + i * 0.2 }}
+          {/* Pulse animation */}
+          <motion.circle
+            cx="255"
+            cy="130"
+            r="10"
+            fill="none"
+            stroke="hsl(var(--accent))"
+            strokeWidth="2"
+            animate={{
+              r: [10, 50, 10],
+              opacity: [0.6, 0, 0.6]
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              delay: 2
+            }}
+          />
+
+          {/* 3 points alignés autour du centre */}
+          {[0, 1, 2].map((i) => {
+            const angle = (i * 120 - 90) * (Math.PI / 180);
+            const x = 255 + Math.cos(angle) * 32;
+            const y = 130 + Math.sin(angle) * 32;
+            return (
+              <motion.circle
+                key={i}
+                cx={x}
+                cy={y}
+                r="4"
+                fill="hsl(var(--accent))"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 2 + i * 0.15 }}
               />
-            ))}
-          </motion.g>
-
-          {/* Growth chart icon */}
-          <motion.g
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.2 }}
-          >
-            <motion.path
-              d="M270 220 L295 205 L320 210 L355 185"
-              stroke="hsl(var(--accent))"
-              strokeWidth="3"
-              fill="none"
-              strokeLinecap="round"
-              animate={{ y: [0, -3, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <motion.circle
-              cx="355"
-              cy="185"
-              r="5"
-              fill="hsl(var(--accent))"
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-            {/* Arrow up */}
-            <motion.path
-              d="M355 180 L355 170 M350 175 L355 170 L360 175"
-              stroke="hsl(var(--accent))"
-              strokeWidth="2"
-              fill="none"
-              strokeLinecap="round"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-          </motion.g>
+            );
+          })}
         </motion.g>
 
-        {/* Label: Business Solide */}
+        {/* Label droite */}
         <motion.g
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 2 }}
+          transition={{ delay: 2.2 }}
         >
-          <rect x="265" y="245" width="100" height="26" rx="13" fill="hsl(var(--accent))" opacity="0.2" />
+          <rect x="205" y="190" width="100" height="26" rx="13" fill="hsl(var(--accent))" opacity="0.15" />
           <text
-            x="315"
-            y="263"
+            x="255"
+            y="208"
             textAnchor="middle"
             fill="hsl(var(--accent))"
-            fontSize="11"
-            fontWeight="700"
+            fontSize="10"
+            fontWeight="600"
           >
             Business Solide
           </text>
         </motion.g>
 
-        {/* Bottom tagline */}
+        {/* Tagline */}
         <motion.text
-          x="200"
-          y="290"
+          x="160"
+          y="245"
           textAnchor="middle"
           fill="hsl(var(--foreground))"
-          fontSize="11"
+          fontSize="10"
           fontWeight="500"
-          opacity="0.5"
+          opacity="0.4"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
+          animate={{ opacity: 0.4 }}
           transition={{ delay: 2.5 }}
         >
-          De la vision à la structure opérationnelle
+          De la vision à la réalité
         </motion.text>
       </svg>
     </div>
