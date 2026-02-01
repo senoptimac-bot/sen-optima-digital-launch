@@ -99,17 +99,17 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative hidden lg:block"
+            className="relative"
           >
             {/* Background shape */}
-            <div className="absolute -top-10 -right-10 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6" />
+            <div className="absolute -top-10 -right-10 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
             
             {/* Main image container */}
-            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <div className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl">
               <img
                 src={heroCoverImage}
                 alt="Consultant digital professionnel"
-                className="w-full h-[500px] object-cover object-center"
+                className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover object-center"
                 loading="eager"
               />
               
@@ -122,51 +122,22 @@ const Hero = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="absolute -left-8 bottom-20 bg-card rounded-2xl p-4 shadow-xl border border-border"
+              className="absolute -left-4 lg:-left-8 bottom-10 lg:bottom-20 bg-card rounded-2xl p-3 lg:p-4 shadow-xl border border-border"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
-                  <span className="text-accent-foreground text-sm font-bold">✓</span>
+                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-accent flex items-center justify-center">
+                  <span className="text-accent-foreground text-xs lg:text-sm font-bold">✓</span>
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground">Résultat garanti</p>
-                  <p className="text-lg font-bold text-foreground">+150%</p>
-                  <p className="text-xs text-muted-foreground">Croissance moyenne</p>
+                  <p className="text-[10px] lg:text-xs text-muted-foreground">Résultat garanti</p>
+                  <p className="text-base lg:text-lg font-bold text-foreground">+150%</p>
+                  <p className="text-[10px] lg:text-xs text-muted-foreground">Croissance moyenne</p>
                 </div>
               </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
-
-      {/* Stats Band - At bottom */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className="absolute bottom-0 left-0 right-0 z-20"
-      >
-        <div className="container">
-          <div className="stats-band mb-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-3xl md:text-4xl font-bold text-foreground">5+</p>
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">Années d'expérience</p>
-            </div>
-            <div>
-              <p className="text-3xl md:text-4xl font-bold text-foreground">50+</p>
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">Projets livrés</p>
-            </div>
-            <div>
-              <p className="text-3xl md:text-4xl font-bold text-foreground">4.9</p>
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">Note moyenne</p>
-            </div>
-            <div>
-              <p className="text-3xl md:text-4xl font-bold text-foreground">15+</p>
-              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">Experts dédiés</p>
-            </div>
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 };
