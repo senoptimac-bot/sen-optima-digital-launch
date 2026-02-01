@@ -38,8 +38,11 @@ const itemVariants = {
 
 const PhilosophySection = () => {
   return (
-    <section className="py-section-lg relative">
-      <div className="container">
+    <section className="py-section-lg relative bg-background">
+      {/* Decorative shapes */}
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] shape-blob opacity-20" />
+      
+      <div className="container relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,12 +50,11 @@ const PhilosophySection = () => {
           viewport={{ once: true }}
           className="text-left max-w-2xl mb-20"
         >
-          <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
-            <span className="w-1 h-1 rounded-full bg-accent" />
+          <span className="badge-accent mb-6 inline-block">
             Notre Philosophie
           </span>
           <h2 className="text-headline text-foreground">
-            Nos <span className="text-accent">Valeurs</span>
+            Nos <span className="italic text-accent">Valeurs</span>
           </h2>
         </motion.div>
 
@@ -69,7 +71,7 @@ const PhilosophySection = () => {
               key={item.title}
               variants={itemVariants}
               whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-8 glass-card rounded-xl group transition-all duration-300 text-left"
+              className="relative p-8 card-cream group transition-all duration-300 text-left"
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
@@ -77,7 +79,7 @@ const PhilosophySection = () => {
               </div>
 
               {/* Icon with accent styling */}
-              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
+              <div className="icon-circle mb-6 group-hover:scale-110 transition-transform duration-300">
                 <item.icon className="w-7 h-7 text-accent" />
               </div>
 
@@ -85,12 +87,9 @@ const PhilosophySection = () => {
               <h3 className="text-title text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
                 {item.title}
               </h3>
-              <p className="text-body text-foreground/50 leading-relaxed">
+              <p className="text-body text-muted-foreground leading-relaxed">
                 {item.description}
               </p>
-
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
             </motion.div>
           ))}
         </motion.div>

@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo.svg";
-// ...existing code...
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +48,9 @@ const Header = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-background/80 backdrop-blur-xl border-b border-foreground/5" : "bg-transparent"
+          scrolled 
+            ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-sm" 
+            : "bg-transparent"
         }`}
       >
         <div className="container">
@@ -63,7 +64,7 @@ const Header = () => {
               />
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Center */}
             <ul className="hidden lg:flex items-center gap-10">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -71,8 +72,8 @@ const Header = () => {
                     to={link.href}
                     className={`text-[13px] uppercase tracking-wider transition-colors duration-300 ${
                       location.pathname === link.href 
-                        ? "text-foreground" 
-                        : "text-foreground/40 hover:text-foreground"
+                        ? "text-foreground font-semibold" 
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {link.label}
@@ -81,32 +82,28 @@ const Header = () => {
               ))}
             </ul>
 
-            {/* Right side */}
+            {/* Right side - CTA */}
             <div className="flex items-center gap-4">
-              {/* Language Selector - Desktop */}
-              <div className="hidden lg:block">
-                {/* LanguageSelector removed */}
-              </div>
-
-              {/* CTA Button - Ghost style, gold on hover */}
+              {/* CTA Button - Pill style */}
               <div className="hidden lg:block">
                 <Button 
-                  variant="outline" 
                   size="sm" 
-                  className="gap-2 text-[12px] uppercase tracking-wider border-foreground/20 bg-transparent text-foreground/60 hover:border-accent hover:text-accent hover:bg-transparent transition-all duration-300"
+                  className="gap-2 text-[12px] uppercase tracking-wider rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 h-10 px-5"
                   asChild
                 >
-                  <a href={`tel:${phoneNumber}`}>
-                    <Phone className="w-3.5 h-3.5" />
-                    {t("header.callExpert")}
-                  </a>
+                  <Link to="/solutions">
+                    Commencer
+                    <span className="w-5 h-5 rounded-full border border-accent flex items-center justify-center ml-1">
+                      <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </Link>
                 </Button>
               </div>
 
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden p-2 text-foreground/60"
+                className="lg:hidden p-2 text-foreground"
                 aria-label="Menu"
               >
                 {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -125,7 +122,7 @@ const Header = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-background/95 backdrop-blur-xl z-40 lg:hidden"
+              className="fixed inset-0 bg-background/98 backdrop-blur-xl z-40 lg:hidden"
             />
 
             <motion.div
@@ -136,11 +133,6 @@ const Header = () => {
               className="fixed inset-x-0 top-20 bottom-0 z-50 lg:hidden overflow-auto"
             >
               <div className="container py-8">
-                {/* Language Selector - Mobile */}
-                <div className="mb-8">
-                  {/* LanguageSelector removed */}
-                </div>
-
                 {/* Nav Links */}
                 <ul className="space-y-1">
                   {navLinks.map((link) => (
@@ -148,10 +140,10 @@ const Header = () => {
                       <Link
                         to={link.href}
                         onClick={() => setIsOpen(false)}
-                        className={`block py-4 text-lg transition-colors border-b border-foreground/5 ${
+                        className={`block py-4 text-lg transition-colors border-b border-border ${
                           location.pathname === link.href
-                            ? "text-foreground"
-                            : "text-foreground/50 hover:text-foreground"
+                            ? "text-foreground font-semibold"
+                            : "text-muted-foreground hover:text-foreground"
                         }`}
                       >
                         {link.label}
@@ -163,8 +155,21 @@ const Header = () => {
                 {/* CTA */}
                 <div className="mt-8">
                   <Button 
+                    className="w-full gap-2 h-14 text-sm uppercase tracking-wider rounded-full bg-foreground text-background hover:bg-foreground/90"
+                    asChild
+                  >
+                    <Link to="/solutions" onClick={() => setIsOpen(false)}>
+                      Lancer mon Audit
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Phone CTA */}
+                <div className="mt-4">
+                  <Button 
                     variant="outline"
-                    className="w-full gap-2 h-14 text-sm uppercase tracking-wider border-foreground/20 text-foreground/70 hover:border-accent hover:text-accent"
+                    className="w-full gap-2 h-14 text-sm uppercase tracking-wider rounded-full border-border"
                     asChild
                   >
                     <a href={`tel:${phoneNumber}`} onClick={() => setIsOpen(false)}>

@@ -11,7 +11,7 @@ import serviceMarketing from "@/assets/Marketing Digital & Acquisition.jpg";
 import serviceConsulting from "@/assets/Consulting en Processus.jpg";
 import servicePremium from "@/assets/Accompagnement Premium.jpg";
 
-// Service images mapping - use imported images or fallback to icons
+// Service images mapping
 const serviceImages: Record<string, string | null> = {
   "Architecture Business": serviceConsulting,
   "Plateformes de Vente": serviceWeb,
@@ -68,7 +68,8 @@ const Services = () => {
   return (
     <section id="services" className="py-20 md:py-28 bg-background relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-accent/5 blur-[120px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] shape-blob opacity-30" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] shape-blob opacity-20" style={{ animationDelay: '-15s' }} />
       
       <div className="container relative z-10">
         {/* Section Header */}
@@ -79,14 +80,13 @@ const Services = () => {
           transition={{ duration: 0.6 }}
           className="text-left max-w-2xl mb-16"
         >
-          <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-4">
-            <span className="w-8 h-px bg-accent" />
-            Ce que nous faisons
+          <span className="badge-accent mb-6 inline-block">
+            Nos Services
           </span>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-            Nos <span className="text-accent">Services</span>
+            Des solutions pour votre <span className="italic text-accent">croissance</span>
           </h2>
-          <p className="text-foreground/60">
+          <p className="text-muted-foreground">
             Des solutions complètes pour structurer et développer votre présence digitale.
           </p>
         </motion.div>
@@ -108,20 +108,20 @@ const Services = () => {
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="group relative rounded-2xl glass-card overflow-hidden transition-all duration-300 border border-white/10"
+                className="group relative rounded-3xl card-cream overflow-hidden transition-all duration-300"
               >
                 {/* Micro-photo for services with images */}
                 {hasImage && (
-                  <div className="relative h-32 overflow-hidden">
+                  <div className="relative h-36 overflow-hidden">
                     <img
                       src={hasImage}
                       alt={service.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       loading="lazy"
                     />
-                    {/* Blue overlay for color harmony */}
-                    <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-20 mix-blend-multiply" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                    {/* Overlay for color harmony */}
+                    <div className="absolute inset-0 bg-foreground/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
                   </div>
                 )}
 
@@ -129,28 +129,25 @@ const Services = () => {
                 <div className="p-6 md:p-8">
                   {/* Icon - only show if no image */}
                   {!hasImage && (
-                    <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-300">
+                    <div className="icon-circle mb-5 group-hover:scale-110 transition-all duration-300">
                       <service.icon className="w-7 h-7 text-accent" />
                     </div>
                   )}
 
                   {/* Icon overlay for image cards */}
                   {hasImage && (
-                    <div className="w-10 h-10 rounded-lg bg-accent/20 backdrop-blur-sm flex items-center justify-center mb-4 -mt-8 relative z-10 border border-white/10">
-                      <service.icon className="w-5 h-5 text-accent" />
+                    <div className="w-12 h-12 rounded-xl bg-accent/20 backdrop-blur-sm flex items-center justify-center mb-4 -mt-8 relative z-10 border border-border">
+                      <service.icon className="w-6 h-6 text-accent" />
                     </div>
                   )}
 
                   <h3 className="text-lg font-heading font-semibold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-foreground/60 text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
-
-                {/* Hover accent line */}
-                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
               </motion.article>
             );
           })}

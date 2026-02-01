@@ -39,7 +39,7 @@ const itemVariants = {
 
 const MirrorSection = () => {
   return (
-    <section className="py-section-lg relative">
+    <section className="py-section-lg relative bg-background">
       <div className="container">
         {/* Header with Featured Image */}
         <motion.div
@@ -48,41 +48,40 @@ const MirrorSection = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto mb-20"
         >
+          {/* Badge */}
+          <div className="flex justify-center mb-6">
+            <span className="badge-accent">
+              Le miroir
+            </span>
+          </div>
+
           {/* Featured Image - Large Rectangle */}
           <div className="relative mb-10 group">
-            {/* Glow effect behind */}
-            <div className="absolute -inset-4 bg-gradient-to-br from-problem/20 via-problem/5 to-transparent rounded-3xl blur-2xl opacity-60" />
-            
             {/* Main Image Container */}
-            <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-problem/20 shadow-2xl">
+            <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden shadow-xl border border-border">
               <img 
                 src={situationImage} 
                 alt="Entrepreneur face aux défis business" 
                 className="w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-700"
               />
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-              <div className="absolute inset-0 bg-problem/10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
               
               {/* Text overlay on image */}
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                <span className="inline-flex items-center gap-2 text-xs text-foreground/60 uppercase tracking-widest mb-3">
-                  <AlertTriangle className="w-3 h-3 icon-problem" />
-                  Le miroir
-                </span>
-                <h2 className="text-2xl md:text-4xl font-heading font-bold text-foreground">
-                  Votre <span className="text-problem">situation actuelle</span>
+                <h2 className="text-2xl md:text-4xl font-heading font-bold text-white">
+                  Votre <span className="italic">situation actuelle</span>
                 </h2>
               </div>
 
               {/* Corner accents */}
-              <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-problem/40 rounded-tl-lg" />
-              <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-problem/40 rounded-tr-lg" />
+              <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/40 rounded-tl-lg" />
+              <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white/40 rounded-tr-lg" />
             </div>
           </div>
 
           {/* Subtitle below image */}
-          <p className="text-center text-foreground/50 text-lg">
+          <p className="text-center text-muted-foreground text-lg">
             Reconnaissez-vous ces symptômes ?
           </p>
         </motion.div>
@@ -100,28 +99,25 @@ const MirrorSection = () => {
               key={pain.title}
               variants={itemVariants}
               whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-8 glass-card rounded-xl group transition-all duration-300"
+              className="relative p-8 card-cream group transition-all duration-300"
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
                 <span className="text-caption text-problem/40">{String(index + 1).padStart(2, '0')}</span>
               </div>
 
-              {/* Icon with problem styling and animation */}
-              <div className="w-12 h-12 rounded-xl bg-problem/10 flex items-center justify-center mb-6 group-hover:bg-problem/20 transition-colors duration-300">
-                <pain.icon className="w-6 h-6 icon-problem-animated" />
+              {/* Icon with problem styling */}
+              <div className="w-14 h-14 rounded-2xl bg-problem/10 flex items-center justify-center mb-6 group-hover:bg-problem/20 transition-colors duration-300">
+                <pain.icon className="w-7 h-7 icon-problem-animated" />
               </div>
 
               {/* Content */}
               <h3 className="text-title text-foreground mb-3 group-hover:text-problem transition-colors duration-300">
                 {pain.title}
               </h3>
-              <p className="text-body text-foreground/50 leading-relaxed">
+              <p className="text-body text-muted-foreground leading-relaxed">
                 {pain.description}
               </p>
-
-              {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-problem/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
             </motion.div>
           ))}
         </motion.div>

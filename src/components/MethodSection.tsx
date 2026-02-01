@@ -26,8 +26,11 @@ const steps = [
 
 const MethodSection = () => {
   return (
-    <section className="py-section-lg relative">
-      <div className="container">
+    <section className="py-section-lg relative bg-background">
+      {/* Decorative shapes */}
+      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] shape-blob opacity-20 -translate-y-1/2" />
+      
+      <div className="container relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,12 +38,11 @@ const MethodSection = () => {
           viewport={{ once: true }}
           className="text-left max-w-2xl mb-20"
         >
-          <span className="inline-flex items-center gap-2 text-caption text-foreground/40 uppercase tracking-widest mb-6">
-            <Wrench className="w-3 h-3 icon-solution" />
-            Notre méthode
+          <span className="badge-accent mb-6 inline-block">
+            Notre Méthode
           </span>
           <h2 className="text-headline text-foreground">
-            L'<span className="text-solution">Écosystème</span> de Croissance
+            L'<span className="italic text-solution">Écosystème</span> de Croissance
           </h2>
         </motion.div>
 
@@ -61,33 +63,30 @@ const MethodSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
                 whileHover={{ scale: 1.03, y: -5 }}
-                className="relative p-8 glass-card rounded-xl text-center group transition-all duration-300"
+                className="relative p-8 card-cream text-center group transition-all duration-300"
               >
                 {/* Number */}
-                <div className="text-caption text-solution mb-6">
+                <div className="text-caption text-solution font-bold mb-6">
                   {step.number}
                 </div>
 
                 {/* Icon with solution styling */}
-                <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-solution/10 flex items-center justify-center group-hover:bg-solution/20 transition-colors duration-300">
-                  <step.icon className="w-7 h-7 icon-solution-animated" />
+                <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-solution/10 flex items-center justify-center group-hover:bg-solution/20 transition-colors duration-300">
+                  <step.icon className="w-7 h-7 icon-solution" />
                 </div>
 
                 {/* Content */}
                 <h3 className="text-title text-foreground mb-2 group-hover:text-solution transition-colors duration-300">
                   {step.title}
                 </h3>
-                <p className="text-body text-foreground/40">
+                <p className="text-body text-muted-foreground">
                   {step.description}
                 </p>
 
                 {/* Connector line for desktop */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-solution/30" />
+                  <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-solution/30" />
                 )}
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-solution/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
               </motion.div>
             ))}
           </div>
@@ -101,22 +100,23 @@ const MethodSection = () => {
           transition={{ delay: 0.3 }}
           className="max-w-2xl"
         >
-          <div className="p-6 glass-card rounded-xl mb-12 text-left">
-            <p className="text-body text-foreground/60">
+          <div className="p-6 card-cream mb-12 text-left border-l-4 border-accent">
+            <p className="text-body text-foreground">
               "On ne met pas le toit avant les fondations."
             </p>
           </div>
 
           {/* CTA Button */}
           <Button
-            variant="outline"
             size="lg"
             asChild
-            className="group gap-3 text-sm border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20 text-accent transition-all duration-500 h-14 px-10"
+            className="group gap-3 text-sm rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all duration-500 h-14 px-10"
           >
             <Link to="/solutions">
               Lancer mon Audit Business
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                <ArrowRight className="w-4 h-4" />
+              </span>
             </Link>
           </Button>
         </motion.div>
