@@ -20,14 +20,14 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
           transition={{ duration: 0.6 }}
           className="text-left"
         >
-          {/* AI Brain Icon - Spinning */}
+          {/* AI Brain Icon - Premium Card with soft shadow */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1, type: "spring" }}
             className="mb-8"
           >
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/30 flex items-center justify-center">
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/30 flex items-center justify-center shadow-[0_8px_30px_-8px_hsl(43_65%_53%/0.15)]">
               <Brain className="w-10 h-10 md:w-12 md:h-12 text-accent icon-solution-animated" strokeWidth={1.5} />
             </div>
           </motion.div>
@@ -39,8 +39,8 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
             transition={{ delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-6"
           >
-            Votre Business a des fuites.
-            <span className="block text-accent mt-2">Notre IA les trouve en 2 minutes.</span>
+            Décelez les angles morts
+            <span className="block text-accent mt-2">de votre croissance.</span>
           </motion.h1>
 
           {/* Subheadline - Reassurance */}
@@ -50,36 +50,36 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
             transition={{ delay: 0.3 }}
             className="text-base md:text-lg text-foreground/60 max-w-xl mb-10 leading-relaxed"
           >
-            Arrêtez de deviner. Obtenez votre Score de Maturité Digitale et un aperçu 
-            immédiat des actions qui vont débloquer votre croissance. 
-            <span className="text-foreground/80 font-medium"> Gratuit et sans engagement.</span>
+            Utilisez notre moteur de diagnostic pour obtenir une vision claire de votre maturité digitale.
+            <span className="block mt-2">Un audit précis de 2 minutes pour arrêter de deviner et commencer à piloter.</span>
           </motion.p>
 
-          {/* CTA Button - Big & Clear */}
+          {/* CTA Button - Premium & Organic */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
+            className="space-y-4"
           >
             <Button
               onClick={onStart}
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-base md:text-lg px-10 py-7 rounded-xl gap-3 group shadow-lg shadow-accent/20"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-base md:text-lg px-10 py-7 rounded-2xl gap-3 group shadow-[0_12px_35px_-10px_hsl(43_65%_53%/0.35)] hover:shadow-[0_16px_45px_-10px_hsl(43_65%_53%/0.45)] transition-all duration-300"
             >
-              Lancer l'Analyse Maintenant
+              Lancer l'Analyse
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-          </motion.div>
 
-          {/* Security Badge - Small & Discreet */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="mt-8 flex items-center gap-2 text-sm text-foreground/40"
-          >
-            <Shield className="w-4 h-4" />
-            <span>Analyse confidentielle & sécurisée par Sen'Optima</span>
+            {/* Security Badge - Discreet below button */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="flex items-center gap-2 text-sm text-foreground/40"
+            >
+              <Shield className="w-4 h-4" />
+              <span>Analyse confidentielle et sécurisée par Sen'Optima</span>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
