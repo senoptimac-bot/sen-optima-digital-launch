@@ -57,14 +57,14 @@ const SolutionsEducational = () => {
                 </div>
               )}
 
-              <div className={`w-14 h-14 rounded-xl bg-brand-navy/10 flex items-center justify-center mb-4`}>
-                <step.icon className="w-7 h-7 text-brand-navy" />
+              <div className={`w-14 h-14 rounded-xl bg-background/50 border border-foreground/10 flex items-center justify-center mb-4 ${step.color}`}>
+                <step.icon className="w-7 h-7" />
               </div>
 
-              <h3 className="text-lg font-heading font-bold text-brand-navy mb-3">
+              <h3 className="text-lg font-heading font-bold text-foreground mb-3">
                 {step.title}
               </h3>
-              <p className="text-sm text-brand-navy-light leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 {step.description}
               </p>
             </motion.div>

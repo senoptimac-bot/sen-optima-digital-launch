@@ -73,24 +73,24 @@ const PhilosophySection = () => {
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
-                <span className="text-caption text-brand-navy-light">{String(index + 1).padStart(2, '0')}</span>
+                <span className="text-caption text-accent/40">{String(index + 1).padStart(2, '0')}</span>
               </div>
 
-              {/* Icon with navy styling */}
-              <div className="w-14 h-14 rounded-xl bg-brand-navy/10 flex items-center justify-center mb-6 group-hover:bg-brand-navy/15 transition-colors duration-300">
-                <item.icon className="w-7 h-7 text-brand-navy" />
+              {/* Icon with accent styling */}
+              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
+                <item.icon className="w-7 h-7 text-accent" />
               </div>
 
               {/* Content */}
-              <h3 className="text-title text-brand-navy mb-4 group-hover:text-brand-navy-light transition-colors duration-300">
+              <h3 className="text-title text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
                 {item.title}
               </h3>
-              <p className="text-body text-brand-navy-light leading-relaxed">
+              <p className="text-body text-foreground/50 leading-relaxed">
                 {item.description}
               </p>
 
               {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-brand-navy/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
+              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
             </motion.div>
           ))}
         </motion.div>
