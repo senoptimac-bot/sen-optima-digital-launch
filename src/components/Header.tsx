@@ -53,12 +53,12 @@ const Header = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled 
-            ? "bg-background/70 backdrop-blur-2xl border-b border-foreground/5 shadow-lg shadow-background/20" 
-            : "bg-transparent backdrop-blur-none"
+            ? "bg-white/95 backdrop-blur-2xl border-b border-brand-navy/10 shadow-lg shadow-brand-navy/5" 
+            : "bg-white/90 backdrop-blur-xl"
         }`}
         style={{
-          backdropFilter: scrolled ? "blur(24px) saturate(180%)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(24px) saturate(180%)" : "none",
+          backdropFilter: "blur(24px) saturate(180%)",
+          WebkitBackdropFilter: "blur(24px) saturate(180%)",
         }}
       >
         <div className="container">
@@ -82,10 +82,10 @@ const Header = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className={`relative text-[13px] uppercase tracking-wider transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm px-1 py-0.5 ${
+                    className={`relative text-[13px] uppercase tracking-wider transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-sm px-1 py-0.5 ${
                       location.pathname === link.href 
-                        ? "text-foreground after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent" 
-                        : "text-foreground/40 hover:text-foreground"
+                        ? "text-brand-navy after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-accent" 
+                        : "text-brand-navy/50 hover:text-brand-navy"
                     }`}
                   >
                     {link.label}
@@ -101,7 +101,7 @@ const Header = () => {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className={`gap-2 uppercase tracking-wider border-foreground/20 bg-transparent text-foreground/60 hover:border-accent hover:text-accent hover:bg-accent/5 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                  className={`gap-2 uppercase tracking-wider border-brand-navy/20 bg-transparent text-brand-navy/70 hover:border-accent hover:text-accent hover:bg-accent/5 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                     shrink ? "text-[11px] h-8 px-3" : "text-[12px] h-9 px-4"
                   }`}
                   asChild
@@ -116,7 +116,7 @@ const Header = () => {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden p-2 text-foreground/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md"
+                className="lg:hidden p-2 text-brand-navy/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md"
                 aria-label="Menu"
               >
                 {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
