@@ -59,12 +59,10 @@ const ContactPage = () => {
     setIsSubmitting(true);
     playClick();
 
-    // Trouver le label du sujet sélectionné
     const selectedSubjectLabel = subjectOptions.find(
       (opt) => opt.value === formData.subject
     )?.label || formData.subject;
 
-    // Import dynamique du service email
     const { sendContactEmail } = await import("@/lib/emailService");
     
     const result = await sendContactEmail({
@@ -98,20 +96,26 @@ const ContactPage = () => {
   const mapsLink = "https://www.google.com/maps/search/?api=1&query=Grand+Mbao+Cite+Baobab+Dakar+Senegal";
 
   return (
-    <>
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative">
-        <div className="container">
+        <div className="absolute inset-0 bg-background" />
+        <div className="absolute top-0 right-0 w-[50%] h-[80%] bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
+        
+        <div className="container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="max-w-3xl"
           >
-            <h1 className="text-display font-bold text-white mb-6">
-              Parlons de votre <span className="text-accent">avenir</span>.
+            <span className="badge-accent mb-6">
+              Contact
+            </span>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
+              Parlons de votre <span className="italic text-accent">avenir</span>.
             </h1>
-            <p className="text-body-lg text-white/50 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
               Vous avez un projet ? Une question ? Ou simplement besoin de clarté ? 
               Nous sommes là pour vous répondre.
             </p>
@@ -120,42 +124,45 @@ const ContactPage = () => {
       </section>
 
       {/* Guide d'Orientation */}
-      <section className="py-section-lg relative">
+      <section className="py-16 md:py-24 relative">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="mb-12 md:mb-16"
           >
-            <h2 className="text-headline text-white mb-4">
-              Comment souhaitez-vous nous <span className="text-accent">contacter</span> ?
+            <span className="badge-accent mb-4">
+              Options
+            </span>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+              Comment souhaitez-vous nous <span className="italic text-accent">contacter</span> ?
             </h2>
-            <p className="text-body text-white/50 max-w-xl mx-auto">
+            <p className="text-muted-foreground mt-4 max-w-xl">
               Choisissez le canal qui vous convient le mieux.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl">
             {/* Carte A : WhatsApp */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-8 rounded-xl glass-card flex flex-col group hover:border-green-500/30 transition-all duration-300"
+              className="p-8 rounded-2xl bg-card border border-border/50 flex flex-col group hover:border-accent/30 hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-colors">
-                <MessageCircle className="w-6 h-6 text-green-500" />
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                <MessageCircle className="w-6 h-6 text-accent" />
               </div>
               
-              <span className="text-caption text-white/40 uppercase tracking-widest mb-2">Réponse instantanée</span>
+              <span className="text-xs text-muted-foreground uppercase tracking-widest mb-2">Réponse instantanée</span>
               
-              <h3 className="text-title text-white mb-3">
+              <h3 className="text-xl font-heading font-bold text-foreground mb-3">
                 L'Option Rapide
               </h3>
               
-              <p className="text-body text-white/50 mb-6 flex-grow">
+              <p className="text-muted-foreground mb-6 flex-grow">
                 Besoin d'une réponse rapide ou d'une info simple ? Écrivez-nous directement sur WhatsApp.
               </p>
               
@@ -164,40 +171,39 @@ const ContactPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClick()}
-                className="inline-flex items-center justify-center gap-3 w-full py-3 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 hover:bg-green-500/20 hover:border-green-500/30 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-3 w-full py-3 rounded-full bg-accent/10 border border-accent/20 text-accent hover:bg-accent/20 hover:border-accent/30 transition-all duration-300 font-medium"
               >
                 <MessageCircle className="w-5 h-5" />
                 Ouvrir WhatsApp
               </a>
             </motion.div>
 
-            {/* Carte B : Formulaire - with Success Gold icon */}
+            {/* Carte B : Formulaire */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="p-8 rounded-xl glass-card lg:col-span-1 lg:row-span-2 flex flex-col relative overflow-hidden"
+              className="p-8 rounded-2xl bg-card border border-border/50 lg:col-span-1 lg:row-span-2 flex flex-col relative overflow-hidden hover:shadow-lg transition-all duration-300"
             >
-              {/* Gold success indicator near form */}
               <div className="absolute top-4 right-4">
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
-                  <Trophy className="w-4 h-4 icon-success-animated" />
+                  <Trophy className="w-4 h-4 text-accent" />
                   <span className="text-xs text-accent font-medium">Devis gratuit</span>
                 </div>
               </div>
 
               <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-                <Sparkles className="w-6 h-6 icon-success-animated" />
+                <Sparkles className="w-6 h-6 text-accent" />
               </div>
               
-              <span className="text-caption text-accent/70 uppercase tracking-widest mb-2">Réponse sous 24h</span>
+              <span className="text-xs text-accent uppercase tracking-widest mb-2">Réponse sous 24h</span>
               
-              <h3 className="text-title text-white mb-3">
+              <h3 className="text-xl font-heading font-bold text-foreground mb-3">
                 L'Option Projet
               </h3>
               
-              <p className="text-body text-white/50 mb-6">
+              <p className="text-muted-foreground mb-6">
                 Vous voulez détailler votre besoin ou demander un devis ? Remplissez ce formulaire.
               </p>
 
@@ -214,9 +220,9 @@ const ContactPage = () => {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", damping: 15, delay: 0.1 }}
-                      className="w-20 h-20 mb-6 rounded-full bg-green-500/20 flex items-center justify-center"
+                      className="w-20 h-20 mb-6 rounded-full bg-accent/20 flex items-center justify-center"
                     >
-                      <CheckCircle2 className="w-10 h-10 text-green-500" />
+                      <CheckCircle2 className="w-10 h-10 text-accent" />
                     </motion.div>
                     <h4 className="text-xl font-heading font-bold text-foreground mb-2">
                       Bien reçu !
@@ -249,7 +255,7 @@ const ContactPage = () => {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground backdrop-blur-sm"
+                      className="w-full px-4 py-3.5 rounded-xl bg-secondary/50 border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground"
                     />
                     
                     <input
@@ -258,15 +264,14 @@ const ContactPage = () => {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground backdrop-blur-sm"
+                      className="w-full px-4 py-3.5 rounded-xl bg-secondary/50 border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground"
                     />
 
-                    {/* Custom Select */}
                     <div className="relative">
                       <button
                         type="button"
                         onClick={() => setSelectOpen(!selectOpen)}
-                        className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-left text-foreground backdrop-blur-sm"
+                        className="w-full px-4 py-3.5 rounded-xl bg-secondary/50 border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-left text-foreground"
                       >
                         {selectedSubject ? (
                           selectedSubject.label
@@ -284,7 +289,7 @@ const ContactPage = () => {
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
-                            className="absolute top-full left-0 right-0 mt-2 py-2 rounded-xl bg-card/95 backdrop-blur-xl border border-white/10 shadow-2xl z-50"
+                            className="absolute top-full left-0 right-0 mt-2 py-2 rounded-xl bg-card border border-border shadow-xl z-50"
                           >
                             {subjectOptions.map((option) => (
                               <button
@@ -310,13 +315,12 @@ const ContactPage = () => {
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground resize-none backdrop-blur-sm flex-grow"
+                      className="w-full px-4 py-3.5 rounded-xl bg-secondary/50 border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground resize-none flex-grow"
                     />
 
                     <Button
                       type="submit"
-                      variant="cta"
-                      className="w-full h-12 text-base gap-2 mt-auto"
+                      className="w-full h-12 text-base gap-2 mt-auto rounded-full bg-foreground text-primary hover:bg-foreground/90"
                       disabled={isSubmitting}
                       onClick={() => {
                         if (!isSubmitting) playClick();
@@ -345,22 +349,22 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="p-8 rounded-xl glass-card flex flex-col"
+              className="p-8 rounded-2xl bg-card border border-border/50 flex flex-col hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6">
-                <MapPin className="w-6 h-6 text-white/50" />
+              <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-6">
+                <MapPin className="w-6 h-6 text-muted-foreground" />
               </div>
               
-              <h3 className="text-title text-white mb-3">
+              <h3 className="text-xl font-heading font-bold text-foreground mb-3">
                 L'Option Rencontre
               </h3>
               
-              <p className="text-body text-white/50 mb-6">
+              <p className="text-muted-foreground mb-6">
                 Vous préférez discuter les yeux dans les yeux ? Venez nous rencontrer à notre QG.
               </p>
 
-              <p className="text-body text-white/40 mb-6">
-                <span className="text-white/60">Adresse :</span><br />
+              <p className="text-muted-foreground mb-6">
+                <span className="text-foreground/70">Adresse :</span><br />
                 Grand Mbao Cité Baobab, Dakar
               </p>
               
@@ -369,7 +373,7 @@ const ContactPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClick()}
-                className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-lg border border-white/10 text-white/60 hover:border-white/20 hover:text-white/80 transition-all duration-300 mt-auto"
+                className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full border border-border text-foreground/60 hover:border-accent hover:text-accent transition-all duration-300 mt-auto"
               >
                 Nous trouver sur Maps
                 <ExternalLink className="w-4 h-4" />
@@ -380,18 +384,21 @@ const ContactPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-section relative">
+      <section className="py-16 md:py-24 bg-secondary/20">
         <div className="container">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-10"
+              className="mb-10"
             >
-              <span className="text-caption text-white/40 uppercase tracking-widest">
-                Questions fréquentes
+              <span className="badge-accent mb-4">
+                FAQ
               </span>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+                Questions fréquentes
+              </h2>
             </motion.div>
 
             <motion.div
@@ -399,14 +406,14 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="rounded-xl glass-card p-6 md:p-8"
+              className="rounded-2xl bg-card border border-border/50 p-6 md:p-8"
             >
               <Accordion type="single" collapsible className="w-full">
                 {faqItems.map((item, index) => (
                   <AccordionItem 
                     key={index} 
                     value={`item-${index}`}
-                    className="border-white/10"
+                    className="border-border"
                   >
                     <AccordionTrigger className="text-left text-foreground hover:text-accent hover:no-underline py-5">
                       {item.question}
@@ -421,7 +428,7 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

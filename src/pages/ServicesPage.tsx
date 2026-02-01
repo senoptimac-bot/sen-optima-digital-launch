@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCircle } from "lucide-react";
 import ServiceCard from "@/components/services/ServiceCard";
 import PhilosophyCard from "@/components/services/PhilosophyCard";
-import servicesHeroImage from "@/assets/services-hero.jpg";
 
 // Service data
 const services = [
@@ -67,53 +66,81 @@ const philosophyItems = [
 
 const ServicesPage = () => {
   return (
-    <div className="min-h-screen">
-      {/* HERO - Visual Banner with Background Image */}
+    <div className="min-h-screen bg-background">
+      {/* HERO - Clean cream background like reference */}
       <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center py-20 pt-32 md:py-28 md:pt-40 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={servicesHeroImage}
-            alt="Professionnel consultant"
-            className="w-full h-full object-cover object-center"
-            loading="eager"
-          />
-          {/* Dark Overlay - 60% opacity for readability */}
-          <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-60" />
-          {/* Gradient for depth */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-        </div>
+        {/* Background with decorative shape */}
+        <div className="absolute inset-0 bg-background" />
+        <div className="absolute top-0 right-0 w-[60%] h-full bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
 
         <div className="container px-5 md:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            {/* Label */}
-            <span className="inline-flex items-center gap-2 text-xs text-white/70 uppercase tracking-widest mb-6">
-              <span className="w-8 h-px bg-accent" />
-              Nos Services
-            </span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-xl"
+            >
+              {/* Badge */}
+              <span className="badge-accent mb-6">
+                Nos Services
+              </span>
 
-            {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight mb-6">
-              Transformez votre Vision
-              <span className="block text-accent mt-1">en Système Rentable.</span>
-            </h1>
+              {/* Title */}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-6">
+                Transformez votre <span className="italic text-accent">Vision</span>
+                <span className="block mt-1">en Système Rentable.</span>
+              </h1>
 
-            {/* Subtitle */}
-            <p className="text-base md:text-lg text-white/80 leading-relaxed">
-              Que vous démarriez ou cherchiez à scaler, nous structurons 
-              votre activité pour qu'elle dure.
-            </p>
-          </motion.div>
+              {/* Subtitle */}
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
+                Que vous démarriez ou cherchiez à scaler, nous structurons 
+                votre activité pour qu'elle dure.
+              </p>
+
+              {/* CTA */}
+              <Button
+                asChild
+                size="lg"
+                className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
+              >
+                <Link to="/solutions">
+                  Lancer mon Diagnostic
+                  <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </Link>
+              </Button>
+            </motion.div>
+
+            {/* Right side - Service icons grid */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hidden lg:grid grid-cols-2 gap-6"
+            >
+              {services.slice(0, 4).map((service, index) => (
+                <motion.div
+                  key={service.number}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                  className="p-6 rounded-2xl bg-card border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                    <service.icon className="w-6 h-6 text-accent" />
+                  </div>
+                  <h3 className="font-heading font-bold text-foreground text-sm">{service.subtitle}</h3>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* SERVICES - Cards avec expansion */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-secondary/20">
         <div className="container px-5 md:px-8">
           {/* Section Header */}
           <motion.div
@@ -122,8 +149,7 @@ const ServicesPage = () => {
             viewport={{ once: true }}
             className="mb-12 md:mb-16"
           >
-            <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-4">
-              <span className="w-8 h-px bg-accent" />
+            <span className="badge-accent mb-4">
               4 Piliers
             </span>
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
@@ -141,7 +167,7 @@ const ServicesPage = () => {
       </section>
 
       {/* PHILOSOPHY - Compact */}
-      <section className="py-16 md:py-24 bg-secondary/20">
+      <section className="py-16 md:py-24">
         <div className="container px-5 md:px-8">
           {/* Section Header */}
           <motion.div
@@ -150,8 +176,7 @@ const ServicesPage = () => {
             viewport={{ once: true }}
             className="mb-10 md:mb-12"
           >
-            <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-4">
-              <span className="w-8 h-px bg-accent" />
+            <span className="badge-accent mb-4">
               Notre Approche
             </span>
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
@@ -169,7 +194,7 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA - Simple */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-secondary/20">
         <div className="container px-5 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -178,20 +203,22 @@ const ServicesPage = () => {
             className="max-w-xl"
           >
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
-              Votre ambition compte.
-              <span className="block text-accent mt-1">Pas votre niveau.</span>
+              Votre <span className="italic text-accent">ambition</span> compte.
+              <span className="block mt-1">Pas votre niveau.</span>
             </h2>
-            <p className="text-foreground/60 mb-8 leading-relaxed">
+            <p className="text-muted-foreground mb-8 leading-relaxed">
               Faisons le point ensemble sur votre projet et vos objectifs.
             </p>
             <Button
               asChild
               size="lg"
-              className="w-full sm:w-auto bg-cta-success hover:bg-cta-success/90 text-cta-success-foreground px-8 py-6 text-base font-semibold rounded-xl shadow-lg shadow-cta-success/20"
+              className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
             >
               <Link to="/solutions">
                 Faire le point sur mon projet
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                  <ArrowRight className="w-4 h-4" />
+                </span>
               </Link>
             </Button>
           </motion.div>
