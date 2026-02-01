@@ -38,10 +38,10 @@ const ServiceCard = ({
       <div 
         onClick={() => setIsExpanded(!isExpanded)}
         className={cn(
-          "relative p-6 md:p-8 rounded-2xl cursor-pointer transition-all duration-500",
-          "bg-card border border-border/50",
-          "hover:border-accent/30 hover:shadow-lg",
-          isExpanded && "border-accent/40 shadow-xl"
+          "relative p-6 md:p-8 rounded-2xl cursor-pointer transition-all duration-300",
+          "bg-card border border-border/30",
+          "hover:shadow-md",
+          isExpanded && "shadow-lg"
         )}
       >
         {/* Number Badge */}
