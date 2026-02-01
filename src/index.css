@@ -53,7 +53,7 @@
     --input: 218 60% 16%;
     --ring: 0 0% 100% / 0.15;
 
-    --radius: 0.5rem;
+    --radius: 0.875rem;
 
     /* Custom tokens */
     --gold: 43 65% 53%;
@@ -109,10 +109,10 @@
     color: hsl(0 0% 96%);
   }
 
-  /* Body text - Off White for softer contrast */
+  /* Body text - Anthracite gray for softer contrast (not pure black) */
   p, span, li {
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    color: hsl(0 0% 90% / 0.7);
+    color: hsl(215 14% 65%);
   }
 
   /* Subheading utility class */
@@ -260,23 +260,46 @@
   /* Glass - Premium Glassmorphism on Deep Blue */
   .glass {
     background: hsl(218 70% 13% / 0.40);
-    border: 1px solid hsl(0 0% 100% / 0.10);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    border-radius: 1rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px -8px hsl(218 70% 5% / 0.3);
   }
 
   .glass-card {
     background: hsl(218 70% 13% / 0.40);
-    border: 1px solid hsl(0 0% 100% / 0.10);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    border-radius: 1rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px -8px hsl(218 70% 5% / 0.25);
+    padding: 1.75rem;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px -12px hsl(218 70% 5% / 0.35);
+    border-color: hsl(0 0% 100% / 0.12);
   }
 
   .glass-premium {
     background: hsl(218 70% 13% / 0.50);
-    border: 1px solid hsl(0 0% 100% / 0.12);
+    border: 1px solid hsl(0 0% 100% / 0.10);
+    border-radius: 1.25rem;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 40px -10px hsl(218 70% 5% / 0.35);
+    padding: 2rem;
   }
 
   /* Alternative subtle glass */
   .glass-subtle {
-    background: hsl(0 0% 100% / 0.05);
-    border: 1px solid hsl(0 0% 100% / 0.08);
+    background: hsl(0 0% 100% / 0.04);
+    border: 1px solid hsl(0 0% 100% / 0.06);
+    border-radius: 0.875rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px -6px hsl(218 70% 5% / 0.2);
   }
 
   /* Premium Pricing Cards */
@@ -310,24 +333,34 @@
                 0 0 80px -30px hsl(43 65% 53% / 0.3);
   }
 
-  /* Subtle blur on desktop only */
+  /* Enhanced blur on desktop */
   @media (min-width: 768px) {
     .glass {
-      backdrop-filter: blur(12px);
-    }
-    .glass-card {
-      backdrop-filter: blur(10px);
-    }
-    .glass-premium {
       backdrop-filter: blur(16px);
     }
+    .glass-card {
+      backdrop-filter: blur(14px);
+    }
+    .glass-premium {
+      backdrop-filter: blur(20px);
+    }
     .glass-subtle {
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
     }
     .glass-pricing,
     .glass-pricing-featured {
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px);
     }
+  }
+
+  /* Card hover lift effect */
+  .card-hover-lift {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.3s ease;
+  }
+
+  .card-hover-lift:hover {
+    transform: translateY(-5px);
   }
 
   /* Minimal shadows */
