@@ -1,43 +1,47 @@
 import { memo } from "react";
 
 /**
- * Subtle animated gradient background for premium white design.
- * Uses very light, barely perceptible gradients to add depth
- * without compromising the clean white aesthetic.
+ * AnimatedGradientBackground
+ * 
+ * Ultra-subtle ambient depth for Apple-esque design.
+ * Creates barely-visible movement that adds life without distraction.
+ * Off-white (#FAFAFA) background with gold/navy depth blobs.
  */
 const AnimatedGradientBackground = memo(() => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Very subtle gold gradient blob - barely visible on white */}
+      {/* Primary gold warmth - very subtle */}
       <div 
-        className="absolute w-[1000px] h-[1000px] rounded-full opacity-[0.03] will-change-transform"
+        className="absolute w-[900px] h-[900px] rounded-full opacity-[0.02] will-change-transform"
         style={{
-          background: "radial-gradient(circle, hsl(43, 75%, 52%) 0%, transparent 60%)",
-          top: "-30%",
-          right: "-20%",
-          animation: "floatGold 60s ease-in-out infinite",
+          background: "radial-gradient(circle, hsl(43, 65%, 53%) 0%, transparent 65%)",
+          filter: "blur(100px)",
+          top: "-25%",
+          right: "-15%",
+          animation: "floatGold 50s ease-in-out infinite",
         }}
       />
       
-      {/* Secondary subtle navy blob */}
+      {/* Secondary soft navy depth */}
       <div 
-        className="absolute w-[800px] h-[800px] rounded-full opacity-[0.02] will-change-transform"
+        className="absolute w-[1100px] h-[1100px] rounded-full opacity-[0.012] will-change-transform"
         style={{
-          background: "radial-gradient(circle, hsl(215, 43%, 18%) 0%, transparent 60%)",
-          bottom: "-20%",
-          left: "-15%",
-          animation: "floatNavy 75s ease-in-out infinite",
+          background: "radial-gradient(circle, hsl(218, 35%, 30%) 0%, transparent 65%)",
+          filter: "blur(130px)",
+          bottom: "-30%",
+          left: "-20%",
+          animation: "floatNavy 65s ease-in-out infinite",
         }}
       />
 
-      {/* CSS Keyframes - very slow, barely perceptible movement */}
+      {/* CSS Keyframes - ultra slow, barely perceptible */}
       <style>{`
         @keyframes floatGold {
           0%, 100% {
             transform: translate(0, 0) scale(1);
           }
           50% {
-            transform: translate(-40px, 30px) scale(1.1);
+            transform: translate(-30px, 25px) scale(1.08);
           }
         }
         
@@ -46,7 +50,7 @@ const AnimatedGradientBackground = memo(() => {
             transform: translate(0, 0) scale(1);
           }
           50% {
-            transform: translate(30px, -40px) scale(1.05);
+            transform: translate(25px, -30px) scale(1.04);
           }
         }
       `}</style>
