@@ -132,7 +132,7 @@ const ServicesPage = () => {
           </motion.div>
 
           {/* Cards Grid - 1 col mobile, 2 cols tablet+ */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
             {services.map((service, index) => (
               <ServiceCard key={service.title} {...service} index={index} />
             ))}
