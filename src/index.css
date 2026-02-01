@@ -5,46 +5,42 @@
 @layer base {
   :root,
   .dark {
-    /* Deep Navy Blue Universe - Enhanced for futuristic depth */
-    --background: 220 55% 10%;
+    /* Deep Navy Blue Universe - #0a1a3a */
+    --background: 218 70% 13%;
     --foreground: 0 0% 100%;
 
-    --card: 220 55% 10% / 0.5;
+    --card: 218 70% 13% / 0.4;
     --card-foreground: 0 0% 100%;
 
-    --popover: 220 55% 12%;
+    --popover: 218 70% 15%;
     --popover-foreground: 0 0% 100%;
 
     /* Primary - Deep Blue */
-    --primary: 220 60% 18%;
+    --primary: 218 70% 20%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary */
-    --secondary: 220 50% 14%;
+    --secondary: 218 60% 16%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 45% 18%;
+    --muted: 218 50% 20%;
     --muted-foreground: 0 0% 70%;
 
     /* Accent - Reserved Gold (#D4A73B) - unchanged */
     --accent: 43 65% 53%;
-    --accent-foreground: 220 55% 10%;
+    --accent-foreground: 218 70% 13%;
 
     /* Problem icons - Red/Orange */
     --problem: 0 84% 60%;
     --problem-foreground: 0 0% 100%;
 
-    /* Solution icons - Cyan (enhanced for tech feel) */
-    --solution: 195 90% 65%;
-    --solution-foreground: 220 55% 10%;
-
-    /* Cyan accent for futuristic glow effects */
-    --cyan-glow: 195 80% 55%;
-    --cyan-subtle: 195 60% 70%;
+    /* Solution icons - White/Cyan */
+    --solution: 187 100% 70%;
+    --solution-foreground: 218 70% 13%;
 
     /* Warning - Amber/Orange */
     --warning: 38 92% 50%;
-    --warning-foreground: 220 55% 10%;
+    --warning-foreground: 218 70% 13%;
 
     /* CTA Success - WhatsApp Green */
     --cta-success: 142 70% 45%;
@@ -54,7 +50,7 @@
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 100% / 0.10;
-    --input: 220 50% 14%;
+    --input: 218 60% 16%;
     --ring: 0 0% 100% / 0.15;
 
     --radius: 0.875rem;
@@ -65,12 +61,12 @@
     --gold-dark: 43 65% 43%;
 
     /* Sidebar */
-    --sidebar-background: 220 55% 10%;
+    --sidebar-background: 218 70% 13%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 43 65% 53%;
-    --sidebar-primary-foreground: 220 55% 10%;
+    --sidebar-primary-foreground: 218 70% 13%;
     --sidebar-accent: 43 65% 53%;
-    --sidebar-accent-foreground: 220 55% 10%;
+    --sidebar-accent-foreground: 218 70% 13%;
     --sidebar-border: 0 0% 100% / 0.08;
     --sidebar-ring: 0 0% 100% / 0.15;
   }
@@ -261,25 +257,21 @@
     @apply text-accent font-normal;
   }
 
-  /* Glass - Premium Glassmorphism with futuristic edge glow */
+  /* Glass - Premium Glassmorphism on Deep Blue */
   .glass {
-    background: hsl(220 55% 10% / 0.50);
-    border: 1px solid hsl(0 0% 100% / 0.10);
-    border-radius: 1rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 
-      0 8px 32px -8px hsl(220 55% 5% / 0.4),
-      inset 0 1px 0 0 hsl(0 0% 100% / 0.05);
-  }
-
-  .glass-card {
-    background: hsl(220 55% 10% / 0.45);
+    background: hsl(218 70% 13% / 0.40);
     border: 1px solid hsl(0 0% 100% / 0.08);
     border-radius: 1rem;
     backdrop-filter: blur(12px);
-    box-shadow: 
-      0 8px 32px -8px hsl(220 55% 5% / 0.35),
-      inset 0 1px 0 0 hsl(0 0% 100% / 0.04);
+    box-shadow: 0 8px 32px -8px hsl(218 70% 5% / 0.3);
+  }
+
+  .glass-card {
+    background: hsl(218 70% 13% / 0.40);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    border-radius: 1rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px -8px hsl(218 70% 5% / 0.25);
     padding: 1.75rem;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 box-shadow 0.3s ease,
@@ -288,21 +280,16 @@
 
   .glass-card:hover {
     transform: translateY(-5px);
-    box-shadow: 
-      0 16px 48px -12px hsl(220 55% 5% / 0.45),
-      0 0 40px -15px hsl(195 80% 55% / 0.15),
-      inset 0 1px 0 0 hsl(0 0% 100% / 0.06);
-    border-color: hsl(195 60% 70% / 0.15);
+    box-shadow: 0 16px 48px -12px hsl(218 70% 5% / 0.35);
+    border-color: hsl(0 0% 100% / 0.12);
   }
 
   .glass-premium {
-    background: hsl(220 55% 10% / 0.55);
-    border: 1px solid hsl(0 0% 100% / 0.12);
+    background: hsl(218 70% 13% / 0.50);
+    border: 1px solid hsl(0 0% 100% / 0.10);
     border-radius: 1.25rem;
     backdrop-filter: blur(16px);
-    box-shadow: 
-      0 12px 40px -10px hsl(220 55% 5% / 0.4),
-      inset 0 1px 0 0 hsl(0 0% 100% / 0.06);
+    box-shadow: 0 12px 40px -10px hsl(218 70% 5% / 0.35);
     padding: 2rem;
   }
 
@@ -312,12 +299,12 @@
     border: 1px solid hsl(0 0% 100% / 0.06);
     border-radius: 0.875rem;
     backdrop-filter: blur(8px);
-    box-shadow: 0 4px 20px -6px hsl(220 55% 5% / 0.25);
+    box-shadow: 0 4px 20px -6px hsl(218 70% 5% / 0.2);
   }
 
-  /* Premium Pricing Cards with cyan edge glow */
+  /* Premium Pricing Cards */
   .glass-pricing {
-    background: hsl(0 0% 100% / 0.04);
+    background: hsl(0 0% 100% / 0.03);
     border: 1px solid hsl(0 0% 100% / 0.08);
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 border-color 0.3s ease,
@@ -327,28 +314,23 @@
 
   .glass-pricing:hover {
     transform: translateY(-8px);
-    border-color: hsl(195 70% 55% / 0.3);
-    box-shadow: 
-      0 20px 40px -20px hsl(220 55% 5% / 0.5), 
-      0 0 50px -25px hsl(195 80% 55% / 0.2);
+    border-color: hsl(43 65% 53% / 0.5);
+    box-shadow: 0 20px 40px -20px hsl(43 65% 53% / 0.15), 
+                0 0 60px -30px hsl(43 65% 53% / 0.2);
   }
 
   .glass-pricing-featured {
-    background: hsl(0 0% 100% / 0.06);
+    background: hsl(0 0% 100% / 0.05);
     border: 2px solid hsl(43 65% 53% / 0.4);
-    box-shadow: 
-      0 0 40px -10px hsl(43 65% 53% / 0.15),
-      0 0 60px -20px hsl(195 80% 55% / 0.1);
+    box-shadow: 0 0 40px -10px hsl(43 65% 53% / 0.15);
     transform: scale(1.02);
   }
 
   .glass-pricing-featured:hover {
     transform: scale(1.02) translateY(-8px);
     border-color: hsl(43 65% 53% / 0.7);
-    box-shadow: 
-      0 25px 50px -20px hsl(43 65% 53% / 0.25), 
-      0 0 80px -30px hsl(43 65% 53% / 0.3),
-      0 0 60px -25px hsl(195 80% 55% / 0.15);
+    box-shadow: 0 25px 50px -20px hsl(43 65% 53% / 0.25), 
+                0 0 80px -30px hsl(43 65% 53% / 0.3);
   }
 
   /* Enhanced blur on desktop */
@@ -397,20 +379,6 @@
   
   .shadow-gold {
     box-shadow: 0 4px 20px -4px hsl(43 65% 53% / 0.4);
-  }
-
-  /* Cyan/Tech glows for futuristic accents */
-  .glow-cyan {
-    box-shadow: 0 0 40px -10px hsl(195 80% 55% / 0.25);
-  }
-
-  .glow-cyan-subtle {
-    box-shadow: 0 0 20px -5px hsl(195 80% 55% / 0.15);
-  }
-
-  .border-glow-cyan {
-    border-color: hsl(195 60% 70% / 0.2);
-    box-shadow: 0 0 30px -10px hsl(195 80% 55% / 0.2);
   }
 
   /* WhatsApp pulse - GPU optimized */
