@@ -5,26 +5,26 @@
 @layer base {
   :root,
   .dark {
-    /* Deep Navy Blue Universe - #0a1a3a */
-    --background: 218 70% 13%;
-    --foreground: 0 0% 100%;
+    /* Clean White Background */
+    --background: 0 0% 100%;
+    --foreground: 218 70% 20%;
 
-    --card: 218 70% 13% / 0.4;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 218 70% 20%;
 
-    --popover: 218 70% 15%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 70% 20%;
 
     /* Primary - Deep Blue */
     --primary: 218 70% 20%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary */
-    --secondary: 218 60% 16%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 218 20% 96%;
+    --secondary-foreground: 218 70% 20%;
 
-    --muted: 218 50% 20%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 218 20% 94%;
+    --muted-foreground: 218 30% 45%;
 
     /* Accent - Reserved Gold (#D4A73B) - unchanged */
     --accent: 43 65% 53%;
@@ -34,9 +34,9 @@
     --problem: 0 84% 60%;
     --problem-foreground: 0 0% 100%;
 
-    /* Solution icons - White/Cyan */
-    --solution: 187 100% 70%;
-    --solution-foreground: 218 70% 13%;
+    /* Solution icons - Navy Blue */
+    --solution: 218 70% 25%;
+    --solution-foreground: 0 0% 100%;
 
     /* Warning - Amber/Orange */
     --warning: 38 92% 50%;
@@ -49,9 +49,9 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 100% / 0.10;
-    --input: 218 60% 16%;
-    --ring: 0 0% 100% / 0.15;
+    --border: 218 30% 90%;
+    --input: 218 20% 96%;
+    --ring: 218 70% 20% / 0.15;
 
     --radius: 0.875rem;
 
@@ -66,14 +66,14 @@
     --brand-navy-dark: 218 70% 13%;
 
     /* Sidebar */
-    --sidebar-background: 218 70% 13%;
-    --sidebar-foreground: 0 0% 100%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 218 70% 20%;
     --sidebar-primary: 43 65% 53%;
     --sidebar-primary-foreground: 218 70% 13%;
     --sidebar-accent: 43 65% 53%;
     --sidebar-accent-foreground: 218 70% 13%;
-    --sidebar-border: 0 0% 100% / 0.08;
-    --sidebar-ring: 0 0% 100% / 0.15;
+    --sidebar-border: 218 30% 90%;
+    --sidebar-ring: 218 70% 20% / 0.15;
   }
 }
 
@@ -126,7 +126,7 @@
     font-family: 'League Spartan', 'Open Sans', system-ui, sans-serif;
     font-weight: 700;
     letter-spacing: -0.02em;
-    color: hsl(0 0% 96%);
+    color: hsl(218 70% 20%);
   }
 
   h1 {
@@ -138,13 +138,13 @@
     font-family: 'Glacial Indifference', 'Open Sans', system-ui, sans-serif;
     font-weight: 400;
     letter-spacing: 0.02em;
-    color: hsl(0 0% 96%);
+    color: hsl(218 70% 20%);
   }
 
-  /* Body text - Anthracite gray for softer contrast (not pure black) */
+  /* Body text - Navy blue for better contrast on white */
   p, span, li {
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    color: hsl(215 14% 65%);
+    color: hsl(218 40% 40%);
   }
 
   /* Subheading utility class */
@@ -198,9 +198,9 @@
   /* Lazy loading placeholder */
   .lazy-placeholder {
     background: linear-gradient(90deg, 
-      hsl(218 70% 15%) 0%, 
-      hsl(218 70% 18%) 50%, 
-      hsl(218 70% 15%) 100%);
+      hsl(218 20% 96%) 0%, 
+      hsl(218 20% 98%) 50%, 
+      hsl(218 20% 96%) 100%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
   }
@@ -289,13 +289,13 @@
     @apply text-accent font-normal;
   }
 
-  /* Glass - Premium Glassmorphism on Deep Blue */
+  /* Glass - Premium light glassmorphism */
   .glass {
-    background: hsl(218 70% 13% / 0.40);
-    border: 1px solid hsl(0 0% 100% / 0.08);
+    background: hsl(0 0% 100% / 0.70);
+    border: 1px solid hsl(218 30% 90%);
     border-radius: 1rem;
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px -8px hsl(218 70% 5% / 0.3);
+    box-shadow: 0 8px 32px -8px hsl(218 70% 20% / 0.08);
   }
 
   .glass-card {
@@ -364,27 +364,27 @@
   }
 
   .glass-premium {
-    background: hsl(218 70% 13% / 0.50);
-    border: 1px solid hsl(0 0% 100% / 0.10);
+    background: hsl(0 0% 100% / 0.85);
+    border: 1px solid hsl(218 30% 88%);
     border-radius: 1.25rem;
     backdrop-filter: blur(16px);
-    box-shadow: 0 12px 40px -10px hsl(218 70% 5% / 0.35);
+    box-shadow: 0 12px 40px -10px hsl(218 70% 20% / 0.1);
     padding: 2rem;
   }
 
   /* Alternative subtle glass */
   .glass-subtle {
-    background: hsl(0 0% 100% / 0.04);
-    border: 1px solid hsl(0 0% 100% / 0.06);
+    background: hsl(218 30% 98%);
+    border: 1px solid hsl(218 30% 92%);
     border-radius: 0.875rem;
     backdrop-filter: blur(8px);
-    box-shadow: 0 4px 20px -6px hsl(218 70% 5% / 0.2);
+    box-shadow: 0 4px 20px -6px hsl(218 70% 20% / 0.06);
   }
 
   /* Premium Pricing Cards */
   .glass-pricing {
-    background: hsl(0 0% 100% / 0.03);
-    border: 1px solid hsl(0 0% 100% / 0.08);
+    background: hsl(0 0% 100% / 0.90);
+    border: 1px solid hsl(218 30% 90%);
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 border-color 0.3s ease,
                 box-shadow 0.3s ease;
@@ -399,17 +399,17 @@
   }
 
   .glass-pricing-featured {
-    background: hsl(0 0% 100% / 0.05);
+    background: hsl(0 0% 100%);
     border: 2px solid hsl(43 65% 53% / 0.4);
-    box-shadow: 0 0 40px -10px hsl(43 65% 53% / 0.15);
+    box-shadow: 0 0 40px -10px hsl(43 65% 53% / 0.12);
     transform: scale(1.02);
   }
 
   .glass-pricing-featured:hover {
     transform: scale(1.02) translateY(-8px);
     border-color: hsl(43 65% 53% / 0.7);
-    box-shadow: 0 25px 50px -20px hsl(43 65% 53% / 0.25), 
-                0 0 80px -30px hsl(43 65% 53% / 0.3);
+    box-shadow: 0 25px 50px -20px hsl(43 65% 53% / 0.18), 
+                0 0 80px -30px hsl(43 65% 53% / 0.2);
   }
 
   /* Enhanced blur on desktop */
@@ -444,7 +444,7 @@
 
   /* Minimal shadows */
   .shadow-soft {
-    box-shadow: 0 4px 24px -8px hsl(218 70% 5% / 0.4);
+    box-shadow: 0 4px 24px -8px hsl(218 70% 20% / 0.1);
   }
 
   /* Gold glows for premium cards */
@@ -467,7 +467,7 @@
   }
 
   @keyframes pulse-wa {
-    0%, 100% { box-shadow: 0 0 0 0 hsl(142 70% 45% / 0.4); }
+    0%, 100% { box-shadow: 0 0 0 0 hsl(142 70% 45% / 0.35); }
     50% { box-shadow: 0 0 0 12px hsl(142 70% 45% / 0); }
   }
 

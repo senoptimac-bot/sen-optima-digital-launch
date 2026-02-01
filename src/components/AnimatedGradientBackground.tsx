@@ -21,14 +21,14 @@ const AnimatedGradientBackground = memo(() => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Primary breathing gradient - slow radial shift with parallax */}
+      {/* Primary soft gradient - subtle blue tint with parallax */}
       <div 
-        className="absolute inset-0 opacity-40 will-change-transform"
+        className="absolute inset-0 opacity-30 will-change-transform"
         style={{
           background: `
             radial-gradient(
               ellipse 80% 60% at 20% 30%,
-              hsl(250, 30%, 12%) 0%,
+              hsl(218, 50%, 95%) 0%,
               transparent 70%
             )
           `,
@@ -37,14 +37,14 @@ const AnimatedGradientBackground = memo(() => {
         }}
       />
       
-      {/* Secondary gradient - countermoving for depth with inverse parallax */}
+      {/* Secondary gradient - warm gold hint with inverse parallax */}
       <div 
-        className="absolute inset-0 opacity-30 will-change-transform"
+        className="absolute inset-0 opacity-20 will-change-transform"
         style={{
           background: `
             radial-gradient(
               ellipse 70% 50% at 80% 70%,
-              hsl(220, 35%, 10%) 0%,
+              hsl(43, 50%, 92%) 0%,
               transparent 60%
             )
           `,
@@ -53,14 +53,14 @@ const AnimatedGradientBackground = memo(() => {
         }}
       />
       
-      {/* Tertiary subtle glow - nebula effect with medium parallax */}
+      {/* Tertiary subtle glow - soft lavender with medium parallax */}
       <div 
-        className="absolute inset-0 opacity-20 will-change-transform"
+        className="absolute inset-0 opacity-15 will-change-transform"
         style={{
           background: `
             radial-gradient(
               circle at 50% 50%,
-              hsl(260, 25%, 15%) 0%,
+              hsl(220, 30%, 94%) 0%,
               transparent 50%
             )
           `,
