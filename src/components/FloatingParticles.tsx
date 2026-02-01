@@ -6,27 +6,42 @@ interface FloatingParticlesProps {
 }
 
 /**
- * Ultra-light floating particle effect using pure CSS animations.
- * Creates a subtle "digital stardust" ambiance without impacting performance.
- * Each particle is a tiny CSS element with randomized position and animation.
+ * Ultra-light floating particle effect with cyan/blue glow accents.
+ * Creates a subtle "digital stardust" ambiance inspired by futuristic tech aesthetic.
+ * Each particle is a tiny CSS element with randomized position and soft glow.
  */
 const FloatingParticles = memo(({ count = 25, className = "" }: FloatingParticlesProps) => {
   // Generate particles with random properties (memoized for performance)
   const particles = useMemo(() => {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      // Random position
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      // Random size (1-3px)
-      size: 1 + Math.random() * 2,
-      // Random animation duration (20-50s for very slow movement)
-      duration: 20 + Math.random() * 30,
-      // Random delay to stagger animations
-      delay: Math.random() * 20,
-      // Random opacity (very subtle: 0.1-0.4)
-      opacity: 0.1 + Math.random() * 0.3,
-    }));
+    return Array.from({ length: count }, (_, i) => {
+      // Mix of cyan, blue, and white particles for tech feel
+      const colorVariants = [
+        { bg: "hsl(195, 70%, 75%)", glow: "hsla(195, 80%, 70%, 0.4)" }, // Cyan
+        { bg: "hsl(210, 60%, 80%)", glow: "hsla(210, 70%, 75%, 0.35)" }, // Light blue
+        { bg: "hsl(220, 40%, 85%)", glow: "hsla(220, 50%, 80%, 0.3)" }, // Soft blue
+        { bg: "hsl(0, 0%, 90%)", glow: "hsla(0, 0%, 85%, 0.25)" }, // White
+        { bg: "hsl(260, 50%, 75%)", glow: "hsla(260, 60%, 70%, 0.3)" }, // Purple hint
+      ];
+      const color = colorVariants[i % colorVariants.length];
+      
+      return {
+        id: i,
+        // Random position
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        // Random size (1-3.5px)
+        size: 1 + Math.random() * 2.5,
+        // Random animation duration (25-55s for very slow movement)
+        duration: 25 + Math.random() * 30,
+        // Random delay to stagger animations
+        delay: Math.random() * 20,
+        // Random opacity (subtle: 0.15-0.5)
+        opacity: 0.15 + Math.random() * 0.35,
+        // Color
+        backgroundColor: color.bg,
+        glowColor: color.glow,
+      };
+    });
   }, [count]);
 
   return (
@@ -40,10 +55,10 @@ const FloatingParticles = memo(({ count = 25, className = "" }: FloatingParticle
             top: particle.top,
             width: `${particle.size}px`,
             height: `${particle.size}px`,
-            backgroundColor: "hsl(210, 30%, 85%)",
+            backgroundColor: particle.backgroundColor,
             opacity: particle.opacity,
             filter: "blur(0.5px)",
-            boxShadow: `0 0 ${particle.size * 2}px ${particle.size}px hsla(210, 40%, 80%, 0.3)`,
+            boxShadow: `0 0 ${particle.size * 3}px ${particle.size * 1.5}px ${particle.glowColor}`,
             animation: `floatParticle${particle.id % 5} ${particle.duration}s ease-in-out infinite`,
             animationDelay: `${particle.delay}s`,
           }}
@@ -58,16 +73,16 @@ const FloatingParticles = memo(({ count = 25, className = "" }: FloatingParticle
             opacity: inherit;
           }
           25% {
-            transform: translate(30px, -20px) scale(1.2);
-            opacity: 0.5;
+            transform: translate(25px, -18px) scale(1.15);
+            opacity: 0.6;
           }
           50% {
-            transform: translate(-10px, -40px) scale(0.8);
-            opacity: 0.2;
+            transform: translate(-8px, -35px) scale(0.85);
+            opacity: 0.25;
           }
           75% {
-            transform: translate(20px, -10px) scale(1.1);
-            opacity: 0.4;
+            transform: translate(18px, -8px) scale(1.1);
+            opacity: 0.45;
           }
         }
         
@@ -77,12 +92,12 @@ const FloatingParticles = memo(({ count = 25, className = "" }: FloatingParticle
             opacity: inherit;
           }
           33% {
-            transform: translate(-25px, -30px) scale(0.9);
-            opacity: 0.3;
+            transform: translate(-22px, -25px) scale(0.9);
+            opacity: 0.35;
           }
           66% {
-            transform: translate(15px, -50px) scale(1.3);
-            opacity: 0.5;
+            transform: translate(12px, -45px) scale(1.2);
+            opacity: 0.55;
           }
         }
         
@@ -91,7 +106,7 @@ const FloatingParticles = memo(({ count = 25, className = "" }: FloatingParticle
             transform: translate(0, 0) scale(1);
           }
           50% {
-            transform: translate(-20px, -35px) scale(1.15);
+            transform: translate(-18px, -30px) scale(1.1);
           }
         }
         
@@ -101,12 +116,12 @@ const FloatingParticles = memo(({ count = 25, className = "" }: FloatingParticle
             opacity: inherit;
           }
           40% {
-            transform: translate(35px, -25px);
-            opacity: 0.6;
+            transform: translate(30px, -20px);
+            opacity: 0.55;
           }
           80% {
-            transform: translate(-15px, -45px);
-            opacity: 0.15;
+            transform: translate(-12px, -40px);
+            opacity: 0.2;
           }
         }
         
@@ -116,12 +131,12 @@ const FloatingParticles = memo(({ count = 25, className = "" }: FloatingParticle
             opacity: inherit;
           }
           30% {
-            transform: translate(-30px, -15px) scale(1.1);
-            opacity: 0.4;
+            transform: translate(-25px, -12px) scale(1.08);
+            opacity: 0.45;
           }
           70% {
-            transform: translate(25px, -40px) scale(0.85);
-            opacity: 0.25;
+            transform: translate(20px, -35px) scale(0.88);
+            opacity: 0.3;
           }
         }
       `}</style>
