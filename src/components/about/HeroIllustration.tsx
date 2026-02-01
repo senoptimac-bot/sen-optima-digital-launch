@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const HeroIllustration = () => {
   return (
-    <div className="relative w-full h-full min-h-[300px] flex items-center justify-center">
-      <svg viewBox="0 0 400 300" className="w-full h-full max-w-md">
+    <div className="relative w-full h-full min-h-[320px] flex items-center justify-center">
+      <svg viewBox="0 0 400 320" className="w-full h-full max-w-md">
         {/* Background glow */}
         <defs>
           <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
@@ -70,6 +70,26 @@ const HeroIllustration = () => {
           )}
         </motion.g>
 
+        {/* Label: Grande Entreprise */}
+        <motion.g
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <rect x="45" y="235" width="110" height="28" rx="14" fill="hsl(var(--foreground))" opacity="0.1" />
+          <text
+            x="100"
+            y="254"
+            textAnchor="middle"
+            fill="hsl(var(--foreground))"
+            fontSize="11"
+            fontWeight="600"
+            opacity="0.7"
+          >
+            Grande Entreprise
+          </text>
+        </motion.g>
+
         {/* Connection Arrow/Flow */}
         <motion.g
           initial={{ opacity: 0 }}
@@ -93,6 +113,24 @@ const HeroIllustration = () => {
             animate={{ x: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           />
+          {/* Transfer label */}
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+          >
+            <rect x="165" y="95" width="70" height="20" rx="10" fill="hsl(var(--accent))" opacity="0.15" />
+            <text
+              x="200"
+              y="109"
+              textAnchor="middle"
+              fill="hsl(var(--accent))"
+              fontSize="10"
+              fontWeight="600"
+            >
+              Expertise
+            </text>
+          </motion.g>
         </motion.g>
 
         {/* Your Project - Right (Smaller, growing) */}
@@ -139,6 +177,25 @@ const HeroIllustration = () => {
           />
         </motion.g>
 
+        {/* Label: Votre Projet */}
+        <motion.g
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1 }}
+        >
+          <rect x="250" y="235" width="100" height="28" rx="14" fill="hsl(var(--accent))" opacity="0.15" />
+          <text
+            x="300"
+            y="254"
+            textAnchor="middle"
+            fill="hsl(var(--accent))"
+            fontSize="11"
+            fontWeight="600"
+          >
+            Votre Projet
+          </text>
+        </motion.g>
+
         {/* Floating particles */}
         {[...Array(5)].map((_, i) => (
           <motion.circle
@@ -160,6 +217,22 @@ const HeroIllustration = () => {
             }}
           />
         ))}
+
+        {/* Bottom tagline */}
+        <motion.text
+          x="200"
+          y="295"
+          textAnchor="middle"
+          fill="hsl(var(--foreground))"
+          fontSize="12"
+          fontWeight="500"
+          opacity="0.5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ delay: 1.5 }}
+        >
+          L'expertise corporate adaptée à votre échelle
+        </motion.text>
       </svg>
     </div>
   );

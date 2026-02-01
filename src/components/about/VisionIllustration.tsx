@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const VisionIllustration = () => {
   return (
-    <div className="relative w-full h-full min-h-[280px] flex items-center justify-center">
-      <svg viewBox="0 0 400 280" className="w-full h-full max-w-md">
+    <div className="relative w-full h-full min-h-[300px] flex items-center justify-center">
+      <svg viewBox="0 0 400 300" className="w-full h-full max-w-md">
         <defs>
           <linearGradient id="transformGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.2" />
@@ -102,6 +102,26 @@ const VisionIllustration = () => {
           ))}
         </motion.g>
 
+        {/* Label: Idées floues */}
+        <motion.g
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <rect x="25" y="220" width="90" height="24" rx="12" fill="hsl(var(--foreground))" opacity="0.1" />
+          <text
+            x="70"
+            y="236"
+            textAnchor="middle"
+            fill="hsl(var(--foreground))"
+            fontSize="10"
+            fontWeight="600"
+            opacity="0.5"
+          >
+            Idées floues
+          </text>
+        </motion.g>
+
         {/* Center - Transformation Arrow */}
         <motion.g
           initial={{ opacity: 0 }}
@@ -110,7 +130,7 @@ const VisionIllustration = () => {
         >
           {/* Arrow line with gradient */}
           <motion.path
-            d="M140 140 C180 140 190 140 230 140"
+            d="M130 145 C170 145 180 145 220 145"
             stroke="url(#transformGrad)"
             strokeWidth="4"
             fill="none"
@@ -122,7 +142,7 @@ const VisionIllustration = () => {
           
           {/* Arrow head */}
           <motion.polygon
-            points="225,132 240,140 225,148"
+            points="215,137 230,145 215,153"
             fill="hsl(var(--accent))"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -133,8 +153,8 @@ const VisionIllustration = () => {
           {[0, 1, 2].map((i) => (
             <motion.circle
               key={`spark-${i}`}
-              cx={160 + i * 30}
-              cy={140}
+              cx={145 + i * 30}
+              cy={145}
               r="3"
               fill="hsl(var(--accent))"
               animate={{
@@ -149,21 +169,24 @@ const VisionIllustration = () => {
             />
           ))}
 
-          {/* Transformation text */}
-          <motion.text
-            x="190"
-            y="165"
-            textAnchor="middle"
-            fill="hsl(var(--accent))"
-            opacity={0.7}
-            fontSize="10"
-            fontWeight="500"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.7 }}
-            transition={{ delay: 2 }}
+          {/* Sen'Optima label */}
+          <motion.g
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.2 }}
           >
-            Sen'Optima
-          </motion.text>
+            <rect x="145" y="105" width="70" height="24" rx="12" fill="hsl(var(--accent))" opacity="0.2" />
+            <text
+              x="180"
+              y="121"
+              textAnchor="middle"
+              fill="hsl(var(--accent))"
+              fontSize="10"
+              fontWeight="700"
+            >
+              Sen'Optima
+            </text>
+          </motion.g>
         </motion.g>
 
         {/* Right Side - Structure/Clarity (Business solides) */}
@@ -176,10 +199,10 @@ const VisionIllustration = () => {
           <motion.g>
             {/* Main container */}
             <motion.rect
-              x="270"
-              y="90"
-              width="100"
-              height="100"
+              x="255"
+              y="95"
+              width="110"
+              height="110"
               rx="8"
               fill="hsl(var(--accent))"
               opacity={0.1}
@@ -187,35 +210,49 @@ const VisionIllustration = () => {
               strokeWidth="2"
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
-              style={{ transformOrigin: "320px 140px" }}
+              style={{ transformOrigin: "310px 150px" }}
             />
             
-            {/* Grid items - organized blocks */}
+            {/* Grid items - organized blocks with labels */}
             {[
-              { x: 280, y: 100, w: 38, h: 35 },
-              { x: 322, y: 100, w: 38, h: 35 },
-              { x: 280, y: 145, w: 80, h: 35 },
+              { x: 265, y: 105, w: 42, h: 40, label: "Marketing" },
+              { x: 313, y: 105, w: 42, h: 40, label: "Gestion" },
+              { x: 265, y: 155, w: 90, h: 40, label: "Processus" },
             ].map((block, i) => (
-              <motion.rect
-                key={`block-${i}`}
-                x={block.x}
-                y={block.y}
-                width={block.w}
-                height={block.h}
-                rx="4"
-                fill="hsl(var(--accent))"
-                opacity={0.3}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 0.3, y: 0 }}
-                transition={{ delay: 1.3 + i * 0.2 }}
-              />
+              <motion.g key={`block-${i}`}>
+                <motion.rect
+                  x={block.x}
+                  y={block.y}
+                  width={block.w}
+                  height={block.h}
+                  rx="4"
+                  fill="hsl(var(--accent))"
+                  opacity={0.25}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 0.25, y: 0 }}
+                  transition={{ delay: 1.3 + i * 0.2 }}
+                />
+                <motion.text
+                  x={block.x + block.w / 2}
+                  y={block.y + block.h / 2 + 4}
+                  textAnchor="middle"
+                  fill="hsl(var(--accent))"
+                  fontSize="8"
+                  fontWeight="600"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.8 }}
+                  transition={{ delay: 1.5 + i * 0.2 }}
+                >
+                  {block.label}
+                </motion.text>
+              </motion.g>
             ))}
 
             {/* Check marks */}
             {[
-              { x: 295, y: 118 },
-              { x: 337, y: 118 },
-              { x: 316, y: 163 },
+              { x: 280, y: 118 },
+              { x: 328, y: 118 },
+              { x: 305, y: 168 },
             ].map((pos, i) => (
               <motion.path
                 key={`check-${i}`}
@@ -239,7 +276,7 @@ const VisionIllustration = () => {
             transition={{ delay: 2.2 }}
           >
             <motion.path
-              d="M280 210 L300 195 L320 200 L350 175"
+              d="M270 220 L295 205 L320 210 L355 185"
               stroke="hsl(var(--accent))"
               strokeWidth="3"
               fill="none"
@@ -248,43 +285,59 @@ const VisionIllustration = () => {
               transition={{ duration: 2, repeat: Infinity }}
             />
             <motion.circle
-              cx="350"
-              cy="175"
+              cx="355"
+              cy="185"
               r="5"
               fill="hsl(var(--accent))"
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             />
+            {/* Arrow up */}
+            <motion.path
+              d="M355 180 L355 170 M350 175 L355 170 L360 175"
+              stroke="hsl(var(--accent))"
+              strokeWidth="2"
+              fill="none"
+              strokeLinecap="round"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
           </motion.g>
         </motion.g>
 
-        {/* Labels */}
+        {/* Label: Business Solide */}
+        <motion.g
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 2 }}
+        >
+          <rect x="265" y="245" width="100" height="26" rx="13" fill="hsl(var(--accent))" opacity="0.2" />
+          <text
+            x="315"
+            y="263"
+            textAnchor="middle"
+            fill="hsl(var(--accent))"
+            fontSize="11"
+            fontWeight="700"
+          >
+            Business Solide
+          </text>
+        </motion.g>
+
+        {/* Bottom tagline */}
         <motion.text
-          x="75"
-          y="230"
+          x="200"
+          y="290"
           textAnchor="middle"
           fill="hsl(var(--foreground))"
-          opacity={0.4}
           fontSize="11"
           fontWeight="500"
+          opacity="0.5"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
+          animate={{ opacity: 0.5 }}
           transition={{ delay: 2.5 }}
         >
-          Idées floues
-        </motion.text>
-        <motion.text
-          x="320"
-          y="230"
-          textAnchor="middle"
-          fill="hsl(var(--accent))"
-          fontSize="11"
-          fontWeight="600"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.7 }}
-        >
-          Business solide
+          De la vision à la structure opérationnelle
         </motion.text>
       </svg>
     </div>
