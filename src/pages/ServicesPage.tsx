@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCircle } from "lucide-react";
 import ServiceCard from "@/components/services/ServiceCard";
 import PhilosophyCard from "@/components/services/PhilosophyCard";
+import servicesHeroImage from "@/assets/services-hero.jpg";
 
 // Service data
 const services = [
@@ -67,9 +68,23 @@ const philosophyItems = [
 const ServicesPage = () => {
   return (
     <div className="min-h-screen">
-      {/* HERO - Simple & Impactant */}
-      <section className="relative py-20 pt-32 md:py-28 md:pt-40">
-        <div className="container px-5 md:px-8">
+      {/* HERO - Visual Banner with Background Image */}
+      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center py-20 pt-32 md:py-28 md:pt-40 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={servicesHeroImage}
+            alt="Professionnel consultant"
+            className="w-full h-full object-cover object-center"
+            loading="eager"
+          />
+          {/* Dark Overlay - 60% opacity for readability */}
+          <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-60" />
+          {/* Gradient for depth */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        </div>
+
+        <div className="container px-5 md:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -77,19 +92,19 @@ const ServicesPage = () => {
             className="max-w-2xl"
           >
             {/* Label */}
-            <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-6">
+            <span className="inline-flex items-center gap-2 text-xs text-white/70 uppercase tracking-widest mb-6">
               <span className="w-8 h-px bg-accent" />
               Nos Services
             </span>
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-white leading-tight mb-6">
               Transformez votre Vision
               <span className="block text-accent mt-1">en Système Rentable.</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base md:text-lg text-foreground/60 leading-relaxed">
+            <p className="text-base md:text-lg text-white/80 leading-relaxed">
               Que vous démarriez ou cherchiez à scaler, nous structurons 
               votre activité pour qu'elle dure.
             </p>
