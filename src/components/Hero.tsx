@@ -3,91 +3,170 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroCoverImage from "@/assets/hero-cover.jpg";
-import AnimatedGradientBackground from "./AnimatedGradientBackground";
-import FloatingParticles from "./FloatingParticles";
 
 const Hero = () => {
-
   return (
     <section
       id="accueil"
-      className="relative min-h-[100svh] flex items-center justify-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden"
+      className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden"
     >
-      {/* Background Image with Overlay */}
+      {/* Background with organic shapes */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroCoverImage}
-          alt="Consultant digital professionnel"
-          className="w-full h-full object-cover object-center"
-          loading="eager"
-        />
-        {/* Dark Blue Overlay - 80% opacity */}
-        <div className="absolute inset-0 bg-[hsl(220,25%,8%)] opacity-80" />
-        {/* Gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+        {/* Base gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary to-background" />
         
-        {/* Animated Background Effects */}
-        <AnimatedGradientBackground />
-        <FloatingParticles count={30} />
+        {/* Decorative organic shapes */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] shape-blob opacity-50" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] shape-blob opacity-30" style={{ animationDelay: '-10s' }} />
+        
+        {/* Subtle accent glow */}
+        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/10 blur-[100px]" />
       </div>
 
       <div className="container relative z-10">
-        <div className="max-w-4xl text-left">
-          {/* Badge - minimal */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 mb-6 md:mb-12"
-          >
-            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-            <span className="text-caption text-foreground/50 uppercase tracking-widest">
-              Cabinet de conseil digital au Sénégal
-            </span>
-          </motion.div>
-
-          {/* Main Headline - Ultra light, editorial */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-display font-bold text-foreground mb-4 md:mb-8"
-          >
-            De l'<span className="text-accent">Ambition</span>
-            <br />
-            à la <span className="text-accent">Structure</span>.
-          </motion.h1>
-
-          {/* Subtitle - Clean, off-white */}
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-body-lg text-foreground/70 max-w-2xl mb-8 md:mb-16 leading-relaxed"
-          >
-            Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée. Pas de jargon technique, juste des résultats mesurables.
-          </motion.p>
-
-          {/* CTA Button - Audit */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="group gap-3 text-sm border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20 text-accent transition-all duration-500 h-12 px-8"
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="max-w-xl">
+            {/* Badge - Accent pill */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-8"
             >
-              <Link to="/solutions">
-                Lancer mon Audit Business
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </Button>
+              <span className="badge-accent">
+                Cabinet de conseil digital
+              </span>
+            </motion.div>
+
+            {/* Main Headline - Large with italic accent */}
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="text-display font-bold text-foreground mb-6"
+            >
+              De l'<span className="italic text-accent">Ambition</span>
+              <br />
+              à la Structure.
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="text-body-lg text-muted-foreground max-w-lg mb-10 leading-relaxed"
+            >
+              Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <Button
+                size="lg"
+                asChild
+                className="group gap-3 text-sm rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
+              >
+                <Link to="/solutions">
+                  Lancer mon Audit
+                  <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </Link>
+              </Button>
+
+              <Button
+                variant="ghost"
+                size="lg"
+                asChild
+                className="gap-2 text-sm text-foreground hover:text-accent hover:bg-transparent"
+              >
+                <Link to="/services">
+                  En savoir plus
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Right Visual - Hero Image with floating card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative hidden lg:block"
+          >
+            {/* Background shape */}
+            <div className="absolute -top-10 -right-10 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6" />
+            
+            {/* Main image container */}
+            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl">
+              <img
+                src={heroCoverImage}
+                alt="Consultant digital professionnel"
+                className="w-full h-[500px] object-cover object-center"
+                loading="eager"
+              />
+              
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent" />
+            </div>
+
+            {/* Floating notification card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="absolute -left-8 bottom-20 bg-card rounded-2xl p-4 shadow-xl border border-border"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
+                  <span className="text-accent-foreground text-sm font-bold">✓</span>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Résultat garanti</p>
+                  <p className="text-lg font-bold text-foreground">+150%</p>
+                  <p className="text-xs text-muted-foreground">Croissance moyenne</p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
+
+      {/* Stats Band - At bottom */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="absolute bottom-0 left-0 right-0 z-20"
+      >
+        <div className="container">
+          <div className="stats-band mb-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-3xl md:text-4xl font-bold text-foreground">5+</p>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">Années d'expérience</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-bold text-foreground">50+</p>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">Projets livrés</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-bold text-foreground">4.9</p>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">Note moyenne</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-bold text-foreground">15+</p>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mt-1">Experts dédiés</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 };

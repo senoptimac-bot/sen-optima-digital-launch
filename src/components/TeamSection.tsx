@@ -26,8 +26,11 @@ const teamMembers = [
 
 const TeamSection = () => {
   return (
-    <section className="py-section relative">
-      <div className="container max-w-6xl mx-auto px-4">
+    <section className="py-section relative bg-secondary/30">
+      {/* Decorative shapes */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] shape-blob opacity-20" />
+      
+      <div className="container max-w-6xl mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,9 +39,12 @@ const TeamSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <span className="badge-accent mb-6 inline-block">
+            Notre Équipe
+          </span>
           <h2 className="text-headline text-foreground mb-4">
             Ceux qui portent{" "}
-            <span className="text-accent">votre ambition.</span>
+            <span className="italic text-accent">votre ambition.</span>
           </h2>
           <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto font-subheading">
             Pas d'anonymat. Pas de sous-traitance obscure. Voici les experts qui pilotent votre croissance.
@@ -57,27 +63,27 @@ const TeamSection = () => {
               className="group"
             >
               {/* Card Container */}
-              <div className="rounded-2xl border border-[#D4A73B]/20 overflow-hidden bg-background/20">
-                {/* Image Container - Reduced aspect ratio */}
+              <div className="rounded-3xl overflow-hidden card-cream">
+                {/* Image Container */}
                 <div 
-                  className="relative w-full bg-gradient-to-b from-[#11224A] to-[#050A15]"
+                  className="relative w-full bg-gradient-to-b from-secondary to-muted"
                   style={{ aspectRatio: "4/3" }}
                 >
                   {/* Placeholder - Gold User Icon */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <User 
-                      className="w-16 h-16 text-accent/20" 
+                      className="w-16 h-16 text-accent/30" 
                       strokeWidth={1}
                     />
-                    <span className="mt-2 text-xs text-accent/30 italic">
+                    <span className="mt-2 text-xs text-accent/50 italic">
                       Portrait à venir
                     </span>
                   </div>
                 </div>
 
-                {/* Text Content - BELOW the image */}
-                <div className="p-5 bg-background/40">
-                  <h3 className="text-xl font-heading font-bold text-foreground mb-1">
+                {/* Text Content */}
+                <div className="p-5 bg-card">
+                  <h3 className="text-xl font-heading font-bold text-foreground mb-1 group-hover:text-accent transition-colors duration-300">
                     {member.name}
                   </h3>
                   <p className="text-sm text-accent font-subheading mb-2">
