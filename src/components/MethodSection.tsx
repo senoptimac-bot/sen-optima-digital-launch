@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Settings, Globe, Rocket, Wrench, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { staggerVariants } from "@/hooks/useStaggerReveal";
 
 const steps = [
   {
@@ -28,7 +29,7 @@ const MethodSection = () => {
   return (
     <section className="py-section-lg relative">
       <div className="container">
-        {/* Header */}
+        {/* Header - F-Pattern Left Aligned */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,24 +45,20 @@ const MethodSection = () => {
           </h2>
         </motion.div>
 
-        {/* Steps */}
+        {/* Steps with Stagger Animation */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          variants={staggerVariants.cards.container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="max-w-4xl mx-auto mb-20"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {steps.map((step, index) => (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                whileHover={{ scale: 1.03, y: -5 }}
-                className="relative p-8 glass-card rounded-xl text-center group transition-all duration-300"
+                variants={staggerVariants.cards.item}
+                className="relative p-8 glass-card rounded-xl text-center group"
               >
                 {/* Number */}
                 <div className="text-caption text-brand-navy-light mb-6">
@@ -112,7 +109,7 @@ const MethodSection = () => {
             variant="outline"
             size="lg"
             asChild
-            className="group gap-3 text-sm border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20 text-accent transition-all duration-500 h-14 px-10"
+            className="group gap-3 text-sm border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20 text-accent transition-all duration-500 h-14 px-10 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <Link to="/solutions">
               Lancer mon Audit Business

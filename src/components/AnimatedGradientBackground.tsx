@@ -1,16 +1,29 @@
-import { memo } from "react";
+import { memo, useEffect, useState, useCallback } from "react";
 
 /**
- * Subtle animated gradient background that slowly shifts between 
- * dark blue and deep purple hues over 30-45 seconds.
+ * Subtle animated gradient background with parallax scroll effect.
  * Uses pure CSS for GPU-accelerated performance.
  */
 const AnimatedGradientBackground = memo(() => {
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = useCallback(() => {
+    // Throttle to ~60fps
+    requestAnimationFrame(() => {
+      setScrollY(window.scrollY * 0.15);
+    });
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Primary breathing gradient - slow radial shift */}
+      {/* Primary breathing gradient - slow radial shift with parallax */}
       <div 
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-40 will-change-transform"
         style={{
           background: `
             radial-gradient(
@@ -20,12 +33,13 @@ const AnimatedGradientBackground = memo(() => {
             )
           `,
           animation: "breatheGradient1 35s ease-in-out infinite",
+          transform: `translateY(${scrollY}px)`,
         }}
       />
       
-      {/* Secondary gradient - countermoving for depth */}
+      {/* Secondary gradient - countermoving for depth with inverse parallax */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-30 will-change-transform"
         style={{
           background: `
             radial-gradient(
@@ -35,12 +49,13 @@ const AnimatedGradientBackground = memo(() => {
             )
           `,
           animation: "breatheGradient2 40s ease-in-out infinite",
+          transform: `translateY(${-scrollY * 0.5}px)`,
         }}
       />
       
-      {/* Tertiary subtle glow - nebula effect */}
+      {/* Tertiary subtle glow - nebula effect with medium parallax */}
       <div 
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-20 will-change-transform"
         style={{
           background: `
             radial-gradient(
@@ -50,6 +65,7 @@ const AnimatedGradientBackground = memo(() => {
             )
           `,
           animation: "breatheGradient3 45s ease-in-out infinite",
+          transform: `translateY(${scrollY * 0.3}px)`,
         }}
       />
 

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Eye, Shield, Target } from "lucide-react";
+import { staggerVariants } from "@/hooks/useStaggerReveal";
 
 const philosophyItems = [
   {
@@ -19,28 +20,11 @@ const philosophyItems = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  },
-};
-
 const PhilosophySection = () => {
   return (
     <section className="py-section-lg relative">
       <div className="container">
-        {/* Header */}
+        {/* Header - F-Pattern Left Aligned */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,9 +40,9 @@ const PhilosophySection = () => {
           </h2>
         </motion.div>
 
-        {/* Philosophy Cards */}
+        {/* Philosophy Cards with Stagger Animation */}
         <motion.div
-          variants={containerVariants}
+          variants={staggerVariants.cards.container}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -67,9 +51,8 @@ const PhilosophySection = () => {
           {philosophyItems.map((item, index) => (
             <motion.div
               key={item.title}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-8 glass-card rounded-xl group transition-all duration-300 text-left"
+              variants={staggerVariants.cards.item}
+              className="relative p-8 glass-card rounded-xl group text-left"
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
