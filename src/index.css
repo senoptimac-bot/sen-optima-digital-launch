@@ -5,81 +5,75 @@
 @layer base {
   :root,
   .dark {
-    /* ========================================
-       PURE WHITE PREMIUM DESIGN SYSTEM
-       ======================================== */
-    
-    /* Pure White Background (#FFFFFF) */
+    /* Clean White Background */
     --background: 0 0% 100%;
-    /* Navy Blue Text (#1A2B42) */
-    --foreground: 215 43% 18%;
+    --foreground: 218 70% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 43% 18%;
+    --card-foreground: 218 70% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 43% 18%;
+    --popover-foreground: 218 70% 20%;
 
-    /* Primary - Navy Blue (#1A2B42) */
-    --primary: 215 43% 18%;
+    /* Primary - Deep Blue */
+    --primary: 218 70% 20%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Very Light Gray */
-    --secondary: 0 0% 97%;
-    --secondary-foreground: 215 43% 18%;
+    /* Secondary */
+    --secondary: 218 20% 96%;
+    --secondary-foreground: 218 70% 20%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 215 25% 45%;
+    --muted: 218 20% 94%;
+    --muted-foreground: 218 30% 45%;
 
-    /* Accent - Premium Gold (#D4AF37) */
-    --accent: 43 75% 52%;
-    --accent-foreground: 215 43% 18%;
+    /* Accent - Reserved Gold (#D4A73B) - unchanged */
+    --accent: 43 65% 53%;
+    --accent-foreground: 218 70% 13%;
 
-    /* Problem icons - Red (#E53E3E) */
-    --problem: 0 72% 56%;
+    /* Problem icons - Red/Orange */
+    --problem: 0 84% 60%;
     --problem-foreground: 0 0% 100%;
 
     /* Solution icons - Navy Blue */
-    --solution: 215 43% 18%;
+    --solution: 218 70% 25%;
     --solution-foreground: 0 0% 100%;
 
-    /* Warning - Orange (#DD6B20) */
-    --warning: 25 80% 49%;
-    --warning-foreground: 0 0% 100%;
+    /* Warning - Amber/Orange */
+    --warning: 38 92% 50%;
+    --warning-foreground: 218 70% 13%;
 
-    /* CTA Success - Green (#38A169) */
-    --cta-success: 152 57% 43%;
+    /* CTA Success - WhatsApp Green */
+    --cta-success: 142 70% 45%;
     --cta-success-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 56%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Subtle Gray Border (#F0F0F0) */
-    --border: 0 0% 94%;
-    --input: 0 0% 97%;
-    --ring: 43 75% 52% / 0.3;
+    --border: 218 30% 90%;
+    --input: 218 20% 96%;
+    --ring: 218 70% 20% / 0.15;
 
     --radius: 0.875rem;
 
-    /* Custom tokens - Premium Gold */
-    --gold: 43 75% 52%;
-    --gold-light: 43 75% 62%;
-    --gold-dark: 43 75% 42%;
+    /* Custom tokens */
+    --gold: 43 65% 53%;
+    --gold-light: 43 65% 63%;
+    --gold-dark: 43 65% 43%;
 
-    /* Brand navy blue (#1A2B42) */
-    --brand-navy: 215 43% 18%;
-    --brand-navy-light: 215 35% 35%;
-    --brand-navy-dark: 215 50% 12%;
+    /* Brand navy blue for card text */
+    --brand-navy: 218 70% 20%;
+    --brand-navy-light: 218 60% 35%;
+    --brand-navy-dark: 218 70% 13%;
 
     /* Sidebar */
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 215 43% 18%;
-    --sidebar-primary: 43 75% 52%;
-    --sidebar-primary-foreground: 215 43% 18%;
-    --sidebar-accent: 43 75% 52%;
-    --sidebar-accent-foreground: 215 43% 18%;
-    --sidebar-border: 0 0% 94%;
-    --sidebar-ring: 43 75% 52% / 0.3;
+    --sidebar-foreground: 218 70% 20%;
+    --sidebar-primary: 43 65% 53%;
+    --sidebar-primary-foreground: 218 70% 13%;
+    --sidebar-accent: 43 65% 53%;
+    --sidebar-accent-foreground: 218 70% 13%;
+    --sidebar-border: 218 30% 90%;
+    --sidebar-ring: 218 70% 20% / 0.15;
   }
 }
 
@@ -120,19 +114,19 @@
     }
   }
 
-  /* Focus visible states for keyboard accessibility - Gold accent */
+  /* Focus visible states for keyboard accessibility */
   *:focus-visible {
-    outline: 2px solid hsl(43 75% 52%);
+    outline: 2px solid hsl(43 65% 53%);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* Typography - Premium Navy Blue (#1A2B42) */
+  /* Typography - Premium Branding */
   h1, h2, h3 {
     font-family: 'League Spartan', 'Open Sans', system-ui, sans-serif;
     font-weight: 700;
     letter-spacing: -0.02em;
-    color: hsl(215 43% 18%);
+    color: hsl(218 70% 20%);
   }
 
   h1 {
@@ -144,13 +138,13 @@
     font-family: 'Glacial Indifference', 'Open Sans', system-ui, sans-serif;
     font-weight: 400;
     letter-spacing: 0.02em;
-    color: hsl(215 43% 18%);
+    color: hsl(218 70% 20%);
   }
 
-  /* Body text - Navy Blue for perfect readability on white */
+  /* Body text - Navy blue for better contrast on white */
   p, span, li {
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    color: hsl(215 43% 18%);
+    color: hsl(218 40% 40%);
   }
 
   /* Subheading utility class */
@@ -287,46 +281,29 @@
   }
 
   /* ========================================
-     PREMIUM WHITE DESIGN TOKENS
+     DESIGN TOKENS
      ======================================== */
 
-  /* Gold accent - For premium details only */
+  /* Gold accent - ONLY for H2 titles and primary CTAs */
   .text-gradient-gold {
     @apply text-accent font-normal;
   }
-  
-  /* Gold underline utility */
-  .gold-underline {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .gold-underline::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background: hsl(43 75% 52%);
-  }
 
-  /* Glass - Subtle white glassmorphism */
+  /* Glass - Premium light glassmorphism */
   .glass {
-    background: hsl(0 0% 100% / 0.95);
-    border: 1px solid hsl(0 0% 94%);
+    background: hsl(0 0% 100% / 0.70);
+    border: 1px solid hsl(218 30% 90%);
     border-radius: 1rem;
     backdrop-filter: blur(12px);
-    box-shadow: 0 4px 24px -8px hsl(215 43% 18% / 0.06);
+    box-shadow: 0 8px 32px -8px hsl(218 70% 20% / 0.08);
   }
 
-  /* Premium White Cards with subtle distinction */
   .glass-card {
     background: hsl(0 0% 100%);
-    border: 1px solid hsl(0 0% 94%);
+    border: 2px solid transparent;
     border-radius: 1rem;
-    box-shadow: 0 2px 16px -4px hsl(215 43% 18% / 0.08),
-                0 4px 32px -8px hsl(215 43% 18% / 0.04);
+    box-shadow: 0 4px 24px -4px hsl(218 70% 10% / 0.12),
+                0 8px 48px -8px hsl(218 70% 10% / 0.08);
     padding: 1.75rem;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 box-shadow 0.3s ease,
@@ -335,79 +312,79 @@
 
   .glass-card:hover {
     transform: scale(1.02) translateY(-4px);
-    border-color: hsl(43 75% 52%);
-    box-shadow: 0 8px 32px -4px hsl(215 43% 18% / 0.12),
-                0 16px 48px -8px hsl(215 43% 18% / 0.06),
-                0 0 0 1px hsl(43 75% 52% / 0.2);
+    border-color: hsl(43 65% 53%);
+    box-shadow: 0 8px 32px -4px hsl(218 70% 10% / 0.18),
+                0 16px 64px -8px hsl(218 70% 10% / 0.12),
+                0 0 20px -5px hsl(43 65% 53% / 0.15);
   }
 
   /* Semantic card variants with left border */
   .glass-card-danger {
-    border-left: 4px solid hsl(0 72% 56%) !important;
+    border-left: 4px solid hsl(0 72% 51%) !important;
   }
 
   .glass-card-warning {
-    border-left: 4px solid hsl(25 80% 49%) !important;
+    border-left: 4px solid hsl(25 95% 53%) !important;
   }
 
   .glass-card-success {
-    border-left: 4px solid hsl(152 57% 43%) !important;
+    border-left: 4px solid hsl(142 70% 45%) !important;
   }
 
-  /* Card text colors - Navy Blue (#1A2B42) */
+  /* Card text colors - Navy titles, Navy body text */
   .glass-card h3, .glass-card h4 {
-    color: hsl(215 43% 18%) !important;
+    color: hsl(218 70% 20%) !important;
   }
 
   .glass-card p, .glass-card span:not(.text-accent):not(.text-problem):not(.text-solution):not(.text-caption):not(.text-semantic-danger):not(.text-semantic-warning):not(.text-semantic-success) {
-    color: hsl(215 43% 18%) !important;
+    color: hsl(218 60% 35%) !important;
   }
 
   .glass-card li {
-    color: hsl(215 43% 18%) !important;
+    color: hsl(218 60% 35%) !important;
   }
 
   /* Card icons - Navy blue by default */
   .glass-card .card-icon,
   .glass-card [class*="lucide"]:not(.icon-semantic-danger):not(.icon-semantic-warning):not(.icon-semantic-success) {
-    color: hsl(215 43% 18%) !important;
+    color: hsl(218 70% 25%) !important;
   }
 
-  /* Semantic icon colors - International signage */
+  /* Semantic icon colors */
   .icon-semantic-danger {
-    color: hsl(0 72% 56%) !important;
+    color: hsl(0 72% 51%) !important;
   }
 
   .icon-semantic-warning {
-    color: hsl(25 80% 49%) !important;
+    color: hsl(25 95% 53%) !important;
   }
 
   .icon-semantic-success {
-    color: hsl(152 57% 43%) !important;
+    color: hsl(142 70% 45%) !important;
   }
 
   .glass-premium {
-    background: hsl(0 0% 100%);
-    border: 1px solid hsl(0 0% 94%);
+    background: hsl(0 0% 100% / 0.85);
+    border: 1px solid hsl(218 30% 88%);
     border-radius: 1.25rem;
     backdrop-filter: blur(16px);
-    box-shadow: 0 8px 32px -10px hsl(215 43% 18% / 0.08);
+    box-shadow: 0 12px 40px -10px hsl(218 70% 20% / 0.1);
     padding: 2rem;
   }
 
   /* Alternative subtle glass */
   .glass-subtle {
-    background: hsl(0 0% 99%);
-    border: 1px solid hsl(0 0% 94%);
+    background: hsl(218 30% 98%);
+    border: 1px solid hsl(218 30% 92%);
     border-radius: 0.875rem;
     backdrop-filter: blur(8px);
-    box-shadow: 0 2px 12px -4px hsl(215 43% 18% / 0.04);
+    box-shadow: 0 4px 20px -6px hsl(218 70% 20% / 0.06);
   }
 
   /* Premium Pricing Cards */
   .glass-pricing {
-    background: hsl(0 0% 100%);
-    border: 1px solid hsl(0 0% 94%);
+    background: hsl(0 0% 100% / 0.90);
+    border: 1px solid hsl(218 30% 90%);
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 border-color 0.3s ease,
                 box-shadow 0.3s ease;
@@ -416,23 +393,23 @@
 
   .glass-pricing:hover {
     transform: translateY(-8px);
-    border-color: hsl(43 75% 52%);
-    box-shadow: 0 16px 40px -16px hsl(215 43% 18% / 0.12), 
-                0 0 0 1px hsl(43 75% 52% / 0.3);
+    border-color: hsl(43 65% 53% / 0.5);
+    box-shadow: 0 20px 40px -20px hsl(43 65% 53% / 0.15), 
+                0 0 60px -30px hsl(43 65% 53% / 0.2);
   }
 
   .glass-pricing-featured {
     background: hsl(0 0% 100%);
-    border: 2px solid hsl(43 75% 52% / 0.5);
-    box-shadow: 0 0 32px -8px hsl(43 75% 52% / 0.15);
+    border: 2px solid hsl(43 65% 53% / 0.4);
+    box-shadow: 0 0 40px -10px hsl(43 65% 53% / 0.12);
     transform: scale(1.02);
   }
 
   .glass-pricing-featured:hover {
     transform: scale(1.02) translateY(-8px);
-    border-color: hsl(43 75% 52%);
-    box-shadow: 0 20px 48px -16px hsl(43 75% 52% / 0.2), 
-                0 0 0 1px hsl(43 75% 52% / 0.4);
+    border-color: hsl(43 65% 53% / 0.7);
+    box-shadow: 0 25px 50px -20px hsl(43 65% 53% / 0.18), 
+                0 0 80px -30px hsl(43 65% 53% / 0.2);
   }
 
   /* Enhanced blur on desktop */
@@ -465,22 +442,22 @@
     transform: translateY(-5px);
   }
 
-  /* Minimal shadows - very subtle on white */
+  /* Minimal shadows */
   .shadow-soft {
-    box-shadow: 0 2px 16px -6px hsl(215 43% 18% / 0.08);
+    box-shadow: 0 4px 24px -8px hsl(218 70% 20% / 0.1);
   }
 
-  /* Gold glows for premium accents */
+  /* Gold glows for premium cards */
   .glow-gold {
-    box-shadow: 0 0 32px -8px hsl(43 75% 52% / 0.25);
+    box-shadow: 0 0 40px -10px hsl(43 65% 53% / 0.3);
   }
   
   .glow-gold-subtle {
-    box-shadow: 0 0 16px -4px hsl(43 75% 52% / 0.12);
+    box-shadow: 0 0 20px -5px hsl(43 65% 53% / 0.15);
   }
   
   .shadow-gold {
-    box-shadow: 0 4px 16px -4px hsl(43 75% 52% / 0.3);
+    box-shadow: 0 4px 20px -4px hsl(43 65% 53% / 0.4);
   }
 
   /* WhatsApp pulse - GPU optimized */
@@ -490,8 +467,8 @@
   }
 
   @keyframes pulse-wa {
-    0%, 100% { box-shadow: 0 0 0 0 hsl(152 57% 43% / 0.35); }
-    50% { box-shadow: 0 0 0 12px hsl(152 57% 43% / 0); }
+    0%, 100% { box-shadow: 0 0 0 0 hsl(142 70% 45% / 0.35); }
+    50% { box-shadow: 0 0 0 12px hsl(142 70% 45% / 0); }
   }
 
   /* === VISUAL STORYTELLING ANIMATIONS === */

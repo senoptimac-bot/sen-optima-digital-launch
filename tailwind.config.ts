@@ -88,10 +88,10 @@ export default {
           DEFAULT: "hsl(var(--cta-success))",
           foreground: "hsl(var(--cta-success-foreground))",
         },
-        // Semantic signage colors - International standards
-        "semantic-danger": "hsl(0 72% 56%)",
-        "semantic-warning": "hsl(25 80% 49%)",
-        "semantic-success": "hsl(152 57% 43%)",
+        // Semantic signage colors
+        "semantic-danger": "hsl(0 72% 51%)",
+        "semantic-warning": "hsl(25 95% 53%)",
+        "semantic-success": "hsl(142 70% 45%)",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
