@@ -107,15 +107,33 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        xl: "1rem",
-        "2xl": "1.25rem",
-        "3xl": "1.5rem",
+        xl: "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.75rem",
         "4xl": "2rem",
         "pill": "9999px",
       },
       spacing: {
-        "section": "clamp(5rem, 10vh, 8rem)",
-        "section-lg": "clamp(7rem, 14vh, 12rem)",
+        /* Luxury = Space. Double margins between sections */
+        "section": "clamp(6rem, 12vh, 10rem)",
+        "section-lg": "clamp(8rem, 16vh, 14rem)",
+        "section-xl": "clamp(10rem, 20vh, 18rem)",
+      },
+      boxShadow: {
+        /* Apple-esque subtle shadows */
+        "card": "0 10px 30px -10px rgba(0,0,0,0.03)",
+        "card-hover": "0 20px 40px -15px rgba(0,0,0,0.08)",
+        "premium": "0 15px 45px -15px rgba(0,0,0,0.05)",
+        "gold": "0 10px 35px -10px hsl(43 75% 52% / 0.15)",
+      },
+      transitionTimingFunction: {
+        /* Smooth Bézier curves - 0.4s feel */
+        "luxury": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "smooth": "cubic-bezier(0.4, 0, 0.2, 1)",
+      },
+      transitionDuration: {
+        "400": "400ms",
+        "500": "500ms",
       },
       keyframes: {
         "accordion-down": {
