@@ -63,11 +63,10 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
           >
             <Button
               onClick={onStart}
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-base md:text-lg px-10 py-7 rounded-2xl gap-3 group shadow-[0_12px_35px_-10px_hsl(43_65%_53%/0.35)] hover:shadow-[0_16px_45px_-10px_hsl(43_65%_53%/0.45)] transition-all duration-300"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-sm md:text-base px-7 py-5 h-auto rounded-xl gap-2.5 group shadow-[0_10px_30px_-8px_hsl(43_65%_53%/0.3)] hover:shadow-[0_14px_40px_-8px_hsl(43_65%_53%/0.4)] transition-all duration-300"
             >
               Lancer l'Analyse
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
 
             {/* Security Badge - Discreet below button */}
