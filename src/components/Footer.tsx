@@ -11,9 +11,6 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           
           {/* COLUMN 1: Identity & Mission */}
           <div className="space-y-3">
-            <h4 className="text-xs font-medium text-white/40 uppercase tracking-[0.2em]">
-              Sen'Optima
-            </h4>
             <p className="text-sm text-white/50 leading-relaxed max-w-xs">
               Architectes de croissance pour entrepreneurs ambitieux. 
               Nous transformons le chaos en systèmes rentables.
