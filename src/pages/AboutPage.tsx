@@ -35,8 +35,8 @@ const AboutPage = () => {
       {/* HERO SECTION */}
       <section className="relative py-20 pt-32 md:py-32 md:pt-44 lg:py-40 lg:pt-52">
         {/* Simple static background */}
-        <div className="absolute inset-0 z-0 bg-background" />
-        <div className="container px-5 md:px-8 lg:px-12">
+        <div className="absolute inset-0 bg-background" />
+        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
