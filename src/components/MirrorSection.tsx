@@ -99,16 +99,17 @@ const MirrorSection = () => {
             <motion.div
               key={pain.title}
               variants={itemVariants}
-              className="relative p-8 glass-card glass-card-danger rounded-xl group transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="relative p-8 glass-card rounded-xl group transition-all duration-300"
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
                 <span className="text-caption text-brand-navy-light">{String(index + 1).padStart(2, '0')}</span>
               </div>
 
-              {/* Icon with danger semantic color */}
-              <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-6 group-hover:bg-red-100 transition-colors duration-300">
-                <pain.icon className="w-6 h-6 icon-semantic-danger" />
+              {/* Icon with navy styling */}
+              <div className="w-12 h-12 rounded-xl bg-brand-navy/10 flex items-center justify-center mb-6 group-hover:bg-brand-navy/15 transition-colors duration-300">
+                <pain.icon className="w-6 h-6 text-brand-navy" />
               </div>
 
               {/* Content */}
@@ -118,6 +119,9 @@ const MirrorSection = () => {
               <p className="text-body text-brand-navy-light leading-relaxed">
                 {pain.description}
               </p>
+
+              {/* Bottom accent line */}
+              <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-brand-navy/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-full" />
             </motion.div>
           ))}
         </motion.div>

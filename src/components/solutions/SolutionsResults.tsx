@@ -85,11 +85,11 @@ const SolutionsResults = ({ result }: SolutionsResultsProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="glass-card glass-card-danger rounded-2xl p-8 mb-8"
+          className="glass-card rounded-2xl p-8 mb-8 border-l-4 border-l-red-500"
         >
           <div className="flex items-start gap-4">
-            <AlertTriangle className="w-8 h-8 icon-semantic-danger flex-shrink-0" />
-            <p className="text-xl text-brand-navy font-heading leading-relaxed">
+            <AlertTriangle className="w-8 h-8 text-red-500 flex-shrink-0" />
+            <p className="text-xl text-foreground font-heading leading-relaxed">
               {shockSentence}
             </p>
           </div>
@@ -100,16 +100,16 @@ const SolutionsResults = ({ result }: SolutionsResultsProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
-          className="glass-card glass-card-warning rounded-2xl p-8 mb-8"
+          className="glass-card rounded-2xl p-8 mb-8 border-l-4 border-l-accent"
         >
           <div className="flex items-start gap-4">
-            <TrendingDown className="w-8 h-8 icon-semantic-warning flex-shrink-0" />
+            <TrendingDown className="w-8 h-8 text-accent flex-shrink-0" />
             <div>
-              <p className="text-brand-navy-light font-subheading mb-2">Estimation des pertes mensuelles</p>
+              <p className="text-muted-foreground font-subheading mb-2">Estimation des pertes mensuelles</p>
               <p className="text-3xl font-heading font-bold text-accent">
                 {formatCurrency(revenueGap)}
               </p>
-              <p className="text-sm text-brand-navy-light mt-2">
+              <p className="text-sm text-muted-foreground mt-2">
                 en opportunités perdues par manque de système
               </p>
             </div>

@@ -1,7 +1,5 @@
 import type { Config } from "tailwindcss";
 
-// Semantic colors for visual signage
-
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
@@ -88,10 +86,6 @@ export default {
           DEFAULT: "hsl(var(--cta-success))",
           foreground: "hsl(var(--cta-success-foreground))",
         },
-        // Semantic signage colors
-        "semantic-danger": "hsl(0 72% 51%)",
-        "semantic-warning": "hsl(25 95% 53%)",
-        "semantic-success": "hsl(142 70% 45%)",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
