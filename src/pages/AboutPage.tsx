@@ -31,11 +31,13 @@ const AboutPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       {/* HERO SECTION */}
-      <section className="relative py-20 pt-32 md:py-32 md:pt-44 lg:py-40 lg:pt-52">
-        {/* Simple static background */}
+      <section className="relative py-20 pt-32 md:py-32 md:pt-44 lg:py-40 lg:pt-52 overflow-hidden">
+        {/* Background with decorative shape */}
         <div className="absolute inset-0 bg-background" />
+        <div className="absolute top-0 right-0 w-[60%] h-[80%] bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
+        
         <div className="container px-5 md:px-8 lg:px-12 relative z-10">
           {/* Back Button */}
           <motion.div
@@ -48,7 +50,7 @@ const AboutPage = () => {
               variant="ghost"
               size="sm"
               onClick={() => navigate(-1)}
-              className="gap-2 text-foreground/50 hover:text-accent transition-colors"
+              className="gap-2 text-muted-foreground hover:text-accent transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               Retour
@@ -61,24 +63,37 @@ const AboutPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              {/* Label */}
-              <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-6 lg:mb-8">
-                <span className="w-8 h-px bg-accent" />
+              {/* Badge */}
+              <span className="badge-accent mb-6 lg:mb-8">
                 À Propos
               </span>
 
               {/* Title */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-foreground leading-tight mb-6 lg:mb-8">
-                L'Expertise de la Grande Entreprise,
-                <span className="block text-accent mt-1 lg:mt-2">adaptée à votre Projet.</span>
+                L'Expertise de la <span className="italic text-accent">Grande Entreprise</span>,
+                <span className="block mt-1 lg:mt-2">adaptée à votre Projet.</span>
               </h1>
 
               {/* Subtitle */}
-              <p className="text-base md:text-lg lg:text-xl text-foreground/60 leading-relaxed lg:leading-loose max-w-2xl">
+              <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed lg:leading-loose max-w-2xl mb-8">
                 Sen'Optima est né d'un constat : les porteurs de projets échouent souvent 
                 par manque de structure, pas par manque de talent. Nous vous apportons 
                 la rigueur et les méthodes qui font le succès des entreprises établies.
               </p>
+
+              {/* CTA */}
+              <Button
+                asChild
+                size="lg"
+                className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
+              >
+                <Link to="/solutions">
+                  Découvrir nos solutions
+                  <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </Link>
+              </Button>
             </motion.div>
 
             {/* Hero Illustration */}
@@ -88,7 +103,11 @@ const AboutPage = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
-              <HeroIllustration />
+              {/* Decorative background shape */}
+              <div className="absolute -top-8 -right-8 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
+              <div className="relative">
+                <HeroIllustration />
+              </div>
             </motion.div>
           </div>
         </div>
