@@ -71,7 +71,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 asChild
-                className="group gap-3 text-sm rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
+                className="group gap-3 text-sm rounded-full bg-foreground text-white hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
               >
                 <Link to="/solutions">
                   Lancer mon Audit
