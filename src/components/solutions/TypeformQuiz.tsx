@@ -26,7 +26,7 @@ const QUESTIONS: Question[] = [
     question: "Quel est le nom de votre entreprise ?",
     subtitle: "Pour personnaliser votre diagnostic.",
     type: "text",
-    placeholder: "Ex: Ma Boutique Dakar, Chez Fatou...",
+    placeholder: "Ex: Le nom de mon entreprise",
   },
   {
     id: "q0_role",
