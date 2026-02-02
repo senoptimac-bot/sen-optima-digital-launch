@@ -128,7 +128,7 @@ const Hero = () => {
                   <span className="text-accent-foreground text-xs lg:text-sm font-bold">✓</span>
                 </div>
                 <div>
-                  <p className="text-[10px] lg:text-xs text-primary-foreground">Résultat garanti</p>
+                  
                   <p className="text-base lg:text-lg font-bold text-foreground">+150%</p>
                   <p className="text-[10px] lg:text-xs text-primary-foreground">Croissance moyenne</p>
                 </div>
