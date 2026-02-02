@@ -67,10 +67,9 @@ const variantStyles = {
   },
 };
 
-// Assign variants to each card index
-const getVariantByIndex = (index: number): keyof typeof variantStyles => {
-  const variants: (keyof typeof variantStyles)[] = ["accent", "white", "primary", "glass"];
-  return variants[index % 4];
+// All cards use the primary (dark blue) variant for consistency
+const getVariantByIndex = (_index: number): keyof typeof variantStyles => {
+  return "primary";
 };
 
 const ServiceCard = forwardRef<HTMLElement, ServiceCardProps>(({ 
