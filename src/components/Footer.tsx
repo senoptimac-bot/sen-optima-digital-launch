@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
@@ -37,21 +37,12 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
             </h2>
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
-                href="https://wa.me/221781926969" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="group inline-flex items-center gap-3 px-6 py-4 bg-foreground text-background rounded-full font-semibold hover:bg-foreground/90 transition-all duration-300"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Démarrer sur WhatsApp
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-              </a>
-              <a 
                 href="mailto:contact@senoptimaconsulting.com" 
-                className="group inline-flex items-center gap-3 px-6 py-4 border border-border text-foreground rounded-full font-semibold hover:border-foreground/40 hover:bg-muted/50 transition-all duration-300"
+                className="group inline-flex items-center gap-3 px-6 py-4 bg-foreground text-background rounded-full font-semibold hover:bg-foreground/90 transition-all duration-300"
               >
                 <Mail className="w-5 h-5" />
                 Envoyer un Email
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </a>
             </div>
           </div>
