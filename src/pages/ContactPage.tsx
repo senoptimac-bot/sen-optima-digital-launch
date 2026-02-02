@@ -146,12 +146,14 @@ const ContactPage = () => {
               {/* Secondary decorative card */}
               <div className="absolute -bottom-4 -left-4 w-3/4 h-3/4 rounded-3xl bg-primary/5 border border-primary/10 hidden md:block" />
               
-              {/* Main photo container - transparent background */}
-              <div className="relative">
+              {/* Main photo container with golden frame */}
+              <div className="relative p-4 rounded-3xl border-2 border-accent/40 bg-gradient-to-br from-accent/5 to-transparent">
+                {/* Inner golden glow */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/10 via-transparent to-accent/5" />
                 <img 
                   src={contactHeroImage} 
                   alt="Notre équipe prête à vous accompagner" 
-                  className="w-full h-auto object-contain drop-shadow-xl"
+                  className="relative w-full h-auto object-contain drop-shadow-xl"
                 />
               </div>
               
