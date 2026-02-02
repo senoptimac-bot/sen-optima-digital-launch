@@ -70,17 +70,17 @@ const MethodSection = () => {
             y: -5
           }} className="relative p-8 card-cream text-center group transition-all duration-300">
                 {/* Number */}
-                <div className="text-caption text-solution font-bold mb-6">
+                <div className="text-caption text-green-500 font-bold mb-6">
                   {step.number}
                 </div>
 
-                {/* Icon with solution styling */}
-                <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-solution/10 flex items-center justify-center group-hover:bg-solution/20 transition-colors duration-300">
-                  <step.icon className="w-7 h-7 icon-solution" />
+                {/* Icon with green styling */}
+                <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition-colors duration-300">
+                  <step.icon className="w-7 h-7 text-green-500" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-title text-foreground mb-2 group-hover:text-solution transition-colors duration-300">
+                <h3 className="text-title text-foreground mb-2 group-hover:text-green-500 transition-colors duration-300">
                   {step.title}
                 </h3>
                 <p className="text-body text-muted-foreground">
@@ -88,7 +88,7 @@ const MethodSection = () => {
                 </p>
 
                 {/* Connector line for desktop */}
-                {index < steps.length - 1 && <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-solution/30" />}
+                {index < steps.length - 1 && <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-green-500/30" />}
               </motion.div>)}
           </div>
         </motion.div>
