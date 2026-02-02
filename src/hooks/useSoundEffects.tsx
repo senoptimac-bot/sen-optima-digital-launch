@@ -32,9 +32,8 @@ const preloadAudio = () => {
       clickAudio = new Audio('/sounds/click.mp3');
       clickAudio.volume = 0.25;
       clickAudio.preload = 'none'; // Don't preload until needed
-    } catch (e) {
-      // Audio files not available - silent fail
-      console.log('Audio files not loaded - sounds disabled');
+    } catch {
+      // Audio files not available - silent fail (no logging in prod)
     }
   }, 2000); // Defer by 2 seconds after page load
 };
