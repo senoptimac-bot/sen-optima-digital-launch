@@ -147,7 +147,7 @@ const ContactPage = () => {
               <div className="absolute -bottom-4 -left-4 w-3/4 h-3/4 rounded-3xl bg-primary/5 border border-primary/10 hidden md:block" />
               
               {/* Main photo container with golden frame */}
-              <div className="relative p-4 pb-0 rounded-3xl rounded-b-none border-2 border-b-0 border-accent/40 bg-gradient-to-br from-accent/5 to-transparent overflow-hidden">
+              <div className="relative p-4 rounded-3xl border-2 border-accent/40 bg-gradient-to-br from-accent/5 to-transparent overflow-hidden">
                 {/* Inner golden glow */}
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/10 via-transparent to-accent/5" />
                 <img 
@@ -155,6 +155,8 @@ const ContactPage = () => {
                   alt="Notre équipe prête à vous accompagner" 
                   className="relative w-full h-auto object-contain drop-shadow-xl"
                 />
+                {/* Bottom fade gradient to hide cut-off */}
+                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background via-background/80 to-transparent" />
               </div>
               
               {/* Floating card - top right */}
