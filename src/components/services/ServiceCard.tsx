@@ -15,51 +15,55 @@ interface ServiceCardProps {
   variant?: "accent" | "white" | "primary" | "glass";
 }
 
-// Card variant styles - each service gets a unique look
+// Card variant styles - each service gets a unique look with enhanced hover borders
 const variantStyles = {
   accent: {
-    container: "bg-gradient-to-br from-accent to-accent/80",
-    iconBg: "bg-white/20",
+    container: "bg-gradient-to-br from-accent to-accent/80 border-2 border-transparent",
+    containerHover: "hover:border-white/40 hover:shadow-[0_0_30px_rgba(229,185,78,0.4)]",
+    iconBg: "bg-white/20 group-hover:bg-white/30",
     iconColor: "text-white",
     number: "text-white/60",
     title: "text-white",
     subtitle: "text-white/70",
     text: "text-white/80",
     label: "text-white/60",
-    arrow: "bg-white/20 text-white group-hover:bg-white group-hover:text-accent",
+    arrow: "bg-white/20 text-white group-hover:bg-white group-hover:text-accent group-hover:rotate-45",
   },
   white: {
-    container: "bg-card border border-border shadow-lg",
-    iconBg: "bg-accent/10",
+    container: "bg-card border-2 border-border/50 shadow-lg",
+    containerHover: "hover:border-accent hover:shadow-[0_0_30px_rgba(229,185,78,0.2)]",
+    iconBg: "bg-accent/10 group-hover:bg-accent/20 group-hover:scale-110",
     iconColor: "text-accent",
     number: "text-accent/60",
     title: "text-foreground",
     subtitle: "text-muted-foreground",
     text: "text-muted-foreground",
     label: "text-accent/80",
-    arrow: "bg-secondary text-foreground group-hover:bg-accent group-hover:text-white",
+    arrow: "bg-secondary text-foreground group-hover:bg-accent group-hover:text-white group-hover:rotate-45",
   },
   primary: {
-    container: "bg-gradient-to-br from-primary to-primary/90",
-    iconBg: "bg-white/15",
+    container: "bg-gradient-to-br from-primary to-primary/90 border-2 border-transparent",
+    containerHover: "hover:border-accent/60 hover:shadow-[0_0_30px_rgba(34,52,80,0.5)]",
+    iconBg: "bg-white/15 group-hover:bg-white/25 group-hover:scale-110",
     iconColor: "text-white",
     number: "text-accent",
     title: "text-white",
     subtitle: "text-white/60",
     text: "text-white/75",
     label: "text-accent",
-    arrow: "bg-accent/20 text-accent group-hover:bg-accent group-hover:text-primary",
+    arrow: "bg-accent/20 text-accent group-hover:bg-accent group-hover:text-primary group-hover:rotate-45",
   },
   glass: {
-    container: "bg-secondary/60 backdrop-blur-md border border-border/50",
-    iconBg: "bg-accent/10",
+    container: "bg-secondary/60 backdrop-blur-md border-2 border-border/30",
+    containerHover: "hover:border-accent/50 hover:bg-secondary/80 hover:shadow-[0_0_25px_rgba(229,185,78,0.15)]",
+    iconBg: "bg-accent/10 group-hover:bg-accent/20 group-hover:scale-110",
     iconColor: "text-accent",
     number: "text-accent/60",
     title: "text-foreground",
     subtitle: "text-muted-foreground",
     text: "text-muted-foreground",
     label: "text-accent/80",
-    arrow: "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white",
+    arrow: "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white group-hover:rotate-45",
   },
 };
 
@@ -95,9 +99,10 @@ const ServiceCard = forwardRef<HTMLElement, ServiceCardProps>(({
       <div 
         className={cn(
           "relative p-6 md:p-8 rounded-3xl h-full flex flex-col",
-          "transition-all duration-300",
-          "hover:translate-y-[-6px] hover:shadow-2xl",
-          styles.container
+          "transition-all duration-300 ease-out",
+          "hover:translate-y-[-8px]",
+          styles.container,
+          styles.containerHover
         )}
       >
         {/* Header Row */}
@@ -105,10 +110,10 @@ const ServiceCard = forwardRef<HTMLElement, ServiceCardProps>(({
           {/* Icon Circle */}
           <div className={cn(
             "w-14 h-14 rounded-2xl flex items-center justify-center",
-            "transition-transform duration-300 group-hover:scale-110",
+            "transition-all duration-300",
             styles.iconBg
           )}>
-            <Icon className={cn("w-7 h-7", styles.iconColor)} />
+            <Icon className={cn("w-7 h-7 transition-transform duration-300 group-hover:scale-110", styles.iconColor)} />
           </div>
 
           {/* Number Badge */}
