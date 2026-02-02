@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Eye, Shield, Target } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Eye, Shield, Target, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const philosophyItems = [
   {
@@ -91,6 +93,22 @@ const PhilosophySection = () => {
               </p>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* CTA link to About page */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <Button variant="ghost" size="lg" asChild className="gap-2 text-muted-foreground hover:text-accent">
+            <Link to="/a-propos">
+              En savoir plus sur notre équipe
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

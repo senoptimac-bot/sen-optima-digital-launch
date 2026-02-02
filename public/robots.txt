@@ -9,12 +9,16 @@ Disallow: /api/
 Disallow: /*.json$
 Disallow: /*.map$
 
+# Block non-indexable pages
+Disallow: /merci
+Disallow: /success
+
 # Block staging/preview paths
 Disallow: /*preview*
 Disallow: /*staging*
 Disallow: /*test*
 
-# Allow crawlers
+# Allow specific crawlers
 User-agent: Googlebot
 Allow: /
 

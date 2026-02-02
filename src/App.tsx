@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { AnimatePresence } from "framer-motion";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -15,7 +16,6 @@ import emailjs from "@emailjs/browser";
 import { EMAILJS_CONFIG } from "@/config/emailjs.config";
 import Home from "./pages/Home";
 import ServicesPage from "./pages/ServicesPage";
-
 import SolutionsPage from "./pages/SolutionsPage";
 import SuccessPage from "./pages/SuccessPage";
 import AboutPage from "./pages/AboutPage";
@@ -144,39 +144,40 @@ const App = () => {
   };
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <SoundProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <AnimatePresence mode="wait">
-              {isLoading && !hasVisited && (
-                <Preloader onComplete={handlePreloaderComplete} />
-              )}
-            </AnimatePresence>
-            <BrowserRouter>
-              <ScrollToTop />
-              <Layout>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/services" element={<ServicesPage />} />
-                  
-                  <Route path="/solutions" element={<SolutionsPage />} />
-                  <Route path="/merci" element={<SuccessPage />} />
-                  <Route path="/a-propos" element={<AboutPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
-                  <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
-                  <Route path="/cgv" element={<CGVPage />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Layout>
-            </BrowserRouter>
-          </TooltipProvider>
-        </SoundProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          <SoundProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Sonner />
+              <AnimatePresence mode="wait">
+                {isLoading && !hasVisited && (
+                  <Preloader onComplete={handlePreloaderComplete} />
+                )}
+              </AnimatePresence>
+              <BrowserRouter>
+                <ScrollToTop />
+                <Layout>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/services" element={<ServicesPage />} />
+                    <Route path="/solutions" element={<SolutionsPage />} />
+                    <Route path="/merci" element={<SuccessPage />} />
+                    <Route path="/a-propos" element={<AboutPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+                    <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
+                    <Route path="/cgv" element={<CGVPage />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Layout>
+              </BrowserRouter>
+            </TooltipProvider>
+          </SoundProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 };
 

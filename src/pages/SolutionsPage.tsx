@@ -1,4 +1,6 @@
 import { useState, useCallback } from "react";
+import SEOHead from "@/components/SEOHead";
+import { SEO_CONFIG } from "@/config/seo.config";
 import SolutionsHero from "@/components/solutions/SolutionsHero";
 import LeadCaptureScreen from "@/components/solutions/LeadCaptureScreen";
 import TypeformQuiz from "@/components/solutions/TypeformQuiz";
@@ -64,20 +66,31 @@ const SolutionsPage = () => {
     }, 6500);
   }, [quizAnswers, quizResult]);
 
+  const seo = SEO_CONFIG.solutions;
+
   return (
-    <div className="min-h-screen bg-background">
-      {currentStep === "hero" && <SolutionsHero onStart={handleStartQuiz} />}
-      {currentStep === "quiz" && <TypeformQuiz onComplete={handleQuizComplete} />}
-      {currentStep === "lead-capture" && <LeadCaptureScreen onSubmit={handleLeadSubmit} />}
-      {currentStep === "processing" && <ProcessingAnimation />}
-      {currentStep === "results" && quizResult && leadData && quizAnswers && (
-        <DiagnosticDashboard 
-          result={quizResult} 
-          leadData={leadData}
-          answers={quizAnswers}
-        />
-      )}
-    </div>
+    <>
+      <SEOHead 
+        title={seo.title}
+        description={seo.description}
+        canonicalPath={seo.canonicalPath}
+        keywords={seo.keywords}
+      />
+      
+      <div className="min-h-screen bg-background">
+        {currentStep === "hero" && <SolutionsHero onStart={handleStartQuiz} />}
+        {currentStep === "quiz" && <TypeformQuiz onComplete={handleQuizComplete} />}
+        {currentStep === "lead-capture" && <LeadCaptureScreen onSubmit={handleLeadSubmit} />}
+        {currentStep === "processing" && <ProcessingAnimation />}
+        {currentStep === "results" && quizResult && leadData && quizAnswers && (
+          <DiagnosticDashboard 
+            result={quizResult} 
+            leadData={leadData}
+            answers={quizAnswers}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

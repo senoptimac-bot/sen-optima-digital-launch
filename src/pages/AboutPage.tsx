@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp, ArrowLeft } from "lucide-react";
 import presidentPhoto from "@/assets/president-senegal.webp";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
+import { SEO_CONFIG } from "@/config/seo.config";
 import TeamSection from "@/components/TeamSection";
 import HeroIllustration from "@/components/about/HeroIllustration";
 import ParcoursIllustration from "@/components/about/ParcoursIllustration";
@@ -29,9 +31,18 @@ const valuesData = [
 
 const AboutPage = () => {
   const navigate = useNavigate();
+  const seo = SEO_CONFIG.about;
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead 
+        title={seo.title}
+        description={seo.description}
+        canonicalPath={seo.canonicalPath}
+        keywords={seo.keywords}
+      />
+      
+      <div className="min-h-screen bg-background">
       {/* HERO SECTION */}
       <section className="relative py-20 pt-32 md:py-32 md:pt-44 lg:py-40 lg:pt-52 overflow-hidden">
         {/* Background with decorative shape */}
@@ -374,7 +385,8 @@ const AboutPage = () => {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

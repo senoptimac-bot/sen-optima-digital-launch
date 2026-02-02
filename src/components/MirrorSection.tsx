@@ -67,11 +67,11 @@ const MirrorSection = () => {
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
               
-              {/* Text overlay on image */}
+              {/* Text overlay on image - Using p instead of h2 since this is decorative */}
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                <h2 className="text-2xl md:text-4xl font-heading font-bold text-destructive-foreground">
+                <p className="text-2xl md:text-4xl font-heading font-bold text-destructive-foreground">
                   Votre <span className="italic text-destructive">situation actuelle</span>
-                </h2>
+                </p>
               </div>
 
               {/* Corner accents */}

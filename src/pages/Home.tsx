@@ -1,3 +1,5 @@
+import SEOHead from "@/components/SEOHead";
+import { SEO_CONFIG } from "@/config/seo.config";
 import Hero from "@/components/Hero";
 import MarqueeSection from "@/components/MarqueeSection";
 import MirrorSection from "@/components/MirrorSection";
@@ -9,8 +11,16 @@ import TeamSection from "@/components/TeamSection";
 import MethodSection from "@/components/MethodSection";
 
 const Home = () => {
+  const seo = SEO_CONFIG.home;
   return (
     <>
+      <SEOHead 
+        title={seo.title}
+        description={seo.description}
+        canonicalPath={seo.canonicalPath}
+        keywords={seo.keywords}
+      />
+      
       {/* 1. Hero Section */}
       <Hero />
       

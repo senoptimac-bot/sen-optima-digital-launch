@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCircle } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
+import { SEO_CONFIG } from "@/config/seo.config";
 import ServiceCard from "@/components/services/ServiceCard";
 import PhilosophyCard from "@/components/services/PhilosophyCard";
 import servicesHeroImage from "@/assets/services-hero-woman.jpg";
@@ -66,8 +68,18 @@ const philosophyItems = [
 ];
 
 const ServicesPage = () => {
+  const seo = SEO_CONFIG.services;
+  
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead 
+        title={seo.title}
+        description={seo.description}
+        canonicalPath={seo.canonicalPath}
+        keywords={seo.keywords}
+      />
+      
+      <div className="min-h-screen bg-background">
       {/* HERO - Design inspiré de la page d'accueil */}
       <section className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden">
         {/* Simple static background */}
@@ -288,7 +300,8 @@ const ServicesPage = () => {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
