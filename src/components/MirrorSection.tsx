@@ -65,7 +65,7 @@ const MirrorSection = () => {
             <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden shadow-xl border border-border">
               <img src={situationImage} alt="Entrepreneur face aux défis business" className="w-full h-full object-cover object-[center_25%] group-hover:scale-102 transition-transform duration-300" loading="lazy" decoding="async" />
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent" />
               
               {/* Text overlay on image - Using p instead of h2 since this is decorative */}
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
