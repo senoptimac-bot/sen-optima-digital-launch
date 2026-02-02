@@ -55,12 +55,12 @@ const Header = () => {
       >
         <div className="container">
           <nav className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
+            {/* Logo - larger for better visibility */}
             <Link to="/" className="flex items-center">
               <img
                 src={logo}
                 alt="Sen'Optima Consulting"
-                className="h-10 md:h-12 w-auto"
+                className="h-12 sm:h-14 md:h-16 w-auto"
               />
             </Link>
 
