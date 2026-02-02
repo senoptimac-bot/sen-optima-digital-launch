@@ -14,9 +14,9 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 bg-background" />
 
       <div className="container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="max-w-xl">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content - Second on mobile, First on desktop */}
+          <div className="max-w-xl order-last lg:order-first">
             {/* Badge - Accent pill */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -84,12 +84,12 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right Visual - Hero Image with floating card */}
+          {/* Right Visual - Hero Image with floating card - First on mobile */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
+            className="relative order-first lg:order-last w-full"
           >
             {/* Background shape */}
             <div className="absolute -top-10 -right-10 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
