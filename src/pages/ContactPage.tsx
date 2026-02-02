@@ -110,60 +110,88 @@ const ContactPage = () => {
       
       <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-background" />
         
-        {/* Hero Image on the right */}
-        <div className="absolute top-0 right-0 w-[45%] h-full hidden lg:block">
-          <div className="relative w-full h-full">
-            <img 
-              src={contactHeroImage} 
-              alt="Notre équipe prête à vous accompagner" 
-              className="w-full h-full object-cover object-top"
-            />
-            {/* Gradient overlay for smooth blend */}
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
-            
-            {/* Decorative accent shape */}
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/20 rounded-tr-[80px]" />
-          </div>
-        </div>
-        
         <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-xl"
-          >
-            <span className="badge-accent mb-6">
-              Contact
-            </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-              Parlons de votre <span className="italic text-accent">avenir</span>.
-            </h1>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
-              Vous avez un projet ? Une question ? Ou simplement besoin de clarté ? 
-              Nous sommes là pour vous répondre.
-            </p>
-          </motion.div>
-          
-          {/* Mobile image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-10 lg:hidden"
-          >
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
-              <img 
-                src={contactHeroImage} 
-                alt="Notre équipe prête à vous accompagner" 
-                className="w-full h-full object-cover object-top"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Text content */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="badge-accent mb-6">
+                Contact
+              </span>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
+                Parlons de votre <span className="italic text-accent">avenir</span>.
+              </h1>
+              <p className="text-base md:text-lg text-muted-foreground max-w-lg">
+                Vous avez un projet ? Une question ? Ou simplement besoin de clarté ? 
+                Nous sommes là pour vous répondre.
+              </p>
+            </motion.div>
+            
+            {/* Right: Photo with decorative cards */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              {/* Decorative background card - behind */}
+              <div className="absolute -top-6 -right-6 w-full h-full rounded-3xl bg-accent/10 border border-accent/20 hidden md:block" />
+              
+              {/* Secondary decorative card */}
+              <div className="absolute -bottom-4 -left-4 w-3/4 h-3/4 rounded-3xl bg-primary/5 border border-primary/10 hidden md:block" />
+              
+              {/* Main photo container */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src={contactHeroImage} 
+                  alt="Notre équipe prête à vous accompagner" 
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+              
+              {/* Floating card - top right */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="absolute -top-4 -right-2 md:top-6 md:-right-8 z-20"
+              >
+                <div className="card-cream px-4 py-3 shadow-lg flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                    <MessageCircle className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">Réponse</p>
+                    <p className="text-sm font-heading font-semibold text-foreground">Sous 24h</p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Floating card - bottom left */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                className="absolute -bottom-4 -left-2 md:bottom-8 md:-left-8 z-20"
+              >
+                <div className="card-cream px-4 py-3 shadow-lg flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                    <CheckCircle2 className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">Devis</p>
+                    <p className="text-sm font-heading font-semibold text-foreground">100% Gratuit</p>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
