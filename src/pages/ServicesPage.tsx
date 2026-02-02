@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCircle } from "lucide-react";
+import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCircle, Target } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import ServiceCard from "@/components/services/ServiceCard";
@@ -30,17 +30,26 @@ const services = [
     ourRequirement: "Nous ne faisons pas de \"joli\", nous faisons du fonctionnel qui convertit.",
   },
   {
-    icon: Zap,
+    icon: Target,
     number: "03",
+    title: "Marketing & Acquisition",
+    subtitle: "Tunnels de Vente",
+    forWho: "Ceux qui veulent attirer des clients qualifiés de manière prévisible.",
+    whatWeDo: "Stratégies d'acquisition personnalisées selon votre profil client : tunnels de vente, campagnes ciblées, et systèmes de conversion automatisés.",
+    ourRequirement: "Une compréhension claire de votre client idéal et de votre offre principale.",
+  },
+  {
+    icon: Zap,
+    number: "04",
     title: "Optimisation & Automatisation",
     subtitle: "Accélération & IA",
     forWho: "Les business établis qui veulent gagner du temps et passer à l'échelle.",
-    whatWeDo: "Audit des fuites de rentabilité, intégration IA pour automatiser le répétitif, et campagnes marketing ciblées.",
+    whatWeDo: "Audit des fuites de rentabilité, intégration IA pour automatiser le répétitif, et optimisation des processus existants.",
     ourRequirement: "Une transparence totale sur vos chiffres actuels pour pouvoir les améliorer.",
   },
   {
     icon: Eye,
-    number: "04",
+    number: "05",
     title: "Identité Visuelle Stratégique",
     subtitle: "L'Autorité",
     forWho: "Ceux qui veulent inspirer confiance et justifier des tarifs premium.",
