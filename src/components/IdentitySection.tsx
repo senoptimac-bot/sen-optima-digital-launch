@@ -32,9 +32,8 @@ const IdentitySection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.02 }}
-            className="card-cream p-10 group transition-all duration-300 border-problem/20"
+            transition={{ duration: 0.4 }}
+            className="card-cream p-10 group transition-all duration-200 border-problem/20 hover:translate-y-[-4px] hover:scale-[1.02]"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-2xl bg-problem/10 flex items-center justify-center">
@@ -65,9 +64,8 @@ const IdentitySection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            whileHover={{ scale: 1.02 }}
-            className="card-cream p-10 group transition-all duration-300 border-accent/30 shadow-gold"
+            transition={{ duration: 0.4, delay: 0.08 }}
+            className="card-cream p-10 group transition-all duration-200 border-accent/30 shadow-gold hover:translate-y-[-4px] hover:scale-[1.02]"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-2xl bg-accent/20 flex items-center justify-center">

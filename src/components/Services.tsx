@@ -47,18 +47,18 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       ease: [0.25, 0.46, 0.45, 0.94] as const,
     },
   },
@@ -106,19 +106,18 @@ const Services = () => {
               <motion.article
                 key={service.title}
                 variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="group relative rounded-3xl card-cream overflow-hidden transition-all duration-300"
+                className="group relative rounded-3xl card-cream overflow-hidden transition-all duration-200 hover:translate-y-[-4px] hover:scale-[1.02]"
               >
                 {/* Micro-photo for services with images */}
                 {hasImage && (
                   <div className="relative h-36 overflow-hidden">
-                    <img
-                      src={hasImage}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
-                    />
+                      <img
+                        src={hasImage}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     {/* Overlay for color harmony */}
                     <div className="absolute inset-0 bg-foreground/10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />

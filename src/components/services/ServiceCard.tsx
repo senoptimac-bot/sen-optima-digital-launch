@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +14,7 @@ interface ServiceCardProps {
   index: number;
 }
 
-const ServiceCard = ({ 
+const ServiceCard = forwardRef<HTMLElement, ServiceCardProps>(({ 
   icon: Icon, 
   number, 
   title, 
@@ -23,15 +23,16 @@ const ServiceCard = ({
   whatWeDo, 
   ourRequirement,
   index 
-}: ServiceCardProps) => {
+}, ref) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <motion.article
+      ref={ref}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
       className="group"
     >
       <div 
@@ -114,6 +115,8 @@ const ServiceCard = ({
       </div>
     </motion.article>
   );
-};
+});
+
+ServiceCard.displayName = "ServiceCard";
 
 export default ServiceCard;

@@ -15,12 +15,12 @@ const Hero = () => {
             {/* Badge - Accent pill */}
             <motion.div initial={{
             opacity: 0,
-            y: 30
+            y: 20
           }} animate={{
             opacity: 1,
             y: 0
           }} transition={{
-            duration: 0.8,
+            duration: 0.5,
             ease: [0.22, 1, 0.36, 1]
           }} className="mb-8">
               <span className="badge-accent">
@@ -31,13 +31,13 @@ const Hero = () => {
             {/* Main Headline - Large with italic accent */}
             <motion.h1 initial={{
             opacity: 0,
-            y: 40
+            y: 20
           }} animate={{
             opacity: 1,
             y: 0
           }} transition={{
-            duration: 1,
-            delay: 0.1,
+            duration: 0.5,
+            delay: 0.08,
             ease: [0.22, 1, 0.36, 1]
           }} className="text-display font-bold text-foreground mb-6">
               De l'<span className="italic text-accent">Ambition</span>
@@ -48,13 +48,13 @@ const Hero = () => {
             {/* Subtitle */}
             <motion.p initial={{
             opacity: 0,
-            y: 40
+            y: 20
           }} animate={{
             opacity: 1,
             y: 0
           }} transition={{
-            duration: 1,
-            delay: 0.2,
+            duration: 0.5,
+            delay: 0.15,
             ease: [0.22, 1, 0.36, 1]
           }} className="text-body-lg text-muted-foreground max-w-lg mb-10 leading-relaxed">
               Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée.
@@ -63,13 +63,13 @@ const Hero = () => {
             {/* CTA Buttons */}
             <motion.div initial={{
             opacity: 0,
-            y: 30
+            y: 20
           }} animate={{
             opacity: 1,
             y: 0
           }} transition={{
-            duration: 0.8,
-            delay: 0.3,
+            duration: 0.5,
+            delay: 0.2,
             ease: [0.22, 1, 0.36, 1]
           }} className="flex flex-wrap items-center gap-4">
               <Button size="lg" asChild className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8">
@@ -92,13 +92,13 @@ const Hero = () => {
           {/* Right Visual - Hero Image with floating card - First on mobile */}
           <motion.div initial={{
           opacity: 0,
-          scale: 0.95
+          scale: 0.98
         }} animate={{
           opacity: 1,
           scale: 1
         }} transition={{
-          duration: 1.2,
-          delay: 0.2,
+          duration: 0.6,
+          delay: 0.1,
           ease: [0.22, 1, 0.36, 1]
         }} className="relative order-first lg:order-last w-full">
             {/* Background shape */}
@@ -115,13 +115,13 @@ const Hero = () => {
             {/* Floating notification card */}
             <motion.div initial={{
             opacity: 0,
-            x: -30
+            x: -20
           }} animate={{
             opacity: 1,
             x: 0
           }} transition={{
-            duration: 0.8,
-            delay: 0.8
+            duration: 0.5,
+            delay: 0.4
           }} className="absolute -left-4 lg:-left-8 bottom-10 lg:bottom-20 bg-card rounded-2xl p-3 lg:p-4 shadow-xl border border-border">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-accent flex items-center justify-center">

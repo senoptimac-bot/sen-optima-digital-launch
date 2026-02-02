@@ -23,16 +23,16 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
@@ -70,8 +70,7 @@ const PhilosophySection = () => {
             <motion.div
               key={item.title}
               variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="relative p-8 card-cream group transition-all duration-300 text-left"
+              className="relative p-8 card-cream group transition-all duration-200 text-left hover:translate-y-[-4px] hover:scale-[1.02]"
             >
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
