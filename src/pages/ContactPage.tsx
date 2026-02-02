@@ -23,6 +23,7 @@ import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import { useAppSounds } from "@/hooks/useAppSounds";
 import { useToast } from "@/hooks/use-toast";
+import BackButton from "@/components/BackButton";
 
 const subjectOptions = [
   { value: "devis", label: "Demande de devis" },
@@ -114,6 +115,9 @@ const ContactPage = () => {
         <div className="absolute inset-0 bg-background" />
         
         <div className="container relative z-10">
+          {/* Back Button */}
+          <BackButton />
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Text content */}
             <motion.div

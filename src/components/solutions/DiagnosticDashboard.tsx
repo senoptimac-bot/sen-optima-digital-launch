@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { TrendingDown, AlertTriangle, CheckCircle, Target, Zap, Sparkles } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { QuizResult, LeadData, QuizAnswers } from "@/types/solutions";
@@ -10,6 +11,7 @@ interface DiagnosticDashboardProps {
 }
 
 const DiagnosticDashboard = ({ result, leadData, answers }: DiagnosticDashboardProps) => {
+  const navigate = useNavigate();
   const { score, painPoints, shockSentence, revenueGap, price } = result;
 
   const formatCurrency = (amount: number) => {
@@ -50,6 +52,11 @@ Nom : ${leadData.firstName}
 WhatsApp : ${leadData.countryCode}${leadData.whatsapp}`;
 
     window.open(buildWhatsAppUrl(message), "_blank");
+    
+    // Redirect to home page after opening WhatsApp
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   // Score color based on value

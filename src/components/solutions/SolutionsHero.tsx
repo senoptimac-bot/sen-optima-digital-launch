@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import BackButton from "@/components/BackButton";
 import diagnosticVisual from "@/assets/diagnostic-visual.svg";
 
 interface SolutionsHeroProps {
@@ -14,6 +15,9 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
       <div className="absolute inset-0 bg-background" />
 
       <div className="container relative z-10">
+        {/* Back Button */}
+        <BackButton />
+        
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
           {/* Visual - Top on mobile, Left on desktop */}
           <motion.div

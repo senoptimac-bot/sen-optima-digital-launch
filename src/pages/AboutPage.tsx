@@ -1,12 +1,13 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp, ArrowLeft } from "lucide-react";
+import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp } from "lucide-react";
 import presidentPhoto from "@/assets/president-senegal.webp";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import TeamSection from "@/components/TeamSection";
 import PhotoPlaceholder from "@/components/about/PhotoPlaceholder";
+import BackButton from "@/components/BackButton";
 
 // Les 3 valeurs/piliers
 const valuesData = [
@@ -28,7 +29,6 @@ const valuesData = [
 ];
 
 const AboutPage = () => {
-  const navigate = useNavigate();
   const seo = SEO_CONFIG.about;
 
   return (
@@ -49,22 +49,7 @@ const AboutPage = () => {
         
         <div className="container px-5 md:px-8 lg:px-12 relative z-10">
           {/* Back Button */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8 lg:mb-12"
-          >
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate(-1)}
-              className="gap-2 text-muted-foreground hover:text-accent transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Retour
-            </Button>
-          </motion.div>
+          <BackButton />
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div

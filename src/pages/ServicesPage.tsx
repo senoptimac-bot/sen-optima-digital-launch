@@ -6,6 +6,7 @@ import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import ServiceCard from "@/components/services/ServiceCard";
 import PhilosophyCard from "@/components/services/PhilosophyCard";
+import BackButton from "@/components/BackButton";
 import servicesHeroImage from "@/assets/services-hero-woman.jpg";
 
 // Service data
@@ -86,6 +87,9 @@ const ServicesPage = () => {
         <div className="absolute inset-0 z-0 bg-background" />
 
         <div className="container relative z-10">
+          {/* Back Button */}
+          <BackButton />
+          
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="max-w-xl">
