@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { forwardRef } from "react";
 
 interface PhilosophyCardProps {
   icon: React.ElementType;
@@ -8,23 +9,23 @@ interface PhilosophyCardProps {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
-const PhilosophyCard = ({ icon: Icon, title, description, index }: PhilosophyCardProps) => {
+const PhilosophyCard = forwardRef<HTMLDivElement, PhilosophyCardProps>(({ icon: Icon, title, description, index }, ref) => {
   return (
     <motion.div
+      ref={ref}
       variants={itemVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      whileHover={{ scale: 1.02, y: -5 }}
-      className="relative p-8 card-cream group transition-all duration-300 text-left"
+      className="relative p-8 card-cream group transition-all duration-300 text-left hover:translate-y-[-4px] hover:scale-[1.02]"
     >
       {/* Number indicator */}
       <div className="absolute top-6 right-6">
@@ -45,6 +46,8 @@ const PhilosophyCard = ({ icon: Icon, title, description, index }: PhilosophyCar
       </p>
     </motion.div>
   );
-};
+});
+
+PhilosophyCard.displayName = "PhilosophyCard";
 
 export default PhilosophyCard;

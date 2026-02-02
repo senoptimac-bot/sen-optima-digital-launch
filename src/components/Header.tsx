@@ -44,10 +44,10 @@ const Header = () => {
   return (
     <>
       <motion.header
-        initial={{ y: -100 }}
+        initial={{ y: -80 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled 
             ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-sm" 
             : "bg-transparent"
@@ -126,10 +126,10 @@ const Header = () => {
             />
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, y: 15 }}
+              transition={{ duration: 0.25 }}
               className="fixed inset-x-0 top-20 bottom-0 z-50 lg:hidden overflow-auto"
             >
               <div className="container py-8">

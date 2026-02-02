@@ -21,20 +21,20 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15
+      staggerChildren: 0.1
     }
   }
 };
 const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 30
+    y: 20
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: [0.25, 0.46, 0.45, 0.94] as const
     }
   }
@@ -63,7 +63,7 @@ const MirrorSection = () => {
           <div className="relative mb-10 group">
             {/* Main Image Container */}
             <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden shadow-xl border border-border">
-              <img src={situationImage} alt="Entrepreneur face aux défis business" className="w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-700" />
+              <img src={situationImage} alt="Entrepreneur face aux défis business" className="w-full h-full object-cover object-[center_25%] group-hover:scale-102 transition-transform duration-300" loading="lazy" decoding="async" />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
               
@@ -91,10 +91,7 @@ const MirrorSection = () => {
         once: true,
         margin: "-100px"
       }} className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {painPoints.map((pain, index) => <motion.div key={pain.title} variants={itemVariants} whileHover={{
-          scale: 1.02,
-          y: -5
-        }} className="relative p-8 card-cream group transition-all duration-300">
+          {painPoints.map((pain, index) => <motion.div key={pain.title} variants={itemVariants} className="relative p-8 card-cream group transition-all duration-200 hover:translate-y-[-4px] hover:scale-[1.02]">
               {/* Number indicator */}
               <div className="absolute top-6 right-6">
                 <span className="text-caption text-problem/40">{String(index + 1).padStart(2, '0')}</span>

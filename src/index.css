@@ -377,18 +377,13 @@
     color: hsl(var(--accent-foreground));
   }
 
-  /* Decorative shapes */
+  /* Static decorative shape (no animation for performance) */
   .shape-blob {
     position: absolute;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    background: linear-gradient(135deg, hsl(var(--accent) / 0.1) 0%, hsl(var(--cream-light)) 100%);
+    background: linear-gradient(135deg, hsl(var(--accent) / 0.08) 0%, hsl(var(--cream-light)) 100%);
     filter: blur(60px);
-    animation: blob-morph 20s ease-in-out infinite;
-  }
-
-  @keyframes blob-morph {
-    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    pointer-events: none;
   }
 
   /* Organic curve background */
@@ -410,62 +405,32 @@
 
   /* === SEMANTIC ICON STYLES === */
   
-  /* Problem icons - Stress pulse animation (Red/Orange) */
+  /* Problem icons - Red/Orange (static) */
   .icon-problem {
     color: hsl(var(--problem));
   }
   
+  /* Problem icons - subtle pulse (CSS only, GPU accelerated) */
   .icon-problem-animated {
     color: hsl(var(--problem));
-    animation: stress-pulse 2s ease-in-out infinite;
-    will-change: transform, opacity;
   }
   
-  @keyframes stress-pulse {
-    0%, 100% { 
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% { 
-      opacity: 0.7;
-      transform: scale(1.05);
-    }
-  }
-  
-  /* Solution icons - Constructive styling (Teal) */
+  /* Solution icons - Teal (static) */
   .icon-solution {
     color: hsl(var(--solution));
   }
   
   .icon-solution-animated {
     color: hsl(var(--solution));
-    animation: constructive-spin 8s linear infinite;
-    will-change: transform;
   }
   
-  @keyframes constructive-spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  /* Success icons - Gold accent */
+  /* Success icons - Gold accent (static) */
   .icon-success {
     color: hsl(var(--accent));
   }
   
   .icon-success-animated {
     color: hsl(var(--accent));
-    animation: ascending-bounce 2s ease-in-out infinite;
-    will-change: transform;
-  }
-  
-  @keyframes ascending-bounce {
-    0%, 100% { 
-      transform: translateY(0);
-    }
-    50% { 
-      transform: translateY(-4px);
-    }
   }
 
   /* Marquee - GPU optimized */

@@ -64,11 +64,9 @@ const MethodSection = () => {
           }} viewport={{
             once: true
           }} transition={{
-            delay: index * 0.15
-          }} whileHover={{
-            scale: 1.03,
-            y: -5
-          }} className="relative p-8 card-cream text-center group transition-all duration-300">
+            duration: 0.4,
+            delay: index * 0.1
+          }} className="relative p-8 card-cream text-center group transition-all duration-200 hover:translate-y-[-4px] hover:scale-[1.02]">
                 {/* Number */}
                 <div className="text-caption text-green-500 font-bold mb-6">
                   {step.number}
