@@ -69,7 +69,7 @@ const MirrorSection = () => {
               
               {/* Text overlay on image */}
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                <h2 className="text-2xl md:text-4xl font-heading font-bold text-destructive">
+                <h2 className="text-2xl md:text-4xl font-heading font-bold text-destructive-foreground">
                   Votre <span className="italic text-destructive">situation actuelle</span>
                 </h2>
               </div>
