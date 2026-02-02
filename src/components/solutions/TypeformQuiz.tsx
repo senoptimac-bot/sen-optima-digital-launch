@@ -322,7 +322,7 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
   const isTextValid = textInput.trim().length >= 2;
 
   return (
-    <section className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center py-6 px-4">
+    <section className="min-h-[calc(100vh-100px)] flex flex-col items-center justify-center pt-4 pb-6 px-4">
       {/* Progress Bar */}
       <div className="w-full max-w-2xl mb-6">
         <ProgressBar current={currentQuestion} total={QUESTIONS.length} />
