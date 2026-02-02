@@ -217,25 +217,20 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = memo(({ current, total }: ProgressBarProps) => {
-  // Progress based on completed questions (0% at start)
   const progress = (current / total) * 100;
   
   return (
-    <div className="container max-w-2xl mx-auto mb-4">
+    <div className="w-full">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm text-muted-foreground font-subheading">
           Question {current + 1} sur {total}
         </span>
         <span className="text-sm text-accent font-subheading">{Math.round(progress)}%</span>
       </div>
-      <div className="h-1 bg-muted rounded-full overflow-hidden">
+      <div className="h-1.5 bg-muted rounded-full overflow-hidden">
         <div
-          className="h-full bg-accent rounded-full gpu-accelerated transition-gpu"
-          style={{ 
-            transform: `scaleX(${progress / 100})`,
-            transformOrigin: 'left',
-            width: '100%'
-          }}
+          className="h-full bg-accent rounded-full gpu-accelerated transition-all duration-300 ease-out"
+          style={{ width: `${progress}%` }}
         />
       </div>
     </div>
@@ -327,13 +322,14 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
   const isTextValid = textInput.trim().length >= 2;
 
   return (
-    <section className="min-h-screen flex flex-col pt-4 pb-6 px-4">
+    <section className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center py-6 px-4">
       {/* Progress Bar */}
-      <ProgressBar current={currentQuestion} total={QUESTIONS.length} />
+      <div className="w-full max-w-2xl mb-6">
+        <ProgressBar current={currentQuestion} total={QUESTIONS.length} />
+      </div>
 
       {/* Question Card with AnimatePresence for smooth transitions */}
-      <div className="flex-1 flex items-start md:items-center justify-center">
-        <div className="container max-w-2xl mx-auto w-full">
+      <div className="w-full max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentQuestion}
@@ -415,7 +411,6 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
       </div>
     </section>
   );
