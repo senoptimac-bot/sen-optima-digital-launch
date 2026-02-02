@@ -1,6 +1,7 @@
 import { TrendingDown, AlertTriangle, CheckCircle, Target, Zap, Sparkles } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { QuizResult, LeadData, QuizAnswers } from "@/types/solutions";
+import { buildWhatsAppUrl } from "@/config/business";
 
 interface DiagnosticDashboardProps {
   result: QuizResult;
@@ -9,21 +10,11 @@ interface DiagnosticDashboardProps {
 }
 
 const DiagnosticDashboard = ({ result, leadData, answers }: DiagnosticDashboardProps) => {
-  const { score, painPoints, shockSentence, revenueGap } = result;
+  const { score, painPoints, shockSentence, revenueGap, price } = result;
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("fr-FR").format(amount) + " FCFA";
   };
-
-  // Dynamic price based on revenue
-  const getDynamicPrice = () => {
-    if (answers.q1_revenue === "less_300k") return 35000;
-    if (answers.q1_revenue === "300k_1m") return 50000;
-    if (answers.q1_revenue === "1m_10m") return 75000;
-    return 100000;
-  };
-
-  const dynamicPrice = getDynamicPrice();
 
   const getRevenueLabel = () => {
     if (answers.q1_revenue === "less_300k") return "Moins de 300K FCFA";
@@ -42,18 +33,10 @@ const DiagnosticDashboard = ({ result, leadData, answers }: DiagnosticDashboardP
     return blockers[answers.q9_growth_blocker] || "Non spécifié";
   };
 
-  const getPriceLabel = () => {
-    if (dynamicPrice === 50000) return "50k";
-    if (dynamicPrice === 75000) return "75k";
-    return "100k";
-  };
-
   const handleWhatsAppClick = () => {
-    // Get company name from answers (with fallback)
     const companyName = answers.q0_company || "Non spécifié";
     
-    const message = encodeURIComponent(
-      `Bonjour Sen'Optima, je viens de terminer mon diagnostic IA sur votre site.
+    const message = `Bonjour Sen'Optima, je viens de terminer mon diagnostic IA sur votre site.
 
 Mon entreprise : ${companyName}
 Mon score est de : ${score}%
@@ -64,9 +47,9 @@ Je souhaite réserver mon audit physique et recevoir mon plan de guerre de 15 pa
 
 Voici mes coordonnées pour la suite :
 Nom : ${leadData.firstName}
-WhatsApp : ${leadData.countryCode}${leadData.whatsapp}`
-    );
-    window.open(`https://wa.me/221781926969?text=${message}`, "_blank");
+WhatsApp : ${leadData.countryCode}${leadData.whatsapp}`;
+
+    window.open(buildWhatsAppUrl(message), "_blank");
   };
 
   // Score color based on value
@@ -171,12 +154,12 @@ WhatsApp : ${leadData.countryCode}${leadData.whatsapp}`
         </div>
 
         {/* Premium Offer Section */}
-        <div className="bg-card border-2 border-amber-500/30 rounded-2xl p-6 md:p-8">
+        <div className="bg-card border-2 border-warning/30 rounded-2xl p-6 md:p-8">
           {/* Premium Badge */}
           <div className="flex justify-start mb-4">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20">
-              <Sparkles className="w-4 h-4 text-amber-500" />
-              <span className="text-amber-500 font-subheading text-sm">Offre Premium</span>
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-warning/10 border border-warning/20">
+              <Sparkles className="w-4 h-4 text-warning" />
+              <span className="text-warning font-subheading text-sm">Offre Premium</span>
             </span>
           </div>
 
@@ -193,10 +176,9 @@ WhatsApp : ${leadData.countryCode}${leadData.whatsapp}`
             Ce n'est pas un rapport théorique, c'est un plan d'action chiffré pour colmater vos fuites financières immédiatement.
           </p>
 
-          {/* Dynamic Price */}
           <div className="text-left mb-4">
-            <span className="text-4xl md:text-5xl font-heading font-black text-amber-500">
-              {formatCurrency(dynamicPrice)}
+            <span className="text-4xl md:text-5xl font-heading font-black text-warning">
+              {formatCurrency(price)}
             </span>
             <p className="text-muted-foreground text-sm mt-1 font-subheading">
               Tarif personnalisé selon votre profil
@@ -208,11 +190,10 @@ WhatsApp : ${leadData.countryCode}${leadData.whatsapp}`
             FRAIS D'AUDIT 100% DÉDUCTIBLES DE VOTRE ACCOMPAGNEMENT FINAL.
           </p>
 
-          {/* WhatsApp CTA - Full width, text wrap on mobile */}
+          {/* WhatsApp CTA - Using design token */}
           <button
             onClick={handleWhatsAppClick}
-            className="w-full min-h-[56px] px-4 md:px-6 py-4 rounded-xl font-heading font-bold text-white text-sm md:text-lg flex items-center justify-center gap-2 md:gap-3 transition-colors duration-100 touch-target gpu-accelerated active:scale-[0.98]"
-            style={{ backgroundColor: '#25D366' }}
+            className="w-full min-h-[56px] px-4 md:px-6 py-4 rounded-xl font-heading font-bold bg-whatsapp text-whatsapp-foreground text-sm md:text-lg flex items-center justify-center gap-2 md:gap-3 transition-colors duration-100 touch-target gpu-accelerated active:scale-[0.98] hover:bg-whatsapp/90"
           >
             <FaWhatsapp className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0" />
             <span className="text-center leading-tight">

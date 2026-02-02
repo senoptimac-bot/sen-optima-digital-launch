@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { QuizAnswers } from "@/types/solutions";
+import { QuizAnswersSchema } from "@/schemas/quiz";
 
 interface TypeformQuizProps {
   onComplete: (answers: QuizAnswers) => void;
@@ -235,46 +236,53 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
   const question = QUESTIONS[currentQuestion];
   const isLastQuestion = currentQuestion === QUESTIONS.length - 1;
 
-  // Stable callback for choice selection
+  // Stable callback for choice selection - avec validation Zod
   const handleOptionSelect = useCallback((value: string) => {
-    setAnswers(prev => {
-      const newAnswers = { ...prev, [QUESTIONS[currentQuestion].id]: value };
-      
-      setTimeout(() => {
-        if (currentQuestion === QUESTIONS.length - 1) {
-          onComplete(newAnswers as QuizAnswers);
-        } else {
-          setCurrentQuestion(c => c + 1);
+    const newAnswers = { ...answers, [QUESTIONS[currentQuestion].id]: value };
+    setAnswers(newAnswers);
+    
+    // Use effect-like behavior without setState callback
+    if (currentQuestion === QUESTIONS.length - 1) {
+      // Validate with Zod before completing
+      const parsed = QuizAnswersSchema.safeParse(newAnswers);
+      if (parsed.success) {
+        onComplete(parsed.data as QuizAnswers); // Zod a validé, safe cast
+      } else {
+        // En dev, log l'erreur - en prod, afficher message utilisateur
+        if (process.env.NODE_ENV === "development") {
+          console.error("Quiz validation failed:", parsed.error.flatten());
         }
-      }, 0);
-      
-      return newAnswers;
-    });
-  }, [currentQuestion, onComplete]);
+      }
+    } else {
+      setCurrentQuestion(c => c + 1);
+    }
+  }, [answers, currentQuestion, onComplete]);
 
-  // Handle text input submission
+  // Handle text input submission - avec validation Zod
   const handleTextSubmit = useCallback(() => {
     const trimmedValue = textInput.trim();
     if (!trimmedValue) return;
     
-    // Sanitize: max 100 chars, no special injection
+    // Sanitize: max 100 chars
     const sanitizedValue = trimmedValue.slice(0, 100);
+    const newAnswers = { ...answers, [QUESTIONS[currentQuestion].id]: sanitizedValue };
+    setAnswers(newAnswers);
     
-    setAnswers(prev => {
-      const newAnswers = { ...prev, [QUESTIONS[currentQuestion].id]: sanitizedValue };
-      
-      setTimeout(() => {
-        if (currentQuestion === QUESTIONS.length - 1) {
-          onComplete(newAnswers as QuizAnswers);
-        } else {
-          setCurrentQuestion(c => c + 1);
-          setTextInput("");
+    if (currentQuestion === QUESTIONS.length - 1) {
+      // Validate with Zod before completing
+      const parsed = QuizAnswersSchema.safeParse(newAnswers);
+      if (parsed.success) {
+        onComplete(parsed.data as QuizAnswers); // Zod a validé, safe cast
+      } else {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Quiz validation failed:", parsed.error.flatten());
         }
-      }, 0);
-      
-      return newAnswers;
-    });
-  }, [currentQuestion, textInput, onComplete]);
+      }
+    } else {
+      setCurrentQuestion(c => c + 1);
+      setTextInput("");
+    }
+  }, [answers, currentQuestion, textInput, onComplete]);
 
   // Stable callback for back button
   const handlePrevious = useCallback(() => {

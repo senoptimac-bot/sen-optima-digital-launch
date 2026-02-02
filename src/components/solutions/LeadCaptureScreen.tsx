@@ -27,14 +27,14 @@ const COUNTRY_CODES = [
 const LeadCaptureScreen = memo(({ onSubmit }: LeadCaptureScreenProps) => {
   const [formData, setFormData] = useState<LeadData>({
     firstName: "",
-    email: "",
     whatsapp: "",
     countryCode: "+221",
   });
-  const [errors, setErrors] = useState<Partial<LeadData>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof LeadData, string>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = useCallback((): boolean => {
-    const newErrors: Partial<LeadData> = {};
+    const newErrors: Partial<Record<keyof LeadData, string>> = {};
     
     // Prénom - requis, max 50 caractères
     const trimmedName = formData.firstName.trim();
@@ -56,19 +56,25 @@ const LeadCaptureScreen = memo(({ onSubmit }: LeadCaptureScreenProps) => {
     return Object.keys(newErrors).length === 0;
   }, [formData]);
 
-  const handleSubmit = useCallback((e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent double-submit
+    
     if (validateForm()) {
-      // Sanitize data before submission
-      const sanitizedData: LeadData = {
-        firstName: formData.firstName.trim().slice(0, 50),
-        email: "", // Not collected in this simplified flow
-        whatsapp: formData.whatsapp.replace(/\s/g, "").slice(0, 15),
-        countryCode: formData.countryCode,
-      };
-      onSubmit(sanitizedData);
+      setIsSubmitting(true);
+      try {
+        // Sanitize data before submission
+        const sanitizedData: LeadData = {
+          firstName: formData.firstName.trim().slice(0, 50),
+          whatsapp: formData.whatsapp.replace(/\s/g, "").slice(0, 15),
+          countryCode: formData.countryCode,
+        };
+        await onSubmit(sanitizedData);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
-  }, [formData, validateForm, onSubmit]);
+  }, [formData, validateForm, onSubmit, isSubmitting]);
 
   const handleFirstNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, firstName: e.target.value }));
@@ -187,10 +193,11 @@ const LeadCaptureScreen = memo(({ onSubmit }: LeadCaptureScreenProps) => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full h-14 bg-cta-success hover:bg-cta-success/90 text-cta-success-foreground font-heading text-lg gap-3 touch-target gpu-accelerated transition-gpu"
+                disabled={isSubmitting}
+                className="w-full h-14 bg-cta-success hover:bg-cta-success/90 text-cta-success-foreground font-heading text-lg gap-3 touch-target gpu-accelerated transition-gpu disabled:opacity-50"
               >
-                Découvrir mon Score & Mon Plan
-                <ArrowRight className="w-5 h-5" />
+                {isSubmitting ? "Envoi en cours..." : "Découvrir mon Score & Mon Plan"}
+                {!isSubmitting && <ArrowRight className="w-5 h-5" />}
               </Button>
             </div>
           </form>

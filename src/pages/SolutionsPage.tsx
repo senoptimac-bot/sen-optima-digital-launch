@@ -6,17 +6,17 @@ import ProcessingAnimation from "@/components/solutions/ProcessingAnimation";
 import DiagnosticDashboard from "@/components/solutions/DiagnosticDashboard";
 import { LeadData, QuizAnswers, QuizResult, FullDiagnosticData } from "@/types/solutions";
 import { calculateResults } from "@/utils/solutionsScoring";
+import { sendWebhook } from "@/lib/webhookService";
 
-const WEBHOOK_URL = "https://hook.eu1.make.com/safhwh4pa7vt9nadqq99gdr7lq9rnqbr";
-
-// New flow: hero → quiz → lead-capture → processing → results
 type Step = "hero" | "quiz" | "lead-capture" | "processing" | "results";
+type WebhookError = string | null;
 
 const SolutionsPage = () => {
   const [currentStep, setCurrentStep] = useState<Step>("hero");
   const [leadData, setLeadData] = useState<LeadData | null>(null);
   const [quizAnswers, setQuizAnswers] = useState<QuizAnswers | null>(null);
   const [quizResult, setQuizResult] = useState<QuizResult | null>(null);
+  const [webhookError, setWebhookError] = useState<WebhookError>(null);
 
   // Hero → Quiz (direct, no friction)
   const handleStartQuiz = useCallback(() => {
@@ -36,6 +36,7 @@ const SolutionsPage = () => {
   // Lead submitted → Processing → Results
   const handleLeadSubmit = useCallback(async (data: LeadData) => {
     setLeadData(data);
+    setWebhookError(null);
     setCurrentStep("processing");
 
     // Prepare full data for webhook
@@ -45,27 +46,19 @@ const SolutionsPage = () => {
       result: quizResult!,
     };
 
-    // Send to webhook (fire and forget with timeout)
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000);
-
-      await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(fullData),
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-    } catch {
-      // Log but don't block - results are calculated locally
-      console.log("Webhook notification sent (or timed out)");
+    // Send to webhook with proper error handling
+    const webhookResult = await sendWebhook(fullData);
+    
+    if (!webhookResult.success) {
+      // Store error for potential display, but don't block the flow
+      setWebhookError(webhookResult.error || "Erreur d'envoi");
+      // Log for monitoring
+      if (process.env.NODE_ENV === "development") {
+        console.warn("Webhook failed, continuing to results:", webhookResult.error);
+      }
     }
 
-    // Wait for processing animation (6-8 seconds)
+    // Continue to results regardless - local scoring is complete
     setTimeout(() => {
       setCurrentStep("results");
     }, 6500);

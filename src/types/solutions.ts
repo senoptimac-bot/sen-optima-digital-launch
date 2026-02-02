@@ -1,6 +1,6 @@
 export interface LeadData {
   firstName: string;
-  email: string;
+  email?: string; // Optionnel - non collecté dans le flux simplifié
   whatsapp: string;
   countryCode: string;
 }

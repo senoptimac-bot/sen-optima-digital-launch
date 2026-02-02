@@ -45,6 +45,10 @@
     --cta-success: 220 25% 15%;
     --cta-success-foreground: 45 30% 96%;
 
+    /* WhatsApp brand color */
+    --whatsapp: 142 70% 49%;
+    --whatsapp-foreground: 0 0% 100%;
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
@@ -109,6 +113,10 @@
 
     --cta-success: 142 70% 45%;
     --cta-success-foreground: 0 0% 100%;
+
+    /* WhatsApp brand color */
+    --whatsapp: 142 70% 49%;
+    --whatsapp-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
