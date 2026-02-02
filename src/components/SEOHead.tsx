@@ -11,7 +11,7 @@ interface SEOHeadProps {
 }
 
 const BASE_URL = "https://senoptimaconsulting.com";
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 /**
  * SEOHead - Composant centralisé pour les métadonnées SEO
