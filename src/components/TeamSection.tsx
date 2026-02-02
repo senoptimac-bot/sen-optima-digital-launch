@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
+import { Link } from "react-router-dom";
+import { User, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const teamMembers = [
   {
@@ -97,6 +99,22 @@ const TeamSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA to contact page */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="text-center mt-12"
+        >
+          <Button variant="outline" size="lg" asChild className="gap-2 rounded-full border-border hover:border-accent">
+            <Link to="/contact">
+              Discuter avec notre équipe
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

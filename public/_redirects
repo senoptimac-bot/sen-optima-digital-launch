@@ -1,0 +1,16 @@
+# Sen'Optima Consulting - Redirections & SPA Fallback
+# Compatible Hostinger / Netlify
+
+# Redirections 301 pour anciennes URLs (si applicable)
+/diagnostic  /solutions  301
+/diagnostics /solutions  301
+/equipe      /a-propos   301
+/team        /a-propos   301
+/about       /a-propos   301
+/apropos     /a-propos   301
+
+# Force HTTPS et non-www (handled by Hostinger/Netlify config)
+# Note: Ces redirections sont généralement gérées au niveau du serveur
+
+# SPA Fallback - Toutes les routes non-fichiers vers index.html
+/*  /index.html  200

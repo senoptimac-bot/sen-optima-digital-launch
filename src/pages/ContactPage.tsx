@@ -18,6 +18,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import SEOHead from "@/components/SEOHead";
+import { SEO_CONFIG } from "@/config/seo.config";
 import { useAppSounds } from "@/hooks/useAppSounds";
 import { useToast } from "@/hooks/use-toast";
 
@@ -42,6 +44,7 @@ const faqItems = [
 ];
 
 const ContactPage = () => {
+  const seo = SEO_CONFIG.contact;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -96,7 +99,15 @@ const ContactPage = () => {
   const mapsLink = "https://www.google.com/maps/search/?api=1&query=Grand+Mbao+Cite+Baobab+Dakar+Senegal";
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead 
+        title={seo.title}
+        description={seo.description}
+        canonicalPath={seo.canonicalPath}
+        keywords={seo.keywords}
+      />
+      
+      <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative">
         <div className="absolute inset-0 bg-background" />
@@ -442,7 +453,8 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import { Check, PartyPopper, ArrowLeft, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
+import { SEO_CONFIG } from "@/config/seo.config";
 import { useAppSounds } from "@/hooks/useAppSounds";
 import AuditForm from "@/components/AuditForm";
 
 const SuccessPage = () => {
   const [showConfetti, setShowConfetti] = useState(true);
   const { playSuccess } = useAppSounds();
+  const seo = SEO_CONFIG.success;
 
   useEffect(() => {
     // Jouer le son de succès à l'arrivée sur la page
@@ -21,8 +24,12 @@ const SuccessPage = () => {
 
   return (
     <>
-      {/* Meta tag noindex pour SEO - Page cachée de Google */}
-      <meta name="robots" content="noindex, nofollow" />
+      <SEOHead 
+        title={seo.title}
+        description={seo.description}
+        canonicalPath={seo.canonicalPath}
+        noIndex={true}
+      />
       
       <div className="min-h-screen bg-background relative overflow-x-hidden overflow-y-auto">
         {/* Background effects */}
