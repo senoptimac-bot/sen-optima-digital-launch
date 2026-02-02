@@ -11,6 +11,7 @@ import {
   Sparkles,
   Trophy
 } from "lucide-react";
+import contactHeroImage from "@/assets/contact-hero.jpg";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -109,16 +110,31 @@ const ContactPage = () => {
       
       <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-background" />
-        <div className="absolute top-0 right-0 w-[50%] h-[80%] bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
+        
+        {/* Hero Image on the right */}
+        <div className="absolute top-0 right-0 w-[45%] h-full hidden lg:block">
+          <div className="relative w-full h-full">
+            <img 
+              src={contactHeroImage} 
+              alt="Notre équipe prête à vous accompagner" 
+              className="w-full h-full object-cover object-top"
+            />
+            {/* Gradient overlay for smooth blend */}
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+            
+            {/* Decorative accent shape */}
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/20 rounded-tr-[80px]" />
+          </div>
+        </div>
         
         <div className="container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl"
+            className="max-w-xl"
           >
             <span className="badge-accent mb-6">
               Contact
@@ -130,6 +146,23 @@ const ContactPage = () => {
               Vous avez un projet ? Une question ? Ou simplement besoin de clarté ? 
               Nous sommes là pour vous répondre.
             </p>
+          </motion.div>
+          
+          {/* Mobile image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-10 lg:hidden"
+          >
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
+              <img 
+                src={contactHeroImage} 
+                alt="Notre équipe prête à vous accompagner" 
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+            </div>
           </motion.div>
         </div>
       </section>
