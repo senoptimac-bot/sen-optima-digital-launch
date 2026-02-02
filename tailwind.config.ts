@@ -81,6 +81,10 @@ export default {
           DEFAULT: "hsl(var(--cta-success))",
           foreground: "hsl(var(--cta-success-foreground))",
         },
+        whatsapp: {
+          DEFAULT: "hsl(var(--whatsapp))",
+          foreground: "hsl(var(--whatsapp-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
