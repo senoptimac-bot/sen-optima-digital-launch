@@ -39,9 +39,8 @@ const preloadAudio = () => {
     successAudio = new Audio('/sounds/success.mp3');
     successAudio.volume = 0.3; // 30% volume
     successAudio.preload = 'auto';
-  } catch (e) {
-    // Audio files not available - silent fail
-    console.log('Audio files not loaded - sounds disabled');
+  } catch {
+    // Audio files not available - silent fail (no logging in prod)
   }
 };
 
