@@ -146,12 +146,12 @@ const ContactPage = () => {
               {/* Secondary decorative card */}
               <div className="absolute -bottom-4 -left-4 w-3/4 h-3/4 rounded-3xl bg-primary/5 border border-primary/10 hidden md:block" />
               
-              {/* Main photo container */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              {/* Main photo container - transparent background */}
+              <div className="relative">
                 <img 
                   src={contactHeroImage} 
                   alt="Notre équipe prête à vous accompagner" 
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain drop-shadow-xl"
                 />
               </div>
               
