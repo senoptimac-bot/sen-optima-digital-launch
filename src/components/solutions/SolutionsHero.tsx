@@ -15,12 +15,52 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
 
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+          {/* Left Visual - Expert AI Image (transparent) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative order-2 lg:order-1"
+          >
+            {/* Background decorative shape */}
+            <div className="absolute top-10 left-10 w-[80%] h-[80%] bg-accent/10 rounded-[3rem] transform -rotate-6 hidden lg:block" />
+            
+            {/* Main image - transparent, no container background */}
+            <div className="relative">
+              <img
+                src={expertAiImage}
+                alt="Expert IA travaillant sur votre diagnostic"
+                className="w-full h-auto max-h-[500px] object-contain object-center drop-shadow-2xl"
+                loading="eager"
+              />
+            </div>
+
+            {/* Floating notification card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="absolute -right-4 lg:-right-8 bottom-10 lg:bottom-20 bg-card rounded-2xl p-3 lg:p-4 shadow-xl border border-border"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-accent flex items-center justify-center">
+                  <Brain className="w-4 h-4 lg:w-5 lg:h-5 text-accent-foreground" />
+                </div>
+                <div>
+                  <p className="text-[10px] lg:text-xs text-muted-foreground">Diagnostic</p>
+                  <p className="text-base lg:text-lg font-bold text-foreground">2 minutes</p>
+                  <p className="text-[10px] lg:text-xs text-muted-foreground">Analyse complète</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-xl"
+            className="max-w-xl order-1 lg:order-2"
           >
             {/* Badge */}
             <motion.div
@@ -85,49 +125,6 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
                 <Shield className="w-4 h-4" />
                 <span>Analyse confidentielle et sécurisée par Sen'Optima</span>
               </motion.div>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Visual - Expert AI Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
-          >
-            {/* Background shape */}
-            <div className="absolute -top-10 -right-10 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
-            
-            {/* Main image container */}
-            <div className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl bg-secondary/30">
-              <img
-                src={expertAiImage}
-                alt="Expert IA travaillant sur votre diagnostic"
-                className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover object-top"
-                loading="eager"
-              />
-              
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 via-transparent to-transparent" />
-            </div>
-
-            {/* Floating notification card */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="absolute -left-4 lg:-left-8 bottom-10 lg:bottom-20 bg-card rounded-2xl p-3 lg:p-4 shadow-xl border border-border"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-accent flex items-center justify-center">
-                  <Brain className="w-4 h-4 lg:w-5 lg:h-5 text-accent-foreground" />
-                </div>
-                <div>
-                  <p className="text-[10px] lg:text-xs text-muted-foreground">Diagnostic</p>
-                  <p className="text-base lg:text-lg font-bold text-foreground">2 minutes</p>
-                  <p className="text-[10px] lg:text-xs text-muted-foreground">Analyse complète</p>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         </div>
