@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo, memo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -158,22 +159,28 @@ const QUESTIONS: Question[] = [
   },
 ];
 
-// Memoized Option Component for zero re-renders
+// Memoized Option Component with visual feedback
 interface OptionButtonProps {
   option: { value: string; label: string; description?: string };
   isSelected: boolean;
   onSelect: (value: string) => void;
+  disabled?: boolean;
 }
 
-const OptionButton = memo(({ option, isSelected, onSelect }: OptionButtonProps) => (
-  <button
-    onClick={() => onSelect(option.value)}
+const OptionButton = memo(({ option, isSelected, onSelect, disabled }: OptionButtonProps) => (
+  <motion.button
+    onClick={() => !disabled && onSelect(option.value)}
+    disabled={disabled}
+    whileTap={{ scale: 0.98 }}
+    animate={isSelected ? { scale: [1, 1.02, 1] } : {}}
+    transition={{ duration: 0.2 }}
     className={`w-full min-h-[52px] p-4 rounded-xl border text-left touch-target
-      gpu-accelerated transition-gpu
+      transition-all duration-300 ease-out
       ${isSelected
-        ? "border-accent bg-accent/10"
+        ? "border-accent bg-accent/15 shadow-md shadow-accent/20"
         : "border-border hover:border-accent/50 active:bg-accent/10 bg-background/50"
-      }`}
+      }
+      ${disabled ? "pointer-events-none" : ""}`}
   >
     <div className="flex items-center justify-between gap-4">
       <div className="flex-1">
@@ -185,13 +192,21 @@ const OptionButton = memo(({ option, isSelected, onSelect }: OptionButtonProps) 
         )}
       </div>
       
-      {isSelected && (
-        <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-          <Check className="w-4 h-4 text-accent-foreground" />
-        </div>
-      )}
+      <AnimatePresence>
+        {isSelected && (
+          <motion.div 
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0"
+          >
+            <Check className="w-4 h-4 text-accent-foreground" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
-  </button>
+  </motion.button>
 ));
 OptionButton.displayName = "OptionButton";
 
@@ -232,30 +247,39 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Partial<QuizAnswers>>({});
   const [textInput, setTextInput] = useState("");
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
   const question = QUESTIONS[currentQuestion];
   const isLastQuestion = currentQuestion === QUESTIONS.length - 1;
 
-  // Stable callback for choice selection - avec validation Zod
+  // Stable callback for choice selection - avec validation Zod et transition fluide
   const handleOptionSelect = useCallback((value: string) => {
+    // Show selection immediately
+    setSelectedValue(value);
+    setIsTransitioning(true);
+    
     const newAnswers = { ...answers, [QUESTIONS[currentQuestion].id]: value };
     setAnswers(newAnswers);
     
-    // Use effect-like behavior without setState callback
-    if (currentQuestion === QUESTIONS.length - 1) {
-      // Validate with Zod before completing
-      const parsed = QuizAnswersSchema.safeParse(newAnswers);
-      if (parsed.success) {
-        onComplete(parsed.data as QuizAnswers); // Zod a validé, safe cast
-      } else {
-        // En dev, log l'erreur - en prod, afficher message utilisateur
-        if (process.env.NODE_ENV === "development") {
-          console.error("Quiz validation failed:", parsed.error.flatten());
+    // Delay transition to next question for visual feedback
+    setTimeout(() => {
+      if (currentQuestion === QUESTIONS.length - 1) {
+        // Validate with Zod before completing
+        const parsed = QuizAnswersSchema.safeParse(newAnswers);
+        if (parsed.success) {
+          onComplete(parsed.data as QuizAnswers);
+        } else {
+          if (process.env.NODE_ENV === "development") {
+            console.error("Quiz validation failed:", parsed.error.flatten());
+          }
         }
+      } else {
+        setCurrentQuestion(c => c + 1);
+        setSelectedValue(null);
       }
-    } else {
-      setCurrentQuestion(c => c + 1);
-    }
+      setIsTransitioning(false);
+    }, 400); // 400ms delay for smooth visual feedback
   }, [answers, currentQuestion, onComplete]);
 
   // Handle text input submission - avec validation Zod
@@ -297,7 +321,7 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
   }, [currentQuestion, answers]);
 
   // Memoize current answer to prevent option re-renders
-  const currentAnswer = useMemo(() => answers[question.id], [answers, question.id]);
+  const currentAnswer = useMemo(() => selectedValue || answers[question.id], [selectedValue, answers, question.id]);
 
   // Check if text input is valid
   const isTextValid = textInput.trim().length >= 2;
@@ -307,74 +331,90 @@ const TypeformQuiz = ({ onComplete }: TypeformQuizProps) => {
       {/* Progress Bar */}
       <ProgressBar current={currentQuestion} total={QUESTIONS.length} />
 
-      {/* Question Card */}
+      {/* Question Card with AnimatePresence for smooth transitions */}
       <div className="flex-1 flex items-start md:items-center justify-center">
         <div className="container max-w-2xl mx-auto w-full">
-          <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-5 md:p-8">
-            {/* Question */}
-            <h2 className="text-lg md:text-2xl font-heading font-bold text-foreground mb-2 text-left">
-              {question.question}
-            </h2>
-            <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 font-subheading text-left">
-              {question.subtitle}
-            </p>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentQuestion}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-5 md:p-8"
+            >
+              {/* Question */}
+              <h2 className="text-lg md:text-2xl font-heading font-bold text-foreground mb-2 text-left">
+                {question.question}
+              </h2>
+              <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 font-subheading text-left">
+                {question.subtitle}
+              </p>
 
-            {/* Text Input for text-type questions */}
-            {question.type === "text" && (
-              <div className="space-y-4">
-                <Input
-                  type="text"
-                  placeholder={question.placeholder}
-                  value={textInput}
-                  onChange={(e) => setTextInput(e.target.value)}
-                  maxLength={100}
-                  autoFocus
-                  className="h-14 text-lg bg-background/50 border-border focus:border-accent touch-target"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" && isTextValid) {
-                      handleTextSubmit();
-                    }
-                  }}
-                />
+              {/* Text Input for text-type questions */}
+              {question.type === "text" && (
+                <div className="space-y-4">
+                  <Input
+                    type="text"
+                    placeholder={question.placeholder}
+                    value={textInput}
+                    onChange={(e) => setTextInput(e.target.value)}
+                    maxLength={100}
+                    autoFocus
+                    className="h-14 text-lg bg-background/50 border-border focus:border-accent touch-target"
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && isTextValid) {
+                        handleTextSubmit();
+                      }
+                    }}
+                  />
+                  <Button
+                    onClick={handleTextSubmit}
+                    disabled={!isTextValid}
+                    size="lg"
+                    className="w-full h-14 bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-lg gap-3 touch-target gpu-accelerated transition-gpu disabled:opacity-50"
+                  >
+                    Continuer
+                    <ArrowRight className="w-5 h-5" />
+                  </Button>
+                </div>
+              )}
+
+              {/* Options for choice-type questions */}
+              {question.type === "choice" && question.options && (
+                <div className="space-y-2 md:space-y-3">
+                  {question.options.map((option, index) => (
+                    <motion.div
+                      key={option.value}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05, duration: 0.2 }}
+                    >
+                      <OptionButton
+                        option={option}
+                        isSelected={currentAnswer === option.value}
+                        onSelect={handleOptionSelect}
+                        disabled={isTransitioning}
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+
+              {/* Back button */}
+              <div className="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border">
                 <Button
-                  onClick={handleTextSubmit}
-                  disabled={!isTextValid}
-                  size="lg"
-                  className="w-full h-14 bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-lg gap-3 touch-target gpu-accelerated transition-gpu disabled:opacity-50"
+                  variant="ghost"
+                  onClick={handlePrevious}
+                  disabled={currentQuestion === 0 || isTransitioning}
+                  className="gap-2 text-muted-foreground hover:text-foreground touch-target"
                 >
-                  Continuer
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowLeft className="w-4 h-4" />
+                  Précédent
                 </Button>
               </div>
-            )}
-
-            {/* Options for choice-type questions */}
-            {question.type === "choice" && question.options && (
-              <div className="space-y-2 md:space-y-3">
-                {question.options.map((option) => (
-                  <OptionButton
-                    key={option.value}
-                    option={option}
-                    isSelected={currentAnswer === option.value}
-                    onSelect={handleOptionSelect}
-                  />
-                ))}
-              </div>
-            )}
-
-            {/* Back button */}
-            <div className="mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border">
-              <Button
-                variant="ghost"
-                onClick={handlePrevious}
-                disabled={currentQuestion === 0}
-                className="gap-2 text-muted-foreground hover:text-foreground touch-target"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Précédent
-              </Button>
-            </div>
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>
