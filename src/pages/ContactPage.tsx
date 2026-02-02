@@ -150,19 +150,25 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-8 rounded-2xl bg-card border border-border/50 flex flex-col group hover:border-accent/30 hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="relative p-8 card-cream group"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                <MessageCircle className="w-6 h-6 text-accent" />
+              {/* Number indicator */}
+              <div className="absolute top-6 right-6">
+                <span className="text-xs text-accent/40">01</span>
+              </div>
+
+              <div className="icon-circle mb-6 group-hover:scale-110 transition-transform duration-300">
+                <MessageCircle className="w-7 h-7 text-accent" />
               </div>
               
-              <span className="text-xs text-muted-foreground uppercase tracking-widest mb-2">Réponse instantanée</span>
+              <span className="text-xs text-muted-foreground uppercase tracking-widest mb-2 block">Réponse instantanée</span>
               
-              <h3 className="text-xl font-heading font-bold text-foreground mb-3">
+              <h3 className="text-xl font-heading font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                 L'Option Rapide
               </h3>
               
-              <p className="text-muted-foreground mb-6 flex-grow">
+              <p className="text-muted-foreground mb-6 flex-grow leading-relaxed">
                 Besoin d'une réponse rapide ou d'une info simple ? Écrivez-nous directement sur WhatsApp.
               </p>
               
@@ -184,8 +190,9 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="p-8 rounded-2xl bg-card border border-border/50 lg:col-span-1 lg:row-span-2 flex flex-col relative overflow-hidden hover:shadow-lg transition-all duration-300"
+              className="relative p-8 card-cream lg:col-span-1 lg:row-span-2 flex flex-col overflow-hidden"
             >
+              {/* Badge Devis gratuit */}
               <div className="absolute top-4 right-4">
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
                   <Trophy className="w-4 h-4 text-accent" />
@@ -193,17 +200,17 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
-                <Sparkles className="w-6 h-6 text-accent" />
+              <div className="icon-circle mb-6">
+                <Sparkles className="w-7 h-7 text-accent" />
               </div>
               
-              <span className="text-xs text-accent uppercase tracking-widest mb-2">Réponse sous 24h</span>
+              <span className="text-xs text-accent uppercase tracking-widest mb-2 block">Réponse sous 24h</span>
               
               <h3 className="text-xl font-heading font-bold text-foreground mb-3">
                 L'Option Projet
               </h3>
               
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground mb-6 leading-relaxed">
                 Vous voulez détailler votre besoin ou demander un devis ? Remplissez ce formulaire.
               </p>
 
@@ -220,7 +227,7 @@ const ContactPage = () => {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", damping: 15, delay: 0.1 }}
-                      className="w-20 h-20 mb-6 rounded-full bg-accent/20 flex items-center justify-center"
+                      className="icon-circle w-20 h-20 mb-6"
                     >
                       <CheckCircle2 className="w-10 h-10 text-accent" />
                     </motion.div>
@@ -236,6 +243,7 @@ const ContactPage = () => {
                         setIsSuccess(false);
                         setFormData({ name: "", email: "", subject: "", message: "" });
                       }}
+                      className="rounded-full"
                     >
                       Envoyer un autre message
                     </Button>
@@ -349,17 +357,23 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="p-8 rounded-2xl bg-card border border-border/50 flex flex-col hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="relative p-8 card-cream group"
             >
-              <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-6">
-                <MapPin className="w-6 h-6 text-muted-foreground" />
+              {/* Number indicator */}
+              <div className="absolute top-6 right-6">
+                <span className="text-xs text-accent/40">03</span>
+              </div>
+
+              <div className="icon-circle mb-6 group-hover:scale-110 transition-transform duration-300">
+                <MapPin className="w-7 h-7 text-accent" />
               </div>
               
-              <h3 className="text-xl font-heading font-bold text-foreground mb-3">
+              <h3 className="text-xl font-heading font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                 L'Option Rencontre
               </h3>
               
-              <p className="text-muted-foreground mb-6">
+              <p className="text-muted-foreground mb-6 leading-relaxed">
                 Vous préférez discuter les yeux dans les yeux ? Venez nous rencontrer à notre QG.
               </p>
 
@@ -406,12 +420,12 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="rounded-2xl bg-card border border-border/50 p-6 md:p-8"
+              className="card-cream p-6 md:p-8"
             >
               <Accordion type="single" collapsible className="w-full">
                 {faqItems.map((item, index) => (
                   <AccordionItem 
-                    key={index} 
+                    key={index}
                     value={`item-${index}`}
                     className="border-border"
                   >

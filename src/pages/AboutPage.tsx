@@ -256,15 +256,21 @@ const AboutPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 lg:p-8 rounded-2xl bg-card border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="relative p-6 lg:p-8 card-cream group"
               >
+                {/* Number indicator */}
+                <div className="absolute top-6 right-6">
+                  <span className="text-xs text-accent/40">{String(index + 1).padStart(2, '0')}</span>
+                </div>
+
                 {/* Icon */}
-                <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-4 lg:mb-6">
+                <div className="icon-circle mb-4 lg:mb-6 group-hover:scale-110 transition-transform duration-300">
                   <value.icon className="w-6 h-6 lg:w-7 lg:h-7 text-accent" />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg lg:text-xl font-heading font-bold text-foreground mb-2 lg:mb-3">
+                <h3 className="text-lg lg:text-xl font-heading font-bold text-foreground mb-2 lg:mb-3 group-hover:text-accent transition-colors duration-300">
                   {value.title}
                 </h3>
 
@@ -312,7 +318,7 @@ const AboutPage = () => {
               Vision <span className="text-accent">Sénégal 2050</span>
             </h2>
 
-            <div className="glass-card rounded-2xl p-6 md:p-8 lg:p-10">
+            <div className="card-cream p-6 md:p-8 lg:p-10">
               <Quote className="w-6 h-6 lg:w-8 lg:h-8 text-foreground/10 mb-4 lg:mb-6" />
 
               <p className="text-foreground/70 leading-relaxed lg:leading-loose mb-6 lg:mb-8 italic text-base lg:text-lg">
