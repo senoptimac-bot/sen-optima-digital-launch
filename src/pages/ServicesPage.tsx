@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCircle } from "lucide-react";
 import ServiceCard from "@/components/services/ServiceCard";
 import PhilosophyCard from "@/components/services/PhilosophyCard";
+import servicesHeroImage from "@/assets/services-hero-woman.jpg";
 
 // Service data
 const services = [
@@ -67,78 +68,124 @@ const philosophyItems = [
 const ServicesPage = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* HERO - Clean cream background */}
-      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center py-20 pt-32 md:py-28 md:pt-40 overflow-hidden">
-        {/* Background with decorative shape */}
-        <div className="absolute inset-0 bg-background" />
-        <div className="absolute top-0 right-0 w-[60%] h-full bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
+      {/* HERO - Design inspiré de la page d'accueil */}
+      <section className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden">
+        {/* Simple static background */}
+        <div className="absolute inset-0 z-0 bg-background" />
 
-        <div className="container px-5 md:px-8 relative z-10">
+        <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-xl"
-            >
-              {/* Badge */}
-              <span className="badge-accent mb-6">
-                Nos Services
-              </span>
+            {/* Left Content */}
+            <div className="max-w-xl">
+              {/* Badge - Accent pill */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="mb-8"
+              >
+                <span className="badge-accent">
+                  Nos Services
+                </span>
+              </motion.div>
 
-              {/* Title */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-6">
+              {/* Main Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-display font-bold text-foreground mb-6"
+              >
                 Transformez votre <span className="italic text-accent">Vision</span>
-                <span className="block mt-1">en Système Rentable.</span>
-              </h1>
+                <br />
+                en Système Rentable.
+              </motion.h1>
 
               {/* Subtitle */}
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
+              <motion.p
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="text-body-lg text-muted-foreground max-w-lg mb-10 leading-relaxed"
+              >
                 Que vous démarriez ou cherchiez à scaler, nous structurons 
                 votre activité pour qu'elle dure.
-              </p>
+              </motion.p>
 
-              {/* CTA */}
-              <Button
-                asChild
-                size="lg"
-                className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-wrap items-center gap-4"
               >
-                <Link to="/solutions">
-                  Lancer mon Diagnostic
-                  <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </Link>
-              </Button>
-            </motion.div>
+                <Button
+                  size="lg"
+                  asChild
+                  className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
+                >
+                  <Link to="/solutions">
+                    Lancer mon Diagnostic
+                    <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </Link>
+                </Button>
 
-            {/* Right side - Service icons grid */}
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  asChild
+                  className="gap-2 text-sm text-foreground hover:text-accent hover:bg-transparent"
+                >
+                  <a href="#services">
+                    Découvrir nos axes
+                  </a>
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* Right Visual - Hero Image with floating card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="hidden lg:block relative"
+              transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="relative"
             >
-              {/* Decorative background shape */}
-              <div className="absolute -top-8 -right-8 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6" />
+              {/* Background shape */}
+              <div className="absolute -top-10 -right-10 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
               
-              <div className="relative grid grid-cols-2 gap-6">
-                {services.slice(0, 4).map((service, index) => (
-                  <motion.div
-                    key={service.number}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
-                    className="p-6 rounded-2xl bg-card border border-border/50 hover:border-accent/30 hover:shadow-lg transition-all duration-300"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                      <service.icon className="w-6 h-6 text-accent" />
-                    </div>
-                    <h3 className="font-heading font-bold text-foreground text-sm">{service.subtitle}</h3>
-                  </motion.div>
-                ))}
+              {/* Main image container */}
+              <div className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl bg-secondary/30">
+                <img
+                  src={servicesHeroImage}
+                  alt="Professionnelle travaillant sur son projet"
+                  className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover object-top"
+                  loading="eager"
+                />
+                
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 via-transparent to-transparent" />
               </div>
+
+              {/* Floating notification card */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="absolute -left-4 lg:-left-8 bottom-10 lg:bottom-20 bg-card rounded-2xl p-3 lg:p-4 shadow-xl border border-border"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-accent flex items-center justify-center">
+                    <Rocket className="w-4 h-4 lg:w-5 lg:h-5 text-accent-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] lg:text-xs text-muted-foreground">4 Piliers</p>
+                    <p className="text-base lg:text-lg font-bold text-foreground">Stratégiques</p>
+                    <p className="text-[10px] lg:text-xs text-muted-foreground">Pour votre croissance</p>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
