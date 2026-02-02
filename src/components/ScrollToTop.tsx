@@ -10,7 +10,18 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+    // Force scroll to top immediately on route change
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Also reset any scrollable containers
+    const scrollableElements = document.querySelectorAll('[class*="overflow"]');
+    scrollableElements.forEach((el) => {
+      if (el instanceof HTMLElement) {
+        el.scrollTop = 0;
+      }
+    });
     
     // Re-apply Google Translate after route change
     const reapplyTranslation = () => {
