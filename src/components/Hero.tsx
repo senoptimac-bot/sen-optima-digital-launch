@@ -56,9 +56,7 @@ const Hero = () => {
             duration: 0.5,
             delay: 0.15,
             ease: [0.22, 1, 0.36, 1]
-          }} className="text-body-lg text-muted-foreground max-w-lg mb-10 leading-relaxed">
-              Basés à Dakar, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée.
-            </motion.p>
+          }} className="text-body-lg text-muted-foreground max-w-lg mb-10 leading-relaxed">Basés à Grand Mbao, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée.</motion.p>
 
             {/* CTA Buttons */}
             <motion.div initial={{
