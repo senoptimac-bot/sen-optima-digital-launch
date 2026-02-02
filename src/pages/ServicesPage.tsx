@@ -203,29 +203,29 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* SERVICES - Cards avec expansion */}
-      <section className="py-16 md:py-24 bg-secondary/30 relative overflow-hidden">
-        {/* Decorative shape */}
-        <div className="absolute bottom-0 left-0 w-[30%] h-[50%] bg-accent/5 rounded-tr-[100px] hidden lg:block" />
-        
+      {/* SERVICES - Modern Cards */}
+      <section id="services" className="py-20 md:py-28 bg-background relative overflow-hidden">
         <div className="container px-5 md:px-8 relative z-10">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12 md:mb-16"
+            className="text-center max-w-2xl mx-auto mb-14 md:mb-20"
           >
-            <span className="badge-accent mb-4">
-              4 Piliers
+            <span className="badge-accent mb-6">
+              4 Piliers Stratégiques
             </span>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
               Nos axes <span className="italic text-accent">d'intervention</span>
             </h2>
+            <p className="text-muted-foreground text-lg">
+              Des solutions adaptées à chaque étape de votre croissance.
+            </p>
           </motion.div>
 
-          {/* Cards Grid - 1 col mobile, 2 cols tablet+ */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          {/* Cards Grid - Modern Bento-style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {services.map((service, index) => (
               <ServiceCard key={service.title} {...service} index={index} />
             ))}
