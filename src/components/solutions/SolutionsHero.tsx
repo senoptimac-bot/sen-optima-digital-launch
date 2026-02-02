@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import expertAiImage from "@/assets/expert-ai.jpg";
 
 interface SolutionsHeroProps {
   onStart: () => void;
@@ -8,54 +9,55 @@ interface SolutionsHeroProps {
 
 const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
   return (
-    <section className="min-h-screen flex items-center relative py-20">
-      {/* Background with decorative shape */}
+    <section className="min-h-screen flex items-center relative py-20 pt-24 overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0 bg-background" />
-      <div className="absolute top-0 right-0 w-[50%] h-[70%] bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
 
-      <div className="container max-w-4xl px-5 md:px-8 relative z-10">
+      <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-left"
+            className="max-w-xl"
           >
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, type: "spring" }}
-              className="mb-6"
+              className="mb-8"
             >
               <span className="badge-accent">
                 Diagnostic IA
               </span>
             </motion.div>
 
-            {/* Main Heading - Impactful */}
+            {/* Main Heading */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-6"
+              className="text-display font-bold text-foreground mb-6"
             >
               Décelez les <span className="italic text-accent">angles morts</span>
-              <span className="block mt-2">de votre croissance.</span>
+              <br />
+              de votre croissance.
             </motion.h1>
 
-            {/* Subheadline - Reassurance */}
+            {/* Subheadline */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-base md:text-lg text-muted-foreground max-w-xl mb-10 leading-relaxed"
+              className="text-body-lg text-muted-foreground max-w-lg mb-10 leading-relaxed"
             >
               Utilisez notre moteur de diagnostic pour obtenir une vision claire de votre maturité digitale.
               <span className="block mt-2">Un audit précis de 2 minutes pour arrêter de deviner et commencer à piloter.</span>
             </motion.p>
 
-            {/* CTA Button - Premium & Organic */}
+            {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -73,7 +75,7 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
                 </span>
               </Button>
 
-              {/* Security Badge - Discreet below button */}
+              {/* Security Badge */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -86,40 +88,47 @@ const SolutionsHero = ({ onStart }: SolutionsHeroProps) => {
             </motion.div>
           </motion.div>
 
-          {/* Right side - Brain Icon Card */}
+          {/* Right Visual - Expert AI Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:flex items-center justify-center"
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
           >
-            <div className="relative">
-              {/* Decorative background shape */}
-              <div className="absolute -inset-8 bg-accent/5 rounded-[3rem] transform rotate-6" />
+            {/* Background shape */}
+            <div className="absolute -top-10 -right-10 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
+            
+            {/* Main image container */}
+            <div className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl bg-secondary/30">
+              <img
+                src={expertAiImage}
+                alt="Expert IA travaillant sur votre diagnostic"
+                className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover object-top"
+                loading="eager"
+              />
               
-              {/* Main icon container */}
-              <div className="relative w-48 h-48 rounded-3xl bg-card border border-border/50 shadow-xl flex items-center justify-center">
-                <Brain className="w-24 h-24 text-accent" strokeWidth={1} />
-              </div>
-
-              {/* Floating notification card */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8 }}
-                className="absolute -left-8 bottom-0 bg-card rounded-2xl p-4 shadow-lg border border-border/50"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                    <span className="text-accent text-sm font-bold">2</span>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Durée</p>
-                    <p className="text-base font-bold text-foreground">minutes</p>
-                  </div>
-                </div>
-              </motion.div>
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 via-transparent to-transparent" />
             </div>
+
+            {/* Floating notification card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="absolute -left-4 lg:-left-8 bottom-10 lg:bottom-20 bg-card rounded-2xl p-3 lg:p-4 shadow-xl border border-border"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-accent flex items-center justify-center">
+                  <Brain className="w-4 h-4 lg:w-5 lg:h-5 text-accent-foreground" />
+                </div>
+                <div>
+                  <p className="text-[10px] lg:text-xs text-muted-foreground">Diagnostic</p>
+                  <p className="text-base lg:text-lg font-bold text-foreground">2 minutes</p>
+                  <p className="text-[10px] lg:text-xs text-muted-foreground">Analyse complète</p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
