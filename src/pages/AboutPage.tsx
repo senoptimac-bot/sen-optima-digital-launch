@@ -6,9 +6,7 @@ import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import TeamSection from "@/components/TeamSection";
-import HeroIllustration from "@/components/about/HeroIllustration";
-import ParcoursIllustration from "@/components/about/ParcoursIllustration";
-import VisionIllustration from "@/components/about/VisionIllustration";
+import PhotoPlaceholder from "@/components/about/PhotoPlaceholder";
 
 // Les 3 valeurs/piliers
 const valuesData = [
@@ -107,17 +105,17 @@ const AboutPage = () => {
               </Button>
             </motion.div>
 
-            {/* Hero Illustration */}
+            {/* Photo Placeholder */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
               {/* Decorative background shape */}
               <div className="absolute -top-8 -right-8 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
               <div className="relative">
-                <HeroIllustration />
+                <PhotoPlaceholder label="Photo équipe à venir" aspectRatio="landscape" />
               </div>
             </motion.div>
           </div>
@@ -165,17 +163,17 @@ const AboutPage = () => {
               </div>
             </motion.div>
 
-            {/* Parcours Illustration */}
+            {/* Photo Placeholder */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
               className="relative"
             >
               <div className="absolute -top-6 -right-6 w-full h-full bg-accent/10 rounded-[2rem] transform rotate-3 hidden lg:block" />
               <div className="relative">
-                <ParcoursIllustration />
+                <PhotoPlaceholder label="Photo parcours à venir" aspectRatio="landscape" />
               </div>
             </motion.div>
           </div>
@@ -189,17 +187,17 @@ const AboutPage = () => {
         
         <div className="container px-5 md:px-8 lg:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Vision Illustration - Left on desktop */}
+            {/* Photo Placeholder - Left on desktop */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
               className="relative order-2 lg:order-1"
             >
               <div className="absolute -top-6 -left-6 w-full h-full bg-accent/10 rounded-[2rem] transform -rotate-3 hidden lg:block" />
               <div className="relative">
-                <VisionIllustration />
+                <PhotoPlaceholder label="Photo vision à venir" aspectRatio="landscape" />
               </div>
             </motion.div>
 
