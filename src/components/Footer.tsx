@@ -1,79 +1,140 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
-import { Separator } from "@/components/ui/separator";
-import logoFooter from "@/assets/logo-footer.svg";
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
   
+  const navLinks = [
+    { label: "Services", href: "/services" },
+    { label: "À Propos", href: "/a-propos" },
+    { label: "Solutions", href: "/solutions" },
+    { label: "Contact", href: "/contact" },
+  ];
+
+  const legalLinks = [
+    { label: "Confidentialité", href: "/politique-confidentialite" },
+    { label: "CGV", href: "/cgv" },
+    { label: "Mentions Légales", href: "/mentions-legales" },
+  ];
+
   return (
-    <footer ref={ref} className="py-10 md:py-12 bg-foreground text-background">
-      <div className="container">
-        {/* Main 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left">
-          
-          {/* COLUMN 1: Identity & Mission */}
-          <div className="space-y-3">
-            <p className="text-sm text-background/70 leading-relaxed max-w-xs">
-              Architectes de croissance pour entrepreneurs ambitieux. 
-              Nous transformons le chaos en systèmes rentables.
+    <footer ref={ref} className="relative bg-foreground text-background overflow-hidden">
+      {/* Decorative gradient orb */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+      
+      <div className="container relative z-10">
+        {/* Main Content */}
+        <div className="py-16 md:py-24">
+          {/* Top Section - Big CTA */}
+          <div className="mb-16 md:mb-24">
+            <p className="text-sm text-background/50 uppercase tracking-[0.2em] mb-4">
+              Prêt à transformer votre business ?
             </p>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-background leading-tight max-w-3xl mb-8">
+              Discutons de votre 
+              <span className="text-accent"> prochaine étape</span>
+            </h2>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="https://wa.me/221781926969" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group inline-flex items-center gap-3 px-6 py-4 bg-accent text-accent-foreground rounded-full font-semibold hover:bg-accent/90 transition-all duration-300"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Démarrer sur WhatsApp
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+              </a>
+              <a 
+                href="mailto:contact@senoptimaconsulting.com" 
+                className="group inline-flex items-center gap-3 px-6 py-4 border border-background/20 text-background rounded-full font-semibold hover:border-background/40 hover:bg-background/5 transition-all duration-300"
+              >
+                <Mail className="w-5 h-5" />
+                Envoyer un Email
+              </a>
+            </div>
           </div>
 
-          {/* COLUMN 2: Navigation */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-medium text-background/50 uppercase tracking-[0.2em]">
-              Explorer
-            </h4>
-            <nav className="flex flex-col gap-2">
-              <Link to="/services" className="text-sm text-background/80 hover:text-accent transition-colors duration-200">
-                Nos Services
-              </Link>
-              <Link to="/a-propos" className="text-sm text-background/80 hover:text-accent transition-colors duration-200">
-                Notre Approche
-              </Link>
-              <Link to="/solutions" className="text-sm font-semibold text-accent hover:text-accent/80 transition-colors duration-200">
-                Lancer mon Diagnostic
-              </Link>
-            </nav>
-          </div>
+          {/* Bottom Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {/* Brand Column */}
+            <div className="col-span-2 md:col-span-1">
+              <h3 className="text-lg font-bold text-background mb-4">Sen'Optima</h3>
+              <p className="text-sm text-background/60 leading-relaxed max-w-xs">
+                Architectes de croissance pour entrepreneurs ambitieux.
+              </p>
+            </div>
 
-          {/* COLUMN 3: Contact & Legal */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-medium text-background/50 uppercase tracking-[0.2em]">
-              Nous Parler
-            </h4>
-            <nav className="flex flex-col gap-2">
-              <a href="https://wa.me/221781926969" target="_blank" rel="noopener noreferrer" className="text-sm text-background/80 hover:text-accent transition-colors duration-200">
-                WhatsApp Pro
-              </a>
-              <a href="mailto:contact@senoptimaconsulting.com" className="text-sm text-background/80 hover:text-accent transition-colors duration-200">
-                Email Support
-              </a>
-            </nav>
-            
-            {/* Legal Links */}
-            <div className="pt-3 flex flex-wrap gap-x-4 gap-y-1">
-              <Link to="/politique-confidentialite" className="text-xs text-background/40 hover:text-background/60 transition-colors duration-200">
-                Confidentialité
-              </Link>
-              <Link to="/cgv" className="text-xs text-background/40 hover:text-background/60 transition-colors duration-200">
-                CGV
-              </Link>
-              <Link to="/mentions-legales" className="text-xs text-background/40 hover:text-background/60 transition-colors duration-200">
-                Mentions Légales
-              </Link>
+            {/* Navigation Column */}
+            <div>
+              <h4 className="text-xs font-medium text-background/40 uppercase tracking-[0.15em] mb-5">
+                Navigation
+              </h4>
+              <nav className="flex flex-col gap-3">
+                {navLinks.map((link) => (
+                  <Link 
+                    key={link.href}
+                    to={link.href} 
+                    className="group text-sm text-background/70 hover:text-background transition-colors duration-200 inline-flex items-center gap-1"
+                  >
+                    {link.label}
+                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Legal Column */}
+            <div>
+              <h4 className="text-xs font-medium text-background/40 uppercase tracking-[0.15em] mb-5">
+                Légal
+              </h4>
+              <nav className="flex flex-col gap-3">
+                {legalLinks.map((link) => (
+                  <Link 
+                    key={link.href}
+                    to={link.href} 
+                    className="text-sm text-background/50 hover:text-background/70 transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Contact Column */}
+            <div>
+              <h4 className="text-xs font-medium text-background/40 uppercase tracking-[0.15em] mb-5">
+                Contact Direct
+              </h4>
+              <div className="flex flex-col gap-3">
+                <a 
+                  href="https://wa.me/221781926969" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sm text-background/70 hover:text-accent transition-colors duration-200"
+                >
+                  +221 78 192 69 69
+                </a>
+                <a 
+                  href="mailto:contact@senoptimaconsulting.com" 
+                  className="text-sm text-background/70 hover:text-accent transition-colors duration-200 break-all"
+                >
+                  contact@senoptimaconsulting.com
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Separator */}
-        <Separator className="my-8 bg-background/10" />
-
-        {/* Copyright */}
-        <div className="text-left">
+        {/* Bottom Bar */}
+        <div className="py-6 border-t border-background/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <p className="text-xs text-background/40">
             © {currentYear} Sen'Optima Consulting. Tous droits réservés.
+          </p>
+          <p className="text-xs text-background/30">
+            Dakar, Sénégal
           </p>
         </div>
       </div>
