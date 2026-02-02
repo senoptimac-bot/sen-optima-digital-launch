@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, ArrowRight } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Phone, ArrowRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -10,7 +10,10 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { t } = useTranslation();
+  
+  const isHomePage = location.pathname === "/";
   
   const phoneNumber = "+221781926969";
 
@@ -55,14 +58,28 @@ const Header = () => {
       >
         <div className="container">
           <nav className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <Link to="/" className="flex items-center">
-              <img
-                src={logo}
-                alt="Sen'Optima Consulting"
-                className="h-8 md:h-10 w-auto"
-              />
-            </Link>
+            {/* Left side - Back button + Logo */}
+            <div className="flex items-center gap-3">
+              {/* Back button - visible on all pages except home */}
+              {!isHomePage && (
+                <button
+                  onClick={() => navigate(-1)}
+                  className="flex items-center justify-center w-9 h-9 rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all duration-300"
+                  aria-label="Retour"
+                >
+                  <ArrowLeft className="w-4 h-4 text-foreground" />
+                </button>
+              )}
+              
+              {/* Logo - larger and clearer */}
+              <Link to="/" className="flex items-center">
+                <img
+                  src={logo}
+                  alt="Sen'Optima Consulting"
+                  className="h-10 md:h-12 w-auto"
+                />
+              </Link>
+            </div>
 
             {/* Desktop Navigation - Center */}
             <ul className="hidden lg:flex items-center gap-10">
