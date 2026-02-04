@@ -12,6 +12,7 @@ export const PRICING: PricingConfig = {
 };
 
 // Les 30 questions divisées en 5 blocs de 6 questions
+// Adaptées au contexte sénégalais et africain
 export const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
   // ═══════════════════════════════════════════════════════
   // BLOC 1 - SITUATION ACTUELLE (6 questions)
@@ -20,66 +21,66 @@ export const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
     id: "q1",
     blockId: 1,
     blockName: "Situation actuelle",
-    question: "Votre activité est-elle déjà lancée ?",
+    question: "Votre activité est-elle déjà lancée et opérationnelle ?",
     options: [
-      { value: "yes", label: "Oui, elle tourne", score: 3 },
-      { value: "partial", label: "En cours de lancement", score: 2 },
-      { value: "no", label: "Pas encore", score: 1 },
+      { value: "yes", label: "Oui, elle tourne depuis plus de 6 mois", score: 3 },
+      { value: "partial", label: "Oui, mais je démarre à peine", score: 2 },
+      { value: "no", label: "Pas encore, c'est en projet", score: 1 },
     ],
   },
   {
     id: "q2",
     blockId: 1,
     blockName: "Situation actuelle",
-    question: "Générez-vous des revenus réguliers ?",
+    question: "L'argent rentre-t-il régulièrement chaque mois ?",
     options: [
-      { value: "yes", label: "Oui, chaque mois", score: 3 },
-      { value: "partial", label: "Parfois", score: 2 },
-      { value: "no", label: "Pas encore", score: 1 },
+      { value: "yes", label: "Oui, j'ai un cash-flow régulier", score: 3 },
+      { value: "partial", label: "Ça dépend des mois", score: 2 },
+      { value: "no", label: "C'est très irrégulier", score: 1 },
     ],
   },
   {
     id: "q3",
     blockId: 1,
     blockName: "Situation actuelle",
-    question: "Travaillez-vous seul ou avec une équipe ?",
+    question: "Travaillez-vous seul ou avec du personnel ?",
     options: [
-      { value: "yes", label: "Avec une équipe", score: 3 },
-      { value: "partial", label: "Quelques collaborateurs ponctuels", score: 2 },
-      { value: "no", label: "Seul", score: 1 },
+      { value: "yes", label: "J'ai une équipe (même petite)", score: 3 },
+      { value: "partial", label: "J'ai des freelances ou stagiaires", score: 2 },
+      { value: "no", label: "Je fais tout seul", score: 1 },
     ],
   },
   {
     id: "q4",
     blockId: 1,
     blockName: "Situation actuelle",
-    question: "Avez-vous une activité principale claire ?",
+    question: "Votre activité principale est-elle clairement définie ?",
     options: [
-      { value: "yes", label: "Oui, bien définie", score: 3 },
-      { value: "partial", label: "Plusieurs activités", score: 2 },
-      { value: "no", label: "C'est flou", score: 1 },
+      { value: "yes", label: "Oui, un métier bien défini", score: 3 },
+      { value: "partial", label: "Je fais plusieurs choses", score: 2 },
+      { value: "no", label: "C'est flou, je touche à tout", score: 1 },
     ],
   },
   {
     id: "q5",
     blockId: 1,
     blockName: "Situation actuelle",
-    question: "Votre activité dépend-elle uniquement de vous ?",
+    question: "Votre business peut-il tourner sans vous pendant 2 semaines ?",
     options: [
-      { value: "yes", label: "Non, elle peut tourner sans moi", score: 3 },
-      { value: "partial", label: "En partie", score: 2 },
-      { value: "no", label: "Oui, tout repose sur moi", score: 1 },
+      { value: "yes", label: "Oui, tout est organisé", score: 3 },
+      { value: "partial", label: "Partiellement, mais c'est compliqué", score: 2 },
+      { value: "no", label: "Non, tout s'arrête si je m'absente", score: 1 },
     ],
   },
   {
     id: "q6",
     blockId: 1,
     blockName: "Situation actuelle",
-    question: "Avez-vous déjà formalisé votre fonctionnement ?",
+    question: "Avez-vous documenté votre façon de travailler ?",
     options: [
-      { value: "yes", label: "Oui, processus documentés", score: 3 },
-      { value: "partial", label: "Quelques notes", score: 2 },
-      { value: "no", label: "Rien de formalisé", score: 1 },
+      { value: "yes", label: "Oui, j'ai des procédures écrites", score: 3 },
+      { value: "partial", label: "Quelques notes, mais pas formalisées", score: 2 },
+      { value: "no", label: "Tout est dans ma tête", score: 1 },
     ],
   },
 
