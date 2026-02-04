@@ -118,10 +118,17 @@ const DiagnosticQuiz = ({ onComplete }: DiagnosticQuizProps) => {
   const question = DIAGNOSTIC_QUESTIONS[currentIndex];
   const isLastQuestion = currentIndex === TOTAL_QUESTIONS - 1;
 
-  // Check if we just completed a block
+  // Calculate current block (0-indexed)
   const currentBlock = Math.floor(currentIndex / QUESTIONS_PER_BLOCK);
   const previousBlock = currentIndex > 0 ? Math.floor((currentIndex - 1) / QUESTIONS_PER_BLOCK) : -1;
-  const showBlockMessage = currentBlock > previousBlock && previousBlock >= 0 ? BLOCK_MESSAGES[previousBlock] : undefined;
+  
+  // Show block message when entering a new block (after completing previous)
+  const showBlockMessage = currentBlock > previousBlock && previousBlock >= 0 
+    ? BLOCK_MESSAGES[previousBlock] 
+    : undefined;
+  
+  // Show reassurance message at specific question indices
+  const reassuranceMessage = REASSURANCE_MESSAGES[currentIndex];
 
   const handleOptionSelect = useCallback((value: "yes" | "partial" | "no") => {
     setSelectedValue(value);
