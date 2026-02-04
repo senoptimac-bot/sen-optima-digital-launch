@@ -1,70 +1,50 @@
 import { useState, useCallback } from "react";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
-import SolutionsHero from "@/components/solutions/SolutionsHero";
-import LeadCaptureScreen from "@/components/solutions/LeadCaptureScreen";
-import TypeformQuiz from "@/components/solutions/TypeformQuiz";
-import ProcessingAnimation from "@/components/solutions/ProcessingAnimation";
-import DiagnosticDashboard from "@/components/solutions/DiagnosticDashboard";
-import { LeadData, QuizAnswers, QuizResult, FullDiagnosticData } from "@/types/solutions";
-import { calculateResults } from "@/utils/solutionsScoring";
-import { sendWebhook } from "@/lib/webhookService";
+import { DiagnosticLanding, DiagnosticQuiz, DiagnosticProcessing, DiagnosticResults } from "@/components/diagnostic";
+import { DiagnosticAnswers, DiagnosticResult, DiagnosticStep } from "@/types/diagnostic";
+import { calculateDiagnosticResult } from "@/utils/diagnosticScoring";
 
-type Step = "hero" | "quiz" | "lead-capture" | "processing" | "results";
-type WebhookError = string | null;
-
+/**
+ * Page Solutions - Diagnostic de Structuration Business Premium
+ * 
+ * Flow:
+ * 1. Landing - Présentation du diagnostic avec prix
+ * 2. Quiz - 30 questions (5 blocs de 6)
+ * 3. Processing - Animation d'analyse
+ * 4. Results - Score + niveau + synthèse + CTA appel
+ * 
+ * Note: Le paiement sera intégré ultérieurement via Make.com
+ * Pour l'instant, le flow passe directement au quiz après le landing.
+ */
 const SolutionsPage = () => {
-  const [currentStep, setCurrentStep] = useState<Step>("hero");
-  const [leadData, setLeadData] = useState<LeadData | null>(null);
-  const [quizAnswers, setQuizAnswers] = useState<QuizAnswers | null>(null);
-  const [quizResult, setQuizResult] = useState<QuizResult | null>(null);
-  const [webhookError, setWebhookError] = useState<WebhookError>(null);
+  const [currentStep, setCurrentStep] = useState<DiagnosticStep>("landing");
+  const [answers, setAnswers] = useState<DiagnosticAnswers | null>(null);
+  const [result, setResult] = useState<DiagnosticResult | null>(null);
 
-  // Hero → Quiz (direct, no friction)
-  const handleStartQuiz = useCallback(() => {
+  // Landing → Quiz (paiement à intégrer plus tard)
+  const handleStart = useCallback(() => {
+    // TODO: Intégrer le paiement PayTech/Make.com ici
+    // Pour l'instant, passage direct au quiz
     setCurrentStep("quiz");
   }, []);
 
-  // Quiz complete → Lead capture (after engagement)
-  const handleQuizComplete = useCallback((answers: QuizAnswers) => {
-    setQuizAnswers(answers);
-    // Calculate results immediately (ready for after lead capture)
-    const result = calculateResults(answers);
-    setQuizResult(result);
-    // Show lead capture AFTER quiz completion
-    setCurrentStep("lead-capture");
-  }, []);
-
-  // Lead submitted → Processing → Results
-  const handleLeadSubmit = useCallback(async (data: LeadData) => {
-    setLeadData(data);
-    setWebhookError(null);
-    setCurrentStep("processing");
-
-    // Prepare full data for webhook
-    const fullData: FullDiagnosticData = {
-      lead: data,
-      answers: quizAnswers!,
-      result: quizResult!,
-    };
-
-    // Send to webhook with proper error handling
-    const webhookResult = await sendWebhook(fullData);
+  // Quiz terminé → Processing → Results
+  const handleQuizComplete = useCallback((quizAnswers: DiagnosticAnswers) => {
+    setAnswers(quizAnswers);
     
-    if (!webhookResult.success) {
-      // Store error for potential display, but don't block the flow
-      setWebhookError(webhookResult.error || "Erreur d'envoi");
-      // Log for monitoring
-      if (process.env.NODE_ENV === "development") {
-        console.warn("Webhook failed, continuing to results:", webhookResult.error);
-      }
-    }
-
-    // Continue to results regardless - local scoring is complete
+    // Calculer le résultat
+    const diagnosticResult = calculateDiagnosticResult(quizAnswers);
+    setResult(diagnosticResult);
+    
+    // Afficher l'animation de processing
+    setCurrentStep("processing");
+    
+    // Après 8-10 secondes, afficher les résultats
     setTimeout(() => {
       setCurrentStep("results");
-    }, 6500);
-  }, [quizAnswers, quizResult]);
+    }, 8000);
+  }, []);
 
   const seo = SEO_CONFIG.solutions;
 
@@ -78,16 +58,20 @@ const SolutionsPage = () => {
       />
       
       <div className="min-h-screen bg-background">
-        {currentStep === "hero" && <SolutionsHero onStart={handleStartQuiz} />}
-        {currentStep === "quiz" && <TypeformQuiz onComplete={handleQuizComplete} />}
-        {currentStep === "lead-capture" && <LeadCaptureScreen onSubmit={handleLeadSubmit} />}
-        {currentStep === "processing" && <ProcessingAnimation />}
-        {currentStep === "results" && quizResult && leadData && quizAnswers && (
-          <DiagnosticDashboard 
-            result={quizResult} 
-            leadData={leadData}
-            answers={quizAnswers}
-          />
+        {currentStep === "landing" && (
+          <DiagnosticLanding onStart={handleStart} />
+        )}
+        
+        {currentStep === "quiz" && (
+          <DiagnosticQuiz onComplete={handleQuizComplete} />
+        )}
+        
+        {currentStep === "processing" && (
+          <DiagnosticProcessing />
+        )}
+        
+        {currentStep === "results" && result && (
+          <DiagnosticResults result={result} />
         )}
       </div>
     </>

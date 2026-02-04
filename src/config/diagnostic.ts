@@ -1,0 +1,379 @@
+/**
+ * Configuration du Diagnostic de Structuration Business Premium
+ */
+
+import { DiagnosticQuestion, PricingConfig } from "@/types/diagnostic";
+
+// Tarification
+export const PRICING: PricingConfig = {
+  normalPrice: 20000,
+  launchPrice: 10000,
+  currency: "FCFA",
+};
+
+// Les 30 questions divisées en 5 blocs de 6 questions
+export const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
+  // ═══════════════════════════════════════════════════════
+  // BLOC 1 - SITUATION ACTUELLE (6 questions)
+  // ═══════════════════════════════════════════════════════
+  {
+    id: "q1",
+    blockId: 1,
+    blockName: "Situation actuelle",
+    question: "Votre activité est-elle déjà lancée ?",
+    options: [
+      { value: "yes", label: "Oui, elle tourne", score: 3 },
+      { value: "partial", label: "En cours de lancement", score: 2 },
+      { value: "no", label: "Pas encore", score: 1 },
+    ],
+  },
+  {
+    id: "q2",
+    blockId: 1,
+    blockName: "Situation actuelle",
+    question: "Générez-vous des revenus réguliers ?",
+    options: [
+      { value: "yes", label: "Oui, chaque mois", score: 3 },
+      { value: "partial", label: "Parfois", score: 2 },
+      { value: "no", label: "Pas encore", score: 1 },
+    ],
+  },
+  {
+    id: "q3",
+    blockId: 1,
+    blockName: "Situation actuelle",
+    question: "Travaillez-vous seul ou avec une équipe ?",
+    options: [
+      { value: "yes", label: "Avec une équipe", score: 3 },
+      { value: "partial", label: "Quelques collaborateurs ponctuels", score: 2 },
+      { value: "no", label: "Seul", score: 1 },
+    ],
+  },
+  {
+    id: "q4",
+    blockId: 1,
+    blockName: "Situation actuelle",
+    question: "Avez-vous une activité principale claire ?",
+    options: [
+      { value: "yes", label: "Oui, bien définie", score: 3 },
+      { value: "partial", label: "Plusieurs activités", score: 2 },
+      { value: "no", label: "C'est flou", score: 1 },
+    ],
+  },
+  {
+    id: "q5",
+    blockId: 1,
+    blockName: "Situation actuelle",
+    question: "Votre activité dépend-elle uniquement de vous ?",
+    options: [
+      { value: "yes", label: "Non, elle peut tourner sans moi", score: 3 },
+      { value: "partial", label: "En partie", score: 2 },
+      { value: "no", label: "Oui, tout repose sur moi", score: 1 },
+    ],
+  },
+  {
+    id: "q6",
+    blockId: 1,
+    blockName: "Situation actuelle",
+    question: "Avez-vous déjà formalisé votre fonctionnement ?",
+    options: [
+      { value: "yes", label: "Oui, processus documentés", score: 3 },
+      { value: "partial", label: "Quelques notes", score: 2 },
+      { value: "no", label: "Rien de formalisé", score: 1 },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════
+  // BLOC 2 - OFFRE & CLIENTS (6 questions)
+  // ═══════════════════════════════════════════════════════
+  {
+    id: "q7",
+    blockId: 2,
+    blockName: "Offre & Clients",
+    question: "Avez-vous une offre principale clairement définie ?",
+    options: [
+      { value: "yes", label: "Oui, très claire", score: 3 },
+      { value: "partial", label: "Plusieurs offres", score: 2 },
+      { value: "no", label: "Pas vraiment", score: 1 },
+    ],
+  },
+  {
+    id: "q8",
+    blockId: 2,
+    blockName: "Offre & Clients",
+    question: "Votre client idéal est-il bien identifié ?",
+    options: [
+      { value: "yes", label: "Oui, profil précis", score: 3 },
+      { value: "partial", label: "Vaguement", score: 2 },
+      { value: "no", label: "Non, tout le monde", score: 1 },
+    ],
+  },
+  {
+    id: "q9",
+    blockId: 2,
+    blockName: "Offre & Clients",
+    question: "Résolvez-vous un problème précis ?",
+    options: [
+      { value: "yes", label: "Oui, clairement", score: 3 },
+      { value: "partial", label: "Plus ou moins", score: 2 },
+      { value: "no", label: "Pas sûr", score: 1 },
+    ],
+  },
+  {
+    id: "q10",
+    blockId: 2,
+    blockName: "Offre & Clients",
+    question: "Vos prix sont-ils fixes et assumés ?",
+    options: [
+      { value: "yes", label: "Oui, grille tarifaire", score: 3 },
+      { value: "partial", label: "Ça dépend", score: 2 },
+      { value: "no", label: "Je négocie souvent", score: 1 },
+    ],
+  },
+  {
+    id: "q11",
+    blockId: 2,
+    blockName: "Offre & Clients",
+    question: "Savez-vous expliquer pourquoi vous choisir ?",
+    options: [
+      { value: "yes", label: "Oui, argumentaire clair", score: 3 },
+      { value: "partial", label: "Plus ou moins", score: 2 },
+      { value: "no", label: "Difficilement", score: 1 },
+    ],
+  },
+  {
+    id: "q12",
+    blockId: 2,
+    blockName: "Offre & Clients",
+    question: "Avez-vous déjà refusé un client non aligné ?",
+    options: [
+      { value: "yes", label: "Oui, plusieurs fois", score: 3 },
+      { value: "partial", label: "Une fois ou deux", score: 2 },
+      { value: "no", label: "Non, j'accepte tout", score: 1 },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════
+  // BLOC 3 - VENTE & MARKETING (6 questions)
+  // ═══════════════════════════════════════════════════════
+  {
+    id: "q13",
+    blockId: 3,
+    blockName: "Vente & Marketing",
+    question: "Avez-vous une source régulière de prospects ?",
+    options: [
+      { value: "yes", label: "Oui, système en place", score: 3 },
+      { value: "partial", label: "Quelques canaux", score: 2 },
+      { value: "no", label: "Non, c'est aléatoire", score: 1 },
+    ],
+  },
+  {
+    id: "q14",
+    blockId: 3,
+    blockName: "Vente & Marketing",
+    question: "Vos ventes reposent-elles sur le bouche-à-oreille ?",
+    options: [
+      { value: "yes", label: "Non, sources diversifiées", score: 3 },
+      { value: "partial", label: "En grande partie", score: 2 },
+      { value: "no", label: "Oui, uniquement", score: 1 },
+    ],
+  },
+  {
+    id: "q15",
+    blockId: 3,
+    blockName: "Vente & Marketing",
+    question: "Avez-vous un processus de vente structuré ?",
+    options: [
+      { value: "yes", label: "Oui, étapes claires", score: 3 },
+      { value: "partial", label: "Quelques repères", score: 2 },
+      { value: "no", label: "Non, au feeling", score: 1 },
+    ],
+  },
+  {
+    id: "q16",
+    blockId: 3,
+    blockName: "Vente & Marketing",
+    question: "Faites-vous un suivi des prospects ?",
+    options: [
+      { value: "yes", label: "Oui, systématiquement", score: 3 },
+      { value: "partial", label: "Parfois", score: 2 },
+      { value: "no", label: "Non", score: 1 },
+    ],
+  },
+  {
+    id: "q17",
+    blockId: 3,
+    blockName: "Vente & Marketing",
+    question: "Connaissez-vous la valeur moyenne d'un client ?",
+    options: [
+      { value: "yes", label: "Oui, chiffre précis", score: 3 },
+      { value: "partial", label: "Une estimation", score: 2 },
+      { value: "no", label: "Aucune idée", score: 1 },
+    ],
+  },
+  {
+    id: "q18",
+    blockId: 3,
+    blockName: "Vente & Marketing",
+    question: "Avez-vous déjà investi en acquisition payante ?",
+    options: [
+      { value: "yes", label: "Oui, avec suivi ROI", score: 3 },
+      { value: "partial", label: "Quelques tests", score: 2 },
+      { value: "no", label: "Jamais", score: 1 },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════
+  // BLOC 4 - ORGANISATION & OUTILS (6 questions)
+  // ═══════════════════════════════════════════════════════
+  {
+    id: "q19",
+    blockId: 4,
+    blockName: "Organisation & Outils",
+    question: "Avez-vous des processus écrits ?",
+    options: [
+      { value: "yes", label: "Oui, documentés", score: 3 },
+      { value: "partial", label: "Quelques-uns", score: 2 },
+      { value: "no", label: "Non, tout en tête", score: 1 },
+    ],
+  },
+  {
+    id: "q20",
+    blockId: 4,
+    blockName: "Organisation & Outils",
+    question: "Utilisez-vous un outil de suivi de projets ?",
+    options: [
+      { value: "yes", label: "Oui, outil dédié", score: 3 },
+      { value: "partial", label: "Excel ou notes", score: 2 },
+      { value: "no", label: "Non", score: 1 },
+    ],
+  },
+  {
+    id: "q21",
+    blockId: 4,
+    blockName: "Organisation & Outils",
+    question: "Vos documents sont-ils standardisés ?",
+    options: [
+      { value: "yes", label: "Oui, templates", score: 3 },
+      { value: "partial", label: "Partiellement", score: 2 },
+      { value: "no", label: "Non, chaque fois différent", score: 1 },
+    ],
+  },
+  {
+    id: "q22",
+    blockId: 4,
+    blockName: "Organisation & Outils",
+    question: "Avez-vous déjà raté des délais clients ?",
+    options: [
+      { value: "yes", label: "Non, jamais", score: 3 },
+      { value: "partial", label: "Rarement", score: 2 },
+      { value: "no", label: "Oui, souvent", score: 1 },
+    ],
+  },
+  {
+    id: "q23",
+    blockId: 4,
+    blockName: "Organisation & Outils",
+    question: "Vos données clients sont-elles centralisées ?",
+    options: [
+      { value: "yes", label: "Oui, un seul endroit", score: 3 },
+      { value: "partial", label: "Plusieurs fichiers", score: 2 },
+      { value: "no", label: "Non, éparpillées", score: 1 },
+    ],
+  },
+  {
+    id: "q24",
+    blockId: 4,
+    blockName: "Organisation & Outils",
+    question: "Suivez-vous clairement vos paiements ?",
+    options: [
+      { value: "yes", label: "Oui, suivi rigoureux", score: 3 },
+      { value: "partial", label: "Parfois", score: 2 },
+      { value: "no", label: "Non, c'est le flou", score: 1 },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════
+  // BLOC 5 - VISION & DISCIPLINE (6 questions)
+  // ═══════════════════════════════════════════════════════
+  {
+    id: "q25",
+    blockId: 5,
+    blockName: "Vision & Discipline",
+    question: "Avez-vous une vision claire à 12 mois ?",
+    options: [
+      { value: "yes", label: "Oui, objectifs précis", score: 3 },
+      { value: "partial", label: "Vaguement", score: 2 },
+      { value: "no", label: "Non, je navigue à vue", score: 1 },
+    ],
+  },
+  {
+    id: "q26",
+    blockId: 5,
+    blockName: "Vision & Discipline",
+    question: "Suivez-vous des indicateurs chiffrés ?",
+    options: [
+      { value: "yes", label: "Oui, tableau de bord", score: 3 },
+      { value: "partial", label: "Quelques chiffres", score: 2 },
+      { value: "no", label: "Non", score: 1 },
+    ],
+  },
+  {
+    id: "q27",
+    blockId: 5,
+    blockName: "Vision & Discipline",
+    question: "Planifiez-vous vos actions ?",
+    options: [
+      { value: "yes", label: "Oui, planning structuré", score: 3 },
+      { value: "partial", label: "Parfois", score: 2 },
+      { value: "no", label: "Non, au jour le jour", score: 1 },
+    ],
+  },
+  {
+    id: "q28",
+    blockId: 5,
+    blockName: "Vision & Discipline",
+    question: "Analysez-vous vos résultats ?",
+    options: [
+      { value: "yes", label: "Oui, régulièrement", score: 3 },
+      { value: "partial", label: "De temps en temps", score: 2 },
+      { value: "no", label: "Jamais", score: 1 },
+    ],
+  },
+  {
+    id: "q29",
+    blockId: 5,
+    blockName: "Vision & Discipline",
+    question: "Êtes-vous prêt à changer vos méthodes ?",
+    options: [
+      { value: "yes", label: "Oui, totalement", score: 3 },
+      { value: "partial", label: "Avec réserve", score: 2 },
+      { value: "no", label: "Je préfère mes habitudes", score: 1 },
+    ],
+  },
+  {
+    id: "q30",
+    blockId: 5,
+    blockName: "Vision & Discipline",
+    question: "Êtes-vous prêt à structurer maintenant ?",
+    options: [
+      { value: "yes", label: "Oui, c'est urgent", score: 3 },
+      { value: "partial", label: "Peut-être bientôt", score: 2 },
+      { value: "no", label: "Pas encore", score: 1 },
+    ],
+  },
+];
+
+// Messages de motivation entre les blocs
+export const BLOCK_MESSAGES = [
+  "Étape 1 sur 5 terminée",
+  "Vous avancez rapidement",
+  "Encore quelques minutes",
+  "La majorité des utilisateurs terminent cette étape",
+  "Dernière ligne droite",
+];
+
+// Total des questions
+export const TOTAL_QUESTIONS = DIAGNOSTIC_QUESTIONS.length;
+export const QUESTIONS_PER_BLOCK = 6;
+export const TOTAL_BLOCKS = 5;
