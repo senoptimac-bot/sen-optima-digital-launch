@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clock, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PRICING } from "@/config/diagnostic";
+import waveLogoImg from "@/assets/logo-wave.png";
 
 interface FinalCTAProps {
   onStart: () => void;
