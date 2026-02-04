@@ -123,13 +123,13 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                   Prénom *
                 </Label>
                 <div className="relative">
-                  <Input
-                    id="firstName"
-                    type="text"
-                    value={formData.firstName}
-                    onChange={(e) => handleInputChange("firstName", e.target.value)}
-                    placeholder="Votre prénom"
-                    className={`pl-10 ${errors.firstName ? "border-red-500" : ""}`}
+                <Input
+                  id="firstName"
+                  type="text"
+                  value={formData.firstName}
+                  onChange={(e) => handleInputChange("firstName", e.target.value)}
+                  placeholder="Votre prénom"
+                  className={`pl-10 ${errors.firstName ? "border-destructive" : ""}`}
                   />
                   <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 </div>
