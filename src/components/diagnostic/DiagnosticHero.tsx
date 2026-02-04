@@ -123,25 +123,25 @@ const DiagnosticHero = ({ onStart }: DiagnosticHeroProps) => {
               {/* Payment methods */}
               <div className="mt-4 pt-4 border-t border-border">
                 <p className="text-xs text-muted-foreground mb-3">Moyens de paiement acceptés :</p>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-wrap items-center gap-2 md:gap-4">
                   {/* Wave */}
-                  <div className="flex items-center gap-2 bg-[#1DC7EA]/10 px-3 py-1.5 rounded-full">
-                    <img src={waveLogoImg} alt="Wave" className="w-5 h-5 rounded-full object-cover" />
-                    <span className="text-xs font-medium text-foreground">Wave</span>
+                  <div className="flex items-center gap-1.5 md:gap-2 bg-[#1DC7EA]/10 px-2 md:px-3 py-1 md:py-1.5 rounded-full">
+                    <img src={waveLogoImg} alt="Wave" className="w-4 h-4 md:w-5 md:h-5 rounded-full object-cover" />
+                    <span className="text-[10px] md:text-xs font-medium text-foreground">Wave</span>
                   </div>
                   {/* Orange Money */}
-                  <div className="flex items-center gap-2 bg-[#FF6600]/10 px-3 py-1.5 rounded-full">
-                    <img src={omLogoImg} alt="Orange Money" className="w-5 h-5 object-contain" />
-                    <span className="text-xs font-medium text-foreground">Orange Money</span>
+                  <div className="flex items-center gap-1.5 md:gap-2 bg-[#FF6600]/10 px-2 md:px-3 py-1 md:py-1.5 rounded-full">
+                    <img src={omLogoImg} alt="Orange Money" className="w-4 h-4 md:w-5 md:h-5 object-contain" />
+                    <span className="text-[10px] md:text-xs font-medium text-foreground">Orange Money</span>
                   </div>
                   {/* Carte bancaire */}
-                  <div className="flex items-center gap-2 bg-muted px-3 py-1.5 rounded-full">
-                    <svg className="w-5 h-4" viewBox="0 0 24 16" fill="none">
+                  <div className="flex items-center gap-1.5 md:gap-2 bg-muted px-2 md:px-3 py-1 md:py-1.5 rounded-full">
+                    <svg className="w-4 h-3 md:w-5 md:h-4" viewBox="0 0 24 16" fill="none">
                       <rect width="24" height="16" rx="2" fill="currentColor" className="text-muted-foreground/30" />
                       <rect x="2" y="4" width="8" height="2" rx="0.5" fill="currentColor" className="text-muted-foreground" />
                       <rect x="2" y="8" width="5" height="1.5" rx="0.5" fill="currentColor" className="text-muted-foreground/60" />
                     </svg>
-                    <span className="text-xs font-medium text-foreground">Carte</span>
+                    <span className="text-[10px] md:text-xs font-medium text-foreground">Carte</span>
                   </div>
                 </div>
               </div>
