@@ -98,7 +98,7 @@ const SolutionsPage = () => {
         )}
         
         {currentStep === "results" && result && (
-          <DiagnosticResults result={result} />
+          <DiagnosticResults result={result} userData={userData} />
         )}
       </div>
     </>
