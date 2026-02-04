@@ -3,6 +3,7 @@ import { ArrowRight, Clock, Shield, Timer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PRICING } from "@/config/diagnostic";
 import diagnosticVisual from "@/assets/diagnostic-visual.svg";
+import waveLogoImg from "@/assets/logo-wave.png";
 
 interface DiagnosticHeroProps {
   onStart: () => void;
