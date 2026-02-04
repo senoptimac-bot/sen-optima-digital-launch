@@ -1,21 +1,34 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Mail, AlertTriangle, TrendingUp, Target, MessageCircle, Send, FileText } from "lucide-react";
-import { DiagnosticResult } from "@/types/diagnostic";
-import { buildWhatsAppUrl, WHATSAPP_NUMBER } from "@/config/business";
+import { Mail, AlertTriangle, TrendingUp, Target, MessageCircle, Send, FileText, CheckCircle } from "lucide-react";
+import { DiagnosticResult, DiagnosticUserData } from "@/types/diagnostic";
+import { buildWhatsAppUrl } from "@/config/business";
 
 interface DiagnosticResultsProps {
   result: DiagnosticResult;
+  userData: DiagnosticUserData | null;
 }
 
 type DeliveryChannel = "whatsapp" | "email" | null;
 
-const DiagnosticResults = ({ result }: DiagnosticResultsProps) => {
-  const { percentage, level, levelLabel, synthesis, blockScores } = result;
+const DiagnosticResults = ({ result, userData }: DiagnosticResultsProps) => {
+  const { percentage, level, levelLabel, blockScores } = result;
   const [showDeliveryChoice, setShowDeliveryChoice] = useState(false);
   const [selectedChannel, setSelectedChannel] = useState<DeliveryChannel>(null);
 
-  // Color based on level
+  // Libellés de niveau personnalisés
+  const getLevelDisplayLabel = () => {
+    switch (level) {
+      case "critique":
+        return "Situation critique";
+      case "fragile":
+        return "Situation fragile";
+      case "structure":
+        return "Situation structurée";
+    }
+  };
+
+  // Couleur selon le niveau
   const getLevelColor = () => {
     switch (level) {
       case "critique":
@@ -38,31 +51,67 @@ const DiagnosticResults = ({ result }: DiagnosticResultsProps) => {
     }
   };
 
-  // Message prérempli pour la demande de rapport
-  const getReportRequestMessage = () => {
-    return `Bonjour Sen'Optima,
+  // Message de synthèse personnalisé selon le niveau
+  const getSynthesisMessage = () => {
+    switch (level) {
+      case "critique":
+        return "Votre activité présente des fragilités importantes qui freinent sa croissance. Ce diagnostic permet d'identifier clairement où agir en priorité.";
+      case "fragile":
+        return "Votre activité repose sur de bonnes bases, mais certains points clés restent instables. Une structuration ciblée peut faire une vraie différence.";
+      case "structure":
+        return "Votre activité est globalement bien structurée. L'enjeu principal est maintenant l'optimisation et la montée en puissance.";
+    }
+  };
 
-Je viens de terminer le Diagnostic de Structuration Business.
+  // Nom complet de l'utilisateur
+  const fullName = userData ? `${userData.firstName} ${userData.lastName}` : "Non renseigné";
 
-📊 Mon score : ${percentage}%
-🎯 Mon niveau : ${levelLabel}
+  // Message WhatsApp prérempli complet
+  const getWhatsAppMessage = () => {
+    return `Bonjour Sen'Optima Consulting,
 
-Je souhaite recevoir mon rapport détaillé personnalisé.
+Je confirme avoir complété le diagnostic de structuration business.
 
-Merci de vérifier mon paiement et de me transmettre le rapport complet.`;
+Nom : ${fullName}
+Activité : ${userData?.companyName || "Non renseigné"} (${userData?.sector || "Non renseigné"})
+Email : ${userData?.email || "Non renseigné"}
+Score : ${percentage}%
+Niveau : ${getLevelDisplayLabel()}
+
+Je souhaite recevoir mon rapport détaillé par WhatsApp, conformément au délai annoncé.
+
+Merci.`;
+  };
+
+  // Message Email prérempli complet
+  const getEmailMessage = () => {
+    return `Bonjour Sen'Optima Consulting,
+
+Je confirme avoir complété le diagnostic de structuration business.
+
+Informations :
+Nom : ${fullName}
+Activité : ${userData?.companyName || "Non renseigné"} (${userData?.sector || "Non renseigné"})
+Email : ${userData?.email || "Non renseigné"}
+Téléphone : ${userData?.phone || "Non renseigné"}
+Score : ${percentage}%
+Niveau : ${getLevelDisplayLabel()}
+
+Je souhaite recevoir mon rapport détaillé par email, conformément au délai annoncé.
+
+Merci.`;
   };
 
   // Demande de rapport via WhatsApp
   const handleWhatsAppRequest = () => {
-    const message = getReportRequestMessage();
-    window.open(buildWhatsAppUrl(message), "_blank");
+    window.open(buildWhatsAppUrl(getWhatsAppMessage()), "_blank");
     setSelectedChannel("whatsapp");
   };
 
   // Demande de rapport via Email
   const handleEmailRequest = () => {
-    const subject = encodeURIComponent(`Demande de rapport diagnostic - Score ${percentage}%`);
-    const body = encodeURIComponent(getReportRequestMessage());
+    const subject = encodeURIComponent("Diagnostic de Structuration Business – Demande de rapport");
+    const body = encodeURIComponent(getEmailMessage());
     window.open(`mailto:contact@senoptima.com?subject=${subject}&body=${body}`, "_blank");
     setSelectedChannel("email");
   };
