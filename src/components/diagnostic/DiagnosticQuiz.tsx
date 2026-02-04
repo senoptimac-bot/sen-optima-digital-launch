@@ -3,31 +3,39 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DiagnosticAnswers } from "@/types/diagnostic";
-import { DIAGNOSTIC_QUESTIONS, BLOCK_MESSAGES, TOTAL_QUESTIONS, QUESTIONS_PER_BLOCK } from "@/config/diagnostic";
+import { DIAGNOSTIC_QUESTIONS, BLOCK_MESSAGES, REASSURANCE_MESSAGES, TOTAL_QUESTIONS, QUESTIONS_PER_BLOCK, TOTAL_BLOCKS } from "@/config/diagnostic";
 
 interface DiagnosticQuizProps {
   onComplete: (answers: DiagnosticAnswers) => void;
 }
 
-// Memoized Progress Bar
+// Memoized Progress Bar with explicit step indication
 interface ProgressBarProps {
   current: number;
   total: number;
+  currentBlock: number;
+  totalBlocks: number;
   blockMessage?: string;
+  reassuranceMessage?: string;
 }
 
-const ProgressBar = memo(({ current, total, blockMessage }: ProgressBarProps) => {
+const ProgressBar = memo(({ current, total, currentBlock, totalBlocks, blockMessage, reassuranceMessage }: ProgressBarProps) => {
   const progress = ((current + 1) / total) * 100;
   
   return (
     <div className="w-full">
+      {/* Step indicator - more explicit */}
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm text-muted-foreground font-subheading">
-          Question {current + 1} sur {total}
+        <span className="text-sm text-foreground font-subheading font-medium">
+          Étape {currentBlock + 1} sur {totalBlocks}
         </span>
-        <span className="text-sm text-accent font-subheading">{Math.round(progress)}%</span>
+        <span className="text-sm text-muted-foreground font-subheading">
+          Question {current + 1}/{total}
+        </span>
       </div>
-      <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+      
+      {/* Progress bar */}
+      <div className="h-2 bg-muted rounded-full overflow-hidden">
         <motion.div
           className="h-full bg-accent rounded-full"
           initial={{ width: 0 }}
@@ -35,16 +43,22 @@ const ProgressBar = memo(({ current, total, blockMessage }: ProgressBarProps) =>
           transition={{ duration: 0.3, ease: "easeOut" }}
         />
       </div>
-      {blockMessage && (
-        <motion.p
-          key={blockMessage}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-xs text-accent mt-2 font-subheading"
-        >
-          {blockMessage}
-        </motion.p>
-      )}
+      
+      {/* Micro-messages rassurants */}
+      <AnimatePresence mode="wait">
+        {(blockMessage || reassuranceMessage) && (
+          <motion.p
+            key={blockMessage || reassuranceMessage}
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: 0.2 }}
+            className="text-xs text-accent mt-2 font-subheading"
+          >
+            {blockMessage || reassuranceMessage}
+          </motion.p>
+        )}
+      </AnimatePresence>
     </div>
   );
 });
