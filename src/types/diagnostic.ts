@@ -1,5 +1,7 @@
 /**
- * Types pour le nouveau Diagnostic de Structuration Business Premium
+ * Types pour le Diagnostic de Structuration Business Premium
+ * 
+ * Flow: Landing → Payment → UserInfo → Quiz → Processing → Results
  */
 
 // Données utilisateur collectées APRÈS paiement
@@ -9,6 +11,7 @@ export interface DiagnosticUserData {
   email: string;
   phone: string;
   companyName: string;
+  sector: string;
 }
 
 // Structure d'une question
@@ -58,5 +61,5 @@ export interface PricingConfig {
   currency: string;
 }
 
-// État du flow diagnostic
-export type DiagnosticStep = "landing" | "payment" | "quiz" | "processing" | "results";
+// État du flow diagnostic - ordre strict
+export type DiagnosticStep = "landing" | "payment" | "userinfo" | "quiz" | "processing" | "results";
