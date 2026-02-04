@@ -149,25 +149,29 @@ Merci.`;
               </div>
             </div>
             
-            {/* Level Badge */}
-            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${getLevelBgColor()}`}>
-              <Target className={`w-4 h-4 ${getLevelColor()}`} />
-              <span className={`font-heading font-bold ${getLevelColor()}`}>
-                Niveau {levelLabel}
-              </span>
-            </div>
+          {/* Level Badge */}
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${getLevelBgColor()}`}>
+            <Target className={`w-4 h-4 ${getLevelColor()}`} />
+            <span className={`font-heading font-bold ${getLevelColor()}`}>
+              {getLevelDisplayLabel()}
+            </span>
           </div>
+        </div>
 
-          {/* Synthesis */}
-          <div className={`rounded-xl p-4 border ${getLevelBgColor()}`}>
-            <div className="flex items-start gap-3">
-              <AlertTriangle className={`w-5 h-5 flex-shrink-0 mt-0.5 ${getLevelColor()}`} />
-              <p className="text-foreground font-subheading text-left leading-relaxed">
-                {synthesis}
-              </p>
-            </div>
+        {/* Synthesis Message */}
+        <div className={`rounded-xl p-4 border-l-4 ${
+          level === "critique" ? "border-l-destructive bg-destructive/5" :
+          level === "fragile" ? "border-l-warning bg-warning/5" :
+          "border-l-solution bg-solution/5"
+        }`}>
+          <div className="flex items-start gap-3">
+            <AlertTriangle className={`w-5 h-5 flex-shrink-0 mt-0.5 ${getLevelColor()}`} />
+            <p className="text-foreground font-subheading text-left leading-relaxed">
+              {getSynthesisMessage()}
+            </p>
           </div>
-        </motion.div>
+        </div>
+      </motion.div>
 
         {/* Block Scores */}
         <motion.div
