@@ -4,25 +4,26 @@ import { Button } from "@/components/ui/button";
 import { PRICING } from "@/config/diagnostic";
 import waveLogoImg from "@/assets/logo-wave.png";
 import omLogoImg from "@/assets/logo-orange-money.png";
-
 interface FinalCTAProps {
   onStart: () => void;
 }
-
-const FinalCTA = ({ onStart }: FinalCTAProps) => {
+const FinalCTA = ({
+  onStart
+}: FinalCTAProps) => {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("fr-FR").format(price) + " " + PRICING.currency;
   };
-
-  return (
-    <section className="py-16 md:py-24">
+  return <section className="py-16 md:py-24">
       <div className="container max-w-3xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-card border-2 border-accent/20 rounded-2xl p-8 md:p-12 text-left"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} whileInView={{
+        opacity: 1,
+        y: 0
+      }} viewport={{
+        once: true
+      }} className="bg-card border-2 border-accent/20 rounded-2xl p-8 md:p-12 text-left">
           {/* Engagement text - human tone */}
           <h3 className="text-xl md:text-2xl font-heading font-bold text-foreground mb-4">
             Prêt à y voir clair ?
@@ -68,23 +69,12 @@ const FinalCTA = ({ onStart }: FinalCTAProps) => {
                 <span className="text-[10px] md:text-xs font-medium text-foreground">Orange Money</span>
               </div>
               {/* Carte bancaire */}
-              <div className="flex items-center gap-1.5 md:gap-2 bg-muted px-2 md:px-3 py-1 md:py-1.5 rounded-full">
-                <svg className="w-4 h-3 md:w-5 md:h-4" viewBox="0 0 24 16" fill="none">
-                  <rect width="24" height="16" rx="2" fill="currentColor" className="text-muted-foreground/30" />
-                  <rect x="2" y="4" width="8" height="2" rx="0.5" fill="currentColor" className="text-muted-foreground" />
-                  <rect x="2" y="8" width="5" height="1.5" rx="0.5" fill="currentColor" className="text-muted-foreground/60" />
-                </svg>
-                <span className="text-[10px] md:text-xs font-medium text-foreground">Carte</span>
-              </div>
+              
             </div>
           </div>
 
           {/* CTA */}
-          <Button
-            onClick={onStart}
-            size="lg"
-            className="group gap-3 text-base rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
-          >
+          <Button onClick={onStart} size="lg" className="group gap-3 text-base rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8">
             Accéder au diagnostic
             <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
               <ArrowRight className="w-4 h-4" />
@@ -104,8 +94,6 @@ const FinalCTA = ({ onStart }: FinalCTAProps) => {
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default FinalCTA;
