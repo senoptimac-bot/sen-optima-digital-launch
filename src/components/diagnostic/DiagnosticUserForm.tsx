@@ -210,12 +210,12 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                   value={formData.companyName}
                   onChange={(e) => handleInputChange("companyName", e.target.value)}
                   placeholder="Votre entreprise"
-                  className={`pl-10 ${errors.companyName ? "border-red-500" : ""}`}
+                  className={`pl-10 ${errors.companyName ? "border-destructive" : ""}`}
                 />
                 <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               </div>
               {errors.companyName && (
-                <p className="text-red-500 text-xs">{errors.companyName}</p>
+                <p className="text-destructive text-xs">{errors.companyName}</p>
               )}
             </div>
 
