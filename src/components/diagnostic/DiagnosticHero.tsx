@@ -94,19 +94,59 @@ const DiagnosticHero = ({ onStart }: DiagnosticHeroProps) => {
               Une évaluation claire et honnête de la solidité réelle de votre activité.
             </motion.p>
 
-            {/* Pricing */}
+            {/* Pricing - Human text */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-baseline gap-4 mb-8"
+              className="bg-card/50 border border-border rounded-2xl p-6 mb-8"
             >
-              <span className="text-xl text-muted-foreground line-through">
-                {formatPrice(PRICING.normalPrice)}
-              </span>
-              <span className="text-3xl md:text-4xl font-heading font-bold text-accent">
-                {formatPrice(PRICING.launchPrice)}
-              </span>
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                Pour accompagner le lancement de la méthode Sen'Optima, ce diagnostic est proposé à un tarif préférentiel. 
+                En temps normal, une analyse de ce niveau est facturée {formatPrice(PRICING.normalPrice)}, 
+                car elle permet d'éviter des erreurs coûteuses et des mois de tâtonnement.
+              </p>
+              <div className="flex items-baseline gap-4 mb-4">
+                <span className="text-lg text-muted-foreground line-through">
+                  {formatPrice(PRICING.normalPrice)}
+                </span>
+                <span className="text-3xl md:text-4xl font-heading font-bold text-accent">
+                  {formatPrice(PRICING.launchPrice)}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Vous payez pour la clarté, pas pour un simple questionnaire.
+              </p>
+              
+              {/* Payment methods */}
+              <div className="mt-4 pt-4 border-t border-border">
+                <p className="text-xs text-muted-foreground mb-3">Moyens de paiement acceptés :</p>
+                <div className="flex items-center gap-4">
+                  {/* Wave */}
+                  <div className="flex items-center gap-2 bg-[#1DC7EA]/10 px-3 py-1.5 rounded-full">
+                    <div className="w-5 h-5 rounded-full bg-[#1DC7EA] flex items-center justify-center">
+                      <span className="text-white text-[10px] font-bold">W</span>
+                    </div>
+                    <span className="text-xs font-medium text-foreground">Wave</span>
+                  </div>
+                  {/* Orange Money */}
+                  <div className="flex items-center gap-2 bg-[#FF6600]/10 px-3 py-1.5 rounded-full">
+                    <div className="w-5 h-5 rounded-full bg-[#FF6600] flex items-center justify-center">
+                      <span className="text-white text-[10px] font-bold">OM</span>
+                    </div>
+                    <span className="text-xs font-medium text-foreground">Orange Money</span>
+                  </div>
+                  {/* Carte bancaire */}
+                  <div className="flex items-center gap-2 bg-muted px-3 py-1.5 rounded-full">
+                    <svg className="w-5 h-4" viewBox="0 0 24 16" fill="none">
+                      <rect width="24" height="16" rx="2" fill="currentColor" className="text-muted-foreground/30" />
+                      <rect x="2" y="4" width="8" height="2" rx="0.5" fill="currentColor" className="text-muted-foreground" />
+                      <rect x="2" y="8" width="5" height="1.5" rx="0.5" fill="currentColor" className="text-muted-foreground/60" />
+                    </svg>
+                    <span className="text-xs font-medium text-foreground">Carte</span>
+                  </div>
+                </div>
+              </div>
             </motion.div>
 
             {/* CTA Buttons */}
