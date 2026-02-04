@@ -1,14 +1,19 @@
-import { motion } from "framer-motion";
-import { Phone, AlertTriangle, TrendingUp, Target } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Phone, Mail, AlertTriangle, TrendingUp, Target, MessageCircle, Send, FileText } from "lucide-react";
 import { DiagnosticResult } from "@/types/diagnostic";
-import { buildWhatsAppUrl } from "@/config/business";
+import { buildWhatsAppUrl, WHATSAPP_NUMBER } from "@/config/business";
 
 interface DiagnosticResultsProps {
   result: DiagnosticResult;
 }
 
+type DeliveryChannel = "whatsapp" | "email" | null;
+
 const DiagnosticResults = ({ result }: DiagnosticResultsProps) => {
   const { percentage, level, levelLabel, synthesis, blockScores } = result;
+  const [showDeliveryChoice, setShowDeliveryChoice] = useState(false);
+  const [selectedChannel, setSelectedChannel] = useState<DeliveryChannel>(null);
 
   // Color based on level
   const getLevelColor = () => {
@@ -33,17 +38,33 @@ const DiagnosticResults = ({ result }: DiagnosticResultsProps) => {
     }
   };
 
-  const handleBookCall = () => {
-    const message = `Bonjour Sen'Optima,
+  // Message prérempli pour la demande de rapport
+  const getReportRequestMessage = () => {
+    return `Bonjour Sen'Optima,
 
 Je viens de terminer le Diagnostic de Structuration Business.
 
-Mon score : ${percentage}%
-Mon niveau : ${levelLabel}
+📊 Mon score : ${percentage}%
+🎯 Mon niveau : ${levelLabel}
 
-Je souhaite réserver un appel stratégique pour approfondir ces résultats.`;
+Je souhaite recevoir mon rapport détaillé personnalisé.
 
+Merci de vérifier mon paiement et de me transmettre le rapport complet.`;
+  };
+
+  // Demande de rapport via WhatsApp
+  const handleWhatsAppRequest = () => {
+    const message = getReportRequestMessage();
     window.open(buildWhatsAppUrl(message), "_blank");
+    setSelectedChannel("whatsapp");
+  };
+
+  // Demande de rapport via Email
+  const handleEmailRequest = () => {
+    const subject = encodeURIComponent(`Demande de rapport diagnostic - Score ${percentage}%`);
+    const body = encodeURIComponent(getReportRequestMessage());
+    window.open(`mailto:contact@senoptima.com?subject=${subject}&body=${body}`, "_blank");
+    setSelectedChannel("email");
   };
 
   return (
@@ -59,7 +80,7 @@ Je souhaite réserver un appel stratégique pour approfondir ces résultats.`;
             Votre Diagnostic de Structuration
           </h1>
           <p className="text-muted-foreground font-subheading">
-            Voici votre évaluation complète
+            Aperçu de votre évaluation
           </p>
         </motion.div>
 
@@ -147,28 +168,108 @@ Je souhaite réserver un appel stratégique pour approfondir ces résultats.`;
           </div>
         </motion.div>
 
-        {/* CTA */}
+        {/* CTA - Demande de rapport */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
           className="bg-card border-2 border-accent/20 rounded-2xl p-6 md:p-8"
         >
-          <h2 className="text-xl font-heading font-bold text-foreground mb-4 text-left">
-            Prêt à aller plus loin ?
-          </h2>
-          <p className="text-muted-foreground font-subheading mb-6 text-left">
-            Réservez un appel stratégique pour analyser ces résultats en profondeur 
-            et définir les prochaines étapes concrètes pour structurer votre activité.
-          </p>
-          
-          <button
-            onClick={handleBookCall}
-            className="w-full min-h-[56px] px-6 py-4 rounded-xl font-heading font-bold bg-foreground text-primary text-lg flex items-center justify-center gap-3 transition-colors duration-100 touch-target hover:bg-foreground/90 active:scale-[0.98]"
-          >
-            <Phone className="w-5 h-5" />
-            Réserver un appel stratégique
-          </button>
+          <AnimatePresence mode="wait">
+            {!showDeliveryChoice ? (
+              <motion.div
+                key="initial"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <FileText className="w-6 h-6 text-accent" />
+                  <h2 className="text-xl font-heading font-bold text-foreground text-left">
+                    Recevez votre rapport détaillé
+                  </h2>
+                </div>
+                <p className="text-muted-foreground font-subheading mb-6 text-left">
+                  Votre rapport personnalisé contient une analyse approfondie de chaque pilier, 
+                  des recommandations concrètes et un plan d'action prioritaire.
+                </p>
+                <p className="text-sm text-muted-foreground mb-6 text-left italic">
+                  📩 Rapport livré sous 24h après vérification du paiement.
+                </p>
+                
+                <button
+                  onClick={() => setShowDeliveryChoice(true)}
+                  className="w-full min-h-[56px] px-6 py-4 rounded-xl font-heading font-bold bg-foreground text-primary text-lg flex items-center justify-center gap-3 transition-colors duration-100 touch-target hover:bg-foreground/90 active:scale-[0.98]"
+                >
+                  <Send className="w-5 h-5" />
+                  Demander mon rapport
+                </button>
+              </motion.div>
+            ) : selectedChannel ? (
+              <motion.div
+                key="sent"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-4"
+              >
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-solution/20 flex items-center justify-center">
+                  <Send className="w-8 h-8 text-solution" />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-foreground mb-2">
+                  Demande envoyée !
+                </h3>
+                <p className="text-muted-foreground font-subheading max-w-sm mx-auto">
+                  Nous allons vérifier votre paiement et vous transmettre votre rapport détaillé sous 24h.
+                </p>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="choice"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <h2 className="text-xl font-heading font-bold text-foreground mb-4 text-left">
+                  Comment souhaitez-vous recevoir votre rapport ?
+                </h2>
+                
+                <div className="space-y-3">
+                  {/* WhatsApp */}
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleWhatsAppRequest}
+                    className="w-full p-4 rounded-xl bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/20 transition-all flex items-center justify-center gap-4"
+                  >
+                    <MessageCircle className="w-6 h-6 text-[#25D366]" />
+                    <span className="font-heading font-semibold text-foreground">
+                      Recevoir via WhatsApp
+                    </span>
+                  </motion.button>
+
+                  {/* Email */}
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleEmailRequest}
+                    className="w-full p-4 rounded-xl bg-accent/10 border border-accent/30 hover:bg-accent/20 transition-all flex items-center justify-center gap-4"
+                  >
+                    <Mail className="w-6 h-6 text-accent" />
+                    <span className="font-heading font-semibold text-foreground">
+                      Recevoir par Email
+                    </span>
+                  </motion.button>
+                </div>
+
+                <button
+                  onClick={() => setShowDeliveryChoice(false)}
+                  className="w-full mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Retour
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>
