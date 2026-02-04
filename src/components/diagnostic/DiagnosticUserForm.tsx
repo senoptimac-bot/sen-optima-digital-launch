@@ -168,12 +168,12 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   placeholder="votre@email.com"
-                  className={`pl-10 ${errors.email ? "border-red-500" : ""}`}
+                  className={`pl-10 ${errors.email ? "border-destructive" : ""}`}
                 />
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               </div>
               {errors.email && (
-                <p className="text-red-500 text-xs">{errors.email}</p>
+                <p className="text-destructive text-xs">{errors.email}</p>
               )}
             </div>
 
