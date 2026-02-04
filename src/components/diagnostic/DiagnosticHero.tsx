@@ -5,50 +5,52 @@ import { PRICING } from "@/config/diagnostic";
 import diagnosticVisual from "@/assets/diagnostic-visual.svg";
 import waveLogoImg from "@/assets/logo-wave.png";
 import omLogoImg from "@/assets/logo-orange-money.png";
-
 interface DiagnosticHeroProps {
   onStart: () => void;
 }
-
-const DiagnosticHero = ({ onStart }: DiagnosticHeroProps) => {
+const DiagnosticHero = ({
+  onStart
+}: DiagnosticHeroProps) => {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("fr-FR").format(price) + " " + PRICING.currency;
   };
-
-  return (
-    <section className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden">
+  return <section className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden">
       {/* Simple static background */}
       <div className="absolute inset-0 z-0 bg-background" />
 
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Visual - Illustration with floating card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative order-first lg:order-first"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          scale: 0.98
+        }} animate={{
+          opacity: 1,
+          scale: 1
+        }} transition={{
+          duration: 0.6,
+          delay: 0.1,
+          ease: [0.22, 1, 0.36, 1]
+        }} className="relative order-first lg:order-first">
             {/* Background shape */}
             <div className="absolute -top-10 -left-10 w-full h-full bg-accent/10 rounded-[3rem] transform -rotate-6 hidden lg:block" />
             
             {/* Main illustration container */}
             <div className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden">
-              <img
-                src={diagnosticVisual}
-                alt="Diagnostic de structuration business"
-                className="w-full h-auto max-h-[500px] object-contain"
-                loading="eager"
-              />
+              <img src={diagnosticVisual} alt="Diagnostic de structuration business" className="w-full h-auto max-h-[500px] object-contain" loading="eager" />
             </div>
 
             {/* Floating notification card */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="absolute -right-4 lg:-right-8 bottom-10 lg:bottom-20 bg-card rounded-2xl p-3 lg:p-4 shadow-xl border border-border"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            x: 20
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 0.5,
+            delay: 0.4
+          }} className="absolute -right-4 lg:-right-8 bottom-10 lg:bottom-20 bg-card rounded-2xl p-3 lg:p-4 shadow-xl border border-border">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-accent flex items-center justify-center">
                   <Timer className="w-4 h-4 lg:w-5 lg:h-5 text-accent-foreground" />
@@ -65,44 +67,63 @@ const DiagnosticHero = ({ onStart }: DiagnosticHeroProps) => {
           {/* Right Content */}
           <div className="max-w-xl">
             {/* Badge - Accent pill */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-8"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1]
+          }} className="mb-8">
               <span className="badge-accent">
                 Offre de lancement
               </span>
             </motion.div>
 
             {/* Main Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="text-display font-bold text-foreground mb-6"
-            >
+            <motion.h1 initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.5,
+            delay: 0.08,
+            ease: [0.22, 1, 0.36, 1]
+          }} className="text-display font-bold text-foreground mb-6">
               Diagnostic de <span className="italic text-accent">Structuration Business</span>
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="text-body-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
-            >
+            <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.5,
+            delay: 0.15,
+            ease: [0.22, 1, 0.36, 1]
+          }} className="text-body-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
               Une évaluation claire et honnête de la solidité réelle de votre activité.
             </motion.p>
 
             {/* Pricing - Human text */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-card/50 border border-border rounded-2xl p-6 mb-8"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.5,
+            delay: 0.2,
+            ease: [0.22, 1, 0.36, 1]
+          }} className="bg-card/50 border border-border rounded-2xl p-6 mb-8">
               <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                 Pour accompagner le lancement de la méthode Sen'Optima, ce diagnostic est proposé à un tarif préférentiel. 
                 En temps normal, une analyse de ce niveau est facturée {formatPrice(PRICING.normalPrice)}, 
@@ -135,30 +156,24 @@ const DiagnosticHero = ({ onStart }: DiagnosticHeroProps) => {
                     <span className="text-[10px] md:text-xs font-medium text-foreground">Orange Money</span>
                   </div>
                   {/* Carte bancaire */}
-                  <div className="flex items-center gap-1.5 md:gap-2 bg-muted px-2 md:px-3 py-1 md:py-1.5 rounded-full">
-                    <svg className="w-4 h-3 md:w-5 md:h-4" viewBox="0 0 24 16" fill="none">
-                      <rect width="24" height="16" rx="2" fill="currentColor" className="text-muted-foreground/30" />
-                      <rect x="2" y="4" width="8" height="2" rx="0.5" fill="currentColor" className="text-muted-foreground" />
-                      <rect x="2" y="8" width="5" height="1.5" rx="0.5" fill="currentColor" className="text-muted-foreground/60" />
-                    </svg>
-                    <span className="text-[10px] md:text-xs font-medium text-foreground">Carte</span>
-                  </div>
+                  
                 </div>
               </div>
             </motion.div>
 
             {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-4"
-            >
-              <Button
-                onClick={onStart}
-                size="lg"
-                className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
-              >
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.5,
+            delay: 0.25,
+            ease: [0.22, 1, 0.36, 1]
+          }} className="space-y-4">
+              <Button onClick={onStart} size="lg" className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8">
                 Accéder au diagnostic
                 <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
                   <ArrowRight className="w-4 h-4" />
@@ -180,8 +195,6 @@ const DiagnosticHero = ({ onStart }: DiagnosticHeroProps) => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default DiagnosticHero;
