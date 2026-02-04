@@ -364,14 +364,24 @@ export const DIAGNOSTIC_QUESTIONS: DiagnosticQuestion[] = [
   },
 ];
 
-// Messages de motivation entre les blocs
+// Messages de motivation entre les blocs (après chaque bloc complété)
 export const BLOCK_MESSAGES = [
-  "Étape 1 sur 5 terminée",
-  "Vous avancez rapidement",
-  "Encore quelques minutes",
-  "La majorité des utilisateurs terminent cette étape",
-  "Dernière ligne droite",
+  "Très bien, vous avancez.",
+  "Vous êtes à mi-parcours.",
+  "Encore quelques minutes.",
+  "La majorité des entrepreneurs terminent cette étape.",
+  "Presque terminé.",
 ];
+
+// Micro-messages rassurants ponctuels (affichés pendant le quiz)
+export const REASSURANCE_MESSAGES: Record<number, string> = {
+  3: "Vous avancez bien.",
+  8: "Merci pour vos réponses.",
+  12: "On y est presque.",
+  18: "Vous êtes sérieux, ça se voit.",
+  24: "Dernière ligne droite.",
+  28: "Plus que 2 questions.",
+};
 
 // Total des questions
 export const TOTAL_QUESTIONS = DIAGNOSTIC_QUESTIONS.length;
