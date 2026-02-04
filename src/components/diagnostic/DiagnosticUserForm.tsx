@@ -228,7 +228,7 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                 value={formData.sector}
                 onValueChange={(value) => handleInputChange("sector", value)}
               >
-                <SelectTrigger className={errors.sector ? "border-red-500" : ""}>
+                <SelectTrigger className={errors.sector ? "border-destructive" : ""}>
                   <div className="flex items-center gap-2">
                     <Briefcase className="w-4 h-4 text-muted-foreground" />
                     <SelectValue placeholder="Sélectionnez votre secteur" />
@@ -243,7 +243,7 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                 </SelectContent>
               </Select>
               {errors.sector && (
-                <p className="text-red-500 text-xs">{errors.sector}</p>
+                <p className="text-destructive text-xs">{errors.sector}</p>
               )}
             </div>
           </div>
