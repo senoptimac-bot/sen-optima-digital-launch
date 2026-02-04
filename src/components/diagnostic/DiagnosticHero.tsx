@@ -131,9 +131,7 @@ const DiagnosticHero = ({ onStart }: DiagnosticHeroProps) => {
                   </div>
                   {/* Orange Money */}
                   <div className="flex items-center gap-2 bg-[#FF6600]/10 px-3 py-1.5 rounded-full">
-                    <div className="w-5 h-5 rounded-full bg-[#FF6600] flex items-center justify-center">
-                      <span className="text-white text-[10px] font-bold">OM</span>
-                    </div>
+                    <img src={omLogoImg} alt="Orange Money" className="w-5 h-5 object-contain" />
                     <span className="text-xs font-medium text-foreground">Orange Money</span>
                   </div>
                   {/* Carte bancaire */}
