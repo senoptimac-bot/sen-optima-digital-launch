@@ -263,16 +263,24 @@ Merci.`;
                 key="sent"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-4"
+                className="text-center py-6"
               >
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-solution/20 flex items-center justify-center">
-                  <Send className="w-8 h-8 text-solution" />
+                  <CheckCircle className="w-8 h-8 text-solution" />
                 </div>
-                <h3 className="text-xl font-heading font-bold text-foreground mb-2">
-                  Demande envoyée !
+                <h3 className="text-xl font-heading font-bold text-foreground mb-3">
+                  ✅ Demande bien prise en compte
                 </h3>
-                <p className="text-muted-foreground font-subheading max-w-sm mx-auto">
-                  Nous allons vérifier votre paiement et vous transmettre votre rapport détaillé sous 24h.
+                <p className="text-foreground font-subheading mb-4">
+                  Votre diagnostic va être analysé par notre équipe.
+                </p>
+                <div className="bg-muted/50 rounded-xl p-4 border border-border">
+                  <p className="text-muted-foreground font-subheading text-sm">
+                    📩 Vous recevrez votre rapport détaillé dans un délai maximum de <strong className="text-foreground">24 heures</strong>.
+                  </p>
+                </div>
+                <p className="text-muted-foreground font-subheading text-sm mt-4 italic">
+                  Merci pour votre confiance.
                 </p>
               </motion.div>
             ) : (
