@@ -189,12 +189,12 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
                   placeholder="+221 77 123 45 67"
-                  className={`pl-10 ${errors.phone ? "border-red-500" : ""}`}
+                  className={`pl-10 ${errors.phone ? "border-destructive" : ""}`}
                 />
                 <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               </div>
               {errors.phone && (
-                <p className="text-red-500 text-xs">{errors.phone}</p>
+                <p className="text-destructive text-xs">{errors.phone}</p>
               )}
             </div>
 
