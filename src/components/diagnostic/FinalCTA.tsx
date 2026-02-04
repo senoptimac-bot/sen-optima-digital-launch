@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clock, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PRICING } from "@/config/diagnostic";
+import waveLogoImg from "@/assets/logo-wave.png";
 
 interface FinalCTAProps {
   onStart: () => void;
@@ -57,9 +58,7 @@ const FinalCTA = ({ onStart }: FinalCTAProps) => {
             <div className="flex flex-wrap items-center gap-3">
               {/* Wave */}
               <div className="flex items-center gap-2 bg-[#1DC7EA]/10 px-3 py-1.5 rounded-full">
-                <div className="w-5 h-5 rounded-full bg-[#1DC7EA] flex items-center justify-center">
-                  <span className="text-white text-[10px] font-bold">W</span>
-                </div>
+                <img src={waveLogoImg} alt="Wave" className="w-5 h-5 rounded-full object-cover" />
                 <span className="text-xs font-medium text-foreground">Wave</span>
               </div>
               {/* Orange Money */}
