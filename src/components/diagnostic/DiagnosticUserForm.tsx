@@ -82,8 +82,8 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
       return;
     }
 
-    // Success - pass validated data to parent
-    onComplete(result.data);
+    // Success - pass validated data to parent (cast is safe after validation)
+    onComplete(result.data as DiagnosticUserData);
   }, [formData, onComplete]);
 
   return (
