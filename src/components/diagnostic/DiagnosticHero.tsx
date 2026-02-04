@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { PRICING } from "@/config/diagnostic";
 import diagnosticVisual from "@/assets/diagnostic-visual.svg";
 import waveLogoImg from "@/assets/logo-wave.png";
+import omLogoImg from "@/assets/logo-orange-money.png";
 
 interface DiagnosticHeroProps {
   onStart: () => void;
