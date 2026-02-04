@@ -148,10 +148,10 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                   value={formData.lastName}
                   onChange={(e) => handleInputChange("lastName", e.target.value)}
                   placeholder="Votre nom"
-                  className={errors.lastName ? "border-red-500" : ""}
+                  className={errors.lastName ? "border-destructive" : ""}
                 />
                 {errors.lastName && (
-                  <p className="text-red-500 text-xs">{errors.lastName}</p>
+                  <p className="text-destructive text-xs">{errors.lastName}</p>
                 )}
               </div>
             </div>
