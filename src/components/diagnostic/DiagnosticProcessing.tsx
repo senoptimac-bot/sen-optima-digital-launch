@@ -18,12 +18,15 @@ const DiagnosticProcessing = () => {
           <Loader2 className="w-16 h-16 text-accent" />
         </motion.div>
 
-        {/* Text */}
+        {/* Text - Human message */}
         <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
-          Analyse en cours…
+          Merci pour vos réponses.
         </h2>
-        <p className="text-muted-foreground font-subheading">
-          Vos réponses sont analysées selon la méthode Sen'Optima.
+        <p className="text-muted-foreground font-subheading mb-2">
+          Vos réponses vont maintenant être analysées selon la méthode Sen'Optima.
+        </p>
+        <p className="text-sm text-muted-foreground/70 font-subheading">
+          Cela prend quelques secondes…
         </p>
 
         {/* Animated dots */}
