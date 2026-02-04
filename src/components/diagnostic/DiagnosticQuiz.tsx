@@ -159,13 +159,16 @@ const DiagnosticQuiz = ({ onComplete }: DiagnosticQuizProps) => {
   const currentAnswer = selectedValue || answers[question.id];
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center pt-4 pb-6 px-4">
-      {/* Progress Bar */}
-      <div className="w-full max-w-2xl mb-6">
+    <section className="min-h-screen flex flex-col items-center justify-start pt-6 pb-6 px-4">
+      {/* Progress Bar - fixed at top */}
+      <div className="w-full max-w-2xl mb-8">
         <ProgressBar 
           current={currentIndex} 
           total={TOTAL_QUESTIONS} 
+          currentBlock={currentBlock}
+          totalBlocks={TOTAL_BLOCKS}
           blockMessage={showBlockMessage}
+          reassuranceMessage={reassuranceMessage}
         />
       </div>
 
