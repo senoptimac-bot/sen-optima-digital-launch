@@ -108,11 +108,11 @@ const DiagnosticHero = ({ onStart }: DiagnosticHeroProps) => {
                 En temps normal, une analyse de ce niveau est facturée {formatPrice(PRICING.normalPrice)}, 
                 car elle permet d'éviter des erreurs coûteuses et des mois de tâtonnement.
               </p>
-              <div className="flex items-baseline gap-4 mb-4">
-                <span className="text-lg text-muted-foreground line-through">
+              <div className="flex flex-wrap items-baseline gap-3 md:gap-4 mb-4">
+                <span className="text-lg text-muted-foreground line-through whitespace-nowrap">
                   {formatPrice(PRICING.normalPrice)}
                 </span>
-                <span className="text-3xl md:text-4xl font-heading font-bold text-accent">
+                <span className="text-2xl md:text-4xl font-heading font-bold text-accent whitespace-nowrap">
                   {formatPrice(PRICING.launchPrice)}
                 </span>
               </div>

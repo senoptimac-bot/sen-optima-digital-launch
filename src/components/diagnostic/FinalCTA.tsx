@@ -39,14 +39,14 @@ const FinalCTA = ({ onStart }: FinalCTAProps) => {
               En temps normal, une analyse de ce niveau est facturée {formatPrice(PRICING.normalPrice)}, 
               car elle permet d'éviter des erreurs coûteuses et des mois de tâtonnement.
             </p>
-            <div className="flex items-baseline gap-4 mb-2">
-              <span className="text-lg text-muted-foreground line-through">
+            <div className="flex flex-wrap items-baseline gap-3 md:gap-4 mb-2">
+              <span className="text-lg text-muted-foreground line-through whitespace-nowrap">
                 {formatPrice(PRICING.normalPrice)}
               </span>
-              <span className="text-3xl md:text-4xl font-heading font-bold text-accent">
+              <span className="text-2xl md:text-4xl font-heading font-bold text-accent whitespace-nowrap">
                 {formatPrice(PRICING.launchPrice)}
               </span>
-              <span className="text-sm text-accent font-subheading">Offre de lancement</span>
+              <span className="text-sm text-accent font-subheading whitespace-nowrap">Offre de lancement</span>
             </div>
             <p className="text-xs text-muted-foreground italic">
               Vous payez pour la clarté, pas pour un simple questionnaire.
