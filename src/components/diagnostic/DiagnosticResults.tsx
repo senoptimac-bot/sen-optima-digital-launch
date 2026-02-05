@@ -106,14 +106,24 @@ Je souhaite recevoir mon rapport détaillé par email, conformément au délai a
 Merci.`;
   };
 
+  // Envoi unique au webhook Make.com
+  const sendToWebhook = (canal: "email" | "whatsapp") => {
+    if (!webhookSentRef.current && userData) {
+      webhookSentRef.current = true;
+      sendDiagnosticToMake(userData, result, canal);
+    }
+  };
+
   // Demande de rapport via WhatsApp
   const handleWhatsAppRequest = () => {
+    sendToWebhook("whatsapp");
     window.open(buildWhatsAppUrl(getWhatsAppMessage()), "_blank");
     setSelectedChannel("whatsapp");
   };
 
   // Demande de rapport via Email
   const handleEmailRequest = () => {
+    sendToWebhook("email");
     const subject = encodeURIComponent("Diagnostic de Structuration Business – Demande de rapport");
     const body = encodeURIComponent(getEmailMessage());
     window.open(`mailto:contact@senoptima.com?subject=${subject}&body=${body}`, "_blank");
