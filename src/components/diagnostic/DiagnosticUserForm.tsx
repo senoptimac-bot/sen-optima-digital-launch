@@ -207,7 +207,7 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                   <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent" />
                   <SelectValue placeholder="Votre secteur d'activité" />
                 </SelectTrigger>
-                <SelectContent className="bg-card border border-border z-50">
+                <SelectContent className="bg-card border border-border z-50" side="bottom" align="start">
                   {SECTORS.map((sector) => (
                     <SelectItem key={sector} value={sector}>
                       {sector}
