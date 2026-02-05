@@ -1,6 +1,11 @@
 import { useState, memo, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, User, Building2, Mail, Phone, Briefcase } from "lucide-react";
+import { 
+  ArrowRight, User, Building2, Mail, Phone, Briefcase,
+  ShoppingCart, Briefcase as ServiceIcon, UtensilsCrossed, Hammer,
+  Truck, Leaf, Code, Heart, BookOpen, Shirt, Globe, MoreHorizontal,
+  Lock
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DiagnosticUserData } from "@/types/diagnostic";
@@ -22,18 +27,18 @@ const userDataSchema = z.object({
 
 // Secteurs d'activité adaptés au Sénégal
 const SECTORS = [
-  { id: "commerce", label: "Commerce", icon: "🛒" },
-  { id: "services", label: "Services", icon: "💼" },
-  { id: "restauration", label: "Restauration", icon: "🍽️" },
-  { id: "btp", label: "BTP & Immobilier", icon: "🏗️" },
-  { id: "transport", label: "Transport", icon: "🚚" },
-  { id: "agriculture", label: "Agriculture", icon: "🌾" },
-  { id: "tech", label: "Tech & Digital", icon: "💻" },
-  { id: "sante", label: "Santé", icon: "🏥" },
-  { id: "education", label: "Éducation", icon: "📚" },
-  { id: "mode", label: "Mode & Textile", icon: "👗" },
-  { id: "import-export", label: "Import/Export", icon: "🌍" },
-  { id: "autre", label: "Autre", icon: "📋" },
+  { id: "commerce", label: "Commerce", icon: ShoppingCart },
+  { id: "services", label: "Services", icon: ServiceIcon },
+  { id: "restauration", label: "Restauration", icon: UtensilsCrossed },
+  { id: "btp", label: "BTP & Immobilier", icon: Hammer },
+  { id: "transport", label: "Transport", icon: Truck },
+  { id: "agriculture", label: "Agriculture", icon: Leaf },
+  { id: "tech", label: "Tech & Digital", icon: Code },
+  { id: "sante", label: "Santé", icon: Heart },
+  { id: "education", label: "Éducation", icon: BookOpen },
+  { id: "mode", label: "Mode & Textile", icon: Shirt },
+  { id: "import-export", label: "Import/Export", icon: Globe },
+  { id: "autre", label: "Autre", icon: MoreHorizontal },
 ];
 
 /**
@@ -206,26 +211,29 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                 <span>Votre secteur</span>
               </div>
               <div className="grid grid-cols-3 gap-2">
-                {SECTORS.map((sector) => (
-                  <motion.button
-                    key={sector.id}
-                    type="button"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => handleSectorSelect(sector.label)}
-                    className={`
-                      p-2.5 rounded-xl text-xs font-medium transition-all
-                      flex flex-col items-center gap-1
-                      ${formData.sector === sector.label 
-                        ? "bg-accent text-accent-foreground ring-2 ring-accent ring-offset-1" 
-                        : "bg-muted/50 text-foreground hover:bg-muted border border-border"
-                      }
-                    `}
-                  >
-                    <span className="text-lg">{sector.icon}</span>
-                    <span className="leading-tight">{sector.label}</span>
-                  </motion.button>
-                ))}
+                {SECTORS.map((sector) => {
+                  const IconComponent = sector.icon;
+                  return (
+                    <motion.button
+                      key={sector.id}
+                      type="button"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleSectorSelect(sector.label)}
+                      className={`
+                        p-2.5 rounded-xl text-xs font-medium transition-all
+                        flex flex-col items-center gap-1
+                        ${formData.sector === sector.label 
+                          ? "bg-accent text-accent-foreground ring-2 ring-accent ring-offset-1" 
+                          : "bg-muted/50 text-foreground hover:bg-muted border border-border"
+                        }
+                      `}
+                    >
+                      <IconComponent className="w-5 h-5" />
+                      <span className="leading-tight">{sector.label}</span>
+                    </motion.button>
+                  );
+                })}
               </div>
               {errors.sector && (
                 <p className="text-destructive text-xs">{errors.sector}</p>
@@ -249,8 +257,9 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
             )}
           </Button>
 
-          <p className="text-xs text-muted-foreground text-center mt-3">
-            🔒 Vos données sont sécurisées
+          <p className="text-xs text-muted-foreground text-center mt-3 flex items-center justify-center gap-1">
+            <Lock className="w-3 h-3 text-accent" />
+            Vos données sont sécurisées
           </p>
         </motion.form>
       </motion.div>
