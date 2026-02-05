@@ -73,16 +73,16 @@ const DiagnosticPayment = memo(({ onPaymentComplete }: DiagnosticPaymentProps) =
               className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8 mb-6"
             >
               {/* Price */}
-              <div className="text-center mb-6">
-                <div className="flex items-center justify-center gap-3 mb-2">
-                  <span className="text-2xl text-muted-foreground line-through">
+              <div className="text-center mb-4">
+                <div className="flex items-center justify-center gap-2 mb-1">
+                  <span className="text-xl text-muted-foreground line-through">
                     50 000 FCFA
                   </span>
                   <span className="px-2 py-1 rounded bg-accent/20 text-accent text-xs font-bold">
                     -80%
                   </span>
                 </div>
-                <div className="text-5xl font-heading font-bold text-gradient-gold">
+                <div className="text-4xl font-heading font-bold text-gradient-gold">
                   10 000 FCFA
                 </div>
                 <p className="text-sm text-muted-foreground mt-2">
