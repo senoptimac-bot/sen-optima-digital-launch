@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, AlertTriangle, TrendingUp, Target, MessageCircle, Send, FileText, CheckCircle } from "lucide-react";
 import { DiagnosticResult, DiagnosticUserData } from "@/types/diagnostic";
 import { buildWhatsAppUrl } from "@/config/business";
+import { sendDiagnosticToMake } from "@/utils/webhookService";
 
 interface DiagnosticResultsProps {
   result: DiagnosticResult;
@@ -15,6 +16,9 @@ const DiagnosticResults = ({ result, userData }: DiagnosticResultsProps) => {
   const { percentage, level, levelLabel, blockScores } = result;
   const [showDeliveryChoice, setShowDeliveryChoice] = useState(false);
   const [selectedChannel, setSelectedChannel] = useState<DeliveryChannel>(null);
+  
+  // Ref pour éviter les envois multiples
+  const webhookSentRef = useRef(false);
 
   // Libellés de niveau personnalisés
   const getLevelDisplayLabel = () => {
@@ -102,14 +106,24 @@ Je souhaite recevoir mon rapport détaillé par email, conformément au délai a
 Merci.`;
   };
 
+  // Envoi unique au webhook Make.com
+  const sendToWebhook = (canal: "email" | "whatsapp") => {
+    if (!webhookSentRef.current && userData) {
+      webhookSentRef.current = true;
+      sendDiagnosticToMake(userData, result, canal);
+    }
+  };
+
   // Demande de rapport via WhatsApp
   const handleWhatsAppRequest = () => {
+    sendToWebhook("whatsapp");
     window.open(buildWhatsAppUrl(getWhatsAppMessage()), "_blank");
     setSelectedChannel("whatsapp");
   };
 
   // Demande de rapport via Email
   const handleEmailRequest = () => {
+    sendToWebhook("email");
     const subject = encodeURIComponent("Diagnostic de Structuration Business – Demande de rapport");
     const body = encodeURIComponent(getEmailMessage());
     window.open(`mailto:contact@senoptima.com?subject=${subject}&body=${body}`, "_blank");
