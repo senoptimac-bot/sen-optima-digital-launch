@@ -105,9 +105,8 @@ const DiagnosticPayment = memo(({ onPaymentComplete }: DiagnosticPaymentProps) =
                 ))}
               </ul>
 
-              {/* Payment Buttons */}
+              {/* Payment Button - Wave uniquement */}
               <div className="space-y-3">
-                {/* Wave Button */}
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -125,23 +124,10 @@ const DiagnosticPayment = memo(({ onPaymentComplete }: DiagnosticPaymentProps) =
                   <ExternalLink className="w-4 h-4 text-muted-foreground" />
                 </motion.button>
 
-                {/* Orange Money Button */}
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => handlePaymentChoice("orangeMoney")}
-                  className="w-full p-4 rounded-xl bg-[#FF7F00]/10 border border-[#FF7F00]/30 hover:bg-[#FF7F00]/20 transition-all flex items-center justify-center gap-4"
-                >
-                  <img 
-                    src="/om-logo.png" 
-                    alt="Orange Money" 
-                    className="h-8 w-auto object-contain"
-                  />
-                  <span className="font-heading font-semibold text-foreground">
-                    Payer avec Orange Money
-                  </span>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                </motion.button>
+                {/* Info - Orange Money bientôt disponible */}
+                <p className="text-center text-sm text-muted-foreground">
+                  Orange Money sera disponible prochainement
+                </p>
               </div>
             </motion.div>
 
