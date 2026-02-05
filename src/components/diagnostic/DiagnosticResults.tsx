@@ -16,6 +16,9 @@ const DiagnosticResults = ({ result, userData }: DiagnosticResultsProps) => {
   const { percentage, level, levelLabel, blockScores } = result;
   const [showDeliveryChoice, setShowDeliveryChoice] = useState(false);
   const [selectedChannel, setSelectedChannel] = useState<DeliveryChannel>(null);
+  
+  // Ref pour éviter les envois multiples
+  const webhookSentRef = useRef(false);
 
   // Libellés de niveau personnalisés
   const getLevelDisplayLabel = () => {
