@@ -4,8 +4,8 @@ import { Shield, Clock, CheckCircle, ExternalLink } from "lucide-react";
 
 // Liens de paiement externes (à remplacer par les vrais liens Wave/OM Business)
 const PAYMENT_LINKS = {
-  wave: "https://pay.wave.com/m/M_ztCHnXR7qgwe", // Remplacer par le vrai lien Wave Business
-  orangeMoney: "https://qrco.de/bfYFGN" // Remplacer par le vrai lien Orange Money
+  wave: "https://pay.wave.com/m/M_sn_vhBkBcF0skpc/c/sn/", // Lien Wave Business configuré
+  orangeMoney: "https://qrco.de/bfYFGN" // À remplacer par le lien Orange Money officiel
 };
 
 interface DiagnosticPaymentProps {
