@@ -1,6 +1,11 @@
 import { useState, memo, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, User, Building2, Mail, Phone, Briefcase } from "lucide-react";
+import { 
+  ArrowRight, User, Building2, Mail, Phone, Briefcase,
+  ShoppingCart, Briefcase as ServiceIcon, UtensilsCrossed, Hammer,
+  Truck, Leaf, Code, Heart, BookOpen, Shirt, Globe, MoreHorizontal,
+  Lock
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DiagnosticUserData } from "@/types/diagnostic";
