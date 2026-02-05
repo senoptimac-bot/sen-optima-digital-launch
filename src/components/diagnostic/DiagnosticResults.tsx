@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, AlertTriangle, TrendingUp, Target, MessageCircle, Send, FileText, CheckCircle } from "lucide-react";
 import { DiagnosticResult, DiagnosticUserData } from "@/types/diagnostic";
 import { buildWhatsAppUrl } from "@/config/business";
+import { sendDiagnosticToMake } from "@/utils/webhookService";
 
 interface DiagnosticResultsProps {
   result: DiagnosticResult;
