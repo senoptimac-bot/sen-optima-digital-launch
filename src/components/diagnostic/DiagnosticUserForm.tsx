@@ -229,7 +229,7 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                         }
                       `}
                     >
-                      <IconComponent className="w-5 h-5" />
+                      <IconComponent className={`w-5 h-5 ${formData.sector === sector.label ? "text-accent-foreground" : "text-accent"}`} />
                       <span className="leading-tight">{sector.label}</span>
                     </motion.button>
                   );
