@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, User, Building2, Mail, Phone, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { DiagnosticUserData } from "@/types/diagnostic";
 import { z } from "zod";
 
@@ -24,19 +22,18 @@ const userDataSchema = z.object({
 
 // Secteurs d'activité adaptés au Sénégal
 const SECTORS = [
-  "Commerce & Distribution",
-  "Services aux entreprises",
-  "Restauration & Hôtellerie",
-  "BTP & Immobilier",
-  "Transport & Logistique",
-  "Agriculture & Agroalimentaire",
-  "Technologie & Digital",
-  "Santé & Bien-être",
-  "Éducation & Formation",
-  "Mode & Textile",
-  "Import/Export",
-  "Artisanat",
-  "Autre",
+  { id: "commerce", label: "Commerce", icon: "🛒" },
+  { id: "services", label: "Services", icon: "💼" },
+  { id: "restauration", label: "Restauration", icon: "🍽️" },
+  { id: "btp", label: "BTP & Immobilier", icon: "🏗️" },
+  { id: "transport", label: "Transport", icon: "🚚" },
+  { id: "agriculture", label: "Agriculture", icon: "🌾" },
+  { id: "tech", label: "Tech & Digital", icon: "💻" },
+  { id: "sante", label: "Santé", icon: "🏥" },
+  { id: "education", label: "Éducation", icon: "📚" },
+  { id: "mode", label: "Mode & Textile", icon: "👗" },
+  { id: "import-export", label: "Import/Export", icon: "🌍" },
+  { id: "autre", label: "Autre", icon: "📋" },
 ];
 
 /**
@@ -63,6 +60,10 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
     }
   }, [errors]);
 
+  const handleSectorSelect = useCallback((sectorLabel: string) => {
+    handleInputChange("sector", sectorLabel);
+  }, [handleInputChange]);
+
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -87,23 +88,20 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
   }, [formData, onComplete]);
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-start pt-8 pb-12 px-4">
+    <section className="min-h-screen flex flex-col items-center justify-start pt-6 pb-12 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="w-full max-w-lg"
       >
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
-            <User className="w-8 h-8 text-accent" />
-          </div>
-          <h1 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-2">
-            Vos informations
+        {/* Header simplifié */}
+        <div className="text-center mb-6">
+          <h1 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-1">
+            Parlons de vous
           </h1>
-          <p className="text-muted-foreground font-subheading">
-            Pour personnaliser votre diagnostic et vous envoyer les résultats
+          <p className="text-muted-foreground text-sm">
+            30 secondes pour personnaliser votre diagnostic
           </p>
         </div>
 
@@ -113,135 +111,122 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           onSubmit={handleSubmit}
-          className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8"
+          className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-5 md:p-6"
         >
-          <div className="space-y-5">
-            {/* Prénom & Nom */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="firstName" className="text-foreground font-subheading">
-                  Prénom *
-                </Label>
-                <div className="relative">
+          <div className="space-y-4">
+            {/* Prénom & Nom - sur une ligne */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent" />
                 <Input
                   id="firstName"
                   type="text"
                   value={formData.firstName}
                   onChange={(e) => handleInputChange("firstName", e.target.value)}
-                  placeholder="Votre prénom"
-                  className={`pl-10 ${errors.firstName ? "border-destructive" : ""}`}
-                  />
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                </div>
+                  placeholder="Prénom"
+                  className={`pl-10 h-12 ${errors.firstName ? "border-destructive" : ""}`}
+                  autoComplete="given-name"
+                />
                 {errors.firstName && (
-                  <p className="text-destructive text-xs">{errors.firstName}</p>
+                  <p className="text-destructive text-xs mt-1">{errors.firstName}</p>
                 )}
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="lastName" className="text-foreground font-subheading">
-                  Nom *
-                </Label>
+              <div className="relative">
                 <Input
                   id="lastName"
                   type="text"
                   value={formData.lastName}
                   onChange={(e) => handleInputChange("lastName", e.target.value)}
-                  placeholder="Votre nom"
-                  className={errors.lastName ? "border-destructive" : ""}
+                  placeholder="Nom"
+                  className={`h-12 ${errors.lastName ? "border-destructive" : ""}`}
+                  autoComplete="family-name"
                 />
                 {errors.lastName && (
-                  <p className="text-destructive text-xs">{errors.lastName}</p>
+                  <p className="text-destructive text-xs mt-1">{errors.lastName}</p>
                 )}
               </div>
             </div>
 
             {/* Email */}
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-foreground font-subheading">
-                Email *
-              </Label>
-              <div className="relative">
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  placeholder="votre@email.com"
-                  className={`pl-10 ${errors.email ? "border-destructive" : ""}`}
-                />
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              </div>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent" />
+              <Input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                placeholder="votre@email.com"
+                className={`pl-10 h-12 ${errors.email ? "border-destructive" : ""}`}
+                autoComplete="email"
+              />
               {errors.email && (
-                <p className="text-destructive text-xs">{errors.email}</p>
+                <p className="text-destructive text-xs mt-1">{errors.email}</p>
               )}
             </div>
 
             {/* Téléphone */}
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="text-foreground font-subheading">
-                Téléphone *
-              </Label>
-              <div className="relative">
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange("phone", e.target.value)}
-                  placeholder="+221 77 123 45 67"
-                  className={`pl-10 ${errors.phone ? "border-destructive" : ""}`}
-                />
-                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              </div>
+            <div className="relative">
+              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent" />
+              <Input
+                id="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
+                placeholder="+221 77 123 45 67"
+                className={`pl-10 h-12 ${errors.phone ? "border-destructive" : ""}`}
+                autoComplete="tel"
+              />
               {errors.phone && (
-                <p className="text-destructive text-xs">{errors.phone}</p>
+                <p className="text-destructive text-xs mt-1">{errors.phone}</p>
               )}
             </div>
 
             {/* Entreprise */}
-            <div className="space-y-2">
-              <Label htmlFor="companyName" className="text-foreground font-subheading">
-                Nom de l'entreprise *
-              </Label>
-              <div className="relative">
-                <Input
-                  id="companyName"
-                  type="text"
-                  value={formData.companyName}
-                  onChange={(e) => handleInputChange("companyName", e.target.value)}
-                  placeholder="Votre entreprise"
-                  className={`pl-10 ${errors.companyName ? "border-destructive" : ""}`}
-                />
-                <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              </div>
+            <div className="relative">
+              <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent" />
+              <Input
+                id="companyName"
+                type="text"
+                value={formData.companyName}
+                onChange={(e) => handleInputChange("companyName", e.target.value)}
+                placeholder="Nom de votre entreprise"
+                className={`pl-10 h-12 ${errors.companyName ? "border-destructive" : ""}`}
+                autoComplete="organization"
+              />
               {errors.companyName && (
-                <p className="text-destructive text-xs">{errors.companyName}</p>
+                <p className="text-destructive text-xs mt-1">{errors.companyName}</p>
               )}
             </div>
 
-            {/* Secteur d'activité */}
+            {/* Secteur d'activité - Sélection rapide par boutons */}
             <div className="space-y-2">
-              <Label htmlFor="sector" className="text-foreground font-subheading">
-                Secteur d'activité *
-              </Label>
-              <Select
-                value={formData.sector}
-                onValueChange={(value) => handleInputChange("sector", value)}
-              >
-                <SelectTrigger className={errors.sector ? "border-destructive" : ""}>
-                  <div className="flex items-center gap-2">
-                    <Briefcase className="w-4 h-4 text-muted-foreground" />
-                    <SelectValue placeholder="Sélectionnez votre secteur" />
-                  </div>
-                </SelectTrigger>
-                <SelectContent>
-                  {SECTORS.map((sector) => (
-                    <SelectItem key={sector} value={sector}>
-                      {sector}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="flex items-center gap-2 text-sm text-foreground font-medium">
+                <Briefcase className="w-4 h-4 text-accent" />
+                <span>Votre secteur</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                {SECTORS.map((sector) => (
+                  <motion.button
+                    key={sector.id}
+                    type="button"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleSectorSelect(sector.label)}
+                    className={`
+                      p-2.5 rounded-xl text-xs font-medium transition-all
+                      flex flex-col items-center gap-1
+                      ${formData.sector === sector.label 
+                        ? "bg-accent text-accent-foreground ring-2 ring-accent ring-offset-1" 
+                        : "bg-muted/50 text-foreground hover:bg-muted border border-border"
+                      }
+                    `}
+                  >
+                    <span className="text-lg">{sector.icon}</span>
+                    <span className="leading-tight">{sector.label}</span>
+                  </motion.button>
+                ))}
+              </div>
               {errors.sector && (
                 <p className="text-destructive text-xs">{errors.sector}</p>
               )}
@@ -252,7 +237,7 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full mt-8 bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-lg py-6"
+            className="w-full mt-6 bg-accent hover:bg-accent/90 text-accent-foreground font-heading text-lg py-6"
           >
             {isSubmitting ? (
               "Validation..."
@@ -264,8 +249,8 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
             )}
           </Button>
 
-          <p className="text-xs text-muted-foreground text-center mt-4">
-            Vos données sont sécurisées et ne seront jamais partagées.
+          <p className="text-xs text-muted-foreground text-center mt-3">
+            🔒 Vos données sont sécurisées
           </p>
         </motion.form>
       </motion.div>
