@@ -1,13 +1,9 @@
 import { useState, memo, useCallback } from "react";
 import { motion } from "framer-motion";
-import { 
-  ArrowRight, User, Building2, Mail, Phone, Briefcase,
-  ShoppingCart, Briefcase as ServiceIcon, UtensilsCrossed, Hammer,
-  Truck, Leaf, Code, Heart, BookOpen, Shirt, Globe, MoreHorizontal,
-  Lock
-} from "lucide-react";
+import { ArrowRight, User, Building2, Mail, Phone, Briefcase, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { DiagnosticUserData } from "@/types/diagnostic";
 import { z } from "zod";
 
@@ -27,18 +23,19 @@ const userDataSchema = z.object({
 
 // Secteurs d'activité adaptés au Sénégal
 const SECTORS = [
-  { id: "commerce", label: "Commerce", icon: ShoppingCart },
-  { id: "services", label: "Services", icon: ServiceIcon },
-  { id: "restauration", label: "Restauration", icon: UtensilsCrossed },
-  { id: "btp", label: "BTP & Immobilier", icon: Hammer },
-  { id: "transport", label: "Transport", icon: Truck },
-  { id: "agriculture", label: "Agriculture", icon: Leaf },
-  { id: "tech", label: "Tech & Digital", icon: Code },
-  { id: "sante", label: "Santé", icon: Heart },
-  { id: "education", label: "Éducation", icon: BookOpen },
-  { id: "mode", label: "Mode & Textile", icon: Shirt },
-  { id: "import-export", label: "Import/Export", icon: Globe },
-  { id: "autre", label: "Autre", icon: MoreHorizontal },
+  "Commerce & Distribution",
+  "Services aux entreprises",
+  "Restauration & Hôtellerie",
+  "BTP & Immobilier",
+  "Transport & Logistique",
+  "Agriculture & Agroalimentaire",
+  "Technologie & Digital",
+  "Santé & Bien-être",
+  "Éducation & Formation",
+  "Mode & Textile",
+  "Import/Export",
+  "Artisanat",
+  "Autre",
 ];
 
 /**
@@ -64,10 +61,6 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
       setErrors(prev => ({ ...prev, [field]: "" }));
     }
   }, [errors]);
-
-  const handleSectorSelect = useCallback((sectorLabel: string) => {
-    handleInputChange("sector", sectorLabel);
-  }, [handleInputChange]);
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
@@ -204,39 +197,26 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
               )}
             </div>
 
-            {/* Secteur d'activité - Sélection rapide par boutons */}
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm text-foreground font-medium">
-                <Briefcase className="w-4 h-4 text-accent" />
-                <span>Votre secteur</span>
-              </div>
-              <div className="grid grid-cols-3 gap-2">
-                {SECTORS.map((sector) => {
-                  const IconComponent = sector.icon;
-                  return (
-                    <motion.button
-                      key={sector.id}
-                      type="button"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => handleSectorSelect(sector.label)}
-                      className={`
-                        p-2.5 rounded-xl text-xs font-medium transition-all
-                        flex flex-col items-center gap-1
-                        ${formData.sector === sector.label 
-                          ? "bg-accent text-accent-foreground ring-2 ring-accent ring-offset-1" 
-                          : "bg-muted/50 text-foreground hover:bg-muted border border-border"
-                        }
-                      `}
-                    >
-                      <IconComponent className={`w-5 h-5 ${formData.sector === sector.label ? "text-accent-foreground" : "text-accent"}`} />
-                      <span className="leading-tight">{sector.label}</span>
-                    </motion.button>
-                  );
-                })}
-              </div>
+            {/* Secteur d'activité - Select déroulant */}
+            <div className="relative">
+              <Select
+                value={formData.sector}
+                onValueChange={(value) => handleInputChange("sector", value)}
+              >
+                <SelectTrigger className={`h-12 pl-10 ${errors.sector ? "border-destructive" : ""}`}>
+                  <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-accent" />
+                  <SelectValue placeholder="Votre secteur d'activité" />
+                </SelectTrigger>
+                <SelectContent className="bg-card border border-border z-50">
+                  {SECTORS.map((sector) => (
+                    <SelectItem key={sector} value={sector}>
+                      {sector}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               {errors.sector && (
-                <p className="text-destructive text-xs">{errors.sector}</p>
+                <p className="text-destructive text-xs mt-1">{errors.sector}</p>
               )}
             </div>
           </div>
