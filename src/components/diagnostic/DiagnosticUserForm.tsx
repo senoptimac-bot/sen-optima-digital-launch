@@ -257,8 +257,9 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
             )}
           </Button>
 
-          <p className="text-xs text-muted-foreground text-center mt-3">
-            🔒 Vos données sont sécurisées
+          <p className="text-xs text-muted-foreground text-center mt-3 flex items-center justify-center gap-1">
+            <Lock className="w-3 h-3 text-accent" />
+            Vos données sont sécurisées
           </p>
         </motion.form>
       </motion.div>
