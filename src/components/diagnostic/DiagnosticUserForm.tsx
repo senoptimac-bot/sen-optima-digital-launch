@@ -211,26 +211,29 @@ const DiagnosticUserForm = memo(({ onComplete }: DiagnosticUserFormProps) => {
                 <span>Votre secteur</span>
               </div>
               <div className="grid grid-cols-3 gap-2">
-                {SECTORS.map((sector) => (
-                  <motion.button
-                    key={sector.id}
-                    type="button"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => handleSectorSelect(sector.label)}
-                    className={`
-                      p-2.5 rounded-xl text-xs font-medium transition-all
-                      flex flex-col items-center gap-1
-                      ${formData.sector === sector.label 
-                        ? "bg-accent text-accent-foreground ring-2 ring-accent ring-offset-1" 
-                        : "bg-muted/50 text-foreground hover:bg-muted border border-border"
-                      }
-                    `}
-                  >
-                    <span className="text-lg">{sector.icon}</span>
-                    <span className="leading-tight">{sector.label}</span>
-                  </motion.button>
-                ))}
+                {SECTORS.map((sector) => {
+                  const IconComponent = sector.icon;
+                  return (
+                    <motion.button
+                      key={sector.id}
+                      type="button"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleSectorSelect(sector.label)}
+                      className={`
+                        p-2.5 rounded-xl text-xs font-medium transition-all
+                        flex flex-col items-center gap-1
+                        ${formData.sector === sector.label 
+                          ? "bg-accent text-accent-foreground ring-2 ring-accent ring-offset-1" 
+                          : "bg-muted/50 text-foreground hover:bg-muted border border-border"
+                        }
+                      `}
+                    >
+                      <IconComponent className="w-5 h-5" />
+                      <span className="leading-tight">{sector.label}</span>
+                    </motion.button>
+                  );
+                })}
               </div>
               {errors.sector && (
                 <p className="text-destructive text-xs">{errors.sector}</p>
