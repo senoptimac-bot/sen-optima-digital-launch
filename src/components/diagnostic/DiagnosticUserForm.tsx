@@ -27,18 +27,18 @@ const userDataSchema = z.object({
 
 // Secteurs d'activité adaptés au Sénégal
 const SECTORS = [
-  { id: "commerce", label: "Commerce", icon: "🛒" },
-  { id: "services", label: "Services", icon: "💼" },
-  { id: "restauration", label: "Restauration", icon: "🍽️" },
-  { id: "btp", label: "BTP & Immobilier", icon: "🏗️" },
-  { id: "transport", label: "Transport", icon: "🚚" },
-  { id: "agriculture", label: "Agriculture", icon: "🌾" },
-  { id: "tech", label: "Tech & Digital", icon: "💻" },
-  { id: "sante", label: "Santé", icon: "🏥" },
-  { id: "education", label: "Éducation", icon: "📚" },
-  { id: "mode", label: "Mode & Textile", icon: "👗" },
-  { id: "import-export", label: "Import/Export", icon: "🌍" },
-  { id: "autre", label: "Autre", icon: "📋" },
+  { id: "commerce", label: "Commerce", icon: ShoppingCart },
+  { id: "services", label: "Services", icon: ServiceIcon },
+  { id: "restauration", label: "Restauration", icon: UtensilsCrossed },
+  { id: "btp", label: "BTP & Immobilier", icon: Hammer },
+  { id: "transport", label: "Transport", icon: Truck },
+  { id: "agriculture", label: "Agriculture", icon: Leaf },
+  { id: "tech", label: "Tech & Digital", icon: Code },
+  { id: "sante", label: "Santé", icon: Heart },
+  { id: "education", label: "Éducation", icon: BookOpen },
+  { id: "mode", label: "Mode & Textile", icon: Shirt },
+  { id: "import-export", label: "Import/Export", icon: Globe },
+  { id: "autre", label: "Autre", icon: MoreHorizontal },
 ];
 
 /**
