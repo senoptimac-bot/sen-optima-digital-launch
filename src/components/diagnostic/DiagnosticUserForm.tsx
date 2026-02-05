@@ -1,13 +1,11 @@
 import { useState, memo, useCallback } from "react";
 import { motion } from "framer-motion";
-import { 
-  ArrowRight, User, Building2, Mail, Phone, Briefcase,
-  ShoppingCart, Briefcase as ServiceIcon, UtensilsCrossed, Hammer,
-  Truck, Leaf, Code, Heart, BookOpen, Shirt, Globe, MoreHorizontal,
-  Lock
-} from "lucide-react";
+import { ArrowRight, User, Building2, Mail, Phone, Briefcase, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { DiagnosticUserData } from "@/types/diagnostic";
+import { z } from "zod";
 import { DiagnosticUserData } from "@/types/diagnostic";
 import { z } from "zod";
 
