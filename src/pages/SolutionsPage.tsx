@@ -14,13 +14,11 @@ const offers = [
   id: "systemes",
   icon: Globe,
   title: "Mise en place des Systèmes Digitaux",
-  subtitle: "Tarification personnalisée selon vos besoins et la complexité du projet.",
-  description: "Selon votre situation, une prestation technique spécifique (site web stratégique, tunnel de conversion, publicité, automatisation) peut être réalisée indépendamment.\nPour des projets structurants, un diagnostic stratégique est recommandé afin d'optimiser les résultats.",
   forWho: [
   "PME établies",
   "Entreprises prêtes à structurer sérieusement leur croissance"],
 
-  objective: "Mettre en place un système digital cohérent.",
+  objective: "Mettre en place un système digital cohérent et performant.",
   result: "Un système structuré, pas des outils isolés.",
   cta: { label: "Discuter de mon projet", href: "/projet" },
   details: {
@@ -28,15 +26,14 @@ const offers = [
     "Site web stratégique",
     "Tunnel de conversion",
     "Structuration de l'offre",
-    "Mise en place CRM",
-    "Automatisation",
     "Publicité ciblée",
+    "CRM et automatisation",
     "Optimisation du parcours client"],
 
     outcomes: [
-    "Meilleure conversion",
-    "Organisation interne claire",
-    "Vision de croissance structurée"]
+    "Tarification personnalisée selon vos besoins et la complexité du projet.",
+    "Une prestation technique spécifique (ex : création de site web uniquement) peut être réalisée indépendamment.",
+    "Pour des projets structurants, un diagnostic stratégique est recommandé afin d'optimiser les résultats."]
 
   }
 },
@@ -112,23 +109,9 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
         )}
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-2 leading-tight">
+        <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-4 leading-tight">
           {offer.title}
         </h3>
-
-        {/* Subtitle */}
-        {"subtitle" in offer && offer.subtitle && (
-          <p className="text-sm text-accent/80 font-medium mb-3">
-            {offer.subtitle}
-          </p>
-        )}
-
-        {/* Description */}
-        {"description" in offer && offer.description && (
-          <p className="text-sm text-white/65 leading-relaxed mb-4 whitespace-pre-line">
-            {offer.description}
-          </p>
-        )}
 
         {/* For Who */}
         <div className="mb-5">
@@ -176,7 +159,7 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
           <div className="pt-4 pb-2 border-t border-white/10">
             <div className="mb-5">
               <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-3">
-                {offer.id === "formation" ? "Programme en préparation" : "Inclut"}
+                {offer.id === "formation" ? "Programme en préparation" : "Ce que peut inclure la mise en place"}
               </span>
               <ul className="space-y-2">
                 {offer.details.includes.map((item, i) => (
@@ -190,7 +173,7 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
 
             <div>
               <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-3">
-                {offer.id === "formation" ? "Note" : "Ce que vous obtenez"}
+                {offer.id === "formation" ? "Note" : "Tarification"}
               </span>
               <ul className="space-y-2">
                 {offer.details.outcomes.map((item, i) => (
