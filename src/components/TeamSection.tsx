@@ -75,14 +75,11 @@ const TeamSection = () => {
               {/* Card Container */}
               <div className="rounded-3xl overflow-hidden card-cream">
                 {/* Image Container */}
-                <div 
-                  className="relative w-full overflow-hidden"
-                  style={{ aspectRatio: "4/3" }}
-                >
+                <div className="relative w-full overflow-hidden bg-muted">
                   <img 
                     src={member.image} 
                     alt={`${member.name} - ${member.role}`}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-auto object-contain"
                     loading="lazy"
                   />
                 </div>
