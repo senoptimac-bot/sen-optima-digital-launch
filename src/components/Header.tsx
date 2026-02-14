@@ -61,7 +61,7 @@ const Header = () => {
               <img
                 src={logo}
                 alt="Sen'Optima Consulting"
-                className="h-12 sm:h-14 md:h-16 w-auto"
+                className="h-10 sm:h-11 md:h-12 w-auto"
               />
             </Link>
 
