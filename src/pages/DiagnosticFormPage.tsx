@@ -167,7 +167,7 @@ Je souhaite connaître les prochaines étapes pour le diagnostic.`;
                 {/* Submit */}
                 <button
                   onClick={handleSubmit}
-                  className="w-full inline-flex items-center justify-center gap-2 h-14 rounded-full bg-accent text-primary font-semibold text-base transition-all duration-300 hover:bg-accent/90 hover:shadow-lg active:scale-[0.98] mt-4"
+                  className="w-full inline-flex items-center justify-center gap-2 h-14 rounded-full btn-premium font-semibold text-base active:scale-[0.98] mt-4"
                 >
                   <MessageCircle className="w-5 h-5" />
                   Envoyer ma demande de Diagnostic
