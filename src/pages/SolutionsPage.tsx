@@ -3,7 +3,7 @@ import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import { motion } from "framer-motion";
 import { buildWhatsAppUrl } from "@/config/business";
-import { MessageCircle, Search, Globe, GraduationCap, ChevronDown, ArrowRight } from "lucide-react";
+import { MessageCircle, Search, Globe, GraduationCap, ChevronDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -100,6 +100,7 @@ interface OfferCardProps {
 const OfferCard = ({ offer, index }: OfferCardProps) => {
   const [expanded, setExpanded] = useState(false);
   const Icon = offer.icon;
+  const number = String(index + 1).padStart(2, '0');
 
   return (
     <motion.div
@@ -107,65 +108,71 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className={cn(
-        "rounded-3xl bg-card border-2 shadow-sm overflow-hidden transition-all duration-500",
-        expanded
-          ? "border-accent shadow-[0_8px_30px_-8px_hsl(var(--accent)/0.3)]"
-          : "border-accent/30 hover:border-accent/60 hover:shadow-[0_8px_30px_-8px_hsl(var(--accent)/0.15)]"
-      )}>
+      className="group">
 
-      <div className="p-6 md:p-8">
-        {/* Header */}
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center shrink-0">
-            <Icon className="w-6 h-6 text-accent" />
+      <div
+        className={cn(
+          "relative p-6 md:p-8 rounded-3xl transition-all duration-300 ease-out",
+          "bg-gradient-to-br from-primary to-primary/90 border-2 border-transparent",
+          expanded
+            ? "border-accent/60 shadow-[0_0_30px_rgba(229,185,78,0.3)]"
+            : "hover:border-accent/60 hover:shadow-[0_0_30px_rgba(34,52,80,0.5)] hover:translate-y-[-8px]"
+        )}>
+
+        {/* Header Row */}
+        <div className="flex items-start justify-between mb-6">
+          <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center transition-all duration-300 group-hover:bg-white/25 group-hover:scale-110">
+            <Icon className="w-7 h-7 text-white transition-transform duration-300 group-hover:scale-110" />
           </div>
-          <div>
-            <div className="flex items-center gap-3">
-              <h3 className="text-xl font-heading font-bold text-foreground">
-                {offer.title}
-              </h3>
-              {"badge" in offer && offer.badge &&
-              <span className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-accent/15 text-accent">
-                  {offer.badge}
-                </span>
-              }
-            </div>
-          </div>
+          <span className="text-3xl font-heading font-bold text-accent opacity-60">
+            {number}
+          </span>
         </div>
+
+        {/* Badge */}
+        {"badge" in offer && offer.badge && (
+          <span className="inline-block text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-accent/20 text-accent mb-4">
+            {offer.badge}
+          </span>
+        )}
+
+        {/* Title */}
+        <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-4 leading-tight">
+          {offer.title}
+        </h3>
 
         {/* For Who */}
         <div className="mb-5">
-          <span className="text-[11px] uppercase tracking-wider font-semibold text-accent/80 block mb-2">
+          <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-2">
             Pour qui
           </span>
           <ul className="space-y-1.5">
-            {offer.forWho.map((item, i) =>
-            <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+            {offer.forWho.map((item, i) => (
+              <li key={i} className="text-sm text-white/75 flex items-start gap-2">
                 <span className="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" />
                 {item}
               </li>
-            )}
+            ))}
           </ul>
         </div>
 
         {/* Objective */}
-        <div className="mb-4">
-          <span className="text-[11px] uppercase tracking-wider font-semibold text-accent/80 block mb-1">
+        <div className="mb-4 pt-4 border-t border-current/10">
+          <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-1">
             Objectif
           </span>
-          <p className="text-sm text-muted-foreground">{offer.objective}</p>
+          <p className="text-sm text-white/75 leading-relaxed">{offer.objective}</p>
         </div>
 
         {/* Result */}
-        {offer.result &&
-        <div className="mb-6">
-            <span className="text-[11px] uppercase tracking-wider font-semibold text-accent/80 block mb-1">
+        {offer.result && (
+          <div className="mb-4">
+            <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-1">
               Résultat
             </span>
-            <p className="text-sm text-foreground font-medium">{offer.result}</p>
+            <p className="text-sm text-white font-medium">{offer.result}</p>
           </div>
-        }
+        )}
 
         {/* Expanded Details */}
         <motion.div
@@ -177,34 +184,32 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="overflow-hidden">
 
-          <div className="pt-4 pb-2 border-t border-accent/20">
-            {/* Includes */}
+          <div className="pt-4 pb-2 border-t border-white/10">
             <div className="mb-5">
-              <span className="text-[11px] uppercase tracking-wider font-semibold text-accent/80 block mb-3">
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-3">
                 {offer.id === "formation" ? "Programme en préparation" : "Inclut"}
               </span>
               <ul className="space-y-2">
-                {offer.details.includes.map((item, i) =>
-                <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                {offer.details.includes.map((item, i) => (
+                  <li key={i} className="text-sm text-white/75 flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 shrink-0" />
                     {item}
                   </li>
-                )}
+                ))}
               </ul>
             </div>
 
-            {/* Outcomes */}
             <div>
-              <span className="text-[11px] uppercase tracking-wider font-semibold text-accent/80 block mb-3">
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-3">
                 {offer.id === "formation" ? "Note" : "Ce que vous obtenez"}
               </span>
               <ul className="space-y-2">
-                {offer.details.outcomes.map((item, i) =>
-                <li key={i} className="text-sm text-foreground/80 flex items-start gap-2">
+                {offer.details.outcomes.map((item, i) => (
+                  <li key={i} className="text-sm text-white/80 flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
                     {item}
                   </li>
-                )}
+                ))}
               </ul>
             </div>
           </div>
@@ -215,31 +220,34 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
           <a
             href={offer.cta.href}
             className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md">
-              <ArrowRight className="w-4 h-4" />
-              {offer.cta.label}
-            </a>
+            <ArrowRight className="w-4 h-4" />
+            {offer.cta.label}
+          </a>
 
           <button
             onClick={() => setExpanded(!expanded)}
             className={cn(
               "inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 text-sm font-medium transition-all duration-300",
               expanded
-                ? "border-accent/40 text-foreground bg-card"
-                : "border-accent/30 text-foreground hover:border-accent/50"
+                ? "border-accent/40 text-white bg-white/10"
+                : "border-white/20 text-white hover:border-accent/50"
             )}>
-
             {expanded ? "Voir moins" : "Voir plus"}
             <ChevronDown
               className={cn(
                 "w-4 h-4 transition-transform duration-300",
                 expanded && "rotate-180"
               )} />
-
           </button>
         </div>
-      </div>
-    </motion.div>);
 
+        {/* Arrow indicator */}
+        <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-accent/20 text-accent flex items-center justify-center transition-all duration-300 group-hover:bg-accent group-hover:text-primary group-hover:rotate-45 hidden md:flex">
+          <ArrowUpRight className="w-5 h-5" />
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 /* ─── Page ─── */
