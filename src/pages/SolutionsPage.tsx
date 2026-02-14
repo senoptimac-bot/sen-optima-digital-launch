@@ -3,40 +3,13 @@ import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import { motion } from "framer-motion";
 import { buildWhatsAppUrl } from "@/config/business";
-import { MessageCircle, Search, Globe, GraduationCap, ChevronDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { MessageCircle, Globe, GraduationCap, ChevronDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import DiagnosticCard from "@/components/solutions/DiagnosticCard";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 /* ─── Offer Data ─── */
 const offers = [
-{
-  id: "diagnostic",
-  icon: Search,
-  title: "Diagnostic Stratégique",
-  forWho: [
-  "Entrepreneurs avec activité existante",
-  "PME qui stagnent",
-  "Entreprises qui investissent sans résultats clairs"],
-
-  objective: "Identifier les blocages et définir un plan d'action clair.",
-  result: "Vous savez exactement quoi faire et quoi éviter.",
-  cta: { label: "Réserver un diagnostic", href: "/diagnostic" },
-  details: {
-    includes: [
-    "Analyse complète de l'activité",
-    "Étude du positionnement",
-    "Audit de présence digitale",
-    "Identification des points de friction",
-    "Priorisation des actions",
-    "Plan d'action structuré"],
-
-    outcomes: [
-    "Vision claire",
-    "Recommandations concrètes",
-    "Orientation stratégique adaptée au marché sénégalais"]
-
-  }
-},
 {
   id: "systemes",
   icon: Globe,
@@ -298,8 +271,11 @@ const SolutionsPage = () => {
         <section className="pb-16 md:pb-24">
           <div className="container max-w-3xl">
             <div className="space-y-12">
+              {/* Diagnostic Card - Custom */}
+              <DiagnosticCard />
+              {/* Other offers */}
               {offers.map((offer, index) =>
-              <OfferCard key={offer.id} offer={offer} index={index} />
+              <OfferCard key={offer.id} offer={offer} index={index + 1} />
               )}
             </div>
           </div>
