@@ -107,7 +107,12 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="rounded-3xl bg-card border border-border/50 shadow-sm overflow-hidden">
+      className={cn(
+        "rounded-3xl bg-card border-2 shadow-sm overflow-hidden transition-all duration-500",
+        expanded
+          ? "border-accent shadow-[0_8px_30px_-8px_hsl(var(--accent)/0.3)]"
+          : "border-accent/30 hover:border-accent/60 hover:shadow-[0_8px_30px_-8px_hsl(var(--accent)/0.15)]"
+      )}>
 
       <div className="p-6 md:p-8">
         {/* Header */}
@@ -172,7 +177,7 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="overflow-hidden">
 
-          <div className="pt-4 pb-2 border-t border-border/30">
+          <div className="pt-4 pb-2 border-t border-accent/20">
             {/* Includes */}
             <div className="mb-5">
               <span className="text-[11px] uppercase tracking-wider font-semibold text-accent/80 block mb-3">
@@ -217,8 +222,10 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
           <button
             onClick={() => setExpanded(!expanded)}
             className={cn(
-              "inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border border-border/50 text-sm font-medium transition-all duration-300",
-              "text-muted-foreground hover:border-accent hover:text-accent"
+              "inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 text-sm font-medium transition-all duration-300",
+              expanded
+                ? "border-accent text-accent bg-accent/5"
+                : "border-accent/30 text-muted-foreground hover:border-accent hover:text-accent"
             )}>
 
             {expanded ? "Voir moins" : "Voir plus"}
