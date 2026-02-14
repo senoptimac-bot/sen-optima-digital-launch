@@ -214,7 +214,7 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-6">
           <a
             href={offer.cta.href}
-            className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md">
+            className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-foreground text-background font-medium text-sm transition-all duration-300 hover:bg-foreground/90 hover:shadow-md">
               <ArrowRight className="w-4 h-4" />
               {offer.cta.label}
             </a>
@@ -224,8 +224,8 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
             className={cn(
               "inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 text-sm font-medium transition-all duration-300",
               expanded
-                ? "border-accent text-accent bg-accent/5"
-                : "border-accent/30 text-muted-foreground hover:border-accent hover:text-accent"
+                ? "border-accent/40 text-foreground bg-card"
+                : "border-accent/30 text-foreground hover:border-accent/50"
             )}>
 
             {expanded ? "Voir moins" : "Voir plus"}
@@ -289,7 +289,7 @@ const SolutionsPage = () => {
         {/* ── Section 2: Les 3 Offres ── */}
         <section className="pb-16 md:pb-24">
           <div className="container max-w-3xl">
-            <div className="space-y-8">
+            <div className="space-y-12">
               {offers.map((offer, index) =>
               <OfferCard key={offer.id} offer={offer} index={index} />
               )}
