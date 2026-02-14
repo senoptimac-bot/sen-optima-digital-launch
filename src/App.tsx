@@ -25,6 +25,9 @@ import NotFound from "./pages/NotFound";
 import MentionsLegalesPage from "./pages/MentionsLegalesPage";
 import PolitiqueConfidentialitePage from "./pages/PolitiqueConfidentialitePage";
 import CGVPage from "./pages/CGVPage";
+import DiagnosticFormPage from "./pages/DiagnosticFormPage";
+import ProjetFormPage from "./pages/ProjetFormPage";
+import FormationFormPage from "./pages/FormationFormPage";
 
 const queryClient = new QueryClient();
 
@@ -171,6 +174,9 @@ const App = () => {
                     <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
                     <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
                     <Route path="/cgv" element={<CGVPage />} />
+                    <Route path="/diagnostic" element={<DiagnosticFormPage />} />
+                    <Route path="/projet" element={<ProjetFormPage />} />
+                    <Route path="/formation" element={<FormationFormPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </Layout>

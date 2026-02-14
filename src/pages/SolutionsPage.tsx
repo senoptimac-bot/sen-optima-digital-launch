@@ -20,7 +20,7 @@ const offers = [
 
   objective: "Identifier les blocages et définir un plan d'action clair.",
   result: "Vous savez exactement quoi faire et quoi éviter.",
-  cta: { label: "Réserver un diagnostic", href: "/contact" },
+  cta: { label: "Réserver un diagnostic", href: "/diagnostic" },
   details: {
     includes: [
     "Analyse complète de l'activité",
@@ -47,11 +47,7 @@ const offers = [
 
   objective: "Mettre en place un système digital cohérent.",
   result: "Un système structuré, pas des outils isolés.",
-  cta: {
-    label: "Discuter de mon projet",
-    href: buildWhatsAppUrl("Bonjour Sen'Optima, je souhaite discuter de la mise en place de systèmes digitaux pour mon entreprise."),
-    external: true
-  },
+  cta: { label: "Discuter de mon projet", href: "/projet" },
   details: {
     includes: [
     "Site web stratégique",
@@ -79,11 +75,7 @@ const offers = [
 
   objective: "Acquérir une compréhension solide avant d'investir.",
   result: null,
-  cta: {
-    label: "Être informé",
-    href: buildWhatsAppUrl("Bonjour Sen'Optima, je souhaite être informé(e) du lancement de votre programme de formation."),
-    external: true
-  },
+  cta: { label: "Être informé", href: "/formation" },
   details: {
     includes: [
     "Introduction au e-commerce",
@@ -215,25 +207,12 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-6">
-          {"external" in offer.cta && offer.cta.external ?
-          <a
-            href={offer.cta.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md">
-
-              <MessageCircle className="w-4 h-4" />
-              {offer.cta.label}
-            </a> :
-
           <a
             href={offer.cta.href}
             className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md">
-
               <ArrowRight className="w-4 h-4" />
               {offer.cta.label}
             </a>
-          }
 
           <button
             onClick={() => setExpanded(!expanded)}
@@ -329,10 +308,8 @@ const SolutionsPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="/contact"
+                  href="/diagnostic"
                   className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md">
-
-                  
                   Commencer par un Diagnostic
                 </a>
                 <a
