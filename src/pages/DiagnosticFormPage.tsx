@@ -41,7 +41,8 @@ Niveau : ${niveau}
 Blocage : ${blocage}
 Objectif : ${objectif.trim() || "Non précisé"}
 
-Je souhaite connaître les prochaines étapes pour le diagnostic.`;
+Je souhaite réserver un Diagnostic Stratégique.
+Merci de m'indiquer les prochaines étapes.`;
 
     window.open(buildWhatsAppUrl(message), "_blank", "noopener,noreferrer");
   };
