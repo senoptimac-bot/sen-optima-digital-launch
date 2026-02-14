@@ -29,7 +29,7 @@ const teamMembers = [
   {
     name: "Cheikh",
     role: "Opérations & Développement",
-    tagline: "Le Moteur de l'Agence.",
+    tagline: "Structure la prospection, le suivi client et l'optimisation des performances commerciales. Assure la fluidité entre stratégie, exécution et résultats.",
     image: teamCheikh,
   },
 ];
