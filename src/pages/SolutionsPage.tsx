@@ -14,6 +14,8 @@ const offers = [
   id: "systemes",
   icon: Globe,
   title: "Mise en place des Systèmes Digitaux",
+  subtitle: "Tarification personnalisée selon vos besoins et la complexité du projet.",
+  description: "Selon votre situation, une prestation technique spécifique (site web stratégique, tunnel de conversion, publicité, automatisation) peut être réalisée indépendamment.\nPour des projets structurants, un diagnostic stratégique est recommandé afin d'optimiser les résultats.",
   forWho: [
   "PME établies",
   "Entreprises prêtes à structurer sérieusement leur croissance"],
@@ -110,9 +112,23 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
         )}
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-4 leading-tight">
+        <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-2 leading-tight">
           {offer.title}
         </h3>
+
+        {/* Subtitle */}
+        {"subtitle" in offer && offer.subtitle && (
+          <p className="text-sm text-accent/80 font-medium mb-3">
+            {offer.subtitle}
+          </p>
+        )}
+
+        {/* Description */}
+        {"description" in offer && offer.description && (
+          <p className="text-sm text-white/65 leading-relaxed mb-4 whitespace-pre-line">
+            {offer.description}
+          </p>
+        )}
 
         {/* For Who */}
         <div className="mb-5">
