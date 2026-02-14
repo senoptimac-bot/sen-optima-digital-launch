@@ -27,7 +27,7 @@ const variantStyles = {
     subtitle: "text-white/70",
     text: "text-white/80",
     label: "text-white/60",
-    arrow: "bg-white/20 text-white group-hover:bg-white group-hover:text-accent group-hover:rotate-45",
+    arrow: "bg-white/20 text-white group-hover:bg-white group-hover:text-accent group-hover:rotate-45"
   },
   white: {
     container: "bg-card border-2 border-border/50 shadow-lg",
@@ -39,7 +39,7 @@ const variantStyles = {
     subtitle: "text-muted-foreground",
     text: "text-muted-foreground",
     label: "text-accent/80",
-    arrow: "bg-secondary text-foreground group-hover:bg-accent group-hover:text-white group-hover:rotate-45",
+    arrow: "bg-secondary text-foreground group-hover:bg-accent group-hover:text-white group-hover:rotate-45"
   },
   primary: {
     container: "bg-gradient-to-br from-primary to-primary/90 border-2 border-transparent",
@@ -51,7 +51,7 @@ const variantStyles = {
     subtitle: "text-white/60",
     text: "text-white/75",
     label: "text-accent",
-    arrow: "bg-accent/20 text-accent group-hover:bg-accent group-hover:text-primary group-hover:rotate-45",
+    arrow: "bg-accent/20 text-accent group-hover:bg-accent group-hover:text-primary group-hover:rotate-45"
   },
   glass: {
     container: "bg-secondary/60 backdrop-blur-md border-2 border-border/30",
@@ -63,8 +63,8 @@ const variantStyles = {
     subtitle: "text-muted-foreground",
     text: "text-muted-foreground",
     label: "text-accent/80",
-    arrow: "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white group-hover:rotate-45",
-  },
+    arrow: "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white group-hover:rotate-45"
+  }
 };
 
 // All cards use the primary (dark blue) variant for consistency
@@ -72,13 +72,13 @@ const getVariantByIndex = (_index: number): keyof typeof variantStyles => {
   return "primary";
 };
 
-const ServiceCard = forwardRef<HTMLElement, ServiceCardProps>(({ 
-  icon: Icon, 
-  number, 
-  title, 
-  subtitle, 
-  forWho, 
-  whatWeDo, 
+const ServiceCard = forwardRef<HTMLElement, ServiceCardProps>(({
+  icon: Icon,
+  number,
+  title,
+  subtitle,
+  forWho,
+  whatWeDo,
   ourRequirement,
   index,
   variant: propVariant
@@ -93,17 +93,17 @@ const ServiceCard = forwardRef<HTMLElement, ServiceCardProps>(({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="group h-full"
-    >
-      <div 
-        className={cn(
-          "relative p-6 md:p-8 rounded-3xl h-full flex flex-col",
-          "transition-all duration-300 ease-out",
-          "hover:translate-y-[-8px]",
-          styles.container,
-          styles.containerHover
-        )}
-      >
+      className="group h-full">
+
+      <div
+        className={cn("relative p-6 md:p-8 rounded-3xl h-full flex flex-col transition-all duration-300 ease-out hover:translate-y-[-8px] bg-secondary border-accent shadow-sm text-primary",
+
+
+
+        styles.container,
+        styles.containerHover
+        )}>
+
         {/* Header Row */}
         <div className="flex items-start justify-between mb-6">
           {/* Icon Circle */}
@@ -173,8 +173,8 @@ const ServiceCard = forwardRef<HTMLElement, ServiceCardProps>(({
           <ArrowUpRight className="w-5 h-5" />
         </div>
       </div>
-    </motion.article>
-  );
+    </motion.article>);
+
 });
 
 ServiceCard.displayName = "ServiceCard";
