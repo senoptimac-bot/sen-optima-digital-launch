@@ -111,7 +111,7 @@ const MethodSection = () => {
 
           {/* CTA Button */}
           <Button size="lg" asChild className="group gap-3 text-sm rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all duration-500 h-14 px-10">
-            <Link to="/solutions">
+            <Link to="/diagnostic">
               Lancer mon Audit Business
               <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
                 <ArrowRight className="w-4 h-4" />

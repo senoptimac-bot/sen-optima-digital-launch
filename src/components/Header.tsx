@@ -91,7 +91,7 @@ const Header = () => {
                   className="gap-2 text-[12px] uppercase tracking-wider rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 h-10 px-5"
                   asChild
                 >
-                  <Link to="/solutions">
+                  <Link to="/diagnostic">
                     Commencer
                     <span className="w-5 h-5 rounded-full border border-accent flex items-center justify-center ml-1">
                       <ArrowRight className="w-3 h-3" />
@@ -158,7 +158,7 @@ const Header = () => {
                     className="w-full gap-2 h-14 text-sm uppercase tracking-wider rounded-full bg-foreground text-background hover:bg-foreground/90"
                     asChild
                   >
-                    <Link to="/solutions" onClick={() => setIsOpen(false)}>
+                    <Link to="/diagnostic" onClick={() => setIsOpen(false)}>
                       Lancer mon Audit
                       <ArrowRight className="w-4 h-4" />
                     </Link>
