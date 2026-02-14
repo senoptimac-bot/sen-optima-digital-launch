@@ -3,11 +3,10 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroCoverImage from "@/assets/hero-cover.jpg";
-import PremiumBackground from "@/components/PremiumBackground";
 const Hero = () => {
   return <section id="accueil" className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden">
-      {/* Premium animated background */}
-      <PremiumBackground />
+      {/* Simple static background */}
+      <div className="absolute inset-0 z-0 bg-background" />
 
       <div className="container relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
