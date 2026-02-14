@@ -22,7 +22,7 @@ const teamMembers = [
   },
   {
     name: "Mandiaye",
-    role: "Stratégie & Vision",
+    role: "Stratégie & Direction",
     tagline: "Le Gardien du Cap.",
     image: teamMandiaye,
   },
