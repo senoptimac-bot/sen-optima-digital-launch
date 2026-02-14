@@ -20,7 +20,11 @@ const offers = [
     ],
     objective: "Identifier les blocages et définir un plan d'action clair.",
     result: "Vous savez exactement quoi faire et quoi éviter.",
-    cta: { label: "Réserver un diagnostic", href: "/contact" },
+    cta: {
+      label: "Réserver un diagnostic",
+      href: buildWhatsAppUrl("Bonjour Sen'Optima,\n\nJe souhaite réserver un Diagnostic Stratégique.\n\nVoici ma situation :\n\n1. Nom de mon entreprise :\n2. Secteur d'activité :\n3. Mon principal blocage actuel :\n4. Mon objectif sur les 3 à 6 prochains mois :\n5. Ai-je déjà investi dans le digital ? (Oui / Non)\n\nMerci de m'indiquer les prochaines étapes."),
+      external: true,
+    },
     details: {
       includes: [
         "Analyse complète de l'activité",
@@ -329,7 +333,9 @@ const SolutionsPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="/contact"
+                  href={buildWhatsAppUrl("Bonjour Sen'Optima,\n\nJe souhaite réserver un Diagnostic Stratégique.\n\nVoici ma situation :\n\n1. Nom de mon entreprise :\n2. Secteur d'activité :\n3. Mon principal blocage actuel :\n4. Mon objectif sur les 3 à 6 prochains mois :\n5. Ai-je déjà investi dans le digital ? (Oui / Non)\n\nMerci de m'indiquer les prochaines étapes.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md"
                 >
                   <ArrowRight className="w-4 h-4" />
