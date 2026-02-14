@@ -44,15 +44,15 @@ Merci de me tenir informé du lancement.`;
       <SEOHead
         title="Formation & Accompagnement | Sen'Optima"
         description="Inscrivez-vous pour être informé du lancement de nos formations digitales."
-        canonicalPath="/formation"
-      />
+        canonicalPath="/formation" />
+
       <div className="min-h-screen bg-background">
         <section className="py-16 md:py-24">
           <div className="container max-w-2xl">
             <Link
               to="/solutions"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors mb-8"
-            >
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors mb-8">
+
               <ArrowLeft className="w-4 h-4" />
               Retour aux solutions
             </Link>
@@ -60,8 +60,8 @@ Merci de me tenir informé du lancement.`;
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+              transition={{ duration: 0.5 }}>
+
               <span className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-accent/15 text-accent inline-block mb-4">
                 Bientôt disponible
               </span>
@@ -82,8 +82,8 @@ Merci de me tenir informé du lancement.`;
                     onChange={(e) => setNom(e.target.value)}
                     placeholder="Votre nom"
                     autoComplete="name"
-                    className={errors.nom ? "border-destructive" : ""}
-                  />
+                    className={errors.nom ? "border-destructive" : ""} />
+
                   {errors.nom && <p className="text-xs text-destructive mt-1">Ce champ est obligatoire</p>}
                 </div>
 
@@ -95,8 +95,8 @@ Merci de me tenir informé du lancement.`;
                     value={activite}
                     onChange={(e) => setActivite(e.target.value)}
                     placeholder="Votre activité actuelle"
-                    className={errors.activite ? "border-destructive" : ""}
-                  />
+                    className={errors.activite ? "border-destructive" : ""} />
+
                   {errors.activite && <p className="text-xs text-destructive mt-1">Ce champ est obligatoire</p>}
                 </div>
 
@@ -104,15 +104,15 @@ Merci de me tenir informé du lancement.`;
                 <div>
                   <Label className="text-foreground mb-3 block">Niveau *</Label>
                   <RadioGroup value={niveau} onValueChange={setNiveau} className="space-y-2">
-                    {["Débutant", "Intermédiaire"].map((opt) => (
-                      <label
-                        key={opt}
-                        className="flex items-center gap-3 p-3 rounded-xl border border-border/50 bg-card hover:border-accent/50 transition-colors cursor-pointer"
-                      >
+                    {["Débutant", "Intermédiaire"].map((opt) =>
+                    <label
+                      key={opt}
+                      className="flex items-center gap-3 p-3 rounded-xl border border-border/50 bg-card hover:border-accent/50 transition-colors cursor-pointer">
+
                         <RadioGroupItem value={opt} />
                         <span className="text-sm text-foreground">{opt}</span>
                       </label>
-                    ))}
+                    )}
                   </RadioGroup>
                   {errors.niveau && <p className="text-xs text-destructive mt-1">Veuillez sélectionner un niveau</p>}
                 </div>
@@ -126,15 +126,15 @@ Merci de me tenir informé du lancement.`;
                     onChange={(e) => setObjectif(e.target.value)}
                     placeholder="Ex: Créer un site, comprendre la publicité en ligne..."
                     rows={3}
-                    maxLength={500}
-                  />
+                    maxLength={500} />
+
                 </div>
 
                 {/* Submit */}
                 <button
                   onClick={handleSubmit}
-                  className="w-full inline-flex items-center justify-center gap-2 h-14 rounded-full bg-accent text-primary font-semibold text-base transition-all duration-300 hover:bg-accent/90 hover:shadow-lg active:scale-[0.98] mt-4"
-                >
+                  className="w-full inline-flex items-center justify-center gap-2 h-14 rounded-full text-primary font-semibold text-base transition-all duration-300 hover:shadow-lg active:scale-[0.98] mt-4 bg-primary-foreground">
+
                   <MessageCircle className="w-5 h-5" />
                   Être informé du lancement
                 </button>
@@ -143,8 +143,8 @@ Merci de me tenir informé du lancement.`;
           </div>
         </section>
       </div>
-    </>
-  );
+    </>);
+
 };
 
 export default FormationFormPage;
