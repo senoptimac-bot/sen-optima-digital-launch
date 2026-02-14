@@ -53,8 +53,8 @@ const TeamSection = () => {
             Notre Équipe
           </span>
           <h2 className="text-headline text-foreground mb-4">
-            Ceux qui portent{" "}
-            <span className="italic text-accent">votre ambition.</span>
+            L'équipe qui structure{" "}
+            <span className="italic text-accent">votre croissance.</span>
           </h2>
           <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto font-subheading">
             Pas d'anonymat. Pas de sous-traitance obscure. Voici les experts qui pilotent votre croissance.
