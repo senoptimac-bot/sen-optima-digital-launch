@@ -28,7 +28,7 @@ const teamMembers = [
   },
   {
     name: "Cheikh",
-    role: "Opérations & Growth",
+    role: "Opérations & Développement",
     tagline: "Le Moteur de l'Agence.",
     image: teamCheikh,
   },
