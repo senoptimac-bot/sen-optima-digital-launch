@@ -214,7 +214,7 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-6">
           <a
             href={offer.cta.href}
-            className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full btn-premium font-medium text-sm">
+            className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md">
               <ArrowRight className="w-4 h-4" />
               {offer.cta.label}
             </a>
@@ -316,7 +316,7 @@ const SolutionsPage = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/diagnostic"
-                  className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full btn-premium font-medium text-sm">
+                  className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md">
                   Commencer par un Diagnostic
                 </a>
                 <a
