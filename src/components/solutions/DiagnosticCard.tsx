@@ -9,8 +9,8 @@ const DiagnosticCard = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="group"
-    >
+      className="group">
+
       <div className="relative p-6 md:p-10 rounded-3xl bg-gradient-to-br from-primary to-primary/90 border border-accent/20 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_4px_40px_rgba(229,185,78,0.12)]">
 
         {/* Header */}
@@ -60,14 +60,14 @@ const DiagnosticCard = () => {
         {/* CTA */}
         <Link
           to="/diagnostic"
-          className="flex items-center justify-center gap-3 w-full h-14 rounded-full bg-accent text-primary font-semibold text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-[0_4px_20px_rgba(229,185,78,0.3)]"
-        >
-          Réserver mon Diagnostic (100 000 FCFA)
+          className="flex items-center justify-center gap-3 w-full h-14 rounded-full bg-accent text-primary font-semibold text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-[0_4px_20px_rgba(229,185,78,0.3)]">
+          Réserver mon Diagnostic
+
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
-    </motion.div>
-  );
+    </motion.div>);
+
 };
 
 export default DiagnosticCard;
