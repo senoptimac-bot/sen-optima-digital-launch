@@ -9,10 +9,10 @@ import teamCheikh from "@/assets/team-cheikh.svg";
 
 const teamMembers = [
   {
-    name: "Mandiaye",
-    role: "Stratégie & Vision",
-    tagline: "Le Gardien du Cap.",
-    image: teamMandiaye,
+    name: "Mohamed",
+    role: "Direction Créative",
+    tagline: "L'Art de Convaincre.",
+    image: teamMohamed,
   },
   {
     name: "Coura",
@@ -21,10 +21,10 @@ const teamMembers = [
     image: teamCoura,
   },
   {
-    name: "Mohamed",
-    role: "Direction Créative",
-    tagline: "L'Art de Convaincre.",
-    image: teamMohamed,
+    name: "Mandiaye",
+    role: "Stratégie & Vision",
+    tagline: "Le Gardien du Cap.",
+    image: teamMandiaye,
   },
   {
     name: "Cheikh",
