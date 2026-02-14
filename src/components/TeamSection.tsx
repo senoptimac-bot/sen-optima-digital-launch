@@ -1,28 +1,36 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { User, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import teamMandiaye from "@/assets/team-mandiaye.svg";
+import teamCoura from "@/assets/team-coura.svg";
+import teamMohamed from "@/assets/team-mohamed.svg";
+import teamCheikh from "@/assets/team-cheikh.svg";
 
 const teamMembers = [
   {
     name: "Mandiaye",
     role: "Stratégie & Vision",
     tagline: "Le Gardien du Cap.",
+    image: teamMandiaye,
   },
   {
     name: "Coura",
     role: "Lead Tech & Systèmes",
     tagline: "L'Architecte Invisible.",
+    image: teamCoura,
   },
   {
     name: "Mohamed",
     role: "Direction Créative",
     tagline: "L'Art de Convaincre.",
+    image: teamMohamed,
   },
   {
     name: "Cheikh",
     role: "Opérations & Growth",
     tagline: "Le Moteur de l'Agence.",
+    image: teamCheikh,
   },
 ];
 
@@ -68,19 +76,15 @@ const TeamSection = () => {
               <div className="rounded-3xl overflow-hidden card-cream">
                 {/* Image Container */}
                 <div 
-                  className="relative w-full bg-gradient-to-b from-secondary to-muted"
+                  className="relative w-full overflow-hidden"
                   style={{ aspectRatio: "4/3" }}
                 >
-                  {/* Placeholder - Gold User Icon */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <User 
-                      className="w-16 h-16 text-accent/30" 
-                      strokeWidth={1}
-                    />
-                    <span className="mt-2 text-xs text-accent/50 italic">
-                      Portrait à venir
-                    </span>
-                  </div>
+                  <img 
+                    src={member.image} 
+                    alt={`${member.name} - ${member.role}`}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
                 </div>
 
                 {/* Text Content */}
