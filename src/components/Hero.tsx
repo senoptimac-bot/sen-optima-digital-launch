@@ -104,7 +104,7 @@ const Hero = () => {
             
             {/* Main image container */}
             <div className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl">
-              <img src={heroCoverImage} alt="Consultant digital professionnel" className="w-full h-[300px] md:h-[400px] lg:h-[500px] object-cover object-center" loading="eager" />
+              <img src={heroCoverImage} alt="Consultant digital professionnel" className="w-full h-auto object-contain" loading="eager" />
               
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent" />
