@@ -79,7 +79,7 @@ const Hero = () => {
                 </Link>
               </Button>
 
-              <Button variant="ghost" size="lg" asChild className="gap-2 text-sm text-foreground hover:text-accent hover:bg-transparent">
+              <Button variant="outline" size="lg" asChild className="gap-2 text-sm rounded-full border-2 border-foreground/30 text-foreground bg-transparent hover:border-accent hover:text-accent transition-all duration-300 h-14 px-8">
                 <Link to="/services">
                   En savoir plus
                 </Link>
