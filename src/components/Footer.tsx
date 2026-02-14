@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail } from "lucide-react";
+import PremiumBackground from "@/components/PremiumBackground";
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
   const navLinks = [{
@@ -29,9 +30,9 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
     label: "Mentions Légales",
     href: "/mentions-legales"
   }];
-  return <footer ref={ref} className="relative overflow-hidden bg-background border-t border-border">
-      {/* Decorative gradient orb */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+  return <footer ref={ref} className="relative overflow-hidden border-t border-white/10">
+      {/* Premium animated background */}
+      <PremiumBackground />
       
       <div className="container relative z-10">
         {/* Main Content */}
