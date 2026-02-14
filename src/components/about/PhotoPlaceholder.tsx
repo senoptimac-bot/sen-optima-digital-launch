@@ -3,12 +3,14 @@ import { cn } from "@/lib/utils";
 
 interface PhotoPlaceholderProps {
   label?: string;
+  subtitle?: string;
   className?: string;
   aspectRatio?: "square" | "landscape" | "portrait";
 }
 
 const PhotoPlaceholder = ({ 
   label = "Photo à venir", 
+  subtitle = "Photo de l'équipe",
   className,
   aspectRatio = "landscape" 
 }: PhotoPlaceholderProps) => {
@@ -54,9 +56,11 @@ const PhotoPlaceholder = ({
         </p>
         
         {/* Subtle hint */}
-        <p className="text-xs text-muted-foreground/60 mt-1">
-          Photo de l'équipe
-        </p>
+        {subtitle ? (
+          <p className="text-xs text-muted-foreground/60 mt-1">
+            {subtitle}
+          </p>
+        ) : null}
       </div>
 
       {/* Corner accents */}

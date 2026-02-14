@@ -19,6 +19,7 @@ import ServicesPage from "./pages/ServicesPage";
 import SolutionsPage from "./pages/SolutionsPage";
 import SuccessPage from "./pages/SuccessPage";
 import AboutPage from "./pages/AboutPage";
+import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import MentionsLegalesPage from "./pages/MentionsLegalesPage";
@@ -165,6 +166,7 @@ const App = () => {
                     <Route path="/solutions" element={<SolutionsPage />} />
                     <Route path="/merci" element={<SuccessPage />} />
                     <Route path="/a-propos" element={<AboutPage />} />
+                    <Route path="/nos-projets" element={<ProjectsPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
                     <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />

@@ -32,6 +32,12 @@ export const SEO_CONFIG = {
     keywords: "à propos, équipe consulting, cabinet conseil, Dakar, Sénégal, vision 2050",
     canonicalPath: "/a-propos",
   },
+  projects: {
+    title: "Nos Projets Réalisés | Portfolio Sen'Optima",
+    description: "Découvrez les projets accompagnés par Sen'Optima : structuration, sites web, e-commerce, identité visuelle et automatisation à Dakar et au Sénégal.",
+    keywords: "projets réalisés, portfolio, études de cas, consulting Sénégal, réussites clients, Dakar",
+    canonicalPath: "/nos-projets",
+  },
   contact: {
     title: "Contactez-Nous",
     description: "Besoin d'un devis ou d'une information ? Contactez Sen'Optima par WhatsApp, email ou en présentiel à Dakar. Réponse sous 24h garantie.",

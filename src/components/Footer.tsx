@@ -10,6 +10,9 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
     label: "À Propos",
     href: "/a-propos"
   }, {
+    label: "Nos projets réalisés",
+    href: "/nos-projets"
+  }, {
     label: "Solutions",
     href: "/solutions"
   }, {
@@ -41,11 +44,11 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               <span className="text-accent"> prochaine étape</span>
             </h2>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="mailto:contact@senoptimaconsulting.com" className="group inline-flex items-center gap-2 px-5 py-3 bg-foreground text-background rounded-full text-sm font-medium hover:bg-foreground/90 transition-all duration-300">
+              <Link to="/solutions" className="group inline-flex items-center gap-2 px-5 py-3 bg-foreground text-background rounded-full text-sm font-medium hover:bg-foreground/90 transition-all duration-300">
                 <Mail className="w-4 h-4" />
-                Envoyer un Email
+                Lancer mon Diagnostic
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-              </a>
+              </Link>
             </div>
           </div>
 
