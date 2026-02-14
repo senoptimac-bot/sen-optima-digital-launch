@@ -16,7 +16,7 @@ const teamMembers = [
   },
   {
     name: "Coura",
-    role: "Lead Tech & Systèmes",
+    role: "Lead Tech & Architecture Systèmes",
     tagline: "L'Architecte Invisible.",
     image: teamCoura,
   },
