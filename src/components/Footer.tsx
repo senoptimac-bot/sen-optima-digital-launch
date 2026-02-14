@@ -10,9 +10,6 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
     label: "À Propos",
     href: "/a-propos"
   }, {
-    label: "Nos projets réalisés",
-    href: "/nos-projets"
-  }, {
     label: "Solutions",
     href: "/solutions"
   }, {
