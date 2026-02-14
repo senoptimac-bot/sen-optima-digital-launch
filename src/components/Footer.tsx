@@ -41,7 +41,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               <span className="text-accent"> prochaine étape</span>
             </h2>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/solutions" className="group inline-flex items-center gap-2 px-5 py-3 bg-accent text-primary rounded-full text-sm font-medium hover:bg-accent/90 transition-all duration-300">
+              <Link to="/diagnostic" className="group inline-flex items-center gap-2 px-5 py-3 bg-accent text-primary rounded-full text-sm font-medium hover:bg-accent/90 transition-all duration-300">
                 <Mail className="w-4 h-4" />
                 Lancer mon Diagnostic
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />

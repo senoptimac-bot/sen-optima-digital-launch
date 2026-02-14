@@ -86,6 +86,15 @@ ${closing}`;
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
+              {/* Welcome banner */}
+              <div className="mb-8 p-5 rounded-2xl border border-accent/30 bg-accent/5">
+                <p className="text-sm text-accent font-medium mb-1">Diagnostic Stratégique</p>
+                <p className="text-2xl md:text-3xl font-heading font-bold text-accent mb-2">100 000 FCFA</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Vous avez fait le bon choix. Complétez ce formulaire pour que nous puissions préparer votre session et vous accompagner au mieux.
+                </p>
+              </div>
+
               <h1 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-3">
                 Réserver un Diagnostic <span className="italic text-accent">Stratégique</span>
               </h1>
