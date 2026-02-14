@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"; 
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import { motion } from "framer-motion";
