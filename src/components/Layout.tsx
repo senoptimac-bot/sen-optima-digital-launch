@@ -42,8 +42,7 @@ const Layout = ({ children }: LayoutProps) => {
     window.scrollTo(0, 0);
   }, [pathname]);
   
-  // Hide footer on Solutions page (immersive funnel experience)
-  const hideFooter = pathname === "/solutions";
+  const hideFooter = false;
 
   return (
     <>
