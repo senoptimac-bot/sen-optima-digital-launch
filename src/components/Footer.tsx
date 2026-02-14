@@ -29,9 +29,9 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
     label: "Mentions Légales",
     href: "/mentions-legales"
   }];
-  return <footer ref={ref} className="relative overflow-hidden border-t border-white/10" style={{ background: 'linear-gradient(135deg, hsl(220 25% 15%), hsl(220 30% 6%))' }}>
+  return <footer ref={ref} className="relative overflow-hidden border-t border-white/10" style={{ background: 'linear-gradient(135deg, hsl(220 28% 13%), hsl(220 30% 5%))' }}>
       {/* Decorative gradient orb */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/8 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
       
       <div className="container relative z-10">
         {/* Main Content */}

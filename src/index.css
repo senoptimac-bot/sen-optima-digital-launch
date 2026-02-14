@@ -4,30 +4,30 @@
 
 @layer base {
   :root {
-    /* Light Cream/Beige Theme - Inspired by Starship template */
-    --background: 45 30% 96%;
-    --foreground: 220 25% 15%;
+    /* Dark Navy-Black Premium Theme */
+    --background: 220 30% 10%;
+    --foreground: 0 0% 95%;
 
-    --card: 45 25% 98%;
-    --card-foreground: 220 25% 15%;
+    --card: 220 28% 13%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 45 25% 98%;
-    --popover-foreground: 220 25% 15%;
+    --popover: 220 28% 13%;
+    --popover-foreground: 0 0% 95%;
 
-    /* Primary - Dark Navy for text */
-    --primary: 220 25% 15%;
-    --primary-foreground: 45 30% 96%;
+    /* Primary - Light for contrast on dark */
+    --primary: 0 0% 95%;
+    --primary-foreground: 220 30% 10%;
 
-    /* Secondary - Soft cream */
-    --secondary: 45 20% 92%;
-    --secondary-foreground: 220 25% 15%;
+    /* Secondary - Slightly lighter navy */
+    --secondary: 220 25% 16%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 45 15% 88%;
-    --muted-foreground: 220 15% 45%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 60%;
 
     /* Accent - Warm Golden Yellow (#E5B94E) */
     --accent: 43 75% 60%;
-    --accent-foreground: 220 25% 15%;
+    --accent-foreground: 220 30% 10%;
 
     /* Problem icons - Red/Orange */
     --problem: 0 84% 60%;
@@ -35,15 +35,15 @@
 
     /* Solution icons - Teal/Cyan */
     --solution: 175 60% 40%;
-    --solution-foreground: 45 30% 96%;
+    --solution-foreground: 0 0% 95%;
 
     /* Warning - Amber/Orange */
     --warning: 38 92% 50%;
-    --warning-foreground: 220 25% 15%;
+    --warning-foreground: 220 30% 10%;
 
-    /* CTA Success - Dark button */
-    --cta-success: 220 25% 15%;
-    --cta-success-foreground: 45 30% 96%;
+    /* CTA Success - Light button on dark */
+    --cta-success: 0 0% 95%;
+    --cta-success-foreground: 220 30% 10%;
 
     /* WhatsApp brand color */
     --whatsapp: 142 70% 49%;
@@ -52,8 +52,8 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 85%;
-    --input: 45 20% 92%;
+    --border: 220 20% 20%;
+    --input: 220 25% 16%;
     --ring: 43 75% 60%;
 
     --radius: 1rem;
@@ -63,10 +63,10 @@
     --gold-light: 43 80% 70%;
     --gold-dark: 43 70% 50%;
 
-    /* Cream gradient colors */
-    --cream-light: 50 40% 97%;
-    --cream-soft: 45 25% 93%;
-    --sage-light: 100 20% 92%;
+    /* Dark gradient colors */
+    --cream-light: 220 28% 12%;
+    --cream-soft: 220 25% 14%;
+    --sage-light: 220 20% 13%;
 
     /* Sidebar - Dark for contrast */
     --sidebar-background: 220 25% 15%;
