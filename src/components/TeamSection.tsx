@@ -9,27 +9,27 @@ import teamCheikh from "@/assets/team-cheikh.svg";
 
 const teamMembers = [
   {
-    name: "Mohamed Alpha Ndiaye",
-    role: "Stratégie Digitale & Direction Créative",
-    tagline: "Intervient sur la définition des angles marketing, la structuration des messages et la cohérence globale des prises de parole digitales. Il relie la stratégie à l'exécution visuelle et garantit un positionnement clair et différenciant.",
-    image: teamMohamed,
-  },
-  {
     name: "Mandiaye Sylla",
-    role: "Stratégie & Direction",
-    tagline: "Définit les orientations stratégiques et supervise la cohérence globale des projets. Responsable des décisions structurantes et de l'alignement croissance / rentabilité.",
+    role: "Direction & Stratégie Digitale",
+    tagline: "Définit les orientations stratégiques, les angles marketing et supervise les décisions structurantes.",
     image: teamMandiaye,
   },
   {
+    name: "Mohamed Alpha Ndiaye",
+    role: "Direction Créative & Exécution Digitale",
+    tagline: "Met en œuvre les stratégies définies et assure la cohérence visuelle et marketing des projets.",
+    image: teamMohamed,
+  },
+  {
     name: "Coura Dieye Diop",
-    role: "Lead Tech & Architecture Systèmes",
-    tagline: "Conçoit des infrastructures digitales robustes, rapides et évolutives. Garantit la stabilité, la performance et la sécurité des plateformes déployées.",
+    role: "Architecture & Systèmes",
+    tagline: "Conçoit et déploie les infrastructures digitales.",
     image: teamCoura,
   },
   {
     name: "Cheikh A. Tidiane Ndiour",
     role: "Opérations & Développement",
-    tagline: "Structure la prospection, le suivi client et l'optimisation des performances commerciales. Assure la fluidité entre stratégie, exécution et résultats.",
+    tagline: "Structure la prospection et le suivi des performances.",
     image: teamCheikh,
   },
 ];
