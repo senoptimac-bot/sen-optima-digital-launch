@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp } from "lucide-react";
 import presidentPhoto from "@/assets/president-senegal.webp";
+import equipePhoto from "@/assets/equipe-senoptima.svg";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
@@ -100,7 +101,7 @@ const AboutPage = () => {
               {/* Decorative background shape */}
               <div className="absolute -top-8 -right-8 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
               <div className="relative">
-                <PhotoPlaceholder label="Photo équipe à venir" aspectRatio="landscape" />
+                <img src={equipePhoto} alt="Équipe Sen'Optima" className="w-full h-auto rounded-[2rem] object-contain" />
               </div>
             </motion.div>
           </div>
