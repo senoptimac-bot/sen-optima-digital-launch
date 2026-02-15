@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "./Header";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
-import AmbientBackground from "./AmbientBackground";
+
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -36,17 +35,12 @@ const pageVariants = {
 
 const Layout = ({ children }: LayoutProps) => {
   const { pathname } = useLocation();
-
-  // Scroll to top on route change
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
   
   const hideFooter = false;
 
   return (
     <>
-      <AmbientBackground />
+      
       {/*
         Compact safe area under the fixed header (~80px).
       */}
