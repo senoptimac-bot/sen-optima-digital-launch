@@ -15,16 +15,16 @@ const teamMembers = [
     image: teamMohamed,
   },
   {
-    name: "Coura Dieye Diop",
-    role: "Lead Tech & Architecture Systèmes",
-    tagline: "Conçoit des infrastructures digitales robustes, rapides et évolutives. Garantit la stabilité, la performance et la sécurité des plateformes déployées.",
-    image: teamCoura,
-  },
-  {
     name: "Mandiaye Sylla",
     role: "Stratégie & Direction",
     tagline: "Définit les orientations stratégiques et supervise la cohérence globale des projets. Responsable des décisions structurantes et de l'alignement croissance / rentabilité.",
     image: teamMandiaye,
+  },
+  {
+    name: "Coura Dieye Diop",
+    role: "Lead Tech & Architecture Systèmes",
+    tagline: "Conçoit des infrastructures digitales robustes, rapides et évolutives. Garantit la stabilité, la performance et la sécurité des plateformes déployées.",
+    image: teamCoura,
   },
   {
     name: "Cheikh A. Tidiane Ndiour",
