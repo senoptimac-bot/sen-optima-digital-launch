@@ -17,7 +17,7 @@ const teamMembers = [
   {
     name: "Coura",
     role: "Lead Tech & Architecture Systèmes",
-    tagline: "L'Architecte Invisible.",
+    tagline: "Conçoit des infrastructures digitales robustes, rapides et évolutives. Garantit la stabilité, la performance et la sécurité des plateformes déployées.",
     image: teamCoura,
   },
   {
