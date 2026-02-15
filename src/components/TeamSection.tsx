@@ -9,7 +9,7 @@ import teamCheikh from "@/assets/team-cheikh.svg";
 
 const teamMembers = [
   {
-    name: "Mohamed",
+    name: "Mohamed Alpha Ndiaye",
     role: "Stratégie Digitale & Direction Créative",
     tagline: "Intervient sur la définition des angles marketing, la structuration des messages et la cohérence globale des prises de parole digitales. Il relie la stratégie à l'exécution visuelle et garantit un positionnement clair et différenciant.",
     image: teamMohamed,
