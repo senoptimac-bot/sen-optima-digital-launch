@@ -281,40 +281,40 @@ const SolutionsPage = () => {
         </section>
 
         {/* ── Section 3: Clarification Finale ── */}
-        <section className="py-16 md:py-24 bg-card/50 border-t border-border/30">
-          <div className="container max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-left">
-
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
-                Vous <span className="italic text-accent">hésitez</span> ?
-              </h2>
-              <p className="text-muted-foreground text-base md:text-lg mb-8 max-w-xl">
-                Si vous ne savez pas quelle solution choisir, le Diagnostic est le meilleur point de départ.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                
+        
 
 
 
 
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-[#25D366] text-white font-medium text-sm transition-all duration-300 hover:bg-[#20bd5a] hover:shadow-lg">
 
-                  <MessageCircle className="w-5 h-5" />
-                  Discuter sur WhatsApp
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
     </>);
 
