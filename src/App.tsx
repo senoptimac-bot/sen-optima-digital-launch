@@ -169,15 +169,7 @@ const App = () => {
                     <Route path="/solutions" element={<SolutionsPage />} />
                     <Route path="/merci" element={<SuccessPage />} />
                     <Route path="/a-propos" element={<AboutPage />} />
-                    <Route path="/nos-projets" element={
-                      <div className="min-h-screen flex items-center justify-center bg-background">
-                        <div className="text-center px-6">
-                          <h1 className="text-3xl font-heading font-bold text-foreground mb-4">Page en construction</h1>
-                          <p className="text-muted-foreground mb-6">Cette page sera bientôt disponible.</p>
-                          <a href="/" className="inline-flex items-center justify-center h-12 px-7 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90">Retour à l'accueil</a>
-                        </div>
-                      </div>
-                    } />
+                    <Route path="/nos-projets" element={<ProjectsPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
                     <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
