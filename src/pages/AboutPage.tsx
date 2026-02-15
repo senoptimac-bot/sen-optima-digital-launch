@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp } from "lucide-react";
 import presidentPhoto from "@/assets/president-senegal.webp";
-import equipePhoto from "@/assets/equipe-senoptima.svg";
+import equipePhoto from "@/assets/equipe-senoptima.jpg";
 import fondateurPhoto from "@/assets/fondateur.svg";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
