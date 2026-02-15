@@ -23,12 +23,12 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm transition-all duration-300 hover:border-border hover:shadow-lg"
     >
       <div className="relative flex-shrink-0 overflow-hidden">
-        <div className="aspect-[16/10] w-full">
+        <div className="aspect-[16/10] w-full bg-muted/30">
           {!imgError ? (
             <img
               src={project.image}
               alt={project.title}
-              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+              className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
               onError={() => setImgError(true)}
             />
           ) : (
