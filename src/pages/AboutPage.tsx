@@ -355,16 +355,6 @@ const AboutPage = () => {
             <p className="text-foreground/60 mb-8 lg:mb-10 leading-relaxed lg:leading-loose text-base lg:text-lg">
               Structurons ensemble votre projet pour qu'il tienne la route.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto bg-cta-success hover:bg-cta-success/90 text-cta-success-foreground px-8 lg:px-10 py-6 lg:py-7 text-base lg:text-lg font-semibold rounded-xl shadow-lg shadow-cta-success/20"
-            >
-              <Link to="/solutions">
-                Structurer mon projet maintenant
-                <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 ml-2" />
-              </Link>
-            </Button>
           </motion.div>
         </div>
       </section>
