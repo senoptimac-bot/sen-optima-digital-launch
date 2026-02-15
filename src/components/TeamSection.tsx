@@ -2,35 +2,35 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import teamMandiaye from "@/assets/team-mandiaye.svg";
-import teamCoura from "@/assets/team-coura.svg";
-import teamMohamed from "@/assets/team-mohamed.svg";
-import teamCheikh from "@/assets/team-cheikh.svg";
+import mandiayeImg from "@/assets/Mandiaye.jpg";
+import couraImg from "@/assets/Coura.jpg";
+import mohamedImg from "@/assets/Mohamed.jpg";
+import cheikhImg from "@/assets/Cheikh Ndiour.jpg";
 
 const teamMembers = [
   {
     name: "Mandiaye Sylla",
     role: "Direction & Stratégie Digitale",
     tagline: "Définit les orientations stratégiques, les angles marketing et supervise les décisions structurantes.",
-    image: teamMandiaye,
+    image: mandiayeImg,
   },
   {
     name: "Mohamed Alpha Ndiaye",
     role: "Direction Créative & Exécution Digitale",
     tagline: "Met en œuvre les stratégies définies et assure la cohérence visuelle et marketing des projets.",
-    image: teamMohamed,
+    image: mohamedImg,
   },
   {
     name: "Coura Dieye Diop",
     role: "Architecture & Systèmes",
     tagline: "Conçoit et déploie les infrastructures digitales.",
-    image: teamCoura,
+    image: couraImg,
   },
   {
     name: "Cheikh A. Tidiane Ndiour",
     role: "Opérations & Développement",
     tagline: "Structure la prospection et le suivi des performances.",
-    image: teamCheikh,
+    image: cheikhImg,
   },
 ];
 
