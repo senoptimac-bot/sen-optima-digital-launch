@@ -11,7 +11,7 @@ const teamMembers = [
   {
     name: "Mohamed",
     role: "Stratégie Digitale & Direction Créative",
-    tagline: "L'Art de Convaincre.",
+    tagline: "Intervient sur la définition des angles marketing, la structuration des messages et la cohérence globale des prises de parole digitales. Il relie la stratégie à l'exécution visuelle et garantit un positionnement clair et différenciant.",
     image: teamMohamed,
   },
   {
