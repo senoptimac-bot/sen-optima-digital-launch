@@ -21,7 +21,7 @@ const teamMembers = [
     image: teamCoura,
   },
   {
-    name: "Mandiaye",
+    name: "Mandiaye Sylla",
     role: "Stratégie & Direction",
     tagline: "Définit les orientations stratégiques et supervise la cohérence globale des projets. Responsable des décisions structurantes et de l'alignement croissance / rentabilité.",
     image: teamMandiaye,
