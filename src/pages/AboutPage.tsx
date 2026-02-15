@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp } from "lucide-react";
 import presidentPhoto from "@/assets/president-senegal.webp";
 import equipePhoto from "@/assets/equipe-senoptima.jpg";
+import fondateurPhoto from "@/assets/fondateur.svg";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
@@ -159,7 +160,7 @@ const AboutPage = () => {
             >
               <div className="absolute -top-6 -right-6 w-full h-full bg-accent/10 rounded-[2rem] transform rotate-3 hidden lg:block" />
               <div className="relative">
-                <PhotoPlaceholder label="Photo parcours à venir" aspectRatio="landscape" />
+                <img src={fondateurPhoto} alt="Le Fondateur de Sen'Optima" className="w-full h-auto rounded-[2rem] object-contain" />
               </div>
             </motion.div>
           </div>
