@@ -10,7 +10,7 @@ import teamCheikh from "@/assets/team-cheikh.svg";
 const teamMembers = [
   {
     name: "Mohamed",
-    role: "Direction Créative",
+    role: "Stratégie Digitale & Direction Créative",
     tagline: "L'Art de Convaincre.",
     image: teamMohamed,
   },
