@@ -23,7 +23,7 @@ const teamMembers = [
   {
     name: "Mandiaye",
     role: "Stratégie & Direction",
-    tagline: "Le Gardien du Cap.",
+    tagline: "Définit les orientations stratégiques et supervise la cohérence globale des projets. Responsable des décisions structurantes et de l'alignement croissance / rentabilité.",
     image: teamMandiaye,
   },
   {
