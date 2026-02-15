@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroCoverImage from "@/assets/equipe-senoptima.jpg";
+import heroCoverImage from "@/assets/equipe-senoptima.svg";
 const Hero = () => {
   return <section id="accueil" className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden">
       {/* Simple static background */}
