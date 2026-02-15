@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import mandiayeImg from "@/assets/Mandiaye.jpg";
 import couraImg from "@/assets/Coura.jpg";
 import mohamedImg from "@/assets/Mohamed.jpg";
-import cheikhImg from "@/assets/Cheikh Ndiour.jpg";
+import ndiourImg from "@/assets/Ndiour.jpg";
 
 const teamMembers = [
   {
@@ -30,7 +30,7 @@ const teamMembers = [
     name: "Cheikh A. Tidiane Ndiour",
     role: "Opérations & Développement",
     tagline: "Structure la prospection et le suivi des performances.",
-    image: cheikhImg,
+    image: ndiourImg,
   },
 ];
 
@@ -62,7 +62,7 @@ const TeamSection = () => {
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -70,23 +70,23 @@ const TeamSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="group"
+              className="group h-full flex"
             >
               {/* Card Container */}
-              <div className="rounded-3xl overflow-hidden card-cream">
-                {/* Image Container */}
-                <div className="relative w-full overflow-hidden bg-muted">
+              <div className="rounded-3xl overflow-hidden card-cream flex flex-col h-full w-full">
+                {/* Image Container - même hauteur pour toutes les cartes */}
+                <div className="relative w-full overflow-hidden bg-muted aspect-[3/4] shrink-0">
                   <img 
                     src={member.image} 
                     alt={`${member.name} - ${member.role}`}
-                    className="w-full h-auto object-contain"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                     decoding="async"
                   />
                 </div>
 
                 {/* Text Content */}
-                <div className="p-5 bg-card">
+                <div className="p-5 bg-card flex-1 flex flex-col min-h-[140px]">
                   <h3 className="text-xl font-heading font-bold text-foreground mb-1 group-hover:text-accent transition-colors duration-300">
                     {member.name}
                   </h3>
