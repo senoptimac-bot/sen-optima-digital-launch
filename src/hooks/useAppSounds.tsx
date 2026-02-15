@@ -29,16 +29,16 @@ const preloadAudio = () => {
   
   try {
     startupAudio = new Audio('/sounds/startup.mp3');
-    startupAudio.volume = 0.3; // 30% volume
-    startupAudio.preload = 'auto';
+    startupAudio.volume = 0.3;
+    startupAudio.preload = 'none';
     
     clickAudio = new Audio('/sounds/click.mp3');
-    clickAudio.volume = 0.25; // 25% volume
-    clickAudio.preload = 'auto';
+    clickAudio.volume = 0.25;
+    clickAudio.preload = 'none';
     
     successAudio = new Audio('/sounds/success.mp3');
-    successAudio.volume = 0.3; // 30% volume
-    successAudio.preload = 'auto';
+    successAudio.volume = 0.3;
+    successAudio.preload = 'none';
   } catch {
     // Audio files not available - silent fail (no logging in prod)
   }

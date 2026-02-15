@@ -13,5 +13,5 @@ export { default as FinalCTA } from "./FinalCTA";
 export { default as DiagnosticPayment } from "./DiagnosticPayment";
 export { default as DiagnosticUserForm } from "./DiagnosticUserForm";
 export { default as DiagnosticQuiz } from "./DiagnosticQuiz";
-export { default as DiagnosticProcessing } from "./DiagnosticProcessing";
+
 export { default as DiagnosticResults } from "./DiagnosticResults";
