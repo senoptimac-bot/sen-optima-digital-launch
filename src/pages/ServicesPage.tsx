@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket, Globe, Zap, Eye, Handshake, TrendingUp, MessageCircle, Target } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
+import Services from "@/components/Services";
 import ServiceCard from "@/components/services/ServiceCard";
 import PhilosophyCard from "@/components/services/PhilosophyCard";
 import BackButton from "@/components/BackButton";
@@ -163,7 +164,7 @@ const ServicesPage = () => {
                   asChild
                   className="gap-2 text-sm text-foreground hover:text-accent hover:bg-transparent"
                 >
-                  <a href="#services">
+                  <a href="#piliers">
                     Découvrir nos axes
                   </a>
                 </Button>
@@ -216,8 +217,11 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* SERVICES - Modern Cards */}
-      <section id="services" className="py-20 md:py-28 bg-background relative overflow-hidden">
+      {/* Nos Services - 4 Bento Cards (ex-accueil) */}
+      <Services />
+
+      {/* 4 Piliers Stratégiques - Modern Cards */}
+      <section id="piliers" className="py-20 md:py-28 bg-background relative overflow-hidden">
         <div className="container px-5 md:px-8 relative z-10">
           {/* Section Header */}
           <motion.div

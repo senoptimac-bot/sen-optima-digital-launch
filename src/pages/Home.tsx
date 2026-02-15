@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import Hero from "@/components/Hero";
 import MarqueeSection from "@/components/MarqueeSection";
 import MirrorSection from "@/components/MirrorSection";
 import AdviceSection from "@/components/AdviceSection";
-import Services from "@/components/Services";
+import { Button } from "@/components/ui/button";
 import IdentitySection from "@/components/IdentitySection";
 import PhilosophySection from "@/components/PhilosophySection";
 import TeamSection from "@/components/TeamSection";
@@ -33,8 +36,30 @@ const Home = () => {
       {/* 4. Error #1 (Text Block "TikTok") */}
       <AdviceSection />
       
-      {/* 5. Services (4 Bento Cards) */}
-      <Services />
+      {/* 5. CTA Voir nos services */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="py-16 md:py-20 bg-background"
+      >
+        <div className="container text-center">
+          <p className="text-muted-foreground mb-6">
+            Des solutions pour structurer et développer votre présence digitale.
+          </p>
+          <Button
+            variant="outline"
+            size="lg"
+            asChild
+            className="gap-2 text-sm rounded-full border-2 border-foreground/30 text-foreground bg-transparent hover:border-accent hover:text-accent transition-all duration-300 h-14 px-8"
+          >
+            <Link to="/services">
+              Voir nos services
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </Button>
+        </div>
+      </motion.section>
       
       {/* 6. Differentiation (Comparison Red vs Gold) */}
       <IdentitySection />
