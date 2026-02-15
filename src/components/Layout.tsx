@@ -64,7 +64,7 @@ const Layout = ({ children }: LayoutProps) => {
           </motion.div>
         </AnimatePresence>
         {!hideFooter && <Footer />}
-        {!hideFooter && <WhatsAppButton />}
+        
       </main>
     </>
   );
