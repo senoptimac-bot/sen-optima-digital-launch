@@ -1,4 +1,4 @@
-import { useState } from "react"; 
+import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import { motion } from "framer-motion";
@@ -86,9 +86,9 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
         className={cn(
           "relative p-6 md:p-8 rounded-3xl transition-all duration-300 ease-out",
           "bg-gradient-to-br from-primary to-primary/90 border-2 border-transparent",
-          expanded
-            ? "border-accent/60 shadow-[0_0_30px_rgba(229,185,78,0.3)]"
-            : "hover:border-accent/60 hover:shadow-[0_0_30px_rgba(34,52,80,0.5)] hover:translate-y-[-8px]"
+          expanded ?
+          "border-accent/60 shadow-[0_0_30px_rgba(229,185,78,0.3)]" :
+          "hover:border-accent/60 hover:shadow-[0_0_30px_rgba(34,52,80,0.5)] hover:translate-y-[-8px]"
         )}>
 
         {/* Header Row */}
@@ -102,11 +102,11 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
         </div>
 
         {/* Badge */}
-        {"badge" in offer && offer.badge && (
-          <span className="inline-block text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-accent/20 text-accent mb-4">
+        {"badge" in offer && offer.badge &&
+        <span className="inline-block text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-accent/20 text-accent mb-4">
             {offer.badge}
           </span>
-        )}
+        }
 
         {/* Title */}
         <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-4 leading-tight">
@@ -119,12 +119,12 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
             Pour qui
           </span>
           <ul className="space-y-1.5">
-            {offer.forWho.map((item, i) => (
-              <li key={i} className="text-sm text-white/75 flex items-start gap-2">
+            {offer.forWho.map((item, i) =>
+            <li key={i} className="text-sm text-white/75 flex items-start gap-2">
                 <span className="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" />
                 {item}
               </li>
-            ))}
+            )}
           </ul>
         </div>
 
@@ -137,14 +137,14 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
         </div>
 
         {/* Result */}
-        {offer.result && (
-          <div className="mb-4">
+        {offer.result &&
+        <div className="mb-4">
             <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-1">
               Résultat
             </span>
             <p className="text-sm text-white font-medium">{offer.result}</p>
           </div>
-        )}
+        }
 
         {/* Expanded Details */}
         <motion.div
@@ -162,12 +162,12 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
                 {offer.id === "formation" ? "Programme en préparation" : "Ce que peut inclure la mise en place"}
               </span>
               <ul className="space-y-2">
-                {offer.details.includes.map((item, i) => (
-                  <li key={i} className="text-sm text-white/75 flex items-start gap-2">
+                {offer.details.includes.map((item, i) =>
+                <li key={i} className="text-sm text-white/75 flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 shrink-0" />
                     {item}
                   </li>
-                ))}
+                )}
               </ul>
             </div>
 
@@ -176,12 +176,12 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
                 {offer.id === "formation" ? "Note" : "Tarification"}
               </span>
               <ul className="space-y-2">
-                {offer.details.outcomes.map((item, i) => (
-                  <li key={i} className="text-sm text-white/80 flex items-start gap-2">
+                {offer.details.outcomes.map((item, i) =>
+                <li key={i} className="text-sm text-white/80 flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
                     {item}
                   </li>
-                ))}
+                )}
               </ul>
             </div>
           </div>
@@ -200,9 +200,9 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
             onClick={() => setExpanded(!expanded)}
             className={cn(
               "inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 text-sm font-medium transition-all duration-300",
-              expanded
-                ? "border-accent/40 text-white bg-white/10"
-                : "border-white/20 text-white hover:border-accent/50"
+              expanded ?
+              "border-accent/40 text-white bg-white/10" :
+              "border-white/20 text-white hover:border-accent/50"
             )}>
             {expanded ? "Voir moins" : "Voir plus"}
             <ChevronDown
@@ -218,8 +218,8 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
           <ArrowUpRight className="w-5 h-5" />
         </div>
       </div>
-    </motion.div>
-  );
+    </motion.div>);
+
 };
 
 /* ─── Page ─── */
@@ -297,11 +297,11 @@ const SolutionsPage = () => {
                 Si vous ne savez pas quelle solution choisir, le Diagnostic est le meilleur point de départ.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="/diagnostic"
-                  className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md">
-                  Commencer par un Diagnostic
-                </a>
+                
+
+
+
+
                 <a
                   href={whatsappUrl}
                   target="_blank"
