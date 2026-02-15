@@ -27,7 +27,7 @@ const teamMembers = [
     image: teamMandiaye,
   },
   {
-    name: "Cheikh",
+    name: "Cheikh A. Tidiane Ndiour",
     role: "Opérations & Développement",
     tagline: "Structure la prospection, le suivi client et l'optimisation des performances commerciales. Assure la fluidité entre stratégie, exécution et résultats.",
     image: teamCheikh,
