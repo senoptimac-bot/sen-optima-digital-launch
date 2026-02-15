@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroCoverImage from "@/assets/equipe-senoptima.svg";
+import heroCoverImage from "@/assets/hero-cover-new.svg";
 const Hero = () => {
   return <section id="accueil" className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden">
       {/* Simple static background */}
@@ -111,27 +111,27 @@ const Hero = () => {
             </div>
 
             {/* Floating notification card */}
-            <motion.div initial={{
-            opacity: 0,
-            x: -20
-          }} animate={{
-            opacity: 1,
-            x: 0
-          }} transition={{
-            duration: 0.5,
-            delay: 0.4
-          }} className="absolute -left-4 lg:-left-8 bottom-10 lg:bottom-20 bg-card rounded-2xl p-3 lg:p-4 shadow-xl border border-border">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-accent flex items-center justify-center">
-                  <span className="text-accent-foreground text-xs lg:text-sm font-bold">✓</span>
-                </div>
-                <div>
-                  
-                  <p className="text-base lg:text-lg font-bold text-foreground">+150%</p>
-                  <p className="text-[10px] lg:text-xs text-primary-foreground">Croissance moyenne</p>
-                </div>
-              </div>
-            </motion.div>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </motion.div>
         </div>
       </div>
