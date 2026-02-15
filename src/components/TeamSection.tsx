@@ -15,7 +15,7 @@ const teamMembers = [
     image: teamMohamed,
   },
   {
-    name: "Coura",
+    name: "Mohamed Alpha Ndiaye",
     role: "Lead Tech & Architecture Systèmes",
     tagline: "Conçoit des infrastructures digitales robustes, rapides et évolutives. Garantit la stabilité, la performance et la sécurité des plateformes déployées.",
     image: teamCoura,
