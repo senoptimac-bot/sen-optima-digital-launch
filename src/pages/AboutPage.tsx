@@ -53,59 +53,58 @@ const AboutPage = () => {
           {/* Back Button */}
           <BackButton />
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+          {/* Photo en haut */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="mb-10 lg:mb-14"
+          >
+            <div className="relative">
+              <div className="absolute -top-6 -right-6 w-full h-full bg-accent/10 rounded-[2rem] transform rotate-3 hidden lg:block" />
+              <img src={equipePhoto} alt="Équipe Sen'Optima" className="relative w-full aspect-[16/9] rounded-[2rem] object-cover border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="eager" decoding="async" />
+            </div>
+          </motion.div>
+
+          {/* Titre et contenu */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-3xl"
+          >
+            {/* Badge */}
+            <span className="badge-accent mb-6 lg:mb-8">
+              À Propos
+            </span>
+
+            {/* Title */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-foreground leading-tight mb-6 lg:mb-8">
+              L'Expertise de la <span className="italic text-accent">Grande Entreprise</span>,
+              <span className="block mt-1 lg:mt-2">adaptée à votre Projet.</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed lg:leading-loose max-w-2xl mb-8">
+              Sen'Optima est né d'un constat : les porteurs de projets échouent souvent 
+              par manque de structure, pas par manque de talent. Nous vous apportons 
+              la rigueur et les méthodes qui font le succès des entreprises établies.
+            </p>
+
+            {/* CTA */}
+            <Button
+              asChild
+              size="lg"
+              className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
             >
-              {/* Badge */}
-              <span className="badge-accent mb-6 lg:mb-8">
-                À Propos
-              </span>
-
-              {/* Title */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-foreground leading-tight mb-6 lg:mb-8">
-                L'Expertise de la <span className="italic text-accent">Grande Entreprise</span>,
-                <span className="block mt-1 lg:mt-2">adaptée à votre Projet.</span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed lg:leading-loose max-w-2xl mb-8">
-                Sen'Optima est né d'un constat : les porteurs de projets échouent souvent 
-                par manque de structure, pas par manque de talent. Nous vous apportons 
-                la rigueur et les méthodes qui font le succès des entreprises établies.
-              </p>
-
-              {/* CTA */}
-              <Button
-                asChild
-                size="lg"
-                className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
-              >
-                <Link to="/solutions">
-                  Découvrir nos solutions
-                  <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </Link>
-              </Button>
-            </motion.div>
-
-            {/* Photo Placeholder */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
-            >
-              {/* Decorative background shape */}
-              <div className="absolute -top-8 -right-8 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
-              <div className="relative">
-                <img src={equipePhoto} alt="Équipe Sen'Optima" className="w-full aspect-[16/9] rounded-[2rem] object-cover border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="eager" decoding="async" />
-              </div>
-            </motion.div>
-          </div>
+              <Link to="/solutions">
+                Découvrir nos solutions
+                <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
