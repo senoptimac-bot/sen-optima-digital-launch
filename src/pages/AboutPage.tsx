@@ -102,7 +102,7 @@ const AboutPage = () => {
               {/* Decorative background shape */}
               <div className="absolute -top-8 -right-8 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
               <div className="relative">
-                <img src={equipePhoto} alt="Équipe Sen'Optima" className="w-full h-auto rounded-[2rem] object-contain border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="eager" decoding="async" />
+                <img src={equipePhoto} alt="Équipe Sen'Optima" className="w-full aspect-[16/9] rounded-[2rem] object-cover border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="eager" decoding="async" />
               </div>
             </motion.div>
           </div>
