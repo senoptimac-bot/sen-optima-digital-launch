@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroCoverImage from "@/assets/hero-mouhamed.jpg";
+import heroCoverImage from "@/assets/equipe-senoptima.jpg";
 const Hero = () => {
   return <section id="accueil" className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden">
       {/* Simple static background */}
@@ -104,7 +104,7 @@ const Hero = () => {
             
             {/* Main image container */}
             <div className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl">
-              <img src={heroCoverImage} alt="Consultant digital professionnel" className="w-full h-auto object-contain" loading="eager" />
+              <img src={heroCoverImage} alt="Équipe Sen'Optima Consulting" className="w-full aspect-[16/9] object-cover" loading="eager" />
               
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent" />
