@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp } from "lucide-react";
 import presidentPhoto from "@/assets/president-senegal.webp";
 import equipePhoto from "@/assets/equipe-senoptima.jpg";
-import fondateurPhoto from "@/assets/fondateur.svg";
+import fondateurPhoto from "@/assets/fondateur.jpg";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
