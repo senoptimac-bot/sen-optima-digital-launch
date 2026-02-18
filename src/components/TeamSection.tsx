@@ -6,6 +6,7 @@ import mandiayeImg from "@/assets/Mandiaye.jpg";
 import couraImg from "@/assets/Coura.jpg";
 import mohamedImg from "@/assets/Mohamed.jpg";
 import ndiourImg from "@/assets/Ndiour.jpg";
+import djibyImg from "@/assets/djiby.jpeg";
 
 const teamMembers = [
   {
@@ -31,6 +32,12 @@ const teamMembers = [
     role: "Opérations & Développement",
     tagline: "Structure la prospection et le suivi des performances.",
     image: ndiourImg,
+  },
+  {
+    name: "Djiby",
+    role: "Pilote du Pôle Production Visuelle",
+    tagline: "Pilote la production visuelle et la cohérence créative des contenus.",
+    image: djibyImg,
   },
 ];
 
@@ -62,7 +69,7 @@ const TeamSection = () => {
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -72,10 +79,10 @@ const TeamSection = () => {
               transition={{ duration: 0.4, delay: index * 0.08 }}
               className="group h-full flex"
             >
-              {/* Card Container */}
+              {/* Card Container - hauteur fixe pour toutes les cartes */}
               <div className="rounded-3xl overflow-hidden card-cream flex flex-col h-full w-full">
-                {/* Image Container - même hauteur pour toutes les cartes */}
-                <div className="relative w-full overflow-hidden bg-muted aspect-[3/4] shrink-0">
+                {/* Image - même ratio pour toutes */}
+                <div className="relative w-full overflow-hidden bg-muted aspect-[3/4] shrink-0 flex-none">
                   <img 
                     src={member.image} 
                     alt={`${member.name} - ${member.role}`}
@@ -85,15 +92,15 @@ const TeamSection = () => {
                   />
                 </div>
 
-                {/* Text Content */}
-                <div className="p-5 bg-card flex-1 flex flex-col min-h-[140px]">
-                  <h3 className="text-xl font-heading font-bold text-foreground mb-1 group-hover:text-accent transition-colors duration-300">
+                {/* Text - hauteur fixe identique pour toutes les cartes */}
+                <div className="p-5 bg-card flex-1 flex flex-col min-h-[170px] h-[170px]">
+                  <h3 className="text-xl font-heading font-bold text-foreground mb-1 group-hover:text-accent transition-colors duration-300 truncate" title={member.name}>
                     {member.name}
                   </h3>
-                  <p className="text-sm text-accent font-subheading mb-2">
+                  <p className="text-sm text-accent font-subheading mb-2 line-clamp-2" title={member.role}>
                     {member.role}
                   </p>
-                  <p className="text-sm text-muted-foreground italic">
+                  <p className="text-sm text-muted-foreground italic line-clamp-3 flex-1" title={member.tagline}>
                     "{member.tagline}"
                   </p>
                 </div>
