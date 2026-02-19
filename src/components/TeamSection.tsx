@@ -34,9 +34,9 @@ const teamMembers = [
     image: ndiourImg,
   },
   {
-    name: "Djiby",
-    role: "Pilote du Pôle Production Visuelle",
-    tagline: "Pilote la production visuelle et la cohérence créative des contenus.",
+    name: "Djiby Ndiaye",
+    role: "Responsable du Pôle Production Visuelle",
+    tagline: "Responsable de la production visuelle et de la cohérence créative des contenus.",
     image: djibyImg,
   },
 ];
