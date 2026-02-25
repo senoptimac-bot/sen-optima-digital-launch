@@ -108,9 +108,35 @@ const DiagnosticHero = ({
             duration: 0.5,
             delay: 0.15,
             ease: [0.22, 1, 0.36, 1]
-          }} className="text-body-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
+          }} className="text-body-lg text-muted-foreground max-w-lg mb-4 leading-relaxed">
               Une évaluation claire et honnête de la solidité réelle de votre activité.
             </motion.p>
+
+            {/* Inclusions premium */}
+            <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.5,
+            delay: 0.18,
+            ease: [0.22, 1, 0.36, 1]
+          }} className="mb-8">
+              <p className="text-xs uppercase tracking-wider font-semibold text-accent mb-3">Incluant</p>
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-2 mb-4">
+                {["Audit positionnement", "Analyse rentabilité", "Cartographie des opportunités", "Plan d'action 90 jours"].map((item, i) => (
+                  <li key={i} className="text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-sm text-accent font-medium">
+                Livrable PDF + restitution stratégique 1h30
+              </p>
+            </motion.div>
 
             {/* Pricing - Human text */}
             <motion.div initial={{

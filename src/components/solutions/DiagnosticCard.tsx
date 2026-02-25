@@ -123,9 +123,25 @@ const DiagnosticCard = () => {
         </div>
 
         {/* Description */}
-        <p className="text-sm text-white/70 mb-6 leading-relaxed">
+        <p className="text-sm text-white/70 mb-4 leading-relaxed">
           Un audit complet de votre activité pour identifier les blocages, clarifier votre positionnement et définir un plan d'action structuré.
         </p>
+
+        {/* Inclusions premium */}
+        <div className="mb-6">
+          <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-2">Incluant</span>
+          <ul className="grid grid-cols-2 gap-x-3 gap-y-1.5 mb-3">
+            {["Audit positionnement", "Analyse rentabilité", "Cartographie des opportunités", "Plan d'action 90 jours"].map((item, i) => (
+              <li key={i} className="text-sm text-white/75 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent/60 shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="text-sm text-accent/90 font-medium">
+            Livrable PDF + restitution stratégique 1h30
+          </p>
+        </div>
 
         {/* Format */}
         <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-white/10">
