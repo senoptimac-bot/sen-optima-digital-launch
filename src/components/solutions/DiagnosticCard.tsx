@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, Clock, Video, MapPin, ArrowRight, ChevronDown, Check, X } from "lucide-react";
+import { Search, Clock, Video, MapPin, ArrowRight, ChevronDown, Check, X, FileText, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+
+const inclusions = [
+  "Audit positionnement",
+  "Analyse rentabilité",
+  "Cartographie des opportunités",
+  "Plan d'action 90 jours",
+];
 
 const forWho = [
   "Aux entrepreneurs avec une activité déjà lancée",
@@ -43,24 +50,6 @@ const sections = [
     ),
   },
   {
-    title: "Ce que vous obtenez concrètement",
-    content: (
-      <>
-        <ul className="space-y-1.5 mb-4">
-          {["Une analyse claire de votre situation", "Une identification précise des failles", "Un plan d'action priorisé", "Une orientation stratégique adaptée au marché sénégalais"].map((item, i) => (
-            <li key={i} className="text-sm text-white/75 flex items-start gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent/60 mt-1.5 shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p className="text-sm text-white/60 italic leading-relaxed">
-          Ce n'est pas un appel découverte. C'est un travail structuré.
-        </p>
-      </>
-    ),
-  },
-  {
     title: "Pourquoi est-il payant",
     content: (
       <>
@@ -97,133 +86,166 @@ const DiagnosticCard = () => {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="group">
 
-      <div className="relative p-6 md:p-10 rounded-3xl bg-gradient-to-br from-primary to-primary/90 border border-accent/20 transition-all duration-300 hover:border-accent/40 hover:shadow-[0_4px_40px_rgba(229,185,78,0.12)]">
+      <div className={cn(
+        "relative rounded-3xl bg-gradient-to-br from-primary to-primary/90 border-2 transition-all duration-300 overflow-hidden",
+        expanded
+          ? "border-accent/50 shadow-[0_0_40px_rgba(229,185,78,0.15)]"
+          : "border-accent/20 hover:border-accent/40 hover:shadow-[0_4px_40px_rgba(229,185,78,0.12)]"
+      )}>
 
-        {/* Header */}
-        <div className="flex items-start justify-between mb-6">
-          <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center">
-            <Search className="w-7 h-7 text-white" />
+        {/* ── Top section: Header + Price + Inclusions ── */}
+        <div className="p-6 md:p-10 pb-0 md:pb-0">
+
+          {/* Header row */}
+          <div className="flex items-start justify-between mb-5">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-accent/15 flex items-center justify-center">
+                <Search className="w-6 h-6 text-accent" />
+              </div>
+              <div>
+                <span className="text-[10px] uppercase tracking-wider font-semibold text-accent/80 block mb-0.5">
+                  Étape fondamentale
+                </span>
+                <h3 className="text-xl md:text-2xl font-heading font-bold text-white leading-tight">
+                  Diagnostic Premium
+                </h3>
+              </div>
+            </div>
+            <span className="text-3xl font-heading font-bold text-accent/40 hidden md:block">01</span>
           </div>
-          <span className="text-3xl font-heading font-bold text-accent opacity-60">01</span>
-        </div>
 
-        {/* Title */}
-        <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-2 leading-tight">
-          Diagnostic Stratégique
-        </h3>
-
-        {/* Price */}
-        <div className="mb-6">
-          <span className="text-3xl md:text-4xl font-heading font-bold text-accent">
-            100 000 FCFA
-          </span>
-          <p className="text-xs text-white/50 mt-1.5 leading-relaxed">
-            Montant déductible en cas de mission validée.
+          {/* Description */}
+          <p className="text-sm text-white/65 leading-relaxed mb-6 max-w-lg">
+            Un audit complet de votre activité pour identifier les blocages, clarifier votre positionnement et définir un plan d'action structuré.
           </p>
+
+          {/* Price block */}
+          <div className="flex items-end gap-4 mb-6">
+            <span className="text-4xl md:text-5xl font-heading font-bold text-accent leading-none">
+              100 000
+            </span>
+            <span className="text-lg font-heading font-semibold text-accent/70 pb-1">FCFA</span>
+          </div>
         </div>
 
-        {/* Description */}
-        <p className="text-sm text-white/70 mb-4 leading-relaxed">
-          Un audit complet de votre activité pour identifier les blocages, clarifier votre positionnement et définir un plan d'action structuré.
-        </p>
-
-        {/* Inclusions premium */}
-        <div className="mb-6">
-          <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-2">Incluant</span>
-          <ul className="grid grid-cols-2 gap-x-3 gap-y-1.5 mb-3">
-            {["Audit positionnement", "Analyse rentabilité", "Cartographie des opportunités", "Plan d'action 90 jours"].map((item, i) => (
-              <li key={i} className="text-sm text-white/75 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent/60 shrink-0" />
-                {item}
+        {/* ── Inclusions strip ── */}
+        <div className="mx-6 md:mx-10 p-5 rounded-2xl bg-white/[0.06] border border-white/[0.08] mb-6">
+          <div className="flex items-center gap-2 mb-4">
+            <Star className="w-4 h-4 text-accent" />
+            <span className="text-xs uppercase tracking-wider font-semibold text-accent">
+              Incluant
+            </span>
+          </div>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            {inclusions.map((item, i) => (
+              <li key={i} className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 text-accent" />
+                </div>
+                <span className="text-sm text-white/80 font-medium">{item}</span>
               </li>
             ))}
           </ul>
-          <p className="text-sm text-accent/90 font-medium">
-            Livrable PDF + restitution stratégique 1h30
-          </p>
-        </div>
-
-        {/* Format */}
-        <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-white/10">
-          <div className="flex items-center gap-1.5 text-sm text-white/70">
-            <Clock className="w-4 h-4 text-accent/70" />
-            <span>60 à 90 minutes</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-sm text-white/70">
-            <Video className="w-4 h-4 text-accent/70" />
-            <span>Visio</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-sm text-white/70">
-            <MapPin className="w-4 h-4 text-accent/70" />
-            <span>Présentiel (Dakar)</span>
+          <div className="flex items-center gap-2.5 pt-3 border-t border-white/[0.08]">
+            <FileText className="w-4 h-4 text-accent/70" />
+            <span className="text-sm text-accent/90 font-medium">
+              Livrable PDF + restitution stratégique 1h30
+            </span>
           </div>
         </div>
 
-        {/* Expandable toggle */}
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className={cn(
-            "flex items-center gap-2 text-sm font-medium transition-all duration-300 mb-6",
-            expanded ? "text-accent" : "text-white/60 hover:text-white/80"
-          )}>
-          {expanded ? "Voir moins" : "Voir plus sur le Diagnostic"}
-          <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", expanded && "rotate-180")} />
-        </button>
-
-        {/* Expandable content */}
-        <motion.div
-          initial={false}
-          animate={{ height: expanded ? "auto" : 0, opacity: expanded ? 1 : 0 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="overflow-hidden">
-
-          <div className="space-y-6 pb-6 border-b border-white/10 mb-6">
-            {/* For who / Not for who */}
-            <div>
-              <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-3">
-                À qui s'adresse ce Diagnostic
-              </span>
-              <ul className="space-y-2 mb-4">
-                {forWho.map((item, i) => (
-                  <li key={i} className="text-sm text-white/75 flex items-start gap-2">
-                    <div className="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-green-400" />
-                    </div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <ul className="space-y-2">
-                {notForWho.map((item, i) => (
-                  <li key={i} className="text-sm text-white/50 flex items-start gap-2">
-                    <div className="w-5 h-5 rounded-full bg-destructive/15 flex items-center justify-center shrink-0 mt-0.5">
-                      <X className="w-3 h-3 text-destructive/70" />
-                    </div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+        {/* ── Format badges ── */}
+        <div className="flex flex-wrap items-center gap-2 px-6 md:px-10 mb-6">
+          {[
+            { icon: Clock, label: "60–90 min" },
+            { icon: Video, label: "Visio" },
+            { icon: MapPin, label: "Présentiel (Dakar)" },
+          ].map(({ icon: Icon, label }, i) => (
+            <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.08]">
+              <Icon className="w-3.5 h-3.5 text-accent/60" />
+              <span className="text-xs text-white/60 font-medium">{label}</span>
             </div>
+          ))}
+        </div>
 
-            {/* Sections */}
-            {sections.map((section, i) => (
-              <div key={i} className="pt-4 border-t border-white/5">
+        {/* ── Expandable section ── */}
+        <div className="px-6 md:px-10">
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className={cn(
+              "flex items-center gap-2 text-sm font-medium transition-all duration-300 py-3",
+              expanded ? "text-accent" : "text-white/50 hover:text-white/70"
+            )}>
+            {expanded ? "Voir moins" : "En savoir plus sur le Diagnostic"}
+            <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", expanded && "rotate-180")} />
+          </button>
+
+          <motion.div
+            initial={false}
+            animate={{ height: expanded ? "auto" : 0, opacity: expanded ? 1 : 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden">
+
+            <div className="space-y-6 pb-6">
+              {/* For who / Not for who */}
+              <div className="p-5 rounded-2xl bg-white/[0.04] border border-white/[0.06]">
                 <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-3">
-                  {section.title}
+                  À qui s'adresse ce Diagnostic
                 </span>
-                {section.content}
+                <ul className="space-y-2 mb-5">
+                  {forWho.map((item, i) => (
+                    <li key={i} className="text-sm text-white/75 flex items-start gap-2.5">
+                      <div className="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-accent/80" />
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-4 border-t border-white/[0.06]">
+                  <span className="text-[10px] uppercase tracking-wider font-semibold text-destructive/60 block mb-3">
+                    Ce n'est pas pour
+                  </span>
+                  <ul className="space-y-2">
+                    {notForWho.map((item, i) => (
+                      <li key={i} className="text-sm text-white/45 flex items-start gap-2.5">
+                        <div className="w-5 h-5 rounded-full bg-destructive/10 flex items-center justify-center shrink-0 mt-0.5">
+                          <X className="w-3 h-3 text-destructive/50" />
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            ))}
-          </div>
-        </motion.div>
 
-        {/* CTA */}
-        <Link
-          to="/diagnostic"
-          className="flex items-center justify-center gap-3 w-full h-14 rounded-full bg-accent text-primary font-semibold text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-[0_4px_20px_rgba(229,185,78,0.3)]">
-          Réserver mon Diagnostic
-          <ArrowRight className="w-4 h-4" />
-        </Link>
+              {/* Sections */}
+              {sections.map((section, i) => (
+                <div key={i} className="pt-4 border-t border-white/5">
+                  <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-3">
+                    {section.title}
+                  </span>
+                  {section.content}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ── CTA Footer ── */}
+        <div className="p-6 md:px-10 md:py-8 bg-white/[0.03] border-t border-white/[0.06]">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <Link
+              to="/diagnostic"
+              className="flex-1 flex items-center justify-center gap-3 h-14 rounded-full bg-accent text-primary font-semibold text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-[0_4px_20px_rgba(229,185,78,0.3)]">
+              Réserver mon Diagnostic
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <p className="text-xs text-white/40 text-center sm:text-left max-w-[200px]">
+              Montant déductible en cas de mission validée
+            </p>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
