@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import logo from '@/assets/logo.svg';
 
 interface PreloaderProps {
   onComplete: () => void;
@@ -74,7 +75,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
         className="mb-8"
       >
         <motion.img
-          src="/logo.svg"
+          src={logo}
           alt="Sen'Optima Consulting"
           className="w-48 md:w-64 h-auto"
           animate={{
