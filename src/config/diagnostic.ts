@@ -6,8 +6,8 @@ import { DiagnosticQuestion, PricingConfig } from "@/types/diagnostic";
 
 // Tarification
 export const PRICING: PricingConfig = {
-  normalPrice: 50000,
-  launchPrice: 10000,
+  normalPrice: 100000,
+  launchPrice: 25000,
   currency: "FCFA",
 };
 
