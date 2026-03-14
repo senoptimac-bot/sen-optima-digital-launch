@@ -57,7 +57,7 @@ const sections = [
           Parce qu'un travail stratégique demande : analyse, préparation, expertise et responsabilité.
         </p>
         <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-2">
-          Le montant de 100 000 FCFA garantit
+          Le montant de 25 000 FCFA garantit
         </span>
         <ul className="space-y-1.5 mb-4">
           {["Votre engagement", "Notre implication", "Une réelle valeur délivrée"].map((item, i) => (
@@ -120,9 +120,12 @@ const DiagnosticCard = () => {
           </p>
 
           {/* Price block */}
-          <div className="flex items-end gap-4 mb-6">
+          <div className="flex flex-wrap items-end gap-3 mb-6">
+            <span className="text-lg text-white/40 line-through font-heading">
+              100 000 FCFA
+            </span>
             <span className="text-4xl md:text-5xl font-heading font-bold text-accent leading-none">
-              100 000
+              25 000
             </span>
             <span className="text-lg font-heading font-semibold text-accent/70 pb-1">FCFA</span>
           </div>
