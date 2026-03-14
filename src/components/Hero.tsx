@@ -69,8 +69,8 @@ const Hero = () => {
             duration: 0.5,
             delay: 0.2,
             ease: [0.22, 1, 0.36, 1]
-          }} className="flex flex-wrap items-center gap-4">
-              <Button size="lg" asChild className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8">
+          }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+              <Button size="lg" asChild className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 sm:h-14 px-8 w-full sm:w-auto justify-center">
                 <Link to="/diagnostic">
                   Lancer mon Audit
                   <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
@@ -79,9 +79,9 @@ const Hero = () => {
                 </Link>
               </Button>
 
-              <Button variant="outline" size="lg" asChild className="gap-2 text-sm rounded-full border-2 border-foreground/30 text-foreground bg-transparent hover:border-accent hover:text-accent transition-all duration-300 h-14 px-8">
-                <Link to="/services">
-                  En savoir plus
+              <Button variant="outline" size="lg" asChild className="gap-2 text-sm rounded-full border-2 border-foreground/30 text-foreground bg-transparent hover:border-accent hover:text-accent transition-all duration-300 h-14 sm:h-14 px-8 w-full sm:w-auto justify-center">
+                <Link to="/solutions">
+                  Découvrir nos solutions
                 </Link>
               </Button>
             </motion.div>

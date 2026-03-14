@@ -36,7 +36,7 @@ const Home = () => {
       {/* 4. Error #1 (Text Block "TikTok") */}
       <AdviceSection />
       
-      {/* 5. CTA Voir nos services */}
+      {/* 5. CTA Voir nos solutions */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -53,8 +53,8 @@ const Home = () => {
             asChild
             className="gap-2 text-sm rounded-full border-2 border-foreground/30 text-foreground bg-transparent hover:border-accent hover:text-accent transition-all duration-300 h-14 px-8"
           >
-            <Link to="/services">
-              Voir nos services
+            <Link to="/solutions">
+              Découvrir nos solutions
               <ArrowRight className="w-4 h-4" />
             </Link>
           </Button>

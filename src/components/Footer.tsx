@@ -3,19 +3,13 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Mail } from "lucide-react";
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
-  const navLinks = [{
-    label: "Services",
-    href: "/services"
-  }, {
-    label: "À Propos",
-    href: "/a-propos"
-  }, {
-    label: "Solutions",
-    href: "/solutions"
-  }, {
-    label: "Contact",
-    href: "/contact"
-  }];
+  const navLinks = [
+    // { label: "Services", href: "/services" }, // Masqué temporairement
+    { label: "Solutions", href: "/solutions" },
+    { label: "À Propos", href: "/a-propos" },
+    { label: "Nos Réalisations", href: "/nos-projets" },
+    { label: "Contact", href: "/contact" },
+  ];
   const legalLinks = [{
     label: "Confidentialité",
     href: "/politique-confidentialite"

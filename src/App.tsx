@@ -165,7 +165,7 @@ const App = () => {
                 <Layout>
                   <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/services" element={<ServicesPage />} />
+                    {/* <Route path="/services" element={<ServicesPage />} /> Masqué temporairement */}
                     <Route path="/solutions" element={<SolutionsPage />} />
                     <Route path="/merci" element={<SuccessPage />} />
                     <Route path="/a-propos" element={<AboutPage />} />
