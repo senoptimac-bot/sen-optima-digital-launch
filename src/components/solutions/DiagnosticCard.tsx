@@ -57,7 +57,7 @@ const sections = [
           Parce qu'un travail stratégique demande : analyse, préparation, expertise et responsabilité.
         </p>
         <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-2">
-          Le montant de 100 000 FCFA garantit
+          Le montant de 25 000 FCFA garantit
         </span>
         <ul className="space-y-1.5 mb-4">
           {["Votre engagement", "Notre implication", "Une réelle valeur délivrée"].map((item, i) => (
