@@ -237,14 +237,14 @@ const DiagnosticCard = () => {
 
         {/* ── CTA Footer ── */}
         <div className="p-6 md:px-10 md:py-8 bg-white/[0.03] border-t border-white/[0.06]">
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <div className="flex flex-col gap-4">
             <Link
               to="/diagnostic"
-              className="flex-1 flex items-center justify-center gap-3 h-14 rounded-full bg-accent text-primary font-semibold text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-[0_4px_20px_rgba(229,185,78,0.3)]">
+              className="flex items-center justify-center gap-3 h-16 md:h-[72px] rounded-full bg-accent text-primary font-heading font-bold text-base md:text-lg transition-all duration-300 hover:bg-accent/90 hover:shadow-[0_8px_30px_rgba(229,185,78,0.35)] active:scale-[0.98]">
               Réserver mon Diagnostic
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-5 h-5" />
             </Link>
-            <p className="text-xs text-white/40 text-center sm:text-left max-w-[200px]">
+            <p className="text-xs text-white/40 text-center">
               Montant déductible en cas de mission validée
             </p>
           </div>
