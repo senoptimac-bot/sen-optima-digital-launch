@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import TeamSection from "@/components/TeamSection";
-import PhotoPlaceholder from "@/components/about/PhotoPlaceholder";
+import visionPhoto from "@/assets/vision-photo.jpg";
 import BackButton from "@/components/BackButton";
 
 // Les 3 valeurs/piliers
@@ -183,7 +183,7 @@ const AboutPage = () => {
             >
               <div className="absolute -top-6 -left-6 w-full h-full bg-accent/10 rounded-[2rem] transform -rotate-3 hidden lg:block" />
               <div className="relative">
-                <PhotoPlaceholder label="Photo vision à venir" aspectRatio="landscape" />
+                <img src={visionPhoto} alt="Vision Sen'Optima - Consulting en stratégie" className="w-full aspect-[4/3] rounded-[2rem] object-cover border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="lazy" decoding="async" />
               </div>
             </motion.div>
 
