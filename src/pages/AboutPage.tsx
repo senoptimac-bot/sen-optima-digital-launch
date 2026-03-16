@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import TeamSection from "@/components/TeamSection";
-import PhotoPlaceholder from "@/components/about/PhotoPlaceholder";
+import visionPhoto from "@/assets/vision-photo.jpg";
 import BackButton from "@/components/BackButton";
 
 // Les 3 valeurs/piliers
