@@ -183,7 +183,7 @@ const AboutPage = () => {
             >
               <div className="absolute -top-6 -left-6 w-full h-full bg-accent/10 rounded-[2rem] transform -rotate-3 hidden lg:block" />
               <div className="relative">
-                <img src={visionPhoto} alt="Vision Sen'Optima - Consulting en stratégie" className="w-full aspect-[4/3] rounded-[2rem] object-cover border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="lazy" decoding="async" />
+                <img src={visionPhoto} alt="Vision Sen'Optima - Consulting en stratégie" className="w-full rounded-[2rem] object-contain border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="lazy" decoding="async" />
               </div>
             </motion.div>
 
