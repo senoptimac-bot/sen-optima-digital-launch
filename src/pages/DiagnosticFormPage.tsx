@@ -46,8 +46,8 @@ const DiagnosticFormPage = () => {
       : "[Demande : Diagnostic – Question avant paiement]";
 
     const closing = isPret
-      ? "Je confirme avoir pris connaissance du tarif de 100 000 FCFA et je suis prêt(e) à procéder au paiement du diagnostic.\nMerci de m'envoyer le lien Wave et les prochaines étapes."
-      : "J'ai pris connaissance du tarif de 100 000 FCFA et je souhaite échanger brièvement avant de procéder au paiement.";
+      ? "Je confirme avoir pris connaissance du tarif de 25 000 FCFA et je suis prêt(e) à procéder au paiement du diagnostic.\nMerci de m'envoyer le lien Wave et les prochaines étapes."
+      : "J'ai pris connaissance du tarif de 25 000 FCFA et je souhaite échanger brièvement avant de procéder au paiement.";
 
     const message = `${header}
 
@@ -89,7 +89,7 @@ ${closing}`;
               {/* Welcome banner */}
               <div className="mb-8 p-5 rounded-2xl border border-accent/30 bg-accent/5">
                 <p className="text-sm text-accent font-medium mb-1">Diagnostic Stratégique</p>
-                <p className="text-2xl md:text-3xl font-heading font-bold text-accent mb-2">100 000 FCFA</p>
+                <p className="text-2xl md:text-3xl font-heading font-bold text-accent mb-2">25 000 FCFA</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Vous avez fait le bon choix. Complétez ce formulaire pour que nous puissions préparer votre session et vous accompagner au mieux.
                 </p>
@@ -201,7 +201,7 @@ ${closing}`;
                       className={errors.tarif ? "border-destructive" : ""}
                     />
                     <span className="text-sm text-foreground leading-relaxed">
-                      Je confirme avoir pris connaissance du tarif de <strong className="text-accent">100 000 FCFA</strong>.
+                      Je confirme avoir pris connaissance du tarif de <strong className="text-accent">25 000 FCFA</strong>.
                     </span>
                   </label>
                   {errors.tarif && <p className="text-xs text-destructive mt-1">Veuillez confirmer le tarif</p>}
