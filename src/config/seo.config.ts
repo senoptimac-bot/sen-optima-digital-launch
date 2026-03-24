@@ -4,45 +4,45 @@
  * Règles respectées:
  * - Title < 60 caractères (avec suffixe)
  * - Description < 160 caractères
- * - Mots-clés stratégiques par page
+ * - Mots-clés stratégiques par page avec localisation Dakar/Sénégal
  */
 
 export const SEO_CONFIG = {
   home: {
-    title: "Sen'Optima Consulting | Stratégie & Solutions Digitales",
-    description: "Cabinet de consulting digital à Dakar. Structurez votre entreprise avec nos solutions en stratégie, marketing digital et automatisation.",
-    keywords: "consulting digital, stratégie entreprise, marketing digital, Dakar, Sénégal, PME, transformation digitale",
+    title: "Sen'Optima Consulting | Stratégie Digitale & Audit Web à Dakar",
+    description: "Cabinet de consulting digital à Dakar. Diagnostic stratégique, audit web, structuration business et marketing digital pour PME et entrepreneurs au Sénégal.",
+    keywords: "consulting digital Dakar, stratégie digitale Sénégal, audit site web Dakar, consultant digital Sénégal, marketing digital PME, structuration entreprise",
     canonicalPath: "/",
+  },
+  solutions: {
+    title: "Diagnostic Stratégique & Solutions Business à Dakar",
+    description: "Diagnostic stratégique premium à 25 000 FCFA : audit positionnement, analyse rentabilité, plan d'action 90 jours. Structurez votre business au Sénégal.",
+    keywords: "diagnostic entreprise Dakar, audit business Sénégal, structuration PME, plan d'action business, consultant stratégie Dakar",
+    canonicalPath: "/solutions",
+  },
+  about: {
+    title: "À Propos — Cabinet Consulting Digital Dakar",
+    description: "Cabinet sénégalais de conseil digital. Notre mission : apporter aux entrepreneurs africains l'expertise et la rigueur des grandes entreprises.",
+    keywords: "cabinet conseil Dakar, équipe consulting Sénégal, consultant digital Afrique, vision stratégie digitale",
+    canonicalPath: "/a-propos",
+  },
+  projects: {
+    title: "Nos Réalisations | Portfolio Sen'Optima Dakar",
+    description: "Découvrez les projets accompagnés par Sen'Optima : structuration, sites web, e-commerce, identité visuelle et marketing digital à Dakar et au Sénégal.",
+    keywords: "projets réalisés Dakar, portfolio consulting Sénégal, études de cas, réussites clients, réalisations digitales",
+    canonicalPath: "/nos-projets",
+  },
+  contact: {
+    title: "Contactez Sen'Optima Consulting à Dakar",
+    description: "Besoin d'un diagnostic ou d'un devis ? Contactez Sen'Optima par WhatsApp, email ou en présentiel à Dakar. Réponse sous 24h garantie.",
+    keywords: "contact consulting Dakar, devis gratuit, WhatsApp consulting Sénégal, rendez-vous stratégie digitale",
+    canonicalPath: "/contact",
   },
   services: {
     title: "Nos Services de Consulting Digital",
     description: "Modélisation business, écosystème web, automatisation et branding stratégique. Découvrez nos 4 piliers d'accompagnement pour entrepreneurs.",
     keywords: "services consulting, site web, automatisation, branding, marketing digital, Sénégal",
     canonicalPath: "/services",
-  },
-  solutions: {
-    title: "Diagnostic Gratuit de Maturité Business",
-    description: "Évaluez gratuitement la maturité de votre entreprise en 3 minutes. Recevez un plan d'action personnalisé pour structurer votre croissance.",
-    keywords: "diagnostic entreprise, audit gratuit, maturité business, PME Sénégal",
-    canonicalPath: "/solutions",
-  },
-  about: {
-    title: "À Propos de Sen'Optima Consulting",
-    description: "Cabinet sénégalais de conseil digital. Notre mission : apporter aux entrepreneurs l'expertise et la rigueur des grandes entreprises.",
-    keywords: "à propos, équipe consulting, cabinet conseil, Dakar, Sénégal, vision 2050",
-    canonicalPath: "/a-propos",
-  },
-  projects: {
-    title: "Nos Projets Réalisés | Portfolio Sen'Optima",
-    description: "Découvrez les projets accompagnés par Sen'Optima : structuration, sites web, e-commerce, identité visuelle et automatisation à Dakar et au Sénégal.",
-    keywords: "projets réalisés, portfolio, études de cas, consulting Sénégal, réussites clients, Dakar",
-    canonicalPath: "/nos-projets",
-  },
-  contact: {
-    title: "Contactez-Nous",
-    description: "Besoin d'un devis ou d'une information ? Contactez Sen'Optima par WhatsApp, email ou en présentiel à Dakar. Réponse sous 24h garantie.",
-    keywords: "contact, devis gratuit, WhatsApp, Dakar, Sénégal, consulting",
-    canonicalPath: "/contact",
   },
   success: {
     title: "Rendez-vous Confirmé",
