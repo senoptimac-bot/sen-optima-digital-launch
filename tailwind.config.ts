@@ -16,7 +16,7 @@ export default {
       fontFamily: {
         sans: ["Open Sans", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
         heading: ["League Spartan", "Open Sans", "system-ui", "sans-serif"],
-        subheading: ["Glacial Indifference", "Open Sans", "system-ui", "sans-serif"],
+        subheading: ["Open Sans", "system-ui", "sans-serif"],
       },
       fontSize: {
         /* Hero Title — 64px desktop / 48px tablet / 34px mobile */
