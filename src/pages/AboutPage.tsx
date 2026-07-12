@@ -1,33 +1,60 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Quote, ArrowRight, Sparkles, Rocket, TrendingUp } from "lucide-react";
-import presidentPhoto from "@/assets/president-senegal.webp";
-import equipePhoto from "@/assets/equipe-senoptima.jpg";
-import fondateurPhoto from "@/assets/fondateur.jpg";
+import { ArrowRight, Check, X, Users, Code, MessageCircle, Video, PenTool, Globe } from "lucide-react";
+import fondateurPhoto from "@/assets/fondateur-portrait.jpg";
+import ibrahimaDiagnePhoto from "@/assets/ibrahima-diagne-portrait.jpg";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
-import TeamSection from "@/components/TeamSection";
-import visionPhoto from "@/assets/vision-photo.jpg";
 import BackButton from "@/components/BackButton";
+import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 
-// Les 3 valeurs/piliers
-const valuesData = [
+const founders = [
   {
-    icon: Sparkles,
-    title: "Clarté",
-    description: "Nous vous expliquons chaque étape, chaque investissement, sans jargon. Vous comprenez où va votre argent et pourquoi.",
+    name: "Mandiaye Sylla",
+    role: "Fondateur & Directeur Général",
+    tags: ["Développement des entrepreneurs", "Marketing digital", "Business en ligne", "Transformation digitale"],
+    photo: fondateurPhoto,
+    photoPosition: "object-top",
   },
   {
-    icon: Rocket,
-    title: "Performance",
-    description: "Nos solutions sont testées et éprouvées. Nous ne recommandons que ce qui fonctionne réellement dans notre contexte.",
+    name: "Ibrahima Diagne",
+    role: "Directeur des Relations Internationales",
+    tags: ["Mobilité internationale", "Orientation académique", "Stratégie de projet", "Accompagnement international"],
+    photo: ibrahimaDiagnePhoto,
+    photoPosition: "object-[center_40%]",
   },
-  {
-    icon: TrendingUp,
-    title: "Stratégie",
-    description: "Nous construisons pour durer. Chaque action vise la pérennité de votre business sur 10 ans, pas un coup d'éclat temporaire.",
-  },
+];
+
+const teamRoles = [
+  { label: "Consultants", icon: Users },
+  { label: "Développeurs", icon: Code },
+  { label: "Community Managers", icon: MessageCircle },
+  { label: "Vidéastes", icon: Video },
+  { label: "Créateurs de contenu", icon: PenTool },
+  { label: "Partenaires internationaux", icon: Globe },
+];
+
+const promises = [
+  "Des informations vérifiées",
+  "Des conseils personnalisés",
+  "Une approche basée sur la réalité",
+  "Un accompagnement structuré",
+];
+
+const neverPromise = ["Un visa garanti", "Une admission garantie", "Un emploi garanti", "Un résultat qui dépend d'une administration ou d'un établissement"];
+
+const manifesto = [
+  "Nous préférons préparer un projet pendant six mois plutôt que promettre un départ en six semaines.",
+  "Nous croyons que l'information vaut plus qu'une promesse.",
+  "Nous renforçons des profils. Nous n'habillons pas des dossiers.",
+  "Nous ne vendons pas un visa. Nous construisons un dossier qui a une chance d'aboutir.",
+  "Une bonne préparation coûte du temps. Une mauvaise préparation coûte de l'argent — et parfois un projet entier.",
+  "Nous préférons dire la vérité sur un projet fragile plutôt que vendre un espoir fragile.",
+  "Un raccourci n'a jamais construit un dossier solide.",
+  "Nous accompagnons des personnes, pas des dossiers anonymes.",
+  "Ce que nous ne pouvons pas garantir, nous ne le promettons jamais.",
+  "Notre réussite se mesure à la solidité des projets que nous accompagnons, pas à la rapidité de nos promesses.",
 ];
 
 const AboutPage = () => {
@@ -35,330 +62,376 @@ const AboutPage = () => {
 
   return (
     <>
-      <SEOHead 
-        title={seo.title}
-        description={seo.description}
-        canonicalPath={seo.canonicalPath}
-        keywords={seo.keywords}
-      />
-      
+      <SEOHead title={seo.title} description={seo.description} canonicalPath={seo.canonicalPath} keywords={seo.keywords} />
+
       <div className="min-h-screen bg-background">
-      {/* HERO SECTION */}
-      <section className="relative py-20 pt-32 md:py-32 md:pt-44 lg:py-40 lg:pt-52 overflow-hidden">
-        {/* Background with decorative shape */}
-        <div className="absolute inset-0 bg-background" />
-        <div className="absolute top-0 right-0 w-[60%] h-[80%] bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
-        
-        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
-          {/* Back Button */}
-          <BackButton />
+        {/* HERO */}
+        <section className="relative py-20 pt-32 md:py-28 md:pt-40 overflow-hidden">
+          <div className="container relative z-10">
+            <BackButton />
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
+              <span className="badge-accent mb-6 inline-block">À propos de Sen'Optima Consulting</span>
+              <h1 className="text-headline text-foreground mb-6">
+                Nous préparons des personnes. <span className="italic text-accent">Pas seulement des dossiers.</span>
+              </h1>
+              <p className="text-body-lg text-muted-foreground leading-relaxed mb-8">
+                Notre conviction est simple : un projet solide commence toujours par une personne bien préparée.
+                <br />
+                Pas par une promesse. Pas par un raccourci.
+              </p>
+              <Button asChild size="lg" variant="hero">
+                <a href="#notre-philosophie">
+                  Découvrir notre méthode
+                  <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </a>
+              </Button>
+            </motion.div>
+          </div>
+        </section>
 
-          {/* Photo en haut */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="mb-10 lg:mb-14"
-          >
-            <div className="relative">
-              <div className="absolute -top-6 -right-6 w-full h-full bg-accent/10 rounded-[2rem] transform rotate-3 hidden lg:block" />
-              <img src={equipePhoto} alt="Équipe Sen'Optima" className="relative w-full aspect-[16/9] rounded-[2rem] object-cover border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="eager" decoding="async" />
+        {/* NOTRE HISTOIRE */}
+        <section className="py-16 md:py-24 bg-secondary/30">
+          <div className="container max-w-2xl">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <span className="badge-accent mb-6 inline-block">Notre histoire</span>
+              <h2 className="text-headline text-foreground mb-8">
+                Pourquoi Sen'Optima <span className="italic text-accent">est née.</span>
+              </h2>
+              <div className="space-y-5 text-body-lg text-muted-foreground leading-relaxed">
+                <p>Sen'Optima Consulting est née d'un constat simple.</p>
+                <p>
+                  Chaque année, des milliers de jeunes investissent leur argent dans des projets de mobilité
+                  internationale ou de création d'entreprise sans disposer des bonnes informations.
+                </p>
+                <p>
+                  Certains suivent des conseils trouvés sur les réseaux sociaux.
+                  <br />
+                  D'autres font confiance à des intermédiaires qui promettent des résultats impossibles.
+                </p>
+                <p>
+                  Beaucoup perdent du temps. Beaucoup perdent de l'argent.
+                  <br />
+                  Parfois plusieurs millions de francs CFA.
+                </p>
+                <p className="text-foreground font-semibold">Nous avons choisi une autre approche.</p>
+                <div className="border-l-4 border-accent pl-5 space-y-2 text-foreground">
+                  <p>Avant de parler de procédures, nous parlons de préparation.</p>
+                  <p>Avant de parler de départ, nous parlons de projet.</p>
+                  <p>Avant de parler de réussite, nous parlons de réalité.</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="py-10 md:py-14">
+          <div className="container">
+            <PhotoPlaceholder label="[PHOTO — POURQUOI SEN'OPTIMA EST NÉE]" aspect="aspect-[21/9]" className="max-w-5xl mx-auto" />
+          </div>
+        </section>
+
+        {/* LE FONDATEUR */}
+        <section className="py-16 md:py-24">
+          <div className="container max-w-5xl">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <motion.div initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
+                <img
+                  src={fondateurPhoto}
+                  alt="Mandiaye Sylla, fondateur de Sen'Optima Consulting"
+                  className="w-full aspect-[3/4] object-cover object-top rounded-[2rem] border-2 border-accent/30"
+                />
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+                <span className="badge-accent mb-6 inline-block">Le fondateur</span>
+                <h2 className="text-title text-foreground mb-6">
+                  Un parcours construit sur <span className="italic text-accent">l'expérience du terrain.</span>
+                </h2>
+                <div className="space-y-4 text-body text-muted-foreground leading-relaxed">
+                  <p>
+                    Avant de créer Sen'Optima Consulting, j'ai travaillé comme responsable commercial dans une agence
+                    spécialisée dans la mobilité internationale.
+                  </p>
+                  <p>
+                    Cette expérience m'a permis de comprendre les attentes des candidats, mais également les
+                    nombreuses erreurs qui conduisent à l'échec d'un projet.
+                  </p>
+                  <p>
+                    J'ai vu des personnes investir des sommes importantes dans des démarches mal préparées.
+                    <br />
+                    J'ai vu des dossiers montés sans véritable stratégie.
+                  </p>
+                  <p className="text-foreground font-semibold">
+                    J'ai surtout compris qu'un bon accompagnement ne consiste pas à vendre un voyage.
+                    <br />
+                    Il consiste à préparer une personne.
+                  </p>
+                  <p>C'est cette conviction qui a donné naissance à Sen'Optima Consulting.</p>
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
+        </section>
 
-          {/* Titre et contenu */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-3xl"
-          >
-            {/* Badge */}
-            <span className="badge-accent mb-6 lg:mb-8">
-              À Propos
-            </span>
+        {/* LES DEUX FONDATEURS */}
+        <section className="py-16 md:py-24 bg-secondary/30">
+          <div className="container max-w-5xl">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mb-12">
+              <span className="badge-accent mb-6 inline-block">Deux fondateurs, une vision</span>
+              <h2 className="text-headline text-foreground">
+                Deux expertises, <span className="italic text-accent">une même méthode.</span>
+              </h2>
+            </motion.div>
 
-            {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-foreground leading-tight mb-6 lg:mb-8">
-              L'Expertise de la <span className="italic text-accent">Grande Entreprise</span>,
-              <span className="block mt-1 lg:mt-2">adaptée à votre Projet.</span>
-            </h1>
+            <div className="grid md:grid-cols-2 gap-8">
+              {founders.map((founder, index) => (
+                <motion.div
+                  key={founder.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="card-cream overflow-hidden"
+                >
+                  {founder.photo ? (
+                    <img src={founder.photo} alt={founder.name} className={`w-full aspect-[4/3] object-cover ${founder.photoPosition}`} />
+                  ) : (
+                    <PhotoPlaceholder label={`[PHOTO — ${founder.name.toUpperCase()}]`} aspect="aspect-[4/3]" className="rounded-none border-0" />
+                  )}
+                  <div className="p-8">
+                    <h3 className="text-title text-foreground mb-1">{founder.name}</h3>
+                    <p className="text-sm text-accent font-medium mb-5">{founder.role}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {founder.tags.map((tag) => (
+                        <span key={tag} className="px-3 py-1.5 rounded-full border border-border text-xs text-foreground/70 bg-background">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
 
-            {/* Subtitle */}
-            <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed lg:leading-loose max-w-2xl mb-8">
-              Sen'Optima est né d'un constat : les porteurs de projets échouent souvent 
-              par manque de structure, pas par manque de talent. Nous vous apportons 
-              la rigueur et les méthodes qui font le succès des entreprises établies.
-            </p>
-
-            {/* CTA */}
-            <Button
-              asChild
-              size="lg"
-              className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
-            >
-              <Link to="/solutions">
-                Découvrir nos solutions
-                <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
-                  <ArrowRight className="w-4 h-4" />
-                </span>
-              </Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SECTION HISTOIRE - Notre Parcours */}
-      <section className="py-16 md:py-28 lg:py-36 bg-secondary/30 relative overflow-hidden">
-        {/* Decorative shape */}
-        <div className="absolute bottom-0 left-0 w-[40%] h-[60%] bg-accent/5 rounded-tr-[100px] hidden lg:block" />
-        
-        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="max-w-xl"
+              className="text-center text-body-lg text-foreground font-semibold mt-12 max-w-xl mx-auto leading-relaxed"
             >
-              {/* Badge */}
-              <span className="badge-accent mb-4 lg:mb-6">
-                Notre Parcours
-              </span>
+              Deux expertises complémentaires.
+              <br />
+              <span className="text-accent">Une même vision : construire des projets durables.</span>
+            </motion.p>
+          </div>
+        </section>
 
-              {/* Title */}
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6 lg:mb-8">
-                De l'intérieur du <span className="italic text-accent">système</span>
-                <span className="block mt-1">vers votre réussite.</span>
+        {/* NOTRE PHILOSOPHIE */}
+        <section id="notre-philosophie" className="py-20 md:py-32 scroll-mt-24">
+          <div className="container max-w-2xl">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+              <span className="badge-accent mb-6 inline-block">Notre philosophie</span>
+              <h2 className="text-headline text-foreground leading-tight">
+                Nous refusons <span className="italic text-accent">les raccourcis.</span>
               </h2>
+            </motion.div>
 
-              {/* Text */}
-              <div className="space-y-4 lg:space-y-6 text-muted-foreground leading-relaxed lg:leading-loose text-base lg:text-lg">
-                <p>
-                  Avant de lancer cette agence, nous avons travaillé au cœur des entreprises. 
-                  Nous avons piloté des projets, optimisé des structures et généré de la 
-                  croissance réelle.
-                </p>
-                <p>
-                  Nous avons vu de l'intérieur ce qui fonctionne.
-                </p>
-                <p className="text-foreground/70">
-                  Aujourd'hui, notre mission est de transférer ce savoir-faire "corporate" 
-                  aux entrepreneurs ambitieux qui veulent concrétiser leurs idées.
-                </p>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="mb-10">
+              <p className="text-body-lg text-muted-foreground text-center mb-8">Nous croyons :</p>
+              <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto">
+                {["à la préparation", "à la transparence", "à l'éducation", "à la responsabilité"].map((item) => (
+                  <div key={item} className="flex items-center gap-3 p-4 card-cream">
+                    <Check className="w-5 h-5 text-accent shrink-0" />
+                    <span className="text-body text-foreground">{item}</span>
+                  </div>
+                ))}
               </div>
             </motion.div>
 
-            {/* Photo Placeholder */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="relative"
-            >
-              <div className="absolute -top-6 -right-6 w-full h-full bg-accent/10 rounded-[2rem] transform rotate-3 hidden lg:block" />
-              <div className="relative">
-                <img src={fondateurPhoto} alt="Le Fondateur de Sen'Optima" className="w-full h-auto rounded-[2rem] object-contain border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="lazy" decoding="async" />
-              </div>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="border-l-4 border-accent pl-5">
+              <p className="text-body text-muted-foreground leading-relaxed mb-2">
+                Nous ne promettons jamais une décision qui appartient aux autorités compétentes.
+              </p>
+              <p className="text-body font-semibold text-foreground leading-relaxed">
+                Nous promettons en revanche un accompagnement sérieux, structuré et honnête.
+              </p>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SECTION VISION - Pourquoi nous ? */}
-      <section className="py-16 md:py-28 lg:py-36 relative overflow-hidden">
-        {/* Decorative shape */}
-        <div className="absolute top-0 right-0 w-[50%] h-[70%] bg-secondary/30 rounded-bl-[100px] hidden lg:block" />
-        
-        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Photo Placeholder - Left on desktop */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="relative order-2 lg:order-1"
-            >
-              <div className="absolute -top-6 -left-6 w-full h-full bg-accent/10 rounded-[2rem] transform -rotate-3 hidden lg:block" />
-              <div className="relative">
-                <img src={visionPhoto} alt="Vision Sen'Optima - Consulting en stratégie" className="w-full rounded-[2rem] object-contain border-2 border-accent/40 shadow-[0_0_20px_rgba(var(--accent),0.15)]" loading="lazy" decoding="async" />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-xl order-1 lg:order-2"
-            >
-              {/* Badge */}
-              <span className="badge-accent mb-4 lg:mb-6">
-                Pourquoi Nous ?
-              </span>
-
-              {/* Title */}
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6 lg:mb-8">
-                Nous transformons des <span className="italic text-accent">idées floues</span>
-                <span className="block mt-1">en business solides.</span>
-              </h2>
-
-              {/* Text */}
-              <div className="space-y-4 lg:space-y-6 text-muted-foreground leading-relaxed lg:leading-loose text-base lg:text-lg">
-                <p>
-                  Beaucoup de jeunes entrepreneurs ont l'énergie, mais pas la méthode. 
-                  Nous sommes là pour combler ce vide.
+        {/* NOTRE ÉQUIPE */}
+        <section className="py-16 md:py-24 bg-secondary/30">
+          <div className="container max-w-5xl">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                <span className="badge-accent mb-6 inline-block">Notre équipe</span>
+                <h2 className="text-title text-foreground mb-6">
+                  Une organisation <span className="italic text-accent">professionnelle.</span>
+                </h2>
+                <p className="text-body text-muted-foreground leading-relaxed mb-6">
+                  Autour des fondateurs, Sen'Optima rassemble des profils complémentaires :
                 </p>
-                <p className="text-foreground/70">
-                  Nous ne sommes pas là pour vous vendre du rêve, mais pour bâtir 
-                  les fondations (Marketing, Gestion, Process) qui permettront 
-                  à votre projet de durer.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION VALEURS - Les 3 Piliers */}
-      <section className="py-16 md:py-28 lg:py-36 bg-secondary/30 relative overflow-hidden">
-        {/* Decorative shape */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[30%] h-[50%] bg-accent/5 rounded-l-[100px] hidden lg:block" />
-        
-        <div className="container px-5 md:px-8 lg:px-12 relative z-10">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-10 md:mb-12 lg:mb-16 max-w-3xl lg:max-w-4xl"
-          >
-            <span className="badge-accent mb-4 lg:mb-6">
-              Nos Valeurs
-            </span>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
-              Les 3 <span className="italic text-accent">Piliers</span>
-            </h2>
-          </motion.div>
-
-          {/* Values Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6 lg:gap-8 max-w-5xl">
-            {valuesData.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="relative p-6 lg:p-8 card-cream group"
-              >
-                {/* Number indicator */}
-                <div className="absolute top-6 right-6">
-                  <span className="text-xs text-accent/40">{String(index + 1).padStart(2, '0')}</span>
-                </div>
-
-                {/* Icon */}
-                <div className="icon-circle mb-4 lg:mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <value.icon className="w-6 h-6 lg:w-7 lg:h-7 text-accent" />
-                </div>
-
-                {/* Title */}
-                <h3 className="text-lg lg:text-xl font-heading font-bold text-foreground mb-2 lg:mb-3 group-hover:text-accent transition-colors duration-300">
-                  {value.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-muted-foreground text-sm lg:text-base leading-relaxed lg:leading-loose">
-                  {value.description}
+                <ul className="grid grid-cols-2 gap-3 mb-6">
+                  {teamRoles.map(({ label, icon: Icon }) => (
+                    <li
+                      key={label}
+                      className="flex items-center gap-3 text-sm text-foreground bg-background rounded-full border border-border pl-1.5 pr-4 py-1.5"
+                    >
+                      <span className="w-8 h-8 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4" />
+                      </span>
+                      {label}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sm text-muted-foreground/80 leading-relaxed">
+                  Chaque membre intervient dans son domaine d'expertise afin d'offrir une expérience cohérente et
+                  professionnelle.
                 </p>
               </motion.div>
-            ))}
+              <motion.div initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+                <PhotoPlaceholder label="[PHOTO ÉQUIPE SEN'OPTIMA]" aspect="aspect-[4/3]" />
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Vision Sénégal 2050 - Conservé mais aligné à gauche */}
-      <section className="py-16 md:py-28 lg:py-36">
-        <div className="container px-5 md:px-8 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-3xl lg:max-w-4xl"
-          >
-            {/* Elegant Flag Accent */}
-            <div className="flex items-center gap-3 mb-8 lg:mb-10">
-              {/* Thin tricolor bar with star */}
-              <div className="flex items-center h-8 lg:h-10 rounded-lg overflow-hidden shadow-sm">
-                <div className="w-3 lg:w-4 h-full bg-[#00853F]" />
-                <div className="w-8 lg:w-10 h-full bg-[#FDEF42] flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" className="w-4 h-4 lg:w-5 lg:h-5 text-[#00853F] fill-current">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                </div>
-                <div className="w-3 lg:w-4 h-full bg-[#E31B23]" />
-              </div>
-              {/* Decorative line */}
-              <div className="h-px flex-1 max-w-24 lg:max-w-32 bg-gradient-to-r from-foreground/20 to-transparent" />
+        {/* NOTRE MISSION */}
+        <section className="py-16 md:py-24">
+          <div className="container max-w-4xl">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mb-12">
+              <span className="badge-accent mb-6 inline-block">Notre mission</span>
+              <h2 className="text-headline text-foreground">
+                Deux missions, <span className="italic text-accent">une méthode.</span>
+              </h2>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 card-cream">
+                <h3 className="text-title text-foreground mb-4">Mobilité Internationale</h3>
+                <p className="text-body text-muted-foreground leading-relaxed">
+                  Permettre aux étudiants, travailleurs et familles de construire un projet international crédible,
+                  documenté et réaliste.
+                </p>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="p-8 card-cream">
+                <h3 className="text-title text-foreground mb-4">Développement Business</h3>
+                <p className="text-body text-muted-foreground leading-relaxed">
+                  Former une nouvelle génération d'entrepreneurs capables de créer des entreprises structurées,
+                  rentables et durables.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* NOTRE ENGAGEMENT */}
+        <section className="py-16 md:py-24 bg-secondary/30">
+          <div className="container max-w-4xl">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mb-12">
+              <span className="badge-accent mb-6 inline-block">Notre engagement</span>
+              <h2 className="text-headline text-foreground">
+                Ce que nous <span className="italic text-accent">promettons.</span>
+              </h2>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-10">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                <h3 className="text-title text-foreground mb-5">Nous promettons</h3>
+                <ul className="space-y-3">
+                  {promises.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-body text-foreground">
+                      <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+                <h3 className="text-title text-foreground mb-5">Nous ne promettons jamais</h3>
+                <ul className="space-y-3">
+                  {neverPromise.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-body text-muted-foreground">
+                      <X className="w-5 h-5 text-destructive/70 shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             </div>
 
-            <span className="inline-flex items-center gap-2 text-xs text-foreground/40 uppercase tracking-widest mb-4 lg:mb-6">
-              <span className="w-8 h-px bg-accent" />
-              Patriotisme Économique
-            </span>
-
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-8 lg:mb-10">
-              Vision <span className="text-accent">Sénégal 2050</span>
-            </h2>
-
-            <div className="card-cream p-6 md:p-8 lg:p-10">
-              <Quote className="w-6 h-6 lg:w-8 lg:h-8 text-foreground/10 mb-4 lg:mb-6" />
-
-              <p className="text-foreground/70 leading-relaxed lg:leading-loose mb-6 lg:mb-8 italic text-base lg:text-lg">
-                "La transformation systémique du Sénégal ne se fera pas par la magie, 
-                mais par un travail méthodique, une vision claire et une exécution rigoureuse."
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="border-l-4 border-accent pl-5">
+              <p className="text-body text-muted-foreground leading-relaxed mb-2">
+                Notre engagement porte sur la qualité de notre accompagnement.
               </p>
+              <p className="text-body font-semibold text-foreground leading-relaxed">
+                Les décisions finales appartiennent toujours aux autorités compétentes.
+              </p>
+            </motion.div>
+          </div>
+        </section>
 
-              <div className="flex items-center gap-3 lg:gap-4">
-                <img
-                  src={presidentPhoto}
-                  alt="S.E.M. Bassirou Diomaye Faye"
-                  className="w-10 h-10 lg:w-12 lg:h-12 rounded-full object-cover border border-foreground/10"
-                />
-                <div>
-                  <p className="text-sm lg:text-base text-foreground/80">S.E.M. Bassirou Diomaye Faye</p>
-                  <p className="text-xs lg:text-sm text-foreground/40">Président de la République du Sénégal</p>
-                </div>
-              </div>
+        {/* CHIFFRE CLÉ / OBJECTIF */}
+        <section className="py-20 md:py-32 bg-foreground">
+          <div className="container max-w-3xl text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <span className="text-xs uppercase tracking-[0.2em] font-semibold text-primary/50 mb-6 inline-block">
+                Notre objectif
+              </span>
+              <p className="text-2xl md:text-4xl font-heading font-bold text-primary leading-tight">
+                Former des <span className="text-accent">milliers</span> de jeunes africains à construire des
+                projets solides — plutôt que de poursuivre des promesses irréalistes.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* MANIFESTE */}
+        <section className="py-20 md:py-32">
+          <div className="container max-w-2xl">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+              <span className="badge-accent mb-6 inline-block">Notre manifeste</span>
+              <h2 className="text-headline text-foreground">
+                Ce en quoi nous <span className="italic text-accent">croyons.</span>
+              </h2>
+            </motion.div>
+
+            <div className="space-y-8">
+              {manifesto.map((line, index) => (
+                <motion.p
+                  key={line}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.04 }}
+                  className="text-lg md:text-xl text-foreground leading-relaxed text-center border-b border-border/50 pb-8 last:border-0"
+                >
+                  {line}
+                </motion.p>
+              ))}
             </div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* SECTION TEAM - Ceux qui portent votre ambition */}
-      <TeamSection />
-
-      {/* CTA FINAL */}
-      <section className="py-20 md:py-32 lg:py-40 bg-secondary/20">
-        <div className="container px-5 md:px-8 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-xl lg:max-w-2xl"
-          >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-4 lg:mb-6">
-              Vous avez l'ambition,
-              <span className="block text-accent mt-1 lg:mt-2">nous avons la méthode.</span>
-            </h2>
-            <p className="text-foreground/60 mb-8 lg:mb-10 leading-relaxed lg:leading-loose text-base lg:text-lg">
-              Structurons ensemble votre projet pour qu'il tienne la route.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+        {/* CTA FINAL */}
+        <section className="py-20 md:py-32 bg-secondary/20">
+          <div className="container max-w-xl text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <h2 className="text-headline text-foreground mb-8">
+                Vous avez un projet ? <span className="italic text-accent">Discutons-en.</span>
+              </h2>
+              <Button asChild size="lg" variant="hero">
+                <Link to="/rendez-vous-decouverte">
+                  Réserver un rendez-vous découverte
+                  <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
+        </section>
       </div>
     </>
   );

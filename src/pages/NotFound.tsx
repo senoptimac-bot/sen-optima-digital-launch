@@ -69,7 +69,7 @@ const NotFound = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-3xl md:text-4xl font-bold text-foreground mb-4"
+          className="text-headline text-foreground mb-4"
         >
           Vous naviguez à vue ?
         </motion.h1>

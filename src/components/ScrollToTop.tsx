@@ -7,21 +7,28 @@ import { useLocation } from "react-router-dom";
  * Also re-applies Google Translate if active
  */
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // Force scroll to top immediately on route change
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    
-    // Also reset any scrollable containers
-    const scrollableElements = document.querySelectorAll('[class*="overflow"]');
-    scrollableElements.forEach((el) => {
-      if (el instanceof HTMLElement) {
-        el.scrollTop = 0;
+    if (hash) {
+      const target = document.getElementById(hash.slice(1));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    });
+    } else {
+      // Force scroll to top immediately on route change
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+      // Also reset any scrollable containers
+      const scrollableElements = document.querySelectorAll('[class*="overflow"]');
+      scrollableElements.forEach((el) => {
+        if (el instanceof HTMLElement) {
+          el.scrollTop = 0;
+        }
+      });
+    }
     
     // Re-apply Google Translate after route change
     const reapplyTranslation = () => {
@@ -57,7 +64,7 @@ const ScrollToTop = () => {
     };
 
     reapplyTranslation();
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return null;
 };

@@ -19,12 +19,25 @@ export default {
         subheading: ["Glacial Indifference", "Open Sans", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "display": ["clamp(2.5rem, 7vw, 5rem)", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "700" }],
-        "headline": ["clamp(1.75rem, 4vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.03em", fontWeight: "700" }],
-        "title": ["clamp(1.25rem, 2.5vw, 1.75rem)", { lineHeight: "1.25", letterSpacing: "-0.02em", fontWeight: "700" }],
-        "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
-        "body": ["1rem", { lineHeight: "1.7", fontWeight: "400" }],
-        "caption": ["0.6875rem", { lineHeight: "1.4", letterSpacing: "0.08em", fontWeight: "500" }],
+        /* Hero Title — 64px desktop / 48px tablet / 34px mobile */
+        "hero": ["clamp(2.125rem, 6vw, 4rem)", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "700" }],
+        /* Section Title — 48px desktop / 40px tablet / 30px mobile */
+        "section-title": ["clamp(1.875rem, 4.5vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.03em", fontWeight: "700" }],
+        /* Card Title — 30px desktop / 26px tablet / 22px mobile */
+        "card-title": ["clamp(1.375rem, 2.5vw, 1.875rem)", { lineHeight: "1.25", letterSpacing: "-0.02em", fontWeight: "700" }],
+        /* Body Large — 22px desktop / 20px tablet / 18px mobile */
+        "body-lg": ["clamp(1.125rem, 1.3vw + 0.9rem, 1.375rem)", { lineHeight: "1.7", fontWeight: "400" }],
+        /* Body — 18px desktop / 17px tablet / 16px mobile */
+        "body": ["clamp(1rem, 0.4vw + 0.9rem, 1.125rem)", { lineHeight: "1.7", fontWeight: "400" }],
+        /* Small Text — 16px desktop / 15px tablet / 14px mobile */
+        "small": ["clamp(0.875rem, 0.3vw + 0.8rem, 1rem)", { lineHeight: "1.5", fontWeight: "400" }],
+        /* Caption — 14px desktop / 13px tablet / 12px mobile */
+        "caption": ["clamp(0.75rem, 0.2vw + 0.7rem, 0.875rem)", { lineHeight: "1.4", letterSpacing: "0.08em", fontWeight: "500" }],
+
+        /* Alias temporaires vers les nouveaux tokens — évite de casser les usages existants pendant la migration progressive (voir plan design system) */
+        "display": ["clamp(2.125rem, 6vw, 4rem)", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "700" }],
+        "headline": ["clamp(1.875rem, 4.5vw, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.03em", fontWeight: "700" }],
+        "title": ["clamp(1.375rem, 2.5vw, 1.875rem)", { lineHeight: "1.25", letterSpacing: "-0.02em", fontWeight: "700" }],
       },
       colors: {
         border: "hsl(var(--border))",

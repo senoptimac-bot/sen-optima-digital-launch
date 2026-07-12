@@ -57,7 +57,7 @@ const sections = [
           Parce qu'un travail stratégique demande : analyse, préparation, expertise et responsabilité.
         </p>
         <span className="text-[10px] uppercase tracking-wider font-semibold text-accent block mb-2">
-          Le montant de 25 000 FCFA garantit
+          Le montant de 30 000 FCFA garantit
         </span>
         <ul className="space-y-1.5 mb-4">
           {["Votre engagement", "Notre implication", "Une réelle valeur délivrée"].map((item, i) => (
@@ -125,7 +125,7 @@ const DiagnosticCard = () => {
               100 000 FCFA
             </span>
             <span className="text-4xl md:text-5xl font-heading font-bold text-accent leading-none">
-              25 000
+              30 000
             </span>
             <span className="text-lg font-heading font-semibold text-accent/70 pb-1">FCFA</span>
           </div>
@@ -240,7 +240,7 @@ const DiagnosticCard = () => {
           <div className="flex flex-col gap-4">
             <Link
               to="/diagnostic"
-              className="flex items-center justify-center gap-3 h-16 md:h-[72px] rounded-full bg-accent text-primary font-heading font-bold text-base md:text-lg transition-all duration-300 hover:bg-accent/90 hover:shadow-[0_8px_30px_rgba(229,185,78,0.35)] active:scale-[0.98]">
+              className="flex items-center justify-center gap-3 h-16 md:h-[72px] rounded-full bg-foreground text-primary font-heading font-bold text-base md:text-lg transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg active:scale-[0.98]">
               Réserver mon Diagnostic
               <ArrowRight className="w-5 h-5" />
             </Link>

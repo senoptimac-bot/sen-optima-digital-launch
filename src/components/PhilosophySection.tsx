@@ -1,23 +1,23 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Eye, Shield, Target, ArrowRight } from "lucide-react";
+import { ShieldCheck, Anchor, Target, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const philosophyItems = [
   {
-    icon: Eye,
-    title: "Clarté",
-    description: "On ne vous parle pas chinois. On vous explique clairement où va chaque franc CFA investi.",
+    icon: ShieldCheck,
+    title: "Franchise",
+    description: "Nous vous disons non quand c'est non. Un conseil honnête vaut mieux qu'une promesse vide.",
   },
   {
-    icon: Shield,
-    title: "Performance",
-    description: "Nous ne sommes pas des bricoleurs. Nos solutions sont testées, sécurisées et solides.",
+    icon: Anchor,
+    title: "Enracinement",
+    description: "On construit du solide avant de viser l'ailleurs. Pas de raccourci.",
   },
   {
     icon: Target,
-    title: "Stratégie",
-    description: "On ne construit pas pour demain, mais pour que votre entreprise tienne 10 ans.",
+    title: "Rigueur",
+    description: "La méthode plutôt que la précipitation, la qualité plutôt que le volume.",
   },
 ];
 
@@ -56,7 +56,7 @@ const PhilosophySection = () => {
             Notre Philosophie
           </span>
           <h2 className="text-headline text-foreground">
-            Nos <span className="italic text-accent">Valeurs</span>
+            Notre <span className="italic text-accent">ligne</span>
           </h2>
         </motion.div>
 
@@ -105,7 +105,7 @@ const PhilosophySection = () => {
         >
           <Button variant="ghost" size="lg" asChild className="gap-2 text-muted-foreground hover:text-accent">
             <Link to="/a-propos">
-              En savoir plus sur notre équipe
+              En savoir plus sur nous
               <ArrowRight className="w-4 h-4" />
             </Link>
           </Button>

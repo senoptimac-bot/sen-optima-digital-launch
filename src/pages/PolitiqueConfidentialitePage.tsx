@@ -14,7 +14,7 @@ const PolitiqueConfidentialitePage = () => {
       />
       
       <LegalLayout>
-        <h1 className="text-3xl font-bold mb-8 pb-4 pt-20">Politique de Confidentialité</h1>
+        <h1 className="text-headline mb-8 pb-4 pt-20">Politique de Confidentialité</h1>
         <div className="h-0.5 w-16 bg-accent mb-12 rounded"></div>
         <section className="prose max-w-2xl">
           <h2>Données collectées</h2>

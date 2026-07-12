@@ -98,6 +98,36 @@ export async function sendContactEmail(data: ContactFormData): Promise<SendResul
 }
 
 /**
+ * Envoie un formulaire d'audit
+ */
+export async function sendAuditEmail(data: AuditFormData): Promise<SendResult> {
+  try {
+    // Validation des champs requis
+    const validated = auditSchema.parse(data);
+
+    // Préparer les données avec les outils en chaîne
+    const templateParams = {
+      ...validated,
+      toolsUsed: validated.toolsUsed?.join(", ") || "Aucun",
+    };
+
+    await emailjs.send(
+      EMAILJS_CONFIG.SERVICE_ID,
+      EMAILJS_CONFIG.TEMPLATES.BOOKING_AND_AUDIT,
+      templateParams,
+      EMAILJS_CONFIG.PUBLIC_KEY
+    );
+
+    return { success: true };
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return { success: false, error: error.errors[0]?.message || "Données invalides" };
+    }
+    return { success: false, error: getErrorMessage(error as EmailJSError) };
+  }
+}
+
+/**
  * Envoie une demande de réservation
  */
 export async function sendBookingEmail(data: BookingFormData): Promise<SendResult> {
@@ -109,36 +139,6 @@ export async function sendBookingEmail(data: BookingFormData): Promise<SendResul
       EMAILJS_CONFIG.SERVICE_ID,
       EMAILJS_CONFIG.TEMPLATES.BOOKING_AND_AUDIT,
       validated,
-      EMAILJS_CONFIG.PUBLIC_KEY
-    );
-    
-    return { success: true };
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return { success: false, error: error.errors[0]?.message || "Données invalides" };
-    }
-    return { success: false, error: getErrorMessage(error as EmailJSError) };
-  }
-}
-
-/**
- * Envoie un formulaire d'audit
- */
-export async function sendAuditEmail(data: AuditFormData): Promise<SendResult> {
-  try {
-    // Validation des champs requis
-    const validated = auditSchema.parse(data);
-    
-    // Préparer les données avec les outils en chaîne
-    const templateParams = {
-      ...validated,
-      toolsUsed: validated.toolsUsed?.join(", ") || "Aucun",
-    };
-    
-    await emailjs.send(
-      EMAILJS_CONFIG.SERVICE_ID,
-      EMAILJS_CONFIG.TEMPLATES.BOOKING_AND_AUDIT,
-      templateParams,
       EMAILJS_CONFIG.PUBLIC_KEY
     );
     

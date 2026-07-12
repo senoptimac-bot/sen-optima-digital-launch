@@ -83,7 +83,7 @@ const Services = () => {
           <span className="badge-accent mb-6 inline-block">
             Nos Services
           </span>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+          <h2 className="text-headline text-foreground mb-4">
             Des solutions pour votre <span className="italic text-accent">croissance</span>
           </h2>
           <p className="text-muted-foreground">

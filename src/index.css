@@ -204,14 +204,14 @@
   /* ========================================
      PERFORMANCE UTILITIES (60 FPS Target)
      ======================================== */
-  
+
   /* GPU Acceleration - Forces hardware compositing */
   .gpu-accelerated {
     will-change: transform, opacity;
     transform: translateZ(0);
     backface-visibility: hidden;
   }
-  
+
   /* Instant transition for GPU-accelerated properties */
   .transition-gpu {
     transition: transform 100ms cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -219,24 +219,24 @@
                 background-color 50ms ease-out,
                 border-color 50ms ease-out;
   }
-  
+
   /* Touch target - Minimum 48px for mobile accessibility */
   .touch-target {
     min-height: 48px;
     min-width: 48px;
   }
-  
+
   /* Instant touch feedback - immediate visual response */
   .touch-feedback {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
   }
-  
+
   .touch-feedback:active {
     transform: scale(0.98);
     opacity: 0.9;
   }
-  
+
   /* Fixed container to prevent layout shifts */
   .no-layout-shift {
     contain: layout style;
@@ -245,69 +245,69 @@
   /* ========================================
      CSS-ONLY SPINNER ANIMATIONS (GPU)
      ======================================== */
-  
+
   .spinner-outer {
     animation: spin-clockwise 3s linear infinite;
     will-change: transform;
   }
-  
+
   .spinner-inner {
     animation: spin-counter 2s linear infinite;
     will-change: transform;
   }
-  
+
   .spinner-pulse {
     animation: pulse-scale 1.5s ease-in-out infinite;
     will-change: transform, opacity;
   }
-  
+
   .spinner-icon {
     animation: fade-pulse 1.5s ease-in-out infinite;
     will-change: opacity;
   }
-  
+
   @keyframes spin-clockwise {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-  
+
   @keyframes spin-counter {
     from { transform: rotate(0deg); }
     to { transform: rotate(-360deg); }
   }
-  
+
   @keyframes pulse-scale {
     0%, 100% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.15); opacity: 0.8; }
   }
-  
+
   @keyframes fade-pulse {
     0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
   }
-  
+
   /* Message fade-in animation */
   .message-fade-in {
     animation: message-enter 300ms ease-out forwards;
     will-change: transform, opacity;
   }
-  
+
   @keyframes message-enter {
-    from { 
-      opacity: 0; 
-      transform: translateY(12px); 
+    from {
+      opacity: 0;
+      transform: translateY(12px);
     }
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-  
+
   .fade-in-delayed {
     animation: fade-in 500ms ease-out 1s forwards;
     opacity: 0;
   }
-  
+
   @keyframes fade-in {
     to { opacity: 1; }
   }
@@ -316,9 +316,27 @@
      STARSHIP-INSPIRED DESIGN TOKENS
      ======================================== */
 
-  /* Badge - Rounded pill with accent background */
+  /*
+   * Badge - Outlined pill, gold as accent only (never a solid fill).
+   * L'or est un accent, pas un aplat dominant : le badge reste sobre
+   * (contour + texte or, fond transparent) pour ne pas rivaliser avec
+   * le CTA principal de la page.
+   */
   .badge-accent {
-    @apply inline-flex items-center px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-wider;
+    @apply inline-flex items-center px-4 py-1.5 rounded-full border border-accent/50 bg-transparent text-accent text-xs font-semibold uppercase tracking-wider;
+  }
+
+  /*
+   * RÈGLE CTA — un seul style d'action principale sur tout le site :
+   * le bouton "primaire" est TOUJOURS bg-foreground/text-primary (pill blanc,
+   * texte marine). L'or (bg-accent) ne sert jamais de fond de bouton plein ;
+   * il reste réservé aux accents (bordures, icônes, survols, badges).
+   * Ne réintroduis pas de bouton bg-accent comme CTA principal.
+   */
+
+  /* Callout — encadré accent (prix, information de session) réutilisé tel quel sur les pages de formulaire */
+  .callout-accent {
+    @apply p-5 rounded-2xl border border-accent/30 bg-accent/5;
   }
 
   /* Card - Soft cream with shadow */
@@ -399,7 +417,7 @@
 
   /* Organic curve background */
   .organic-bg {
-    background: linear-gradient(180deg, 
+    background: linear-gradient(180deg,
       hsl(var(--background)) 0%,
       hsl(var(--secondary)) 50%,
       hsl(var(--background)) 100%
@@ -408,38 +426,38 @@
 
   /* Sage/mint accent section */
   .section-sage {
-    background: linear-gradient(135deg, 
-      hsl(100 20% 94%) 0%, 
+    background: linear-gradient(135deg,
+      hsl(100 20% 94%) 0%,
       hsl(var(--background)) 100%
     );
   }
 
   /* === SEMANTIC ICON STYLES === */
-  
+
   /* Problem icons - Red/Orange (static) */
   .icon-problem {
     color: hsl(var(--problem));
   }
-  
+
   /* Problem icons - subtle pulse (CSS only, GPU accelerated) */
   .icon-problem-animated {
     color: hsl(var(--problem));
   }
-  
+
   /* Solution icons - Teal (static) */
   .icon-solution {
     color: hsl(var(--solution));
   }
-  
+
   .icon-solution-animated {
     color: hsl(var(--solution));
   }
-  
+
   /* Success icons - Gold accent (static) */
   .icon-success {
     color: hsl(var(--accent));
   }
-  
+
   .icon-success-animated {
     color: hsl(var(--accent));
   }
@@ -528,11 +546,11 @@
   .glow-gold {
     box-shadow: 0 0 40px -10px hsl(var(--accent) / 0.3);
   }
-  
+
   .glow-gold-subtle {
     box-shadow: 0 0 20px -5px hsl(var(--accent) / 0.15);
   }
-  
+
   .shadow-gold {
     box-shadow: 0 4px 20px -4px hsl(var(--accent) / 0.25);
   }

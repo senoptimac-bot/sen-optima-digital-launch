@@ -17,11 +17,13 @@ const buttonVariants = cva(
         link: "text-foreground/50 underline-offset-4 hover:underline hover:text-foreground",
         cta: "border border-foreground/20 bg-transparent text-foreground/70 hover:border-accent hover:text-accent rounded-full shadow-sm hover:shadow-md",
         "ghost-white": "border border-foreground/10 bg-transparent text-foreground/50 hover:border-accent hover:text-accent rounded-full",
+        /* CTA principal plein (pill blanc, texte marine) — voir règle CTA dans index.css */
+        hero: "group gap-3 bg-foreground text-primary hover:bg-foreground/90 rounded-full shadow-sm hover:shadow-md",
       },
       size: {
         default: "h-11 min-h-[48px] px-6 py-2.5",
         sm: "h-10 min-h-[44px] px-5 text-xs",
-        lg: "h-13 min-h-[52px] px-8",
+        lg: "h-14 min-h-[56px] px-8",
         icon: "h-11 w-11 min-h-[48px] min-w-[48px] rounded-full",
       },
     },

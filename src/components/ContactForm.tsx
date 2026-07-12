@@ -1,48 +1,89 @@
 import { useState, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2, Loader2, ChevronDown, Sparkles, Trophy } from "lucide-react";
+import { Send, CheckCircle2, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { useAppSounds } from "@/hooks/useAppSounds";
 import { useToast } from "@/hooks/use-toast";
 
-const subjectOptions = [
-  { value: "devis", label: "Demande de devis" },
-  { value: "site-web", label: "Site Web / Application" },
-  { value: "strategie", label: "Stratégie Digitale" },
-  { value: "organisation", label: "Organisation & Process" },
-  { value: "formation", label: "Formation" },
+const projectOptions = [
+  { value: "etudier", label: "Étudier à l'étranger" },
+  { value: "travailler", label: "Travailler à l'étranger" },
+  { value: "entreprendre", label: "Entreprendre / développer un business" },
+  { value: "formation", label: "Formation Sen'Optima Academy" },
   { value: "autre", label: "Autre" },
+];
+
+const isMobiliteProject = (project: string) => project === "etudier" || project === "travailler";
+const isBusinessProject = (project: string) => project === "entreprendre";
+
+const situationOptions = ["Étudiant", "Salarié", "Entrepreneur", "Sans emploi", "Autre"];
+const budgetOptions = [
+  "Moins de 100 000 FCFA",
+  "100 000 – 500 000 FCFA",
+  "500 000 – 1 000 000 FCFA",
+  "Plus de 1 000 000 FCFA",
+  "Je ne sais pas encore",
 ];
 
 const ContactForm = memo(() => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    project: "",
+    detail: "",
+    situation: "",
+    budget: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [selectOpen, setSelectOpen] = useState(false);
   const { playSuccess, playClick } = useAppSounds();
   const { toast } = useToast();
 
+  const projectLabel = projectOptions.find((opt) => opt.value === formData.project)?.label ?? "";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.project) {
+      toast({
+        title: "Choisissez un type de projet",
+        description: "Sélectionnez une option avant d'envoyer votre demande.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     playClick();
 
-    const selectedSubjectLabel = subjectOptions.find(
-      (opt) => opt.value === formData.subject
-    )?.label || formData.subject;
+    const detailLabel = isMobiliteProject(formData.project)
+      ? "Pays qui m'intéresse"
+      : isBusinessProject(formData.project)
+        ? "Mon activité"
+        : null;
+
+    const structuredMessage = [
+      detailLabel && formData.detail ? `${detailLabel} : ${formData.detail}` : null,
+      formData.situation ? `Situation actuelle : ${formData.situation}` : null,
+      formData.budget ? `Budget approximatif : ${formData.budget}` : null,
+      `Description du projet : ${formData.message.trim()}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
 
     const { sendContactEmail } = await import("@/lib/emailService");
 
     const result = await sendContactEmail({
       name: formData.name,
       email: formData.email,
-      subject: selectedSubjectLabel,
-      message: formData.message,
+      subject: projectLabel || "Demande de devis",
+      message: structuredMessage,
     });
 
     if (result.success) {
@@ -63,20 +104,18 @@ const ContactForm = memo(() => {
     setIsSubmitting(false);
   };
 
-  const selectedSubject = subjectOptions.find((opt) => opt.value === formData.subject);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.2 }}
-      className="relative p-8 card-cream lg:col-span-1 lg:row-span-2 flex flex-col overflow-hidden"
+      whileHover={{ y: -4 }}
+      className="relative p-8 card-cream lg:col-span-1 lg:row-span-2 flex flex-col overflow-hidden transition-shadow duration-250 hover:shadow-xl"
     >
       {/* Badge Devis gratuit */}
       <div className="absolute top-4 right-4">
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20">
-          <Trophy className="w-4 h-4 text-accent" />
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 backdrop-blur-sm border border-accent/20">
           <span className="text-xs text-accent font-medium">Devis gratuit</span>
         </div>
       </div>
@@ -85,14 +124,12 @@ const ContactForm = memo(() => {
         <Sparkles className="w-7 h-7 text-accent" />
       </div>
 
-      <span className="text-xs text-accent uppercase tracking-widest mb-2 block">Réponse sous 24h</span>
+      <span className="text-xs text-accent uppercase tracking-widest mb-2 block">Réponse sous 24 heures</span>
 
-      <h3 className="text-xl font-heading font-bold text-foreground mb-3">
-        L'Option Projet
-      </h3>
+      <h3 className="text-xl font-heading font-bold text-foreground mb-3">Demander un devis</h3>
 
       <p className="text-muted-foreground mb-6 leading-relaxed">
-        Vous voulez détailler votre besoin ou demander un devis ? Remplissez ce formulaire.
+        Quelques questions pour bien comprendre votre projet, puis nous vous recontactons.
       </p>
 
       <AnimatePresence mode="wait">
@@ -112,21 +149,17 @@ const ContactForm = memo(() => {
             >
               <CheckCircle2 className="w-10 h-10 text-accent" />
             </motion.div>
-            <h4 className="text-xl font-heading font-bold text-foreground mb-2">
-              Bien reçu !
-            </h4>
-            <p className="text-muted-foreground mb-6">
-              Nous vous répondons sous 24h par email.
-            </p>
+            <h4 className="text-xl font-heading font-bold text-foreground mb-2">Bien reçu !</h4>
+            <p className="text-muted-foreground mb-6">Nous vous répondons sous 24h par email.</p>
             <Button
               variant="outline"
               onClick={() => {
                 setIsSuccess(false);
-                setFormData({ name: "", email: "", subject: "", message: "" });
+                setFormData({ name: "", email: "", project: "", detail: "", situation: "", budget: "", message: "" });
               }}
               className="rounded-full"
             >
-              Envoyer un autre message
+              Envoyer une autre demande
             </Button>
           </motion.div>
         ) : (
@@ -138,78 +171,110 @@ const ContactForm = memo(() => {
             onSubmit={handleSubmit}
             className="space-y-4 flex-grow flex flex-col"
           >
-            <input
+            <div>
+              <Label className="text-sm text-foreground/70 mb-2 block">Quel est votre projet ? *</Label>
+              <RadioGroup
+                value={formData.project}
+                onValueChange={(value) => setFormData((prev) => ({ ...prev, project: value, detail: "" }))}
+                className="grid grid-cols-1 gap-2"
+              >
+                {projectOptions.map((option) => (
+                  <label
+                    key={option.value}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl border cursor-pointer transition-all duration-250 ${
+                      formData.project === option.value
+                        ? "border-accent bg-accent/10"
+                        : "border-border bg-secondary/50 hover:border-accent/40"
+                    }`}
+                  >
+                    <RadioGroupItem value={option.value} />
+                    <span className="text-sm text-foreground">{option.label}</span>
+                  </label>
+                ))}
+              </RadioGroup>
+            </div>
+
+            {isMobiliteProject(formData.project) && (
+              <Input
+                type="text"
+                placeholder="Quel pays vous intéresse ? (ex : Canada, France, Belgique...)"
+                value={formData.detail}
+                onChange={(e) => setFormData((prev) => ({ ...prev, detail: e.target.value }))}
+              />
+            )}
+
+            {isBusinessProject(formData.project) && (
+              <Input
+                type="text"
+                placeholder="Votre activité (ex : Commerce, Services, Tech...)"
+                value={formData.detail}
+                onChange={(e) => setFormData((prev) => ({ ...prev, detail: e.target.value }))}
+              />
+            )}
+
+            <Select
+              value={formData.situation}
+              onValueChange={(value) => setFormData((prev) => ({ ...prev, situation: value }))}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Votre situation actuelle" />
+              </SelectTrigger>
+              <SelectContent className="bg-popover">
+                {situationOptions.map((opt) => (
+                  <SelectItem key={opt} value={opt}>
+                    {opt}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select
+              value={formData.budget}
+              onValueChange={(value) => setFormData((prev) => ({ ...prev, budget: value }))}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Budget approximatif" />
+              </SelectTrigger>
+              <SelectContent className="bg-popover">
+                {budgetOptions.map((opt) => (
+                  <SelectItem key={opt} value={opt}>
+                    {opt}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Textarea
+              placeholder="Décrivez votre projet en quelques mots..."
+              required
+              minLength={10}
+              rows={3}
+              value={formData.message}
+              onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
+              className="resize-none"
+            />
+
+            <Input
               type="text"
-              placeholder="Nom Complet"
+              placeholder="Nom complet"
               required
               value={formData.name}
               onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
-              className="w-full px-4 py-3.5 rounded-xl bg-secondary/50 border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground"
             />
 
-            <input
+            <Input
               type="email"
               placeholder="Email"
               required
               value={formData.email}
               onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-              className="w-full px-4 py-3.5 rounded-xl bg-secondary/50 border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground"
-            />
-
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setSelectOpen(!selectOpen)}
-                className="w-full px-4 py-3.5 rounded-xl bg-secondary/50 border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-left text-foreground"
-              >
-                {selectedSubject ? (
-                  selectedSubject.label
-                ) : (
-                  <span className="text-muted-foreground">Sujet</span>
-                )}
-              </button>
-              <ChevronDown
-                className={`absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground transition-transform duration-200 ${selectOpen ? 'rotate-180' : ''}`}
-              />
-
-              <AnimatePresence>
-                {selectOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="absolute top-full left-0 right-0 mt-2 py-2 rounded-xl bg-card border border-border shadow-xl z-50"
-                  >
-                    {subjectOptions.map((option) => (
-                      <button
-                        key={option.value}
-                        type="button"
-                        onClick={() => {
-                          setFormData((prev) => ({ ...prev, subject: option.value }));
-                          setSelectOpen(false);
-                        }}
-                        className="w-full px-4 py-3 text-left hover:bg-accent/10 transition-colors text-foreground"
-                      >
-                        {option.label}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <textarea
-              placeholder="Votre message..."
-              required
-              rows={4}
-              value={formData.message}
-              onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
-              className="w-full px-4 py-3.5 rounded-xl bg-secondary/50 border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-foreground placeholder:text-muted-foreground resize-none flex-grow"
             />
 
             <Button
               type="submit"
-              className="w-full h-12 text-base gap-2 mt-auto rounded-full bg-foreground text-primary hover:bg-foreground/90"
+              variant="hero"
+              size="lg"
+              className="w-full mt-auto"
               disabled={isSubmitting}
               onClick={() => {
                 if (!isSubmitting) playClick();

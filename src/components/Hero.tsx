@@ -2,139 +2,64 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroCoverImage from "@/assets/equipe-senoptima.jpg";
+import heroPortraitCover from "@/assets/hero-portrait-cover.jpg";
+import SiteImage from "@/components/SiteImage";
+
 const Hero = () => {
-  return <section id="accueil" className="relative min-h-[100svh] flex items-center pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden">
-      {/* Simple static background */}
-      <div className="absolute inset-0 z-0 bg-background" />
+  return (
+    <section id="accueil" className="relative -mt-20 h-[100svh] min-h-[640px] overflow-hidden">
+      <SiteImage
+        src={heroPortraitCover}
+        alt="Consultante Sen'Optima Consulting devant le stand de présentation du cabinet"
+        className="absolute inset-0 w-full h-full object-cover object-[center_58%]"
+        priority
+      />
 
-      <div className="container relative z-10">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content - Second on mobile, First on desktop */}
-          <div className="max-w-xl order-last lg:order-first">
-            {/* Badge - Accent pill */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1]
-          }} className="mb-8">
-              <span className="badge-accent">
-                Cabinet de conseil digital
-              </span>
-            </motion.div>
+      {/* Gradient only at the bottom, to mark the end of the section and keep the text legible */}
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/70 to-transparent pointer-events-none" />
 
-            {/* Main Headline - Large with italic accent */}
-            <motion.h1 initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5,
-            delay: 0.08,
-            ease: [0.22, 1, 0.36, 1]
-          }} className="text-display font-bold text-foreground mb-6">
-              De l'<span className="italic text-accent">Ambition</span>
-              <br />
-              à la Structure.
-            </motion.h1>
+      <div className="relative z-10 h-full flex flex-col justify-end pb-12 md:pb-16">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-xl"
+          >
+            <span className="badge-accent mb-5 inline-block">Cabinet de conseil · Dakar</span>
 
-            {/* Subtitle */}
-            <motion.p initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5,
-            delay: 0.15,
-            ease: [0.22, 1, 0.36, 1]
-          }} className="text-body-lg text-muted-foreground max-w-lg mb-10 leading-relaxed">Basés à Grand Mbao, nous créons des systèmes de gestion et des plateformes de vente pour transformer votre activité informelle en entreprise organisée.</motion.p>
+            <h1 className="text-hero font-heading text-white leading-tight mb-7">
+              Un projet <span className="italic text-accent">solide</span> ne s'improvise pas.
+            </h1>
 
-            {/* CTA Buttons */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5,
-            delay: 0.2,
-            ease: [0.22, 1, 0.36, 1]
-          }} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
-              <Button size="lg" asChild className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 sm:h-14 px-8 w-full sm:w-auto justify-center">
-                <Link to="/diagnostic">
-                  Lancer mon Audit
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                size="lg"
+                asChild
+                variant="hero"
+              >
+                <Link to="/contact">
+                  Discuter de mon projet
                   <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
                     <ArrowRight className="w-4 h-4" />
                   </span>
                 </Link>
               </Button>
 
-              <Button variant="outline" size="lg" asChild className="gap-2 text-sm rounded-full border-2 border-foreground/30 text-foreground bg-transparent hover:border-accent hover:text-accent transition-all duration-300 h-14 sm:h-14 px-8 w-full sm:w-auto justify-center">
-                <Link to="/solutions">
-                  Découvrir nos solutions
-                </Link>
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="gap-2 text-sm rounded-full border-2 border-white/40 text-white bg-white/5 backdrop-blur-sm hover:border-accent hover:text-accent transition-all duration-300 h-14 px-8"
+              >
+                <a href="#nos-expertises">Découvrir nos expertises</a>
               </Button>
-            </motion.div>
-          </div>
-
-          {/* Right Visual - Hero Image with floating card - First on mobile */}
-          <motion.div initial={{
-          opacity: 0,
-          scale: 0.98
-        }} animate={{
-          opacity: 1,
-          scale: 1
-        }} transition={{
-          duration: 0.6,
-          delay: 0.1,
-          ease: [0.22, 1, 0.36, 1]
-        }} className="relative order-first lg:order-last w-full">
-            {/* Background shape */}
-            <div className="absolute -top-10 -right-10 w-full h-full bg-accent/10 rounded-[3rem] transform rotate-6 hidden lg:block" />
-            
-            {/* Main image container */}
-            <div className="relative rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-2xl">
-              <img src={heroCoverImage} alt="Équipe Sen'Optima Consulting" className="w-full aspect-[16/9] object-cover" loading="eager" />
-              
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent" />
             </div>
-
-            {/* Floating notification card */}
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </motion.div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;

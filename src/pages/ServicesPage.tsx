@@ -148,7 +148,7 @@ const ServicesPage = () => {
                 <Button
                   size="lg"
                   asChild
-                  className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
+                  variant="hero"
                 >
                   <Link to="/diagnostic">
                     Lancer mon Diagnostic
@@ -233,7 +233,7 @@ const ServicesPage = () => {
             <span className="badge-accent mb-6">
               4 Piliers Stratégiques
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+            <h2 className="text-headline text-foreground mb-4">
               Nos axes <span className="italic text-accent">d'intervention</span>
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -266,7 +266,7 @@ const ServicesPage = () => {
             <span className="badge-accent mb-4">
               Notre Approche
             </span>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+            <h2 className="text-headline text-foreground">
               Comment nous <span className="italic text-accent">travaillons</span>
             </h2>
           </motion.div>
@@ -295,7 +295,7 @@ const ServicesPage = () => {
             <span className="badge-accent mb-4">
               Prêt à démarrer ?
             </span>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
+            <h2 className="text-headline text-foreground mb-4">
               Votre <span className="italic text-accent">ambition</span> compte.
               <span className="block mt-1">Pas votre niveau.</span>
             </h2>
@@ -305,7 +305,7 @@ const ServicesPage = () => {
             <Button
               asChild
               size="lg"
-              className="group gap-3 text-sm rounded-full bg-foreground text-primary hover:bg-foreground/90 transition-all duration-300 h-14 px-8"
+              variant="hero"
             >
               <Link to="/solutions">
                 Faire le point sur mon projet

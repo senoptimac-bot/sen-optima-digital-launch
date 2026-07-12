@@ -1,22 +1,22 @@
 import { motion } from "framer-motion";
-import { Settings, Globe, Rocket, Wrench, ArrowRight } from "lucide-react";
+import { Settings, Layers, Presentation, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 const steps = [{
   icon: Settings,
   number: "01",
   title: "DIAGNOSTIC",
-  description: "On analyse vos blocages actuels sans filtre."
+  description: "On regarde votre situation réelle, sans complaisance. Ce qui est déjà solide, et ce qui ne l'est pas encore."
 }, {
-  icon: Globe,
+  icon: Layers,
   number: "02",
-  title: "STRATÉGIE",
-  description: "On dessine votre système sur mesure. Vous validez tout."
+  title: "STRUCTURATION",
+  description: "On construit ce qui manque : le projet, le profil, le dossier. Étape par étape, avec vous."
 }, {
-  icon: Rocket,
+  icon: Presentation,
   number: "03",
-  title: "LIVRAISON",
-  description: "On déploie, on vous forme, et on reste à vos côtés."
+  title: "PRÉSENTATION",
+  description: "Vous vous présentez prêt. Solide sur le fond, jamais maquillé en surface."
 }];
 const MethodSection = () => {
   return <section className="py-section-lg relative bg-background">
@@ -38,7 +38,7 @@ const MethodSection = () => {
             Notre Méthode
           </span>
           <h2 className="text-headline text-foreground">
-            L'<span className="italic text-accent">Écosystème</span> de Croissance
+            Diagnostic. Structuration. <span className="italic text-accent">Présentation.</span>
           </h2>
         </motion.div>
 
@@ -110,9 +110,9 @@ const MethodSection = () => {
           </div>
 
           {/* CTA Button */}
-          <Button size="lg" asChild className="group gap-3 text-sm rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all duration-500 h-14 px-10">
-            <Link to="/diagnostic">
-              Lancer mon Audit Business
+          <Button size="lg" asChild variant="hero">
+            <Link to="/contact">
+              Discuter de mon projet
               <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
                 <ArrowRight className="w-4 h-4" />
               </span>

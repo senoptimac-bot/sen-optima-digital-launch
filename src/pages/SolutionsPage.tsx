@@ -109,7 +109,7 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
         }
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-4 leading-tight">
+        <h3 className="text-title text-white mb-4 leading-tight">
           {offer.title}
         </h3>
 
@@ -191,7 +191,7 @@ const OfferCard = ({ offer, index }: OfferCardProps) => {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-6">
           <a
             href={offer.cta.href}
-            className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-accent text-primary font-medium text-sm transition-all duration-300 hover:bg-accent/90 hover:shadow-md">
+            className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-foreground text-primary font-medium text-sm transition-all duration-300 hover:bg-foreground/90 hover:shadow-md">
             <ArrowRight className="w-4 h-4" />
             {offer.cta.label}
           </a>
@@ -247,7 +247,7 @@ const SolutionsPage = () => {
               className="text-left">
 
               <span className="badge-accent mb-6 inline-block">Solutions</span>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6 leading-tight">
+              <h1 className="text-headline text-foreground mb-6 leading-tight">
                 Nos solutions pour structurer votre <span className="italic text-accent">activité</span>
               </h1>
               <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8 max-w-2xl">

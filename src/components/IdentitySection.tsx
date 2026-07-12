@@ -46,15 +46,15 @@ const IdentitySection = () => {
             <ul className="space-y-4 text-body text-muted-foreground">
               <li className="flex items-start gap-3">
                 <span className="text-problem text-lg">✗</span>
-                <span>Les agences qui vendent du rêve.</span>
+                <span>Des promesses de résultat qui dépendent d'une autorité extérieure.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-problem text-lg">✗</span>
-                <span>Les délais jamais respectés.</span>
+                <span>Une approche standardisée, la même pour chaque client.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-problem text-lg">✗</span>
-                <span>Le jargon pour justifier le prix.</span>
+                <span>Un livrable vendu avant même d'avoir analysé le projet.</span>
               </li>
             </ul>
           </motion.div>
@@ -78,15 +78,15 @@ const IdentitySection = () => {
             <ul className="space-y-4 text-body text-foreground">
               <li className="flex items-start gap-3">
                 <span className="text-accent text-lg">✓</span>
-                <span>Des systèmes, pas du bricolage.</span>
+                <span>Des engagements sur ce que nous maîtrisons : l'analyse et la méthode.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent text-lg">✓</span>
-                <span>Un calendrier tenu à la lettre.</span>
+                <span>Une analyse personnalisée pour chaque client.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent text-lg">✓</span>
-                <span>Des résultats, pas des excuses.</span>
+                <span>Un accompagnement structuré, avant toute recommandation.</span>
               </li>
             </ul>
           </motion.div>
@@ -102,11 +102,11 @@ const IdentitySection = () => {
         >
           <Button
             size="lg"
-            className="gap-3 rounded-full bg-foreground text-background hover:bg-foreground/90 h-14 px-8"
+            variant="hero"
             asChild
           >
-            <Link to="/services">
-              Explorer nos solutions
+            <Link to="/nos-expertises">
+              Explorer nos expertises
               <span className="w-8 h-8 rounded-full border-2 border-accent flex items-center justify-center">
                 <ArrowRight className="w-4 h-4" />
               </span>

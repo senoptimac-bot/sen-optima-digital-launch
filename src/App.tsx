@@ -20,14 +20,27 @@ import SolutionsPage from "./pages/SolutionsPage";
 import SuccessPage from "./pages/SuccessPage";
 import AboutPage from "./pages/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ContactPage from "./pages/ContactPage";
+import ExpertisesPage from "./pages/ExpertisesPage";
+import MobiliteInternationalePage from "./pages/expertises/MobiliteInternationalePage";
+import DeveloppementEntreprisesPage from "./pages/expertises/DeveloppementEntreprisesPage";
+import BlogPage from "./pages/BlogPage";
 import NotFound from "./pages/NotFound";
 import MentionsLegalesPage from "./pages/MentionsLegalesPage";
 import PolitiqueConfidentialitePage from "./pages/PolitiqueConfidentialitePage";
 import CGVPage from "./pages/CGVPage";
 import DiagnosticFormPage from "./pages/DiagnosticFormPage";
+import DiagnosticMobiliteFormPage from "./pages/DiagnosticMobiliteFormPage";
 import ProjetFormPage from "./pages/ProjetFormPage";
 import FormationFormPage from "./pages/FormationFormPage";
+import SenOptimaAcademyPage from "./pages/SenOptimaAcademyPage";
+import BusinessLaunchPage from "./pages/academy/BusinessLaunchPage";
+import ProfilInternationalPage from "./pages/academy/ProfilInternationalPage";
+import RendezVousDecouvertePage from "./pages/RendezVousDecouvertePage";
+import RendezVousDetailPage from "./pages/offres/RendezVousDetailPage";
+import DiagnosticDetailPage from "./pages/offres/DiagnosticDetailPage";
+import AccompagnementDetailPage from "./pages/offres/AccompagnementDetailPage";
 
 const queryClient = new QueryClient();
 
@@ -170,13 +183,26 @@ const App = () => {
                     <Route path="/merci" element={<SuccessPage />} />
                     <Route path="/a-propos" element={<AboutPage />} />
                     <Route path="/nos-projets" element={<ProjectsPage />} />
+                    <Route path="/nos-projets/:slug" element={<ProjectDetailPage />} />
+                    <Route path="/nos-expertises" element={<ExpertisesPage />} />
+                    <Route path="/nos-expertises/mobilite-internationale" element={<MobiliteInternationalePage />} />
+                    <Route path="/nos-expertises/developpement-entreprises" element={<DeveloppementEntreprisesPage />} />
+                    <Route path="/blog" element={<BlogPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
                     <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
                     <Route path="/cgv" element={<CGVPage />} />
                     <Route path="/diagnostic" element={<DiagnosticFormPage />} />
+                    <Route path="/diagnostic-mobilite" element={<DiagnosticMobiliteFormPage />} />
                     <Route path="/projet" element={<ProjetFormPage />} />
                     <Route path="/formation" element={<FormationFormPage />} />
+                    <Route path="/senoptima-academy" element={<SenOptimaAcademyPage />} />
+                    <Route path="/senoptima-academy/business-launch" element={<BusinessLaunchPage />} />
+                    <Route path="/senoptima-academy/profil-international" element={<ProfilInternationalPage />} />
+                    <Route path="/rendez-vous-decouverte" element={<RendezVousDecouvertePage />} />
+                    <Route path="/offres/rendez-vous-decouverte" element={<RendezVousDetailPage />} />
+                    <Route path="/offres/diagnostic" element={<DiagnosticDetailPage />} />
+                    <Route path="/offres/accompagnement" element={<AccompagnementDetailPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </Layout>

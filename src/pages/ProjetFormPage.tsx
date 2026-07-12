@@ -68,7 +68,7 @@ Je souhaite échanger sur ce projet.`;
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-3">
+              <h1 className="text-title text-foreground mb-3">
                 Discuter d'un projet de <span className="italic text-accent">structuration digitale</span>
               </h1>
               <p className="text-muted-foreground text-sm md:text-base mb-10 max-w-xl">
@@ -168,7 +168,7 @@ Je souhaite échanger sur ce projet.`;
                 {/* Submit */}
                 <button
                   onClick={handleSubmit}
-                  className="w-full inline-flex items-center justify-center gap-2 h-14 rounded-full bg-accent text-primary font-semibold text-base transition-all duration-300 hover:bg-accent/90 hover:shadow-lg active:scale-[0.98] mt-4"
+                  className="w-full inline-flex items-center justify-center gap-2 h-14 rounded-full bg-foreground text-primary font-semibold text-base transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg active:scale-[0.98] mt-4"
                 >
                   <MessageCircle className="w-5 h-5" />
                   Envoyer ma demande

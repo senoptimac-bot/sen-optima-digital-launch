@@ -46,8 +46,8 @@ const DiagnosticFormPage = () => {
       : "[Demande : Diagnostic – Question avant paiement]";
 
     const closing = isPret
-      ? "Je confirme avoir pris connaissance du tarif de 25 000 FCFA et je suis prêt(e) à procéder au paiement du diagnostic.\nMerci de m'envoyer le lien Wave et les prochaines étapes."
-      : "J'ai pris connaissance du tarif de 25 000 FCFA et je souhaite échanger brièvement avant de procéder au paiement.";
+      ? "Je confirme avoir pris connaissance du tarif de 30 000 FCFA et je suis prêt(e) à procéder au paiement du diagnostic.\nMerci de m'envoyer le lien Wave et les prochaines étapes."
+      : "J'ai pris connaissance du tarif de 30 000 FCFA et je souhaite échanger brièvement avant de procéder au paiement.";
 
     const message = `${header}
 
@@ -87,16 +87,16 @@ ${closing}`;
               transition={{ duration: 0.5 }}
             >
               {/* Welcome banner */}
-              <div className="mb-8 p-5 rounded-2xl border border-accent/30 bg-accent/5">
-                <p className="text-sm text-accent font-medium mb-1">Diagnostic Stratégique</p>
-                <p className="text-2xl md:text-3xl font-heading font-bold text-accent mb-2">25 000 FCFA</p>
+              <div className="callout-accent mb-8">
+                <p className="text-sm text-accent font-medium mb-1">Diagnostic de Développement d'Entreprise</p>
+                <p className="text-2xl md:text-3xl font-heading font-bold text-accent mb-2">30 000 FCFA</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Vous avez fait le bon choix. Complétez ce formulaire pour que nous puissions préparer votre session et vous accompagner au mieux.
                 </p>
               </div>
 
-              <h1 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-3">
-                Réserver un Diagnostic <span className="italic text-accent">Stratégique</span>
+              <h1 className="text-title text-foreground mb-3">
+                Réserver mon <span className="italic text-accent">Diagnostic Business</span>
               </h1>
               <p className="text-muted-foreground text-sm md:text-base mb-10 max-w-xl">
                 Merci de compléter ces informations afin que nous puissions comprendre votre situation avant échange.
@@ -201,7 +201,7 @@ ${closing}`;
                       className={errors.tarif ? "border-destructive" : ""}
                     />
                     <span className="text-sm text-foreground leading-relaxed">
-                      Je confirme avoir pris connaissance du tarif de <strong className="text-accent">25 000 FCFA</strong>.
+                      Je confirme avoir pris connaissance du tarif de <strong className="text-accent">30 000 FCFA</strong>.
                     </span>
                   </label>
                   {errors.tarif && <p className="text-xs text-destructive mt-1">Veuillez confirmer le tarif</p>}
@@ -226,7 +226,7 @@ ${closing}`;
                 {/* Submit */}
                 <button
                   onClick={handleSubmit}
-                  className="w-full inline-flex items-center justify-center gap-2 h-14 rounded-full bg-accent text-primary font-semibold text-base transition-all duration-300 hover:bg-accent/90 hover:shadow-lg active:scale-[0.98] mt-4"
+                  className="w-full inline-flex items-center justify-center gap-2 h-14 rounded-full bg-foreground text-primary font-semibold text-base transition-all duration-300 hover:bg-foreground/90 hover:shadow-lg active:scale-[0.98] mt-4"
                 >
                   <MessageCircle className="w-5 h-5" />
                   Envoyer ma demande
