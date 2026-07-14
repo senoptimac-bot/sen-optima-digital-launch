@@ -21,7 +21,7 @@ const IdentitySection = () => {
             Identité & Vérité
           </span>
           <h2 className="text-headline text-foreground">
-            Ce qui nous <span className="italic text-accent">différencie</span>
+            Notre différence ne repose pas sur des <span className="italic text-accent">promesses.</span>
           </h2>
         </motion.div>
 
@@ -78,15 +78,15 @@ const IdentitySection = () => {
             <ul className="space-y-4 text-body text-foreground">
               <li className="flex items-start gap-3">
                 <span className="text-accent text-lg">✓</span>
-                <span>Des engagements sur ce que nous maîtrisons : l'analyse et la méthode.</span>
+                <span>Nous construisons avant de conseiller.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent text-lg">✓</span>
-                <span>Une analyse personnalisée pour chaque client.</span>
+                <span>Chaque accompagnement commence par une analyse stratégique.</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent text-lg">✓</span>
-                <span>Un accompagnement structuré, avant toute recommandation.</span>
+                <span>Nous privilégions la crédibilité plutôt que la rapidité.</span>
               </li>
             </ul>
           </motion.div>

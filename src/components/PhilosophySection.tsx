@@ -56,7 +56,7 @@ const PhilosophySection = () => {
             Notre Philosophie
           </span>
           <h2 className="text-headline text-foreground">
-            Notre <span className="italic text-accent">ligne</span>
+            Les principes qui guident chacune de nos <span className="italic text-accent">décisions.</span>
           </h2>
         </motion.div>
 

@@ -1,22 +1,22 @@
 import { motion } from "framer-motion";
-import { Settings, Layers, Presentation, ArrowRight } from "lucide-react";
+import { Settings, Layers, Rocket, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 const steps = [{
   icon: Settings,
   number: "01",
   title: "DIAGNOSTIC",
-  description: "On regarde votre situation réelle, sans complaisance. Ce qui est déjà solide, et ce qui ne l'est pas encore."
+  description: "Nous analysons votre activité, votre profil et vos objectifs afin d'identifier ce qui est déjà solide et ce qui doit être renforcé."
 }, {
   icon: Layers,
   number: "02",
   title: "STRUCTURATION",
-  description: "On construit ce qui manque : le projet, le profil, le dossier. Étape par étape, avec vous."
+  description: "Nous construisons une stratégie adaptée : entreprise, communication, organisation, profil ou projet international."
 }, {
-  icon: Presentation,
+  icon: Rocket,
   number: "03",
-  title: "PRÉSENTATION",
-  description: "Vous vous présentez prêt. Solide sur le fond, jamais maquillé en surface."
+  title: "DÉPLOIEMENT",
+  description: "Lorsque les bases sont solides, nous vous accompagnons dans la mise en œuvre de votre projet avec une méthode claire."
 }];
 const MethodSection = () => {
   return <section className="py-section-lg relative bg-background">
@@ -38,7 +38,7 @@ const MethodSection = () => {
             Notre Méthode
           </span>
           <h2 className="text-headline text-foreground">
-            Diagnostic. Structuration. <span className="italic text-accent">Présentation.</span>
+            Comprendre. Construire. <span className="italic text-accent">Développer.</span>
           </h2>
         </motion.div>
 
@@ -105,7 +105,7 @@ const MethodSection = () => {
       }} className="max-w-2xl">
           <div className="p-6 card-cream mb-12 text-left border-l-4 border-accent">
             <p className="text-body text-foreground">
-              "On ne met pas le toit avant les fondations."
+              "Les opportunités se construisent. Elles ne s'improvisent pas."
             </p>
           </div>
 

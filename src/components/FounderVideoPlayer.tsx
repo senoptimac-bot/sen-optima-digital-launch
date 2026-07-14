@@ -9,14 +9,14 @@ interface FounderVideoPlayerProps {
 }
 
 /**
- * Lecteur vidéo léger pour la présentation du fondateur (45-60s).
+ * Lecteur vidéo léger pour la vidéo de présentation de Sen'Optima Consulting (45-60s).
  * - Pas d'autoplay (encore moins avec le son) : lecture uniquement sur clic.
  * - preload="none" : aucun octet vidéo n'est chargé tant que l'utilisateur
  *   n'a pas cliqué play, donc pas d'impact sur le LCP/mobile.
  * - Tant que `src` n'est pas fourni, affiche un emplacement clairement marqué
  *   plutôt qu'une fausse vidéo ou un visage stock.
  */
-const FounderVideoPlayer = ({ src, poster, title = "Présentation du fondateur" }: FounderVideoPlayerProps) => {
+const FounderVideoPlayer = ({ src, poster, title = "Présentation de Sen'Optima Consulting" }: FounderVideoPlayerProps) => {
   if (!src) {
     return (
       <div className="aspect-video rounded-[2rem] border-2 border-dashed border-accent/40 bg-muted/40 flex flex-col items-center justify-center gap-3 text-center px-6">
@@ -24,7 +24,7 @@ const FounderVideoPlayer = ({ src, poster, title = "Présentation du fondateur" 
           <Play className="w-6 h-6 text-muted-foreground/50" />
         </div>
         <span className="text-xs uppercase tracking-wider font-semibold text-muted-foreground/70">
-          [VIDÉO FONDATEUR — À FOURNIR]
+          [VIDÉO DE PRÉSENTATION — À FOURNIR]
         </span>
       </div>
     );

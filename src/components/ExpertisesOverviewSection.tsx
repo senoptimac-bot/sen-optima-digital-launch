@@ -7,20 +7,20 @@ import entreprisesImage from "@/assets/developpement-entreprises-home.jpg";
 
 const domains = [
   {
-    title: "Mobilité Internationale",
-    description: "Études, projet professionnel, visite : présentez-vous avec un dossier qui tient debout, sur un profil réellement prêt.",
-    href: "/nos-expertises/mobilite-internationale",
-    image: mobiliteImage,
-    imageAlt: "Voyageur souriant avec sa valise dans un aéroport, prêt pour son projet international",
-    imagePosition: "object-top",
-  },
-  {
     title: "Développement des Entreprises",
     description: "Formalisez, structurez et rendez votre activité crédible — pour grandir, et pour vos futurs projets à l'international.",
     href: "/nos-expertises/developpement-entreprises",
     image: entreprisesImage,
     imageAlt: "Consultante Sen'Optima Consulting présentant l'offre Développement des Entreprises",
     imagePosition: "object-[center_20%]",
+  },
+  {
+    title: "Mobilité Internationale",
+    description: "Études, projet professionnel, visite : présentez-vous avec un dossier qui tient debout, sur un profil réellement prêt.",
+    href: "/nos-expertises/mobilite-internationale",
+    image: mobiliteImage,
+    imageAlt: "Voyageur souriant avec sa valise dans un aéroport, prêt pour son projet international",
+    imagePosition: "object-top",
   },
 ];
 

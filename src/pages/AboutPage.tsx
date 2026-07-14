@@ -40,15 +40,19 @@ const promises = [
   "Des conseils personnalisés",
   "Une approche basée sur la réalité",
   "Un accompagnement structuré",
+  "Une stratégie adaptée",
+  "Une entreprise plus crédible",
+  "Une meilleure organisation",
+  "Des décisions éclairées",
 ];
 
 const neverPromise = ["Un visa garanti", "Une admission garantie", "Un emploi garanti", "Un résultat qui dépend d'une administration ou d'un établissement"];
 
 const manifesto = [
-  "Nous préférons préparer un projet pendant six mois plutôt que promettre un départ en six semaines.",
+  "Nous préférons construire une entreprise pendant plusieurs mois plutôt que promettre des résultats en quelques semaines.",
   "Nous croyons que l'information vaut plus qu'une promesse.",
   "Nous renforçons des profils. Nous n'habillons pas des dossiers.",
-  "Nous ne vendons pas un visa. Nous construisons un dossier qui a une chance d'aboutir.",
+  "Nous ne vendons pas une solution miracle. Nous construisons une stratégie durable.",
   "Une bonne préparation coûte du temps. Une mauvaise préparation coûte de l'argent — et parfois un projet entier.",
   "Nous préférons dire la vérité sur un projet fragile plutôt que vendre un espoir fragile.",
   "Un raccourci n'a jamais construit un dossier solide.",
@@ -70,14 +74,18 @@ const AboutPage = () => {
           <div className="container relative z-10">
             <BackButton />
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
-              <span className="badge-accent mb-6 inline-block">À propos de Sen'Optima Consulting</span>
+              <span className="badge-accent mb-6 inline-block">À propos de Sen'Optima</span>
               <h1 className="text-headline text-foreground mb-6">
-                Nous préparons des personnes. <span className="italic text-accent">Pas seulement des dossiers.</span>
+                Nous construisons des entreprises solides. <span className="italic text-accent">Nous ouvrons ensuite les bonnes opportunités.</span>
               </h1>
               <p className="text-body-lg text-muted-foreground leading-relaxed mb-8">
-                Notre conviction est simple : un projet solide commence toujours par une personne bien préparée.
+                Chez Sen'Optima Consulting, nous accompagnons les entrepreneurs, les professionnels et
+                les organisations à structurer leurs activités, accélérer leur développement et accéder
+                à des opportunités nationales et internationales.
                 <br />
-                Pas par une promesse. Pas par un raccourci.
+                <br />
+                Notre métier ne consiste pas seulement à accompagner un projet. Nous construisons les
+                fondations qui permettront à ce projet de réussir durablement.
               </p>
               <Button asChild size="lg" variant="hero">
                 <a href="#notre-philosophie">
@@ -97,29 +105,27 @@ const AboutPage = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <span className="badge-accent mb-6 inline-block">Notre histoire</span>
               <h2 className="text-headline text-foreground mb-8">
-                Pourquoi Sen'Optima <span className="italic text-accent">est née.</span>
+                Pourquoi Sen'Optima <span className="italic text-accent">existe.</span>
               </h2>
               <div className="space-y-5 text-body-lg text-muted-foreground leading-relaxed">
-                <p>Sen'Optima Consulting est née d'un constat simple.</p>
+                <p>Nous avons créé Sen'Optima après avoir constaté une réalité simple.</p>
                 <p>
-                  Chaque année, des milliers de jeunes investissent leur argent dans des projets de mobilité
-                  internationale ou de création d'entreprise sans disposer des bonnes informations.
-                </p>
-                <p>
-                  Certains suivent des conseils trouvés sur les réseaux sociaux.
+                  Beaucoup d'entrepreneurs veulent développer leur activité.
                   <br />
-                  D'autres font confiance à des intermédiaires qui promettent des résultats impossibles.
-                </p>
-                <p>
-                  Beaucoup perdent du temps. Beaucoup perdent de l'argent.
+                  Beaucoup de professionnels souhaitent évoluer.
                   <br />
-                  Parfois plusieurs millions de francs CFA.
+                  Beaucoup rêvent d'étudier, travailler ou investir à l'international.
                 </p>
-                <p className="text-foreground font-semibold">Nous avons choisi une autre approche.</p>
+                <p>Mais peu disposent d'une stratégie solide.</p>
+                <p className="text-foreground font-semibold">
+                  Nous avons donc créé un cabinet capable d'accompagner un projet dans sa globalité.
+                </p>
+                <p>De la structuration de l'entreprise jusqu'à l'ouverture vers les opportunités internationales.</p>
                 <div className="border-l-4 border-accent pl-5 space-y-2 text-foreground">
-                  <p>Avant de parler de procédures, nous parlons de préparation.</p>
-                  <p>Avant de parler de départ, nous parlons de projet.</p>
-                  <p>Avant de parler de réussite, nous parlons de réalité.</p>
+                  <p>Nous croyons qu'une entreprise solide crée naturellement de nouvelles opportunités.</p>
+                  <p>Avant de chercher des clients, nous structurons votre activité.</p>
+                  <p>Avant de lancer des campagnes, nous clarifions votre stratégie.</p>
+                  <p>Avant de penser à l'international, nous consolidons votre crédibilité.</p>
                 </div>
               </div>
             </motion.div>
@@ -128,14 +134,14 @@ const AboutPage = () => {
 
         <section className="py-10 md:py-14">
           <div className="container">
-            <PhotoPlaceholder label="[PHOTO — POURQUOI SEN'OPTIMA EST NÉE]" aspect="aspect-[21/9]" className="max-w-5xl mx-auto" />
+            <PhotoPlaceholder label="[PHOTO — POURQUOI SEN'OPTIMA EXISTE]" aspect="aspect-[21/9]" className="max-w-5xl mx-auto" />
           </div>
         </section>
 
         {/* LE FONDATEUR */}
         <section className="py-16 md:py-24">
           <div className="container max-w-5xl">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
               <motion.div initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
                 <img
                   src={fondateurPhoto}
@@ -144,30 +150,50 @@ const AboutPage = () => {
                 />
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-                <span className="badge-accent mb-6 inline-block">Le fondateur</span>
+                <span className="badge-accent mb-6 inline-block">L'origine de notre méthode</span>
                 <h2 className="text-title text-foreground mb-6">
-                  Un parcours construit sur <span className="italic text-accent">l'expérience du terrain.</span>
+                  Mon <span className="italic text-accent">parcours.</span>
                 </h2>
                 <div className="space-y-4 text-body text-muted-foreground leading-relaxed">
                   <p>
-                    Avant de créer Sen'Optima Consulting, j'ai travaillé comme responsable commercial dans une agence
-                    spécialisée dans la mobilité internationale.
+                    Depuis l'âge de 12 ans, le commerce fait partie de ma vie. Grandir dans une famille de
+                    commerçants m'a appris très tôt à vendre, négocier et comprendre les besoins des clients.
                   </p>
                   <p>
-                    Cette expérience m'a permis de comprendre les attentes des candidats, mais également les
-                    nombreuses erreurs qui conduisent à l'échec d'un projet.
+                    En 2020, alors que je préparais le baccalauréat, un grave accident de moto m'a laissé
+                    immobilisé pendant près de six mois. Ce qui semblait être la fin de mes projets est devenu le
+                    début d'une nouvelle aventure.
                   </p>
                   <p>
-                    J'ai vu des personnes investir des sommes importantes dans des démarches mal préparées.
-                    <br />
-                    J'ai vu des dossiers montés sans véritable stratégie.
+                    Avec un téléphone, une connexion Internet et beaucoup de discipline, je me suis formé au
+                    marketing digital, au business et aux métiers du numérique grâce à des plateformes comme
+                    Google, Coursera, OpenClassrooms et de nombreuses ressources spécialisées. J'ai ensuite
+                    appliqué ces compétences sur le terrain en développant plusieurs projets entrepreneuriaux,
+                    notamment dans le e-commerce et le marketing digital.
                   </p>
-                  <p className="text-foreground font-semibold">
-                    J'ai surtout compris qu'un bon accompagnement ne consiste pas à vendre un voyage.
-                    <br />
-                    Il consiste à préparer une personne.
+                  <p>
+                    Par la suite, j'ai rejoint une agence spécialisée dans la mobilité internationale, où j'ai
+                    évolué de community manager à responsable commercial. Cette expérience m'a permis
+                    d'accompagner des centaines de candidats et de comprendre une réalité essentielle : la plupart
+                    des échecs ne viennent pas d'un manque d'ambition, mais d'un manque de préparation, de
+                    stratégie et d'informations fiables.
                   </p>
-                  <p>C'est cette conviction qui a donné naissance à Sen'Optima Consulting.</p>
+                  <p className="text-foreground font-semibold">C'est cette conviction qui a donné naissance à Sen'Optima Consulting.</p>
+                  <p>
+                    Aujourd'hui, notre mission est d'aider les entrepreneurs, les professionnels et les porteurs de
+                    projet à construire des bases solides, développer leur activité grâce au digital et saisir des
+                    opportunités, au Sénégal comme à l'international.
+                  </p>
+                </div>
+                <div className="border-l-4 border-accent pl-5 mt-6 space-y-2">
+                  <p className="text-body text-foreground font-semibold leading-relaxed">
+                    Je préfère perdre un client plutôt que de lui vendre une illusion.
+                  </p>
+                  <p className="text-body text-muted-foreground italic leading-relaxed">
+                    "Parce que je suis convaincu d'une chose : ce ne sont ni les origines ni les diplômes qui
+                    déterminent un avenir, mais la discipline, l'apprentissage continu et la capacité à construire
+                    un projet solide."
+                  </p>
                 </div>
               </motion.div>
             </div>
@@ -179,9 +205,13 @@ const AboutPage = () => {
           <div className="container max-w-5xl">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mb-12">
               <span className="badge-accent mb-6 inline-block">Deux fondateurs, une vision</span>
-              <h2 className="text-headline text-foreground">
-                Deux expertises, <span className="italic text-accent">une même méthode.</span>
+              <h2 className="text-headline text-foreground mb-6">
+                Deux pôles, <span className="italic text-accent">une seule vision.</span>
               </h2>
+              <p className="text-body-lg text-muted-foreground leading-relaxed">
+                Notre complémentarité nous permet d'accompagner un projet depuis sa structuration
+                jusqu'à son développement international.
+              </p>
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -220,7 +250,7 @@ const AboutPage = () => {
               viewport={{ once: true }}
               className="text-center text-body-lg text-foreground font-semibold mt-12 max-w-xl mx-auto leading-relaxed"
             >
-              Deux expertises complémentaires.
+              Deux pôles complémentaires.
               <br />
               <span className="text-accent">Une même vision : construire des projets durables.</span>
             </motion.p>
@@ -233,14 +263,14 @@ const AboutPage = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
               <span className="badge-accent mb-6 inline-block">Notre philosophie</span>
               <h2 className="text-headline text-foreground leading-tight">
-                Nous refusons <span className="italic text-accent">les raccourcis.</span>
+                Nous croyons à la <span className="italic text-accent">croissance durable.</span>
               </h2>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="mb-10">
               <p className="text-body-lg text-muted-foreground text-center mb-8">Nous croyons :</p>
               <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto">
-                {["à la préparation", "à la transparence", "à l'éducation", "à la responsabilité"].map((item) => (
+                {["à la structuration", "à l'organisation", "à la digitalisation", "à la transparence", "à la responsabilité", "à l'excellence"].map((item) => (
                   <div key={item} className="flex items-center gap-3 p-4 card-cream">
                     <Check className="w-5 h-5 text-accent shrink-0" />
                     <span className="text-body text-foreground">{item}</span>
@@ -269,6 +299,10 @@ const AboutPage = () => {
                 <h2 className="text-title text-foreground mb-6">
                   Une organisation <span className="italic text-accent">professionnelle.</span>
                 </h2>
+                <p className="text-body-lg text-foreground leading-relaxed mb-4">
+                  Des experts mobilisés autour d'un objectif commun : faire grandir les entreprises et
+                  accompagner les projets internationaux avec méthode.
+                </p>
                 <p className="text-body text-muted-foreground leading-relaxed mb-6">
                   Autour des fondateurs, Sen'Optima rassemble des profils complémentaires :
                 </p>
@@ -299,27 +333,34 @@ const AboutPage = () => {
 
         {/* NOTRE MISSION */}
         <section className="py-16 md:py-24">
-          <div className="container max-w-4xl">
+          <div className="container max-w-5xl">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mb-12">
               <span className="badge-accent mb-6 inline-block">Notre mission</span>
               <h2 className="text-headline text-foreground">
-                Deux missions, <span className="italic text-accent">une méthode.</span>
+                Trois piliers, <span className="italic text-accent">une méthode.</span>
               </h2>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 card-cream">
-                <h3 className="text-title text-foreground mb-4">Mobilité Internationale</h3>
-                <p className="text-body text-muted-foreground leading-relaxed">
-                  Permettre aux étudiants, travailleurs et familles de construire un projet international crédible,
-                  documenté et réaliste.
-                </p>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="p-8 card-cream">
                 <h3 className="text-title text-foreground mb-4">Développement Business</h3>
                 <p className="text-body text-muted-foreground leading-relaxed">
                   Former une nouvelle génération d'entrepreneurs capables de créer des entreprises structurées,
                   rentables et durables.
+                </p>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="p-8 card-cream">
+                <h3 className="text-title text-foreground mb-4">Transformation Digitale</h3>
+                <p className="text-body text-muted-foreground leading-relaxed">
+                  Accompagner la digitalisation des entreprises : présence en ligne, outils numériques et
+                  automatisation, pour gagner en efficacité et en crédibilité.
+                </p>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="p-8 card-cream">
+                <h3 className="text-title text-foreground mb-4">Mobilité Internationale</h3>
+                <p className="text-body text-muted-foreground leading-relaxed">
+                  Accompagner les projets d'études, de travail ou d'installation à l'étranger, une fois qu'un
+                  profil ou une activité crédible est construit.
                 </p>
               </motion.div>
             </div>
@@ -380,8 +421,7 @@ const AboutPage = () => {
                 Notre objectif
               </span>
               <p className="text-2xl md:text-4xl font-heading font-bold text-primary leading-tight">
-                Former des <span className="text-accent">milliers</span> de jeunes africains à construire des
-                projets solides — plutôt que de poursuivre des promesses irréalistes.
+                Construire une nouvelle génération d'entreprises africaines <span className="text-accent">solides, innovantes et ouvertes sur le monde.</span>
               </p>
             </motion.div>
           </div>
@@ -418,9 +458,13 @@ const AboutPage = () => {
         <section className="py-20 md:py-32 bg-secondary/20">
           <div className="container max-w-xl text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="text-headline text-foreground mb-8">
-                Vous avez un projet ? <span className="italic text-accent">Discutons-en.</span>
+              <h2 className="text-headline text-foreground mb-6">
+                Construisons votre <span className="italic text-accent">prochain projet.</span>
               </h2>
+              <p className="text-body-lg text-muted-foreground leading-relaxed mb-8">
+                Que vous souhaitiez structurer votre entreprise, accélérer votre développement digital
+                ou préparer un projet international, nous sommes prêts à vous accompagner.
+              </p>
               <Button asChild size="lg" variant="hero">
                 <Link to="/rendez-vous-decouverte">
                   Réserver un rendez-vous découverte

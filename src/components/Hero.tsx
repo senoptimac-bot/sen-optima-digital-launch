@@ -26,10 +26,8 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-xl"
           >
-            <span className="badge-accent mb-5 inline-block">Cabinet de conseil · Dakar</span>
-
             <h1 className="text-hero font-heading text-white leading-tight mb-7">
-              Un projet <span className="italic text-accent">solide</span> ne s'improvise pas.
+              Développez votre activité. Ouvrez de <span className="italic text-accent">nouvelles opportunités.</span>
             </h1>
 
             <div className="flex flex-col sm:flex-row gap-3">

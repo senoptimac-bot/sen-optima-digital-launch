@@ -29,15 +29,18 @@ const PreparationSection = () => {
           >
             <span className="badge-accent mb-6 inline-block">Notre conviction</span>
             <h2 className="text-headline text-foreground mb-6">
-              Un bon dossier est la conséquence <span className="italic text-accent">d'un bon profil.</span>
+              Une entreprise solide crée des <span className="italic text-accent">opportunités solides.</span>
             </h2>
             <p className="text-body-lg text-muted-foreground leading-relaxed mb-6">
-              Nous privilégions la préparation à la précipitation. Avant toute démarche,
-              nous aidons chaque client à clarifier ses objectifs, structurer son parcours
-              et construire un projet cohérent.
+              Nous croyons qu'un projet international, un partenariat ou un investissement
+              commence toujours par une activité crédible.
+              <br />
+              <br />
+              C'est pourquoi nous privilégions la structuration, la stratégie et la préparation
+              plutôt que les solutions rapides.
             </p>
             <p className="text-body-lg font-bold text-foreground leading-relaxed">
-              Nous renforçons des profils réels. Nous n'habillons pas des dossiers.
+              Nous développons des entreprises réelles. Pas simplement des dossiers.
             </p>
           </motion.div>
         </div>

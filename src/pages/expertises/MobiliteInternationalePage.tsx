@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import BackButton from "@/components/BackButton";
+import DestinationsSection from "@/components/DestinationsSection";
 import ParcoursAccompagnement, { ParcoursStep } from "@/components/ParcoursAccompagnement";
 import parcoursRendezVous from "@/assets/parcours-rendez-vous.jpg";
 import parcoursDiagnostic from "@/assets/parcours-diagnostic.jpg";
@@ -79,6 +80,8 @@ const MobiliteInternationalePage = () => {
             </motion.div>
           </div>
         </section>
+
+        <DestinationsSection />
 
         <ParcoursAccompagnement steps={parcoursSteps} />
       </div>

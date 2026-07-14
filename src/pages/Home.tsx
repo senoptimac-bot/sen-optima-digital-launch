@@ -1,8 +1,7 @@
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import Hero from "@/components/Hero";
-import DestinationsSection from "@/components/DestinationsSection";
-import FounderSection from "@/components/FounderSection";
+import PresentationVideoSection from "@/components/PresentationVideoSection";
 import PreparationSection from "@/components/PreparationSection";
 import ExpertisesOverviewSection from "@/components/ExpertisesOverviewSection";
 import IdentitySection from "@/components/IdentitySection";
@@ -28,28 +27,25 @@ const Home = () => {
       {/* 1. Hero Section */}
       <Hero />
 
-      {/* 2. Nos Destinations (Schengen, Canada, Royaume-Uni) */}
-      <DestinationsSection />
+      {/* 2. Vidéo de présentation — masquée en attente de la vidéo officielle */}
+      {/* <PresentationVideoSection /> */}
 
-      {/* 3. Fondateur (portrait + vidéo — slots en attente des vrais fichiers) */}
-      <FounderSection />
-
-      {/* 4. Notre conviction (préparation) */}
+      {/* 3. Notre conviction (préparation) */}
       <PreparationSection />
 
-      {/* 5. Nos Expertises (Mobilité Internationale / Développement des Entreprises) */}
+      {/* 4. Nos Expertises (Mobilité Internationale / Développement des Entreprises) */}
       <ExpertisesOverviewSection />
 
-      {/* 6. Differentiation (Comparison) */}
+      {/* 5. Differentiation (Comparison) */}
       <IdentitySection />
 
-      {/* 7. Philosophy (Nos Valeurs) */}
+      {/* 6. Philosophy (Nos Valeurs) */}
       <PhilosophySection />
 
-      {/* 8. Témoignages (vide tant qu'aucun vrai témoignage n'est fourni) */}
+      {/* 7. Témoignages (vide tant qu'aucun vrai témoignage n'est fourni) */}
       <TestimonialsSection testimonials={testimonials} />
 
-      {/* 9. Process (3 Steps) */}
+      {/* 8. Process (3 Steps) */}
       <MethodSection />
     </>
   );
