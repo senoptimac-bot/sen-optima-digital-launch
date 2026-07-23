@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle, CheckCircle2, MapPin, ExternalLink, Calendar, Clock, ShieldCheck, ArrowRight, Inbox, Search, Compass, CalendarCheck } from "lucide-react";
 import { Link } from "react-router-dom";
-import contactHeroImage from "@/assets/academy-profil-international.jpg";
+import contactHeroImage from "@/assets/contact-hero.jpg";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
@@ -119,7 +119,7 @@ const ContactPage = () => {
                 <div className="relative rounded-3xl border-2 border-accent/40 overflow-hidden">
                   <SiteImage
                     src={contactHeroImage}
-                    alt="Consultant Sen'Optima Consulting échangeant avec un client autour d'un dossier"
+                    alt="Consultante Sen'Optima Consulting, prête à échanger avec vous"
                     className="relative w-full aspect-[4/3] object-cover object-top"
                     priority
                   />
@@ -175,12 +175,52 @@ const ContactPage = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl">
-              {/* Carte A : WhatsApp */}
+              {/* Carte A : Rendez-vous — mise en avant (chemin recommandé, cohérent avec le tunnel du reste du site) */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
+                whileHover={{ scale: 1.02, y: -6 }}
+                className="relative p-8 card-cream group border-2 border-accent/40 transition-shadow duration-250 hover:shadow-xl flex flex-col"
+              >
+                <div className="absolute top-4 right-4">
+                  <div className="px-3 py-1.5 rounded-full bg-accent/15 border border-accent/30">
+                    <span className="text-xs text-accent font-semibold">Recommandé</span>
+                  </div>
+                </div>
+
+                <div className="icon-circle mb-6 group-hover:scale-110 transition-transform duration-250">
+                  <Calendar className="w-7 h-7 text-accent" />
+                </div>
+
+                <h3 className="text-title text-foreground mb-3 group-hover:text-accent transition-colors duration-250">
+                  Prendre rendez-vous
+                </h3>
+
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  Un échange de 20 à 30 minutes pour comprendre votre projet et vous orienter, sans engagement.
+                </p>
+
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 backdrop-blur-sm border border-accent/20 mb-6 w-fit">
+                  <Clock className="w-3.5 h-3.5 text-accent" />
+                  <span className="text-xs text-accent font-medium">Sur réservation uniquement</span>
+                </div>
+
+                <Button asChild variant="hero" size="lg" className="w-full mt-auto">
+                  <Link to="/rendez-vous-decouverte" onClick={() => playClick()}>
+                    Réserver un rendez-vous
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </motion.div>
+
+              {/* Carte B : WhatsApp */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
                 whileHover={{ scale: 1.02, y: -6 }}
                 className="relative p-8 card-cream group transition-shadow duration-250 hover:shadow-xl"
               >
@@ -213,42 +253,8 @@ const ContactPage = () => {
                 </a>
               </motion.div>
 
-              {/* Carte B : Formulaire (composant isolé pour éviter re-renders) */}
+              {/* Carte C : Formulaire (composant isolé pour éviter re-renders) */}
               <ContactForm />
-
-              {/* Carte C : Rendez-vous */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                whileHover={{ scale: 1.02, y: -6 }}
-                className="relative p-8 card-cream group transition-shadow duration-250 hover:shadow-xl flex flex-col"
-              >
-                <div className="icon-circle mb-6 group-hover:scale-110 transition-transform duration-250">
-                  <Calendar className="w-7 h-7 text-accent" />
-                </div>
-
-                <h3 className="text-title text-foreground mb-3 group-hover:text-accent transition-colors duration-250">
-                  Prendre rendez-vous
-                </h3>
-
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  Un échange de 20 à 30 minutes pour comprendre votre projet et vous orienter, sans engagement.
-                </p>
-
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 backdrop-blur-sm border border-accent/20 mb-6 w-fit">
-                  <Clock className="w-3.5 h-3.5 text-accent" />
-                  <span className="text-xs text-accent font-medium">Sur réservation uniquement</span>
-                </div>
-
-                <Button asChild variant="hero" size="lg" className="w-full mt-auto">
-                  <Link to="/rendez-vous-decouverte" onClick={() => playClick()}>
-                    Réserver un rendez-vous
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </Button>
-              </motion.div>
             </div>
           </div>
         </section>

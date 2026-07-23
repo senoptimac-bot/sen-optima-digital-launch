@@ -111,7 +111,7 @@ const ContactForm = memo(() => {
       viewport={{ once: true }}
       transition={{ delay: 0.2 }}
       whileHover={{ y: -4 }}
-      className="relative p-8 card-cream lg:col-span-1 lg:row-span-2 flex flex-col overflow-hidden transition-shadow duration-250 hover:shadow-xl"
+      className="relative p-8 card-cream flex flex-col overflow-hidden transition-shadow duration-250 hover:shadow-xl"
     >
       {/* Badge Devis gratuit */}
       <div className="absolute top-4 right-4">
