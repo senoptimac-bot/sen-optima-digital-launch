@@ -129,12 +129,6 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-10 md:py-14">
-          <div className="container">
-            <PhotoPlaceholder label="[PHOTO — POURQUOI SEN'OPTIMA EXISTE]" aspect="aspect-[21/9]" className="max-w-5xl mx-auto" />
-          </div>
-        </section>
-
         {/* LE FONDATEUR */}
         <section className="py-16 md:py-24">
           <div className="container max-w-5xl">
@@ -267,39 +261,6 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* NOTRE PHILOSOPHIE */}
-        <section id="notre-philosophie" className="py-20 md:py-32 scroll-mt-24">
-          <div className="container max-w-2xl">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-              <span className="badge-accent mb-6 inline-block">Notre philosophie</span>
-              <h2 className="text-headline text-foreground leading-tight">
-                Nous croyons à la <span className="italic text-accent">croissance durable.</span>
-              </h2>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="mb-10">
-              <p className="text-body-lg text-muted-foreground text-center mb-8">Nous croyons :</p>
-              <div className="grid sm:grid-cols-2 gap-4 max-w-xl mx-auto">
-                {["à la structuration", "à l'organisation", "à la digitalisation", "à la transparence", "à la responsabilité", "à l'excellence"].map((item) => (
-                  <div key={item} className="flex items-center gap-3 p-4 card-cream">
-                    <Check className="w-5 h-5 text-accent shrink-0" />
-                    <span className="text-body text-foreground">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="border-l-4 border-accent pl-5">
-              <p className="text-body text-muted-foreground leading-relaxed mb-2">
-                Nous ne promettons jamais une décision qui appartient aux autorités compétentes.
-              </p>
-              <p className="text-body font-semibold text-foreground leading-relaxed">
-                Nous promettons en revanche un accompagnement sérieux, structuré et honnête.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
         {/* NOTRE ÉQUIPE */}
         <section className="py-16 md:py-24 bg-secondary/30">
           <div className="container max-w-5xl">
@@ -341,44 +302,8 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* NOTRE MISSION */}
-        <section className="py-16 md:py-24">
-          <div className="container max-w-5xl">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mb-12">
-              <span className="badge-accent mb-6 inline-block">Notre mission</span>
-              <h2 className="text-headline text-foreground">
-                Trois piliers, <span className="italic text-accent">une méthode.</span>
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="p-8 card-cream">
-                <h3 className="text-title text-foreground mb-4">Développement Business</h3>
-                <p className="text-body text-muted-foreground leading-relaxed">
-                  Former une nouvelle génération d'entrepreneurs capables de créer des entreprises structurées,
-                  rentables et durables.
-                </p>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="p-8 card-cream">
-                <h3 className="text-title text-foreground mb-4">Transformation Digitale</h3>
-                <p className="text-body text-muted-foreground leading-relaxed">
-                  Accompagner la digitalisation des entreprises : présence en ligne, outils numériques et
-                  automatisation, pour gagner en efficacité et en crédibilité.
-                </p>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="p-8 card-cream">
-                <h3 className="text-title text-foreground mb-4">Mobilité Internationale</h3>
-                <p className="text-body text-muted-foreground leading-relaxed">
-                  Accompagner les projets d'études, de travail ou d'installation à l'étranger, une fois qu'un
-                  profil ou une activité crédible est construit.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
         {/* NOTRE ENGAGEMENT */}
-        <section className="py-16 md:py-24 bg-secondary/30">
+        <section id="notre-philosophie" className="py-16 md:py-24 bg-secondary/30 scroll-mt-24">
           <div className="container max-w-4xl">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mb-12">
               <span className="badge-accent mb-6 inline-block">Notre engagement</span>
@@ -414,10 +339,10 @@ const AboutPage = () => {
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="border-l-4 border-accent pl-5">
               <p className="text-body text-muted-foreground leading-relaxed mb-2">
-                Notre engagement porte sur la qualité de notre accompagnement.
+                Les décisions finales appartiennent toujours aux autorités compétentes.
               </p>
               <p className="text-body font-semibold text-foreground leading-relaxed">
-                Les décisions finales appartiennent toujours aux autorités compétentes.
+                Notre engagement porte sur la qualité de notre accompagnement.
               </p>
             </motion.div>
           </div>
