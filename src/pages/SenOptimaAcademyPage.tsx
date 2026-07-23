@@ -29,7 +29,7 @@ const SenOptimaAcademyPage = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
               <span className="badge-accent mb-6 inline-block">Sen'Optima Academy</span>
               <h1 className="text-headline text-foreground mb-6">
-                Apprenez ce qui compte <span className="italic text-accent">vraiment.</span>
+                Une semaine pour construire <span className="italic text-accent">un projet qui tient debout.</span>
               </h1>
               <p className="text-body-lg text-muted-foreground leading-relaxed">
                 Des programmes intensifs conçus pour transformer un projet en plan d'action concret.

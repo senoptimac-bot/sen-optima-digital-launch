@@ -23,7 +23,7 @@ const parcoursSteps: ParcoursStep[] = [
     title: "Diagnostic Business",
     price: "30 000 FCFA",
     description: "Une analyse complète de votre activité, avec rapport stratégique et plan d'action.",
-    ctaLabel: "Demander un diagnostic",
+    ctaLabel: "Réserver mon diagnostic — 30 000 FCFA",
     ctaHref: "/diagnostic",
     detailHref: "/offres/diagnostic?pole=business",
     image: parcoursDiagnostic,

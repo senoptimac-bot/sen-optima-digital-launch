@@ -24,7 +24,7 @@ const parcoursSteps: ParcoursStep[] = [
     title: "Diagnostic de Projet International",
     price: "25 000 FCFA",
     description: "Une analyse professionnelle de votre projet, avec rapport personnalisé et recommandations concrètes.",
-    ctaLabel: "Demander un diagnostic",
+    ctaLabel: "Réserver mon diagnostic — 25 000 FCFA",
     ctaHref: "/diagnostic-mobilite",
     detailHref: "/offres/diagnostic?pole=mobilite",
     image: parcoursDiagnostic,

@@ -51,14 +51,8 @@ const neverPromise = ["Un visa garanti", "Une admission garantie", "Un emploi ga
 
 const manifesto = [
   "Nous préférons construire une entreprise pendant plusieurs mois plutôt que promettre des résultats en quelques semaines.",
-  "Nous croyons que l'information vaut plus qu'une promesse.",
-  "Nous renforçons des profils. Nous n'habillons pas des dossiers.",
-  "Nous ne vendons pas une solution miracle. Nous construisons une stratégie durable.",
   "Une bonne préparation coûte du temps. Une mauvaise préparation coûte de l'argent — et parfois un projet entier.",
-  "Nous préférons dire la vérité sur un projet fragile plutôt que vendre un espoir fragile.",
   "Un raccourci n'a jamais construit un dossier solide.",
-  "Nous accompagnons des personnes, pas des dossiers anonymes.",
-  "Ce que nous ne pouvons pas garantir, nous ne le promettons jamais.",
   "Notre réussite se mesure à la solidité des projets que nous accompagnons, pas à la rapidité de nos promesses.",
 ];
 
@@ -169,11 +163,11 @@ const AboutPage = () => {
                       début d'une nouvelle aventure.
                     </p>
                     <p>
-                      Avec un téléphone, une connexion Internet et beaucoup de discipline, je me suis formé au
-                      marketing digital, au business et aux métiers du numérique grâce à des plateformes comme
-                      Google, Coursera, OpenClassrooms et de nombreuses ressources spécialisées. J'ai ensuite
-                      appliqué ces compétences sur le terrain en développant plusieurs projets entrepreneuriaux,
-                      notamment dans le e-commerce et le marketing digital.
+                      Avec un téléphone, une connexion Internet et beaucoup de discipline, je me suis formé seul
+                      au marketing digital et au numérique.
+                    </p>
+                    <p>
+                      J'ai ensuite mis ces compétences à l'épreuve du terrain, notamment dans le e-commerce.
                     </p>
                     <p>
                       Par la suite, j'ai rejoint une agence spécialisée dans la mobilité internationale, où j'ai

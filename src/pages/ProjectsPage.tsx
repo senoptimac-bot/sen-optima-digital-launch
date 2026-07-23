@@ -195,7 +195,7 @@ const ProjectsPage = () => {
                 Les projets arrivent progressivement
               </span>
               <p className="text-body text-muted-foreground leading-relaxed">
-                Sen'Optima Consulting est un cabinet jeune. Nous privilégions la qualité à la quantité. Chaque
+                Nous choisissons peu de projets, pour pouvoir nous engager pleinement sur chacun. Chaque
                 nouveau projet intégré à notre portfolio correspond à une collaboration réelle et à un travail que
                 nous sommes fiers de présenter.
               </p>

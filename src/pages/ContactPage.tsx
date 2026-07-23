@@ -99,7 +99,7 @@ const ContactPage = () => {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <span className="badge-accent mb-6">Contact</span>
                 <h1 className="text-headline text-foreground mb-6">
-                  Parlons de votre <span className="italic text-accent">avenir</span>.
+                  Un échange, et vous saurez <span className="italic text-accent">où vous en êtes.</span>
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed">
                   Un échange suffit pour savoir si votre projet est réaliste et quelle est la meilleure prochaine

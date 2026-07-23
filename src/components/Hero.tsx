@@ -26,9 +26,14 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-xl"
           >
-            <h1 className="text-hero font-heading text-white leading-tight mb-7">
+            <h1 className="text-hero font-heading text-white leading-tight mb-5">
               Développez votre activité. Ouvrez de <span className="italic text-accent">nouvelles opportunités.</span>
             </h1>
+
+            <p className="text-white/80 text-base md:text-lg leading-relaxed mb-7 max-w-lg">
+              Cabinet de conseil à Dakar en développement d'entreprise et mobilité internationale.
+              Premier échange gratuit, sans engagement.
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Button

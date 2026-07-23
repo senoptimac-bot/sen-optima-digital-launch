@@ -13,6 +13,7 @@ const domains = [
     title: "Mobilité Internationale",
     description:
       "Études, projet professionnel, visite : présentez-vous avec un dossier qui tient debout, sur un profil réellement prêt.",
+    ctaLabel: "Construire mon projet international",
     href: "/nos-expertises/mobilite-internationale",
     image: mobiliteImage,
   },
@@ -20,6 +21,7 @@ const domains = [
     title: "Développement des Entreprises",
     description:
       "Formalisez, structurez et rendez votre activité crédible — pour grandir, et pour vos futurs projets à l'international.",
+    ctaLabel: "Structurer mon entreprise",
     href: "/nos-expertises/developpement-entreprises",
     image: entreprisesImage,
   },
@@ -89,7 +91,7 @@ const ExpertisesPage = () => {
                         {domain.description}
                       </p>
                       <span className="inline-flex items-center gap-2 text-sm font-medium text-accent">
-                        Découvrir cette expertise
+                        {domain.ctaLabel}
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                       </span>
                     </div>
