@@ -11,7 +11,7 @@ const Hero = () => {
       <SiteImage
         src={heroPortraitCover}
         alt="Consultante Sen'Optima Consulting devant le stand de présentation du cabinet"
-        className="absolute inset-0 w-full h-full object-cover object-[center_58%]"
+        className="absolute inset-0 w-full h-full object-cover object-[center_58%] md:object-[center_15%]"
         priority
       />
 
