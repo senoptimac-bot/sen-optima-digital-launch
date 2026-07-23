@@ -14,9 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Open Sans", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
-        heading: ["League Spartan", "Open Sans", "system-ui", "sans-serif"],
-        subheading: ["Open Sans", "system-ui", "sans-serif"],
+        sans: ["Nunito Sans", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
+        heading: ["League Spartan", "Nunito Sans", "system-ui", "sans-serif"],
+        subheading: ["Nunito Sans", "system-ui", "sans-serif"],
       },
       fontSize: {
         /* Hero Title — 64px desktop / 48px tablet / 34px mobile */

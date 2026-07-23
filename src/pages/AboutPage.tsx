@@ -8,6 +8,7 @@ import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import BackButton from "@/components/BackButton";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
+import ReadMore from "@/components/ReadMore";
 
 const founders = [
   {
@@ -107,27 +108,29 @@ const AboutPage = () => {
               <h2 className="text-headline text-foreground mb-8">
                 Pourquoi Sen'Optima <span className="italic text-accent">existe.</span>
               </h2>
-              <div className="space-y-5 text-body-lg text-muted-foreground leading-relaxed">
-                <p>Nous avons créé Sen'Optima après avoir constaté une réalité simple.</p>
-                <p>
-                  Beaucoup d'entrepreneurs veulent développer leur activité.
-                  <br />
-                  Beaucoup de professionnels souhaitent évoluer.
-                  <br />
-                  Beaucoup rêvent d'étudier, travailler ou investir à l'international.
-                </p>
-                <p>Mais peu disposent d'une stratégie solide.</p>
-                <p className="text-foreground font-semibold">
-                  Nous avons donc créé un cabinet capable d'accompagner un projet dans sa globalité.
-                </p>
-                <p>De la structuration de l'entreprise jusqu'à l'ouverture vers les opportunités internationales.</p>
-                <div className="border-l-4 border-accent pl-5 space-y-2 text-foreground">
-                  <p>Nous croyons qu'une entreprise solide crée naturellement de nouvelles opportunités.</p>
-                  <p>Avant de chercher des clients, nous structurons votre activité.</p>
-                  <p>Avant de lancer des campagnes, nous clarifions votre stratégie.</p>
-                  <p>Avant de penser à l'international, nous consolidons votre crédibilité.</p>
+              <ReadMore collapsedHeight={210} fadeFrom="from-secondary/30" className="text-body-lg text-muted-foreground leading-relaxed">
+                <div className="space-y-5">
+                  <p>Nous avons créé Sen'Optima après avoir constaté une réalité simple.</p>
+                  <p>
+                    Beaucoup d'entrepreneurs veulent développer leur activité.
+                    <br />
+                    Beaucoup de professionnels souhaitent évoluer.
+                    <br />
+                    Beaucoup rêvent d'étudier, travailler ou investir à l'international.
+                  </p>
+                  <p>Mais peu disposent d'une stratégie solide.</p>
+                  <p className="text-foreground font-semibold">
+                    Nous avons donc créé un cabinet capable d'accompagner un projet dans sa globalité.
+                  </p>
+                  <p>De la structuration de l'entreprise jusqu'à l'ouverture vers les opportunités internationales.</p>
+                  <div className="border-l-4 border-accent pl-5 space-y-2 text-foreground">
+                    <p>Nous croyons qu'une entreprise solide crée naturellement de nouvelles opportunités.</p>
+                    <p>Avant de chercher des clients, nous structurons votre activité.</p>
+                    <p>Avant de lancer des campagnes, nous clarifions votre stratégie.</p>
+                    <p>Avant de penser à l'international, nous consolidons votre crédibilité.</p>
+                  </div>
                 </div>
-              </div>
+              </ReadMore>
             </motion.div>
           </div>
         </section>
@@ -154,37 +157,39 @@ const AboutPage = () => {
                 <h2 className="text-title text-foreground mb-6">
                   Mon <span className="italic text-accent">parcours.</span>
                 </h2>
-                <div className="space-y-4 text-body text-muted-foreground leading-relaxed">
-                  <p>
-                    Depuis l'âge de 12 ans, le commerce fait partie de ma vie. Grandir dans une famille de
-                    commerçants m'a appris très tôt à vendre, négocier et comprendre les besoins des clients.
-                  </p>
-                  <p>
-                    En 2020, alors que je préparais le baccalauréat, un grave accident de moto m'a laissé
-                    immobilisé pendant près de six mois. Ce qui semblait être la fin de mes projets est devenu le
-                    début d'une nouvelle aventure.
-                  </p>
-                  <p>
-                    Avec un téléphone, une connexion Internet et beaucoup de discipline, je me suis formé au
-                    marketing digital, au business et aux métiers du numérique grâce à des plateformes comme
-                    Google, Coursera, OpenClassrooms et de nombreuses ressources spécialisées. J'ai ensuite
-                    appliqué ces compétences sur le terrain en développant plusieurs projets entrepreneuriaux,
-                    notamment dans le e-commerce et le marketing digital.
-                  </p>
-                  <p>
-                    Par la suite, j'ai rejoint une agence spécialisée dans la mobilité internationale, où j'ai
-                    évolué de community manager à responsable commercial. Cette expérience m'a permis
-                    d'accompagner des centaines de candidats et de comprendre une réalité essentielle : la plupart
-                    des échecs ne viennent pas d'un manque d'ambition, mais d'un manque de préparation, de
-                    stratégie et d'informations fiables.
-                  </p>
-                  <p className="text-foreground font-semibold">C'est cette conviction qui a donné naissance à Sen'Optima Consulting.</p>
-                  <p>
-                    Aujourd'hui, notre mission est d'aider les entrepreneurs, les professionnels et les porteurs de
-                    projet à construire des bases solides, développer leur activité grâce au digital et saisir des
-                    opportunités, au Sénégal comme à l'international.
-                  </p>
-                </div>
+                <ReadMore collapsedHeight={190} fadeFrom="from-background" className="text-body text-muted-foreground leading-relaxed">
+                  <div className="space-y-4">
+                    <p>
+                      Depuis l'âge de 12 ans, le commerce fait partie de ma vie. Grandir dans une famille de
+                      commerçants m'a appris très tôt à vendre, négocier et comprendre les besoins des clients.
+                    </p>
+                    <p>
+                      En 2020, alors que je préparais le baccalauréat, un grave accident de moto m'a laissé
+                      immobilisé pendant près de six mois. Ce qui semblait être la fin de mes projets est devenu le
+                      début d'une nouvelle aventure.
+                    </p>
+                    <p>
+                      Avec un téléphone, une connexion Internet et beaucoup de discipline, je me suis formé au
+                      marketing digital, au business et aux métiers du numérique grâce à des plateformes comme
+                      Google, Coursera, OpenClassrooms et de nombreuses ressources spécialisées. J'ai ensuite
+                      appliqué ces compétences sur le terrain en développant plusieurs projets entrepreneuriaux,
+                      notamment dans le e-commerce et le marketing digital.
+                    </p>
+                    <p>
+                      Par la suite, j'ai rejoint une agence spécialisée dans la mobilité internationale, où j'ai
+                      évolué de community manager à responsable commercial. Cette expérience m'a permis
+                      d'accompagner des centaines de candidats et de comprendre une réalité essentielle : la plupart
+                      des échecs ne viennent pas d'un manque d'ambition, mais d'un manque de préparation, de
+                      stratégie et d'informations fiables.
+                    </p>
+                    <p className="text-foreground font-semibold">C'est cette conviction qui a donné naissance à Sen'Optima Consulting.</p>
+                    <p>
+                      Aujourd'hui, notre mission est d'aider les entrepreneurs, les professionnels et les porteurs de
+                      projet à construire des bases solides, développer leur activité grâce au digital et saisir des
+                      opportunités, au Sénégal comme à l'international.
+                    </p>
+                  </div>
+                </ReadMore>
                 <div className="border-l-4 border-accent pl-5 mt-6 space-y-2">
                   <p className="text-body text-foreground font-semibold leading-relaxed">
                     Je préfère perdre un client plutôt que de lui vendre une illusion.

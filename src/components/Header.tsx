@@ -80,7 +80,7 @@ const Header = () => {
             </Link>
 
             {/* Desktop Navigation - Center */}
-            <ul className="hidden xl:flex items-center gap-1 xl:gap-4">
+            <ul className="hidden lg:flex items-center gap-1 lg:gap-2 xl:gap-4">
               {navLinks.map((link) =>
                 link.children ? (
                   <li
@@ -154,7 +154,7 @@ const Header = () => {
               <LanguageSwitcher />
 
               {/* CTA Button - Pill style */}
-              <div className="hidden xl:block">
+              <div className="hidden lg:block">
                 <Button
                   size="sm"
                   variant="hero"
@@ -173,7 +173,7 @@ const Header = () => {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="xl:hidden p-2 text-foreground"
+                className="lg:hidden p-2 text-foreground"
                 aria-label="Menu"
               >
                 {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -192,7 +192,7 @@ const Header = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-background/98 backdrop-blur-xl z-40 xl:hidden"
+              className="fixed inset-0 bg-background/98 backdrop-blur-xl z-40 lg:hidden"
             />
 
             <motion.div
@@ -200,7 +200,7 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 15 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-x-0 top-20 bottom-0 z-50 xl:hidden overflow-auto"
+              className="fixed inset-x-0 top-20 bottom-0 z-50 lg:hidden overflow-auto"
             >
               <div className="container py-8">
                 {/* Nav Links */}
