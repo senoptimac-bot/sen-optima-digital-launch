@@ -2,16 +2,23 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Check, PartyPopper, ArrowLeft, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import { useAppSounds } from "@/hooks/useAppSounds";
 import AuditForm from "@/components/AuditForm";
 
+interface SuccessPageState {
+  diagnosticName?: string;
+  diagnosticPrice?: string;
+}
+
 const SuccessPage = () => {
   const [showConfetti, setShowConfetti] = useState(true);
   const { playSuccess } = useAppSounds();
   const seo = SEO_CONFIG.success;
+  const location = useLocation();
+  const { diagnosticName, diagnosticPrice } = (location.state as SuccessPageState) || {};
 
   useEffect(() => {
     // Jouer le son de succès à l'arrivée sur la page
@@ -126,7 +133,17 @@ const SuccessPage = () => {
               <div className="flex items-start gap-4">
                 <MessageCircle className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
                 <p className="text-muted-foreground">
-                  <span className="text-foreground font-medium">À la fin du formulaire</span>, indiquez vos disponibilités. 
+                  {diagnosticName && (
+                    <>
+                      Diagnostic sélectionné :{" "}
+                      <span className="text-accent font-semibold">
+                        {diagnosticName}
+                        {diagnosticPrice ? ` (${diagnosticPrice} FCFA)` : ""}
+                      </span>
+                      .{" "}
+                    </>
+                  )}
+                  <span className="text-foreground font-medium">À la fin du formulaire</span>, indiquez vos disponibilités.
                   Nous confirmerons l'heure exacte par{" "}
                   <span className="text-accent font-semibold">WhatsApp sous 24h</span>.
                 </p>
@@ -142,7 +159,7 @@ const SuccessPage = () => {
               transition={{ delay: 0.6 }}
               className="glass-card rounded-3xl p-8 md:p-12"
             >
-              <AuditForm />
+              <AuditForm diagnosticName={diagnosticName} diagnosticPrice={diagnosticPrice} />
             </motion.div>
 
             {/* Return Button */}

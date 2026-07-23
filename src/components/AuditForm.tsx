@@ -66,7 +66,12 @@ const toolOptions = [
   { id: "automation", label: "Automatisation (Zapier, Make...)" },
 ];
 
-const AuditForm = () => {
+interface AuditFormProps {
+  diagnosticName?: string;
+  diagnosticPrice?: string;
+}
+
+const AuditForm = ({ diagnosticName, diagnosticPrice }: AuditFormProps = {}) => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -99,8 +104,13 @@ const AuditForm = () => {
 
     // Import dynamique du service email
     const { sendAuditEmail } = await import("@/lib/emailService");
-    
-    const result = await sendAuditEmail(formData);
+
+    const result = await sendAuditEmail({
+      ...formData,
+      selectedDiagnostic: diagnosticName
+        ? `${diagnosticName}${diagnosticPrice ? ` (${diagnosticPrice} FCFA)` : ""}`
+        : "Non spécifié",
+    });
 
     if (result.success) {
       playSuccess();
@@ -148,6 +158,15 @@ const AuditForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-10 pb-32 overflow-y-auto overflow-x-hidden -webkit-overflow-scrolling-touch">
+      {diagnosticName && (
+        <div className="p-4 rounded-sm bg-accent/10 border border-accent/30 text-center">
+          <p className="text-sm text-foreground">
+            Diagnostic choisi : <span className="font-bold text-accent">{diagnosticName}</span>
+            {diagnosticPrice ? ` — ${diagnosticPrice} FCFA` : ""}
+          </p>
+        </div>
+      )}
+
       {/* Section 1: Informations de Contact */}
       <motion.section
         variants={sectionVariants}
