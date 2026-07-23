@@ -222,7 +222,7 @@ const ContactPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
                 whileHover={{ scale: 1.02, y: -6 }}
-                className="relative p-8 card-cream group transition-shadow duration-250 hover:shadow-xl"
+                className="relative p-8 card-cream group transition-shadow duration-250 hover:shadow-xl flex flex-col"
               >
                 <div className="icon-circle mb-6 group-hover:scale-110 transition-transform duration-250">
                   <MessageCircle className="w-7 h-7 text-accent group-hover:rotate-6 transition-transform duration-250" />
@@ -236,21 +236,23 @@ const ContactPage = () => {
                   Besoin d'une réponse rapide ou d'une info simple ? Écrivez-nous directement.
                 </p>
 
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 backdrop-blur-sm border border-accent/20 mb-6">
-                  <Clock className="w-3.5 h-3.5 text-accent" />
-                  <span className="text-xs text-accent font-medium">Réponse en moins de 15 minutes</span>
-                </div>
+                <div className="mt-auto">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 backdrop-blur-sm border border-accent/20 mb-6">
+                    <Clock className="w-3.5 h-3.5 text-accent" />
+                    <span className="text-xs text-accent font-medium">Réponse en moins de 15 minutes</span>
+                  </div>
 
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => playClick()}
-                  className="inline-flex items-center justify-center gap-3 w-full py-3 rounded-full bg-accent/10 border border-accent/20 text-accent hover:bg-accent/20 hover:border-accent/30 transition-all duration-250 font-medium"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Ouvrir WhatsApp
-                </a>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => playClick()}
+                    className="inline-flex items-center justify-center gap-3 w-full py-3 rounded-full bg-accent/10 border border-accent/20 text-accent hover:bg-accent/20 hover:border-accent/30 transition-all duration-250 font-medium"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    Ouvrir WhatsApp
+                  </a>
+                </div>
               </motion.div>
 
               {/* Carte C : Formulaire (composant isolé pour éviter re-renders) */}
