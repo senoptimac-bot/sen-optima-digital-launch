@@ -52,7 +52,7 @@ ${contexteLabel} : ${contexte.trim()}
 Niveau : ${niveau}
 Ce que je souhaite apprendre : ${objectif.trim() || "Non précisé"}
 
-Je confirme avoir pris connaissance du tarif de 49 000 FCFA (2 jours, présentiel).
+Je confirme avoir pris connaissance du tarif de 49 000 FCFA (1 semaine intensive, présentiel).
 Merci de m'indiquer la prochaine session disponible.`;
 
     window.open(buildWhatsAppUrl(message), "_blank", "noopener,noreferrer");
@@ -82,7 +82,7 @@ Merci de m'indiquer la prochaine session disponible.`;
                 <p className="text-sm text-accent font-medium mb-1">Sen'Optima Academy — {info.title}</p>
                 <p className="text-2xl md:text-3xl font-heading font-bold text-accent mb-2">49 000 FCFA</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Deux journées intensives, en présentiel, 15 à 20 participants maximum.
+                  Une semaine intensive, en présentiel, 10 à 20 participants maximum.
                 </p>
               </div>
 

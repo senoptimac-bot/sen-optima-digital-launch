@@ -2,8 +2,6 @@
 # Compatible Hostinger / Netlify
 
 # Redirections 301 pour anciennes URLs (si applicable)
-/diagnostic  /solutions  301
-/diagnostics /solutions  301
 /equipe      /a-propos   301
 /team        /a-propos   301
 /about       /a-propos   301

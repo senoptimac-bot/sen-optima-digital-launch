@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
+import { SEO_CONFIG } from "@/config/seo.config";
 import { motion } from "framer-motion";
 import { buildWhatsAppUrl } from "@/config/business";
 import { MessageCircle, ArrowLeft } from "lucide-react";
@@ -66,9 +67,10 @@ ${closing}`;
   return (
     <>
       <SEOHead
-        title="Réserver un Diagnostic Stratégique | Sen'Optima"
-        description="Complétez ce formulaire pour réserver votre diagnostic stratégique avec Sen'Optima Consulting."
-        canonicalPath="/diagnostic"
+        title={SEO_CONFIG.diagnostic.title}
+        description={SEO_CONFIG.diagnostic.description}
+        canonicalPath={SEO_CONFIG.diagnostic.canonicalPath}
+        noIndex={SEO_CONFIG.diagnostic.noIndex}
       />
       <div className="min-h-screen bg-background">
         <section className="py-16 md:py-24">
