@@ -227,19 +227,30 @@ const AboutPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="card-cream overflow-hidden"
+                  className="card-cream overflow-hidden group border-2 border-accent/15 hover:border-accent/40"
                 >
-                  {founder.photo ? (
-                    <img src={founder.photo} alt={founder.name} className={`w-full aspect-[4/3] object-cover ${founder.photoPosition}`} />
-                  ) : (
-                    <PhotoPlaceholder label={`[PHOTO — ${founder.name.toUpperCase()}]`} aspect="aspect-[4/3]" className="rounded-none border-0" />
-                  )}
-                  <div className="p-8">
-                    <h3 className="text-title text-foreground mb-1">{founder.name}</h3>
-                    <p className="text-sm text-accent font-medium mb-5">{founder.role}</p>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="relative overflow-hidden">
+                    {founder.photo ? (
+                      <img
+                        src={founder.photo}
+                        alt={founder.name}
+                        className={`w-full aspect-[4/3] object-cover ${founder.photoPosition} transition-transform duration-500 ease-out group-hover:scale-[1.04]`}
+                      />
+                    ) : (
+                      <PhotoPlaceholder label={`[PHOTO — ${founder.name.toUpperCase()}]`} aspect="aspect-[4/3]" className="rounded-none border-0" />
+                    )}
+                    {/* Fondu vers le fond de la carte pour lier la photo au bloc texte */}
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[hsl(var(--card))] to-transparent" />
+                  </div>
+                  <div className="p-8 pt-6">
+                    <p className="text-caption text-accent uppercase mb-2">{founder.role}</p>
+                    <h3 className="text-title text-foreground mb-5">{founder.name}</h3>
+                    <div className="grid grid-cols-2 gap-2">
                       {founder.tags.map((tag) => (
-                        <span key={tag} className="px-3 py-1.5 rounded-full border border-border text-xs text-foreground/70 bg-background">
+                        <span
+                          key={tag}
+                          className="px-3 py-1.5 rounded-full border border-border text-xs text-foreground/70 bg-background text-center leading-snug flex items-center justify-center"
+                        >
                           {tag}
                         </span>
                       ))}
