@@ -42,6 +42,7 @@ export const auditSchema = z.object({
   marketingBudget: z.string().max(100).optional(),
   branding: z.string().optional(),
   competitors: z.string().max(500).optional(),
+  selectedDiagnostic: z.string().optional(),
 });
 
 export type ContactFormData = z.infer<typeof contactSchema>;
