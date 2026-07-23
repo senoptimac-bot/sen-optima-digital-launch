@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,33 +14,36 @@ import { SoundProvider } from "./components/SoundContext";
 import useAudioUnlock from "./hooks/useAudioUnlock";
 import emailjs from "@emailjs/browser";
 import { EMAILJS_CONFIG } from "@/config/emailjs.config";
+// Home reste en chargement direct (première page vue par la majorité des visiteurs)
 import Home from "./pages/Home";
-import ServicesPage from "./pages/ServicesPage";
-import SolutionsPage from "./pages/SolutionsPage";
-import SuccessPage from "./pages/SuccessPage";
-import AboutPage from "./pages/AboutPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import ProjectDetailPage from "./pages/ProjectDetailPage";
-import ContactPage from "./pages/ContactPage";
-import ExpertisesPage from "./pages/ExpertisesPage";
-import MobiliteInternationalePage from "./pages/expertises/MobiliteInternationalePage";
-import DeveloppementEntreprisesPage from "./pages/expertises/DeveloppementEntreprisesPage";
-import BlogPage from "./pages/BlogPage";
-import NotFound from "./pages/NotFound";
-import MentionsLegalesPage from "./pages/MentionsLegalesPage";
-import PolitiqueConfidentialitePage from "./pages/PolitiqueConfidentialitePage";
-import CGVPage from "./pages/CGVPage";
-import DiagnosticFormPage from "./pages/DiagnosticFormPage";
-import DiagnosticMobiliteFormPage from "./pages/DiagnosticMobiliteFormPage";
-import ProjetFormPage from "./pages/ProjetFormPage";
-import FormationFormPage from "./pages/FormationFormPage";
-import SenOptimaAcademyPage from "./pages/SenOptimaAcademyPage";
-import BusinessLaunchPage from "./pages/academy/BusinessLaunchPage";
-import ProfilInternationalPage from "./pages/academy/ProfilInternationalPage";
-import RendezVousDecouvertePage from "./pages/RendezVousDecouvertePage";
-import RendezVousDetailPage from "./pages/offres/RendezVousDetailPage";
-import DiagnosticDetailPage from "./pages/offres/DiagnosticDetailPage";
-import AccompagnementDetailPage from "./pages/offres/AccompagnementDetailPage";
+
+// Toutes les autres pages sont chargées à la demande pour réduire le bundle initial
+const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+const SolutionsPage = lazy(() => import("./pages/SolutionsPage"));
+const SuccessPage = lazy(() => import("./pages/SuccessPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const ProjectDetailPage = lazy(() => import("./pages/ProjectDetailPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const ExpertisesPage = lazy(() => import("./pages/ExpertisesPage"));
+const MobiliteInternationalePage = lazy(() => import("./pages/expertises/MobiliteInternationalePage"));
+const DeveloppementEntreprisesPage = lazy(() => import("./pages/expertises/DeveloppementEntreprisesPage"));
+const BlogPage = lazy(() => import("./pages/BlogPage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const MentionsLegalesPage = lazy(() => import("./pages/MentionsLegalesPage"));
+const PolitiqueConfidentialitePage = lazy(() => import("./pages/PolitiqueConfidentialitePage"));
+const CGVPage = lazy(() => import("./pages/CGVPage"));
+const DiagnosticFormPage = lazy(() => import("./pages/DiagnosticFormPage"));
+const DiagnosticMobiliteFormPage = lazy(() => import("./pages/DiagnosticMobiliteFormPage"));
+const ProjetFormPage = lazy(() => import("./pages/ProjetFormPage"));
+const FormationFormPage = lazy(() => import("./pages/FormationFormPage"));
+const SenOptimaAcademyPage = lazy(() => import("./pages/SenOptimaAcademyPage"));
+const BusinessLaunchPage = lazy(() => import("./pages/academy/BusinessLaunchPage"));
+const ProfilInternationalPage = lazy(() => import("./pages/academy/ProfilInternationalPage"));
+const RendezVousDecouvertePage = lazy(() => import("./pages/RendezVousDecouvertePage"));
+const RendezVousDetailPage = lazy(() => import("./pages/offres/RendezVousDetailPage"));
+const DiagnosticDetailPage = lazy(() => import("./pages/offres/DiagnosticDetailPage"));
+const AccompagnementDetailPage = lazy(() => import("./pages/offres/AccompagnementDetailPage"));
 
 const queryClient = new QueryClient();
 
@@ -176,6 +179,7 @@ const App = () => {
               <BrowserRouter>
                 <ScrollToTop />
                 <Layout>
+                  <Suspense fallback={<div className="min-h-screen" />}>
                   <Routes>
                     <Route path="/" element={<Home />} />
                     {/* <Route path="/services" element={<ServicesPage />} /> Masqué temporairement */}
@@ -205,6 +209,7 @@ const App = () => {
                     <Route path="/offres/accompagnement" element={<AccompagnementDetailPage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
+                  </Suspense>
                 </Layout>
               </BrowserRouter>
             </TooltipProvider>
