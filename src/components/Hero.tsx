@@ -3,17 +3,21 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroPortraitCover from "@/assets/hero-portrait-cover.jpg";
+import heroPortraitMobile from "@/assets/hero-portrait-mobile.jpg";
 import SiteImage from "@/components/SiteImage";
 
 const Hero = () => {
   return (
     <section id="accueil" className="relative -mt-20 h-[100svh] min-h-[640px] overflow-hidden">
-      <SiteImage
-        src={heroPortraitCover}
-        alt="Consultante Sen'Optima Consulting devant le stand de présentation du cabinet"
-        className="absolute inset-0 w-full h-full object-cover object-[center_58%] md:object-[center_15%]"
-        priority
-      />
+      <picture>
+        <source media="(min-width: 768px)" srcSet={heroPortraitCover} />
+        <SiteImage
+          src={heroPortraitMobile}
+          alt="Consultante Sen'Optima Consulting devant le stand de présentation du cabinet"
+          className="absolute inset-0 w-full h-full object-cover object-center md:object-[center_15%]"
+          priority
+        />
+      </picture>
 
       {/* Gradient only at the bottom, to mark the end of the section and keep the text legible */}
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/70 to-transparent pointer-events-none" />
