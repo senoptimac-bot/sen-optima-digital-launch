@@ -14,15 +14,15 @@ const Hero = () => {
         <SiteImage
           src={heroPortraitMobile}
           alt="Consultante Sen'Optima Consulting devant le stand de présentation du cabinet"
-          className="absolute inset-0 w-full h-full object-cover object-center md:object-[center_15%]"
+          className="absolute inset-0 w-full h-full object-cover object-center"
           priority
         />
       </picture>
 
-      {/* Gradient only at the bottom, to mark the end of the section and keep the text legible */}
-      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/70 to-transparent pointer-events-none" />
+      {/* Dégradé bas réservé au mobile : sur desktop le texte est posé sur le fond uni de l'image, pas besoin d'assombrir */}
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/70 to-transparent pointer-events-none md:hidden" />
 
-      <div className="relative z-10 h-full flex flex-col justify-end pb-12 md:pb-16">
+      <div className="relative z-10 h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
