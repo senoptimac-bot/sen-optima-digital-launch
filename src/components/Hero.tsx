@@ -31,12 +31,13 @@ const Hero = () => {
             className="max-w-xl"
           >
             <h1 className="text-hero font-heading text-white leading-tight mb-5">
-              Développez votre activité. Ouvrez de <span className="italic text-accent">nouvelles opportunités.</span>
+              Nous accompagnons les entrepreneurs, les professionnels et les étudiants à concrétiser leurs
+              ambitions, <span className="italic text-accent">au Sénégal comme à l'international.</span>
             </h1>
 
             <p className="text-white/80 text-base md:text-lg leading-relaxed mb-7 max-w-lg">
-              Cabinet de conseil à Dakar en développement d'entreprise et mobilité internationale.
-              Premier échange gratuit, sans engagement.
+              De la création d'entreprise à la mobilité internationale, Sen'Optima Consulting vous
+              accompagne avec une approche stratégique, personnalisée et orientée résultats.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
