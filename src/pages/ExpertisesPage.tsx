@@ -4,8 +4,7 @@ import { ArrowRight } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import BackButton from "@/components/BackButton";
-// Image temporaire neutre (visage, engagement), en attente du vrai visuel fourni par le client.
-import mobiliteImage from "@/assets/À Propos de Sen'Optima.jpg";
+import mobiliteImage from "@/assets/mobilite-expertise.jpg";
 import entreprisesImage from "@/assets/developpement-entreprises.jpg";
 
 const domains = [
