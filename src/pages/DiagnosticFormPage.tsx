@@ -3,14 +3,14 @@ import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import { motion } from "framer-motion";
 import { buildWhatsAppUrl } from "@/config/business";
-import { MessageCircle, ArrowLeft } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Link } from "react-router-dom";
+import BackButton from "@/components/BackButton";
 
 const DiagnosticFormPage = () => {
   const [nom, setNom] = useState("");
@@ -75,13 +75,7 @@ ${closing}`;
       <div className="min-h-screen bg-background">
         <section className="py-16 md:py-24">
           <div className="container max-w-2xl">
-            <Link
-              to="/solutions"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors mb-8"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Retour aux solutions
-            </Link>
+            <BackButton />
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

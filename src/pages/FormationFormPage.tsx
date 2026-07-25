@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import { SEO_CONFIG } from "@/config/seo.config";
 import { motion } from "framer-motion";
 import { buildWhatsAppUrl } from "@/config/business";
-import { MessageCircle, ArrowLeft } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import BackButton from "@/components/BackButton";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -69,13 +70,7 @@ Merci de m'indiquer la prochaine session disponible.`;
       <div className="min-h-screen bg-background">
         <section className="py-16 md:py-24 pt-32 md:pt-40">
           <div className="container max-w-2xl">
-            <Link
-              to="/senoptima-academy"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors mb-8"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Retour à Sen'Optima Academy
-            </Link>
+            <BackButton />
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <div className="callout-accent mb-8">
