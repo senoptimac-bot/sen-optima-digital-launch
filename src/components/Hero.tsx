@@ -19,7 +19,10 @@ const Hero = () => {
         />
       </picture>
 
-      {/* Dégradé bas réservé au mobile : sur desktop le texte est posé sur le fond uni de l'image, pas besoin d'assombrir */}
+      {/* Assombrissement réservé au mobile : le texte est plus long qu'avant et peut recouvrir le visage,
+          donc on assombrit toute l'image (pas seulement le bas) pour garder le texte lisible partout où il tombe.
+          Sur desktop le texte est posé sur le fond uni de l'image, pas besoin d'assombrir. */}
+      <div className="absolute inset-0 bg-background/45 pointer-events-none md:hidden" />
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/70 to-transparent pointer-events-none md:hidden" />
 
       <div className="relative z-10 h-full flex flex-col justify-end pb-12 md:justify-center md:pb-0">
